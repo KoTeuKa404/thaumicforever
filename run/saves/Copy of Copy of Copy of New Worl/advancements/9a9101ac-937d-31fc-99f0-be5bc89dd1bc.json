@@ -1,0 +1,22 @@
+{
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-09-11 13:12:15 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2024-09-11 13:12:15 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "mesa": "2024-09-11 13:12:15 +0300",
+      "roofed_forest": "2024-09-11 13:34:53 +0300",
+      "desert": "2024-09-11 13:33:06 +0300"
+    },
+    "done": false
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-09-11 16:31:13 +0300",
+      "extreme_hills_with_trees": "2024-09-11 16:32:21 +0300",
+      "plains": "2024-09-11 16:31:45 +0300",
+      "extreme_hills": "2024-09-11 16:32:05 +0300",
+      "roofed_forest": "2024-09-11 16:32:03 +0300"
+    },
+    "done": false
+  }
+}

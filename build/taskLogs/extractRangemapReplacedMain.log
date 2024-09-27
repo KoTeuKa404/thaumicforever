@@ -1,0 +1,580 @@
+Unsupposrted library path: C:\jaba\build\classes\api
+Unsupposrted library path: C:\jaba\build\resources\api
+Symbol range map extraction starting
+Processing 192 files
+startProcessing "com/tutorialmod/turtywurty/ArmorStandToMannequinHandler.java" md5: c2cf07c9eee299765b3f4b75485fb9fc
+endProcessing "com/tutorialmod/turtywurty/ArmorStandToMannequinHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/AspectRegistryEvent.java" md5: d85dbb68d0506e811be504e533b0fbc7
+endProcessing "com/tutorialmod/turtywurty/AspectRegistryEvent.java"
+
+startProcessing "com/tutorialmod/turtywurty/BaublesRenderHandler.java" md5: 061d328be5bb4a92b908dd13ffbe9f14
+endProcessing "com/tutorialmod/turtywurty/BaublesRenderHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/BlockAbandonedChest.java" md5: c79797944912709e59cc261c840a8c2d
+endProcessing "com/tutorialmod/turtywurty/BlockAbandonedChest.java"
+
+startProcessing "com/tutorialmod/turtywurty/BlockAntiFlightStone.java" md5: 3750cc8903ff8c81467fb15bf9fc0d69
+endProcessing "com/tutorialmod/turtywurty/BlockAntiFlightStone.java"
+
+startProcessing "com/tutorialmod/turtywurty/ChestGui.java" md5: c365e6f99cc5f0df3ff777dfb1e1512f
+endProcessing "com/tutorialmod/turtywurty/ChestGui.java"
+
+startProcessing "com/tutorialmod/turtywurty/ClientProxy.java" md5: 9ac2ef1d3325bbd417eccc9a997c9738
+endProcessing "com/tutorialmod/turtywurty/ClientProxy.java"
+
+startProcessing "com/tutorialmod/turtywurty/CommonProxy.java" md5: 6bd2f0d7536dd75b20e9f5ff83833268
+endProcessing "com/tutorialmod/turtywurty/CommonProxy.java"
+
+startProcessing "com/tutorialmod/turtywurty/ContainerAbandonedChest.java" md5: f5f5cb8388857190b9c59130467ac5d6
+endProcessing "com/tutorialmod/turtywurty/ContainerAbandonedChest.java"
+
+startProcessing "com/tutorialmod/turtywurty/CraftingRecipes.java" md5: 167551bbd21a7006290e78ed76e9abc3
+endProcessing "com/tutorialmod/turtywurty/CraftingRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/CustomModel.java" md5: 72246c175536bd85fdd2d0726288c42c
+endProcessing "com/tutorialmod/turtywurty/CustomModel.java"
+
+startProcessing "com/tutorialmod/turtywurty/DeconstructionTableBlock.java" md5: 695a4b596730b9e99bc4cab08cf36415
+endProcessing "com/tutorialmod/turtywurty/DeconstructionTableBlock.java"
+
+startProcessing "com/tutorialmod/turtywurty/DeconstructionTableContainer.java" md5: b2d55f85c642a867684b2a1ca176f61f
+endProcessing "com/tutorialmod/turtywurty/DeconstructionTableContainer.java"
+
+startProcessing "com/tutorialmod/turtywurty/DeconstructionTableGui.java" md5: dc7ea3b3e64b7a18ed07d97badbb51f6
+endProcessing "com/tutorialmod/turtywurty/DeconstructionTableGui.java"
+
+startProcessing "com/tutorialmod/turtywurty/DeconstructionTableItemBlock.java" md5: b25e4e05089379877b32e7ee474fb653
+endProcessing "com/tutorialmod/turtywurty/DeconstructionTableItemBlock.java"
+
+startProcessing "com/tutorialmod/turtywurty/DeconstructionTableTileEntity.java" md5: 87d0bd8a4faee79cc3679e8485972e1c
+endProcessing "com/tutorialmod/turtywurty/DeconstructionTableTileEntity.java"
+
+startProcessing "com/tutorialmod/turtywurty/DoubleTableBlock.java" md5: 766534e3d0c718d26572ea32c8b3e04d
+endProcessing "com/tutorialmod/turtywurty/DoubleTableBlock.java"
+
+startProcessing "com/tutorialmod/turtywurty/EnchantmentsFM.java" md5: da62ab57f271218ae3cba3d244c86201
+endProcessing "com/tutorialmod/turtywurty/EnchantmentsFM.java"
+
+startProcessing "com/tutorialmod/turtywurty/EntityGuardianMannequin.java" md5: b0ef8b9f4a7716e9fc61feca04f4d02f
+endProcessing "com/tutorialmod/turtywurty/EntityGuardianMannequin.java"
+
+startProcessing "com/tutorialmod/turtywurty/EntityTimeFreezeProjectile.java" md5: 62367867447028dfeb41ab08119b5e86
+endProcessing "com/tutorialmod/turtywurty/EntityTimeFreezeProjectile.java"
+
+startProcessing "com/tutorialmod/turtywurty/EnumInfusionEnchantment.java" md5: e9bf46c89c3f08e9df1eec7712ff08ef
+endProcessing "com/tutorialmod/turtywurty/EnumInfusionEnchantment.java"
+
+startProcessing "com/tutorialmod/turtywurty/FocusEffectCalm.java" md5: 7de5f47bf242b7903c994ba85d75c90a
+endProcessing "com/tutorialmod/turtywurty/FocusEffectCalm.java"
+
+startProcessing "com/tutorialmod/turtywurty/FocusEffectChain.java" md5: 7d6f156d69d6a4dc8d5f75bf19755045
+endProcessing "com/tutorialmod/turtywurty/FocusEffectChain.java"
+
+startProcessing "com/tutorialmod/turtywurty/FocusEffectCleanse.java" md5: bb47ae37d2503bb0117261764a30654d
+endProcessing "com/tutorialmod/turtywurty/FocusEffectCleanse.java"
+
+startProcessing "com/tutorialmod/turtywurty/FocusEffectMindControl.java" md5: 0f1d546533b4cbe6ffdcab8b6064d740
+endProcessing "com/tutorialmod/turtywurty/FocusEffectMindControl.java"
+
+startProcessing "com/tutorialmod/turtywurty/FocusModBoostPower.java" md5: 9b4ce3809701428071b9e1cabc467e03
+endProcessing "com/tutorialmod/turtywurty/FocusModBoostPower.java"
+
+startProcessing "com/tutorialmod/turtywurty/FurnaceRecipes.java" md5: 17d06a4a9899c5b664fa906c67d1b203
+endProcessing "com/tutorialmod/turtywurty/FurnaceRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/GreatwoodTableBlock.java" md5: d3078f1dae99b40331357f7633a41bed
+endProcessing "com/tutorialmod/turtywurty/GreatwoodTableBlock.java"
+
+startProcessing "com/tutorialmod/turtywurty/InfusionEnchantmentRecipeFM.java" md5: d9f00c5088d3754ade37a209dc05fcff
+endProcessing "com/tutorialmod/turtywurty/InfusionEnchantmentRecipeFM.java"
+
+startProcessing "com/tutorialmod/turtywurty/InfusionRecipes.java" md5: 8aa477c6564cb4643ae3edec499d3b9b
+endProcessing "com/tutorialmod/turtywurty/InfusionRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/InitRecipes.java" md5: a39ccb1d5efcc7d767f0551d68285e05
+endProcessing "com/tutorialmod/turtywurty/InitRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/IronRing.java" md5: 2c5bdb51f2b28b625813dae691b98563
+endProcessing "com/tutorialmod/turtywurty/IronRing.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemAmuletDeath.java" md5: 9921d5a0a2521aeb899ec95f3e9471a0
+endProcessing "com/tutorialmod/turtywurty/ItemAmuletDeath.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemBrassGear.java" md5: d2235d326e1808d2e4df4e537c10fd59
+endProcessing "com/tutorialmod/turtywurty/ItemBrassGear.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemBrokenAmulet.java" md5: 7742d79bb98b1bdd2035e6f469e24616
+endProcessing "com/tutorialmod/turtywurty/ItemBrokenAmulet.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemCluster.java" md5: 6a4fbcf41edde3f314ecf838fe88ebe5
+endProcessing "com/tutorialmod/turtywurty/ItemCluster.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemFocus4.java" md5: 969214912c917307ad463c2fc1259f9f
+endProcessing "com/tutorialmod/turtywurty/ItemFocus4.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemFocusComplex.java" md5: 00e6fa782dce4668a2277895bedbc8a8
+endProcessing "com/tutorialmod/turtywurty/ItemFocusComplex.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemPrimalCharm.java" md5: ae3f8e9ba0c58e11e4c19328e1ab014b
+endProcessing "com/tutorialmod/turtywurty/ItemPrimalCharm.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemRingRunicCharge.java" md5: 2d7bd1c9b5aae19405655a5a0fdcb951
+endProcessing "com/tutorialmod/turtywurty/ItemRingRunicCharge.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemRingVerdant.java" md5: 3f8c288eb0dc681c680c13e585a26cfa
+endProcessing "com/tutorialmod/turtywurty/ItemRingVerdant.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemThaumiumGear.java" md5: a2a11d10933e3f55f77402a87c386ee1
+endProcessing "com/tutorialmod/turtywurty/ItemThaumiumGear.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemTimeFreezeProjectile.java" md5: 219441337e6b86354f2ab055cf87d450
+endProcessing "com/tutorialmod/turtywurty/ItemTimeFreezeProjectile.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemVoidGear.java" md5: dcfa45b5936a275148dbeba88b721ff6
+endProcessing "com/tutorialmod/turtywurty/ItemVoidGear.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemZombieHeart.java" md5: d21cdd09f325defb85d881f33cd26459
+endProcessing "com/tutorialmod/turtywurty/ItemZombieHeart.java"
+
+startProcessing "com/tutorialmod/turtywurty/ItemZombieHeartAmulet.java" md5: 7f9c4419bc4e370d3dd024219dbb7c2b
+endProcessing "com/tutorialmod/turtywurty/ItemZombieHeartAmulet.java"
+
+startProcessing "com/tutorialmod/turtywurty/LootTableHandler.java" md5: ea660fabf0814a94183ea9b4a9802c10
+endProcessing "com/tutorialmod/turtywurty/LootTableHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/MannequinInteractionHandler.java" md5: 8fd4451839c7e8be71891b5326e59ade
+endProcessing "com/tutorialmod/turtywurty/MannequinInteractionHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModBlocks.java" md5: 12b1a3db5a66e27ab672157eb833db91
+endProcessing "com/tutorialmod/turtywurty/ModBlocks.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModConfig.java" md5: 552b0aad9796aa9f83a269338c47f96e
+endProcessing "com/tutorialmod/turtywurty/ModConfig.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModFocuses.java" md5: 25354ecdd5173f248e88328cb7c63bc0
+endProcessing "com/tutorialmod/turtywurty/ModFocuses.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModGuiHandler.java" md5: a7f8125e4d3098280fe316a36f0c89d8
+endProcessing "com/tutorialmod/turtywurty/ModGuiHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModItems.java" md5: 0434841007c83dab904a0e5c5154204a
+endProcessing "com/tutorialmod/turtywurty/ModItems.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModOreBlocks.java" md5: d5457232f158e1d455e3b9796e69ae6e
+endProcessing "com/tutorialmod/turtywurty/ModOreBlocks.java"
+
+startProcessing "com/tutorialmod/turtywurty/ModRecipes.java" md5: c504978dc100b89a672f39f5ff7aba50
+endProcessing "com/tutorialmod/turtywurty/ModRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/OreBlock.java" md5: 008f7f3512c70417cce6d474c51ed323
+endProcessing "com/tutorialmod/turtywurty/OreBlock.java"
+
+startProcessing "com/tutorialmod/turtywurty/OreDictionaryRegistration.java" md5: f14e3c20327599d2d429b69a7c798b81
+endProcessing "com/tutorialmod/turtywurty/OreDictionaryRegistration.java"
+
+startProcessing "com/tutorialmod/turtywurty/OreGeneration.java" md5: 2a214a2a03fe5d484b7335d45ac38b18
+endProcessing "com/tutorialmod/turtywurty/OreGeneration.java"
+
+startProcessing "com/tutorialmod/turtywurty/RecipeCrucible.java" md5: 2670d5df1a3a9bbc38593610ef3332e9
+endProcessing "com/tutorialmod/turtywurty/RecipeCrucible.java"
+
+startProcessing "com/tutorialmod/turtywurty/RecipeOverride.java" md5: be8b110165f2a96c9ada02b44cf76b86
+endProcessing "com/tutorialmod/turtywurty/RecipeOverride.java"
+
+startProcessing "com/tutorialmod/turtywurty/RemoveRecipes.java" md5: 98288d4d5ba02a10cd5807e8c9794dd5
+endProcessing "com/tutorialmod/turtywurty/RemoveRecipes.java"
+
+startProcessing "com/tutorialmod/turtywurty/RenderGuardianMannequin.java" md5: fe4d3a37cacacb632932271305c99a0c
+endProcessing "com/tutorialmod/turtywurty/RenderGuardianMannequin.java"
+
+startProcessing "com/tutorialmod/turtywurty/ResearchHandler.java" md5: be570e387e487ee46954aac4b64c781a
+endProcessing "com/tutorialmod/turtywurty/ResearchHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/ThaumicForever.java" md5: 3a0b6f76867127ce1d69f8e80547d913
+endProcessing "com/tutorialmod/turtywurty/ThaumicForever.java"
+
+startProcessing "com/tutorialmod/turtywurty/ThaumicForeverCreativeTab.java" md5: 61715ccc809fc54df0c3f9ed9ada29d1
+endProcessing "com/tutorialmod/turtywurty/ThaumicForeverCreativeTab.java"
+
+startProcessing "com/tutorialmod/turtywurty/TileEntityAbandonedChest.java" md5: e43f87993060e13ae3cf6ca18f98b97c
+endProcessing "com/tutorialmod/turtywurty/TileEntityAbandonedChest.java"
+
+startProcessing "com/tutorialmod/turtywurty/VoidRepairHandler.java" md5: ae59a1fb896e5ba5669a5369e6c09dd3
+endProcessing "com/tutorialmod/turtywurty/VoidRepairHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/WorldGenEldritchRing.java" md5: 1f9b8927a3b4165db3cef5fd3ec75f97
+endProcessing "com/tutorialmod/turtywurty/WorldGenEldritchRing.java"
+
+startProcessing "com/tutorialmod/turtywurty/WorldGenHilltopStones.java" md5: aa90e44238ec798012f9d0be6605f16e
+endProcessing "com/tutorialmod/turtywurty/WorldGenHilltopStones.java"
+
+startProcessing "com/tutorialmod/turtywurty/WorldGenObsidianTotem.java" md5: 2f4e75d87957851009e37e53e9e7de36
+endProcessing "com/tutorialmod/turtywurty/WorldGenObsidianTotem.java"
+
+startProcessing "com/tutorialmod/turtywurty/WorldGenUnderloot.java" md5: e8a43df7f9a5c0bbd488e4c80b253a6b
+endProcessing "com/tutorialmod/turtywurty/WorldGenUnderloot.java"
+
+startProcessing "com/tutorialmod/turtywurty/ZombieDropHandler.java" md5: decf90add18a715d21b3e4a6d742d109
+endProcessing "com/tutorialmod/turtywurty/ZombieDropHandler.java"
+
+startProcessing "com/tutorialmod/turtywurty/magic_dust.java" md5: 9cc054f7162f8ec8c5766bae7b3090b2
+endProcessing "com/tutorialmod/turtywurty/magic_dust.java"
+
+startProcessing "com/tutorialmod/turtywurty/mixins/MixinRestoreAuraGeneration.java" md5: d479d8c240298f59dcc0e12bc3adfc38
+endProcessing "com/tutorialmod/turtywurty/mixins/MixinRestoreAuraGeneration.java"
+
+startProcessing "thaumcraft/api/OreDictionaryEntries.java" md5: b28f508098fbfeb2a25ca86363e40bf6
+endProcessing "thaumcraft/api/OreDictionaryEntries.java"
+
+startProcessing "thaumcraft/api/ThaumcraftApi.java" md5: a158e589ac0fc7cc8d55710145227a76
+endProcessing "thaumcraft/api/ThaumcraftApi.java"
+
+startProcessing "thaumcraft/api/ThaumcraftApiHelper.java" md5: 7d8e5f7b7f7567ad30daf7c730bf4f61
+endProcessing "thaumcraft/api/ThaumcraftApiHelper.java"
+
+startProcessing "thaumcraft/api/ThaumcraftInvHelper.java" md5: 9a66e08dd09457683fafdd20888fc277
+endProcessing "thaumcraft/api/ThaumcraftInvHelper.java"
+
+startProcessing "thaumcraft/api/ThaumcraftMaterials.java" md5: e71bdd7b95cc7d70af3c7823a1e0c86a
+endProcessing "thaumcraft/api/ThaumcraftMaterials.java"
+
+startProcessing "thaumcraft/api/aspects/Aspect.java" md5: 5ed95a26efe99475a876d4537eecb858
+endProcessing "thaumcraft/api/aspects/Aspect.java"
+
+startProcessing "thaumcraft/api/aspects/AspectEventProxy.java" md5: a39063c6d0a09ff7edf1cc0150b3d06d
+endProcessing "thaumcraft/api/aspects/AspectEventProxy.java"
+
+startProcessing "thaumcraft/api/aspects/AspectHelper.java" md5: b17fe4c02d6a0dd5e62ac21f149fac25
+endProcessing "thaumcraft/api/aspects/AspectHelper.java"
+
+startProcessing "thaumcraft/api/aspects/AspectList.java" md5: c970053c42bdf2c787c66c2d3fffbcba
+endProcessing "thaumcraft/api/aspects/AspectList.java"
+
+startProcessing "thaumcraft/api/aspects/AspectRegistryEvent.java" md5: 333b2b13f6d0c89fcd45473e7b472e48
+endProcessing "thaumcraft/api/aspects/AspectRegistryEvent.java"
+
+startProcessing "thaumcraft/api/aspects/AspectSourceHelper.java" md5: fe90a2d2c2e32e0b7aca949b64aef79a
+endProcessing "thaumcraft/api/aspects/AspectSourceHelper.java"
+
+startProcessing "thaumcraft/api/aspects/IAspectContainer.java" md5: e6bc8ed081e30df9b4d170fd0c6f60ab
+endProcessing "thaumcraft/api/aspects/IAspectContainer.java"
+
+startProcessing "thaumcraft/api/aspects/IAspectSource.java" md5: f4fe058cae7a669bb95830982394b0d3
+endProcessing "thaumcraft/api/aspects/IAspectSource.java"
+
+startProcessing "thaumcraft/api/aspects/IEssentiaContainerItem.java" md5: d01d18e90259a9552793164a76ad466d
+endProcessing "thaumcraft/api/aspects/IEssentiaContainerItem.java"
+
+startProcessing "thaumcraft/api/aspects/IEssentiaTransport.java" md5: 4706abbdf94054e9c429c3f19ff1151e
+endProcessing "thaumcraft/api/aspects/IEssentiaTransport.java"
+
+startProcessing "thaumcraft/api/aura/AuraHelper.java" md5: 9d21936924ebfa437ee15d42db2117a0
+endProcessing "thaumcraft/api/aura/AuraHelper.java"
+
+startProcessing "thaumcraft/api/blocks/BlocksTC.java" md5: b348400c2ef0a01f05fa94b1413faaed
+endProcessing "thaumcraft/api/blocks/BlocksTC.java"
+
+startProcessing "thaumcraft/api/blocks/ILabelable.java" md5: e431defbdf130146e79591255b8ae7c7
+endProcessing "thaumcraft/api/blocks/ILabelable.java"
+
+startProcessing "thaumcraft/api/capabilities/IPlayerKnowledge.java" md5: 0f35e63dea19e914622a548dc52ce062
+endProcessing "thaumcraft/api/capabilities/IPlayerKnowledge.java"
+
+startProcessing "thaumcraft/api/capabilities/IPlayerWarp.java" md5: 77cb24880cbb23047aa7dea2c8914571
+endProcessing "thaumcraft/api/capabilities/IPlayerWarp.java"
+
+startProcessing "thaumcraft/api/capabilities/ThaumcraftCapabilities.java" md5: fa29dbd3ac7c87bbb7306adda7443f24
+endProcessing "thaumcraft/api/capabilities/ThaumcraftCapabilities.java"
+
+startProcessing "thaumcraft/api/casters/CasterTriggerRegistry.java" md5: e0f616c6560b99f4d9e995c8faa7bfb3
+endProcessing "thaumcraft/api/casters/CasterTriggerRegistry.java"
+
+startProcessing "thaumcraft/api/casters/FocusEffect.java" md5: 110a61e9f478a56105948f2d0eea8ec1
+endProcessing "thaumcraft/api/casters/FocusEffect.java"
+
+startProcessing "thaumcraft/api/casters/FocusEngine.java" md5: 27b32f50e2a875e134b7282839789dad
+endProcessing "thaumcraft/api/casters/FocusEngine.java"
+
+startProcessing "thaumcraft/api/casters/FocusMedium.java" md5: 6936fb1c1bebc1654b3a51e0e6a3b12e
+endProcessing "thaumcraft/api/casters/FocusMedium.java"
+
+startProcessing "thaumcraft/api/casters/FocusMediumRoot.java" md5: e7f6ed21c4e22e885683e44b311dd19e
+endProcessing "thaumcraft/api/casters/FocusMediumRoot.java"
+
+startProcessing "thaumcraft/api/casters/FocusMod.java" md5: 74ba3005677b6a182a182219128de61a
+endProcessing "thaumcraft/api/casters/FocusMod.java"
+
+startProcessing "thaumcraft/api/casters/FocusModSplit.java" md5: 1fb5148005e18e2d7f767c977df4239e
+endProcessing "thaumcraft/api/casters/FocusModSplit.java"
+
+startProcessing "thaumcraft/api/casters/FocusNode.java" md5: 6616cf1928ea9f8c40997f2306e784bd
+endProcessing "thaumcraft/api/casters/FocusNode.java"
+
+startProcessing "thaumcraft/api/casters/FocusPackage.java" md5: f0994ee1ffd16bf90820dec83c20b2e9
+endProcessing "thaumcraft/api/casters/FocusPackage.java"
+
+startProcessing "thaumcraft/api/casters/ICaster.java" md5: af58b47f2201b51540f17df9035f44f5
+endProcessing "thaumcraft/api/casters/ICaster.java"
+
+startProcessing "thaumcraft/api/casters/ICasterTriggerManager.java" md5: 7a4b9649a454e0e29641a7c265c71cf0
+endProcessing "thaumcraft/api/casters/ICasterTriggerManager.java"
+
+startProcessing "thaumcraft/api/casters/IFocusBlockPicker.java" md5: 534f587ac2b8edbfa4708cfae7c31ca2
+endProcessing "thaumcraft/api/casters/IFocusBlockPicker.java"
+
+startProcessing "thaumcraft/api/casters/IFocusElement.java" md5: 55e0e1f163764ac26a04fd13845a95c8
+endProcessing "thaumcraft/api/casters/IFocusElement.java"
+
+startProcessing "thaumcraft/api/casters/IInteractWithCaster.java" md5: 059d1a099febcee67f39a83979c3b48b
+endProcessing "thaumcraft/api/casters/IInteractWithCaster.java"
+
+startProcessing "thaumcraft/api/casters/NodeSetting.java" md5: 4230611527ed4eddb38e73cbbb2c8eb3
+endProcessing "thaumcraft/api/casters/NodeSetting.java"
+
+startProcessing "thaumcraft/api/casters/Trajectory.java" md5: 6aefe583de6b1dafaa7b18580036c3e6
+endProcessing "thaumcraft/api/casters/Trajectory.java"
+
+startProcessing "thaumcraft/api/crafting/ContainerDummy.java" md5: 9cad03c428e2162ac34eb72043252972
+endProcessing "thaumcraft/api/crafting/ContainerDummy.java"
+
+startProcessing "thaumcraft/api/crafting/CrucibleRecipe.java" md5: 5fe4a728f248162eb713b63c344b836b
+endProcessing "thaumcraft/api/crafting/CrucibleRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IArcaneRecipe.java" md5: 8c75e50b60240cd0af25edbaa64afb56
+endProcessing "thaumcraft/api/crafting/IArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IArcaneWorkbench.java" md5: 49a8987f18e7834b6292df64915348b8
+endProcessing "thaumcraft/api/crafting/IArcaneWorkbench.java"
+
+startProcessing "thaumcraft/api/crafting/IDustTrigger.java" md5: 79c2b6149e8c818f9414dcb7d8ad0e45
+endProcessing "thaumcraft/api/crafting/IDustTrigger.java"
+
+startProcessing "thaumcraft/api/crafting/IInfusionStabiliser.java" md5: 52e562189373edcb8217ada283ffa49d
+endProcessing "thaumcraft/api/crafting/IInfusionStabiliser.java"
+
+startProcessing "thaumcraft/api/crafting/IInfusionStabiliserExt.java" md5: 2977574afb73532458271b602e8d286c
+endProcessing "thaumcraft/api/crafting/IInfusionStabiliserExt.java"
+
+startProcessing "thaumcraft/api/crafting/IStabilizable.java" md5: 8aa62200811a97c322855719bb4173fa
+endProcessing "thaumcraft/api/crafting/IStabilizable.java"
+
+startProcessing "thaumcraft/api/crafting/IThaumcraftRecipe.java" md5: 0c8da99d220f13be28cd26fac95722d3
+endProcessing "thaumcraft/api/crafting/IThaumcraftRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/InfusionRecipe.java" md5: 88199995b40d23a5cb6180744c08d6f7
+endProcessing "thaumcraft/api/crafting/InfusionRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IngredientNBTTC.java" md5: 231ef4104a48a6c3925a8ef94f651eb3
+endProcessing "thaumcraft/api/crafting/IngredientNBTTC.java"
+
+startProcessing "thaumcraft/api/crafting/Part.java" md5: 2d31773ea2562e04d974b20704fec5a9
+endProcessing "thaumcraft/api/crafting/Part.java"
+
+startProcessing "thaumcraft/api/crafting/RecipeMisc.java" md5: f92300b3458922fde667f8d1846508e0
+endProcessing "thaumcraft/api/crafting/RecipeMisc.java"
+
+startProcessing "thaumcraft/api/crafting/ShapedArcaneRecipe.java" md5: 605aeb8ee24c1e45c2ba6611d196c963
+endProcessing "thaumcraft/api/crafting/ShapedArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/ShapelessArcaneRecipe.java" md5: 9b316cd9a54f02f54b99c0ffe4f9766b
+endProcessing "thaumcraft/api/crafting/ShapelessArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/damagesource/DamageSourceIndirectThaumcraftEntity.java" md5: 7e1299952e554d11bc329124989a2841
+endProcessing "thaumcraft/api/damagesource/DamageSourceIndirectThaumcraftEntity.java"
+
+startProcessing "thaumcraft/api/damagesource/DamageSourceThaumcraft.java" md5: dff4138ced5120e9b4da64eb829719c5
+endProcessing "thaumcraft/api/damagesource/DamageSourceThaumcraft.java"
+
+startProcessing "thaumcraft/api/entities/IEldritchMob.java" md5: 60d61c7ba5c8a00311aec030ccb25bcd
+endProcessing "thaumcraft/api/entities/IEldritchMob.java"
+
+startProcessing "thaumcraft/api/entities/ITaintedMob.java" md5: 8a1e5a58a194416a2643f7ad932f3e2e
+endProcessing "thaumcraft/api/entities/ITaintedMob.java"
+
+startProcessing "thaumcraft/api/golems/EnumGolemTrait.java" md5: a99d678a86b17ff071c51460783838fe
+endProcessing "thaumcraft/api/golems/EnumGolemTrait.java"
+
+startProcessing "thaumcraft/api/golems/GolemHelper.java" md5: 5232a7019892bd06c681cf1ebb41d7b4
+endProcessing "thaumcraft/api/golems/GolemHelper.java"
+
+startProcessing "thaumcraft/api/golems/IGolemAPI.java" md5: 21be925a19066068821f3b8b46164076
+endProcessing "thaumcraft/api/golems/IGolemAPI.java"
+
+startProcessing "thaumcraft/api/golems/IGolemProperties.java" md5: 100899ab94e449546cb9516e25bc24a6
+endProcessing "thaumcraft/api/golems/IGolemProperties.java"
+
+startProcessing "thaumcraft/api/golems/ISealDisplayer.java" md5: 990521ce56e643859aaf8a3221754293
+endProcessing "thaumcraft/api/golems/ISealDisplayer.java"
+
+startProcessing "thaumcraft/api/golems/ProvisionRequest.java" md5: e68f7305f84959e6ad6fb5847f6ae9a1
+endProcessing "thaumcraft/api/golems/ProvisionRequest.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISeal.java" md5: 7a933ce234f25f747199483a10d25e49
+endProcessing "thaumcraft/api/golems/seals/ISeal.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigArea.java" md5: 0cabbd643813ee5f916ba101ac285cf7
+endProcessing "thaumcraft/api/golems/seals/ISealConfigArea.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigFilter.java" md5: d4f9e7b5c66631f06b6a6a87daf1217d
+endProcessing "thaumcraft/api/golems/seals/ISealConfigFilter.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigToggles.java" md5: d8026ef0b572ea9127ca92f0e2978999
+endProcessing "thaumcraft/api/golems/seals/ISealConfigToggles.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealEntity.java" md5: b60ea992d4c6cce3e690c45db6a20236
+endProcessing "thaumcraft/api/golems/seals/ISealEntity.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealGui.java" md5: 0516b6dbc7fe097d40f73e590b87d2a7
+endProcessing "thaumcraft/api/golems/seals/ISealGui.java"
+
+startProcessing "thaumcraft/api/golems/seals/SealPos.java" md5: 76f9058e1b03c2facebe448d4663917f
+endProcessing "thaumcraft/api/golems/seals/SealPos.java"
+
+startProcessing "thaumcraft/api/golems/tasks/Task.java" md5: fcbb3c86811ce5598e9f3bde99e1a59e
+endProcessing "thaumcraft/api/golems/tasks/Task.java"
+
+startProcessing "thaumcraft/api/internal/CommonInternals.java" md5: dc9e1aed0b31dc08990e10756ae5b4c1
+endProcessing "thaumcraft/api/internal/CommonInternals.java"
+
+startProcessing "thaumcraft/api/internal/DummyInternalMethodHandler.java" md5: d52d885a0be8f512a44ac987ab9e6fd0
+endProcessing "thaumcraft/api/internal/DummyInternalMethodHandler.java"
+
+startProcessing "thaumcraft/api/internal/IInternalMethodHandler.java" md5: 00477a51106a32cfb7e1e2888062b6c0
+endProcessing "thaumcraft/api/internal/IInternalMethodHandler.java"
+
+startProcessing "thaumcraft/api/internal/WeightedRandomLoot.java" md5: cb5f50a715cee4cbf993f538630549e1
+endProcessing "thaumcraft/api/internal/WeightedRandomLoot.java"
+
+startProcessing "thaumcraft/api/internal/WorldCoordinates.java" md5: 7c440edc389602fc5692310bb5078c44
+endProcessing "thaumcraft/api/internal/WorldCoordinates.java"
+
+startProcessing "thaumcraft/api/items/IArchitect.java" md5: 52a66419e1531adf17db8947d9608768
+endProcessing "thaumcraft/api/items/IArchitect.java"
+
+startProcessing "thaumcraft/api/items/IGoggles.java" md5: 8a8fec33a444ee47348e7bce6f3b7432
+endProcessing "thaumcraft/api/items/IGoggles.java"
+
+startProcessing "thaumcraft/api/items/IGogglesDisplayExtended.java" md5: 37d45a0ea6935e0f755b6c72044231d6
+endProcessing "thaumcraft/api/items/IGogglesDisplayExtended.java"
+
+startProcessing "thaumcraft/api/items/IRechargable.java" md5: 7120eb73068e443414dbba989365a076
+endProcessing "thaumcraft/api/items/IRechargable.java"
+
+startProcessing "thaumcraft/api/items/IRevealer.java" md5: d84ff20eff85e19a9d9207ddd60cb5b7
+endProcessing "thaumcraft/api/items/IRevealer.java"
+
+startProcessing "thaumcraft/api/items/IScribeTools.java" md5: aa9549411c2a38d83532de3dad483d20
+endProcessing "thaumcraft/api/items/IScribeTools.java"
+
+startProcessing "thaumcraft/api/items/IVisDiscountGear.java" md5: 7ff528f1db458eea69ce0a9bd892fb31
+endProcessing "thaumcraft/api/items/IVisDiscountGear.java"
+
+startProcessing "thaumcraft/api/items/IWarpingGear.java" md5: 8398046d6cbf5f91de5ab719ab783fb8
+endProcessing "thaumcraft/api/items/IWarpingGear.java"
+
+startProcessing "thaumcraft/api/items/ItemGenericEssentiaContainer.java" md5: ef2dbba98b782b852f6190a95b1472f1
+endProcessing "thaumcraft/api/items/ItemGenericEssentiaContainer.java"
+
+startProcessing "thaumcraft/api/items/ItemsTC.java" md5: b14e66f7cb21313bb45df7a8e457e0bb
+endProcessing "thaumcraft/api/items/ItemsTC.java"
+
+startProcessing "thaumcraft/api/items/RechargeHelper.java" md5: b07ae4b05d29ac0002a323c3a7562110
+endProcessing "thaumcraft/api/items/RechargeHelper.java"
+
+startProcessing "thaumcraft/api/package-info.java" md5: e6c03822c0695f2ffa198942453b31a2
+endProcessing "thaumcraft/api/package-info.java"
+
+startProcessing "thaumcraft/api/potions/PotionFluxTaint.java" md5: 22c2bd7bf05e433ea192a4bace666632
+endProcessing "thaumcraft/api/potions/PotionFluxTaint.java"
+
+startProcessing "thaumcraft/api/potions/PotionVisExhaust.java" md5: bf5a0d597c8744c7c1bbf6674072913c
+endProcessing "thaumcraft/api/potions/PotionVisExhaust.java"
+
+startProcessing "thaumcraft/api/research/IScanThing.java" md5: 86d107c195dc6629310b19cf17a55961
+endProcessing "thaumcraft/api/research/IScanThing.java"
+
+startProcessing "thaumcraft/api/research/ResearchAddendum.java" md5: d7f7bd8d78d3e39c5fe624c5e0407b5c
+endProcessing "thaumcraft/api/research/ResearchAddendum.java"
+
+startProcessing "thaumcraft/api/research/ResearchCategories.java" md5: 4a3e54daa9ea16094b1bfed22a86a18b
+endProcessing "thaumcraft/api/research/ResearchCategories.java"
+
+startProcessing "thaumcraft/api/research/ResearchCategory.java" md5: 17bc930ec3fdae8f54c908bc64438cd7
+endProcessing "thaumcraft/api/research/ResearchCategory.java"
+
+startProcessing "thaumcraft/api/research/ResearchEntry.java" md5: 69ad62ee0dfa3d2ae2f86d4ed4e80ed1
+endProcessing "thaumcraft/api/research/ResearchEntry.java"
+
+startProcessing "thaumcraft/api/research/ResearchEvent.java" md5: 7a6e65ca22c6e5518e1b5b2cd9aa1997
+endProcessing "thaumcraft/api/research/ResearchEvent.java"
+
+startProcessing "thaumcraft/api/research/ResearchStage.java" md5: 0569f0c8a732ac204e4e5b34b318d3af
+endProcessing "thaumcraft/api/research/ResearchStage.java"
+
+startProcessing "thaumcraft/api/research/ScanAspect.java" md5: 03caccbd03dbc6dd6a093bef413b5f11
+endProcessing "thaumcraft/api/research/ScanAspect.java"
+
+startProcessing "thaumcraft/api/research/ScanBlock.java" md5: 60f4dbfdefaa3721509e34344dd7e187
+endProcessing "thaumcraft/api/research/ScanBlock.java"
+
+startProcessing "thaumcraft/api/research/ScanBlockState.java" md5: 590e1fb1772c266946a2f296df33a086
+endProcessing "thaumcraft/api/research/ScanBlockState.java"
+
+startProcessing "thaumcraft/api/research/ScanEntity.java" md5: 0081ea8a9edab6b4f4d6e30eb5f7a2db
+endProcessing "thaumcraft/api/research/ScanEntity.java"
+
+startProcessing "thaumcraft/api/research/ScanItem.java" md5: 9a7f24c12254b4c10c52cf81ea63573e
+endProcessing "thaumcraft/api/research/ScanItem.java"
+
+startProcessing "thaumcraft/api/research/ScanMaterial.java" md5: 546cf87e7836f950f0e8b0908ca064d1
+endProcessing "thaumcraft/api/research/ScanMaterial.java"
+
+startProcessing "thaumcraft/api/research/ScanOreDictionary.java" md5: 2f4106bc2c714b3743a02fa7006641cb
+endProcessing "thaumcraft/api/research/ScanOreDictionary.java"
+
+startProcessing "thaumcraft/api/research/ScanningManager.java" md5: 3eded24c7c53c849e70da1289b165c76
+endProcessing "thaumcraft/api/research/ScanningManager.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/AidBookshelf.java" md5: ca33f4f5f13fba272b5595d914cf4645
+endProcessing "thaumcraft/api/research/theorycraft/AidBookshelf.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardAnalyze.java" md5: f1fad63d196431a6d186535a61494c45
+endProcessing "thaumcraft/api/research/theorycraft/CardAnalyze.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardBalance.java" md5: 6e3dbf8410fd7fca81af8e89cc0aba4f
+endProcessing "thaumcraft/api/research/theorycraft/CardBalance.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardExperimentation.java" md5: 74b4fb56570bfbc3b7efdac7a9ea6a73
+endProcessing "thaumcraft/api/research/theorycraft/CardExperimentation.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardInspired.java" md5: 01f361ff1f61e6dd91c438f17bf7fd43
+endProcessing "thaumcraft/api/research/theorycraft/CardInspired.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardNotation.java" md5: 80edf55e19f491c3f5e7479a921e9d04
+endProcessing "thaumcraft/api/research/theorycraft/CardNotation.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardPonder.java" md5: fc349d56e568ccd422158d4581272b66
+endProcessing "thaumcraft/api/research/theorycraft/CardPonder.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardReject.java" md5: e674854ccdb3aca5432de3c169900317
+endProcessing "thaumcraft/api/research/theorycraft/CardReject.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardRethink.java" md5: 2ec5810b77422fe76c11216aa2edb3a9
+endProcessing "thaumcraft/api/research/theorycraft/CardRethink.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardStudy.java" md5: 97eda63ebdeabd550c434d35b9a3901d
+endProcessing "thaumcraft/api/research/theorycraft/CardStudy.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/ITheorycraftAid.java" md5: 715fc7d8e35a9eedeaef400ec6eb5108
+endProcessing "thaumcraft/api/research/theorycraft/ITheorycraftAid.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/ResearchTableData.java" md5: 7edf2d5f8a596f346ae221ee56d5b9d3
+endProcessing "thaumcraft/api/research/theorycraft/ResearchTableData.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/TheorycraftCard.java" md5: 54fb4a60eb27c0d9221ffb5ec28c5a00
+endProcessing "thaumcraft/api/research/theorycraft/TheorycraftCard.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/TheorycraftManager.java" md5: 0c0a144ef70dd7cad20658e0725c465f
+endProcessing "thaumcraft/api/research/theorycraft/TheorycraftManager.java"
+

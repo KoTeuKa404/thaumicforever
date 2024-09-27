@@ -1,0 +1,9 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2024-09-27 19:21:02 +0300",
+      "ocean": "2024-09-27 17:31:53 +0300"
+    },
+    "done": false
+  }
+}

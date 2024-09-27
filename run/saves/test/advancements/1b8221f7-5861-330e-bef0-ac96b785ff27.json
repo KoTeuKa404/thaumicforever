@@ -1,0 +1,51 @@
+{
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 19:49:27 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "beaches": "2024-09-11 19:48:46 +0300",
+      "desert_hills": "2024-09-11 19:48:47 +0300",
+      "savanna": "2024-09-11 19:51:14 +0300",
+      "plains": "2024-09-11 19:48:22 +0300",
+      "savanna_rock": "2024-09-11 19:51:21 +0300",
+      "ocean": "2024-09-11 19:49:27 +0300",
+      "river": "2024-09-11 19:50:01 +0300",
+      "desert": "2024-09-11 19:48:44 +0300"
+    },
+    "done": false
+  }
+}

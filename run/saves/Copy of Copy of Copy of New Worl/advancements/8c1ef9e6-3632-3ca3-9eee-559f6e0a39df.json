@@ -1,0 +1,21 @@
+{
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-09-04 22:54:33 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/beacon": {
+    "criteria": {
+      "has_nether_star": "2024-09-04 22:54:33 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "roofed_forest": "2024-09-05 09:09:52 +0300",
+      "desert": "2024-09-05 09:09:39 +0300"
+    },
+    "done": false
+  }
+}

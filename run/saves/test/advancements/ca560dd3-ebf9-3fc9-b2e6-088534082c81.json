@@ -1,0 +1,14 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "beaches": "2024-09-10 22:32:54 +0300",
+      "redwood_taiga": "2024-09-10 22:32:58 +0300",
+      "taiga": "2024-09-10 22:32:51 +0300",
+      "redwood_taiga_hills": "2024-09-10 22:33:05 +0300",
+      "ocean": "2024-09-10 22:32:53 +0300",
+      "extreme_hills": "2024-09-10 22:32:29 +0300",
+      "river": "2024-09-10 22:33:01 +0300"
+    },
+    "done": false
+  }
+}

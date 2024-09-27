@@ -1,0 +1,64 @@
+{
+  "minecraft:recipes/combat/wooden_sword": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_pickaxe": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_hoe": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_axe": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ladder": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2024-09-11 16:22:38 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/tools/wooden_shovel": {
+    "criteria": {
+      "has_stick": "2024-09-07 07:46:05 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-09-11 16:23:37 +0300",
+      "mesa": "2024-09-07 08:47:31 +0300",
+      "plains": "2024-09-11 16:23:17 +0300",
+      "taiga": "2024-09-11 16:23:02 +0300",
+      "ocean": "2024-09-11 16:22:56 +0300",
+      "extreme_hills": "2024-09-11 16:22:38 +0300",
+      "river": "2024-09-11 16:23:08 +0300",
+      "desert": "2024-09-07 07:46:05 +0300",
+      "stone_beach": "2024-09-11 16:22:54 +0300"
+    },
+    "done": false
+  }
+}

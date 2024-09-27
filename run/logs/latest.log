@@ -1,0 +1,1440 @@
+[20:48:10] [main/INFO]: Extra: []
+[20:48:10] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/Acer/.gradle/caches/minecraft/assets, --assetIndex, 1.12, --accessToken{REDACTED}, --version, 1.12.2, --tweakClass, net.minecraftforge.fml.common.launcher.FMLTweaker, --tweakClass, net.minecraftforge.gradle.tweakers.CoremodTweaker]
+[20:48:10] [main/INFO]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[20:48:10] [main/INFO]: Using primary tweak class name net.minecraftforge.fml.common.launcher.FMLTweaker
+[20:48:10] [main/INFO]: Loading tweak class name net.minecraftforge.gradle.tweakers.CoremodTweaker
+[20:48:10] [main/INFO]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLTweaker
+[20:48:10] [main/INFO]: Forge Mod Loader version 14.23.5.2816 for Minecraft 1.12.2 loading
+[20:48:10] [main/INFO]: Java is OpenJDK 64-Bit Server VM, version 1.8.0_412, running on Windows 10:amd64:10.0, installed at D:\java\jdk8u412-b08\jre
+[20:48:10] [main/ERROR]: Apache Maven library folder was not in the format expected. Using default libraries directory.
+[20:48:10] [main/ERROR]: Full: C:\Users\Acer\.gradle\caches\modules-2\files-2.1\org.apache.maven\maven-artifact\3.5.3\7dc72b6d6d8a6dced3d294ed54c2cc3515ade9f4\maven-artifact-3.5.3.jar
+[20:48:10] [main/ERROR]: Trimmed: c:/users/acer/.gradle/caches/modules-2/files-2.1/org.apache.maven/maven-artifact/3.5.3/
+[20:48:10] [main/INFO]: Managed to load a deobfuscated Minecraft name- we are in a deobfuscated environment. Skipping runtime deobfuscation
+[20:48:10] [main/INFO]: Detected deobfuscated environment, loading log configs for colored console logs.
+[20:48:10] [main/INFO] [FML]: Ignoring missing certificate for coremod FMLCorePlugin (net.minecraftforge.fml.relauncher.FMLCorePlugin), we are in deobf and it's a forge core plugininecraftFormatting
+[20:48:10] [main/INFO] [FML]: Ignoring missing certificate for coremod FMLForgePlugin (net.minecraftforge.classloading.FMLForgePlugin), we are in deobf and it's a forge core plugininecraftFormatting
+[20:48:10] [main/INFO] [FML]: Searching C:\jaba\run\.\mods for modsinecraftFormatting
+[20:48:10] [main/INFO] [FML]: Loading tweaker org.spongepowered.asm.launch.MixinTweaker from !mixinbooter-4.2 (1).jarinecraftFormatting
+[20:48:10] [main/INFO] [FML]: Loading tweaker org.spongepowered.asm.launch.MixinTweaker from mixinbooter-9.3.jarinecraftFormatting
+[20:48:10] [main/WARN] [FML]: Found FMLCorePluginContainsFMLMod marker in ThaumicAugmentation-1.12.2-2.1.13.jar. This is not recommended, @Mods should be in a separate jar from the coremod.inecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.CoremodTweakerinecraftFormatting
+[20:48:11] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.fml.relauncher.FMLCorePlugininecraftFormatting
+[20:48:11] [main/INFO] [GradleStart]: Injecting location in coremod net.minecraftforge.classloading.FMLForgePlugininecraftFormatting
+[20:48:11] [main/INFO] [GradleStart]: Injecting location in coremod thecodex6824.thaumicaugmentation.core.ThaumicAugmentationCoreinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweakerinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Loading tweak class name org.spongepowered.asm.launch.MixinTweakerinecraftFormatting
+[20:48:11] [main/INFO] [mixin]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=file:/C:/Users/Acer/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar Service=LaunchWrapper Env=CLIENTinecraftFormatting
+[20:48:11] [main/INFO] [MixinBooter]: MixinBootstrap Initializing...inecraftFormatting
+[20:48:11] [main/INFO] [mixin]: Compatibility level set to JAVA_8inecraftFormatting
+[20:48:11] [main/WARN] [FML]: The coremod MixinBooter (zone.rong.mixinbooter.MixinBooterPlugin) is not signed!inecraftFormatting
+[20:48:11] [main/WARN] [LaunchWrapper]: Tweak class name org.spongepowered.asm.launch.MixinTweaker has already been visited -- skippinginecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.FMLDeobfTweakerinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.gradle.tweakers.AccessTransformerTweakerinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweakerinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLInjectionAndSortingTweakerinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapperinecraftFormatting
+[20:48:11] [main/ERROR] [FML]: FML appears to be missing any signature data. This is not a good thinginecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapperinecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class org.spongepowered.asm.launch.MixinTweakerinecraftFormatting
+[20:48:11] [main/INFO] [mixin]: Initialised Mixin FML Remapper Adapter with net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper@64355120inecraftFormatting
+[20:48:11] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.FMLDeobfTweakerinecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.gradle.tweakers.AccessTransformerTweakerinecraftFormatting
+[20:48:12] [main/INFO] [GradleStart]: Remapping AccessTransformer rules...inecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.relauncher.CoreModManager$FMLPluginWrapperinecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Loading tweak class name net.minecraftforge.fml.common.launcher.TerminalTweakerinecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Loading tweak class name org.spongepowered.asm.mixin.EnvironmentStateTweakerinecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Calling tweak class net.minecraftforge.fml.common.launcher.TerminalTweakerinecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Calling tweak class org.spongepowered.asm.mixin.EnvironmentStateTweakerinecraftFormatting
+[20:48:12] [main/INFO] [mixin]: Remapping refMap mixins.mixinbooter.refmap.json using C:\Users\Acer\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_snapshot\20171003\1.12.2\srgs\srg-mcp.srginecraftFormatting
+[20:48:12] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.client.main.Main}inecraftFormatting
+[20:48:12] [main/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.world.WorldinecraftFormatting
+[20:48:12] [main/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.client.entity.EntityPlayerSPinecraftFormatting
+[20:48:12] [main/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.player.EntityPlayerinecraftFormatting
+[20:48:12] [main/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.EntityLivingBaseinecraftFormatting
+[20:48:12] [main/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.world.WorldServerinecraftFormatting
+[20:48:12] [Client thread/INFO] [net.minecraft.client.Minecraft]: Setting user: Player250inecraftFormatting
+[20:48:12] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.block.BlockinecraftFormatting
+[20:48:13] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.block.state.BlockStateContainer$StateImplementationinecraftFormatting
+[20:48:13] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.block.BlockFireinecraftFormatting
+[20:48:13] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.item.ItemSlabinecraftFormatting
+[20:48:13] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.item.ItemSpadeinecraftFormatting
+[20:48:14] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.monster.EntityEnderman$AITakeBlockinecraftFormatting
+[20:48:14] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.ai.EntityAIEatGrassinecraftFormatting
+[20:48:14] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.passive.EntityRabbit$AIRaidFarminecraftFormatting
+[20:48:14] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.ai.EntityAIHarvestFarmlandinecraftFormatting
+[20:48:14] [Client thread/WARN] [net.minecraft.client.settings.GameSettings]: Skipping bad option: lastServer:inecraftFormatting
+[20:48:14] [Client thread/INFO] [net.minecraft.client.Minecraft]: LWJGL Version: 2.9.4inecraftFormatting
+[20:48:15] [Client thread/INFO] [FML]: -- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 619678424 bytes (590 MB) / 762839040 bytes (727 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: 
+	Loaded coremods (and transformers): 
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 537.42' Renderer: 'NVIDIA GeForce GTX 1650/PCIe/SSE2'inecraftFormatting
+[20:48:15] [Client thread/INFO] [FML]: MinecraftForge v14.23.5.2816 InitializedinecraftFormatting
+[20:48:15] [Client thread/INFO] [FML]: Starts to replace vanilla recipe ingredients with ore ingredients.inecraftFormatting
+[20:48:15] [Client thread/INFO] [FML]: Replaced 1036 ore ingredientsinecraftFormatting
+[20:48:16] [Client thread/INFO] [FML]: Searching C:\jaba\run\.\mods for modsinecraftFormatting
+[20:48:16] [Client thread/ERROR] [FML]: Unable to read a class file correctlyinecraftFormatting
+java.lang.IllegalArgumentException: null
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:185) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:168) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:439) ~[asm-debug-all-5.2.jar:5.2]
+	at net.minecraftforge.fml.common.discovery.asm.ASMModParser.<init>(ASMModParser.java:57) [ASMModParser.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.findClassesASM(JarDiscoverer.java:102) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.discover(JarDiscoverer.java:77) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.ContainerType.findMods(ContainerType.java:47) [ContainerType.class:?]
+	at net.minecraftforge.fml.common.discovery.ModCandidate.explore(ModCandidate.java:74) [ModCandidate.class:?]
+	at net.minecraftforge.fml.common.discovery.ModDiscoverer.identifyMods(ModDiscoverer.java:93) [ModDiscoverer.class:?]
+	at net.minecraftforge.fml.common.Loader.identifyMods(Loader.java:425) [Loader.class:?]
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:566) [Loader.class:?]
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232) [FMLClientHandler.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:467) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+[20:48:16] [Client thread/ERROR] [FML]: There was a problem reading the entry org/spongepowered/asm/launch/MixinLaunchPlugin.class in the jar C:\Users\Acer\.gradle\caches\modules-2\files-2.1\org.spongepowered\mixin\0.8.5\9d1c0c3a304ae6697ecd477218fa61b850bf57fc\mixin-0.8.5.jar - probably a corrupt zipinecraftFormatting
+net.minecraftforge.fml.common.LoaderException: java.lang.IllegalArgumentException
+
+	at net.minecraftforge.fml.common.discovery.asm.ASMModParser.<init>(ASMModParser.java:63) ~[ASMModParser.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.findClassesASM(JarDiscoverer.java:102) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.discover(JarDiscoverer.java:77) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.ContainerType.findMods(ContainerType.java:47) [ContainerType.class:?]
+	at net.minecraftforge.fml.common.discovery.ModCandidate.explore(ModCandidate.java:74) [ModCandidate.class:?]
+	at net.minecraftforge.fml.common.discovery.ModDiscoverer.identifyMods(ModDiscoverer.java:93) [ModDiscoverer.class:?]
+	at net.minecraftforge.fml.common.Loader.identifyMods(Loader.java:425) [Loader.class:?]
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:566) [Loader.class:?]
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232) [FMLClientHandler.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:467) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.lang.IllegalArgumentException
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:185) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:168) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:439) ~[asm-debug-all-5.2.jar:5.2]
+	at net.minecraftforge.fml.common.discovery.asm.ASMModParser.<init>(ASMModParser.java:57) ~[ASMModParser.class:?]
+	... 23 more
+[20:48:16] [Client thread/WARN] [FML]: Zip file mixin-0.8.5.jar failed to read properly, it will be ignoredinecraftFormatting
+net.minecraftforge.fml.common.LoaderException: java.lang.IllegalArgumentException
+
+	at net.minecraftforge.fml.common.discovery.asm.ASMModParser.<init>(ASMModParser.java:63) ~[ASMModParser.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.findClassesASM(JarDiscoverer.java:102) ~[JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.discover(JarDiscoverer.java:77) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.ContainerType.findMods(ContainerType.java:47) [ContainerType.class:?]
+	at net.minecraftforge.fml.common.discovery.ModCandidate.explore(ModCandidate.java:74) [ModCandidate.class:?]
+	at net.minecraftforge.fml.common.discovery.ModDiscoverer.identifyMods(ModDiscoverer.java:93) [ModDiscoverer.class:?]
+	at net.minecraftforge.fml.common.Loader.identifyMods(Loader.java:425) [Loader.class:?]
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:566) [Loader.class:?]
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232) [FMLClientHandler.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:467) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.lang.IllegalArgumentException
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:185) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:168) ~[asm-debug-all-5.2.jar:5.2]
+	at org.objectweb.asm.ClassReader.<init>(ClassReader.java:439) ~[asm-debug-all-5.2.jar:5.2]
+	at net.minecraftforge.fml.common.discovery.asm.ASMModParser.<init>(ASMModParser.java:57) ~[ASMModParser.class:?]
+	... 23 more
+[20:48:17] [Client thread/ERROR] [FML]: The mcmod.info file in ThaumicForever-2.1.1.jar cannot be parsed as valid JSON. It will be ignoredinecraftFormatting
+com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: Unterminated object at line 12 column 5 path $[0].credits
+	at com.google.gson.internal.Streams.parse(Streams.java:60) ~[Streams.class:?]
+	at com.google.gson.JsonParser.parse(JsonParser.java:84) ~[JsonParser.class:?]
+	at com.google.gson.JsonParser.parse(JsonParser.java:59) ~[JsonParser.class:?]
+	at net.minecraftforge.fml.common.MetadataCollection.from(MetadataCollection.java:63) [MetadataCollection.class:?]
+	at net.minecraftforge.fml.common.discovery.JarDiscoverer.discover(JarDiscoverer.java:65) [JarDiscoverer.class:?]
+	at net.minecraftforge.fml.common.discovery.ContainerType.findMods(ContainerType.java:47) [ContainerType.class:?]
+	at net.minecraftforge.fml.common.discovery.ModCandidate.explore(ModCandidate.java:74) [ModCandidate.class:?]
+	at net.minecraftforge.fml.common.discovery.ModDiscoverer.identifyMods(ModDiscoverer.java:93) [ModDiscoverer.class:?]
+	at net.minecraftforge.fml.common.Loader.identifyMods(Loader.java:425) [Loader.class:?]
+	at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:566) [Loader.class:?]
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232) [FMLClientHandler.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:467) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: com.google.gson.stream.MalformedJsonException: Unterminated object at line 12 column 5 path $[0].credits
+	at com.google.gson.stream.JsonReader.syntaxError(JsonReader.java:1559) ~[JsonReader.class:?]
+	at com.google.gson.stream.JsonReader.doPeek(JsonReader.java:491) ~[JsonReader.class:?]
+	at com.google.gson.stream.JsonReader.hasNext(JsonReader.java:414) ~[JsonReader.class:?]
+	at com.google.gson.internal.bind.TypeAdapters$29.read(TypeAdapters.java:738) ~[TypeAdapters$29.class:?]
+	at com.google.gson.internal.bind.TypeAdapters$29.read(TypeAdapters.java:731) ~[TypeAdapters$29.class:?]
+	at com.google.gson.internal.bind.TypeAdapters$29.read(TypeAdapters.java:714) ~[TypeAdapters$29.class:?]
+	at com.google.gson.internal.Streams.parse(Streams.java:48) ~[Streams.class:?]
+	... 25 more
+[20:48:17] [Client thread/INFO] [FML]: Forge Mod Loader has identified 19 mods to loadinecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: * The API Baubles|API from source C:\jaba\libs\Baubles-1.12-1.5.2-api.jar is loaded from an incompatible classloader. THIS WILL NOT WORK!inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager$APIContainer.validate(ModAPIManager.java:114)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.registerDataTableAndParseAPI(ModAPIManager.java:174)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.manageAPI(ModAPIManager.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:567)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraft.client.Minecraft.init(Minecraft.java:467)...inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: * The API Thaumcraft|API from source C:\jaba\libs\Thaumcraft-1.12.2-6.1.BETA26.jar is loaded from an incompatible classloader. THIS WILL NOT WORK!inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager$APIContainer.validate(ModAPIManager.java:114)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.registerDataTableAndParseAPI(ModAPIManager.java:174)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.manageAPI(ModAPIManager.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:567)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraft.client.Minecraft.init(Minecraft.java:467)...inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: * The API Thaumcraft|API from source C:\jaba\libs\Thaumcraft-1.12.2-6.1.BETA26.jar is loaded from an incompatible classloader. THIS WILL NOT WORK!inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager$APIContainer.validate(ModAPIManager.java:114)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.registerDataTableAndParseAPI(ModAPIManager.java:174)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.ModAPIManager.manageAPI(ModAPIManager.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:567)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:232)inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: *  at net.minecraft.client.Minecraft.init(Minecraft.java:467)...inecraftFormatting
+[20:48:17] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Instantiating all MixinLoader annotated classes...inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Instantiating all ILateMixinLoader implemented classes...inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Instantiating class griglog.thaumtweaks.core.TTLoader for its mixins.inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Adding mixins.thaumtweaks.json mixin configuration.inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Instantiating class de.zpenguin.thaumicwands.main.TWLoader for its mixins.inecraftFormatting
+[20:48:17] [Client thread/INFO] [MixinBooter]: Adding mixins.thaumicwands.json mixin configuration.inecraftFormatting
+[20:48:17] [Client thread/INFO] [mixin]: Remapping refMap mixins.thaumtweaks.refmap.json using C:\Users\Acer\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_snapshot\20171003\1.12.2\srgs\srg-mcp.srginecraftFormatting
+[20:48:17] [Client thread/INFO] [mixin]: Remapping refMap mixins.thaumicwands.refmap.json using C:\Users\Acer\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_snapshot\20171003\1.12.2\srgs\srg-mcp.srginecraftFormatting
+[20:48:17] [Thread-3/INFO] [FML]: Using sync timing. 200 frames of Display.update took 91045700 nanosinecraftFormatting
+[20:48:17] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.items.armor.ItemVoidRobeArmorinecraftFormatting
+[20:48:17] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.tiles.crafting.TileInfusionMatrixinecraftFormatting
+[20:48:18] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, mixinbooter, thaumcraft, jei, thaumicforever, baubles, waila, tg, thaumicaugmentation, thaumicbases, thaumicjei, thaumictinkerer, thaumicwands, thaumicwonders, keletupack, thaumtweaks] at CLIENTinecraftFormatting
+[20:48:18] [Client thread/INFO] [FML]: Attempting connection with missing mods [minecraft, mcp, FML, forge, mixinbooter, thaumcraft, jei, thaumicforever, baubles, waila, tg, thaumicaugmentation, thaumicbases, thaumicjei, thaumictinkerer, thaumicwands, thaumicwonders, keletupack, thaumtweaks] at SERVERinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.client.model.ModelBipedinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.world.WorldinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.player.EntityPlayerinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.network.NetHandlerPlayServerinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.entity.EntityLivingBaseinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.lib.utils.InventoryUtilsinecraftFormatting
+[20:48:18] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.block.BlockinecraftFormatting
+[20:48:19] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.client.renderer.RenderGlobalinecraftFormatting
+[20:48:20] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.entities.EntityFluxRiftinecraftFormatting
+[20:48:20] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.items.casters.foci.FocusMediumTouchinecraftFormatting
+[20:48:21] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.items.armor.ItemVoidRobeArmorinecraftFormatting
+[20:48:21] [Client thread/INFO] [net.minecraft.client.resources.SimpleReloadableResourceManager]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Thaumcraft, FMLFileResourcePack:Just Enough Items, FMLFileResourcePack:Thaumic Forever, FMLFileResourcePack:Baubles, FMLFileResourcePack:Waila, FMLFileResourcePack:Thaumic Gadgets, FMLFileResourcePack:Thaumic Augmentation, FMLFileResourcePack:Thaumic Bases, FMLFileResourcePack:ThaumicJEI, FMLFileResourcePack:Thaumic Tinkerer Unofficial, FMLFileResourcePack:Thaumic Wands, FMLFileResourcePack:Thaumic Wonders, FMLFileResourcePack:Thaumisc, FMLFileResourcePack:ThaumTweaksinecraftFormatting
+[20:48:21] [Client thread/INFO] [FML]: Processing ObjectHolder annotationsinecraftFormatting
+[20:48:21] [Client thread/INFO] [FML]: Found 1413 ObjectHolder annotationsinecraftFormatting
+[20:48:21] [Client thread/INFO] [FML]: Identifying ItemStackHolder annotationsinecraftFormatting
+[20:48:21] [Client thread/INFO] [FML]: Found 0 ItemStackHolder annotationsinecraftFormatting
+[20:48:21] [Client thread/INFO] [FML]: Configured a dormant chunk cache size of 0inecraftFormatting
+[20:48:21] [Forge Version Check/INFO] [forge.VersionCheck]: [thaumicwonders] Starting version check at https://pastebin.com/raw/7QELk9HJinecraftFormatting
+[20:48:21] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class baubles.api.cap.BaublesContainerinecraftFormatting
+[20:48:22] [Client thread/INFO] [FML]: OBJLoader: Domain thaumcraft has been added.inecraftFormatting
+[20:48:22] [Client thread/INFO] [STDOUT]: [com.tutorialmod.turtywurty.AspectRegistryEvent:removeAspect:28]: Aspect DAY not found.inecraftFormatting
+[20:48:22] [Client thread/INFO] [STDOUT]: [com.tutorialmod.turtywurty.AspectRegistryEvent:removeAspect:28]: Aspect NIGHT not found.inecraftFormatting
+[20:48:22] [Client thread/INFO] [STDOUT]: [com.tutorialmod.turtywurty.AspectRegistryEvent:removeAspect:28]: Aspect MATTERY not found.inecraftFormatting
+[20:48:22] [Client thread/INFO] [STDOUT]: [com.tutorialmod.turtywurty.AspectRegistryEvent:removeAspect:28]: Aspect POWER not found.inecraftFormatting
+[20:48:22] [Forge Version Check/INFO] [forge.VersionCheck]: [thaumicwonders] Found status: OUTDATED Target: 1.8.4inecraftFormatting
+[20:48:22] [Forge Version Check/INFO] [forge.VersionCheck]: [forge] Starting version check at http://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.jsoninecraftFormatting
+[20:48:22] [Client thread/INFO] [FML]: OBJLoader: Domain tg has been added.inecraftFormatting
+[20:48:22] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.entities.monster.EntityEldritchGuardianinecraftFormatting
+[20:48:23] [Forge Version Check/INFO] [forge.VersionCheck]: [forge] Found status: OUTDATED Target: 14.23.5.2859inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.overchanter`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.campfire`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.brazier`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.eldritchbane`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.elderknowledge`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `thaumicbases.tainted`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:23] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.tiles.crafting.TileInfusionMatrixinecraftFormatting
+[20:48:23] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.entities.EntityFluxRiftinecraftFormatting
+[20:48:24] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.client.renderers.models.gear.ModelCustomArmorinecraftFormatting
+[20:48:24] [Client thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:48:24] [Client thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:48:24] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.client.renderers.models.gear.ModelRobeinecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: * Registry Item: The object keletu.keletupack.items.armor.KamiArmor@49329ce9 has been registered twice for the same name keletupack:kami_helm.inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:300)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:281)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:113)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.registerAll(ForgeRegistry.java:154)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at keletu.keletupack.util.RegistryHandler.onItemRegister(RegistryHandler.java:44)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_RegistryHandler_onItemRegister_Register.invoke(.dynamic)...inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: * Registry Item: The object keletu.keletupack.items.armor.KamiArmor@a6c816a has been registered twice for the same name keletupack:kami_chest.inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:300)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:281)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:113)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.registerAll(ForgeRegistry.java:154)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at keletu.keletupack.util.RegistryHandler.onItemRegister(RegistryHandler.java:44)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_RegistryHandler_onItemRegister_Register.invoke(.dynamic)...inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: * Registry Item: The object keletu.keletupack.items.armor.KamiArmor@2e681871 has been registered twice for the same name keletupack:kami_legs.inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:300)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:281)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:113)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.registerAll(ForgeRegistry.java:154)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at keletu.keletupack.util.RegistryHandler.onItemRegister(RegistryHandler.java:44)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_RegistryHandler_onItemRegister_Register.invoke(.dynamic)...inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: * Registry Item: The object keletu.keletupack.items.armor.KamiArmor@79684d08 has been registered twice for the same name keletupack:kami_boots.inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:300)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.add(ForgeRegistry.java:281)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.register(ForgeRegistry.java:113)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.registries.ForgeRegistry.registerAll(ForgeRegistry.java:154)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at keletu.keletupack.util.RegistryHandler.onItemRegister(RegistryHandler.java:44)inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: *  at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_RegistryHandler_onItemRegister_Register.invoke(.dynamic)...inecraftFormatting
+[20:48:25] [Client thread/WARN] [FML]: ****************************************inecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:48:25] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.entities.monster.EntityEldritchGuardianinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: OBJLoader: Domain thaumicaugmentation has been added.inecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: OBJLoader: Domain thaumictinkerer has been added.inecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Injecting itemstacksinecraftFormatting
+[20:48:25] [Client thread/INFO] [FML]: Itemstack injection completeinecraftFormatting
+[20:48:27] [Client thread/WARN] [net.minecraft.client.audio.SoundHandler]: File tg:sounds/observer_ambient.ogg does not exist, cannot add it to event tg:observer_ambientinecraftFormatting
+[20:48:27] [Client thread/WARN] [net.minecraft.client.audio.SoundHandler]: File tg:sounds/observer_hurt.ogg does not exist, cannot add it to event tg:observer_hurtinecraftFormatting
+[20:48:27] [Client thread/WARN] [net.minecraft.client.audio.SoundHandler]: File tg:sounds/observer_death.ogg does not exist, cannot add it to event tg:observer_deathinecraftFormatting
+[20:48:27] [Client thread/WARN] [net.minecraft.client.audio.SoundManager]: Missing sound for event: thaumcraft:runicshieldchargeinecraftFormatting
+[20:48:27] [Sound Library Loader/INFO] [net.minecraft.client.audio.SoundManager]: Starting up SoundSystem...inecraftFormatting
+[20:48:27] [Client thread/ERROR] [FML]: Could not load vanilla model parent 'minecraft:block/tallgrass' for 'net.minecraft.client.renderer.block.model.ModelBlock@6e226e7d'inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model minecraft:block/tallgrass with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModelOrLogError(ModelLoaderRegistry.java:211) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaModelWrapper.getTextures(ModelLoader.java:387) [ModelLoader$VanillaModelWrapper.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:171) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$WeightedRandomModel.<init>(ModelLoader.java:658) [ModelLoader$WeightedRandomModel.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1176) [ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) [ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) [ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: minecraft:models/block/tallgrass.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 27 more
+[20:48:27] [Thread-5/INFO] [net.minecraft.client.audio.SoundManager]: Initializing LWJGL OpenALinecraftFormatting
+[20:48:27] [Thread-5/INFO] [net.minecraft.client.audio.SoundManager]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)inecraftFormatting
+[20:48:27] [Thread-5/INFO] [net.minecraft.client.audio.SoundManager]: OpenAL initialized.inecraftFormatting
+[20:48:28] [Sound Library Loader/INFO] [net.minecraft.client.audio.SoundManager]: Sound engine startedinecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/book_holder.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.Parser: command 's' (model: 'tg:models/block/book_holder.obj') is not currently supported, skipping. Line: 144 's off'inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/eye.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material' in 'tg:models/block/lamp.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.002' in 'tg:models/block/stabilizer_1.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/stabilizer_2.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_taiga.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_desert.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_hell.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_jungle.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_mushroom.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_plains.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_ice_plains.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_forest.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_swampland.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_savanna.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key '' (model: 'thaumcraft:models/block/arcane_workbench_charger.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key '' (model: 'thaumcraft:models/block/pillar.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key '' (model: 'thaumcraft:models/block/thaumatorium.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'All' in 'thaumictinkerer:models/block/pillar_diag.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Tf' (model: 'thaumictinkerer:models/block/pillar_diag.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'thaumictinkerer:models/block/pillar_diag.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'All' in 'thaumictinkerer:models/block/pillar_side.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Tf' (model: 'thaumictinkerer:models/block/pillar_side.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:29] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'thaumictinkerer:models/block/pillar_side.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/book_holder.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/book_holder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/eye.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/eye.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material' in 'tg:models/block/lamp.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/lamp.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/ERROR] [FML]: Could not load vanilla model parent 'minecraft:nether_bricks' for 'net.minecraft.client.renderer.block.model.ModelBlock@1ad6edb7'inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model minecraft:nether_bricks with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModelOrLogError(ModelLoaderRegistry.java:211) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaModelWrapper.getTextures(ModelLoader.java:387) [ModelLoader$VanillaModelWrapper.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:171) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) [ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: minecraft:models/nether_bricks.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 23 more
+[20:48:31] [Client thread/ERROR] [FML]: Could not load vanilla model parent 'minecraft:obsidian' for 'net.minecraft.client.renderer.block.model.ModelBlock@243a4456'inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model minecraft:obsidian with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModelOrLogError(ModelLoaderRegistry.java:211) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaModelWrapper.getTextures(ModelLoader.java:387) [ModelLoader$VanillaModelWrapper.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:171) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) [ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: minecraft:models/obsidian.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 23 more
+[20:48:31] [Client thread/ERROR] [FML]: Could not load vanilla model parent 'minecraft:soul_sand' for 'net.minecraft.client.renderer.block.model.ModelBlock@48ec89c2'inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model minecraft:soul_sand with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModelOrLogError(ModelLoaderRegistry.java:211) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaModelWrapper.getTextures(ModelLoader.java:387) [ModelLoader$VanillaModelWrapper.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:171) [ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) [ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) [ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: minecraft:models/soul_sand.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 23 more
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.002' in 'tg:models/block/stabilizer_1.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/stabilizer_1.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/stabilizer_2.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/stabilizer_2.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_plains.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_desert.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_desert.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_mushroom.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_mushroom.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_hell.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_hell.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_swampland.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_swampland.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_ice_plains.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_ice_plains.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_jungle.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_jungle.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_savanna.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_savanna.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_taiga.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_taiga.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/terra_focus_forest.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/terra_focus_forest.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key '' (model: 'thaumcraft:models/block/golembuilder.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key '' (model: 'thaumcraft:models/item/scanner.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/WARN] [FML]: OBJModel.Parser: found a face ('f') with more than 4 vertices, only the first 4 of these vertices will be rendered!inecraftFormatting
+[20:48:31] [Client thread/INFO] [FML]: Max texture size: 16384inecraftFormatting
+[20:48:32] [Client thread/WARN] [net.minecraft.client.renderer.texture.TextureMap]: Texture tg:textures/blocks/teleportator.png with size 114x114 will have visual artifacts at mip level 4, it can only support level 1. Please report to the mod author that the texture should be some multiple of 16x16.inecraftFormatting
+[20:48:32] [Client thread/WARN] [net.minecraft.client.renderer.texture.TextureMap]: Texture thaumicforever:textures/items/mechanism_improved.png with size 19x19 will have visual artifacts at mip level 4, it can only support level 0. Please report to the mod author that the texture should be some multiple of 16x16.inecraftFormatting
+[20:48:32] [Client thread/WARN] [net.minecraft.client.renderer.texture.TextureMap]: Texture tg:textures/blocks/spire.png with size 90x90 will have visual artifacts at mip level 4, it can only support level 1. Please report to the mod author that the texture should be some multiple of 16x16.inecraftFormatting
+[20:48:32] [Client thread/INFO] [net.minecraft.client.renderer.texture.TextureMap]: Created: 2048x2048 textures-atlasinecraftFormatting
+[20:48:32] [Client thread/ERROR] [FML]: MultiModel minecraft:builtin/missing is empty (no base model or parts were provided/resolved)inecraftFormatting
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicbases:sweed#age=4 for blockstate "thaumicbases:sweed[age=4]"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicbases:sweed#age=4 with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicforever:anti_flight_stone#inventory for item "thaumicforever:anti_flight_stone", normal location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicforever:item/anti_flight_stone with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: thaumicforever:models/item/anti_flight_stone.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicforever:anti_flight_stone#inventory for item "thaumicforever:anti_flight_stone", blockstate location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicforever:anti_flight_stone#inventory with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:296) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading blockstate for the variant thaumicforever:anti_flight_stone#inventory: inecraftFormatting
+java.lang.Exception: Could not load model definition for variant thaumicforever:anti_flight_stone
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:269) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:121) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.lang.RuntimeException: Encountered an exception when loading model definition of model thaumicforever:blockstates/anti_flight_stone.json
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadMultipartMBD(ModelBakery.java:228) ~[ModelBakery.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.getModelBlockDefinition(ModelBakery.java:208) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:265) ~[ModelLoader.class:?]
+	... 20 more
+Caused by: java.io.FileNotFoundException: thaumicforever:blockstates/anti_flight_stone.json
+	at net.minecraft.client.resources.FallbackResourceManager.getAllResources(FallbackResourceManager.java:104) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getAllResources(SimpleReloadableResourceManager.java:79) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadMultipartMBD(ModelBakery.java:221) ~[ModelBakery.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.getModelBlockDefinition(ModelBakery.java:208) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:265) ~[ModelLoader.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicbases:netherlogs#axis=none for blockstate "thaumicbases:netherlogs[axis=none]"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicbases:netherlogs#axis=none with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicbases:enderlogs#axis=none for blockstate "thaumicbases:enderlogs[axis=none]"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicbases:enderlogs#axis=none with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicbases:redlonstem#age=2,facing=east for blockstate "thaumicbases:redlonstem[age=2,facing=east]"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicbases:redlonstem#age=2,facing=east with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant keletupack:debug_stick#inventory for item "keletupack:debug_stick", normal location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model keletupack:item/debug_stick with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: keletupack:models/item/debug_stick.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant keletupack:debug_stick#inventory for item "keletupack:debug_stick", blockstate location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model keletupack:debug_stick#inventory with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:296) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:spire_ph#normal for blockstate "tg:spire_ph"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:spire_ph#normal with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:block/spire.obj with loader INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$WeightedRandomModel.<init>(ModelLoader.java:658) ~[ModelLoader$WeightedRandomModel.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1176) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+Caused by: java.io.FileNotFoundException: tg:models/item/spire.obj
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraftforge.client.model.obj.OBJLoader.loadModel(OBJLoader.java:88) ~[OBJLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$WeightedRandomModel.<init>(ModelLoader.java:658) ~[ModelLoader$WeightedRandomModel.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1176) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:stab_2_ph#inventory for item "tg:stab_2_ph", normal location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:item/stab_2_ph with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: tg:models/item/stab_2_ph.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:stab_2_ph#inventory for item "tg:stab_2_ph", blockstate location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:stab_2_ph#inventory with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:296) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant thaumicforever:anti_flight_stone#normal for blockstate "thaumicforever:anti_flight_stone"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model thaumicforever:anti_flight_stone#normal with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:nether_bricks_ph#normal for blockstate "tg:nether_bricks_ph"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:nether_bricks_ph#normal with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model minecraft:block/nether_bricks with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$WeightedRandomModel.<init>(ModelLoader.java:658) ~[ModelLoader$WeightedRandomModel.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1176) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+Caused by: java.io.FileNotFoundException: minecraft:models/block/nether_bricks.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader$WeightedRandomModel.<init>(ModelLoader.java:658) ~[ModelLoader$WeightedRandomModel.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1176) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:eye_ph#inventory for item "tg:eye_ph", normal location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:item/eye_ph with loader VanillaLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:302) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.io.FileNotFoundException: tg:models/item/eye_ph.json
+	at net.minecraft.client.resources.FallbackResourceManager.getResource(FallbackResourceManager.java:69) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getResource(SimpleReloadableResourceManager.java:65) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadModel(ModelBakery.java:334) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.access$1400(ModelLoader.java:115) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VanillaLoader.loadModel(ModelLoader.java:861) ~[ModelLoader$VanillaLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant tg:eye_ph#inventory for item "tg:eye_ph", blockstate location exception: inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model tg:eye_ph#inventory with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadItemModels(ModelLoader.java:296) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadVariantItemModels(ModelBakery.java:175) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:151) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 20 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading model for variant keletupack:nitor_vapor#normal for blockstate "keletupack:nitor_vapor"inecraftFormatting
+net.minecraftforge.client.model.ModelLoaderRegistry$LoaderException: Exception loading model keletupack:nitor_vapor#normal with loader VariantLoader.INSTANCE, skipping
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:161) ~[ModelLoaderRegistry.class:?]
+	at net.minecraftforge.client.model.ModelLoader.registerVariant(ModelLoader.java:235) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:153) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: net.minecraft.client.renderer.block.model.ModelBlockDefinition$MissingVariantException
+	at net.minecraft.client.renderer.block.model.ModelBlockDefinition.getVariant(ModelBlockDefinition.java:83) ~[ModelBlockDefinition.class:?]
+	at net.minecraftforge.client.model.ModelLoader$VariantLoader.loadModel(ModelLoader.java:1175) ~[ModelLoader$VariantLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoaderRegistry.getModel(ModelLoaderRegistry.java:157) ~[ModelLoaderRegistry.class:?]
+	... 21 more
+[20:48:33] [Client thread/ERROR] [FML]: Exception loading blockstate for the variant keletupack:nitor_vapor#normal: inecraftFormatting
+java.lang.Exception: Could not load model definition for variant keletupack:nitor_vapor
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:269) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadBlock(ModelBakery.java:121) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.loadBlocks(ModelLoader.java:223) ~[ModelLoader.class:?]
+	at net.minecraftforge.client.model.ModelLoader.setupModelRegistry(ModelLoader.java:150) ~[ModelLoader.class:?]
+	at net.minecraft.client.renderer.block.model.ModelManager.onResourceManagerReload(ModelManager.java:28) [ModelManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.registerReloadListener(SimpleReloadableResourceManager.java:121) [SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.Minecraft.init(Minecraft.java:513) [Minecraft.class:?]
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378) [Minecraft.class:?]
+	at net.minecraft.client.main.Main.main(SourceFile:123) [Main.class:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135) [launchwrapper-1.12.jar:?]
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_412]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_412]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_412]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_412]
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97) [start/:?]
+	at GradleStart.main(GradleStart.java:25) [start/:?]
+Caused by: java.lang.RuntimeException: Encountered an exception when loading model definition of model keletupack:blockstates/nitor_vapor.json
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadMultipartMBD(ModelBakery.java:228) ~[ModelBakery.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.getModelBlockDefinition(ModelBakery.java:208) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:265) ~[ModelLoader.class:?]
+	... 20 more
+Caused by: java.io.FileNotFoundException: keletupack:blockstates/nitor_vapor.json
+	at net.minecraft.client.resources.FallbackResourceManager.getAllResources(FallbackResourceManager.java:104) ~[FallbackResourceManager.class:?]
+	at net.minecraft.client.resources.SimpleReloadableResourceManager.getAllResources(SimpleReloadableResourceManager.java:79) ~[SimpleReloadableResourceManager.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.loadMultipartMBD(ModelBakery.java:221) ~[ModelBakery.class:?]
+	at net.minecraft.client.renderer.block.model.ModelBakery.getModelBlockDefinition(ModelBakery.java:208) ~[ModelBakery.class:?]
+	at net.minecraftforge.client.model.ModelLoader.getModelBlockDefinition(ModelLoader.java:265) ~[ModelLoader.class:?]
+	... 20 more
+[20:48:33] [Client thread/FATAL] [FML]: Suppressed additional 36 model loading errors for domain thaumicbasesinecraftFormatting
+[20:48:33] [Client thread/FATAL] [FML]: Suppressed additional 0 model loading errors for domain tginecraftFormatting
+[20:48:33] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class net.minecraft.client.renderer.entity.layers.LayerCapeinecraftFormatting
+[20:48:34] [Client thread/INFO] [THAUMCRAFT]: Checking for mod & oredict compatibilitiesinecraftFormatting
+[20:48:34] [Client thread/INFO] [THAUMCRAFT]: Adding entities to MFR safari net blacklist.inecraftFormatting
+[20:48:34] [Client thread/INFO] [thaumicaugmentationcore]: Successfully transformed class thaumcraft.common.lib.crafting.InfusionRunicAugmentRecipeinecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `mechanism_complex`, expected `thaumicforever`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/INFO] [thaumictinkerer]: Botania not found, Sad now.inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:48:34] [Client thread/INFO] [jei]: Created: 256x128 textures-atlasinecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Ignored smelting recipe with conflicting input: 1xtile.thaumicforever.ancient_iron@32767 = 3xitem.ingotIron@0inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Ignored smelting recipe with conflicting input: 1xtile.thaumicforever.ancient_gold@32767 = 3xitem.ingotGold@0inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Ignored smelting recipe with conflicting input: 1xtile.thaumicforever.ancient_coal@32767 = 4xitem.coal@0inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Ignored smelting recipe with conflicting input: 1xtile.thaumicforever.ancient_cinnabar@32767 = 3xitem.quicksilver@0inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `mechanism_complex`, expected `thaumicforever`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ns' (model: 'tg:models/block/toroid.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: OBJModel: A color has already been defined for material 'Material.001' in 'tg:models/block/toroid.mtl'. The color defined by key 'Ks' will not be applied!inecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ke' (model: 'tg:models/block/toroid.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'Ni' (model: 'tg:models/block/toroid.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: OBJLoader.MaterialLibrary: key 'illum' (model: 'tg:models/block/toroid.mtl') is not currently supported, skippinginecraftFormatting
+[20:48:34] [Client thread/INFO] [STDOUT]: [com.ancient.thaumicgadgets.init.ModMultiBlocks:<init>:37]: InitMultiBlocksinecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `stairsancient`, expected `thaumicaugmentation`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldcobble`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldcobblemossy`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldgravel`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldbrick`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldlapis`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldiron`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decooldgold`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.decoolddiamond`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.smb`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.smbreturn`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.ironspike`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.thaumspike`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.voidspike`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.bchest`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.blegs`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.bboots`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.thaumanvil`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.mortal`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.greatpipe`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.syrop`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.relax`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `minecraft` for name `tb.hunger`, expected `thaumicbases`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:34] [Client thread/INFO] [thaumictinkerer]: Looks like we can shade with the best of them!inecraftFormatting
+[20:48:34] [Client thread/INFO] [thaumictinkerer]: Initializing Telekenetic powersinecraftFormatting
+[20:48:34] [Client thread/INFO] [thaumictinkerer]: Checked Mob AspectsinecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Injecting itemstacksinecraftFormatting
+[20:48:34] [Client thread/INFO] [FML]: Itemstack injection completeinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 20 research entries from thaumcraft:research/basicsinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 20 research entries from thaumcraft:research/artificeinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 2 research entries from thaumictinkerer:research/baublesinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 7 research entries from thaumictinkerer:research/machinesinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 9 research entries from thaumicwonders:research/infusioninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 1 research entries from thaumicwonders:research/scansinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 1 research entries from thaumicwonders:research/miscinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 8 research entries from thaumicaugmentation:research/warded.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 10 research entries from thaumicaugmentation:research/impetus.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 12 research entries from thaumicwonders:research/eldritchinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 22 research entries from thaumcraft:research/alchemyinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 23 research entries from thaumcraft:research/auromancyinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 39 research entries from tg:research/thaumic_gadgetsinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 4 research entries from thaumicaugmentation:research/foci.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 17 research entries from thaumcraft:research/infusioninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 5 research entries from thaumcraft:research/eldritchinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 3 research entries from thaumictinkerer:research/fociinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 12 research entries from thaumcraft:research/scansinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 8 research entries from thaumicaugmentation:research/casting.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 8 research entries from thaumicwonders:research/alchemyinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 10 research entries from thaumictinkerer:research/miscinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 20 research entries from thaumicwands:research/thaumaturgy.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 5 research entries from thaumicwonders:research/artificeinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 1 research entries from thaumicaugmentation:research/ward_foci_coremod.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 29 research entries from thaumcraft:research/golemancyinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 23 research entries from thaumicforever:research/thaumcraft_research.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 6 research entries from thaumicaugmentation:research/baubles.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 18 research entries from thaumictinkerer:research/kamiinecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 32 research entries from keletupack:research/research.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 5 research entries from thaumicaugmentation:research/construct.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 5 research entries from thaumicaugmentation:research/gear.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 14 research entries from thaumicaugmentation:research/void.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 1 research entries from thaumicaugmentation:research/alchemy.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 4 research entries from thaumicaugmentation:research/misc.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [THAUMCRAFT]: Loaded 30 research entries from thaumicbases:research/researchtb.jsoninecraftFormatting
+[20:48:35] [Client thread/INFO] [thaumicaugmentation]: The following mods were detected and have integration enabled:inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `salismundus`, expected `thaumicwands`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `alchemicalconstruct`, expected `thaumtweaks`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `workbenchcharger`, expected `thaumtweaks`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `apprenticesring`, expected `thaumtweaks`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `matrixmotion`, expected `thaumtweaks`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/WARN] [FML]: Potentially Dangerous alternative prefix `thaumcraft` for name `matrixcost`, expected `thaumtweaks`. This could be a intended override, but in most cases indicates a broken mod.inecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Starting JEI...inecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Registering recipe categories...inecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Registering recipe categories took 42.06 msinecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Registering mod plugins...inecraftFormatting
+[20:48:35] [ThaumicJEI Aspect Cache/INFO] [thaumicjei]: Starting Aspect ItemStack Thread.inecraftFormatting
+[20:48:35] [ThaumicJEI Aspect Cache/INFO] [thaumicjei]: Trying to cache 2298 aspects.inecraftFormatting
+[20:48:35] [ThaumicJEI Aspect Cache/INFO] [thaumicjei]: Removed 0 items that are blacklistedinecraftFormatting
+[20:48:35] [Client thread/INFO] [thaumicjei]: Parsed aspect file in 73msinecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Registering mod plugins took 290.7 msinecraftFormatting
+[20:48:35] [Client thread/INFO] [jei]: Building recipe registry...inecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building recipe registry took 141.9 msinecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building ingredient list...inecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building ingredient list took 30.82 msinecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building ingredient filter...inecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building ingredient filter took 216.4 msinecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building bookmarks...inecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building bookmarks took 8.199 msinecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building runtime...inecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Building runtime took 142.8 msinecraftFormatting
+[20:48:36] [Client thread/INFO] [jei]: Starting JEI took 1.044 sinecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Starting Waila...inecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Gathering annotated plugins...inecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Gathering wrapped IMC plugins...inecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Registering plugins...inecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Registering plugin at mcp.mobius.waila.addons.core.PluginCoreinecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Registering plugin at mcp.mobius.waila.addons.minecraft.PluginMinecraftinecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Registering plugin at mcp.mobius.waila.addons.capability.PluginCapabilityinecraftFormatting
+[20:48:36] [Client thread/INFO] [Waila]: Starting Waila took 62.39 msinecraftFormatting
+[20:48:36] [ThaumicJEI Aspect Cache/INFO] [thaumicjei]: Finished Aspect ItemStack Thread.inecraftFormatting
+[20:48:36] [Client thread/INFO] [FML]: Forge Mod Loader has successfully loaded 19 modsinecraftFormatting
+[20:48:36] [Client thread/WARN] [net.minecraft.client.settings.GameSettings]: Skipping bad option: lastServer:inecraftFormatting
+[20:48:36] [Client thread/INFO] [com.mojang.text2speech.NarratorWindows]: Narrator library for x64 successfully loadedinecraftFormatting
+[20:48:37] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient]: Could not authorize you against Realms server: Invalid session idinecraftFormatting
+[20:49:01] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Starting integrated minecraft server version 1.12.2inecraftFormatting
+[20:49:01] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Generating keypairinecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Injecting existing registry data into this server instanceinecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Loading dimension 0 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:02] [Server thread/INFO] [net.minecraft.advancements.AdvancementList]: Loaded 488 advancementsinecraftFormatting
+[20:49:02] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world 0inecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Loading dimension -1 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:02] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world -1inecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Loading dimension 1 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:02] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world 1inecraftFormatting
+[20:49:02] [Server thread/INFO] [FML]: Loading dimension 14676 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:02] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world 14676inecraftFormatting
+[20:49:03] [Server thread/INFO] [FML]: Loading dimension 19 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:03] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world 19inecraftFormatting
+[20:49:03] [Server thread/INFO] [FML]: Loading dimension 31871 (New World Test) (net.minecraft.server.integrated.IntegratedServer@6051a52)inecraftFormatting
+[20:49:03] [Server thread/INFO] [THAUMCRAFT]: Creating aura cache for world 31871inecraftFormatting
+[20:49:03] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Preparing start region for level 0inecraftFormatting
+[20:49:04] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Preparing spawn area: 59%inecraftFormatting
+[20:49:04] [Thread-9/INFO] [THAUMCRAFT]: Starting aura thread for dim 0inecraftFormatting
+[20:49:05] [Thread-10/INFO] [THAUMCRAFT]: Starting aura thread for dim -1inecraftFormatting
+[20:49:05] [Thread-11/INFO] [THAUMCRAFT]: Starting aura thread for dim 1inecraftFormatting
+[20:49:05] [Thread-12/INFO] [THAUMCRAFT]: Starting aura thread for dim 14676inecraftFormatting
+[20:49:05] [Thread-13/INFO] [THAUMCRAFT]: Starting aura thread for dim 19inecraftFormatting
+[20:49:05] [Thread-14/INFO] [THAUMCRAFT]: Starting aura thread for dim 31871inecraftFormatting
+[20:49:05] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world -1inecraftFormatting
+[20:49:05] [Server thread/INFO] [FML]: Unloading dimension -1inecraftFormatting
+[20:49:05] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world 1inecraftFormatting
+[20:49:05] [Server thread/INFO] [FML]: Unloading dimension 1inecraftFormatting
+[20:49:05] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world 14676inecraftFormatting
+[20:49:05] [Server thread/INFO] [FML]: Unloading dimension 14676inecraftFormatting
+[20:49:05] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world 19inecraftFormatting
+[20:49:05] [Server thread/INFO] [FML]: Unloading dimension 19inecraftFormatting
+[20:49:05] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world 31871inecraftFormatting
+[20:49:05] [Server thread/INFO] [FML]: Unloading dimension 31871inecraftFormatting
+[20:49:05] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Changing view distance to 20, from 10inecraftFormatting
+[20:49:07] [Netty Local Client IO #0/INFO] [FML]: Server protocol version 2inecraftFormatting
+[20:49:07] [Netty Server IO #1/INFO] [FML]: Client protocol version 2inecraftFormatting
+[20:49:07] [Netty Server IO #1/INFO] [FML]: Client attempting to join with 19 mods : minecraft@1.12.2,FML@8.0.99.99,mixinbooter@4.2,thaumtweaks@0.3.5.3,baubles@1.5.2,waila@1.8.26,jei@4.15.0.268,thaumicwands@1.5.0,thaumicbases@3.5.232.0,keletupack@3.1.0 - Alpha,thaumcraft@6.1.BETA26,tg@0.1.6.0,thaumicaugmentation@1.12.2-2.1.13,forge@14.23.5.2816,thaumicjei@1.6.0,thaumictinkerer@1.12.2-5.5.1-Unofficial,mcp@9.42,thaumicforever@1.0,thaumicwonders@1.8.2inecraftFormatting
+[20:49:07] [Netty Local Client IO #0/INFO] [FML]: [Netty Local Client IO #0] Client side modded connection establishedinecraftFormatting
+[20:49:07] [Server thread/INFO] [FML]: [Server thread] Server side modded connection establishedinecraftFormatting
+[20:49:07] [Thread-12/INFO] [THAUMCRAFT]: Stopping aura thread for dim 14676inecraftFormatting
+[20:49:07] [Thread-11/INFO] [THAUMCRAFT]: Stopping aura thread for dim 1inecraftFormatting
+[20:49:07] [Thread-10/INFO] [THAUMCRAFT]: Stopping aura thread for dim -1inecraftFormatting
+[20:49:07] [Thread-14/INFO] [THAUMCRAFT]: Stopping aura thread for dim 31871inecraftFormatting
+[20:49:07] [Thread-13/INFO] [THAUMCRAFT]: Stopping aura thread for dim 19inecraftFormatting
+[20:49:07] [Server thread/INFO] [net.minecraft.server.management.PlayerList]: Player250[local:E:a7fca9d7] logged in with entity id 418 at (150.29048225810084, 70.11650136792812, 244.80455695430288)inecraftFormatting
+[20:49:07] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Player250 joined the gameinecraftFormatting
+[20:49:07] [Server thread/INFO] [Waila]: Player EntityPlayerMP['Player250'/418, l='New World Test', x=150.29, y=70.12, z=244.80] connected. Sending pinginecraftFormatting
+[20:49:08] [Netty Local Client IO #0/INFO] [Waila]: Received server authentication msg. Remote sync will be activatedinecraftFormatting
+[20:49:08] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Saving and pausing game...inecraftFormatting
+[20:49:08] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving chunks for level 'New World Test'/overworldinecraftFormatting
+[20:49:09] [Client thread/INFO] [net.minecraft.advancements.AdvancementList]: Loaded 2 advancementsinecraftFormatting
+[20:49:09] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Saving and pausing game...inecraftFormatting
+[20:49:09] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving chunks for level 'New World Test'/overworldinecraftFormatting
+[20:50:34] [Server thread/WARN] [net.minecraft.server.MinecraftServer]: Can't keep up! Did the system time change, or is the server overloaded? Running 2497ms behind, skipping 49 tick(s)inecraftFormatting
+[20:50:36] [Server thread/INFO] [net.minecraft.server.integrated.IntegratedServer]: Saving and pausing game...inecraftFormatting
+[20:50:36] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving chunks for level 'New World Test'/overworldinecraftFormatting
+[20:50:37] [Client thread/INFO] [net.minecraft.client.Minecraft]: Stopping!inecraftFormatting
+[20:50:38] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Stopping serverinecraftFormatting
+[20:50:38] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving playersinecraftFormatting
+[20:50:38] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving worldsinecraftFormatting
+[20:50:38] [Server thread/INFO] [net.minecraft.server.MinecraftServer]: Saving chunks for level 'New World Test'/overworldinecraftFormatting
+[20:50:38] [Server thread/INFO] [THAUMCRAFT]: Removing aura cache for world 0inecraftFormatting
+[20:50:38] [Server thread/INFO] [FML]: Unloading dimension 0inecraftFormatting
+[20:50:38] [Thread-9/WARN] [THAUMCRAFT]: No auras found!inecraftFormatting
+[20:50:38] [Thread-9/INFO] [THAUMCRAFT]: Stopping aura thread for dim 0inecraftFormatting
+[20:50:38] [Server thread/INFO] [FML]: Applying holder lookupsinecraftFormatting
+[20:50:38] [Server thread/INFO] [FML]: Holder lookups appliedinecraftFormatting
+[20:50:38] [Client thread/INFO] [net.minecraft.client.audio.SoundManager]: SoundSystem shutting down...inecraftFormatting
+[20:50:39] [Client thread/WARN] [net.minecraft.client.audio.SoundManager]: Author: Paul Lamb, www.paulscode.cominecraftFormatting

@@ -1,0 +1,20 @@
+{
+  "minecraft:story/shiny_gear": {
+    "criteria": {
+      "diamond_helmet": "2024-09-27 19:34:33 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-09-27 19:34:36 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "plains": "2024-09-27 19:34:22 +0300"
+    },
+    "done": false
+  }
+}

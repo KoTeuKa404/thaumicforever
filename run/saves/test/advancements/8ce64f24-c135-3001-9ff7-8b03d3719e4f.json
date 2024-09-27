@@ -1,0 +1,14 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "swampland": "2024-09-10 22:21:12 +0300",
+      "beaches": "2024-09-10 22:19:45 +0300",
+      "extreme_hills_with_trees": "2024-09-10 22:20:07 +0300",
+      "plains": "2024-09-10 22:19:20 +0300",
+      "ocean": "2024-09-10 22:19:40 +0300",
+      "extreme_hills": "2024-09-10 22:19:50 +0300",
+      "river": "2024-09-10 22:20:11 +0300"
+    },
+    "done": false
+  }
+}

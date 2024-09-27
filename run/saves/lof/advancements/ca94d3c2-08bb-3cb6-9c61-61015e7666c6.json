@@ -1,0 +1,10 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "roofed_forest": "2024-09-11 18:46:53 +0300",
+      "river": "2024-09-11 18:47:13 +0300",
+      "desert": "2024-09-11 18:46:19 +0300"
+    },
+    "done": false
+  }
+}

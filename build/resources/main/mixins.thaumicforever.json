@@ -1,0 +1,11 @@
+{
+    "minVersion": "0.8",
+    "package": "com.tutorialmod.turtywurty.mixins",
+    "refmap": "mixins.thaumicforever.refmap.json",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "MixinRestoreAuraGeneration"
+    ],
+    "client": [],
+    "server": []
+  }

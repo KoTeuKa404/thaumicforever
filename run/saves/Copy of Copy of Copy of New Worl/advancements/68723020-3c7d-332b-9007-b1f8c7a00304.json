@@ -1,0 +1,29 @@
+{
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2024-09-07 08:46:00 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/brewing/cauldron": {
+    "criteria": {
+      "has_water_bucket": "2024-09-11 16:03:08 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-09-11 16:05:08 +0300",
+      "beaches": "2024-09-11 16:05:05 +0300",
+      "desert_hills": "2024-09-11 16:04:28 +0300",
+      "mesa": "2024-09-07 08:46:11 +0300",
+      "forest_hills": "2024-09-11 16:04:38 +0300",
+      "savanna": "2024-09-11 16:04:25 +0300",
+      "plains": "2024-09-11 16:04:37 +0300",
+      "savanna_rock": "2024-09-11 16:03:08 +0300",
+      "river": "2024-09-11 16:04:33 +0300",
+      "desert": "2024-09-07 08:46:01 +0300"
+    },
+    "done": false
+  }
+}

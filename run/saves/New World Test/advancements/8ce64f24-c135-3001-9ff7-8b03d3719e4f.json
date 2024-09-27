@@ -1,0 +1,18 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-09-11 20:17:27 +0300",
+      "swampland": "2024-09-11 20:17:17 +0300",
+      "extreme_hills_with_trees": "2024-09-11 20:17:23 +0300",
+      "plains": "2024-09-11 20:16:15 +0300",
+      "redwood_taiga": "2024-09-11 20:16:48 +0300",
+      "taiga": "2024-09-11 20:16:34 +0300",
+      "redwood_taiga_hills": "2024-09-11 20:16:51 +0300",
+      "taiga_hills": "2024-09-11 20:16:41 +0300",
+      "extreme_hills": "2024-09-11 20:17:21 +0300",
+      "roofed_forest": "2024-09-11 20:17:33 +0300",
+      "river": "2024-09-11 20:17:31 +0300"
+    },
+    "done": false
+  }
+}

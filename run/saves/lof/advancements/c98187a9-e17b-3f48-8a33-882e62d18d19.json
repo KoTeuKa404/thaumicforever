@@ -1,0 +1,50 @@
+{
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/birch_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/jungle_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/spruce_boat": {
+    "criteria": {
+      "entered_water": "2024-09-11 17:42:06 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "forest": "2024-09-11 17:41:48 +0300",
+      "birch_forest": "2024-09-11 17:40:53 +0300",
+      "extreme_hills_with_trees": "2024-09-11 17:40:46 +0300",
+      "plains": "2024-09-11 17:41:43 +0300",
+      "extreme_hills": "2024-09-11 17:40:07 +0300",
+      "roofed_forest": "2024-09-11 17:41:32 +0300",
+      "river": "2024-09-11 17:40:51 +0300"
+    },
+    "done": false
+  }
+}

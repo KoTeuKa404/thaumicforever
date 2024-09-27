@@ -1,0 +1,117 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  MixinBooter (!mixinbooter-4.2 (1).jar)
+Contact their authors BEFORE contacting forge
+
+// There are four lights!
+
+Time: 9/27/24 3:11 PM
+Description: Ticking player
+
+java.lang.IllegalArgumentException: bound must be positive
+	at java.util.Random.nextInt(Random.java:388)
+	at keletu.keletupack.event.LivingEvent.summonlightning(LivingEvent.java:718)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_LivingEvent_summonlightning_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.onUpdate(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.onUpdateEntity(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.update(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.update(NetworkDispatcher.java:209)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:790)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at java.util.Random.nextInt(Random.java:388)
+	at keletu.keletupack.event.LivingEvent.summonlightning(LivingEvent.java:718)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_240_LivingEvent_summonlightning_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.onUpdate(EntityPlayer.java:190)
+
+-- Player being ticked --
+Details:
+	Entity Type: null (net.minecraft.entity.player.EntityPlayerMP)
+	Entity ID: 269
+	Entity Name: Player767
+	Entity's Exact location: -3184.99, 71.50, 1885.01
+	Entity's Block location: World: (-3185,71,1885), Chunk: (at 15,4,13 in -200,117; contains blocks -3200,0,1872 to -3185,255,1887), Region: (-7,3; contains chunks -224,96 to -193,127, blocks -3584,0,1536 to -3073,255,2047)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.entity.player.EntityPlayerMP.onUpdateEntity(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.update(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.update(NetworkDispatcher.java:209)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:285)
+
+-- Ticking connection --
+Details:
+	Connection: net.minecraft.network.NetworkManager@7e4b0795
+Stacktrace:
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:790)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 1257040192 bytes (1198 MB) / 1932001280 bytes (1842 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2816 19 mods loaded, 19 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                  | Version                 | Source                                         | Signature                                |
+	|:------ |:------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft           | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCHIJA | mcp                 | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | FML                 | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | forge               | 14.23.5.2816            | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | mixinbooter         | 4.2                     | minecraft.jar                                  | None                                     |
+	| LCHIJA | baubles             | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCHIJA | thaumcraft          | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCHIJA | jei                 | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCHIJA | thaumicforever      | 1.0                     | ThaumicForever-2.1.1.jar                       | None                                     |
+	| LCHIJA | waila               | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LCHIJA | tg                  | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LCHIJA | thaumicaugmentation | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LCHIJA | thaumicbases        | 3.5.232.0               | thaumicbases-3.5.232.0.jar                     | None                                     |
+	| LCHIJA | thaumicjei          | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LCHIJA | thaumictinkerer     | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LCHIJA | thaumicwands        | 1.5.0                   | thaumicwands-1.5.4.jar                         | None                                     |
+	| LCHIJA | thaumicwonders      | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LCHIJA | keletupack          | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+	| LCHIJA | thaumtweaks         | 0.3.5.3                 | thaumtweaks-0.3.5.3 (2).jar                    | None                                     |
+
+	Loaded coremods (and transformers): 
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player767'/269, l='lof', x=-3184.99, y=71.50, z=1885.01]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
