@@ -1,0 +1,772 @@
+Unsupposrted library path: C:\jaba\build\classes\api
+Unsupposrted library path: C:\jaba\build\resources\api
+Symbol range map extraction starting
+Processing 256 files
+startProcessing "com/koteuka404/thaumicforever/ArmorStandToMannequinHandler.java" md5: 421a6b1fbc1ce42f198d54e8af482e25
+endProcessing "com/koteuka404/thaumicforever/ArmorStandToMannequinHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/AspectAdder.java" md5: 3f1d9326360f37af0cccd6c5babde214
+endProcessing "com/koteuka404/thaumicforever/AspectAdder.java"
+
+startProcessing "com/koteuka404/thaumicforever/AspectRegistry.java" md5: ae2a7f8839e432f87074e8a1206e2f0e
+endProcessing "com/koteuka404/thaumicforever/AspectRegistry.java"
+
+startProcessing "com/koteuka404/thaumicforever/AuraNodeEntity.java" md5: 25d799e991828f539216ee2bdf957a5c
+endProcessing "com/koteuka404/thaumicforever/AuraNodeEntity.java"
+
+startProcessing "com/koteuka404/thaumicforever/AuraNodeRenderer.java" md5: cd7db31c6277b58416ff189af50cb45b
+endProcessing "com/koteuka404/thaumicforever/AuraNodeRenderer.java"
+
+startProcessing "com/koteuka404/thaumicforever/AuraNodeWorldGen.java" md5: 069094f78a4ec0038628e3d7d4ae2465
+endProcessing "com/koteuka404/thaumicforever/AuraNodeWorldGen.java"
+
+startProcessing "com/koteuka404/thaumicforever/BaublesRenderHandler.java" md5: d6a4dc3a91fa4caa8b07d302c4a25d57
+endProcessing "com/koteuka404/thaumicforever/BaublesRenderHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockAbandonedChest.java" md5: 8ac049362ac8bdd01316006e4fbde4ed
+endProcessing "com/koteuka404/thaumicforever/BlockAbandonedChest.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockAntiFlightStone.java" md5: 2f1d2efd71f7197c69253602fd2bcb54
+endProcessing "com/koteuka404/thaumicforever/BlockAntiFlightStone.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockBase.java" md5: c59d6e7a5c5fd7b5261798886d4b5318
+endProcessing "com/koteuka404/thaumicforever/BlockBase.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockBlueRose.java" md5: 92fdd58100598b45a3b44c6f1432983c
+endProcessing "com/koteuka404/thaumicforever/BlockBlueRose.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockCompressor.java" md5: eda46deaecacf1ccf7e104d5c20eb7d4
+endProcessing "com/koteuka404/thaumicforever/BlockCompressor.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockMatteryDuplicator.java" md5: 9b61b6be666260e2dec0766d3622eb4b
+endProcessing "com/koteuka404/thaumicforever/BlockMatteryDuplicator.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockRedRose.java" md5: 02f5bad4b9577299a1ae9e7604666f77
+endProcessing "com/koteuka404/thaumicforever/BlockRedRose.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockRepurposer.java" md5: 78ab8c7b9c740ac7855eabda86f1ccec
+endProcessing "com/koteuka404/thaumicforever/BlockRepurposer.java"
+
+startProcessing "com/koteuka404/thaumicforever/BlockTimeStop.java" md5: 2a6196b3d563658d05efedd5f9e18ff8
+endProcessing "com/koteuka404/thaumicforever/BlockTimeStop.java"
+
+startProcessing "com/koteuka404/thaumicforever/BowlTreatMeat.java" md5: ea5e0b59ec2b8b26a381b30bae4ef5c2
+endProcessing "com/koteuka404/thaumicforever/BowlTreatMeat.java"
+
+startProcessing "com/koteuka404/thaumicforever/BowlZombie.java" md5: bf23f6b615f0f8016004f79921e64d70
+endProcessing "com/koteuka404/thaumicforever/BowlZombie.java"
+
+startProcessing "com/koteuka404/thaumicforever/ChestGui.java" md5: badfc7a7b3d81f4b56120cfaf7313001
+endProcessing "com/koteuka404/thaumicforever/ChestGui.java"
+
+startProcessing "com/koteuka404/thaumicforever/ClientEventSubscriber.java" md5: 40ab7d20c18053117c0e14a0b7884a3e
+endProcessing "com/koteuka404/thaumicforever/ClientEventSubscriber.java"
+
+startProcessing "com/koteuka404/thaumicforever/ClientProxy.java" md5: f5f947955fd42fb485bc08dfcbf6f374
+endProcessing "com/koteuka404/thaumicforever/ClientProxy.java"
+
+startProcessing "com/koteuka404/thaumicforever/CommonProxy.java" md5: 8f944ce868053b1811220b0a9ce9b210
+endProcessing "com/koteuka404/thaumicforever/CommonProxy.java"
+
+startProcessing "com/koteuka404/thaumicforever/ContainerAbandonedChest.java" md5: a4caacf9b1b8e2d7c85659a275132ae3
+endProcessing "com/koteuka404/thaumicforever/ContainerAbandonedChest.java"
+
+startProcessing "com/koteuka404/thaumicforever/ContainerCompressor.java" md5: 196898465e04dc13f683e4fa7bb4732f
+endProcessing "com/koteuka404/thaumicforever/ContainerCompressor.java"
+
+startProcessing "com/koteuka404/thaumicforever/ContainerMatteryDuplicator.java" md5: 6f585086b133307de78422a5f3f8bd36
+endProcessing "com/koteuka404/thaumicforever/ContainerMatteryDuplicator.java"
+
+startProcessing "com/koteuka404/thaumicforever/ContainerRepurposer.java" md5: 047bd54e20e93f2d582890c10a4a1591
+endProcessing "com/koteuka404/thaumicforever/ContainerRepurposer.java"
+
+startProcessing "com/koteuka404/thaumicforever/CraftingRecipes.java" md5: e928eef6585cb9b63cc9ecb31ba139db
+endProcessing "com/koteuka404/thaumicforever/CraftingRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/CustomModel.java" md5: 3e5a107a31feaf4c2fe44c94d80578af
+endProcessing "com/koteuka404/thaumicforever/CustomModel.java"
+
+startProcessing "com/koteuka404/thaumicforever/CustomResourcePack.java" md5: 146da8ddf73e08a976b4bba289704390
+endProcessing "com/koteuka404/thaumicforever/CustomResourcePack.java"
+
+startProcessing "com/koteuka404/thaumicforever/CustomSalisMundusRecipe.java" md5: 91e96a72201f86dc35697c84d133de8c
+endProcessing "com/koteuka404/thaumicforever/CustomSalisMundusRecipe.java"
+
+startProcessing "com/koteuka404/thaumicforever/CustomTeleporter.java" md5: 37e3c7bf5a024a8def837039e6f8fd0c
+endProcessing "com/koteuka404/thaumicforever/CustomTeleporter.java"
+
+startProcessing "com/koteuka404/thaumicforever/DeconstructionTableBlock.java" md5: 8a2a53691ca6114e7055cd5058f9eb9d
+endProcessing "com/koteuka404/thaumicforever/DeconstructionTableBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/DeconstructionTableContainer.java" md5: 77f8c3d7b9d3574f63d1f44f09752ddb
+endProcessing "com/koteuka404/thaumicforever/DeconstructionTableContainer.java"
+
+startProcessing "com/koteuka404/thaumicforever/DeconstructionTableGui.java" md5: d11945caf63817bd20eeffda01c3646e
+endProcessing "com/koteuka404/thaumicforever/DeconstructionTableGui.java"
+
+startProcessing "com/koteuka404/thaumicforever/DeconstructionTableItemBlock.java" md5: a3a2df603d144594c00dcc675ddebb96
+endProcessing "com/koteuka404/thaumicforever/DeconstructionTableItemBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/DeconstructionTableTileEntity.java" md5: 3eced261eded4fe0da2c863461727bc0
+endProcessing "com/koteuka404/thaumicforever/DeconstructionTableTileEntity.java"
+
+startProcessing "com/koteuka404/thaumicforever/DoubleTableBlock.java" md5: 58b8d734bbf9693fd810c7f34211a2fd
+endProcessing "com/koteuka404/thaumicforever/DoubleTableBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/DoubleTableContainer.java" md5: 8e3c0578e6e3082e267a347e95d0793c
+endProcessing "com/koteuka404/thaumicforever/DoubleTableContainer.java"
+
+startProcessing "com/koteuka404/thaumicforever/DoubleTableGui.java" md5: 613dae7d2ddbb899e49b2d38d2153e51
+endProcessing "com/koteuka404/thaumicforever/DoubleTableGui.java"
+
+startProcessing "com/koteuka404/thaumicforever/EldritchEyeAmulet.java" md5: 6a7bd7fa828cbb1d5af8e303a3cd33ba
+endProcessing "com/koteuka404/thaumicforever/EldritchEyeAmulet.java"
+
+startProcessing "com/koteuka404/thaumicforever/EnchantmentsFM.java" md5: 95b344973e9b6ee4a69c241bb9cd4b50
+endProcessing "com/koteuka404/thaumicforever/EnchantmentsFM.java"
+
+startProcessing "com/koteuka404/thaumicforever/EntityGuardianMannequin.java" md5: 9efd09b9eaf69e39086d31ea1860abf0
+endProcessing "com/koteuka404/thaumicforever/EntityGuardianMannequin.java"
+
+startProcessing "com/koteuka404/thaumicforever/EntitySkeletonAngry.java" md5: 9818a895e0195c6713e7422d37937887
+endProcessing "com/koteuka404/thaumicforever/EntitySkeletonAngry.java"
+
+startProcessing "com/koteuka404/thaumicforever/EntityTimeFreezeProjectile.java" md5: 4243ae98b86444119c7d0fba0cee11ea
+endProcessing "com/koteuka404/thaumicforever/EntityTimeFreezeProjectile.java"
+
+startProcessing "com/koteuka404/thaumicforever/EnumInfusionEnchantment.java" md5: 24b054eec9383e6705d4cce55b4d83e8
+endProcessing "com/koteuka404/thaumicforever/EnumInfusionEnchantment.java"
+
+startProcessing "com/koteuka404/thaumicforever/FXDispatcher.java" md5: 89301e617707d895473ff5ecf0c0fdf4
+endProcessing "com/koteuka404/thaumicforever/FXDispatcher.java"
+
+startProcessing "com/koteuka404/thaumicforever/FlowerGenerator.java" md5: 6e06fd050ed438a1c5f760f15d421154
+endProcessing "com/koteuka404/thaumicforever/FlowerGenerator.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusEffectCalm.java" md5: a382fabd6c5ae7f13c2a642ed851b4e0
+endProcessing "com/koteuka404/thaumicforever/FocusEffectCalm.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusEffectChain.java" md5: 34aaccca5ce60a19165931f1c3b13cb0
+endProcessing "com/koteuka404/thaumicforever/FocusEffectChain.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusEffectCleanse.java" md5: e021e6b2c4eeac2ded9ba59ef7e2b2c0
+endProcessing "com/koteuka404/thaumicforever/FocusEffectCleanse.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusEffectMindControl.java" md5: 9d19231e7cf2e730905b967f9ca36758
+endProcessing "com/koteuka404/thaumicforever/FocusEffectMindControl.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusMediumOrbitSphere.java" md5: 5023af97011f9b6b4989096fae503211
+endProcessing "com/koteuka404/thaumicforever/FocusMediumOrbitSphere.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusMediumSkyBeam.java" md5: 2790ba58355c08ff168b0ac905fc5190
+endProcessing "com/koteuka404/thaumicforever/FocusMediumSkyBeam.java"
+
+startProcessing "com/koteuka404/thaumicforever/FocusModBoostPower.java" md5: 2e08de82204d76596ac672af14a5ce7b
+endProcessing "com/koteuka404/thaumicforever/FocusModBoostPower.java"
+
+startProcessing "com/koteuka404/thaumicforever/FurnaceRecipes.java" md5: 12451dbdf1e174960b79e8825bc4c39d
+endProcessing "com/koteuka404/thaumicforever/FurnaceRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/GreatwoodTableBlock.java" md5: 7e6e121a21c767af181eb082417097f2
+endProcessing "com/koteuka404/thaumicforever/GreatwoodTableBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/GuiCompressor.java" md5: 03e1b5795b8a208f64325a76f32f410e
+endProcessing "com/koteuka404/thaumicforever/GuiCompressor.java"
+
+startProcessing "com/koteuka404/thaumicforever/GuiCrimsonBook.java" md5: 1a1c8bba49c085a8b93a20a458a02130
+endProcessing "com/koteuka404/thaumicforever/GuiCrimsonBook.java"
+
+startProcessing "com/koteuka404/thaumicforever/GuiMatteryDuplicator.java" md5: 1ae7353bd54185d836d824ea5b31877a
+endProcessing "com/koteuka404/thaumicforever/GuiMatteryDuplicator.java"
+
+startProcessing "com/koteuka404/thaumicforever/GuiRepurposer.java" md5: d7499678ab22a26f12c2ed72942b88dd
+endProcessing "com/koteuka404/thaumicforever/GuiRepurposer.java"
+
+startProcessing "com/koteuka404/thaumicforever/InfusionEnchantmentRecipeFM.java" md5: 7ddbe9cabbc164aee077272d8044926d
+endProcessing "com/koteuka404/thaumicforever/InfusionEnchantmentRecipeFM.java"
+
+startProcessing "com/koteuka404/thaumicforever/InfusionRecipes.java" md5: 3ebc808f03461b95ac6846753bcf4f75
+endProcessing "com/koteuka404/thaumicforever/InfusionRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/InitRecipes.java" md5: 3e926a90aa583b5ba5b5fc366b24923d
+endProcessing "com/koteuka404/thaumicforever/InitRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/IronRing.java" md5: a00f4bcac22dfb3aa66cd1ddf36b403a
+endProcessing "com/koteuka404/thaumicforever/IronRing.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemAmuletDeath.java" md5: 05b78f3051139491ca9dc15006e2a46b
+endProcessing "com/koteuka404/thaumicforever/ItemAmuletDeath.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemAquareiaGoggles.java" md5: 6dac0ee96e44fb1125b026c0d93baee1
+endProcessing "com/koteuka404/thaumicforever/ItemAquareiaGoggles.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemBrassGear.java" md5: d90007ea4a40c190214a7ff9e361bb53
+endProcessing "com/koteuka404/thaumicforever/ItemBrassGear.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemBrokenAmulet.java" md5: d250f3c81df7246988fdd3889d4dc987
+endProcessing "com/koteuka404/thaumicforever/ItemBrokenAmulet.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemCluster.java" md5: ff12745cbb731c02bb9e5eb65a6e96ab
+endProcessing "com/koteuka404/thaumicforever/ItemCluster.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemCrimsonBook.java" md5: d1536f64bdd7cb93e140dff81e632587
+endProcessing "com/koteuka404/thaumicforever/ItemCrimsonBook.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemEternalBlade.java" md5: 4129908438503635906fbccf9961ed2e
+endProcessing "com/koteuka404/thaumicforever/ItemEternalBlade.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemFocus4.java" md5: 711a96063e8c3f0906dc989af2709846
+endProcessing "com/koteuka404/thaumicforever/ItemFocus4.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemFocusComplex.java" md5: ac9f44f5e55c197f48bfcccfa25e55fc
+endProcessing "com/koteuka404/thaumicforever/ItemFocusComplex.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemPrimalCharm.java" md5: d6903e5dfcd1045491e3bb2a96b81372
+endProcessing "com/koteuka404/thaumicforever/ItemPrimalCharm.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemRingEnder.java" md5: fed85a072e003cd05672f41bfcd5d151
+endProcessing "com/koteuka404/thaumicforever/ItemRingEnder.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemRingRunicCharge.java" md5: be457c6aa414b7bc8c04a2cda7c90464
+endProcessing "com/koteuka404/thaumicforever/ItemRingRunicCharge.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemRingVerdant.java" md5: 57e844700f0773e0ce1ae4cf474c07b0
+endProcessing "com/koteuka404/thaumicforever/ItemRingVerdant.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemStructureSaver.java" md5: 4b743b5bf52fa8c9cf92fc71b6cb9947
+endProcessing "com/koteuka404/thaumicforever/ItemStructureSaver.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemStructureSpawner.java" md5: 7d3de2a42fb7cf0755e30d0414accb61
+endProcessing "com/koteuka404/thaumicforever/ItemStructureSpawner.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemThaumiumGear.java" md5: 6da7fd6e8d809779e765ddd2957c6064
+endProcessing "com/koteuka404/thaumicforever/ItemThaumiumGear.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemTimeFreeze.java" md5: b5a7551b6552976aa60456f04eb05699
+endProcessing "com/koteuka404/thaumicforever/ItemTimeFreeze.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemVoidGear.java" md5: 7c86ca37d343e09ae74c870280870f69
+endProcessing "com/koteuka404/thaumicforever/ItemVoidGear.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemZombieHeart.java" md5: 11e56c02954b69b99c23ac4452792f8d
+endProcessing "com/koteuka404/thaumicforever/ItemZombieHeart.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemZombieHeartAmulet.java" md5: 9ab4ceee572da75bc17e82c386a5db7d
+endProcessing "com/koteuka404/thaumicforever/ItemZombieHeartAmulet.java"
+
+startProcessing "com/koteuka404/thaumicforever/LootTableHandler.java" md5: aad07e2f97b43e41434529519851fad5
+endProcessing "com/koteuka404/thaumicforever/LootTableHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/MannequinInteractionHandler.java" md5: 2a7d8fed74400b6ab5b0a5ad50506bfc
+endProcessing "com/koteuka404/thaumicforever/MannequinInteractionHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModBlocks.java" md5: 1bc9a7a10abd0919f9019d83fbc09954
+endProcessing "com/koteuka404/thaumicforever/ModBlocks.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModConfig.java" md5: 58fbec67fabcb75120b9f4c2160cb4c9
+endProcessing "com/koteuka404/thaumicforever/ModConfig.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModDimensions.java" md5: 1f70d36d191977df78e530024aabe2d3
+endProcessing "com/koteuka404/thaumicforever/ModDimensions.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModFocuses.java" md5: c479efdcf060b531513a85bf00d5cadc
+endProcessing "com/koteuka404/thaumicforever/ModFocuses.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModGuiHandler.java" md5: cff0c999cd2d1930aaf94e8bc8a01347
+endProcessing "com/koteuka404/thaumicforever/ModGuiHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModItems.java" md5: 00768639503fb38c0854ddef30162bff
+endProcessing "com/koteuka404/thaumicforever/ModItems.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModOreBlocks.java" md5: 220c5d1610b549b89951b2489ffdeb21
+endProcessing "com/koteuka404/thaumicforever/ModOreBlocks.java"
+
+startProcessing "com/koteuka404/thaumicforever/ModRecipes.java" md5: 91cff05756376bbd29c3f958d201ac2b
+endProcessing "com/koteuka404/thaumicforever/ModRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/OreBlock.java" md5: c7333ba96f12cd058bdb1cdbb70fc93d
+endProcessing "com/koteuka404/thaumicforever/OreBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/OreDictionaryRegistration.java" md5: d63f30429df46e023b5479b8b4409794
+endProcessing "com/koteuka404/thaumicforever/OreDictionaryRegistration.java"
+
+startProcessing "com/koteuka404/thaumicforever/OreGeneration.java" md5: fb166786ffa529d41dd33ce1e8c595ba
+endProcessing "com/koteuka404/thaumicforever/OreGeneration.java"
+
+startProcessing "com/koteuka404/thaumicforever/PacketSelectPlate.java" md5: d6f627edf7923e189b84fe578b9f73ac
+endProcessing "com/koteuka404/thaumicforever/PacketSelectPlate.java"
+
+startProcessing "com/koteuka404/thaumicforever/RainCauldronFiller.java" md5: 5cf22af5d95b5e5b3809641de22db411
+endProcessing "com/koteuka404/thaumicforever/RainCauldronFiller.java"
+
+startProcessing "com/koteuka404/thaumicforever/RavenCloakBauble.java" md5: fc5f86d5cff5ecd674ed334bbe58c132
+endProcessing "com/koteuka404/thaumicforever/RavenCloakBauble.java"
+
+startProcessing "com/koteuka404/thaumicforever/RavenCloakModel.java" md5: 7ef96ec4cc5380390128144663547ee7
+endProcessing "com/koteuka404/thaumicforever/RavenCloakModel.java"
+
+startProcessing "com/koteuka404/thaumicforever/RavenCloakRender.java" md5: 88f88621b09d44d29e7a67384e1465d6
+endProcessing "com/koteuka404/thaumicforever/RavenCloakRender.java"
+
+startProcessing "com/koteuka404/thaumicforever/RecipeCrucible.java" md5: 4e9b68f1b177b43c46023b98de589667
+endProcessing "com/koteuka404/thaumicforever/RecipeCrucible.java"
+
+startProcessing "com/koteuka404/thaumicforever/RecipeOverride.java" md5: a643f2cc39c65f303ac2c4f915f45d6a
+endProcessing "com/koteuka404/thaumicforever/RecipeOverride.java"
+
+startProcessing "com/koteuka404/thaumicforever/RemoveRecipes.java" md5: b717853050df15196bc9830895a95ac4
+endProcessing "com/koteuka404/thaumicforever/RemoveRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/RenderGuardianMannequin.java" md5: 8a1a24cacc6634fe14e0de6855f716e0
+endProcessing "com/koteuka404/thaumicforever/RenderGuardianMannequin.java"
+
+startProcessing "com/koteuka404/thaumicforever/RenderInvisibleSnowball.java" md5: 26bdc176a87b52887dc78f350011c642
+endProcessing "com/koteuka404/thaumicforever/RenderInvisibleSnowball.java"
+
+startProcessing "com/koteuka404/thaumicforever/RenderSkeletonAngry.java" md5: f011361ed403fe9535d462c47f2f83ae
+endProcessing "com/koteuka404/thaumicforever/RenderSkeletonAngry.java"
+
+startProcessing "com/koteuka404/thaumicforever/ResearchHandler.java" md5: e9d6d5005ab83569eb6a45ee33fa2681
+endProcessing "com/koteuka404/thaumicforever/ResearchHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ResourceRedirector.java" md5: 08d8f48acb518f4b22238a95b8ae9f13
+endProcessing "com/koteuka404/thaumicforever/ResourceRedirector.java"
+
+startProcessing "com/koteuka404/thaumicforever/ReviveSkeletonEntity.java" md5: ea8e40923176b1946bc8ded71a415bf7
+endProcessing "com/koteuka404/thaumicforever/ReviveSkeletonEntity.java"
+
+startProcessing "com/koteuka404/thaumicforever/ReviveSkeletonRenderer.java" md5: 3e7f71c5b48349f38e0c65bdd3916b8a
+endProcessing "com/koteuka404/thaumicforever/ReviveSkeletonRenderer.java"
+
+startProcessing "com/koteuka404/thaumicforever/SalisMundusDoubleTableTrigger.java" md5: 4b63c5b6570c0a5dce6d67c63ce2fb49
+endProcessing "com/koteuka404/thaumicforever/SalisMundusDoubleTableTrigger.java"
+
+startProcessing "com/koteuka404/thaumicforever/ScanObjects.java" md5: 6e09856f3b2719c531c641bcae998025
+endProcessing "com/koteuka404/thaumicforever/ScanObjects.java"
+
+startProcessing "com/koteuka404/thaumicforever/ServerProxy.java" md5: 8bb11d885816f0696c7feb5e6fa2ac89
+endProcessing "com/koteuka404/thaumicforever/ServerProxy.java"
+
+startProcessing "com/koteuka404/thaumicforever/SkeletonReviveModel.java" md5: 7a10b14211989243c5a09bfaa77f78dc
+endProcessing "com/koteuka404/thaumicforever/SkeletonReviveModel.java"
+
+startProcessing "com/koteuka404/thaumicforever/SpawnStructure.java" md5: 7858241995298234fbaf5f7a1f010c27
+endProcessing "com/koteuka404/thaumicforever/SpawnStructure.java"
+
+startProcessing "com/koteuka404/thaumicforever/TextureReplacementHandler.java" md5: ee67e9df1db448d4d0c43f119019c421
+endProcessing "com/koteuka404/thaumicforever/TextureReplacementHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ThaumicForever.java" md5: e46cd87750839fa1d89c24099e428de6
+endProcessing "com/koteuka404/thaumicforever/ThaumicForever.java"
+
+startProcessing "com/koteuka404/thaumicforever/ThaumicForeverCreativeTab.java" md5: 6b2b457adbd90ece8de7dbca063b9d2b
+endProcessing "com/koteuka404/thaumicforever/ThaumicForeverCreativeTab.java"
+
+startProcessing "com/koteuka404/thaumicforever/TileEntityAbandonedChest.java" md5: a4a6305d8fac4a15559b00ab0f36447a
+endProcessing "com/koteuka404/thaumicforever/TileEntityAbandonedChest.java"
+
+startProcessing "com/koteuka404/thaumicforever/TileEntityAntiFlightStone.java" md5: 6a897251de25004e29019c20084e3dc8
+endProcessing "com/koteuka404/thaumicforever/TileEntityAntiFlightStone.java"
+
+startProcessing "com/koteuka404/thaumicforever/TileEntityCompressor.java" md5: a10c03938dcc8a07ee665b909455e8fb
+endProcessing "com/koteuka404/thaumicforever/TileEntityCompressor.java"
+
+startProcessing "com/koteuka404/thaumicforever/TileEntityMatteryDuplicator.java" md5: f0b5fac2cec4e7a08d04c2a7fc0d1904
+endProcessing "com/koteuka404/thaumicforever/TileEntityMatteryDuplicator.java"
+
+startProcessing "com/koteuka404/thaumicforever/TileEntityRepurposer.java" md5: 2a5de0994998857bafd34c7584c54c3c
+endProcessing "com/koteuka404/thaumicforever/TileEntityRepurposer.java"
+
+startProcessing "com/koteuka404/thaumicforever/VoidChunkGenerator.java" md5: 904aa2a0472fa16dff430b407e923bc9
+endProcessing "com/koteuka404/thaumicforever/VoidChunkGenerator.java"
+
+startProcessing "com/koteuka404/thaumicforever/VoidRepairHandler.java" md5: 1a429211548c3042b4dbfa128af0cf59
+endProcessing "com/koteuka404/thaumicforever/VoidRepairHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/VoidTeleportItem.java" md5: d5608463f2bf5ffcf5bc71e2eae78de4
+endProcessing "com/koteuka404/thaumicforever/VoidTeleportItem.java"
+
+startProcessing "com/koteuka404/thaumicforever/VoidWorldProvider.java" md5: c41a91d63624d5781bb5473911006455
+endProcessing "com/koteuka404/thaumicforever/VoidWorldProvider.java"
+
+startProcessing "com/koteuka404/thaumicforever/WorldGenEldritchRing.java" md5: e9002ff7d920369c50abb467855c0bf8
+endProcessing "com/koteuka404/thaumicforever/WorldGenEldritchRing.java"
+
+startProcessing "com/koteuka404/thaumicforever/WorldGenHilltopStones.java" md5: 4194f214f0194f984533513cbe0c50c6
+endProcessing "com/koteuka404/thaumicforever/WorldGenHilltopStones.java"
+
+startProcessing "com/koteuka404/thaumicforever/WorldGenObsidianTotem.java" md5: 01b2e53ddf08f4528611e0ee5f2f1295
+endProcessing "com/koteuka404/thaumicforever/WorldGenObsidianTotem.java"
+
+startProcessing "com/koteuka404/thaumicforever/WorldGenThaumicHouse.java" md5: c82209c634ebb111ae34da4f743db16f
+endProcessing "com/koteuka404/thaumicforever/WorldGenThaumicHouse.java"
+
+startProcessing "com/koteuka404/thaumicforever/WorldGenUnderloot.java" md5: 01f2cb0b6e583f25f1f01a1fc944f0a9
+endProcessing "com/koteuka404/thaumicforever/WorldGenUnderloot.java"
+
+startProcessing "com/koteuka404/thaumicforever/ZombieDropHandler.java" md5: ceb74da8b307bf65af076a1b4a0515ec
+endProcessing "com/koteuka404/thaumicforever/ZombieDropHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/magic_dust.java" md5: 093ad4c0e91464867ad2e27663495822
+endProcessing "com/koteuka404/thaumicforever/magic_dust.java"
+
+startProcessing "com/koteuka404/thaumicforever/raven_cloak.java" md5: 5e67b55bf3aa70cb1cf64302c8be55d6
+endProcessing "com/koteuka404/thaumicforever/raven_cloak.java"
+
+startProcessing "com/koteuka404/thaumicforever/test.java" md5: 060846704be805d6eeeba50768cf5bce
+endProcessing "com/koteuka404/thaumicforever/test.java"
+
+startProcessing "thaumcraft/api/OreDictionaryEntries.java" md5: b28f508098fbfeb2a25ca86363e40bf6
+endProcessing "thaumcraft/api/OreDictionaryEntries.java"
+
+startProcessing "thaumcraft/api/ThaumcraftApi.java" md5: a158e589ac0fc7cc8d55710145227a76
+endProcessing "thaumcraft/api/ThaumcraftApi.java"
+
+startProcessing "thaumcraft/api/ThaumcraftApiHelper.java" md5: 7d8e5f7b7f7567ad30daf7c730bf4f61
+endProcessing "thaumcraft/api/ThaumcraftApiHelper.java"
+
+startProcessing "thaumcraft/api/ThaumcraftInvHelper.java" md5: 9a66e08dd09457683fafdd20888fc277
+endProcessing "thaumcraft/api/ThaumcraftInvHelper.java"
+
+startProcessing "thaumcraft/api/ThaumcraftMaterials.java" md5: e71bdd7b95cc7d70af3c7823a1e0c86a
+endProcessing "thaumcraft/api/ThaumcraftMaterials.java"
+
+startProcessing "thaumcraft/api/aspects/Aspect.java" md5: 5ed95a26efe99475a876d4537eecb858
+endProcessing "thaumcraft/api/aspects/Aspect.java"
+
+startProcessing "thaumcraft/api/aspects/AspectEventProxy.java" md5: a39063c6d0a09ff7edf1cc0150b3d06d
+endProcessing "thaumcraft/api/aspects/AspectEventProxy.java"
+
+startProcessing "thaumcraft/api/aspects/AspectHelper.java" md5: b17fe4c02d6a0dd5e62ac21f149fac25
+endProcessing "thaumcraft/api/aspects/AspectHelper.java"
+
+startProcessing "thaumcraft/api/aspects/AspectList.java" md5: c970053c42bdf2c787c66c2d3fffbcba
+endProcessing "thaumcraft/api/aspects/AspectList.java"
+
+startProcessing "thaumcraft/api/aspects/AspectRegistryEvent.java" md5: 333b2b13f6d0c89fcd45473e7b472e48
+endProcessing "thaumcraft/api/aspects/AspectRegistryEvent.java"
+
+startProcessing "thaumcraft/api/aspects/AspectSourceHelper.java" md5: fe90a2d2c2e32e0b7aca949b64aef79a
+endProcessing "thaumcraft/api/aspects/AspectSourceHelper.java"
+
+startProcessing "thaumcraft/api/aspects/IAspectContainer.java" md5: e6bc8ed081e30df9b4d170fd0c6f60ab
+endProcessing "thaumcraft/api/aspects/IAspectContainer.java"
+
+startProcessing "thaumcraft/api/aspects/IAspectSource.java" md5: f4fe058cae7a669bb95830982394b0d3
+endProcessing "thaumcraft/api/aspects/IAspectSource.java"
+
+startProcessing "thaumcraft/api/aspects/IEssentiaContainerItem.java" md5: d01d18e90259a9552793164a76ad466d
+endProcessing "thaumcraft/api/aspects/IEssentiaContainerItem.java"
+
+startProcessing "thaumcraft/api/aspects/IEssentiaTransport.java" md5: 4706abbdf94054e9c429c3f19ff1151e
+endProcessing "thaumcraft/api/aspects/IEssentiaTransport.java"
+
+startProcessing "thaumcraft/api/aura/AuraHelper.java" md5: 9d21936924ebfa437ee15d42db2117a0
+endProcessing "thaumcraft/api/aura/AuraHelper.java"
+
+startProcessing "thaumcraft/api/blocks/BlocksTC.java" md5: b348400c2ef0a01f05fa94b1413faaed
+endProcessing "thaumcraft/api/blocks/BlocksTC.java"
+
+startProcessing "thaumcraft/api/blocks/ILabelable.java" md5: e431defbdf130146e79591255b8ae7c7
+endProcessing "thaumcraft/api/blocks/ILabelable.java"
+
+startProcessing "thaumcraft/api/capabilities/IPlayerKnowledge.java" md5: 0f35e63dea19e914622a548dc52ce062
+endProcessing "thaumcraft/api/capabilities/IPlayerKnowledge.java"
+
+startProcessing "thaumcraft/api/capabilities/IPlayerWarp.java" md5: 77cb24880cbb23047aa7dea2c8914571
+endProcessing "thaumcraft/api/capabilities/IPlayerWarp.java"
+
+startProcessing "thaumcraft/api/capabilities/ThaumcraftCapabilities.java" md5: fa29dbd3ac7c87bbb7306adda7443f24
+endProcessing "thaumcraft/api/capabilities/ThaumcraftCapabilities.java"
+
+startProcessing "thaumcraft/api/casters/CasterTriggerRegistry.java" md5: e0f616c6560b99f4d9e995c8faa7bfb3
+endProcessing "thaumcraft/api/casters/CasterTriggerRegistry.java"
+
+startProcessing "thaumcraft/api/casters/FocusEffect.java" md5: 110a61e9f478a56105948f2d0eea8ec1
+endProcessing "thaumcraft/api/casters/FocusEffect.java"
+
+startProcessing "thaumcraft/api/casters/FocusEngine.java" md5: 27b32f50e2a875e134b7282839789dad
+endProcessing "thaumcraft/api/casters/FocusEngine.java"
+
+startProcessing "thaumcraft/api/casters/FocusMedium.java" md5: 6936fb1c1bebc1654b3a51e0e6a3b12e
+endProcessing "thaumcraft/api/casters/FocusMedium.java"
+
+startProcessing "thaumcraft/api/casters/FocusMediumRoot.java" md5: e7f6ed21c4e22e885683e44b311dd19e
+endProcessing "thaumcraft/api/casters/FocusMediumRoot.java"
+
+startProcessing "thaumcraft/api/casters/FocusMod.java" md5: 74ba3005677b6a182a182219128de61a
+endProcessing "thaumcraft/api/casters/FocusMod.java"
+
+startProcessing "thaumcraft/api/casters/FocusModSplit.java" md5: 1fb5148005e18e2d7f767c977df4239e
+endProcessing "thaumcraft/api/casters/FocusModSplit.java"
+
+startProcessing "thaumcraft/api/casters/FocusNode.java" md5: 6616cf1928ea9f8c40997f2306e784bd
+endProcessing "thaumcraft/api/casters/FocusNode.java"
+
+startProcessing "thaumcraft/api/casters/FocusPackage.java" md5: f0994ee1ffd16bf90820dec83c20b2e9
+endProcessing "thaumcraft/api/casters/FocusPackage.java"
+
+startProcessing "thaumcraft/api/casters/ICaster.java" md5: af58b47f2201b51540f17df9035f44f5
+endProcessing "thaumcraft/api/casters/ICaster.java"
+
+startProcessing "thaumcraft/api/casters/ICasterTriggerManager.java" md5: 7a4b9649a454e0e29641a7c265c71cf0
+endProcessing "thaumcraft/api/casters/ICasterTriggerManager.java"
+
+startProcessing "thaumcraft/api/casters/IFocusBlockPicker.java" md5: 534f587ac2b8edbfa4708cfae7c31ca2
+endProcessing "thaumcraft/api/casters/IFocusBlockPicker.java"
+
+startProcessing "thaumcraft/api/casters/IFocusElement.java" md5: 55e0e1f163764ac26a04fd13845a95c8
+endProcessing "thaumcraft/api/casters/IFocusElement.java"
+
+startProcessing "thaumcraft/api/casters/IInteractWithCaster.java" md5: 059d1a099febcee67f39a83979c3b48b
+endProcessing "thaumcraft/api/casters/IInteractWithCaster.java"
+
+startProcessing "thaumcraft/api/casters/NodeSetting.java" md5: 4230611527ed4eddb38e73cbbb2c8eb3
+endProcessing "thaumcraft/api/casters/NodeSetting.java"
+
+startProcessing "thaumcraft/api/casters/Trajectory.java" md5: 6aefe583de6b1dafaa7b18580036c3e6
+endProcessing "thaumcraft/api/casters/Trajectory.java"
+
+startProcessing "thaumcraft/api/crafting/ContainerDummy.java" md5: 9cad03c428e2162ac34eb72043252972
+endProcessing "thaumcraft/api/crafting/ContainerDummy.java"
+
+startProcessing "thaumcraft/api/crafting/CrucibleRecipe.java" md5: 5fe4a728f248162eb713b63c344b836b
+endProcessing "thaumcraft/api/crafting/CrucibleRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IArcaneRecipe.java" md5: 8c75e50b60240cd0af25edbaa64afb56
+endProcessing "thaumcraft/api/crafting/IArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IArcaneWorkbench.java" md5: 49a8987f18e7834b6292df64915348b8
+endProcessing "thaumcraft/api/crafting/IArcaneWorkbench.java"
+
+startProcessing "thaumcraft/api/crafting/IDustTrigger.java" md5: 79c2b6149e8c818f9414dcb7d8ad0e45
+endProcessing "thaumcraft/api/crafting/IDustTrigger.java"
+
+startProcessing "thaumcraft/api/crafting/IInfusionStabiliser.java" md5: 52e562189373edcb8217ada283ffa49d
+endProcessing "thaumcraft/api/crafting/IInfusionStabiliser.java"
+
+startProcessing "thaumcraft/api/crafting/IInfusionStabiliserExt.java" md5: 2977574afb73532458271b602e8d286c
+endProcessing "thaumcraft/api/crafting/IInfusionStabiliserExt.java"
+
+startProcessing "thaumcraft/api/crafting/IStabilizable.java" md5: 8aa62200811a97c322855719bb4173fa
+endProcessing "thaumcraft/api/crafting/IStabilizable.java"
+
+startProcessing "thaumcraft/api/crafting/IThaumcraftRecipe.java" md5: 0c8da99d220f13be28cd26fac95722d3
+endProcessing "thaumcraft/api/crafting/IThaumcraftRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/InfusionRecipe.java" md5: 88199995b40d23a5cb6180744c08d6f7
+endProcessing "thaumcraft/api/crafting/InfusionRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/IngredientNBTTC.java" md5: 231ef4104a48a6c3925a8ef94f651eb3
+endProcessing "thaumcraft/api/crafting/IngredientNBTTC.java"
+
+startProcessing "thaumcraft/api/crafting/Part.java" md5: 2d31773ea2562e04d974b20704fec5a9
+endProcessing "thaumcraft/api/crafting/Part.java"
+
+startProcessing "thaumcraft/api/crafting/RecipeMisc.java" md5: f92300b3458922fde667f8d1846508e0
+endProcessing "thaumcraft/api/crafting/RecipeMisc.java"
+
+startProcessing "thaumcraft/api/crafting/ShapedArcaneRecipe.java" md5: 605aeb8ee24c1e45c2ba6611d196c963
+endProcessing "thaumcraft/api/crafting/ShapedArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/crafting/ShapelessArcaneRecipe.java" md5: 9b316cd9a54f02f54b99c0ffe4f9766b
+endProcessing "thaumcraft/api/crafting/ShapelessArcaneRecipe.java"
+
+startProcessing "thaumcraft/api/damagesource/DamageSourceIndirectThaumcraftEntity.java" md5: 7e1299952e554d11bc329124989a2841
+endProcessing "thaumcraft/api/damagesource/DamageSourceIndirectThaumcraftEntity.java"
+
+startProcessing "thaumcraft/api/damagesource/DamageSourceThaumcraft.java" md5: dff4138ced5120e9b4da64eb829719c5
+endProcessing "thaumcraft/api/damagesource/DamageSourceThaumcraft.java"
+
+startProcessing "thaumcraft/api/entities/IEldritchMob.java" md5: 60d61c7ba5c8a00311aec030ccb25bcd
+endProcessing "thaumcraft/api/entities/IEldritchMob.java"
+
+startProcessing "thaumcraft/api/entities/ITaintedMob.java" md5: 8a1e5a58a194416a2643f7ad932f3e2e
+endProcessing "thaumcraft/api/entities/ITaintedMob.java"
+
+startProcessing "thaumcraft/api/golems/EnumGolemTrait.java" md5: a99d678a86b17ff071c51460783838fe
+endProcessing "thaumcraft/api/golems/EnumGolemTrait.java"
+
+startProcessing "thaumcraft/api/golems/GolemHelper.java" md5: 5232a7019892bd06c681cf1ebb41d7b4
+endProcessing "thaumcraft/api/golems/GolemHelper.java"
+
+startProcessing "thaumcraft/api/golems/IGolemAPI.java" md5: 21be925a19066068821f3b8b46164076
+endProcessing "thaumcraft/api/golems/IGolemAPI.java"
+
+startProcessing "thaumcraft/api/golems/IGolemProperties.java" md5: 100899ab94e449546cb9516e25bc24a6
+endProcessing "thaumcraft/api/golems/IGolemProperties.java"
+
+startProcessing "thaumcraft/api/golems/ISealDisplayer.java" md5: 990521ce56e643859aaf8a3221754293
+endProcessing "thaumcraft/api/golems/ISealDisplayer.java"
+
+startProcessing "thaumcraft/api/golems/ProvisionRequest.java" md5: e68f7305f84959e6ad6fb5847f6ae9a1
+endProcessing "thaumcraft/api/golems/ProvisionRequest.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISeal.java" md5: 7a933ce234f25f747199483a10d25e49
+endProcessing "thaumcraft/api/golems/seals/ISeal.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigArea.java" md5: 0cabbd643813ee5f916ba101ac285cf7
+endProcessing "thaumcraft/api/golems/seals/ISealConfigArea.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigFilter.java" md5: d4f9e7b5c66631f06b6a6a87daf1217d
+endProcessing "thaumcraft/api/golems/seals/ISealConfigFilter.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealConfigToggles.java" md5: d8026ef0b572ea9127ca92f0e2978999
+endProcessing "thaumcraft/api/golems/seals/ISealConfigToggles.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealEntity.java" md5: b60ea992d4c6cce3e690c45db6a20236
+endProcessing "thaumcraft/api/golems/seals/ISealEntity.java"
+
+startProcessing "thaumcraft/api/golems/seals/ISealGui.java" md5: 0516b6dbc7fe097d40f73e590b87d2a7
+endProcessing "thaumcraft/api/golems/seals/ISealGui.java"
+
+startProcessing "thaumcraft/api/golems/seals/SealPos.java" md5: 76f9058e1b03c2facebe448d4663917f
+endProcessing "thaumcraft/api/golems/seals/SealPos.java"
+
+startProcessing "thaumcraft/api/golems/tasks/Task.java" md5: fcbb3c86811ce5598e9f3bde99e1a59e
+endProcessing "thaumcraft/api/golems/tasks/Task.java"
+
+startProcessing "thaumcraft/api/internal/CommonInternals.java" md5: dc9e1aed0b31dc08990e10756ae5b4c1
+endProcessing "thaumcraft/api/internal/CommonInternals.java"
+
+startProcessing "thaumcraft/api/internal/DummyInternalMethodHandler.java" md5: d52d885a0be8f512a44ac987ab9e6fd0
+endProcessing "thaumcraft/api/internal/DummyInternalMethodHandler.java"
+
+startProcessing "thaumcraft/api/internal/IInternalMethodHandler.java" md5: 00477a51106a32cfb7e1e2888062b6c0
+endProcessing "thaumcraft/api/internal/IInternalMethodHandler.java"
+
+startProcessing "thaumcraft/api/internal/WeightedRandomLoot.java" md5: cb5f50a715cee4cbf993f538630549e1
+endProcessing "thaumcraft/api/internal/WeightedRandomLoot.java"
+
+startProcessing "thaumcraft/api/internal/WorldCoordinates.java" md5: 7c440edc389602fc5692310bb5078c44
+endProcessing "thaumcraft/api/internal/WorldCoordinates.java"
+
+startProcessing "thaumcraft/api/items/IArchitect.java" md5: 52a66419e1531adf17db8947d9608768
+endProcessing "thaumcraft/api/items/IArchitect.java"
+
+startProcessing "thaumcraft/api/items/IGoggles.java" md5: 8a8fec33a444ee47348e7bce6f3b7432
+endProcessing "thaumcraft/api/items/IGoggles.java"
+
+startProcessing "thaumcraft/api/items/IGogglesDisplayExtended.java" md5: 37d45a0ea6935e0f755b6c72044231d6
+endProcessing "thaumcraft/api/items/IGogglesDisplayExtended.java"
+
+startProcessing "thaumcraft/api/items/IRechargable.java" md5: 7120eb73068e443414dbba989365a076
+endProcessing "thaumcraft/api/items/IRechargable.java"
+
+startProcessing "thaumcraft/api/items/IRevealer.java" md5: d84ff20eff85e19a9d9207ddd60cb5b7
+endProcessing "thaumcraft/api/items/IRevealer.java"
+
+startProcessing "thaumcraft/api/items/IScribeTools.java" md5: aa9549411c2a38d83532de3dad483d20
+endProcessing "thaumcraft/api/items/IScribeTools.java"
+
+startProcessing "thaumcraft/api/items/IVisDiscountGear.java" md5: 7ff528f1db458eea69ce0a9bd892fb31
+endProcessing "thaumcraft/api/items/IVisDiscountGear.java"
+
+startProcessing "thaumcraft/api/items/IWarpingGear.java" md5: 8398046d6cbf5f91de5ab719ab783fb8
+endProcessing "thaumcraft/api/items/IWarpingGear.java"
+
+startProcessing "thaumcraft/api/items/ItemGenericEssentiaContainer.java" md5: ef2dbba98b782b852f6190a95b1472f1
+endProcessing "thaumcraft/api/items/ItemGenericEssentiaContainer.java"
+
+startProcessing "thaumcraft/api/items/ItemsTC.java" md5: b14e66f7cb21313bb45df7a8e457e0bb
+endProcessing "thaumcraft/api/items/ItemsTC.java"
+
+startProcessing "thaumcraft/api/items/RechargeHelper.java" md5: b07ae4b05d29ac0002a323c3a7562110
+endProcessing "thaumcraft/api/items/RechargeHelper.java"
+
+startProcessing "thaumcraft/api/package-info.java" md5: e6c03822c0695f2ffa198942453b31a2
+endProcessing "thaumcraft/api/package-info.java"
+
+startProcessing "thaumcraft/api/potions/PotionFluxTaint.java" md5: 22c2bd7bf05e433ea192a4bace666632
+endProcessing "thaumcraft/api/potions/PotionFluxTaint.java"
+
+startProcessing "thaumcraft/api/potions/PotionVisExhaust.java" md5: bf5a0d597c8744c7c1bbf6674072913c
+endProcessing "thaumcraft/api/potions/PotionVisExhaust.java"
+
+startProcessing "thaumcraft/api/research/IScanThing.java" md5: 86d107c195dc6629310b19cf17a55961
+endProcessing "thaumcraft/api/research/IScanThing.java"
+
+startProcessing "thaumcraft/api/research/ResearchAddendum.java" md5: d7f7bd8d78d3e39c5fe624c5e0407b5c
+endProcessing "thaumcraft/api/research/ResearchAddendum.java"
+
+startProcessing "thaumcraft/api/research/ResearchCategories.java" md5: 4a3e54daa9ea16094b1bfed22a86a18b
+endProcessing "thaumcraft/api/research/ResearchCategories.java"
+
+startProcessing "thaumcraft/api/research/ResearchCategory.java" md5: 17bc930ec3fdae8f54c908bc64438cd7
+endProcessing "thaumcraft/api/research/ResearchCategory.java"
+
+startProcessing "thaumcraft/api/research/ResearchEntry.java" md5: 69ad62ee0dfa3d2ae2f86d4ed4e80ed1
+endProcessing "thaumcraft/api/research/ResearchEntry.java"
+
+startProcessing "thaumcraft/api/research/ResearchEvent.java" md5: 7a6e65ca22c6e5518e1b5b2cd9aa1997
+endProcessing "thaumcraft/api/research/ResearchEvent.java"
+
+startProcessing "thaumcraft/api/research/ResearchStage.java" md5: 0569f0c8a732ac204e4e5b34b318d3af
+endProcessing "thaumcraft/api/research/ResearchStage.java"
+
+startProcessing "thaumcraft/api/research/ScanAspect.java" md5: 03caccbd03dbc6dd6a093bef413b5f11
+endProcessing "thaumcraft/api/research/ScanAspect.java"
+
+startProcessing "thaumcraft/api/research/ScanBlock.java" md5: 60f4dbfdefaa3721509e34344dd7e187
+endProcessing "thaumcraft/api/research/ScanBlock.java"
+
+startProcessing "thaumcraft/api/research/ScanBlockState.java" md5: 590e1fb1772c266946a2f296df33a086
+endProcessing "thaumcraft/api/research/ScanBlockState.java"
+
+startProcessing "thaumcraft/api/research/ScanEntity.java" md5: 0081ea8a9edab6b4f4d6e30eb5f7a2db
+endProcessing "thaumcraft/api/research/ScanEntity.java"
+
+startProcessing "thaumcraft/api/research/ScanItem.java" md5: 9a7f24c12254b4c10c52cf81ea63573e
+endProcessing "thaumcraft/api/research/ScanItem.java"
+
+startProcessing "thaumcraft/api/research/ScanMaterial.java" md5: 546cf87e7836f950f0e8b0908ca064d1
+endProcessing "thaumcraft/api/research/ScanMaterial.java"
+
+startProcessing "thaumcraft/api/research/ScanOreDictionary.java" md5: 2f4106bc2c714b3743a02fa7006641cb
+endProcessing "thaumcraft/api/research/ScanOreDictionary.java"
+
+startProcessing "thaumcraft/api/research/ScanningManager.java" md5: 3eded24c7c53c849e70da1289b165c76
+endProcessing "thaumcraft/api/research/ScanningManager.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/AidBookshelf.java" md5: ca33f4f5f13fba272b5595d914cf4645
+endProcessing "thaumcraft/api/research/theorycraft/AidBookshelf.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardAnalyze.java" md5: f1fad63d196431a6d186535a61494c45
+endProcessing "thaumcraft/api/research/theorycraft/CardAnalyze.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardBalance.java" md5: 6e3dbf8410fd7fca81af8e89cc0aba4f
+endProcessing "thaumcraft/api/research/theorycraft/CardBalance.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardExperimentation.java" md5: 74b4fb56570bfbc3b7efdac7a9ea6a73
+endProcessing "thaumcraft/api/research/theorycraft/CardExperimentation.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardInspired.java" md5: 01f361ff1f61e6dd91c438f17bf7fd43
+endProcessing "thaumcraft/api/research/theorycraft/CardInspired.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardNotation.java" md5: 80edf55e19f491c3f5e7479a921e9d04
+endProcessing "thaumcraft/api/research/theorycraft/CardNotation.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardPonder.java" md5: fc349d56e568ccd422158d4581272b66
+endProcessing "thaumcraft/api/research/theorycraft/CardPonder.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardReject.java" md5: e674854ccdb3aca5432de3c169900317
+endProcessing "thaumcraft/api/research/theorycraft/CardReject.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardRethink.java" md5: 2ec5810b77422fe76c11216aa2edb3a9
+endProcessing "thaumcraft/api/research/theorycraft/CardRethink.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/CardStudy.java" md5: 97eda63ebdeabd550c434d35b9a3901d
+endProcessing "thaumcraft/api/research/theorycraft/CardStudy.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/ITheorycraftAid.java" md5: 715fc7d8e35a9eedeaef400ec6eb5108
+endProcessing "thaumcraft/api/research/theorycraft/ITheorycraftAid.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/ResearchTableData.java" md5: 7edf2d5f8a596f346ae221ee56d5b9d3
+endProcessing "thaumcraft/api/research/theorycraft/ResearchTableData.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/TheorycraftCard.java" md5: 54fb4a60eb27c0d9221ffb5ec28c5a00
+endProcessing "thaumcraft/api/research/theorycraft/TheorycraftCard.java"
+
+startProcessing "thaumcraft/api/research/theorycraft/TheorycraftManager.java" md5: 0c0a144ef70dd7cad20658e0725c465f
+endProcessing "thaumcraft/api/research/theorycraft/TheorycraftManager.java"
+

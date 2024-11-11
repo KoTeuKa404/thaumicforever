@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/ancient_amber",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:ancient_amber" }],
+    "inventory": [{ "model": "thaumicforever:ancient_amber"}]
+  }
+}

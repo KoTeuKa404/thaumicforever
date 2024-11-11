@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/abandoned_chest",
+  "uvlock": false,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:abandoned_chest" }],
+    "inventory": [{ "model": "thaumicforever:abandoned_chest"}],
+    "facing=north": { "model":"thaumicforever:abandoned_chest" },
+    "facing=south": { "model":"thaumicforever:abandoned_chest", "y": 180 },
+    "facing=west": { "model":"thaumicforever:abandoned_chest", "y": 270 },
+    "facing=east": { "model":"thaumicforever:abandoned_chest", "y": 90 }
+
+  }
+}
+  

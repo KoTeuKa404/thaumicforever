@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/copper_ore",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:copper_ore" }],
+    "inventory": [{ "model": "thaumicforever:copper_ore"}]
+  }
+}

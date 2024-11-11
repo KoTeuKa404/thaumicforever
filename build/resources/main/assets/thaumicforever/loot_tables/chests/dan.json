@@ -1,0 +1,190 @@
+{
+  "pools": [
+    {
+      "name": "main_iron_gold",
+      "entries": [
+        {
+          "entryName": "minecraft:iron_ingot",
+          "weight": 8,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 3.0,
+                "max": 7.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:iron_ingot"
+        },
+        {
+          "entryName": "minecraft:gold_ingot",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:gold_ingot"
+        }
+      ],
+      "rolls": {
+        "min": 3.0,
+        "max": 7.0
+      },
+      "bonus_rolls": 2.0
+    },
+    {
+      "name": "main_gems",
+      "entries": [
+        {
+          "entryName": "minecraft:diamond",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:diamond"
+        },
+        {
+          "entryName": "thaumicforever:aquareia_gem",
+          "weight": 23,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 12.0,
+                "max": 32.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumicforever:aquareia_gem"
+        }
+      ],
+      "rolls": {
+        "min": 5.0,
+        "max": 8.0
+      },
+      "bonus_rolls": 6.0
+    },
+    {
+      "name": "main_thaumcraft",
+      "entries": [
+        {
+          "entryName": "thaumcraft:ingot",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:ingot"
+        },
+        {
+          "entryName": "thaumcraft:ingot:2",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 2.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:ingot"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag:2",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 2.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag:1",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 1.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        }
+      ],
+      "rolls": {
+        "min": 4.0,
+        "max": 6.0
+      },
+      "bonus_rolls": 1.0
+    }
+  ]
+}

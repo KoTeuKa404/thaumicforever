@@ -1,0 +1,208 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  HCASM (HammerLib-1.12.2-12.2.50.jar)
+  MixinBooter (!mixinbooter-4.2 (1).jar)
+Contact their authors BEFORE contacting forge
+
+// Shall we play a game?
+
+Time: 11/10/24 12:18 AM
+Description: Rendering item
+
+java.lang.NoSuchFieldError: block
+	at org.zeith.thaumicadditions.compat.thaumcraft.TARCThaumcraft.lambda$initJars$3(TARCThaumcraft.java:90)
+	at org.zeith.thaumicadditions.api.data.ISimpleDataProvider$2.get(ISimpleDataProvider.java:36)
+	at org.zeith.thaumicadditions.api.data.IDataProvider$1.get(IDataProvider.java:26)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.get(DataProviderRegistry.java:47)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.lambda$all$1(DataProviderRegistry.java:34)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:531)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.first(DataProviderRegistry.java:40)
+	at org.zeith.thaumicadditions.api.data.datas.JarData.fromStack(JarData.java:61)
+	at org.zeith.thaumicadditions.client.isr.ItemRenderJar.renderItem(ItemRenderJar.java:73)
+	at com.zeitheron.hammercore.client.utils.ItemColorHelper.setTargetStackAndHandleRender(ItemColorHelper.java:120)
+	at net.minecraft.client.renderer.RenderItem.renderItem(RenderItem.java)
+	at net.minecraft.client.renderer.RenderItem.renderItemModelIntoGUI(RenderItem.java:308)
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:347)
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:336)
+	at thaumcraft.client.gui.GuiResearchBrowser.drawResearchIcon(GuiResearchBrowser.java:831)
+	at thaumcraft.client.gui.ResearchToast.draw(ResearchToast.java:34)
+	at net.minecraft.client.gui.toasts.GuiToast$ToastInstance.render(SourceFile:115)
+	at net.minecraft.client.gui.toasts.GuiToast.drawToast(SourceFile:35)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1121)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at org.zeith.thaumicadditions.compat.thaumcraft.TARCThaumcraft.lambda$initJars$3(TARCThaumcraft.java:90)
+	at org.zeith.thaumicadditions.api.data.ISimpleDataProvider$2.get(ISimpleDataProvider.java:36)
+	at org.zeith.thaumicadditions.api.data.IDataProvider$1.get(IDataProvider.java:26)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.get(DataProviderRegistry.java:47)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.lambda$all$1(DataProviderRegistry.java:34)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:531)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.first(DataProviderRegistry.java:40)
+	at org.zeith.thaumicadditions.api.data.datas.JarData.fromStack(JarData.java:61)
+	at org.zeith.thaumicadditions.client.isr.ItemRenderJar.renderItem(ItemRenderJar.java:73)
+	at com.zeitheron.hammercore.client.utils.ItemColorHelper.setTargetStackAndHandleRender(ItemColorHelper.java:120)
+	at net.minecraft.client.renderer.RenderItem.renderItem(RenderItem.java)
+	at net.minecraft.client.renderer.RenderItem.renderItemModelIntoGUI(RenderItem.java:308)
+
+-- Item being rendered --
+Details:
+	Item Type: org.zeith.thaumicadditions.blocks.BlockAbstractEssentiaJar$BlockAbstractJarItem@100b3bf3
+	Registry Name: thaumadditions:jar_mithminite
+	Item Aux: 0
+	Item NBT: null
+	Item Foil: false
+Stacktrace:
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:347)
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:336)
+	at thaumcraft.client.gui.GuiResearchBrowser.drawResearchIcon(GuiResearchBrowser.java:831)
+	at thaumcraft.client.gui.ResearchToast.draw(ResearchToast.java:34)
+	at net.minecraft.client.gui.toasts.GuiToast$ToastInstance.render(SourceFile:115)
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player843'/83, l='MpServer', x=-254.07, y=91.55, z=-204.65]]
+	Chunk stats: MultiplayerChunkCache: 1089, 1089
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (-447,64,-97), Chunk: (at 1,4,15 in -28,-7; contains blocks -448,0,-112 to -433,255,-97), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,0,-512 to -1,255,-1)
+	Level time: 661308 game time, 1096 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: false
+	Forced entities: 37 total; [EntitySquid['Squid'/128, l='MpServer', x=-219.92, y=61.00, z=-265.44], EntityBat['Bat'/64, l='MpServer', x=-276.79, y=16.03, z=-128.09], EntityBat['Bat'/65, l='MpServer', x=-269.48, y=44.10, z=-279.25], EntityPainting['Painting'/59, l='MpServer', x=-332.97, y=114.00, z=-167.00], EntityAuraNode['entity.AuraNode.name'/130, l='MpServer', x=-206.50, y=63.50, z=-325.50], EntityItem['item.tile.candle_blue'/67, l='MpServer', x=-260.43, y=84.00, z=-194.97], EntityBat['Bat'/11331, l='MpServer', x=-303.55, y=21.07, z=-255.18], EntityItem['item.tile.candle_lightblue'/68, l='MpServer', x=-260.35, y=84.00, z=-195.08], EntityItem['item.tile.candle_cyan'/69, l='MpServer', x=-260.21, y=84.00, z=-195.09], EntityItem['item.tile.candle_lime'/70, l='MpServer', x=-260.51, y=84.00, z=-195.10], EntityItem['item.tile.candle_green'/71, l='MpServer', x=-260.58, y=84.00, z=-194.94], EntityBat['Bat'/135, l='MpServer', x=-196.25, y=42.10, z=-209.75], EntityItem['item.tile.candle_pink'/72, l='MpServer', x=-260.46, y=84.00, z=-194.71], EntityItem['item.tile.candle_magenta'/73, l='MpServer', x=-260.32, y=84.00, z=-195.01], EntitySquid['Squid'/137, l='MpServer', x=-206.74, y=61.03, z=-241.57], EntityItem['item.tile.candle_purple'/74, l='MpServer', x=-260.59, y=84.00, z=-194.83], EntityAuraNode['entity.AuraNode.name'/138, l='MpServer', x=-181.50, y=64.50, z=-289.50], EntityItem['item.tile.slab_arcane_stone'/75, l='MpServer', x=-264.09, y=88.00, z=-205.04], EntityItem['item.tile.candle_yellow'/76, l='MpServer', x=-265.94, y=88.00, z=-204.49], EntityItem['item.tile.candle_red'/77, l='MpServer', x=-266.78, y=88.00, z=-204.56], EntityItem['item.tile.candle_orange'/78, l='MpServer', x=-266.64, y=88.00, z=-204.57], EntityItem['item.tile.candle_brown'/79, l='MpServer', x=-250.54, y=89.00, z=-196.13], EntitySquid['Squid'/12367, l='MpServer', x=-204.50, y=62.00, z=-248.50], EntityItem['item.tile.slab_arcane_stone'/80, l='MpServer', x=-249.97, y=87.00, z=-194.92], EntitySquid['Squid'/12368, l='MpServer', x=-206.50, y=62.00, z=-249.50], EntityItem['item.item.skull.zombie'/81, l='MpServer', x=-247.66, y=88.00, z=-204.75], EntitySquid['Squid'/12369, l='MpServer', x=-196.50, y=62.00, z=-247.50], EntityItem['item.item.skull.creeper'/82, l='MpServer', x=-247.14, y=88.00, z=-204.51], EntityAuraNode['entity.AuraNode.name'/217, l='MpServer', x=-97.50, y=81.50, z=-205.50], EntityPlayerSP['Player843'/83, l='MpServer', x=-254.07, y=91.55, z=-204.65], EntityAuraNode['entity.AuraNode.name'/110, l='MpServer', x=-218.50, y=64.50, z=-358.50], EntityBat['Bat'/10990, l='MpServer', x=-285.58, y=18.39, z=-218.84], EntityBat['Bat'/10991, l='MpServer', x=-285.25, y=18.06, z=-219.49], EntityBat['Bat'/58, l='MpServer', x=-312.51, y=51.12, z=-147.52], EntityPainting['Painting'/59, l='MpServer', x=-332.97, y=114.00, z=-167.00], EntityBat['Bat'/60, l='MpServer', x=-298.92, y=43.73, z=-206.62], EntityBat['Bat'/127, l='MpServer', x=-205.26, y=38.83, z=-209.92]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.WorldClient.addWorldInfoToCrashReport(WorldClient.java:420)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2741)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:419)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 1180937000 bytes (1126 MB) / 2253389824 bytes (2149 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 13, tallocated: 95
+	FML: MCP 9.42 Powered by Forge 14.23.5.2820 25 mods loaded, 25 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                  | Version                 | Source                                         | Signature                                |
+	|:------ |:------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft           | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCHIJA | mcp                 | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | FML                 | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | forge               | 14.23.5.2820            | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | mixinbooter         | 4.2                     | minecraft.jar                                  | None                                     |
+	| LCHIJA | baubles             | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCHIJA | thaumcraft          | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCHIJA | jei                 | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCHIJA | thaumicforever      | 1.0                     | ThaumicForever-4.1.2.jar                       | None                                     |
+	| LCHIJA | hammercore          | 12.2.50                 | HammerLib-1.12.2-12.2.50.jar                   | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | waila               | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LCHIJA | thaumicaugmentation | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LCHIJA | thaumicwonders      | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LCHIJA | planarartifice      | 1.4.0-pre7              | planarartifice-1.4.0-pre7 (5).jar              | None                                     |
+	| LCHIJA | spark               | 1.6.3                   | spark-forge (1).jar                            | None                                     |
+	| LCHIJA | tg                  | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LCHIJA | thaumadditions      | 12.7.9                  | ThaumicAdditions-1.12.2-12.7.9.jar             | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | thaumicbases        | 3.6.011.0               | thaumicbases-3.6.011.0.jar                     | None                                     |
+	| LCHIJA | thaumicjei          | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LCHIJA | thaumicwands        | 1.5.0                   | thaumicwands-1.5.4.jar                         | None                                     |
+	| LCHIJA | thaumicrestoration  | 1.5.0                   | ThaumicRestoration-1.5.0 (4).jar               | None                                     |
+	| LCHIJA | thaumictinkerer     | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LCHIJA | keletupack          | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+	| LCHIJA | thaumtweaks         | 0.3.5.3                 | thaumtweaks-0.3.5.3 (2).jar                    | None                                     |
+	| LCHIJA | worldedit           | 6.1.10                  | worldedit-forge-mc1.12.2-6.1.10-dist.jar       | None                                     |
+
+	Loaded coremods (and transformers): 
+Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  leppa.planarartifice.core.PATransformer
+TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  org.zeith.thaumicadditions.asm.TARTransformer
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+HCASM (HammerLib-1.12.2-12.2.50.jar)
+  com.zeitheron.hammercore.asm.HammerCoreTransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 537.42' Renderer: 'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+	HammerCore Debug Information: 
+		Dependent Mods:
+			-Thaumic Additions: Reconstructed (thaumadditions) @ 12.7.9
+
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 537.42, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 12x AMD Ryzen 5 5500U with Radeon Graphics 

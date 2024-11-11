@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+    "model": "thaumicforever:block/ancient_coal",
+    "uvlock": true,
+    "transform": "forge:default-block"
+    },
+    "variants": {
+      "normal": [{ "model": "thaumicforever:ancient_coal" }],
+      "inventory": [{ "model": "thaumicforever:ancient_coal"}]
+    }
+  }
+  

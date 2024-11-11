@@ -1,0 +1,219 @@
+tile.thaumicforever.deconstruction_table.name=Deconstruction Table
+item.thaumicforever.deconstruction_table.name=Deconstruction Table
+
+
+
+tile.thaumicforever.greatwood_table.name=Greatwood Table
+tile.thaumicforever.double_table.name=Double Table
+tile.thaumicforever.aquareia_ore.name=Aquareia Ore
+tile.thaumicforever.ancient_amber.name=Ancient Amber
+tile.thaumicforever.ancient_cinnabar.name=Ancient Cinnabar
+tile.thaumicforever.copper_ore.name=Copper Ore
+tile.thaumicforever.tin_ore.name=Tin Ore
+tile.thaumicforever.lead_ore.name=Lead Ore
+tile.thaumicforever.silver_ore.name=Silver Ore
+tile.thaumicforever.ancient_coal.name=Ancient Coal
+tile.thaumicforever.ancient_gold.name=Ancient Gold
+tile.thaumicforever.ancient_iron.name=Ancient Iron
+
+tile.duplicator.name=Duplicator
+tile.compressor.name=Compressor
+
+item.lead_ingot.name=Lead Ingot
+item.silver_ingot.name=Silver Ingot
+item.tin_ingot.name=Tin Ingot
+item.copper_ingot.name=Copper Ingot
+
+item.lead_nugget.name=Lead Nugget
+item.silver_nugget.name=Silver Nugget
+item.tin_nugget.name=Tin Nugget
+item.copper_nugget.name=Copper Nugget
+
+item.aquareia_gem.name=Aquareia Gem
+
+
+item.cluster.chromium.name=Native Chromium Cluster
+item.cluster.iridium.name=Native Iridium Cluster
+item.cluster.quartz.name=Native Quartz Cluster
+item.cluster.charged_quartz.name=Native Charged Quartz Cluster
+
+
+item.primal_charm.name=Primal Charm
+item.ring_verdant.name=Verdant Ring
+item.ring_runic_charge.name=Runic Charge Ring
+ 
+tile.copper_block.name=Copper Block
+tile.tin_block.name=Tin Block
+tile.silver_block.name=Silver Block
+tile.lead_block.name=Lead Block
+
+thaumicforever.CLEANSE.name=Cleanse 
+thaumicforever.CLEANSE.text=Removes all negative effects 
+
+thaumicforever.CHAINFLIGHT.name=Chain Flight 
+thaumicforever.CHAINFLIGHT.text=Prohibits flight
+item.zombie_heart.name=Zombie Heart
+item.zombie_heart_amulet.name=Zombie Heart Amulet
+item.broken_amulet.name=Broken Amulet
+item.amulet_death.name=Amulet of Death
+
+item.mechanism_improved.name=Improved Mechanism
+thaumicforever.CALM.name=Clouded Mind
+thaumicforever.CALM.text=Clouds the mind of all entities
+
+tile.thaumicforever.smooth_stone.name=Smooth Stone
+tile.obsidian_totem.name=Obsidian Totem
+
+item.focus_4.name=Blank Max Focus
+item.focus_5.name=Blank Ultimate Focus
+item.iron_ring.name=Iron ring
+
+item.thaumium_gear.name=Thaumium Gear
+item.void_gear.name=Viod Gear
+item.brass_gear.name=Brass Gear
+item.aquareia_goggles.name=Aquareia Goggles
+
+itemGroup.thaumicforever_tab=Thaumic Forever
+tile.abandoned_chest.name=Abandoned Chest   
+tile.anti_flight_stone.name=Unflight Stone
+tile.blue_rose.name=Blue Rose
+tile.red_rose.name=Red Rose
+
+item.empty_focus.name=Empty Focus
+item.eternal_blade.name=Eternal Blade
+
+tc.aspect.Weather=Weather, Nature
+tc.aspect.Mattery=Mattery
+item.bowl_treatmeat.name=Bowl of Treat Meat
+item.bowl_zombie.name=Zombie Bowl
+research.NEWRUNICS.title=NEW RUNICS
+
+research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the arcane in a portable and versatile form.
+research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.
+
+
+thaumicforever.enchantment.voidrepair=Void Repair
+research.FOCUSCALM.title=Focus Effect: Clouded Mind
+research.FOCUSCALM.stage.1=Learn the basics of calm magic, which allows you to temporarily strip creatures of their aggression and pacify their behavior. Focus on the aspect of Mind to awaken their inner tranquility.
+research.FOCUSCALM.stage.2=Mastering the magic of calm enables you to not only avoid aggressive attacks but also maintain peace in the world around you. Prepare your thoughts and meditate to better control your magic and extend the duration of your enchantments.
+
+research.CHAINFLIGHT.title=Focus Effect: Chains of Flight
+research.CHAINFLIGHT.stage.1=Unlock the ability to cast chains that temporarily disable the flight of those around you. With the Aspect of Trap, you can hold back the freedom of the skies and bring your enemies down to the ground.
+research.CHAINFLIGHT.stage.2=Master the chains of flight and enhance their duration and potency. Through deeper connection to the magic of entrapment, you will be able to chain fliers for longer periods, leaving them grounded.
+
+research.NEWAUROMANCY.title=Mastery of the Auromancy
+research.NEWAUROMANCY.stage.1=Uncover the secrets of focus control, allowing you to infuse and control focus and unleash new magic
+research.NEWAUROMANCY.stage.2=Discover the hidden potential of Auramancy, where the power to reshape reality lies at your fingertips.
+
+research.FOCUSCLEANSE.title=Focus Effect: Cleansing the body
+research.FOCUSCLEANSE.stage.1=Learn the basics of purifying negative effects with the Aspect of Order, clearing harmful conditions from your target upon activation of this focus.
+research.FOCUSCLEANSE.stage.2=Improve your cleansing focus to provide extended protection. The effects will linger, continually removing any negative influences from the affected target for the duration of the spell.
+
+research.MINDCONTROL.title=Focus Effect: Dominion over Minds
+research.MINDCONTROL.stage.1=Learn to dominate the minds of weaker beings, forcing hostile creatures to attack each other.
+research.MINDCONTROL.stage.2=Enhance your mastery of mind control, allowing for extended control over enemies of influence.
+
+research.NEWARTIFICE.title=New Artifice
+research.NEWARTIFICE.stage.1=Develop basic mechanisms that integrate magical energy into mechanical constructs.
+research.NEWARTIFICE.stage.2=Unlock the potential of hybrid machines, blending arcane energy with mechanical precision to create unprecedented inventions.<PAGE>§lTime Trap§r<BR>The Time Trap is a unique and powerful device that manipulates the flow of time within a confined area. Utilizing arcane energies, it is capable of creating a zone where time itself is distorted, slowing down everything inside.Upon activation, the device emits a powerful burst of magic, creating an area of effect that freezes any movement within its radius.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR> To use the Time Trap effectively, aim and release the projectile towards the desired target.<PAGE>
+
+research.GUARD.title=Guardian Stand
+research.GUARD.stage.1=You've discovered a way to use magic to alive a simple wooden armor stand. Through the infusion of magic, this stand can be transformed into a loyal guardian.
+research.GUARD.stage.2=With the proper application of magic dust, your newly awakened sentinel will defend you from threats, ready to serve its master at all times.<IMG>thaumicforever:textures/misc/research2.png:0:0:128:128:0.2</IMG>
+ 
+research.NEWINFUSION.title=New Infusion Enchantment
+research.NEWINFUSION.stage.1=Through careful study of ancient magical techniques, you have unlocked the ability to perform infusion enchantments. This form of magic allows you to imbue your tools, weapons, and armor with powerful enchantments that exceed those of traditional means. By utilizing magical energy, you can infuse objects with aspects that will enhance their abilities and grant them additional properties.
+research.NEWINFUSION.stage.2=The discovery of Void Repair has revolutionized the way items can be maintained. By harnessing the essence of the void, enchanted items can now slowly repair themselves over time. Every few seconds, a small fraction of the item's durability is restored, keeping it in pristine condition without any external effort. This magical property makes Void Repair a powerful tool for those who rely on their gear for prolonged expeditions or combat, ensuring that no weapon or piece of armor remains broken for long.
+
+
+
+research.COMPRESSOR.title=Compressor
+research.COMPRESSOR.stage.1=Creating plates can often be a costly endeavor, especially if you do not work with them frequently. This Compressor is an indispensable tool for any thaumaturge, making the process far more efficient and accessible.
+research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes raw ingots and transforms them into refined plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different arcane applications. This includes specialized plates.<PAGE>
+
+
+research.UNSTONE.title=Anti-Flight Stone
+research.UNSTONE.stage.1=In your studies of anti-magical properties, you've discovered a peculiar stone that disrupts flight enchantments. The Anti-Flight Stone, when placed, creates a zone where any form of magical flight is forcibly disabled. This stone is an ideal tool for defending areas where aerial access must be restricted.
+research.UNSTONE.stage.2=§lMechanics§r<BR>The Anti-Flight Stone affects an area within a 3x3 chunk radius (equivalent to 48 blocks in each direction). Any thaumaturge or creature attempting to fly within its range will find their enchantments or flight abilities suddenly nullified.The stone is tough and requires proper tools to break, making it a reliable defense against unwanted intruders. Use it wisely to protect sensitive locations.<PAGE>
+
+research.DUPLICATOR.title=Mattery Duplicator
+research.DUPLICATOR.stage.1=When the limitations of the Pattern Crafter became evident, a new concept emerged — a mechanism capable of harnessing the essence of Mattery to replicate objects. Thus, the Mattery Duplicator was conceived, a device that captures the very essence of matter and transforms it into tangible forms, meeting the diverse needs of thaumaturges
+research.DUPLICATOR.stage.2=§lMechanics§r<BR>The Mattery Duplicator utilizes the unique properties of the Mattery essence to perform its duplication process. By absorbing Mattery essence from nearby containers, the machine gathers the energy necessary to replicate items placed in the crafting grid.To complete the duplication, a significant amount of Mattery essence is required, and the machine will only proceed if sufficient mattery is available. Carefully monitor the amount of essence to ensure successful duplications.<PAGE>
+
+research.OREAQUA.title=Aquareia Ore
+research.OREAQUA.stage.1=Aquareia Ore is a rare and magical mineral that can only be found deep within the mysterious **Magical Forest** biome. This ore is known for its unique properties and affinity with arcane energies. The deposits of Aquareia can be discovered between Y-levels 28 and 32, making them accessible only to those who delve into the depths of these enchanted forests.<BR><BR>It appears in small veins, usually ranging from 2 to 6 blocks, and can only be found where the natural magic of the forest is strongest.
+
+research.FOOD.stage.1=You've discovered that food can offer more than simple nourishment. Begin experimenting with ingredients that may unlock unique effects.
+research.FOOD.stage.2=Your studies reveal that certain meals can grant extraordinary abilities.Experiment with mystical ingredients to create powerful meals.
+
+
+research.DeconstructionTable.title=Deconstruction Table
+research.DeconstructionTable.stage.1=The Deconstruction Table is a unique device that allows thaumaturges to break down common items into their base components. By carefully deconstructing these items, one can gain valuable insights into the magical properties hidden within. The table's ability to extract curios makes it an indispensable tool for those who wish to study the arcane secrets embedded in mundane materials.
+research.DeconstructionTable.stage.2=<PAGE>§lOperation§r<BR>To use the Deconstruction Table, place an item into the input slot. The table will attempt to extract any magical properties the item possesses over a short period.<BR><BR>The table is configured with specific recipes that yield unique rewards. For example, a **Crafting Table** has a chance to reveal shards of arcane knowledge, while **Ender Pearls** can uncover mysterious trinkets imbued with magic. More complex items, such as **Ghast Tears**, may even provide relics of immense power.<PAGE>§lRecipes§r<BR>Some items have higher chances of yielding valuable results. These include:<BR>- **Crafting Table**: A 35% chance to produce knowledge shards.<BR>- **Ender Pearls**: A 45% chance to produce magical curiosities.<BR>- **Ghast Tears**: A 95% chance to produce powerful trinkets.<BR>- **Condensed Crystal Clusters**: A 50% chance to yield rare dimensional curiosities.<BR><BR>With the mod **Old Research** installed, even mundane items like **Books** can yield insights into ancient secrets, making this table an essential asset for any thaumaturge.<PAGE>
+
+item.ring_ender.name=Ender Ring 
+item.time_freeze_item.name=Time Trap 
+item.magic_dust.name=Magic Dust
+thaumicforever.MINDCONTROL.name=Mind Control 
+thaumicforever.MINDCONTROL.text=Exert your powerful will to turn enemies against each other, making them fight among themselves
+entity.GuardianMannequin.name=Guardian Mannequin
+tile.time_stop_block.name=Time Stop
+tc.research_category.THAUMICFOREVER=Thaumic Forever
+research.THAUMICFOREVER.title=Thaumic Forever
+
+research.THAUMICFOREVER.title=Thaumic Forever
+research.NEWALKIMIA.title=New Alchemy
+research.TENEBRAEALKIMIA.title=Tenebrae Alchemy
+research.HERBAALKIMIA.title=Herba Alchemy
+research.VICTUSALKIMIA.title=Victus Alchemy
+research.TERRAALKIMIA.title=Terra Alchemy
+research.AQUAALKIMIA.title=Aqua Alchemy
+research.PRAECANTATIOALKIMIA.title=Praecantatio Alchemy
+research.ADDITIONALALKIMIA.title=Additional Alchemy
+research.APPLIDALKIMIA.title=Applied Alchemy
+research.BOTANIAALKIMIA.title=Botania Alchemy
+research.IMMERALKIMIA.title=Immersive Alchemy
+research.IUALKIMIA.title=Industrial Alchemy
+research.ETERNALBLADE.title=Eternal Blade
+
+research.THAUMICFOREVER.stage.1=Your journey into Thaumic knowledge begins here. Start by crafting a Crucible.
+research.THAUMICFOREVER.stage.2=You are ready for more advanced research. <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<BR/>
+
+research.NEWALKIMIA.stage.1=Delve into the mysteries of New Alchemy. Start with the basics.
+research.NEWALKIMIA.stage.2=Your understanding of Alchemy grows stronger.
+
+research.TENEBRAEALKIMIA.stage.1=Unlock the secrets of Tenebrae Alchemy. Begin with gathering the right materials.
+research.TENEBRAEALKIMIA.stage.2=The darkness of Tenebrae is within your grasp.
+
+research.HERBAALKIMIA.stage.1=Explore the natural essence with Herba Alchemy. Collect the necessary items.
+research.HERBAALKIMIA.stage.2=Herba Alchemy now holds no secrets from you.
+
+research.VICTUSALKIMIA.stage.1=Victus Alchemy focuses on the essence of life. Gather the components to begin.
+research.VICTUSALKIMIA.stage.2=Victus Alchemy is now within your control.
+
+research.TERRAALKIMIA.stage.1=Terra Alchemy is grounded in the essence of earth. Start your research by obtaining the required items.
+research.TERRAALKIMIA.stage.2=You have mastered the basics of Terra Alchemy. A new recipe is unlocked.
+
+research.AQUAALKIMIA.stage.1=Aqua Alchemy taps into the essence of water. Collect what you need to begin.
+research.AQUAALKIMIA.stage.2=Aqua Alchemy now flows through your veins.
+
+research.PRAECANTATIOALKIMIA.stage.1=Praecantatio Alchemy is the magic of the arcane. Prepare yourself with the right ingredients.
+research.PRAECANTATIOALKIMIA.stage.2=You now wield the power of Praecantatio Alchemy.
+
+research.ADDITIONALALKIMIA.stage.1=Additional Alchemy adds new layers to your knowledge. Study the required theories.
+research.ADDITIONALALKIMIA.stage.2=You have expanded your alchemical knowledge.
+
+research.APPLIDALKIMIA.stage.1=Applied Alchemy combines ancient magic with modern technology. Start by gathering the components.
+research.APPLIDALKIMIA.stage.2=You have successfully integrated magic and technology.
+
+research.BOTANIAALKIMIA.stage.1=Botania Alchemy merges nature's power with arcane knowledge. Collect the necessary items.
+research.BOTANIAALKIMIA.stage.2=Botania Alchemy now blooms under your command.
+
+research.IMMERALKIMIA.stage.1=Immersive Alchemy brings the power of the forge into the arcane. Gather what you need to proceed.
+research.IMMERALKIMIA.stage.2=You have mastered Immersive Alchemy.
+
+research.IUALKIMIA.stage.1=Industrial Alchemy applies the principles of automation to the arcane. Start your research by gathering the essentials.
+research.IUALKIMIA.stage.2=You have unlocked the secrets of Industrial Alchemy.
+
+research.ETERNALBLADE.stage.1=The Eternal Blade is a weapon of unparalleled power. Begin your research with the Primordial Pearl.
+research.ETERNALBLADE.stage.2=The blade is now within your reach, but it comes with a cost of great warp.

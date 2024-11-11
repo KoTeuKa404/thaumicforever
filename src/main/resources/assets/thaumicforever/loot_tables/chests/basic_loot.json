@@ -1,0 +1,215 @@
+{
+  "pools": [
+    {
+      "name": "main1",
+      "entries": [
+        {
+          "entryName": "minecraft:ender_pearl",
+          "weight": 8,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 3.0,
+                "max": 7.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "minecraft:ender_pearl"
+        },  
+        {
+          "entryName": "thaumcraft:amber",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:amber"
+        },{
+          "entryName": "empty",
+          "weight": 33,
+          "quality": 0,
+          "type": "empty"
+        }
+      ],
+      "rolls": {
+        "min": 3.0,
+        "max": 7.0
+      },
+      "bonus_rolls": 2.0
+    },
+    {
+      "name": "main_gems",
+      "entries": [
+        {
+          "entryName": "thaumcraft:quicksilver",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:quicksilver"
+        },
+        {
+          "entryName": "thaumcraft:curio3",
+          "weight": 40,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 3.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:curio"
+        },{
+          "entryName": "empty",
+          "weight": 33,
+          "quality": 0,
+          "type": "empty"
+        }
+      ],
+      "rolls": {
+        "min": 5.0,
+        "max": 8.0
+      },
+      "bonus_rolls": 6.0
+    },
+    {
+      "name": "main_thaumcraft",
+      "entries": [
+        {
+          "entryName": "thaumcraft:curio34",
+          "weight": 40,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 2.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:curio"
+        },
+        {
+          "entryName": "thaumcraft:curio4",
+          "weight": 40,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 4.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:curio"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag:2",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 2.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        },
+        {
+          "entryName": "thaumcraft:loot_bag:1",
+          "weight": 25,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 1.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:loot_bag"
+        },
+        {
+          "entryName": "empty",
+          "weight": 33,
+          "quality": 0,
+          "type": "empty"
+        }
+      ],
+       
+      "rolls": {
+        "min": 4.0,
+        "max": 6.0
+      },
+      "bonus_rolls": 1.0
+    }
+  ]
+}

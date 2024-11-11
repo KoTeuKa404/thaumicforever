@@ -1,0 +1,131 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  HCASM (HammerLib-1.12.2-12.2.50.jar)
+  MixinBooter (!mixinbooter-4.2 (1).jar)
+Contact their authors BEFORE contacting forge
+
+// My bad.
+
+Time: 11/3/24 2:26 PM
+Description: Ticking block entity
+
+java.lang.NullPointerException: Ticking block entity
+	at net.minecraft.item.ItemStack.areItemStacksEqual(ItemStack.java:432)
+	at com.koteuka404.thaumicforever.TileEntityMatteryDuplicator.createCraftingResult(TileEntityMatteryDuplicator.java:131)
+	at com.koteuka404.thaumicforever.TileEntityMatteryDuplicator.update(TileEntityMatteryDuplicator.java:53)
+	at com.zeitheron.hammercore.asm.McHooks.tickTile(McHooks.java:38)
+	at net.minecraft.world.World.updateEntities(World.java:1835)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:767)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.minecraft.item.ItemStack.areItemStacksEqual(ItemStack.java:432)
+	at com.koteuka404.thaumicforever.TileEntityMatteryDuplicator.createCraftingResult(TileEntityMatteryDuplicator.java:131)
+	at com.koteuka404.thaumicforever.TileEntityMatteryDuplicator.update(TileEntityMatteryDuplicator.java:53)
+	at com.zeitheron.hammercore.asm.McHooks.tickTile(McHooks.java:38)
+
+-- Block entity being ticked --
+Details:
+	Name: thaumicforever:mattery_duplicator // com.koteuka404.thaumicforever.TileEntityMatteryDuplicator
+	Block type: ID #541 (tile.duplicator // com.koteuka404.thaumicforever.BlockMatteryDuplicator // thaumicforever:duplicator)
+	Block data value: 0 / 0x0 / 0b0000
+	Block location: World: (153,81,287), Chunk: (at 9,5,15 in 9,17; contains blocks 144,0,272 to 159,255,287), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Actual block type: ID #541 (tile.duplicator // com.koteuka404.thaumicforever.BlockMatteryDuplicator // thaumicforever:duplicator)
+	Actual block data value: 0 / 0x0 / 0b0000
+Stacktrace:
+	at net.minecraft.world.World.updateEntities(World.java:1835)
+	at net.minecraft.world.WorldServer.updateEntities(WorldServer.java:613)
+
+-- Affected level --
+Details:
+	Level name: New World51
+	All players: 0 total; []
+	Chunk stats: ServerChunkCache: 625 Drop: 0
+	Level seed: 5905704422096578622
+	Level generator: ID 00 - default, ver 1. Features enabled: true
+	Level generator options: 
+	Level spawn location: World: (148,64,256), Chunk: (at 4,4,0 in 9,16; contains blocks 144,0,256 to 159,255,271), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 504685 game time, 23335 day time
+	Level dimension: 0
+	Level storage version: 0x04ABD - Anvil
+	Level weather: Rain time: 75853 (now: false), thunder time: 165892 (now: false)
+	Level game mode: Game mode: creative (ID 1). Hardcore: false. Cheats: true
+Stacktrace:
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:767)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 1108069608 bytes (1056 MB) / 1881145344 bytes (1794 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 3, allocated: 20, tallocated: 86
+	FML: MCP 9.42 Powered by Forge 14.23.5.2816 23 mods loaded, 23 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                  | Version                 | Source                                         | Signature                                |
+	|:------ |:------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft           | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCHIJA | mcp                 | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | FML                 | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | forge               | 14.23.5.2816            | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | mixinbooter         | 4.2                     | minecraft.jar                                  | None                                     |
+	| LCHIJA | baubles             | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCHIJA | thaumcraft          | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCHIJA | jei                 | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCHIJA | thaumicforever      | 1.0                     | ThaumicForever-4.0.1.jar                       | None                                     |
+	| LCHIJA | hammercore          | 12.2.50                 | HammerLib-1.12.2-12.2.50.jar                   | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | waila               | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LCHIJA | thaumicaugmentation | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LCHIJA | thaumicwonders      | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LCHIJA | planarartifice      | 1.4.0-pre7              | planarartifice-1.4.0-pre7 (5).jar              | None                                     |
+	| LCHIJA | spark               | 1.6.3                   | spark-forge (1).jar                            | None                                     |
+	| LCHIJA | tg                  | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LCHIJA | thaumadditions      | 12.7.9                  | ThaumicAdditions-1.12.2-12.7.9.jar             | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | thaumicbases        | 3.6.011.0               | thaumicbases-3.6.011.0.jar                     | None                                     |
+	| LCHIJA | thaumicjei          | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LCHIJA | thaumictinkerer     | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LCHIJA | thaumicwands        | 1.5.0                   | thaumicwands-1.5.4.jar                         | None                                     |
+	| LCHIJA | keletupack          | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+	| LCHIJA | thaumtweaks         | 0.3.5.3                 | thaumtweaks-0.3.5.3 (2).jar                    | None                                     |
+
+	Loaded coremods (and transformers): 
+Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  leppa.planarartifice.core.PATransformer
+TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  org.zeith.thaumicadditions.asm.TARTransformer
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+HCASM (HammerLib-1.12.2-12.2.50.jar)
+  com.zeitheron.hammercore.asm.HammerCoreTransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	HammerCore Debug Information: 
+		Dependent Mods:
+			-Thaumic Additions: Reconstructed (thaumadditions) @ 12.7.9
+
+	Profiler Position: N/A (disabled)
+	Player Count: 0 / 8; []
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

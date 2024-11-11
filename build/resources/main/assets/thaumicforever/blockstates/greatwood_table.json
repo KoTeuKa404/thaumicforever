@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/greatwood_table",
+  "uvlock": false,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:greatwood_table" }],
+    "inventory": [{ "model": "thaumicforever:greatwood_table"}],
+    "facing=north": { "model":"thaumicforever:greatwood_table" },
+    "facing=south": { "model":"thaumicforever:greatwood_table", "y": 180 },
+    "facing=west": { "model":"thaumicforever:greatwood_table", "y": 270 },
+    "facing=east": { "model":"thaumicforever:greatwood_table", "y": 90 }
+
+  }
+}
+  

@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "variants": {
+      "normal": [
+    { "model": "thaumicforever:obsidian_totem" }
+  ],
+  "inventory": [{ "model": "thaumicforever:obsidian_totem"}]
+
+  }
+}

@@ -1,0 +1,127 @@
+
+{
+  "pools": [
+    {
+      "name": "main",
+      "entries": [
+        {
+          "entryName": "thaumcraft:void_seed",
+          "weight": 30,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 3.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:void_seed"
+        },
+
+
+
+        {
+          "entryName": "thaumcraft:nugget:7",
+          "weight": 20,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 7.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:nugget"
+        },
+
+
+
+        {
+          "entryName": "<thaumcraft:curio:6>",
+          "weight": 100,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 6.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:curio"
+        },
+
+
+
+        {
+          "entryName": "thaumcraft:curio3",
+          "weight": 40,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "data": 3.0,
+              "function": "minecraft:set_data"
+            },
+            {
+              "count": {
+                "min": 1.0,
+                "max": 4.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumcraft:curio"
+        },
+
+
+
+        
+
+
+
+        {
+          "entryName": "thaumicforever:empty_focus",
+          "weight": 1,
+          "quality": 0,
+          "type": "item",
+          "functions": [
+            {
+              "count": {
+                "min": 1.0,
+                "max": 1.0
+              },  
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "thaumicforever:empty_focus"
+        }
+
+
+
+        
+      ],
+      "rolls": {
+        "min": 1.0,
+        "max": 2.0
+          },
+          "bonus_rolls": 1.0
+      }
+  ]
+}
