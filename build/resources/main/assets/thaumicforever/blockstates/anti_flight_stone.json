@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/anti_flight_stone",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:anti_flight_stone" }],
+    "inventory": [{ "model": "thaumicforever:anti_flight_stone"}]
+  }
+}

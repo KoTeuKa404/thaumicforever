@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+    "model": "thaumicforever:block/lead_block",
+    "uvlock": true,
+    "transform": "forge:default-block"
+    },
+    "variants": {
+      "normal": [{ "model": "thaumicforever:lead_block" }],
+      "inventory": [{ "model": "thaumicforever:lead_block"}]
+    }
+  }
+  

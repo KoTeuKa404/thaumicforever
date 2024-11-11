@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        // Заміна JCenter на MavenCentral
+        mavenCentral()
+        maven { url = "https://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "4.1.4"
+group = "com.thaumic.forever"
+archivesBaseName = "ThaumicForever"
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+minecraft {
+    version = "1.12.2-14.23.5.2816"
+    runDir = "run"
+    mappings = "snapshot_20171003"
+    // makeObfSourceJar = true 
+}
+
+repositories {
+    mavenCentral()  // Використання Maven Central
+    maven { url = "https://files.minecraftforge.net/maven" }
+    maven { url = "https://modmaven.dev" }  // Додавання ModMaven для JEI
+}
+
+dependencies {
+    // compile "org.spongepowered:mixin:0.8.5" 
+    compile 'mezz.jei:jei_1.12.2:4.15.0.268'  
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

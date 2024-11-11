@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+      "cross": "thaumicforever:blocks/blue_rose"
+    }
+  }
+  

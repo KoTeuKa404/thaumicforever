@@ -1,0 +1,123 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  HCASM (HammerLib-1.12.2-12.2.50.jar)
+  MixinBooter (!mixinbooter-4.2 (1).jar)
+Contact their authors BEFORE contacting forge
+
+// I bet Cylons wouldn't have this problem.
+
+Time: 10/26/24 9:43 AM
+Description: There was a severe problem during mod loading that has caused the game to fail
+
+net.minecraftforge.fml.common.LoaderExceptionModCrash: Caught exception from Thaumic Forever (thaumicforever)
+Caused by: java.lang.NullPointerException
+	at com.koteuka404.thaumicforever.ClientProxy.registerItemColors(ClientProxy.java:42)
+	at com.koteuka404.thaumicforever.ClientProxy.preInit(ClientProxy.java:27)
+	at com.koteuka404.thaumicforever.ThaumicForever.preInit(ThaumicForever.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.fml.common.FMLModContainer.handleModStateEvent(FMLModContainer.java:624)
+	at sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91)
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150)
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76)
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399)
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71)
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116)
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217)
+	at net.minecraftforge.fml.common.LoadController.sendEventToModContainer(LoadController.java:219)
+	at net.minecraftforge.fml.common.LoadController.propogateStateMessage(LoadController.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.google.common.eventbus.Subscriber.invokeSubscriberMethod(Subscriber.java:91)
+	at com.google.common.eventbus.Subscriber$SynchronizedSubscriber.invokeSubscriberMethod(Subscriber.java:150)
+	at com.google.common.eventbus.Subscriber$1.run(Subscriber.java:76)
+	at com.google.common.util.concurrent.MoreExecutors$DirectExecutor.execute(MoreExecutors.java:399)
+	at com.google.common.eventbus.Subscriber.dispatchEvent(Subscriber.java:71)
+	at com.google.common.eventbus.Dispatcher$PerThreadQueuedDispatcher.dispatch(Dispatcher.java:116)
+	at com.google.common.eventbus.EventBus.post(EventBus.java:217)
+	at net.minecraftforge.fml.common.LoadController.distributeStateMessage(LoadController.java:136)
+	at net.minecraftforge.fml.common.Loader.preinitializeMods(Loader.java:627)
+	at net.minecraftforge.fml.client.FMLClientHandler.beginMinecraftLoading(FMLClientHandler.java:252)
+	at net.minecraft.client.Minecraft.init(Minecraft.java:467)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:378)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 463945032 bytes (442 MB) / 1097334784 bytes (1046 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+	FML: MCP 9.42 Powered by Forge 14.23.5.2816 22 mods loaded, 22 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State | ID                  | Version                 | Source                                         | Signature                                |
+	|:----- |:------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCH   | minecraft           | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCH   | mcp                 | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCH   | FML                 | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCH   | forge               | 14.23.5.2816            | forgeBin-1.12.2-14.23.5.2816-PROJECT(jaba).jar | None                                     |
+	| LCH   | mixinbooter         | 4.2                     | minecraft.jar                                  | None                                     |
+	| LCH   | baubles             | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCH   | thaumcraft          | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCH   | jei                 | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCE   | thaumicforever      | 1.0                     | ThaumicForever-4.0.jar                         | None                                     |
+	| LC    | hammercore          | 12.2.50                 | HammerLib-1.12.2-12.2.50.jar                   | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LC    | waila               | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LC    | thaumicaugmentation | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LC    | thaumicwonders      | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LC    | planarartifice      | 1.4.0-pre7              | planarartifice-1.4.0-pre7 (5).jar              | None                                     |
+	| LC    | tg                  | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LC    | thaumadditions      | 12.7.9                  | ThaumicAdditions-1.12.2-12.7.9.jar             | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LC    | thaumicbases        | 3.6.011.0               | thaumicbases-3.6.011.0.jar                     | None                                     |
+	| LC    | thaumicjei          | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LC    | thaumictinkerer     | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LC    | thaumicwands        | 1.5.0                   | thaumicwands-1.5.4.jar                         | None                                     |
+	| LC    | keletupack          | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+	| LC    | thaumtweaks         | 0.3.5.3                 | thaumtweaks-0.3.5.3 (2).jar                    | None                                     |
+
+	Loaded coremods (and transformers): 
+Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  leppa.planarartifice.core.PATransformer
+TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  org.zeith.thaumicadditions.asm.TARTransformer
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+HCASM (HammerLib-1.12.2-12.2.50.jar)
+  com.zeitheron.hammercore.asm.HammerCoreTransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 537.42' Renderer: 'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+	HammerCore Debug Information: 
+		Dependent Mods:
+			-Thaumic Additions: Reconstructed (thaumadditions) @ 12.7.9

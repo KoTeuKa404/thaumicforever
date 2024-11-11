@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/smooth_stone",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:smooth_stone" }],
+    "inventory": [{ "model": "thaumicforever:smooth_stone"}]
+  }
+}

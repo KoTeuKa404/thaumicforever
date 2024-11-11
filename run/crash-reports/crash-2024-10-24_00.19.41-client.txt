@@ -1,0 +1,230 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  IELoadingPlugin (ImmersiveEngineering-core-0.12-98.jar)
+  Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  OldResearchCore (oldresearch-1.1.3 (1).jar)
+  TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  HCASM (HammerLib-1.12.2-12.2.50.jar)
+  MixinBooter (!mixinbooter-4.2 (1).jar)
+Contact their authors BEFORE contacting forge
+
+// This doesn't make any sense!
+
+Time: 10/24/24 12:19 AM
+Description: Rendering item
+
+java.lang.NoSuchFieldError: block
+	at org.zeith.thaumicadditions.compat.thaumcraft.TARCThaumcraft.lambda$initJars$3(TARCThaumcraft.java:90)
+	at org.zeith.thaumicadditions.api.data.ISimpleDataProvider$2.get(ISimpleDataProvider.java:36)
+	at org.zeith.thaumicadditions.api.data.IDataProvider$1.get(IDataProvider.java:26)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.get(DataProviderRegistry.java:47)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.lambda$all$1(DataProviderRegistry.java:34)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:531)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.first(DataProviderRegistry.java:40)
+	at org.zeith.thaumicadditions.api.data.datas.JarData.fromStack(JarData.java:61)
+	at org.zeith.thaumicadditions.client.isr.ItemRenderJar.renderItem(ItemRenderJar.java:73)
+	at com.zeitheron.hammercore.client.utils.ItemColorHelper.setTargetStackAndHandleRender(ItemColorHelper.java:120)
+	at net.minecraft.client.renderer.RenderItem.renderItem(RenderItem.java)
+	at net.minecraft.client.renderer.RenderItem.renderItemModelIntoGUI(RenderItem.java:308)
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:347)
+	at mezz.jei.plugins.vanilla.ingredients.item.ItemStackRenderer.render(ItemStackRenderer.java:29)
+	at mezz.jei.plugins.vanilla.ingredients.item.ItemStackRenderer.render(ItemStackRenderer.java:22)
+	at mezz.jei.gui.ingredients.GuiIngredient.draw(GuiIngredient.java:169)
+	at mezz.jei.gui.ingredients.GuiIngredientGroup.draw(GuiIngredientGroup.java:157)
+	at mezz.jei.gui.recipes.RecipeLayout.drawRecipe(RecipeLayout.java:168)
+	at mezz.jei.gui.recipes.RecipesGui.drawScreen(RecipesGui.java:219)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:396)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1124)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1119)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Client thread
+Stacktrace:
+	at org.zeith.thaumicadditions.compat.thaumcraft.TARCThaumcraft.lambda$initJars$3(TARCThaumcraft.java:90)
+	at org.zeith.thaumicadditions.api.data.ISimpleDataProvider$2.get(ISimpleDataProvider.java:36)
+	at org.zeith.thaumicadditions.api.data.IDataProvider$1.get(IDataProvider.java:26)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.get(DataProviderRegistry.java:47)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.lambda$all$1(DataProviderRegistry.java:34)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.ArrayList$ArrayListSpliterator.tryAdvance(ArrayList.java:1361)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:499)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:486)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:531)
+	at org.zeith.thaumicadditions.api.data.DataProviderRegistry.first(DataProviderRegistry.java:40)
+	at org.zeith.thaumicadditions.api.data.datas.JarData.fromStack(JarData.java:61)
+	at org.zeith.thaumicadditions.client.isr.ItemRenderJar.renderItem(ItemRenderJar.java:73)
+	at com.zeitheron.hammercore.client.utils.ItemColorHelper.setTargetStackAndHandleRender(ItemColorHelper.java:120)
+	at net.minecraft.client.renderer.RenderItem.renderItem(RenderItem.java)
+	at net.minecraft.client.renderer.RenderItem.renderItemModelIntoGUI(RenderItem.java:308)
+
+-- Item being rendered --
+Details:
+	Item Type: org.zeith.thaumicadditions.blocks.BlockAbstractEssentiaJar$BlockAbstractJarItem@2e263107
+	Registry Name: thaumadditions:jar_brass
+	Item Aux: 0
+	Item NBT: null
+	Item Foil: false
+Stacktrace:
+	at net.minecraft.client.renderer.RenderItem.renderItemAndEffectIntoGUI(RenderItem.java:347)
+	at mezz.jei.plugins.vanilla.ingredients.item.ItemStackRenderer.render(ItemStackRenderer.java:29)
+
+-- Ingredient being rendered --
+Details:
+	Ingredient Mod: Thaumic Additions: Reconstructed
+	Ingredient Info: 1xtile.thaumadditions:jar_brass@0 thaumadditions:jar_brass
+Stacktrace:
+	at mezz.jei.util.ErrorUtil.createRenderIngredientException(ErrorUtil.java:256)
+	at mezz.jei.gui.ingredients.GuiIngredient.draw(GuiIngredient.java:172)
+	at mezz.jei.gui.ingredients.GuiIngredientGroup.draw(GuiIngredientGroup.java:157)
+	at mezz.jei.gui.recipes.RecipeLayout.drawRecipe(RecipeLayout.java:168)
+	at mezz.jei.gui.recipes.RecipesGui.drawScreen(RecipesGui.java:219)
+	at net.minecraftforge.client.ForgeHooksClient.drawScreen(ForgeHooksClient.java:396)
+	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1124)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1119)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:398)
+	at net.minecraft.client.main.Main.main(SourceFile:123)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraft.launchwrapper.Launch.launch(Launch.java:135)
+	at net.minecraft.launchwrapper.Launch.main(Launch.java:28)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at net.minecraftforge.gradle.GradleStartCommon.launch(GradleStartCommon.java:97)
+	at GradleStart.main(GradleStart.java:25)
+
+-- Screen render details --
+Details:
+	Screen name: mezz.jei.gui.recipes.RecipesGui
+	Mouse location: Scaled: (324, 69). Absolute: (1296, 725)
+	Screen size: Scaled: (480, 251). Absolute: (1920, 1001). Scale factor of 4
+
+-- Affected level --
+Details:
+	Level name: MpServer
+	All players: 1 total; [EntityPlayerSP['Player546'/899, l='MpServer', x=146.00, y=74.00, z=252.57]]
+	Chunk stats: MultiplayerChunkCache: 441, 441
+	Level seed: 0
+	Level generator: ID 00 - default, ver 1. Features enabled: false
+	Level generator options: 
+	Level spawn location: World: (148,64,256), Chunk: (at 4,4,0 in 9,16; contains blocks 144,0,256 to 159,255,271), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Level time: 136454 game time, 120559 day time
+	Level dimension: 0
+	Level storage version: 0x00000 - Unknown?
+	Level weather: Rain time: 0 (now: false), thunder time: 0 (now: false)
+	Level game mode: Game mode: survival (ID 0). Hardcore: false. Cheats: false
+	Forced entities: 128 total; [EntitySkeleton['Skeleton'/10753, l='MpServer', x=148.50, y=35.00, z=247.50], EntityCreeper['Creeper'/8706, l='MpServer', x=140.21, y=67.00, z=279.49], EntityCow['Cow'/770, l='MpServer', x=203.73, y=71.00, z=190.82], EntityCreeper['Creeper'/8708, l='MpServer', x=131.82, y=67.00, z=286.50], EntityCow['Cow'/772, l='MpServer', x=206.16, y=70.00, z=229.55], EntityHorse['Horse'/774, l='MpServer', x=194.11, y=70.00, z=244.12], EntityHorse['Horse'/775, l='MpServer', x=206.99, y=70.00, z=291.96], EntityZombie['Zombie'/10765, l='MpServer', x=132.50, y=67.00, z=291.50], EntityZombie['Zombie'/10766, l='MpServer', x=132.50, y=67.00, z=294.50], EntityZombie['Zombie'/11535, l='MpServer', x=79.50, y=40.00, z=182.50], EntityPig['Pig'/784, l='MpServer', x=213.52, y=70.00, z=225.87], EntitySkeleton['Skeleton'/11536, l='MpServer', x=85.50, y=40.00, z=184.50], EntityPig['Pig'/785, l='MpServer', x=216.39, y=70.00, z=231.29], EntityHorse['Horse'/786, l='MpServer', x=218.91, y=70.00, z=288.39], EntityZombie['Zombie'/10517, l='MpServer', x=170.50, y=25.00, z=199.50], EntitySpider['Spider'/11541, l='MpServer', x=185.95, y=68.00, z=200.56], EntitySkeleton['Skeleton'/11800, l='MpServer', x=155.50, y=23.00, z=261.50], EntitySkeleton['Skeleton'/11801, l='MpServer', x=155.25, y=23.00, z=264.45], EntitySkeleton['Skeleton'/11290, l='MpServer', x=114.50, y=37.00, z=325.50], EntitySkeleton['Skeleton'/11802, l='MpServer', x=153.50, y=23.00, z=262.50], EntitySkeleton['Skeleton'/10526, l='MpServer', x=184.50, y=68.00, z=201.50], EntityAuraNode['entity.AuraNode.name'/544, l='MpServer', x=8.50, y=64.50, z=393.50], EntityZombie['Zombie'/10285, l='MpServer', x=79.50, y=63.00, z=206.50], EntityCultistPortalLesser['Lesser Crimson Portal'/7986, l='MpServer', x=154.50, y=72.00, z=306.50], EntityAuraNode['entity.AuraNode.name'/822, l='MpServer', x=251.50, y=71.50, z=372.50], EntityCreeper['Creeper'/10299, l='MpServer', x=223.50, y=26.00, z=241.50], EntityCreeper['Creeper'/11328, l='MpServer', x=166.50, y=49.00, z=192.50], EntityCreeper['Creeper'/11329, l='MpServer', x=165.50, y=49.00, z=192.50], EntityCreeper['Creeper'/10050, l='MpServer', x=134.50, y=11.00, z=184.50], EntityCreeper['Creeper'/11330, l='MpServer', x=161.87, y=48.00, z=194.15], EntityAuraNode['entity.AuraNode.name'/579, l='MpServer', x=62.50, y=63.50, z=351.50], EntityCow['Cow'/589, l='MpServer', x=76.94, y=63.00, z=219.09], EntityBat['Bat'/11085, l='MpServer', x=154.75, y=35.10, z=239.75], EntityPig['Pig'/590, l='MpServer', x=69.30, y=63.00, z=227.23], EntityZombie['Zombie'/10574, l='MpServer', x=190.50, y=37.00, z=220.50], EntityBat['Bat'/11855, l='MpServer', x=122.75, y=31.96, z=217.75], EntityCow['Cow'/592, l='MpServer', x=74.51, y=63.00, z=301.85], EntityCow['Cow'/593, l='MpServer', x=73.50, y=64.00, z=314.78], EntityCreeper['Creeper'/10579, l='MpServer', x=196.50, y=71.00, z=204.50], EntityWitch['Witch'/8534, l='MpServer', x=167.33, y=72.00, z=288.55], EntityZombie['Zombie'/8536, l='MpServer', x=147.30, y=69.00, z=297.70], EntityBat['Bat'/10840, l='MpServer', x=93.61, y=41.95, z=186.45], EntityZombie['Zombie'/11616, l='MpServer', x=134.50, y=18.00, z=206.73], EntityCow['Cow'/610, l='MpServer', x=82.45, y=63.00, z=213.55], EntityBat['Bat'/10082, l='MpServer', x=87.30, y=22.10, z=225.30], EntitySkeleton['Skeleton'/11618, l='MpServer', x=141.53, y=48.00, z=202.73], EntityCow['Cow'/611, l='MpServer', x=85.11, y=63.00, z=211.49], EntityPig['Pig'/612, l='MpServer', x=84.08, y=63.00, z=211.51], EntityCow['Cow'/617, l='MpServer', x=85.51, y=63.00, z=329.23], EntityAuraNode['entity.AuraNode.name'/618, l='MpServer', x=84.50, y=63.50, z=345.50], EntityCreeper['Creeper'/10355, l='MpServer', x=172.70, y=73.00, z=326.70], EntityCow['Cow'/630, l='MpServer', x=115.17, y=64.00, z=187.86], EntityCow['Cow'/631, l='MpServer', x=102.80, y=66.00, z=210.49], EntitySheep['Sheep'/636, l='MpServer', x=110.50, y=67.00, z=251.21], EntityCow['Cow'/637, l='MpServer', x=102.39, y=64.00, z=287.07], EntityCow['Cow'/638, l='MpServer', x=107.79, y=65.00, z=287.58], EntitySkeleton['Skeleton'/10110, l='MpServer', x=128.73, y=72.00, z=225.35], EntityZombie['Zombie'/10878, l='MpServer', x=115.50, y=66.00, z=293.50], EntityCow['Cow'/639, l='MpServer', x=100.51, y=64.00, z=286.82], EntityZombie['Zombie'/10880, l='MpServer', x=119.50, y=66.00, z=293.50], EntityPlayerSP['Player546'/899, l='MpServer', x=154.41, y=81.00, z=286.99], EntityPlayerSP['Player546'/899, l='MpServer', x=146.00, y=74.00, z=252.57], EntitySheep['Sheep'/650, l='MpServer', x=120.54, y=84.00, z=174.71], EntityCow['Cow'/651, l='MpServer', x=112.92, y=63.00, z=192.15], EntitySquid['Squid'/9617, l='MpServer', x=100.40, y=61.00, z=225.40], EntitySquid['Squid'/9618, l='MpServer', x=99.77, y=62.09, z=231.72], EntityCow['Cow'/658, l='MpServer', x=115.81, y=65.00, z=286.50], EntityCow['Cow'/660, l='MpServer', x=124.18, y=67.00, z=301.51], EntityZombie['Zombie'/11925, l='MpServer', x=130.24, y=32.00, z=237.53], EntityCreeper['Creeper'/11927, l='MpServer', x=196.50, y=41.00, z=219.50], EntityCreeper['Creeper'/11419, l='MpServer', x=198.50, y=42.00, z=218.50], EntityCreeper['Creeper'/11164, l='MpServer', x=154.18, y=23.00, z=262.50], EntityCreeper['Creeper'/11420, l='MpServer', x=197.50, y=42.00, z=218.50], EntityBat['Bat'/10141, l='MpServer', x=153.52, y=38.06, z=197.75], EntityCreeper['Creeper'/11165, l='MpServer', x=149.50, y=24.00, z=266.50], EntitySpider['Spider'/11421, l='MpServer', x=129.50, y=24.00, z=254.50], EntityBat['Bat'/11933, l='MpServer', x=97.55, y=25.73, z=195.49], EntityZombie['Zombie'/11166, l='MpServer', x=152.50, y=24.00, z=259.50], EntityBat['Bat'/11934, l='MpServer', x=100.70, y=26.02, z=198.93], EntityAuraNode['entity.AuraNode.name'/673, l='MpServer', x=136.50, y=72.50, z=182.50], EntityCow['Cow'/674, l='MpServer', x=142.48, y=74.00, z=191.20], EntitySheep['Sheep'/675, l='MpServer', x=139.52, y=79.00, z=202.26], EntityCow['Cow'/676, l='MpServer', x=132.45, y=69.00, z=199.51], EntityBat['Bat'/10916, l='MpServer', x=147.75, y=35.88, z=327.26], EntitySheep['Sheep'/677, l='MpServer', x=142.54, y=75.00, z=193.19], EntityCow['Cow'/679, l='MpServer', x=138.67, y=83.00, z=212.81], EntityCow['Cow'/680, l='MpServer', x=137.71, y=83.00, z=212.85], EntityBat['Bat'/11944, l='MpServer', x=103.62, y=32.34, z=225.72], EntityCow['Cow'/681, l='MpServer', x=131.23, y=80.00, z=221.63], EntityItem['item.tile.sapling.big_oak'/10157, l='MpServer', x=152.19, y=77.00, z=282.09], EntitySkeleton['Skeleton'/11950, l='MpServer', x=148.50, y=26.00, z=327.50], EntityZombie['Zombie'/11439, l='MpServer', x=161.23, y=46.00, z=329.50], EntitySkeleton['Skeleton'/11951, l='MpServer', x=150.50, y=26.00, z=324.50], EntityBat['Bat'/11188, l='MpServer', x=94.20, y=41.39, z=187.04], EntityBat['Bat'/11189, l='MpServer', x=108.34, y=33.03, z=173.52], EntitySkeleton['Skeleton'/11957, l='MpServer', x=91.50, y=26.00, z=213.50], EntityBat['Bat'/11190, l='MpServer', x=104.04, y=35.46, z=172.41], EntityCow['Cow'/705, l='MpServer', x=157.55, y=72.00, z=194.55], EntityCow['Cow'/706, l='MpServer', x=158.45, y=72.00, z=195.45], EntityCow['Cow'/707, l='MpServer', x=146.41, y=80.00, z=205.78], EntityCow['Cow'/711, l='MpServer', x=148.53, y=71.00, z=318.15], EntityZombie['Zombie'/10186, l='MpServer', x=75.75, y=63.00, z=208.45], EntityZombie['Zombie'/10958, l='MpServer', x=187.50, y=71.00, z=279.50], EntityZombie['Zombie'/11472, l='MpServer', x=104.50, y=35.00, z=212.50], EntitySpider['Spider'/10193, l='MpServer', x=190.50, y=71.00, z=307.50], EntityZombieVillager['Zombie Villager'/10963, l='MpServer', x=148.81, y=30.00, z=324.51], EntityCreeper['Creeper'/10967, l='MpServer', x=142.50, y=33.00, z=272.50], EntityPig['Pig'/731, l='MpServer', x=169.35, y=68.00, z=200.22], EntityWitch['Witch'/11227, l='MpServer', x=168.50, y=17.00, z=246.75], EntityCow['Cow'/734, l='MpServer', x=167.80, y=74.00, z=221.30], EntityHorse['Horse'/736, l='MpServer', x=169.00, y=72.00, z=287.14], EntityHorse['Horse'/737, l='MpServer', x=158.03, y=74.00, z=309.38], EntityCow['Cow'/738, l='MpServer', x=165.83, y=71.00, z=243.66], EntityHorse['Horse'/739, l='MpServer', x=161.30, y=74.00, z=311.30], EntitySheep['Sheep'/740, l='MpServer', x=160.05, y=74.00, z=310.45], EntityBat['Bat'/11492, l='MpServer', x=122.48, y=31.45, z=228.69], EntityCow['Cow'/741, l='MpServer', x=162.75, y=75.00, z=329.55], EntitySheep['Sheep'/742, l='MpServer', x=168.75, y=76.00, z=331.52], EntityBat['Bat'/11496, l='MpServer', x=122.15, y=21.96, z=226.98], EntityCreeper['Creeper'/11245, l='MpServer', x=121.50, y=20.00, z=222.78], EntityRabbit['Rabbit'/755, l='MpServer', x=188.80, y=70.00, z=186.09], EntityCow['Cow'/756, l='MpServer', x=180.85, y=69.00, z=187.83], EntitySkeleton['Skeleton'/11252, l='MpServer', x=95.50, y=25.00, z=206.50], EntityPig['Pig'/759, l='MpServer', x=185.75, y=71.00, z=214.54], EntityCow['Cow'/760, l='MpServer', x=194.41, y=70.00, z=203.85], EntitySkeleton['Skeleton'/9467, l='MpServer', x=128.30, y=74.00, z=239.70], EntityHorse['Horse'/766, l='MpServer', x=182.00, y=71.00, z=272.08], EntitySkeleton['Skeleton'/11006, l='MpServer', x=121.50, y=31.00, z=232.50]]
+	Retry entities: 0 total; []
+	Server brand: fml,forge
+	Server type: Integrated singleplayer server
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 1087256120 bytes (1036 MB) / 2222456832 bytes (2119 MB) up to 3661627392 bytes (3492 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2820 24 mods loaded, 24 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                   | Version                 | Source                                         | Signature                                |
+	|:------ |:-------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft            | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCHIJA | mcp                  | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | FML                  | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | forge                | 14.23.5.2820            | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | mixinbooter          | 4.2                     | minecraft.jar                                  | None                                     |
+	| LCHIJA | baubles              | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCHIJA | thaumcraft           | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCHIJA | jei                  | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCHIJA | thaumicforever       | 1.0                     | ThaumicForever-3.1.4.jar                       | None                                     |
+	| LCHIJA | hammercore           | 12.2.50                 | HammerLib-1.12.2-12.2.50.jar                   | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | waila                | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LCHIJA | thaumicaugmentation  | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LCHIJA | thaumicwonders       | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LCHIJA | planarartifice       | 1.4.0-pre7              | planarartifice-1.4.0-pre7 (5).jar              | None                                     |
+	| LCHIJA | tg                   | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LCHIJA | thaumadditions       | 12.7.9                  | ThaumicAdditions-1.12.2-12.7.9.jar             | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | thaumicbases         | 3.6.011.0               | thaumicbases-3.6.011.0.jar                     | None                                     |
+	| LCHIJA | thaumicjei           | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LCHIJA | thaumictinkerer      | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LCHIJA | thaumicwands         | 1.5.0                   | thaumicwands-1.5.4.jar                         | None                                     |
+	| LCHIJA | keletupack           | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+	| LCHIJA | thaumtweaks          | 0.3.5.3                 | thaumtweaks-0.3.5.3 (2).jar                    | None                                     |
+	| LCHIJA | immersiveengineering | 0.12-98                 | ImmersiveEngineering_0.12_98 (2).jar           | None                                     |
+	| LCHIJA | oldresearch          | 1.1.3                   | oldresearch-1.1.3 (1).jar                      | None                                     |
+
+	Loaded coremods (and transformers): 
+IELoadingPlugin (ImmersiveEngineering-core-0.12-98.jar)
+  blusunrize.immersiveengineering.common.asm.IEClassTransformer
+Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  leppa.planarartifice.core.PATransformer
+OldResearchCore (oldresearch-1.1.3 (1).jar)
+  
+TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  org.zeith.thaumicadditions.asm.TARTransformer
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+HCASM (HammerLib-1.12.2-12.2.50.jar)
+  com.zeitheron.hammercore.asm.HammerCoreTransformer
+MixinBooter (!mixinbooter-4.2 (1).jar)
+  
+	GL info: ' Vendor: 'NVIDIA Corporation' Version: '4.6.0 NVIDIA 537.42' Renderer: 'NVIDIA GeForce GTX 1650/PCIe/SSE2'
+	HammerCore Debug Information: 
+		Dependent Mods:
+			-Thaumic Additions: Reconstructed (thaumadditions) @ 12.7.9
+
+	Launched Version: 1.12.2
+	LWJGL: 2.9.4
+	OpenGL: NVIDIA GeForce GTX 1650/PCIe/SSE2 GL version 4.6.0 NVIDIA 537.42, NVIDIA Corporation
+	GL Caps: Using GL 1.3 multitexturing.
+Using GL 1.3 texture combiners.
+Using framebuffer objects because OpenGL 3.0 is supported and separate blending is supported.
+Shaders are available because OpenGL 2.1 is supported.
+VBOs are available because OpenGL 1.5 is supported.
+
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'fml,forge'
+	Type: Client (map_client.txt)
+	Resource Packs: 
+	Current Language: English (US)
+	Profiler Position: N/A (disabled)
+	CPU: 12x AMD Ryzen 5 5500U with Radeon Graphics 

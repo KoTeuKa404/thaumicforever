@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/duplicator",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:duplicator" }],
+    "inventory": [{ "model": "thaumicforever:duplicator"}]
+  }
+}
