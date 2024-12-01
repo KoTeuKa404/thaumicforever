@@ -26,7 +26,7 @@ public class FocusEffectMindControl extends FocusEffect {
 
     @Override
     public int getComplexity() {
-        return 11; 
+        return 19; 
     }
 
     @Override

@@ -49,7 +49,7 @@ public class CustomSalisMundusRecipe extends IForgeRegistryEntry.Impl<IRecipe> i
                 }
                 crystals.add(aspect);
             } else {
-                return false; // Неправильний інгредієнт
+                return false; 
             }
         }
 

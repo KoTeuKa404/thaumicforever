@@ -21,7 +21,6 @@ import net.minecraft.world.World;
 public class DoubleTableBlock extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-    // Налаштування розмірів хітбокса для кожної сторони
     protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 2.0D, 1.0D, 1.0D);
     protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(-1.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
     protected static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, -1.0D, 1.0D, 1.0D, 1.0D);

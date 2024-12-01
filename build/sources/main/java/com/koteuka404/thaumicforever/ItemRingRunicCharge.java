@@ -17,7 +17,7 @@ public class ItemRingRunicCharge extends Item implements IBauble {
         this.setUnlocalizedName("ring_runic_charge");
         this.setRegistryName("ring_runic_charge");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.TOOLS); // або інший таб
+        this.setCreativeTab(CreativeTabs.TOOLS); 
     }
 
     @Override
@@ -35,6 +35,6 @@ public class ItemRingRunicCharge extends Item implements IBauble {
     }
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.RARE; // Встановлення рідкості на EPIC
+        return EnumRarity.RARE;
     }
 }

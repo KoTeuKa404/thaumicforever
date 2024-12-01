@@ -18,7 +18,6 @@ public class RecipeCrucible {
     public static final String MODID = "thaumicforever"; // Заміни на свій модифікатор ID
 
     public static void addCrucibleRecipes() {
-        // Рецепти для Crucible
 
         ResourceLocation recipeKey = new ResourceLocation(MODID, "netherrack_recipe");
         CrucibleRecipe netherrackRecipe = new CrucibleRecipe(
@@ -60,9 +59,9 @@ public class RecipeCrucible {
 
         ResourceLocation slimeRecipeKey = new ResourceLocation(ThaumicForever.MODID, "slime_ball_recipe");
         CrucibleRecipe slimeRecipe = new CrucibleRecipe(
-            "HERBAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.SLIME_BALL), // Вихідний предмет (Slime Ball)
-            new ItemStack(Items.SNOWBALL), // Вхідний предмет (Snowball)
+            "HERBAALKIMIA",  
+            new ItemStack(Items.SLIME_BALL), 
+            new ItemStack(Items.SNOWBALL), 
             new AspectList()
                 .add(Aspect.LIFE, 10) // Victus
                 .add(Aspect.WATER, 5) // Aqua
@@ -74,23 +73,23 @@ public class RecipeCrucible {
 
         ResourceLocation dyeRecipeKey = new ResourceLocation(ThaumicForever.MODID, "dye_green_recipe");
         CrucibleRecipe dyeRecipe = new CrucibleRecipe(
-            "HERBAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.DYE, 1, 3), // Вихідний предмет (Dye:3 - Cactus Green)
-            new ItemStack(Items.WHEAT_SEEDS), // Вхідний предмет (Wheat Seeds)
+            "HERBAALKIMIA",  
+            new ItemStack(Items.DYE, 1, 3), 
+            new ItemStack(Items.WHEAT_SEEDS), 
             new AspectList()
-                .add(Aspect.EXCHANGE, 10) // Permutatio (EXCHANGE)
-                .add(Aspect.BEAST, 5) // Bestia (BEAST)
-                .add(Aspect.PLANT, 5) // Herba (PLANT)
-                .add(Aspect.EARTH, 3) // Terra (EARTH)
+                .add(Aspect.EXCHANGE, 10) // Permutatio
+                .add(Aspect.BEAST, 5) // Bestia ()
+                .add(Aspect.PLANT, 5) // Herba ()
+                .add(Aspect.EARTH, 3) // Terra ()
         );
 
         ThaumcraftApi.addCrucibleRecipe(dyeRecipeKey, dyeRecipe);
         
         ResourceLocation waterLilyRecipeKey = new ResourceLocation(ThaumicForever.MODID, "waterlily_recipe");
         CrucibleRecipe waterLilyRecipe = new CrucibleRecipe(
-            "HERBAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Blocks.WATERLILY), // Вихідний предмет (Water Lily)
-            OreDictionary.getOres("treeLeaves").get(0), // Вхідний предмет (будь-яке листя дерева)
+            "HERBAALKIMIA",  
+            new ItemStack(Blocks.WATERLILY), 
+            OreDictionary.getOres("treeLeaves").get(0), 
             new AspectList()
                 .add(Aspect.WATER, 3) // Aqua
                 .add(Aspect.PLANT, 5) // Herba
@@ -100,9 +99,9 @@ public class RecipeCrucible {
 
         ResourceLocation gravelRecipeKey = new ResourceLocation(ThaumicForever.MODID, "gravel_recipe");
         CrucibleRecipe gravelRecipe = new CrucibleRecipe(
-            "TERRAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Blocks.GRAVEL), // Вихідний предмет (Gravel)
-            new ItemStack(Blocks.COBBLESTONE), // Вхідний предмет (Cobblestone)
+            "TERRAALKIMIA",  
+            new ItemStack(Blocks.GRAVEL),
+            new ItemStack(Blocks.COBBLESTONE),
             new AspectList()
                 .add(Aspect.ENTROPY, 1) // Perditio
         );
@@ -112,7 +111,7 @@ public class RecipeCrucible {
 
         ResourceLocation voidIngotRecipeKey = new ResourceLocation(ThaumicForever.MODID, "void_ingot_recipe");
         CrucibleRecipe voidIngotRecipe = new CrucibleRecipe(
-            "BASEELDRITCH", // Унікальний ключ для рецепту
+            "BASEELDRITCH",  
             new ItemStack(ItemsTC.ingots, 1, 1),
             new ItemStack(ItemsTC.voidSeed),
             new AspectList()
@@ -127,7 +126,7 @@ public class RecipeCrucible {
 
         ResourceLocation blacklotusRecipeKey = new ResourceLocation(ThaumicForever.MODID, "blacklotus_recipe");
         CrucibleRecipe blacklotusRecipe = new CrucibleRecipe(
-            "BOTANIAALKIMIA", // Унікальний ключ для рецепту
+            "BOTANIAALKIMIA",  
             new ItemStack(Item.getByNameOrId("botania:blacklotus")),            
             new ItemStack(Items.ENDER_PEARL),
             new AspectList()
@@ -139,21 +138,19 @@ public class RecipeCrucible {
 
 
 
-        // Створюємо ключ для рецепту Brass Ingot
         ResourceLocation brassIngotRecipeKey = new ResourceLocation(ThaumicForever.MODID, "brass_ingot_recipe");
 
 
         // Створюємо рецепт для казана
         CrucibleRecipe brassIngotRecipe = new CrucibleRecipe(
-            "BASEALCHEMY", // Унікальний ключ для дослідження латуні (замість BASEELDRITCH)
+            "BASEALCHEMY", 
             new ItemStack(ItemsTC.ingots, 1, 2),            
-            "ingotCopper", // Вхідний предмет (Iron Ingot)
+            "ingotCopper",
             new AspectList()
                 .add(Aspect.TOOL, 5)    // Metallum
                 .add(Aspect.FIRE,1)    // Ordo
         );
 
-        // Реєструємо рецепт у Thaumcraft API
         ThaumcraftApi.addCrucibleRecipe(brassIngotRecipeKey, brassIngotRecipe);
 
 
@@ -164,9 +161,9 @@ public class RecipeCrucible {
 
         ResourceLocation reedsRecipeKey = new ResourceLocation(ThaumicForever.MODID, "reeds_recipe");
         CrucibleRecipe reedsRecipe = new CrucibleRecipe(
-            "HERBAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.REEDS), // Вихідний предмет (Reeds - Sugar Cane)
-            new ItemStack(Items.WHEAT), // Вхідний предмет (Wheat)
+            "HERBAALKIMIA",  
+            new ItemStack(Items.REEDS), 
+            new ItemStack(Items.WHEAT), 
             new AspectList()
                 .add(Aspect.AIR, 3) // Aer
                 .add(Aspect.WATER, 2) // Aqua
@@ -175,9 +172,9 @@ public class RecipeCrucible {
 
         ResourceLocation MAGIC_DUSTRecipeKey = new ResourceLocation(ThaumicForever.MODID, "MAGIC_DUST");
         CrucibleRecipe MAGIC_DUSTRecipe = new CrucibleRecipe(
-            "PRAECANTATIOALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(ModItems.MAGIC_DUST), // Вхідний предмет (Wheat)
-            new ItemStack(ItemsTC.salisMundus), // Вхідний предмет (Wheat)
+            "PRAECANTATIOALKIMIA",  
+            new ItemStack(ModItems.MAGIC_DUST), 
+            new ItemStack(ItemsTC.salisMundus),
             new AspectList()
                 .add(Aspect.SOUL, 3) // Aer
                 .add(Aspect.MIND, 2) // Aqua
@@ -187,11 +184,11 @@ public class RecipeCrucible {
 
         ResourceLocation ghastTearRecipeKey = new ResourceLocation(ThaumicForever.MODID, "ghast_tear_recipe");
         CrucibleRecipe ghastTearRecipe = new CrucibleRecipe(
-            "TENEBRAEALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.GHAST_TEAR), // Вихідний предмет (Ghast Tear)
-            new ItemStack(Items.DIAMOND), // Вхідний предмет (Diamond)
+            "TENEBRAEALKIMIA",  
+            new ItemStack(Items.GHAST_TEAR),
+            new ItemStack(Items.DIAMOND), 
             new AspectList()
-                .add(Aspect.FIRE, 10) // Infernus (в оригіналі немає такого аспекту, припускаю, що це FIRE)
+                .add(Aspect.FIRE, 10) // Fire 
                 .add(Aspect.SOUL, 10) // Spiritus
                 .add(Aspect.UNDEAD, 10) // Exanimis
                 .add(Aspect.MAGIC, 5) // Praecantatio
@@ -202,9 +199,9 @@ public class RecipeCrucible {
 
         ResourceLocation featherRecipeKey = new ResourceLocation(ThaumicForever.MODID, "feather_recipe");
         CrucibleRecipe featherRecipe = new CrucibleRecipe(
-            "VICTUSALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.FEATHER), // Вихідний предмет (Feather)
-            new ItemStack(Items.STRING), // Вхідний предмет (String)
+            "VICTUSALKIMIA",  
+            new ItemStack(Items.FEATHER),
+            new ItemStack(Items.STRING), 
             new AspectList()
                 .add(Aspect.FLIGHT, 5) // Volatus
                 .add(Aspect.AIR, 10) // Aer
@@ -214,9 +211,9 @@ public class RecipeCrucible {
 
         ResourceLocation pufferfishRecipeKey = new ResourceLocation(ThaumicForever.MODID, "pufferfish_recipe");
         CrucibleRecipe pufferfishRecipe = new CrucibleRecipe(
-            "VICTUSALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.FISH, 1, 3), // Вихідний предмет (Fish:3 - Pufferfish)
-            new ItemStack(Items.FISH), // Вхідний предмет (звичайна риба)
+            "VICTUSALKIMIA",  
+            new ItemStack(Items.FISH, 1, 3),
+            new ItemStack(Items.FISH), 
             new AspectList()
                 .add(Aspect.AVERSION, 5) // Aversio
                 .add(Aspect.DEATH, 5) // Mortuus
@@ -226,21 +223,21 @@ public class RecipeCrucible {
 
         ResourceLocation emeraldRecipeKey = new ResourceLocation(ThaumicForever.MODID, "emerald_recipe");
         CrucibleRecipe emeraldRecipe = new CrucibleRecipe(
-            "PRAECANTATIOALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.EMERALD), // Вихідний предмет (Emerald)
-            new ItemStack(Items.DIAMOND), // Вхідний предмет (Diamond)
+            "PRAECANTATIOALKIMIA",  
+            new ItemStack(Items.EMERALD),
+            new ItemStack(Items.DIAMOND), 
             new AspectList()
                 .add(Aspect.EXCHANGE, 5) // Permutatio
-                .add(Aspect.MAGIC, 5) // Tinctura (у Thaumcraft 4 це був аспект Potentia, зараз аналогічний аспект - Praecantatio)
+                .add(Aspect.MAGIC, 5) 
         );
         
         ThaumcraftApi.addCrucibleRecipe(emeraldRecipeKey, emeraldRecipe);
 
         ResourceLocation netherWartRecipeKey = new ResourceLocation(ThaumicForever.MODID, "nether_wart_recipe");
         CrucibleRecipe netherWartRecipe  = new CrucibleRecipe(
-            "TENEBRAEALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.NETHER_WART), // Вихідний предмет (Nether Wart)
-            new ItemStack(Items.WHEAT_SEEDS), // Вхідний предмет (Wheat Seeds)
+            "TENEBRAEALKIMIA",  
+            new ItemStack(Items.NETHER_WART),
+            new ItemStack(Items.WHEAT_SEEDS), 
             new AspectList()
                 .add(Aspect.ALCHEMY, 3) // Alkimia
                 .add(Aspect.FLUX, 5) // Vitium
@@ -250,9 +247,9 @@ public class RecipeCrucible {
 
         ResourceLocation enderPearlRecipeKey = new ResourceLocation(ThaumicForever.MODID, "ender_pearl_recipe");
         CrucibleRecipe enderPearlRecipe = new CrucibleRecipe(
-            "TENEBRAEALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.ENDER_PEARL), // Вихідний предмет (Ender Pearl)
-            new ItemStack(Items.DIAMOND), // Вхідний предмет (Diamond)
+            "TENEBRAEALKIMIA",  
+            new ItemStack(Items.ENDER_PEARL),
+            new ItemStack(Items.DIAMOND), 
             new AspectList()
                 .add(Aspect.MOTION, 10) // Motus
                 .add(Aspect.MAGIC, 15) // Praecantatio
@@ -263,9 +260,9 @@ public class RecipeCrucible {
 
         ResourceLocation waterBucketRecipeKey = new ResourceLocation(ThaumicForever.MODID, "water_bucket_recipe");
         CrucibleRecipe waterBucketRecipe = new CrucibleRecipe(
-            "NEWALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.WATER_BUCKET), // Вихідний предмет (Water Bucket)
-            new ItemStack(Items.BUCKET), // Вхідний предмет (Empty Bucket)
+            "NEWALKIMIA",  
+            new ItemStack(Items.WATER_BUCKET), 
+            new ItemStack(Items.BUCKET),
             new AspectList()
                 .add(Aspect.WATER, 10) // Aqua
         );
@@ -274,9 +271,9 @@ public class RecipeCrucible {
 
         ResourceLocation beetrootSeedsRecipeKey = new ResourceLocation(ThaumicForever.MODID, "beetroot_seeds_recipe");
         CrucibleRecipe beetrootSeedsRecipe = new CrucibleRecipe(
-            "HERBAALKIMIA", // Унікальний ключ для рецепту
-            new ItemStack(Items.BEETROOT_SEEDS), // Вихідний предмет (Beetroot Seeds)
-            new ItemStack(Items.WHEAT_SEEDS), // Вхідний предмет (Wheat Seeds)
+            "HERBAALKIMIA",  
+            new ItemStack(Items.BEETROOT_SEEDS),
+            new ItemStack(Items.WHEAT_SEEDS),
             new AspectList()
                 .add(Aspect.DESIRE, 1) // Desiderium
         );
@@ -290,7 +287,6 @@ public class RecipeCrucible {
             Aspect DRACO = Aspect.getAspect("draco");
         
             if (DRACO == null) {
-                System.out.println("Aspect 'draco' is not registered or could not be found.");
             } else {
                 ResourceLocation dragonBreathRecipeKey = new ResourceLocation(MODID, "dragon_breath_recipe");
         
@@ -299,48 +295,40 @@ public class RecipeCrucible {
                     new ItemStack(Items.DRAGON_BREATH),
                     new ItemStack(Items.GLASS_BOTTLE),
                     new AspectList()
-                        .add(DRACO, 5) // Використання аспекту Draco
+                        .add(DRACO, 5) // Draco
                         .add(Aspect.ALCHEMY, 3) // Alkimia
                         .add(Aspect.DARKNESS, 8) // Tenebrae
                 );
         
                 ThaumcraftApi.addCrucibleRecipe(dragonBreathRecipeKey, dragonBreathRecipe);
-                System.out.println("Dragon Breath recipe registered successfully.");
             }
-        } else {
-            // Логування або дія, якщо ThaumicAdditions не встановлено
-            System.out.println();
         }
 
 
         if (Loader.isModLoaded("oldresearch")) {
-            // Реєстрація рецепту для Thaumcraft Curio (індекс 7)
             ResourceLocation curioRecipeKey = new ResourceLocation(MODID, "curio_recipe");
             
             CrucibleRecipe curioRecipe = new CrucibleRecipe(
-                "FIRSTSTEPS", // Унікальний ключ для рецепту
-                new ItemStack(Item.getByNameOrId("thaumcraft:curio"), 1, 7), // Вихідний предмет (Curio з індексом 7)
-                new ItemStack(Items.BOOK), // Вхідний предмет (Book)
+                "FIRSTSTEPS",  
+                new ItemStack(Item.getByNameOrId("thaumcraft:curio"), 1, 7),
+                new ItemStack(Items.BOOK),
                 new AspectList()
                     .add(Aspect.MIND, 5) // Cognitio
             );
 
             ThaumcraftApi.addCrucibleRecipe(curioRecipeKey, curioRecipe);
-        } else {
-            // Логування або дія, якщо oldresearch не встановлено
-            System.out.println();
         }
 
 
 
         ResourceLocation ironIngotRecipeKey = new ResourceLocation(ThaumicForever.MODID, "iron_ingot_recipe");
-        ItemStack ironIngotOutput = new ItemStack(Items.IRON_INGOT, 2); // Створення двох залізних злитків
-        ItemStack oreIronInput = OreDictionary.getOres("ingotIron").get(0); // Вхідний предмет з Ore Dictionary (будь-який предмет з тегом ingotIron)
+        ItemStack ironIngotOutput = new ItemStack(Items.IRON_INGOT, 2);
+        ItemStack oreIronInput = OreDictionary.getOres("ingotIron").get(0);
         
         CrucibleRecipe ironIngotRecipe = new CrucibleRecipe(
-            "TERRAALKIMIA", // Унікальний ключ для рецепту
-            ironIngotOutput, // Вихідний предмет (два залізних злитки)
-            oreIronInput, // Вхідний предмет (будь-який предмет з тегом ingotIron)
+            "TERRAALKIMIA",  
+            ironIngotOutput,
+            oreIronInput, 
             new AspectList()
                 .add(Aspect.METAL, 30) // Metallum
         );
@@ -350,11 +338,10 @@ public class RecipeCrucible {
 
 
 
-        // Реєстрація рецепту для Ice з використанням специфічного кристала Aqua
         ResourceLocation iceRecipeKey = new ResourceLocation(MODID, "ice_recipe");
         CrucibleRecipe iceRecipe = new CrucibleRecipe(
-            "AQUAALKIMIA", // Унікальний ключ для дослідження
-            new ItemStack(Blocks.ICE), // Вихідний предмет (Ice)
+            "AQUAALKIMIA", 
+            new ItemStack(Blocks.ICE),
             ThaumcraftApiHelper.makeCrystal(Aspect.WATER),
                         new AspectList()
                 .add(Aspect.WATER, 3) // Aqua
@@ -368,11 +355,10 @@ public class RecipeCrucible {
        
 
        
-        // Реєстрація рецепту для Snowball з використанням специфічного кристала Aqua
         ResourceLocation snowballRecipeKey = new ResourceLocation(MODID, "snowball_recipe");
         CrucibleRecipe snowballRecipe = new CrucibleRecipe(
-            "AQUAALKIMIA", // Унікальний ключ для дослідження
-            new ItemStack(Items.SNOWBALL), // Вихідний предмет (Snowball)
+            "AQUAALKIMIA",
+            new ItemStack(Items.SNOWBALL),
             ThaumcraftApiHelper.makeCrystal(Aspect.WATER),
             new AspectList()
                 .add(Aspect.WATER, 2) // Aqua
@@ -382,12 +368,11 @@ public class RecipeCrucible {
         ThaumcraftApi.addCrucibleRecipe(snowballRecipeKey, snowballRecipe);
 
 
-        // Реєстрація рецепту для Packed Ice з Ice
         ResourceLocation packedIceRecipeKey = new ResourceLocation(MODID, "packed_recipe");
         CrucibleRecipe packedIceRecipe = new CrucibleRecipe(
-            "AQUAALKIMIA", // Унікальний ключ для дослідження
-            new ItemStack(Blocks.PACKED_ICE), // Вихідний предмет (Packed Ice)
-            new ItemStack(Blocks.ICE), // Вхідний предмет (Ice)
+            "AQUAALKIMIA",
+            new ItemStack(Blocks.PACKED_ICE), 
+            new ItemStack(Blocks.ICE),
             new AspectList()
                 .add(Aspect.WATER, 3) // Aqua
                 .add(Aspect.COLD, 7) // Gelum
@@ -396,11 +381,10 @@ public class RecipeCrucible {
         ThaumcraftApi.addCrucibleRecipe(packedIceRecipeKey, packedIceRecipe);
         
         
-        // Chromium Cluster Recipe
         ResourceLocation chromiumRecipeKey = new ResourceLocation("thaumicforever", "chromium_cluster_recipe");
         CrucibleRecipe chromiumClusterRecipe = new CrucibleRecipe(
             "IUALKIMIA", 
-            new ItemStack(ModItems.CLUSTER, 1, 0), // 0 - мета для хрому
+            new ItemStack(ModItems.CLUSTER, 1, 0),
             "oreChromium", 
             new AspectList().add(Aspect.ORDER, 10).add(Aspect.EARTH, 5)
         );
@@ -410,7 +394,7 @@ public class RecipeCrucible {
         ResourceLocation iridiumRecipeKey = new ResourceLocation("thaumicforever", "iridium_cluster_recipe");
         CrucibleRecipe iridiumClusterRecipe = new CrucibleRecipe(
             "IUALKIMIA", 
-            new ItemStack(ModItems.CLUSTER, 1, 1), // 1 - мета для іридію
+            new ItemStack(ModItems.CLUSTER, 1, 1),
             "oreIridium", 
             new AspectList().add(Aspect.ORDER, 10).add(Aspect.EARTH, 5)
         );
@@ -420,7 +404,7 @@ public class RecipeCrucible {
         ResourceLocation quartzRecipeKey = new ResourceLocation("thaumicforever", "quartz_cluster_recipe");
         CrucibleRecipe quartzClusterRecipe = new CrucibleRecipe(
             "APPLIDALKIMIA", 
-            new ItemStack(ModItems.CLUSTER, 1, 2), // 2 - мета для кварцу
+            new ItemStack(ModItems.CLUSTER, 1, 2),
             "oreCertusQuartz", 
             new AspectList().add(Aspect.ORDER, 10).add(Aspect.EARTH, 5)
         );
@@ -430,7 +414,7 @@ public class RecipeCrucible {
         ResourceLocation chargedQuartzRecipeKey = new ResourceLocation("thaumicforever", "charged_quartz_cluster_recipe");
         CrucibleRecipe chargedQuartzClusterRecipe = new CrucibleRecipe(
             "APPLIDALKIMIA", 
-            new ItemStack(ModItems.CLUSTER, 1, 3), // 2 - мета для кварцу
+            new ItemStack(ModItems.CLUSTER, 1, 3),
             "oreChargedCertusQuartz", 
             new AspectList().add(Aspect.ORDER, 10).add(Aspect.EARTH, 5)
         );

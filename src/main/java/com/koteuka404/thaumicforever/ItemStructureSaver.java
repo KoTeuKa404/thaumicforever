@@ -2,22 +2,22 @@ package com.koteuka404.thaumicforever;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import net.minecraftforge.common.DimensionManager;
+import net.minecraft.world.gen.structure.template.Template;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 
 public class ItemStructureSaver extends Item {
     private BlockPos firstCorner = null;
@@ -32,11 +32,10 @@ public class ItemStructureSaver extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (!world.isRemote) {
-            ItemStack heldItem = player.getHeldItem(hand);
             if (player.isSneaking()) {
                 secondCorner = player.getPosition();
                 player.sendMessage(new TextComponentString("Second corner set at: " + secondCorner));
-                if (firstCorner != null && secondCorner != null) {
+                if (firstCorner != null) {
                     saveStructure(world, player);
                 }
             } else {
@@ -60,46 +59,50 @@ public class ItemStructureSaver extends Item {
         int maxY = Math.max(firstCorner.getY(), secondCorner.getY());
         int maxZ = Math.max(firstCorner.getZ(), secondCorner.getZ());
 
-        NBTTagCompound structureData = new NBTTagCompound();
-        NBTTagList blockList = new NBTTagList();
+        BlockPos startPos = new BlockPos(minX, minY, minZ);
+        BlockPos size = new BlockPos(maxX - minX + 1, maxY - minY + 1, maxZ - minZ + 1);
 
-        for (int x = minX; x <= maxX; x++) {
-            for (int y = minY; y <= maxY; y++) {
-                for (int z = minZ; z <= maxZ; z++) {
-                    BlockPos pos = new BlockPos(x, y, z);
-                    IBlockState state = world.getBlockState(pos);
-                    NBTTagCompound blockData = new NBTTagCompound();
-                    blockData.setInteger("x", x - minX);
-                    blockData.setInteger("y", y - minY);
-                    blockData.setInteger("z", z - minZ);
-                    blockData.setString("block", state.getBlock().getRegistryName().toString());
-                    blockData.setInteger("meta", state.getBlock().getMetaFromState(state));
-                    blockList.appendTag(blockData);
-                }
-            }
+        MinecraftServer server = world.getMinecraftServer();
+        if (server == null) {
+            player.sendMessage(new TextComponentString("Failed to access Minecraft server."));
+            return;
         }
 
-        structureData.setTag("blocks", blockList);
-        structureData.setInteger("sizeX", maxX - minX + 1);
-        structureData.setInteger("sizeY", maxY - minY + 1);
-        structureData.setInteger("sizeZ", maxZ - minZ + 1);
-
-        File saveDir = new File(DimensionManager.getCurrentSaveRootDirectory(), "structures");
-        if (!saveDir.exists()) {
-            saveDir.mkdirs();
-        }
-        File structureFile = new File(saveDir, "saved_structure.nbt");
+        TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
+        Template template = new Template();
 
         try {
-            CompressedStreamTools.writeCompressed(structureData, new FileOutputStream(structureFile));
-            player.sendMessage(new TextComponentString("Structure saved successfully at: " + structureFile.getAbsolutePath()));
-        } catch (IOException e) {
-            player.sendMessage(new TextComponentString("Failed to save structure: " + e.getMessage()));
+            // Capture blocks from the world into the template
+            template.takeBlocksFromWorld(world, startPos, size, true, null);
+
+            // Define the name and location for the template
+            ResourceLocation templateName = new ResourceLocation("thaumicforever", "saved_structure");
+
+            // Save the Template
+            File saveDir = new File(server.getWorld(0).getSaveHandler().getWorldDirectory(), "structures");
+            if (!saveDir.exists() && !saveDir.mkdirs()) {
+                player.sendMessage(new TextComponentString("Failed to create structures directory!"));
+                return;
+            }
+
+            File structureFile = new File(saveDir, templateName.getResourcePath() + ".nbt");
+
+            // Write the structure to a file
+            NBTTagCompound nbt = template.writeToNBT(new NBTTagCompound());
+            try (FileOutputStream fos = new FileOutputStream(structureFile)) {
+                CompressedStreamTools.writeCompressed(nbt, fos);
+            }
+
+            player.sendMessage(new TextComponentString("Structure saved successfully as: " + structureFile.getAbsolutePath()));
+        } catch (Exception e) {
+            player.sendMessage(new TextComponentString("Unexpected error occurred: " + e.getMessage()));
+            e.printStackTrace();
         }
 
         firstCorner = null;
         secondCorner = null;
     }
+
     @Override
     public boolean hasEffect(ItemStack stack) {
         return true;

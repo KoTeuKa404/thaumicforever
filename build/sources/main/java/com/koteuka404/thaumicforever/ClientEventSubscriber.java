@@ -16,11 +16,9 @@ public class ClientEventSubscriber {
 
     @SubscribeEvent
     public void onModelRegister(ModelRegistryEvent event) {
-        // Реєстрація моделей тут, якщо потрібно
     }
 
     @SubscribeEvent
     public void onRenderPlayer(RenderPlayerEvent.Post event) {
-        // Код для рендерингу моделі на гравцеві під час події рендерингу
     }
 }

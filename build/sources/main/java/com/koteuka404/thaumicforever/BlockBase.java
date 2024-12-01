@@ -13,19 +13,18 @@ public class BlockBase extends Block {
         super(material);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setHardness(5.0F); // Міцність на рівні заліза
-        setResistance(10.0F); // Опір вибухам на рівні заліза
-        setHarvestLevel("pickaxe", 2); // Необхідний рівень інструменту - залізна кирка
+        setHardness(5.0F); 
+        setResistance(10.0F); 
+        setHarvestLevel("pickaxe", 2); 
     }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        // Повертає предмет, який випадає при зламуванні блоку
         return Item.getItemFromBlock(this);
     }
 
     @Override
     public int quantityDropped(Random random) {
-        return 1; // Кількість предметів, які випадають при ламанні
+        return 1; 
     }
 }

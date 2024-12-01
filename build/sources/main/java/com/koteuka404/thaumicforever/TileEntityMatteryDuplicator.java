@@ -23,7 +23,7 @@ import thaumcraft.api.crafting.ContainerDummy;
 
 public class TileEntityMatteryDuplicator extends TileEntity implements IInventory, ITickable, IAspectContainer, IEssentiaTransport {
 
-    private ItemStack[] inventory = new ItemStack[10]; // 9 crafting slots and 1 output slot
+    private ItemStack[] inventory = new ItemStack[10];
     private String customName;
     private InventoryCrafting craftMatrix = new InventoryCrafting(new ContainerDummy(), 3, 3);
 
@@ -44,35 +44,28 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
     @Override
     public void update() {
         if (!world.isRemote) {
-            // Поглинаємо есенсію з сусідніх контейнерів без змін
             fillWithEssentia();
     
-            // Створюємо результат крафту лише якщо інвентар змінився
             ItemStack result = previousResult;
             if (inventoryChanged) {
                 result = createCraftingResult();
-                previousResult = result; // Зберігаємо результат для подальших перевірок
-                inventoryChanged = false; // Скидаємо прапорець зміни інвентарю
+                previousResult = result; 
+                inventoryChanged = false;
             }
     
-            // Отримуємо поточний результат зі слота виходу
             ItemStack currentResult = getStackInSlot(9);
     
-            // Якщо результат крафту існує і є достатньо есенсії для крафту
             if (!result.isEmpty() && hasEnoughEssentia()) {
-                // Якщо в слоті результату порожньо, ми можемо крафтити
                 if (currentResult.isEmpty()) {
-                    setInventorySlotContents(9, result.copy()); // Встановлюємо результат у слот виходу
-                    // НЕ витрачаємо есенсію тут
+                    setInventorySlotContents(9, result.copy()); 
+                  
                 }
             } else {
-                // Якщо недостатньо есенсії або результат не може бути крафтований, очищаємо слот результату
                 if (!currentResult.isEmpty()) {
                     setInventorySlotContents(9, ItemStack.EMPTY);
                 }
             }
     
-            // Позначаємо блок для оновлення тільки якщо є зміни
             if (inventoryChanged || (!result.isEmpty() && currentResult.isEmpty())) {
                 markForUpdate();
             }
@@ -80,18 +73,16 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
     }
     
 
-    // Метод для витрати есенсії після того, як гравець забрав результат крафту
     public void consumeEssentia() {
         if (essentiaAmount >= ESSENTIA_COST) {
             essentiaAmount -= ESSENTIA_COST;
             if (essentiaAmount < 0) {
-                essentiaAmount = 0; // Захист від негативної кількості есенсії
+                essentiaAmount = 0;
             }
-            markForUpdate(); // Синхронізуємо зміни
+            markForUpdate();
         }
     }
 
-    // Метод для поглинання есенсії з сусідніх контейнерів
     private void fillWithEssentia() {
         for (EnumFacing facing : EnumFacing.values()) {
             TileEntity te = world.getTileEntity(pos.offset(facing));
@@ -114,13 +105,11 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
         }
     }
 
-    // Метод для перевірки наявності достатньої кількості есенсії
     public boolean hasEnoughEssentia() {
         return essentiaAmount >= ESSENTIA_COST;
     }
 
 
-    // Метод для створення результату крафту
     private ItemStack createCraftingResult() {
         for (int i = 0; i < 9; i++) {
             if (inventory[i] == null) {
@@ -137,11 +126,10 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
         return ItemStack.EMPTY;
     }
     
-    // Інші необхідні методи для IInventory та синхронізації TileEntity
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
         inventory[index] = stack != null ? stack : ItemStack.EMPTY;
-        inventoryChanged = true; // Позначаємо, що інвентар змінився
+        inventoryChanged = true; 
         markDirty();
     }
     
@@ -153,7 +141,7 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
     }
 
     private void markForUpdate() {
-        markDirty(); // Позначаємо об'єкт як змінений
+        markDirty(); 
         if (world != null) {
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
             world.markBlockRangeForRenderUpdate(pos, pos);
@@ -220,7 +208,6 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
         }
     }
 
-    // Методи для IAspectContainer та IEssentiaTransport
     @Override
     public AspectList getAspects() {
         AspectList aspects = new AspectList();
@@ -230,7 +217,6 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
 
     @Override
     public void setAspects(AspectList aspects) {
-        // Нічого не робимо, оскільки ми не використовуємо цей метод у нашому випадку.
     }
 
     @Override
@@ -335,7 +321,6 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
 
     @Override
     public void setSuction(Aspect aspect, int amount) {
-        // Не використовується
     }
 
     @Override

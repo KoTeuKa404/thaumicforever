@@ -13,7 +13,7 @@ public class IronRing extends Item implements IBauble {
         this.setUnlocalizedName("iron_ring");
         this.setRegistryName("iron_ring");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.TOOLS); // або інший таб
+        this.setCreativeTab(CreativeTabs.TOOLS); 
     }
 
     @Override

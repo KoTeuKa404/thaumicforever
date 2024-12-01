@@ -20,23 +20,21 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenThaumicHouse implements IWorldGenerator {
 
-    // Посилання на луттейбл
     public static final ResourceLocation HOUSE_LOOT_TABLE = new ResourceLocation("thaumicforever", "chests/house");
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Генерація тільки в Overworld
+        if (world.provider.getDimension() == 0) { 
             Biome targetBiome = Biome.REGISTRY.getObject(new ResourceLocation("thaumcraft", "magical_forest"));
             Biome biome = world.getBiome(new BlockPos(chunkX * 16, 0, chunkZ * 16));
 
-            if (biome == targetBiome && random.nextInt(2) == 0) {  // Спавн тільки в магічному лісі з шансом 1/400
+            if (biome == targetBiome && random.nextInt(200) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
                 int y = world.getHeight(x, z);
 
                 BlockPos pos = new BlockPos(x, y, z);
 
-                // Перевірка: блок під обраною позицією має бути природним (трава, земля тощо) і не мати над собою блоків
                 if (isValidGround(world, pos.down()) && world.canSeeSky(pos)) {
                     TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
                     Template template = templateManager.getTemplate(world.getMinecraftServer(), new ResourceLocation("thaumicforever", "thaumic_house"));
@@ -44,7 +42,6 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
                     if (template != null) {
                         template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
 
-                        // Додаємо лут у сундуки структури
                         generateLootInChests(world, pos);
                     }
                 }
@@ -61,9 +58,7 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
     }
     
     private void generateStructure(World world, BlockPos pos, Random random) {
-        // Тут має бути логіка завантаження та розміщення структури
 
-        // Додаємо метод, який перевіряє блоки на наявність сундуків
         generateLootInChests(world, pos);
     }
 
@@ -75,7 +70,6 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
                     TileEntity tileEntity = world.getTileEntity(checkPos);
 
                     if (tileEntity instanceof TileEntityLockableLoot) {
-                        // Призначаємо луттейбл сундуку
                         ((TileEntityLockableLoot) tileEntity).setLootTable(HOUSE_LOOT_TABLE, world.rand.nextLong());
                     }
                 }

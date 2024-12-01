@@ -14,8 +14,8 @@ public class GuiMatteryDuplicator extends GuiContainer {
         super(new ContainerMatteryDuplicator(playerInventory, tileEntity));
         this.playerInventory = playerInventory;
         this.tileEntity = tileEntity;
-        this.xSize = 220; // Стандартна ширина GUI
-        this.ySize = 220; // Стандартна висота GUI
+        this.xSize = 220;
+        this.ySize = 220;
     }
 
     @Override

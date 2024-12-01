@@ -62,13 +62,14 @@ public class ModItems {
     public static final Item OldBone = new Item().setUnlocalizedName("oldbone").setRegistryName("oldbone").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item EMPTY_FOCUS = new Item().setUnlocalizedName("empty_focus").setRegistryName("empty_focus").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Item ETERNAL_BLADE = new ItemEternalBlade();
-    public static final Item BOWL_TREATMEAT = new BowlTreatMeat();
-    public static final Item BOWL_ZOMBIE = new BowlZombie();
+    public static final Item ETERNAL_BLADE = new ItemEternalBlade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item BOWL_TREATMEAT = new BowlTreatMeat().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item BOWL_ZOMBIE = new BowlZombie().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ELDTRITCH_EYE_AMULET = new EldritchEyeAmulet();
     public static final Item ItemStructureSaver = new ItemStructureSaver();
     public static final Item ItemStructureSpawner = new ItemStructureSpawner();
-    public static final Item RavenCloakBauble = new RavenCloakBauble();
+    public static final Item RavenCloakBauble = new RavenCloakItem().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item ItemBoneBlade = new ItemBoneBlade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -113,8 +114,8 @@ public class ModItems {
             ELDTRITCH_EYE_AMULET,
             ItemStructureSaver,
             ItemStructureSpawner,
-            RavenCloakBauble
-            
+            RavenCloakBauble,
+            ItemBoneBlade
 
         );
     }
@@ -170,6 +171,7 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemStructureSaver, 0, new ModelResourceLocation(ModItems.ItemStructureSaver.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemStructureSpawner, 0, new ModelResourceLocation(ModItems.ItemStructureSpawner.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.RavenCloakBauble, 0, new ModelResourceLocation(ModItems.RavenCloakBauble.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.ItemBoneBlade, 0, new ModelResourceLocation(ModItems.ItemBoneBlade.getRegistryName(), "inventory"));
 
     } 
 

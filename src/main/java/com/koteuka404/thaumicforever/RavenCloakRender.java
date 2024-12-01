@@ -1,30 +1,31 @@
 package com.koteuka404.thaumicforever;
-import baubles.api.render.IRenderBauble;
+
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.util.ResourceLocation;
 
-public class RavenCloakRender implements IRenderBauble {
-    private final RavenCloakModel model;
+public class RavenCloakRender extends RenderLiving<EntityLiving> {
+    private static final ResourceLocation TEXTURE = new ResourceLocation("thaumicforever:textures/entity/raven_cloak3.png");
 
-    public RavenCloakRender() {
-        this.model = new RavenCloakModel();
+    public RavenCloakRender(RenderManager renderManager) {
+        super(renderManager, new RavenCloakModel(), 0.5f);
     }
 
     @Override
-public void onPlayerBaubleRender(ItemStack itemStack, EntityPlayer player, RenderType renderType, float partialTicks) {
-    if (renderType == RenderType.BODY) {
-        System.out.println("Rendering cloak on player: " + player.getName());
+    protected ResourceLocation getEntityTexture(EntityLiving entity) {
+        return TEXTURE;
+    }
+
+    @Override
+    protected void preRenderCallback(EntityLiving entity, float partialTickTime) {
+        // Тестування масштабування і зміщення
         GlStateManager.pushMatrix();
+        GlStateManager.scale(0.06F, 0.06F, 0.06F); // зменшення моделі для тестування
+        GlStateManager.translate(0.0F, 1.5F, 0.0F); // зміщення для тестування
 
-        GlStateManager.translate(0.0F, 1.5F, 0.0F);
-        GlStateManager.scale(1.0F, -1.0F, -1.0F);
-
-        this.model.render(player, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
-
+        super.preRenderCallback(entity, partialTickTime);
         GlStateManager.popMatrix();
     }
-}
-
-
 }

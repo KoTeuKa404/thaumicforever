@@ -28,7 +28,7 @@ public class WorldGenHilltopStones implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Генерація тільки в Overworld
+        if (world.provider.getDimension() == 0) { 
             if (random.nextInt(400) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
@@ -37,14 +37,13 @@ public class WorldGenHilltopStones implements IWorldGenerator {
                 BlockPos pos = new BlockPos(x, y, z);
 
                 if (y >= 65 && isSkyOpen(world, pos) && isValidGround(world, pos.down())) {
-                    if (canPlaceStructureHere(world, pos, 8, 8, 8)) {  // Розмір структури 8x8x8 (можна налаштувати)
+                    if (canPlaceStructureHere(world, pos, 8, 8, 8)) { 
                         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
                         Template template = templateManager.getTemplate(world.getMinecraftServer(), new ResourceLocation("thaumicforever", "hilltop_stones"));
 
                         if (template != null) {
                             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
 
-                            // Генерація лута в звичайних сундуках
                             generateLootInChests(world, pos);
 
                          } 
@@ -62,7 +61,6 @@ public class WorldGenHilltopStones implements IWorldGenerator {
                     TileEntity tileEntity = world.getTileEntity(checkPos);
                     
                     if (tileEntity instanceof TileEntityLockableLoot) {
-                        // Призначаємо лут-таблицю звичайному сундуку
                         ((TileEntityLockableLoot) tileEntity).setLootTable(HILLTOP_STONES_LOOT_TABLE, world.rand.nextLong());
                     }
                 }

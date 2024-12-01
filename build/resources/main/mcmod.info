@@ -1,13 +1,13 @@
 [
 {
   "modid": "thaumicforever",
-  "name": "Thaumic Forever Mod",
-  "description": "A Thaumic Forever!",
-  "version": "4.0.2",
+  "name": "Thaumic Forever",
+  "description": "A mod for extending Thaumcraft functionalities."
+  "version": "4.1.3",
   "mcversion": "1.12.2",
   "url": "",
   "updateUrl": "",
-  "authorList": [""],
+  "authorList": ["KoTeuKa404"],
   "credits": ",
   "logoFile": "TCLogo.png",
   "screenshots": [],

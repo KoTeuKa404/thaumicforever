@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 
 public class RainCauldronFiller {
 
-    private static final int CHECK_INTERVAL = 100; // Частота перевірок (раз на 100 тіків)
+    private static final int CHECK_INTERVAL = 100; 
     private int tickCounter = 0;
 
     @SubscribeEvent
@@ -20,32 +20,27 @@ public class RainCauldronFiller {
         if (tickCounter < CHECK_INTERVAL) {
             return;
         }
-        tickCounter = 0; // Скидання лічильника після перевірки
+        tickCounter = 0; 
 
         World world = event.world;
 
-        // Перевірка, чи йде дощ та чи світ не є пустелею (де дощ неможливий)
         if (world.isRaining()) {
-            // Ітерація по кожному гравцеві для визначення розташування котлів у їхній околиці
             world.playerEntities.forEach(player -> {
                 BlockPos playerPos = player.getPosition();
                 Random random = world.rand;
 
-                // Перевіряємо кілька блоків навколо гравця (напр., у радіусі 10 блоків, перевіряємо випадковий блок)
-                for (int i = 0; i < 5; i++) { // Обмежуємо кількість перевірених блоків до 5 за раз
+                for (int i = 0; i < 5; i++) { 
                     int xOffset = random.nextInt(21) - 10;
                     int zOffset = random.nextInt(21) - 10;
                     BlockPos cauldronPos = playerPos.add(xOffset, 0, zOffset);
                     IBlockState state = world.getBlockState(cauldronPos);
 
-                    // Перевірка, чи блок є котлом
                     if (state.getBlock() instanceof BlockCauldron) {
                         int level = state.getValue(BlockCauldron.LEVEL);
 
-                        // Наповнюємо котел на один шар, якщо його рівень води менший за максимум (3)
+                        
                         if (level < 3) {
-                            // Додаємо шанс наповнення, щоб це відбувалось поступово
-                            if (random.nextInt(100) < 60) { // 10% ймовірності раз на 100 тіків
+                            if (random.nextInt(100) < 60) { 
                                 world.setBlockState(cauldronPos, state.withProperty(BlockCauldron.LEVEL, level + 1), 2);
                             }
                         }

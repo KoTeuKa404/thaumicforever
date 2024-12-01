@@ -57,19 +57,15 @@ public class SkeletonReviveModel extends ModelBase {
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
         this.head.rotateAngleX = headPitch * 0.017453292F;
 
-        // Анімація для стрибка: перевірка, чи моб у стрибку
         
-            // Отримуємо гравця, який знаходиться поруч
             EntityPlayer player = entityIn.world.getClosestPlayerToEntity(entityIn, 10.0D);
             double distanceToPlayer = player != null ? entityIn.getDistance(player) : 10.0D;
 
-            // Поступове обмеження амплітуди анімації при наближенні гравця
             float animationScale = 1.0F;
             if (distanceToPlayer < 2.0) {
-                animationScale = (float) distanceToPlayer / 2.0F; // Зменшує амплітуду при близькій відстані
+                animationScale = (float) distanceToPlayer / 2.0F; 
             }
 
-            // Звичайна анімація ходьби з урахуванням `animationScale`
             this.rightArm.rotateAngleX = (float) (Math.cos(limbSwing * 0.6662F + Math.PI) * 2.0F * limbSwingAmount * 0.5F * animationScale);
             this.leftArm.rotateAngleX = (float) (Math.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F * animationScale);
             this.rightLeg.rotateAngleX = (float) (Math.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount * animationScale);

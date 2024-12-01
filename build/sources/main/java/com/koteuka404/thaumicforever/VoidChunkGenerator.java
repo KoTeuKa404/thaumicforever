@@ -34,57 +34,52 @@ public class VoidChunkGenerator implements IChunkGenerator {
     @Override
     public void populate(int x, int z) {
         if (isPopulating) {
-            return;  // Уникаємо повторної популяції
+            return;  
         }
         
-        isPopulating = true;  // Встановлюємо прапорець, що процес популяції запущений
+        isPopulating = true; 
         
         try {
             long chunkPos = ChunkPos.asLong(x, z);
 
             if (populatedChunks.contains(chunkPos)) {
-                return; // Пропускаємо, якщо цей чанк вже був заселений
+                return; 
             }
 
             populatedChunks.add(chunkPos);
 
-            // Генерація коробки з бар'єрів 3x3 чанки на 25 блоків у висоту
             BlockPos spawnPos = new BlockPos(x * 16, 64, z * 16);  // Позиція спавну
             generateBarrierCube(this.world, spawnPos);
         } finally {
-            isPopulating = false;  // Вимикаємо прапорець після завершення
+            isPopulating = false;  
         }
     }
 
     private void generateBarrierCube(World world, BlockPos centerPos) {
-        int chunkWidth = 16; // ширина одного чанка
-        int structureSize = 3 * chunkWidth; // 3x3 чанки = 48 блоків по ширині
-        int height = 25; // Висота структури 25 блоків
+        int chunkWidth = 16;
+        int structureSize = 3 * chunkWidth; 
+        int height = 25;
         
-        int halfWidth = structureSize / 2; // Половина ширини для правильного центрованого розміщення
+        int halfWidth = structureSize / 2; 
         
-        // Проходимо через всі координати куба
         for (int x = -halfWidth; x <= halfWidth; x++) {
             for (int y = 0; y <= height; y++) {
                 for (int z = -halfWidth; z <= halfWidth; z++) {
                     BlockPos pos = centerPos.add(x, y, z);
                     
-                    // Створюємо тільки стіни, підлогу та стелю (тобто зовнішній куб)
                     if (x == -halfWidth || x == halfWidth || z == -halfWidth || z == halfWidth || y == 0 || y == height) {
                         if (world.getBlockState(pos).getBlock() != Blocks.BARRIER) {
                             world.setBlockState(pos, Blocks.BARRIER.getDefaultState(), 2 | 4 | 16);
                         }
                     } else {
-                        // Всередині куба все очищаємо (повітря)
                         world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2 | 4 | 16);
                     }
                 }
             }
         }
         
-        // Спавн гравця в центрі структури (наприклад, на висоті 2 блоки від підлоги)
         BlockPos spawnPos = centerPos.add(0, 2, 0);
-        world.setSpawnPoint(spawnPos);  // Встановлюємо точку спавну
+        world.setSpawnPoint(spawnPos); 
     }
     
     
@@ -93,26 +88,25 @@ public class VoidChunkGenerator implements IChunkGenerator {
 
     @Override
     public boolean generateStructures(Chunk chunkIn, int x, int z) {
-        return false; // Не генеруємо структури
+        return false; 
     }
 
     @Override
     public BlockPos getNearestStructurePos(World worldIn, String structureName, BlockPos position, boolean flag) {
-        return null; // Не генеруємо структури
+        return null;
     }
 
     @Override
     public void recreateStructures(Chunk chunkIn, int x, int z) {
-        // Структури не потрібні в цьому вимірі
     }
 
     @Override
     public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
-        return false; // Структури не підтримуються
+        return false;
     }
 
     @Override
     public List<SpawnListEntry> getPossibleCreatures(EnumCreatureType creatureType, BlockPos pos) {
-        return Collections.emptyList(); // Порожній список, без спавну істот
+        return Collections.emptyList();
     }
 }

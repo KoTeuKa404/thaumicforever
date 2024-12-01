@@ -32,7 +32,7 @@ public class ArmorStandToMannequinHandler {
 
                     armorStand.setDead();
 
-                    EntityGuardianMannequin guardianMannequin = new EntityGuardianMannequin(world, player); // Створюємо манекен з передачею власника
+                    EntityGuardianMannequin guardianMannequin = new EntityGuardianMannequin(world, player); 
                     guardianMannequin.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
                     world.spawnEntity(guardianMannequin);
 

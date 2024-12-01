@@ -19,24 +19,19 @@ public class InfusionEnchantmentRecipeFM extends InfusionRecipe {
     @Override
     public Object getRecipeOutput(EntityPlayer player, ItemStack input, List<ItemStack> comps) {
         if (input == null || input.isEmpty()) {
-            return input; // Return the original item if no valid output
+            return input; 
         }
 
-        // Copy the input item so we can apply the enchantment to the copy
         ItemStack output = input.copy();
 
-        // Get the current level of the enchantment on the item
         int currentLevel = EnumInfusionEnchantment.getInfusionEnchantmentLevel(output, this.enchantment);
 
-        // If the current level is already at the maximum, return the original item
         if (currentLevel >= this.enchantment.maxLevel) {
             return input;
         }
 
-        // Apply the enchantment to the item with the new level
         EnumInfusionEnchantment.addInfusionEnchantment(output, this.enchantment, currentLevel + 1);
 
-        // Return the modified item with the NBT tag
         return output;
     }
 }

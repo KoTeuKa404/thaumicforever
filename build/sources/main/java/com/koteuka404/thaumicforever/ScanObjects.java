@@ -10,34 +10,38 @@ import thaumcraft.api.research.ScanningManager;
 
 public class ScanObjects implements IScanThing {
 
-    private final String researchKeyBlock = "!aquareia_ore_scan"; // Унікальний ключ для блоку
-    private final String researchKeyItem = "!aquareia_gem_scan";  // Унікальний ключ для предмета
-    private final String researchKeyEntity = "!armor_stand_scan"; // Унікальний ключ для стійки для броні
+    private final String researchKeyBlock = "!aquareia_ore_scan"; 
+    private final String researchKeyItem = "!aquareia_gem_scan";  
+    private final String researchKeyEntity = "!armor_stand_scan";
+    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; // Ключ для EntitySkeletonAngry
+    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; // Ключ для ReviveSkeletonEntity
 
     public ScanObjects() {
-        // Реєстрація сканування для блоку, предмета та ентиті
         ScanningManager.addScannableThing(this);
     }
 
     @Override
     public boolean checkThing(EntityPlayer player, Object obj) {
-        // Перевірка блоку
         if (obj instanceof BlockPos) {
             if (player.world.getBlockState((BlockPos) obj).getBlock() == ModOreBlocks.AQUAREIA_ORE) {
                 return true;
             }
         }
-        // Перевірка предмета
         if (obj instanceof ItemStack) {
             ItemStack stack = (ItemStack) obj;
             if (stack.getItem() == ModItems.AQUAREIA_GEM) {
                 return true;
             }
         }
-        // Перевірка ентиті (стійка для броні)
         if (obj instanceof Entity) {
             Entity entity = (Entity) obj;
             if (entity instanceof EntityArmorStand) {
+                return true;
+            }
+            if (entity instanceof EntitySkeletonAngry) { // Перевірка на EntitySkeletonAngry
+                return true;
+            }
+            if (entity instanceof ReviveSkeletonEntity) { // Перевірка на ReviveSkeletonEntity
                 return true;
             }
         }
@@ -52,8 +56,16 @@ public class ScanObjects implements IScanThing {
         if (object instanceof ItemStack) {
             return researchKeyItem;
         }
-        if (object instanceof Entity && object instanceof EntityArmorStand) {
-            return researchKeyEntity;
+        if (object instanceof Entity) {
+            if (object instanceof EntityArmorStand) {
+                return researchKeyEntity;
+            }
+            if (object instanceof EntitySkeletonAngry) { // Ключ для EntitySkeletonAngry
+                return researchKeySkeletonAngry;
+            }
+            if (object instanceof ReviveSkeletonEntity) { // Ключ для ReviveSkeletonEntity
+                return researchKeySkeletonRevive;
+            }
         }
         return null;
     }

@@ -178,6 +178,54 @@ public class InfusionRecipes {
 
                 }
             ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:CLOAK"), new InfusionRecipe(
+                "CLOAK",   
+                new ItemStack(ModItems.RavenCloakBauble),   
+                3,  
+                new AspectList()
+                    .add(Aspect.MOTION, 100)
+                    .add(Aspect.DARKNESS, 60)
+                    .add(Aspect.VOID, 60)
+                    .add(Aspect.FLIGHT, 40),
+                new ItemStack(Items.LEATHER_CHESTPLATE),    
+                new Object[] {
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.DYE,1,0)
+                   
+                }
+            ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:time_stone"), new InfusionRecipe(
+                "TIMESTONE",   
+                new ItemStack(ModBlocks.BlockTimeStone),   
+                3,  
+                new AspectList()
+                    .add(Aspect.ORDER, 80)
+                    .add(Aspect.ENTROPY, 60)
+                    .add(Aspect.VOID, 60)
+                    .add(Aspect.ENERGY, 80)
+                    .add(Aspect.SENSES, 60)
+                    .add(Aspect.DESIRE, 60)
+                    .add(Aspect.ELDRITCH, 80),
+                new ItemStack(Blocks.GOLD_BLOCK),    
+                new Object[] {
+                    new ItemStack(ItemsTC.primordialPearl),      // Первісна перлина
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),             // Око Ендермена
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.quicksilver),          // Ртуть
+                    new ItemStack(Blocks.BEACON),
+                    new ItemStack(ItemsTC.mechanismComplex),      // Простий механізм
+                    new ItemStack(Items.NETHER_STAR)            // Зоря Пекла
+                   
+                }
+            ));
 
         
     }

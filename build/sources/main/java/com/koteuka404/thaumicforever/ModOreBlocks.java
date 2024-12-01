@@ -22,7 +22,6 @@ public class ModOreBlocks {
     public static final Block LEAD_ORE = new OreBlock("lead_ore", 4.0F, 3.0F, 0);
     public static final Block SILVER_ORE = new OreBlock("silver_ore", 4.0F, 3.0F, 0);
 
-    // Нові руди
     public static final Block ANCIENT_COAL = new OreBlock("ancient_coal", 3.0F, 3.0F, 0);
     public static final Block ANCIENT_GOLD = new OreBlock("ancient_gold", 3.0F, 3.0F, 0);
     public static final Block ANCIENT_IRON = new OreBlock("ancient_iron", 3.0F, 3.0F, 0);

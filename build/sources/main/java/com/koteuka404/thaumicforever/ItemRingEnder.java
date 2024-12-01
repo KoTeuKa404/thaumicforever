@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 
 public class ItemRingEnder extends Item implements IBauble {
 
-    private static final int TELEPORT_COOLDOWN_TICKS = 1600; // 80 секунд
-    private float lastHealth = -1.0f; // Для збереження попереднього стану здоров'я гравця
+    private static final int TELEPORT_COOLDOWN_TICKS = 1600; 
+    private float lastHealth = -1.0f; 
 
     public ItemRingEnder() {
         this.setUnlocalizedName("ring_ender");
@@ -34,24 +34,18 @@ public class ItemRingEnder extends Item implements IBauble {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
 
-            // Перевіряємо чи працює перезарядка
             if (player.getCooldownTracker().hasCooldown(this)) {
-                return; // Якщо кільце на перезарядці, нічого не робимо
+                return;
             }
 
-            // Перевіряємо, чи гравець отримав урон і чи його здоров'я менше 4 HP
             if (lastHealth > 0 && player.getHealth() < lastHealth && player.getHealth() <= 4.0f) {
-                // Телепортуємо гравця
                 if (teleportRandomly(player)) {
-                    // Встановлюємо перезарядку
                     player.getCooldownTracker().setCooldown(this, TELEPORT_COOLDOWN_TICKS);
 
-                    // Додаємо неуязвимість на 1 секунду
                     player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 5, false, false));
                 }
             }
 
-            // Оновлюємо останній стан здоров'я
             lastHealth = player.getHealth();
         }
     }
@@ -74,12 +68,10 @@ public class ItemRingEnder extends Item implements IBauble {
             blockpos = new BlockPos(x, y, z);
         }
 
-        // Якщо позиція телепортації не валідна, повертаємо false
         if (!world.getBlockState(blockpos).getMaterial().blocksMovement()) {
             return false;
         }
 
-        // Телепортація гравця
         player.setPositionAndUpdate(x, y, z);
         world.playSound(null, player.prevPosX, player.prevPosY, player.prevPosZ, SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, player.getSoundCategory(), 1.0F, 1.0F);
         player.playSound(SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, 1.0F, 1.0F);
@@ -89,6 +81,6 @@ public class ItemRingEnder extends Item implements IBauble {
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.EPIC; // Встановлення рідкості на EPIC
+        return EnumRarity.EPIC; 
     }
 }

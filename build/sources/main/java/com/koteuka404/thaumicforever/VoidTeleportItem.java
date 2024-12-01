@@ -13,7 +13,7 @@ import net.minecraft.world.WorldServer;
 public class VoidTeleportItem extends Item {
 
     public VoidTeleportItem() {
-        this.setMaxStackSize(1); // Старий спосіб встановлення розміру стека
+        this.setMaxStackSize(1); 
     }
 
     @Override
@@ -26,7 +26,7 @@ public class VoidTeleportItem extends Item {
                 spawnPos = worldServer.getSpawnPoint();
                 player.changeDimension(ModDimensions.VOID_DIMENSION.getId(), new CustomTeleporter(worldServer, spawnPos));
             } else {
-                spawnPos = world.getSpawnPoint(); // Повертаємося до Overworld
+                spawnPos = world.getSpawnPoint(); 
                 player.changeDimension(0, new CustomTeleporter(worldServer, spawnPos));
             }
         }

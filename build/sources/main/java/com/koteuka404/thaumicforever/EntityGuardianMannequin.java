@@ -120,7 +120,6 @@ public class EntityGuardianMannequin extends EntityCreature {
                 double armorValue = getArmorValue(stack);
                 double toughnessValue = getArmorToughness(stack);
 
-                // Зменшуємо вдвічі значення, якщо мод srparasites не встановлений
                 if (!isSRParasitesInstalled()) {
                     armorValue /= 2;
                     toughnessValue /= 2;
@@ -180,13 +179,13 @@ public class EntityGuardianMannequin extends EntityCreature {
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
         if (source.isFireDamage()) {
-            amount *= 2.0F; // Збільшуємо урон від вогню вдвічі
+            amount *= 2.0F; 
         }
 
         if (source.getTrueSource() instanceof EntityPlayer) {
             EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
             if (this.isOwner(attacker)) {
-                return super.attackEntityFrom(source, amount); // Дозволяємо атаку без помсти
+                return super.attackEntityFrom(source, amount); 
             }
         }
 
@@ -216,7 +215,6 @@ public class EntityGuardianMannequin extends EntityCreature {
             attackDamage += 4.0F;
         }
 
-        // Зменшуємо урон вдвічі, якщо мод srparasites не встановлений
         if (!isSRParasitesInstalled()) {
             attackDamage /= 2;
         }
@@ -253,7 +251,7 @@ public class EntityGuardianMannequin extends EntityCreature {
         if (potioneffectIn.getPotion() == MobEffects.POISON || potioneffectIn.getPotion() == MobEffects.WITHER) {
             return false;
         }
-        return true; // Дозволяємо всі інші ефекти.
+        return true;
     }
 
     @Override

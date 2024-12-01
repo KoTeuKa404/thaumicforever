@@ -22,17 +22,17 @@ public class FocusEffectCalm extends FocusEffect {
 
     @Override
     public String getResearch() {
-        return "FOCUSCALM";  // Назва дослідження
+        return "FOCUSCALM";  
     }
 
     @Override
     public String getKey() {
-        return "thaumicforever.CALM";  // Унікальний ключ
+        return "thaumicforever.CALM"; 
     }
 
     @Override
     public Aspect getAspect() {
-        return Aspect.MIND;  // Використовує аспект розуму
+        return Aspect.MIND;  
     }
 
     @Override
@@ -49,14 +49,9 @@ public class FocusEffectCalm extends FocusEffect {
             if (caster instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) caster;
 
-                // Тривалість ефекту
-                durationInTicks = getSettingValue("duration") * 20;  // Конвертуємо в тік (20 тіків = 1 секунда)
+                durationInTicks = getSettingValue("duration") * 20; 
 
-                // Регіструємо періодичне оновлення через TickEvent
                 MinecraftForge.EVENT_BUS.register(this);
-
-                // Додаємо початкові ефекти (наприклад, сліпоту та сповільнення)
-
 
                 return true;
             }
@@ -64,20 +59,16 @@ public class FocusEffectCalm extends FocusEffect {
         return false;
     }
 
-    // Подія оновлення кожен тік
     @SubscribeEvent
     public void onWorldTick(TickEvent.WorldTickEvent event) {
         if (durationInTicks > 0 && mob != null && !mob.isDead) {
-            // Скидаємо агресію кожен тік
             mob.setAttackTarget(null);
             mob.setRevengeTarget(null);
             mob.getNavigator().clearPath();
 
-            // Зменшуємо тривалість
             durationInTicks--;
 
             if (durationInTicks <= 0) {
-                // Коли ефект завершився, скидаємо реєстрацію
                 MinecraftForge.EVENT_BUS.unregister(this);
             }
         }
@@ -96,6 +87,5 @@ public class FocusEffectCalm extends FocusEffect {
     @Override
     @SideOnly(Side.CLIENT)
     public void renderParticleFX(World world, double x, double y, double z, double vx, double vy, double vz) {
-        // Можеш залишити цей метод порожнім або додати візуальні ефекти
     }
 }

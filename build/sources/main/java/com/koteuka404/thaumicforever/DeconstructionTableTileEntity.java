@@ -18,19 +18,17 @@ import thaumcraft.api.items.ItemsTC;
 
 public class DeconstructionTableTileEntity extends TileEntity implements ITickable, IInventory {
 
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY); // Два слота
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(2, ItemStack.EMPTY); 
     private int burnTime = 0;
     private Random random = new Random();
     private boolean oldResearchLoaded;
 
-    // Рецепти для деконструкції
     private Map<Item, ItemStack[]> recipes = new HashMap<>();
-    private Map<Item, Float> chances = new HashMap<>(); // Шанси для крафту
+    private Map<Item, Float> chances = new HashMap<>(); 
 
     public DeconstructionTableTileEntity() {
         this.oldResearchLoaded = net.minecraftforge.fml.common.Loader.isModLoaded("oldresearch");
 
-        // Додавання рецептів і шансів
         recipes.put(Item.getItemFromBlock(net.minecraft.init.Blocks.CRAFTING_TABLE), 
             new ItemStack[] { new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("thaumicbases", "knowledge_shard"))) });
         chances.put(Item.getItemFromBlock(net.minecraft.init.Blocks.CRAFTING_TABLE), 0.35f);
@@ -50,13 +48,12 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
             });
         chances.put(Item.REGISTRY.getObject(new ResourceLocation("planarartifice", "condensed_crystal_cluster")), 0.50f);
 
-        // Додамо рецепт для книги з урахуванням шансів
         recipes.put(net.minecraft.init.Items.BOOK,
             new ItemStack[] { new ItemStack(ItemsTC.curio, 1, random.nextInt(6)) });
         if (oldResearchLoaded) {
-            chances.put(net.minecraft.init.Items.BOOK, 0.85f); // Шанс для oldresearch
+            chances.put(net.minecraft.init.Items.BOOK, 0.85f); 
         } else {
-            chances.put(net.minecraft.init.Items.BOOK, 0.60f); // Шанс без oldresearch
+            chances.put(net.minecraft.init.Items.BOOK, 0.60f);
         }
     }
 
@@ -65,7 +62,6 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
         if (!world.isRemote && !inventory.get(0).isEmpty()) {
             burnTime++;
 
-            // Перевіряємо чи минуло 4 секунди (80 тік)
             if (burnTime >= 80) {
                 ItemStack inputStack = inventory.get(0);
                 ItemStack[] results = getResults(inputStack);
@@ -73,19 +69,15 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
                 if (results != null && results.length > 0) {
                     float chance = chances.getOrDefault(inputStack.getItem(), 1.0f);
 
-                    // Якщо крафт спрацював
                     if (random.nextFloat() <= chance) {
                         ItemStack result = results[random.nextInt(results.length)];
 
-                        // Логіка для книги з oldresearch
                         if (inputStack.getItem() == net.minecraft.init.Items.BOOK && oldResearchLoaded) {
-                            result = new ItemStack(ItemsTC.curio, 1, 7); // Якщо мод завантажений, видаємо релікт з метаданими 7
+                            result = new ItemStack(ItemsTC.curio, 1, 7);
                         } else if (inputStack.getItem() == net.minecraft.init.Items.BOOK) {
-                            // Стара логіка для книги без oldresearch
                             result = new ItemStack(ItemsTC.curio, 1, random.nextInt(6));
                         }
 
-                        // Нова логіка: для жемчуга, сльози, верстака або книги з oldresearch
                         if ((inputStack.getItem() == net.minecraft.init.Items.ENDER_PEARL ||
                             inputStack.getItem() == net.minecraft.init.Items.GHAST_TEAR ||
                             inputStack.getItem() == Item.getItemFromBlock(net.minecraft.init.Blocks.CRAFTING_TABLE) ||
@@ -93,28 +85,24 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
                             !inventory.get(1).isEmpty() &&
                             inventory.get(1).getItem() == result.getItem() &&
                             inventory.get(1).getCount() < inventory.get(1).getMaxStackSize()) {
-                            // Додаємо результат до стека, якщо це один із визначених предметів і можна додати до стека
                             inventory.get(1).grow(1);
                         } else if (inventory.get(1).isEmpty()) {
-                            // Якщо слот порожній, просто встановлюємо результат
                             inventory.set(1, result.copy());
                         } else {
-                            // Якщо слот не порожній, і не можна додати результат — зупиняємо крафт
                             burnTime = 0;
                             return;
                         }
 
-                        inputStack.shrink(1);  // Зменшуємо кількість предметів у верхньому слоті
+                        inputStack.shrink(1); 
                         burnTime = 0;
                         markDirty();
                     } else {
-                        // Якщо крафт не спрацював, просто зменшуємо кількість предметів у верхньому слоті
                         inputStack.shrink(1);
                         burnTime = 0;
                         markDirty();
                     }
                 } else {
-                    burnTime = 0; // Скидання таймера, якщо немає відповідного результату
+                    burnTime = 0;
                 }
             }
         }
@@ -129,9 +117,8 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
             return result;
         }
 
-        // Якщо рецепт не знайдений і це curio, повертаємо рандомний curio
         if (input.getItem() == ItemsTC.curio) {
-            int meta = random.nextInt(6); // Рандом від 0 до 5
+            int meta = random.nextInt(6);
             return new ItemStack[] { new ItemStack(ItemsTC.curio, 1, meta) };
         }
         return null;
@@ -142,14 +129,14 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
         super.readFromNBT(compound);
         this.inventory = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.inventory);
-        this.burnTime = compound.getInteger("BurnTime"); // Зчитування burnTime
+        this.burnTime = compound.getInteger("BurnTime");
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         ItemStackHelper.saveAllItems(compound, this.inventory);
-        compound.setInteger("BurnTime", this.burnTime); // Збереження burnTime
+        compound.setInteger("BurnTime", this.burnTime);
         return compound;
     }
 
@@ -205,7 +192,7 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        return index == 0; // Дозволяємо класти тільки в перший слот (інгредієнти)
+        return index == 0; 
     }
 
     @Override

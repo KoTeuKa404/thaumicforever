@@ -63,10 +63,12 @@ thaumicforever.CALM.text=Clouds the mind of all entities
 
 tile.thaumicforever.smooth_stone.name=Smooth Stone
 tile.obsidian_totem.name=Obsidian Totem
+tile.time_stone.name=Time Stone
 
 item.focus_4.name=Blank Max Focus
 item.focus_5.name=Blank Ultimate Focus
 item.iron_ring.name=Iron ring
+item.oldbone.name=Old Bone
 
 item.thaumium_gear.name=Thaumium Gear
 item.void_gear.name=Viod Gear
@@ -81,6 +83,7 @@ tile.red_rose.name=Red Rose
 
 item.empty_focus.name=Empty Focus
 item.eternal_blade.name=Eternal Blade
+item.raven_cloak_bauble.name=Shadow Cloak
 
 tc.aspect.Weather=Weather, Nature
 tc.aspect.Mattery=Mattery
@@ -90,6 +93,13 @@ research.NEWRUNICS.title=NEW RUNICS
 
 research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the arcane in a portable and versatile form.
 research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.
+
+research.REVIVE_SKELET.title=Revive Skeleton
+research.REVIVE_SKELET.stage.1="Revive Skeletons" are an enigma of magic and decay. Bound together by ancient spells, they roam not as mere undead but as fragments of lost rituals, pulsing with dark energy. Each bone whispers secrets of forbidden arts, a chilling reminder of the power that bends death to its will
+
+research.TIMESTONE.title=The Temporal Catalyst
+research.TIMESTONE.stage.1=Unlock the ancient secrets of time manipulation, channeling its power to accelerate the flow of reality within its grasp. The radius of its influence and the depth of its acceleration depend on your understanding.
+research.TIMESTONE.stage.2=With the power of the Time Stone, manipulate the very essence of progress. Beware, for reckless acceleration may lead to unforeseen chaos within the world.
 
 
 thaumicforever.enchantment.voidrepair=Void Repair
@@ -126,26 +136,33 @@ research.NEWINFUSION.stage.1=Through careful study of ancient magical techniques
 research.NEWINFUSION.stage.2=The discovery of Void Repair has revolutionized the way items can be maintained. By harnessing the essence of the void, enchanted items can now slowly repair themselves over time. Every few seconds, a small fraction of the item's durability is restored, keeping it in pristine condition without any external effort. This magical property makes Void Repair a powerful tool for those who rely on their gear for prolonged expeditions or combat, ensuring that no weapon or piece of armor remains broken for long.
 
 
-
+thaumicforever.BOOSTPOWER.name=Double Power
 research.COMPRESSOR.title=Compressor
 research.COMPRESSOR.stage.1=Creating plates can often be a costly endeavor, especially if you do not work with them frequently. This Compressor is an indispensable tool for any thaumaturge, making the process far more efficient and accessible.
 research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes raw ingots and transforms them into refined plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different arcane applications. This includes specialized plates.<PAGE>
 
+research.CLOAK.title=Shadowed Cloak
+research.CLOAK.stage.1=The veil of shadows whispers secrets of concealment. Its essence lies in blending with the darkness, evading prying eyes.
+research.CLOAK.stage.2=The Shadowed Cloak has become an extension of your will. You now walk unseen, a phantom among mortals.
+
 
 research.UNSTONE.title=Anti-Flight Stone
 research.UNSTONE.stage.1=In your studies of anti-magical properties, you've discovered a peculiar stone that disrupts flight enchantments. The Anti-Flight Stone, when placed, creates a zone where any form of magical flight is forcibly disabled. This stone is an ideal tool for defending areas where aerial access must be restricted.
-research.UNSTONE.stage.2=§lMechanics§r<BR>The Anti-Flight Stone affects an area within a 3x3 chunk radius (equivalent to 48 blocks in each direction). Any thaumaturge or creature attempting to fly within its range will find their enchantments or flight abilities suddenly nullified.The stone is tough and requires proper tools to break, making it a reliable defense against unwanted intruders. Use it wisely to protect sensitive locations.<PAGE>
+research.UNSTONE.stage.2=§lAnti-Flight Stone§r<BR>The Anti-Flight Stone affects an area within a 3x3 chunk radius (equivalent to 48 blocks in each direction). Any thaumaturge or creature attempting to fly within its range will find their enchantments or flight abilities suddenly nullified.The stone is tough and requires proper tools to break, making it a reliable defense against unwanted intruders. Use it wisely to protect sensitive locations.<PAGE>
 
 research.DUPLICATOR.title=Mattery Duplicator
 research.DUPLICATOR.stage.1=When the limitations of the Pattern Crafter became evident, a new concept emerged — a mechanism capable of harnessing the essence of Mattery to replicate objects. Thus, the Mattery Duplicator was conceived, a device that captures the very essence of matter and transforms it into tangible forms, meeting the diverse needs of thaumaturges
-research.DUPLICATOR.stage.2=§lMechanics§r<BR>The Mattery Duplicator utilizes the unique properties of the Mattery essence to perform its duplication process. By absorbing Mattery essence from nearby containers, the machine gathers the energy necessary to replicate items placed in the crafting grid.To complete the duplication, a significant amount of Mattery essence is required, and the machine will only proceed if sufficient mattery is available. Carefully monitor the amount of essence to ensure successful duplications.<PAGE>
+research.DUPLICATOR.stage.2=§lMattery Duplicator§r<BR>The Mattery Duplicator utilizes the unique properties of the Mattery essence to perform its duplication process. By absorbing Mattery essence from nearby containers, the machine gathers the energy necessary to replicate items placed in the crafting grid.To complete the duplication, a significant amount of Mattery essence is required, and the machine will only proceed if sufficient mattery is available. Carefully monitor the amount of essence to ensure successful duplications.<PAGE>
 
 research.OREAQUA.title=Aquareia Ore
 research.OREAQUA.stage.1=Aquareia Ore is a rare and magical mineral that can only be found deep within the mysterious **Magical Forest** biome. This ore is known for its unique properties and affinity with arcane energies. The deposits of Aquareia can be discovered between Y-levels 28 and 32, making them accessible only to those who delve into the depths of these enchanted forests.<BR><BR>It appears in small veins, usually ranging from 2 to 6 blocks, and can only be found where the natural magic of the forest is strongest.
-
+entity.ItemFrame.name=Item Frame
+research.FOOD.title=Special Food
 research.FOOD.stage.1=You've discovered that food can offer more than simple nourishment. Begin experimenting with ingredients that may unlock unique effects.
 research.FOOD.stage.2=Your studies reveal that certain meals can grant extraordinary abilities.Experiment with mystical ingredients to create powerful meals.
 
+research.ANGRY_SKELET.title=Angry Skelet
+research.ANGRY_SKELET.stage.1=During my explorations, I stumbled upon a strange variation of a skeleton. Unlike the common undead warriors, this one displayed unusual aggression and speed, as if fueled by an unquenchable rage. It seems to possess higher durability and intelligence, dodging attacks with unexpected precision. Could it be a result of some dark magic, or is it simply an evolved form of an ordinary skeleton? Further study is required to unravel the mystery behind its origin.<BR>Upon examining its remains, I noticed something peculiar about its bones. They are significantly denser and stronger than those of regular skeletons. This discovery leads me to wonder—could these bones be used to forge a weapon, perhaps one infused with the same unrelenting rage that fueled this creature?
 
 research.DeconstructionTable.title=Deconstruction Table
 research.DeconstructionTable.stage.1=The Deconstruction Table is a unique device that allows thaumaturges to break down common items into their base components. By carefully deconstructing these items, one can gain valuable insights into the magical properties hidden within. The table's ability to extract curios makes it an indispensable tool for those who wish to study the arcane secrets embedded in mundane materials.
@@ -156,6 +173,8 @@ item.time_freeze_item.name=Time Trap
 item.magic_dust.name=Magic Dust
 thaumicforever.MINDCONTROL.name=Mind Control 
 thaumicforever.MINDCONTROL.text=Exert your powerful will to turn enemies against each other, making them fight among themselves
+entity.SkeletonAngry.name=Angry Skeleton
+entity.ReviveSkeleton.name=Revive Skeleton
 entity.GuardianMannequin.name=Guardian Mannequin
 tile.time_stop_block.name=Time Stop
 tc.research_category.THAUMICFOREVER=Thaumic Forever

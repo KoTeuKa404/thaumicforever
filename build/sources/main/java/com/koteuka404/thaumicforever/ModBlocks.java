@@ -53,6 +53,12 @@ public class ModBlocks {
     public static final Block RED_ROSE = new BlockRedRose();
     public static final Block BLUE_ROSE = new BlockBlueRose();
     public static final Block BlockRepurposer = new BlockRepurposer();
+    public static final Block BlockTimeStone = new BlockTimeStone();
+    public static final Block BlockTimeSlow = new BlockTimeSlow();
+    public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
+    public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier();
+    
+    
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
@@ -72,9 +78,14 @@ public class ModBlocks {
             COMPRESSOR,
             RED_ROSE,
             BLUE_ROSE,
-            BlockRepurposer
+            BlockRepurposer,
+            BlockTimeStone,
+            BlockTimeSlow,
+            BlockMechanismAmplifier
+
 
         );
+        
     }
 
     @SubscribeEvent
@@ -96,7 +107,10 @@ public class ModBlocks {
             new ItemBlock(RED_ROSE).setRegistryName(RED_ROSE.getRegistryName()),
             new ItemBlock(BLUE_ROSE).setRegistryName(BLUE_ROSE.getRegistryName()),
             new ItemBlock(COMPRESSOR).setRegistryName(COMPRESSOR.getRegistryName()),
-            new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName())
+            new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName()),
+            new ItemBlock(BlockTimeStone).setRegistryName(BlockTimeStone.getRegistryName()),
+            new ItemBlock(BlockMechanismAmplifier).setRegistryName(BlockMechanismAmplifier.getRegistryName()),
+            new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName())
        
             );
             
@@ -122,6 +136,9 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RED_ROSE), 0, "thaumicforever:red_rose");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BLUE_ROSE), 0, "thaumicforever:blue_rose");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockRepurposer), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeStone), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeSlow), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockMechanismAmplifier), 0, "inventory");
 
          
     }

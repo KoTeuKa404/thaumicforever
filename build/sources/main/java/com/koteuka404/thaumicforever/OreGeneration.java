@@ -21,14 +21,12 @@ public class OreGeneration implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, net.minecraft.world.chunk.IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Only generate in the Overworld
+        if (world.provider.getDimension() == 0) { 
 
-            // Перевіряємо налаштування для Aquareia Ore
             if (ModConfig.general.enableAquareiaOreGeneration) {
                 generateAquareiaOre(ModOreBlocks.AQUAREIA_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 28, 32, 2, 6, 8, Blocks.STONE.getDefaultState());
             }
 
-            // Перевіряємо налаштування для Ancient Ores
             if (ModConfig.general.enableAncientOreGeneration) {
                 generateOre(ModOreBlocks.ANCIENT_AMBER.getDefaultState(), world, rand, chunkX, chunkZ, 4, 16, 3, 7, 8, Blocks.STONE.getDefaultState());
                 generateOre(ModOreBlocks.ANCIENT_CINNABAR.getDefaultState(), world, rand, chunkX, chunkZ, 6, 24, 2, 8, 12, Blocks.STONE.getDefaultState());
@@ -37,7 +35,6 @@ public class OreGeneration implements IWorldGenerator {
                 generateOre(ModOreBlocks.ANCIENT_IRON.getDefaultState(), world, rand, chunkX, chunkZ, 8, 64, 8, 20, 2, Blocks.STONE.getDefaultState());
             }
 
-            // Перевіряємо налаштування для Standard Ores
             if (ModConfig.general.enableStandardOreGeneration) {
                 generateOre(ModOreBlocks.COPPER_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());
                 generateOre(ModOreBlocks.TIN_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());

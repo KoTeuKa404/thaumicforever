@@ -13,32 +13,26 @@ public class DeconstructionTableContainer extends Container {
     public DeconstructionTableContainer(InventoryPlayer playerInventory, IInventory tileEntity) {
         this.tileEntity = tileEntity;
 
-        // Слот для інгредієнта (перший слот)
         this.addSlotToContainer(new Slot(tileEntity, 0, 64, 15));
 
-        // Слот для результату (другий слот)
         this.addSlotToContainer(new Slot(tileEntity, 1, 64, 47) {
             @Override
             public boolean isItemValid(ItemStack stack) {
-                // Блокуємо вставлення предметів у цей слот вручну
                 return false;
             }
 
             @Override
             public ItemStack onTake(EntityPlayer player, ItemStack stack) {
-                // Вилучаємо код, який зменшував кількість книг на 1
                 return super.onTake(player, stack);
             }
         });
 
-        // Слоти інвентаря гравця
         for (int y = 0; y < 3; ++y) {
             for (int x = 0; x < 9; ++x) {
                 this.addSlotToContainer(new Slot(playerInventory, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
             }
         }
 
-        // Слоти гарячої панелі
         for (int x = 0; x < 9; ++x) {
             this.addSlotToContainer(new Slot(playerInventory, x, 8 + x * 18, 142));
         }
@@ -58,7 +52,6 @@ public class DeconstructionTableContainer extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            // Якщо предмет у слоті інгредієнтів, переміщаємо його в інвентар гравця
             if (index < this.tileEntity.getSizeInventory()) {
                 if (!this.mergeItemStack(itemstack1, this.tileEntity.getSizeInventory(), this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;

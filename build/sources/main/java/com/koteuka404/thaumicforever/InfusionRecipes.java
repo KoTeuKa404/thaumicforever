@@ -5,7 +5,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Loader; // Для перевірки завантаження модів
+import net.minecraftforge.fml.common.Loader;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -17,15 +17,15 @@ public class InfusionRecipes {
 
     public static void init() {
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ring_runic_charge"), new InfusionRecipe(
-            "NEWRUNICS",  // Назва дослідження
-            new ItemStack(ModItems.RING_RUNIC_CHARGE),  // Вихідний предмет
-            3,  // Рівень нестабільності
+            "NEWRUNICS",   
+            new ItemStack(ModItems.RING_RUNIC_CHARGE),   
+            3,  
             new AspectList()
                 .add(Aspect.EXCHANGE, 40)
                 .add(Aspect.FIRE, 40)
                 .add(Aspect.MAGIC, 60)
                 .add(Aspect.AVERSION, 60),
-            new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1),  // Центральний інгредієнт (Amulet of Vis)
+            new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1),    
             new Object[] {
                 new ItemStack(Items.BLAZE_POWDER),
                 new ItemStack(thaumcraft.api.items.ItemsTC.amber),
@@ -35,17 +35,17 @@ public class InfusionRecipes {
         ));
 
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ring_verdant"), new InfusionRecipe(
-            "NEWRUNICS",  // Назва дослідження
+            "NEWRUNICS",   
             new ItemStack(ModItems.RING_VERDANT),
-            3,  // Рівень нестабільності
+            3,  
             new AspectList()
                 .add(Aspect.EXCHANGE, 40)
                 .add(Aspect.PROTECT, 40)
                 .add(Aspect.MAGIC, 60)
                 .add(Aspect.SENSES, 60),
-            new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1), // Central item
+            new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1),  
             new Object[] {
-                new ItemStack(ItemsTC.charmVerdant), // Assuming charmVerdant exists within ItemsTC
+                new ItemStack(ItemsTC.charmVerdant),   
                 new ItemStack(Items.MILK_BUCKET),
                 new ItemStack(thaumcraft.api.items.ItemsTC.salisMundus),
                 new ItemStack(thaumcraft.api.items.ItemsTC.amber)
@@ -53,15 +53,15 @@ public class InfusionRecipes {
         ));
         if (Loader.isModLoaded("forbiddenmagicre") && Loader.isModLoaded("avaritia")) {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ItemFocus4"), new InfusionRecipe(
-                "NEWAUROMANCY",  // Назва дослідження
+                "NEWAUROMANCY",   
                 new ItemStack(ModItems.FOCUS_4),
-                12,  // Рівень нестабільності
+                12,  
                 new AspectList()
                 .add(Aspect.ORDER, 140)
                 .add(Aspect.MAGIC, 160)
                 .add(Aspect.AURA, 120)
                 .add(Aspect.VOID, 80),
-                new ItemStack(ItemsTC.focus3), // Central item
+                new ItemStack(ItemsTC.focus3),  
                 new Object[] {
                     new ItemStack(ItemsTC.focus2), 
                     new ItemStack(ItemsTC.focus2), 
@@ -71,9 +71,9 @@ public class InfusionRecipes {
             ));
         } else {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ItemFocus4"), new InfusionRecipe(
-                "NEWAUROMANCY",  // Назва дослідження
+                "NEWAUROMANCY",   
                 new ItemStack(ModItems.FOCUS_4),
-                12,  // Рівень нестабільності
+                12,  
                 new AspectList()
                     .add(Aspect.ORDER, 140)
                     .add(Aspect.MAGIC, 160)
@@ -93,15 +93,15 @@ public class InfusionRecipes {
                 ));}
         
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:zombie_heart_amulet"), new InfusionRecipe(
-                "NEWRUNICS",  // Назва дослідження
-                new ItemStack(ModItems.ZOMBIE_HEART_AMULET),  // Вихідний предмет
-                4,  // Рівень нестабільності
+                "NEWRUNICS",   
+                new ItemStack(ModItems.ZOMBIE_HEART_AMULET),   
+                4,  
                 new AspectList()
                     .add(Aspect.UNDEAD, 80)
                     .add(Aspect.DEATH, 40)
                     .add(Aspect.MAGIC, 60)
                     .add(Aspect.AVERSION, 60),
-                new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 4),  // Центральний інгредієнт (Amulet of Vis)
+                new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 4),    
                 new Object[] {
                     new ItemStack(ModItems.ItemZombieHeart),
                     new ItemStack(ItemsTC.salisMundus),
@@ -111,15 +111,15 @@ public class InfusionRecipes {
             ));
 
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ring_ender"), new InfusionRecipe(
-                "NEWRUNICS",  // Назва дослідження
-                new ItemStack(ModItems.RING_ENDER),  // Вихідний предмет
-                4,  // Рівень нестабільності
+                "NEWRUNICS",   
+                new ItemStack(ModItems.RING_ENDER),   
+                4,  
                 new AspectList()
                     .add(Aspect.ELDRITCH, 40)
                     .add(Aspect.MOTION, 60)
                     .add(Aspect.MAGIC, 60)
                     .add(Aspect.VOID, 60),
-                new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1),  // Центральний інгредієнт (Amulet of Vis)
+                new ItemStack(thaumcraft.api.items.ItemsTC.baubles, 1, 1),    
                 new Object[] {
                     new ItemStack(Items.ENDER_PEARL),
                     new ItemStack(ItemsTC.amber),
@@ -131,15 +131,15 @@ public class InfusionRecipes {
                 }
             ));
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:time_trap"), new InfusionRecipe(
-                "NEWARTIFICE",  // Назва дослідження
-                new ItemStack(ModItems.ItemTimeFreeze),  // Вихідний предмет
-                4,  // Рівень нестабільності
+                "NEWARTIFICE",   
+                new ItemStack(ModItems.ItemTimeFreeze),   
+                4,  
                 new AspectList()
                     .add(Aspect.VOID, 40)
                     .add(Aspect.TRAP, 60)
                     .add(Aspect.MAGIC, 20)
                     .add(Aspect.CRYSTAL, 40),
-                new ItemStack(ItemsTC.alumentum),  // Центральний інгредієнт (Amulet of Vis)
+                new ItemStack(ItemsTC.alumentum),    
                 new Object[] {
                     new ItemStack(ItemsTC.quicksilver),
                     new ItemStack(BlocksTC.amberBlock),
@@ -154,15 +154,15 @@ public class InfusionRecipes {
                 }
             ));
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:DUPLICATOR"), new InfusionRecipe(
-                "DUPLICATOR",  // Назва дослідження
-                new ItemStack(ModBlocks.Duplicator),  // Вихідний предмет
-                8,  // Рівень нестабільності
+                "DUPLICATOR",   
+                new ItemStack(ModBlocks.Duplicator),   
+                8,  
                 new AspectList()
                     .add(Aspect.CRAFT, 100)
                     .add(AspectRegistry.MATTERYA, 50)
                     .add(Aspect.MECHANISM, 60)
                     .add(Aspect.ORDER, 40),
-                new ItemStack(BlocksTC.tableStone),  // Центральний інгредієнт (Amulet of Vis)
+                new ItemStack(BlocksTC.tableStone),    
                 new Object[] {
                     new ItemStack(ItemsTC.primordialPearl),   
                     new ItemStack(BlocksTC.matrixCost),
@@ -176,6 +176,54 @@ public class InfusionRecipes {
                     new ItemStack(Blocks.BEACON),
                     new ItemStack(ModItems.AQUAREIA_GEM)     
 
+                }
+            ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:CLOAK"), new InfusionRecipe(
+                "CLOAK",   
+                new ItemStack(ModItems.RavenCloakBauble),   
+                3,  
+                new AspectList()
+                    .add(Aspect.MOTION, 100)
+                    .add(Aspect.DARKNESS, 60)
+                    .add(Aspect.VOID, 60)
+                    .add(Aspect.FLIGHT, 40),
+                new ItemStack(Items.LEATHER_CHESTPLATE),    
+                new Object[] {
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.fabric),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.DYE,1,0)
+                   
+                }
+            ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:time_stone"), new InfusionRecipe(
+                "TIMESTONE",   
+                new ItemStack(ModBlocks.BlockTimeStone),   
+                3,  
+                new AspectList()
+                    .add(Aspect.ORDER, 80)
+                    .add(Aspect.ENTROPY, 60)
+                    .add(Aspect.VOID, 60)
+                    .add(Aspect.ENERGY, 80)
+                    .add(Aspect.SENSES, 60)
+                    .add(Aspect.DESIRE, 60)
+                    .add(Aspect.ELDRITCH, 80),
+                new ItemStack(Blocks.GOLD_BLOCK),    
+                new Object[] {
+                    new ItemStack(ItemsTC.primordialPearl),      // Первісна перлина
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),             // Око Ендермена
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.quicksilver),          // Ртуть
+                    new ItemStack(Blocks.BEACON),
+                    new ItemStack(ItemsTC.mechanismComplex),      // Простий механізм
+                    new ItemStack(Items.NETHER_STAR)            // Зоря Пекла
+                   
                 }
             ));
 

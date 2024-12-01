@@ -16,48 +16,42 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityCompressor extends TileEntity implements ITickable {
 
-    private ItemStackHandler inventory = new ItemStackHandler(2); // Вхід і вихід
+    private ItemStackHandler inventory = new ItemStackHandler(2); 
     private int compressTime = 0;
-    private ItemStack selectedPlate = ItemStack.EMPTY;  // Вибрана пластина
-    private ItemStack lastInput = ItemStack.EMPTY;  // Останній вхідний матеріал
+    private ItemStack selectedPlate = ItemStack.EMPTY;  
+    private ItemStack lastInput = ItemStack.EMPTY;  
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            ItemStack input = inventory.getStackInSlot(0);   // Вхідний слот
-            ItemStack output = inventory.getStackInSlot(1);  // Вихідний слот
+            ItemStack input = inventory.getStackInSlot(0);  
+            ItemStack output = inventory.getStackInSlot(1);  
 
-            // Перевірка, чи змінився вхідний матеріал
             if (!ItemStack.areItemsEqual(input, lastInput)) {
-                // Якщо вхідний матеріал змінився, скидаємо вибір пластини
                 selectedPlate = ItemStack.EMPTY;
                 lastInput = input.copy();
                 markDirty();
             }
 
-            // Додаємо перевірку на вибір пластини або виключення для Thauminite
             if (!input.isEmpty() && (isValidInput(input) && !selectedPlate.isEmpty() || isThauminite(input))) {
                 if (!output.isEmpty() && !isSameMaterial(selectedPlate, output)) {
-                    return; // Якщо вихідний слот заповнений іншим матеріалом, нічого не робимо
+                    return; 
                 }
 
                 compressTime++;
 
-                if (compressTime >= 50) { // 5 секунд
+                if (compressTime >= 50) { 
                     compressItem(input);
                     compressTime = 0;
                 }
             } else {
-                compressTime = 0; // Скидаємо час, якщо умови не виконуються
+                compressTime = 0;
             }
         }
     }
 
-    // Метод для компресії предмета
-    // Метод для компресії предмета
     private void compressItem(ItemStack input) {
         if (!selectedPlate.isEmpty() || isThauminite(input)) {
-            // Якщо це Thauminite Ingot, створюємо Thauminite Plate без перевірки вибору пластини
             ItemStack output = inventory.getStackInSlot(1);
             ItemStack plateToCreate = selectedPlate;
 
@@ -65,21 +59,18 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
                 plateToCreate = new ItemStack(Item.getByNameOrId("thaumicbases:thauminite_plate"));
             }
 
-            // Якщо у вихідному слоті вже є пластина цього типу, збільшуємо її кількість
             if (!output.isEmpty() && output.isItemEqual(plateToCreate)) {
-                output.grow(1); // Збільшуємо кількість існуючої пластини
-                inventory.setStackInSlot(1, output); // Оновлюємо слот з оновленою кількістю
+                output.grow(1); 
+                inventory.setStackInSlot(1, output); 
             } else if (output.isEmpty()) {
-                // Якщо слот порожній, вставляємо нову пластину
                 inventory.setStackInSlot(1, plateToCreate.copy());
             }
 
-            inventory.extractItem(0, 1, false); // Видаляємо один вхідний предмет
-            markDirty(); // Оновлюємо TileEntity
+            inventory.extractItem(0, 1, false); 
+            markDirty(); 
         }
     }
 
-    // Метод для перевірки, чи це Thauminite Ingot
     private boolean isThauminite(ItemStack stack) {
         if (stack == null || stack.isEmpty()) {
             return false;
@@ -93,28 +84,24 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         return new TextComponentTranslation("container.compressor");
     }
 
-    // Метод для перевірки, чи є предмет допустимим вхідним матеріалом (злиток)
     public static boolean isValidInput(ItemStack stack) {
         int[] oreIds = OreDictionary.getOreIDs(stack);
         for (int id : oreIds) {
             String oreName = OreDictionary.getOreName(id);
-            if (oreName.startsWith("ingot")) { // Перевіряємо, чи це злиток
+            if (oreName.startsWith("ingot")) { 
                 return true;
             }
         }
         return false;
     }
 
-    // Перевірка, чи матеріали однакові
     private boolean isSameMaterial(ItemStack input, ItemStack output) {
-        // Додана перевірка на валідність предметів
         if (input == null || output == null || input.isEmpty() || output.isEmpty()) {
             return false;
         }
     
-        // Спеціальна обробка для Thauminite
         if (isThauminite(input) && isThauminite(output)) {
-            return true; // Вважаємо, що Thauminite Ingot і Thauminite Plate мають один і той же матеріал
+            return true; 
         }
     
         int[] inputOreIds = OreDictionary.getOreIDs(input);
@@ -123,17 +110,16 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         for (int inputId : inputOreIds) {
             for (int outputId : outputOreIds) {
                 if (inputId == outputId) {
-                    return true; // Якщо вхідний і вихідний матеріал однакові
+                    return true; 
                 }
             }
         }
-        return false; // Якщо матеріали різні
+        return false; 
     }
     
 
-    // Отримуємо варіанти пластин на основі вхідного матеріалу
     public List<ItemStack> getPlateOptions() {
-        ItemStack input = inventory.getStackInSlot(0);  // Вхідний слот
+        ItemStack input = inventory.getStackInSlot(0); 
         List<ItemStack> plateOptions = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -142,7 +128,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
                 String oreName = OreDictionary.getOreName(id);
                 if (oreName.startsWith("ingot")) {
                     String plateName = "plate" + oreName.substring(5);
-                    plateOptions.addAll(OreDictionary.getOres(plateName));  // Додаємо всі варіанти пластин
+                    plateOptions.addAll(OreDictionary.getOres(plateName));  
                 }
             }
         }
@@ -150,18 +136,15 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         return plateOptions;
     }
 
-    // Вибір пластини
     public void setSelectedPlate(ItemStack plate) {
         this.selectedPlate = plate;
-        System.out.println("Plate selected: " + plate); // Додаткове логування
-        markDirty(); // Синхронізуємо після вибору
+        markDirty(); 
     }
 
     public ItemStack getSelectedPlate() {
         return this.selectedPlate;
     }
 
-    // Метод для збереження стану через NBT
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
@@ -184,12 +167,10 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         return compound;
     }
 
-    // Метод для завантаження стану з NBT
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
 
-        // Завантаження інвентаря
         if (compound.hasKey("Inventory")) {
             inventory.deserializeNBT(compound.getCompoundTag("Inventory"));
         }
@@ -204,15 +185,13 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
             lastInput = new ItemStack(lastInputTag);
         }
 
-        markDirty(); // Оновлюємо стан після завантаження
+        markDirty(); 
     }
 
-    // Метод для доступу до інвентаря компресора
     public ItemStackHandler getInventory() {
         return this.inventory;
     }
 
-    // Перевірка чи може гравець взаємодіяти з компресором
     public boolean isUsableByPlayer(EntityPlayer player) {
         if (world.getTileEntity(pos) != this) {
             return false;

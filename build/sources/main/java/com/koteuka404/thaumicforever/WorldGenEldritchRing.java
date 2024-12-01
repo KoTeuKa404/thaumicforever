@@ -23,11 +23,11 @@ public class WorldGenEldritchRing implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Генерація тільки в Overworld
-            if (random.nextInt(66) == 0) { // Частота генерації 1/66
+        if (world.provider.getDimension() == 0) {
+            if (random.nextInt(66) == 0) {
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
-                int y = world.getHeight(x, z); // Генерація на поверхні
+                int y = world.getHeight(x, z); 
                 BlockPos pos = new BlockPos(x, y, z);
 
                 if (isDarkForestBiome(world, pos) && isSolidBlockBelow(world, pos.down())) {

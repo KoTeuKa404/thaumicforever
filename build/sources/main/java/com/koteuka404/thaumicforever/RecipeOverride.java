@@ -17,24 +17,21 @@ public class RecipeOverride {
 
     @SubscribeEvent
     public static void onRecipeRegister(RegistryEvent.Register<IRecipe> event) {
-        // Перевірка конфігурації
         if (ModConfig.general.enableMechanismComplexRecipe) {
-            // Створюємо новий рецепт з тим самим ResourceLocation
             ShapedArcaneRecipe mechanismComplexRecipe = new ShapedArcaneRecipe(
                 new ResourceLocation("thaumcraft", "mechanism_complex"), // Ім'я рецепту
-                "BASEARTIFICE", // Назва дослідження
-                50, // Вартість Vis
+                "BASEARTIFICE",
+                50, 
                 new AspectList().add(Aspect.FIRE, 1).add(Aspect.WATER, 1), // Потрібні аспекти
-                new ItemStack(ItemsTC.mechanismComplex), // Результат (mechanismComplex)
-                " B ", // Верхній ряд: [ ] [Void Gear] [ ]
-                "AIA", // Середній ряд: [Plate] [Iron Gear] [Plate]
-                " B ", // Нижній ряд: [ ] [Void Gear] [ ]
-                'B', new ItemStack(ItemsTC.mechanismSimple), // 'B' — це простий механізм
-                'A', new ItemStack(ItemsTC.plate, 1, 2), // 'A' — це металеві пластини
-                'I', ModItems.ItemBrassGear // 'I' — це латунна шестерня
+                new ItemStack(ItemsTC.mechanismComplex), 
+                " B ",
+                "AIA",
+                " B ",
+                'B', new ItemStack(ItemsTC.mechanismSimple), 
+                'A', new ItemStack(ItemsTC.plate, 1, 2), 
+                'I', ModItems.ItemBrassGear 
             );
 
-            // Реєстрація рецепту
             ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumcraft", "mechanism_complex"), mechanismComplexRecipe);
         }
     }

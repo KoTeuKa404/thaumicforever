@@ -23,9 +23,9 @@ public class BlockMatteryDuplicator extends Block {
     public BlockMatteryDuplicator() {
         super(Material.ROCK);
         setUnlocalizedName("duplicator");
-        setRegistryName("duplicator");  // Use the appropriate material
+        setRegistryName("duplicator"); 
         setHardness(2.0F);
-        setCreativeTab(ThaumicForever.CREATIVE_TAB);     // Block hardness settings
+        setCreativeTab(ThaumicForever.CREATIVE_TAB);    
     }
 
 
@@ -56,12 +56,10 @@ public class BlockMatteryDuplicator extends Block {
     }
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        // Додаємо дроп предметів з інвентаря TileEntity при руйнуванні блоку
         TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity instanceof IInventory) {
             IInventory inventory = (IInventory) tileEntity;
 
-            // Дропаємо всі предмети з інвентаря
             for (int i = 0; i < inventory.getSizeInventory(); i++) {
                 ItemStack stack = inventory.getStackInSlot(i);
                 if (!stack.isEmpty()) {
@@ -70,7 +68,6 @@ public class BlockMatteryDuplicator extends Block {
             }
         }
 
-        // Викликаємо стандартний метод для завершення знищення блоку
         super.breakBlock(world, pos, state);
     }
     @Override
@@ -89,7 +86,7 @@ public class BlockMatteryDuplicator extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public net.minecraft.util.BlockRenderLayer getRenderLayer() {  // Видаляємо @Override
+    public net.minecraft.util.BlockRenderLayer getRenderLayer() { 
         return net.minecraft.util.BlockRenderLayer.CUTOUT;
     }
 

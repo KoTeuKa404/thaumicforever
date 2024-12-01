@@ -17,7 +17,7 @@ public class RenderGuardianMannequin extends RenderLiving<EntityGuardianMannequi
     private static final ResourceLocation TEXTURE = new ResourceLocation("thaumicforever:textures/entity/guardian_mannequin.png");
 
     public RenderGuardianMannequin(RenderManager renderManager) {
-        super(renderManager, new CustomModel(), 0.5F);  // Використовуємо вашу модель
+        super(renderManager, new CustomModel(), 0.5F);  
         this.addLayer(new LayerBipedArmor(this) {
             @Override
             protected void initArmor() {
@@ -26,21 +26,19 @@ public class RenderGuardianMannequin extends RenderLiving<EntityGuardianMannequi
             }
         });
 
-        // Додаємо кастомний шар для рендеру предметів у руках
         this.addLayer(new LayerHeldItemCustom(this));
     }
 
     @Override
     protected ResourceLocation getEntityTexture(EntityGuardianMannequin entity) {
-        return TEXTURE;  // Повертаємо текстуру моба
+        return TEXTURE;  
     }
 
     @Override
     protected void preRenderCallback(EntityGuardianMannequin entitylivingbaseIn, float partialTickTime) {
-        GlStateManager.scale(1.0F, 1.0F, 1.0F);  // Можливо, потрібна зміна масштабування
+        GlStateManager.scale(1.0F, 1.0F, 1.0F); 
     }
 
-    // Кастомний клас для рендеру предметів у руках
     private static class LayerHeldItemCustom implements LayerRenderer<EntityGuardianMannequin> {
         private final RenderGuardianMannequin render;
 
@@ -55,18 +53,15 @@ public class RenderGuardianMannequin extends RenderLiving<EntityGuardianMannequi
             if (!itemstack.isEmpty()) {
                 GlStateManager.pushMatrix();
 
-                // Прив'язуємо предмет до лівої руки моделі
                 if (this.render.getMainModel() instanceof CustomModel) {
                     CustomModel model = (CustomModel) this.render.getMainModel();
-                    model.leftArm.postRender(-0.00F);  // Використовуємо пост-обробку ротації та позиції руки
+                    model.leftArm.postRender(-0.00F); 
                 }
 
-                // Налаштування позиції та обертання предмета
                 GlStateManager.translate(0.35F, 0.73F, 0.0F);  
-                GlStateManager.rotate(90F, 1F, 0F, 0F);   // Поворот на 90 градусів по осі X
-                GlStateManager.rotate(180F, 0F, 0F, 1F);  // Поворот на 180 градусів по осі Y
+                GlStateManager.rotate(90F, 1F, 0F, 0F);   
+                GlStateManager.rotate(180F, 0F, 0F, 1F);
 
-                // Рендер предмета у лівій руці
                 renderItem(entity, itemstack, EnumHandSide.LEFT);
 
                 GlStateManager.popMatrix();

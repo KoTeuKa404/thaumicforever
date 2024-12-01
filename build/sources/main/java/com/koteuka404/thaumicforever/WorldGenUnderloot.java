@@ -46,7 +46,6 @@ public class WorldGenUnderloot implements IWorldGenerator {
             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
             generateLootInChest(world, pos);
         } else {
-            // Можна вивести лог або повідомлення про помилку
         }
     }
 
@@ -66,27 +65,23 @@ public class WorldGenUnderloot implements IWorldGenerator {
         }
     }
 
-    // Перевірка на висоту
     private boolean isWithinHeightRange(int y) {
         return y >= 10 && y <= 40;
     }
 
-    // Метод для перевірки, чи знаходиться структура під землею
     private boolean isUnderground(World world, BlockPos pos) {
         int requiredSolidBlocks = 20; // Мінімальна кількість суцільних блоків над структурою
 
         for (int y = pos.getY() + 1; y < pos.getY() + requiredSolidBlocks; y++) {
             BlockPos checkPos = new BlockPos(pos.getX(), y, pos.getZ());
 
-            // Перевіряємо, чи є блок над структурою непрозорим і не повітрям
             if (world.isAirBlock(checkPos) || !world.getBlockState(checkPos).isOpaqueCube()) {
                 return false;
             }
         }
-        return true; // Якщо всі блоки над структурою суцільні, то структура під землею
+        return true; 
     }
 
-    // Реєструємо луттейбл, якщо він ще не зареєстрований
     public static void registerLootTables() {
         if (!LootTableList.getAll().contains(UNDERLOOT_LOOT_TABLE)) {
             LootTableList.register(UNDERLOOT_LOOT_TABLE);

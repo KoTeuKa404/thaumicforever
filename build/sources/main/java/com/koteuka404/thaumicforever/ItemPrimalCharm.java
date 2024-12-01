@@ -17,7 +17,7 @@ public class ItemPrimalCharm extends Item implements IBauble {
         this.setUnlocalizedName("primal_charm");
         this.setRegistryName("primal_charm");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.TOOLS); // або інший таб
+        this.setCreativeTab(CreativeTabs.TOOLS); 
     }
 
     @Override
@@ -34,6 +34,6 @@ public class ItemPrimalCharm extends Item implements IBauble {
     }
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.UNCOMMON; // Встановлення рідкості на EPIC
+        return EnumRarity.UNCOMMON; 
     }
 }

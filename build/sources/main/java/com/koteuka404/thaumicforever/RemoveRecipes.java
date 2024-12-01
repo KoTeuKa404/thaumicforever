@@ -12,16 +12,13 @@ public class RemoveRecipes {
 
     @SubscribeEvent
     public static void onRecipeRegister(RegistryEvent.Register<IRecipe> event) {
-        // Отримуємо реєстр рецептів
         IForgeRegistryModifiable modRegistry = (IForgeRegistryModifiable) event.getRegistry();
         
-        // Ідентифікатор рецепта для Void Metal Ingot
         ResourceLocation voidIngotRecipe = new ResourceLocation("thaumcraft", "void_metal_ingot");
         
         // Видаляємо рецепт
         if (modRegistry.containsKey(voidIngotRecipe)) {
             modRegistry.remove(voidIngotRecipe);
-            System.out.println("Рецепт Void Metal Ingot видалено!");
         }
     }
 }

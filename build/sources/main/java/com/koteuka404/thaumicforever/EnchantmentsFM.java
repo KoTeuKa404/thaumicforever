@@ -6,9 +6,7 @@ package com.koteuka404.thaumicforever;
 // @Mod.EventBusSubscriber(modid = "thaumicforever")
 // public class EnchantmentsFM {
 
-//     // Метод для реєстрації інфузійних зачарувань
 //     public static void registerEnchantments() {
-//         // Викликаємо реєстрацію інфузійних зачарувань з InitRecipes
 //         InitRecipes.initInfusionRecipes();
 //     }
 // }

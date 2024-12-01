@@ -7,9 +7,7 @@ import net.minecraft.world.World;
 
 public class SpawnStructure {
 
-    // Метод для генерації структури (коробка з бар'єрів)
     public static void generateStructure(World world, BlockPos pos) {
-        // Створюємо коробку з бар'єрів
         for (int x = -5; x <= 5; x++) {
             for (int z = -5; z <= 5; z++) {
                 for (int y = 0; y <= 25; y++) {
@@ -20,7 +18,6 @@ public class SpawnStructure {
             }
         }
 
-        // Встановлюємо точку появи для гравця
         BlockPos spawnPos = pos.add(0, 1, 0);
         world.setBlockState(spawnPos, Blocks.STONE.getDefaultState(), 2);
     }
