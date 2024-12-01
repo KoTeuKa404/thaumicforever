@@ -11,22 +11,20 @@ import net.minecraft.world.World;
 public class BowlTreatMeat extends ItemFood {
 
     public BowlTreatMeat() {
-        super(20, 1.0F, false); // 20 одиниць голоду, повне насичення
+        super(20, 1.0F, false); 
         setRegistryName("bowl_treatmeat");
         setUnlocalizedName("bowl_treatmeat");
-        setAlwaysEdible(); // Завжди можна з'їсти, навіть при повному голоді
+        setAlwaysEdible(); 
     }
 
     @Override
     protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
         super.onFoodEaten(stack, world, player);
 
-        // Додаємо ефект регенерації 3 на 7 секунд
         if (!world.isRemote) {
-            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 7 * 20, 2)); // Регенерація III
+            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 7 * 20, 2)); 
         }
 
-        // Повертаємо порожню дерев'яну миску
         if (!player.inventory.addItemStackToInventory(new ItemStack(Items.BOWL))) {
             player.dropItem(new ItemStack(Items.BOWL), false);
         }

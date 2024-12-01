@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class FlowerGenerator implements IWorldGenerator {
 
     private final Block flower;
-    private final int chancePerChunk; // Кількість чанків, в яких буде одна спроба спавну
+    private final int chancePerChunk; 
 
     public FlowerGenerator(Block flower, int chancePerChunk) {
         this.flower = flower;
@@ -23,10 +23,8 @@ public class FlowerGenerator implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Тільки для Overworld
-            // Генеруємо лише якщо випадкове число менше за ймовірність
+        if (world.provider.getDimension() == 0) { 
             if (random.nextInt(chancePerChunk) == 0) {
-                // Кількість спроб в межах одного чанка (можна залишити 1 для рідкісної квітки)
                 int attempts = 1; 
                 for (int i = 0; i < attempts; i++) {
                     int x = chunkX * 16 + random.nextInt(16);
@@ -42,10 +40,8 @@ public class FlowerGenerator implements IWorldGenerator {
     }
 
     public static void register() {
-        // Червона роза - з'являється 1 раз на 10 чанків
         GameRegistry.registerWorldGenerator(new FlowerGenerator(ModBlocks.RED_ROSE, 10), 0);
 
-        // Синя роза - з'являється 1 раз на 100 чанків
         GameRegistry.registerWorldGenerator(new FlowerGenerator(ModBlocks.BLUE_ROSE, 100), 0);
     }
 }

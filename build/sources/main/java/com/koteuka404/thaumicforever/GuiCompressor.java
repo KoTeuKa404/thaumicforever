@@ -55,7 +55,6 @@ public class GuiCompressor extends GuiContainer {
                     ItemStack selectedPlate = plateOptions.get(i);
                     tileEntity.setSelectedPlate(selectedPlate);
     
-                    // Відправка пакету з вибраною пластиною та координатами блоку
                     PacketSelectPlate packet = new PacketSelectPlate(selectedPlate, tileEntity.getPos());
                     ThaumicForever.network.sendToServer(packet);
                     break;

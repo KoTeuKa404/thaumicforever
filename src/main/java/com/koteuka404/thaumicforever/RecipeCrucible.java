@@ -287,7 +287,6 @@ public class RecipeCrucible {
             Aspect DRACO = Aspect.getAspect("draco");
         
             if (DRACO == null) {
-                System.out.println("Aspect 'draco' is not registered or could not be found.");
             } else {
                 ResourceLocation dragonBreathRecipeKey = new ResourceLocation(MODID, "dragon_breath_recipe");
         
@@ -302,7 +301,6 @@ public class RecipeCrucible {
                 );
         
                 ThaumcraftApi.addCrucibleRecipe(dragonBreathRecipeKey, dragonBreathRecipe);
-                System.out.println("Dragon Breath recipe registered successfully.");
             }
         }
 

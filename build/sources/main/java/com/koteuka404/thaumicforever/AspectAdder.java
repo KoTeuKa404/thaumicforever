@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -101,5 +102,12 @@ public class AspectAdder {
         boneAspects.add(Aspect.LIFE, 10);
         boneAspects.add(Aspect.AVERSION, 5);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.Bone), boneAspects);
+    
+        Aspect weaterAspect = AspectRegistry.WEATHER;
+        Aspect gelumAspect = Aspect.COLD;
+        AspectList snowAspects = new AspectList();
+        snowAspects.add(weaterAspect, 1);
+        snowAspects.add(gelumAspect, 1);
+        ThaumcraftApi.registerObjectTag(new ItemStack(Items.SNOWBALL), snowAspects);
     }
 }

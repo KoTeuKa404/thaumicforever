@@ -52,7 +52,7 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
             BlockPos pos = new BlockPos(x, y, z);
 
             if (isSolidBlockBelow(world, pos.down()) && isAreaClear(world, pos, 5, 10)) {
-                int totemType = random.nextInt(6); // 0 - звичайний, 1 - leed, 2 - high, 3 - із сундуком, 4 - leed_ch, 5 - high_ch
+                int totemType = random.nextInt(6); // 0 - def, 1 - leed, 2 - high, 3 - із сундуком, 4 - leed_ch, 5 - high_ch
 
                 switch (totemType) {
                     case 0:
@@ -93,9 +93,8 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
 
         if (template != null) {
             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
-            generateLootInChest(world, pos); // Призначення луттейбла для сундука
+            generateLootInChest(world, pos); 
         } else {
-            System.out.println("Шаблон структури " + templateLocation + " не знайдено!");
         }
     }
 

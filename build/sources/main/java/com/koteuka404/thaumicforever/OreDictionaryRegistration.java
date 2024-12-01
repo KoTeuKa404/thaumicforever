@@ -5,13 +5,11 @@ import net.minecraftforge.oredict.OreDictionary;
 public class OreDictionaryRegistration {
 
     public static void registerOreDictionary() {
-        // Реєстрація руд у OreDictionary
         OreDictionary.registerOre("oreLead", ModOreBlocks.LEAD_ORE);
         OreDictionary.registerOre("oreSilver", ModOreBlocks.SILVER_ORE);
         OreDictionary.registerOre("oreTin", ModOreBlocks.TIN_ORE);
         OreDictionary.registerOre("oreCopper", ModOreBlocks.COPPER_ORE);
 
-        // Реєстрація інших руд
         OreDictionary.registerOre("oreAncientIron", ModOreBlocks.ANCIENT_IRON);
         OreDictionary.registerOre("oreAncientGold", ModOreBlocks.ANCIENT_GOLD);
         OreDictionary.registerOre("oreAncientCoal", ModOreBlocks.ANCIENT_COAL);
@@ -19,19 +17,16 @@ public class OreDictionaryRegistration {
         OreDictionary.registerOre("oreAquareia", ModOreBlocks.AQUAREIA_ORE);
         OreDictionary.registerOre("oreAncientAmber", ModOreBlocks.ANCIENT_AMBER);        
 
-        // Реєстрація слитків у OreDictionary
         OreDictionary.registerOre("ingotLead", ModItems.LEAD_INGOT);
         OreDictionary.registerOre("ingotSilver", ModItems.SILVER_INGOT);
         OreDictionary.registerOre("ingotTin", ModItems.TIN_INGOT);
         OreDictionary.registerOre("ingotCopper", ModItems.COPPER_INGOT);
 
-        // Реєстрація нагетсів у OreDictionary
         OreDictionary.registerOre("nuggetLead", ModItems.LEAD_NUGGET);
         OreDictionary.registerOre("nuggetSilver", ModItems.SILVER_NUGGET);
         OreDictionary.registerOre("nuggetTin", ModItems.TIN_NUGGET);
         OreDictionary.registerOre("nuggetCopper", ModItems.COPPER_NUGGET);
 
-        // Реєстрація блоків у OreDictionary
         OreDictionary.registerOre("blockLead", ModBlocks.LEAD_BLOCK);
         OreDictionary.registerOre("blockSilver", ModBlocks.SILVER_BLOCK);
         OreDictionary.registerOre("blockTin", ModBlocks.TIN_BLOCK);

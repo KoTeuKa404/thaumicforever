@@ -5,7 +5,6 @@ import thaumcraft.api.aspects.Aspect;
 
 public class AspectRegistry {
 
-    // Додаємо новий аспект WEATHER (tempestas)
     public static final Aspect WEATHER = new Aspect("Weather", 0xFFFFFF, new Aspect[] {Aspect.AIR, Aspect.WATER}, new ResourceLocation("thaumicforever", "textures/misc/tempestas.png"), 1);
     public static final Aspect MATTERYA = new Aspect("Mattery",0x00FF00, new Aspect[] {Aspect.DESIRE, Aspect.CRAFT}, new ResourceLocation("thaumicforever", "textures/misc/mattery.png"), 1);
 

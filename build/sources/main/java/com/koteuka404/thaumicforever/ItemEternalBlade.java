@@ -1,4 +1,3 @@
-// ItemEternalBlade.java
 package com.koteuka404.thaumicforever;
 
 import java.util.List;
@@ -27,17 +26,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemEternalBlade extends ItemSword {
 
     private static final float ATTACK_DAMAGE = 23.0F;
-    private static final float ATTACK_SPEED = -2.34F; // Відповідає швидкості атаки 1.66
+    private static final float ATTACK_SPEED = -2.34F; 
 
     private final Multimap<String, AttributeModifier> attributeModifiers;
 
     public ItemEternalBlade() {
-        super(ToolMaterial.DIAMOND); // Використовуємо базовий матеріал
+        super(ToolMaterial.DIAMOND);
         setRegistryName("eternal_blade");
         setUnlocalizedName("eternal_blade");
         setMaxStackSize(1);
 
-        // Налаштовуємо атрибути для урону та швидкості атаки при створенні предмета
         ImmutableMultimap.Builder<String, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", ATTACK_DAMAGE, 0));
         builder.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", ATTACK_SPEED, 0));
@@ -47,40 +45,43 @@ public class ItemEternalBlade extends ItemSword {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         if (!world.isRemote) {
-            int radius = 3 + world.rand.nextInt(3); // Випадковий радіус від 3 до 5 блоків
+            int radius = 3 + world.rand.nextInt(3); 
             AxisAlignedBB area = new AxisAlignedBB(
                     player.posX - radius, player.posY - 1, player.posZ - radius,
                     player.posX + radius, player.posY + 1, player.posZ + radius
             );
 
-            // Знаходимо всіх ворогів у радіусі
             List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, area, entity -> entity != player);
             for (EntityLivingBase entity : entities) {
-                entity.setFire(5); // Підпалюємо кожного ворога на 5 секунд
+                entity.setFire(5); 
             }
 
-            // Створюємо частинки вогню навколо гравця
             spawnFireParticles(world, player, radius);
 
-            // Додаємо звук
             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ITEM_FLINTANDSTEEL_USE, player.getSoundCategory(), 1.0F, 1.0F);
         }
 
         return new ActionResult<>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 
-    // Метод для створення частинок вогню
     @SideOnly(Side.CLIENT)
     private void spawnFireParticles(World world, EntityPlayer player, int radius) {
-        for (int i = 0; i < 100; i++) {
-            double angle = Math.toRadians(i * (360.0 / 100)); // 100 частинок для кола
-            double x = player.posX + radius * Math.cos(angle);
-            double z = player.posZ + radius * Math.sin(angle);
-            double y = player.posY;
+        for (int r = 1; r <= radius; r++) {
+            final double currentRadius = r; // Поточний радіус
+            for (int angle = 0; angle < 360; angle += 10) {
+                double radian = Math.toRadians(angle);
+                double x = player.posX + currentRadius * Math.cos(radian);
+                double z = player.posZ + currentRadius * Math.sin(radian);
+                double y = player.posY + 0.5;
 
-            world.spawnParticle(EnumParticleTypes.FLAME, x, y, z, 0, 0.05, 0);
+                // Відкласти спаун частинок
+                world.spawnParticle(EnumParticleTypes.FLAME, x, y, z, 0, 0.05, 0);
+            }
         }
     }
+
+
+
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
@@ -88,15 +89,14 @@ public class ItemEternalBlade extends ItemSword {
         return true;
     }
 
-    // Метод для налаштування червоного імені предмета
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
         return TextFormatting.DARK_RED + "Eternal Blade";
     }
 
-    // Перезаписуємо атрибути для урону та швидкості атаки
     @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
         return slot == EntityEquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
     }
+    
 }

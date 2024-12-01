@@ -17,7 +17,6 @@ public class ReviveSkeletonRenderer extends RenderLiving<ReviveSkeletonEntity> {
 
     public ReviveSkeletonRenderer(RenderManager renderManager) {
         super(renderManager, new SkeletonReviveModel(), 0.5F);
-        // Додаємо шар для рендерингу предметів у руках
         this.addLayer(new LayerHeldItemCustom(this));
     }
 
@@ -29,10 +28,8 @@ public class ReviveSkeletonRenderer extends RenderLiving<ReviveSkeletonEntity> {
     @Override
     protected void preRenderCallback(ReviveSkeletonEntity entity, float partialTickTime) {
         super.preRenderCallback(entity, partialTickTime);
-        // Додаткове налаштування, якщо потрібно змінити масштаб або позицію перед рендером
     }
 
-    // Кастомний клас для рендеру предметів у руках
     private static class LayerHeldItemCustom implements LayerRenderer<ReviveSkeletonEntity> {
         private final ReviveSkeletonRenderer render;
 

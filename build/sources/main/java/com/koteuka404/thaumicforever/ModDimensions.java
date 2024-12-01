@@ -10,7 +10,6 @@ public class ModDimensions {
 
     public static DimensionType VOID_DIMENSION;
 
-    // Реєстрація нового світу через `DimensionManager` для Forge 1.12.2
     public static void init(FMLInitializationEvent event) {
         VOID_DIMENSION = DimensionType.register("void_dimension", "_void", 25915, VoidWorldProvider.class, false);
         DimensionManager.registerDimension(25915, VOID_DIMENSION);

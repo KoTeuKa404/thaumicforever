@@ -15,9 +15,9 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int CHEST_GUI_ID = 1;
     public static final int DOUBLE_TABLE_GUI = 2;
     public static final int CRIMSON_BOOK_GUI = 3;
-    public static final int GUI_ID_MATTERY_DUPLICATOR = 4; // ID для дублювання предметів з mattery
+    public static final int GUI_ID_MATTERY_DUPLICATOR = 4;
     public static final int GUI_ID_COMPRESSOR = 5;
-    public static final int GUI_ID_REPURPOSER = 6; // ID для перековщика
+    public static final int GUI_ID_REPURPOSER = 6;
 
     public ModGuiHandler() {
     }
@@ -26,7 +26,6 @@ public class ModGuiHandler implements IGuiHandler {
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        // Обробка ID для кожного GUI на сервері
         if (ID == DECONSTRUCTION_TABLE_GUI && tileEntity instanceof DeconstructionTableTileEntity) {
             return new DeconstructionTableContainer(player.inventory, (IInventory) tileEntity);
         } else if (ID == CHEST_GUI_ID && tileEntity instanceof TileEntityAbandonedChest) {
@@ -49,7 +48,6 @@ public class ModGuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tileEntity = world.getTileEntity(new BlockPos(x, y, z));
 
-        // Обробка ID для кожного GUI на клієнті
         if (ID == DECONSTRUCTION_TABLE_GUI && tileEntity instanceof DeconstructionTableTileEntity) {
             return new DeconstructionTableGui(player.inventory, (IInventory) tileEntity);
         } else if (ID == CHEST_GUI_ID && tileEntity instanceof TileEntityAbandonedChest) {

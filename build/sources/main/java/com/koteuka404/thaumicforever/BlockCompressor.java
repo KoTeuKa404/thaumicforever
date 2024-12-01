@@ -49,12 +49,12 @@ public class BlockCompressor extends Block {
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {
-        return false; // Робить блок прозорим
+        return false;
     }
 
     @Override
     public boolean isFullCube(IBlockState state) {
-        return false; // Робить блок нефізичним
+        return false;
     }
 
     @Override
@@ -69,12 +69,10 @@ public class BlockCompressor extends Block {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        // Додаємо дроп предметів з інвентаря TileEntity при руйнуванні блоку
         TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity instanceof TileEntityCompressor) {
             TileEntityCompressor compressor = (TileEntityCompressor) tileEntity;
 
-            // Дропаємо всі предмети з інвентаря
             for (int i = 0; i < compressor.getInventory().getSlots(); i++) {
                 ItemStack stack = compressor.getInventory().getStackInSlot(i);
                 if (!stack.isEmpty()) {
@@ -83,7 +81,6 @@ public class BlockCompressor extends Block {
             }
         }
 
-        // Викликаємо стандартний метод для завершення знищення блоку
         super.breakBlock(world, pos, state);
     }
 }

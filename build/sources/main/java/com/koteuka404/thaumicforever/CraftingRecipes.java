@@ -12,16 +12,15 @@ import thaumcraft.api.items.ItemsTC;
 public class CraftingRecipes {
     public static void init() {
         GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "greatwood_table"), // Ідентифікатор рецепту
-            null, // Група рецепту (null, якщо не використовується)
-            new ItemStack(ModBlocks.GREATWOOD_TABLE),  // Результат рецепту
+            new ResourceLocation("thaumicforever", "greatwood_table"),
+            null,
+            new ItemStack(ModBlocks.GREATWOOD_TABLE), 
             "PPP",
             " S ",
-            'P', Blocks.WOODEN_SLAB, // Дерев'яні плити
-            'S', Blocks.PLANKS // Дошки
+            'P', Blocks.WOODEN_SLAB, 
+            'S', Blocks.PLANKS 
         );
 
-        // Слиток -> Блок
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "lead_block"),
             null,
@@ -54,7 +53,6 @@ public class CraftingRecipes {
             'I', Ingredient.fromItems(ModItems.COPPER_INGOT)
         );
 
-        // Блок -> Слитки
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "lead_ingot_from_block"),
             null,
@@ -65,35 +63,33 @@ public class CraftingRecipes {
             new ResourceLocation("thaumicforever", "bowl_treatmeat"),
             null,
             new ItemStack(ModItems.BOWL_TREATMEAT),
-            Ingredient.fromItems(Items.BOWL), // Миска
-            Ingredient.fromItems(ItemsTC.tripleMeatTreat), // Triple Meat Treat
+            Ingredient.fromItems(Items.BOWL), 
+            Ingredient.fromItems(ItemsTC.tripleMeatTreat), 
             Ingredient.fromItems(ItemsTC.tripleMeatTreat),
             Ingredient.fromItems(ItemsTC.tripleMeatTreat)
         );
 
-        // Рецепт для bowl_zombie: миска + серце зомбі + гнила плоть
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "bowl_zombie"),
             null,
             new ItemStack(ModItems.BOWL_ZOMBIE),
-            Ingredient.fromItems(Items.BOWL), // Миска
-            Ingredient.fromItems(ModItems.ItemZombieHeart), // Серце зомбі
-            Ingredient.fromItems(Items.ROTTEN_FLESH) // Гнила плоть
+            Ingredient.fromItems(Items.BOWL),
+            Ingredient.fromItems(ModItems.ItemZombieHeart), 
+            Ingredient.fromItems(Items.ROTTEN_FLESH)
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "dye_from_red"),
             null,
-            new ItemStack(Items.DYE, 1, 1), // Rose Red (червоний барвник), мета-дані 1
-            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.RED_ROSE)) // RED_ROSE
+            new ItemStack(Items.DYE, 1, 1), 
+            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.RED_ROSE)) 
         );
 
-        // Рецепт для перетворення BLUE_ROSE в Light Blue Dye (світло-блакитний барвник)
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "dye_from_blue"),
             null,
-            new ItemStack(Items.DYE, 1, 12), // Light Blue Dye (світло-блакитний барвник), мета-дані 12
-            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.BLUE_ROSE)) // BLUE_ROSE
+            new ItemStack(Items.DYE, 1, 12), 
+            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.BLUE_ROSE)) 
         );
 
         GameRegistry.addShapelessRecipe(
@@ -117,7 +113,6 @@ public class CraftingRecipes {
             Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.COPPER_BLOCK))
         );
 
-        // Слиток -> Нагетси
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "lead_nugget"),
             null,
@@ -155,7 +150,6 @@ public class CraftingRecipes {
 
         );
 
-        // Нагетси -> Слиток
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "lead_ingot_from_nuggets"),
             null,

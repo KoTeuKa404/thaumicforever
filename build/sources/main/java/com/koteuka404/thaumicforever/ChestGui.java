@@ -15,13 +15,12 @@ public class ChestGui extends GuiContainer {
         super(new ContainerAbandonedChest(playerInventory, tileEntity));
         this.playerInventory = playerInventory;
         this.tileEntity = tileEntity;
-        this.xSize = 256;  // Ширина вашого GUI
-        this.ySize = 220;  // Висота вашого GUI
+        this.xSize = 256;  
+        this.ySize = 220;  
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        // Малюємо назву контейнера в центрі верхньої частини GUI
     }
 
     @Override
@@ -32,7 +31,6 @@ public class ChestGui extends GuiContainer {
         int guiLeft = (this.width - this.xSize) / 2 + 20;
         int guiTop = (this.height - this.ySize) / 2;
 
-        // Adjust the guiTop to move the texture down (increase this number slightly, such as guiTop + 10)
         this.drawTexturedModalRect(guiLeft, guiTop + 5, 0, 0, this.xSize, this.ySize);
     }
     @Override

@@ -9,8 +9,8 @@ public class DoubleTableGui extends GuiContainer {
 
     public DoubleTableGui(Container container) {
         super(container);
-        this.xSize = 256; // Width of the GUI
-        this.ySize = 240; // Height of the GUI
+        this.xSize = 256; 
+        this.ySize = 240; 
     }
 
     @Override

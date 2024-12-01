@@ -77,7 +77,6 @@ public class ItemAquareiaGoggles extends ItemArmor implements IRevealer, IGoggle
         if (renderType == RenderType.HEAD) {
             boolean armor = entityPlayer.getItemStackFromSlot(EntityEquipmentSlot.HEAD) != null;
 
-            // Підключення текстури для баубла
             Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles_b.png"));
 
             IRenderBauble.Helper.translateToHeadLevel(entityPlayer);
@@ -88,10 +87,8 @@ public class ItemAquareiaGoggles extends ItemArmor implements IRevealer, IGoggle
             GlStateManager.translate(-0.5D, -0.5D, 0.12D);
             UtilsFX.renderTextureIn3D(0.0F, 0.0F, 1.0F, 1.0F, 16, 26, 0.1F);
 
-            // Підключення текстури для анімації
             Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles.png"));
 
-            // Параметри анімації
             int frameCount = 8;
             int frameHeight = 16;
             int textureHeight = 128;
@@ -99,9 +96,8 @@ public class ItemAquareiaGoggles extends ItemArmor implements IRevealer, IGoggle
             float minV = (float)(currentFrame * frameHeight) / (float)textureHeight;
             float maxV = (float)((currentFrame + 1) * frameHeight) / (float)textureHeight;
 
-            // Додавання 2D анімації поверх 3D для шолома і баубла
             GlStateManager.pushMatrix();
-            GlStateManager.translate(0.5F, 1.0F, 0.02F); // Налаштування позиції анімації
+            GlStateManager.translate(0.5F, 1.0F, 0.02F);
             GlStateManager.rotate(180.0F, 1.0F, 0.0F, 0.0F);
 
             Tessellator tessellator = Tessellator.getInstance();

@@ -1,9 +1,10 @@
 package com.koteuka404.thaumicforever;
 
-import mezz.jei.recipes.RecipeRegistry;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -25,13 +26,13 @@ import thaumcraft.api.crafting.IDustTrigger;
     modid = ThaumicForever.MODID,
     name = ThaumicForever.NAME,
     version = ThaumicForever.VERSION,
-    dependencies = "required-after:forge@[14.23.5.2816,);required-after:thaumcraft@[6.1.BETA26,);"
+    dependencies = "required-after:forge@[14.23.5.2820,);required-after:thaumcraft@[6.1.BETA26,);"
 )
 // ;required-after:mixinbooter@[0.8,)
 public class ThaumicForever {
     public static final String MODID = "thaumicforever";
     public static final String NAME = "Thaumic Forever";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "4.0";
 
     @SidedProxy(clientSide = "com.koteuka404.thaumicforever.ClientProxy", serverSide = "com.koteuka404.thaumicforever.ServerProxy")
     public static CommonProxy proxy;
@@ -40,7 +41,7 @@ public class ThaumicForever {
 
     public static ThaumicForever instance;
     public static final CreativeTabs CREATIVE_TAB = new ThaumicForeverCreativeTab();
-    private static int id = 0;  // Унікальний ідентифікатор для кожної сутності
+    private static int id = 0; 
     public static SimpleNetworkWrapper network;
 
     @Mod.EventHandler
@@ -51,6 +52,10 @@ public class ThaumicForever {
         GameRegistry.registerTileEntity(TileEntityMatteryDuplicator.class, new ResourceLocation(ThaumicForever.MODID, ":repurposer"));
         GameRegistry.registerTileEntity(TileEntityRepurposer.class, new ResourceLocation(ThaumicForever.MODID, ":mattery_duplicator"));
         GameRegistry.registerTileEntity(TileEntityCompressor.class, new ResourceLocation(ThaumicForever.MODID, "compressor"));
+        GameRegistry.registerTileEntity(TileEntityTimeStone.class, new ResourceLocation(ThaumicForever.MODID, "time_stone"));
+        GameRegistry.registerTileEntity(TileEntityTimeSlow.class, new ResourceLocation(ThaumicForever.MODID, "time_slow"));
+        GameRegistry.registerTileEntity(TileMechanismAmplifier.class, new ResourceLocation(ThaumicForever.MODID, "mechanism_amplifier_tile"));
+        
         new OreGeneration();
         ModFocuses.registerFocuses();
         // Mixins.addConfiguration("mixins.thaumicforever.json");
@@ -63,7 +68,7 @@ public class ThaumicForever {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "aura_node"), AuraNodeEntity.class, "AuraNode",id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "revive_skeleton"),ReviveSkeletonEntity.class,"ReviveSkeleton",id++,this,64,1,true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "skeleton_angry"), EntitySkeletonAngry.class, "SkeletonAngry", id++, this, 64, 1, true);
-
+ 
         proxy.preInit(event);
 
         GameRegistry.registerWorldGenerator(new WorldGenUnderloot(), 0);
@@ -71,16 +76,17 @@ public class ThaumicForever {
         GameRegistry.registerWorldGenerator(new WorldGenObsidianTotem(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenThaumicHouse(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenHilltopStones(), 0);
-
+        GameRegistry.registerWorldGenerator(new WorldGenMazeInTaiga(), 0);
         MinecraftForge.EVENT_BUS.register(RemoveRecipes.class);
         AspectRegistry.registerAspects();
 
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketSelectPlate.Handler.class, PacketSelectPlate.class, 0, Side.SERVER);
-        MinecraftForge.EVENT_BUS.register(new RainCauldronFiller());  // Реєстрація обробника події для дощу
+        MinecraftForge.EVENT_BUS.register(new RainCauldronFiller()); 
         FlowerGenerator.register();
-        MinecraftForge.EVENT_BUS.register(RecipeRegistry.class);
 
+        MinecraftForge.EVENT_BUS.register(new BoneToSkeletonHandler());
+        MinecraftForge.EVENT_BUS.register(WorldTickHandler.getInstance());
 
 
     }
@@ -113,9 +119,9 @@ public class ThaumicForever {
         registerCustomRecipes();
         new ScanObjects(); 
 
-        MinecraftForge.EVENT_BUS.register(new RavenCloakRender());
+        ModSpawnEggs.registerEggs();
 
-    }
+        }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
@@ -143,6 +149,14 @@ public class ThaumicForever {
         GameRegistry.findRegistry(IRecipe.class).register(new CustomSalisMundusRecipe());
     }
 
+    
 
+    public static void registerEntitySpawns() {
+        for (Biome biome : Biome.REGISTRY) {
+            if (biome != null && biome.getSpawnableList(EnumCreatureType.MONSTER) != null) {
+                EntityRegistry.addSpawn(EntitySkeletonAngry.class, 8, 1, 3, EnumCreatureType.MONSTER, biome);
+            }
+        }
+    }
     
 }

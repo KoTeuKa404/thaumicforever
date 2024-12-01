@@ -28,7 +28,7 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
             Biome targetBiome = Biome.REGISTRY.getObject(new ResourceLocation("thaumcraft", "magical_forest"));
             Biome biome = world.getBiome(new BlockPos(chunkX * 16, 0, chunkZ * 16));
 
-            if (biome == targetBiome && random.nextInt(2) == 0) {  
+            if (biome == targetBiome && random.nextInt(200) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
                 int y = world.getHeight(x, z);

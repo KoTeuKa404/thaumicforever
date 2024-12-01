@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        // Заміна JCenter на MavenCentral
         mavenCentral()
         maven { url = "https://files.minecraftforge.net/maven" }
     }
@@ -10,14 +9,14 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "4.1.4"
+version = "4.1.5"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
 sourceCompatibility = targetCompatibility = '1.8'
 
 minecraft {
-    version = "1.12.2-14.23.5.2816"
+    version = "1.12.2-14.23.5.2820"
     runDir = "run"
     mappings = "snapshot_20171003"
     // makeObfSourceJar = true 

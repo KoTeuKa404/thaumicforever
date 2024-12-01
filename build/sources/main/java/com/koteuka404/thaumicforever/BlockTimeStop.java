@@ -10,31 +10,30 @@ import net.minecraft.world.World;
 public class BlockTimeStop extends Block {
 
     public BlockTimeStop() {
-        super(Material.GLASS); // Використовуємо скляний матеріал для магічного поля
-        setHardness(10.0F); // Блок важко зламати
-        setResistance(100.0F); // Висока стійкість до вибухів
-        setLightOpacity(1); // Мінімальна прозорість
+        super(Material.GLASS);
+        setHardness(20.0F); 
+        setResistance(100.0F); 
+        setLightOpacity(1); 
         setUnlocalizedName("time_stop_block");
         setRegistryName("time_stop_block");
     }
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {
-        return false; // Робить блок прозорим
+        return false; 
     }
 
     @Override
     public boolean isFullCube(IBlockState state) {
-        return false; // Робить блок нефізичним
+        return false; 
     }
 
     @Override
     public BlockRenderLayer getBlockLayer() {
-        return BlockRenderLayer.TRANSLUCENT; // Напівпрозорий рендер
+        return BlockRenderLayer.TRANSLUCENT;
     }
     @Override
     public void updateTick(World world, BlockPos pos, net.minecraft.block.state.IBlockState state, java.util.Random rand) {
-        // Видаляємо блок після певного часу
         world.setBlockToAir(pos);
     }
 }

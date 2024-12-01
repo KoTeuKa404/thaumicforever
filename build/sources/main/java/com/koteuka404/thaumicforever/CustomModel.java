@@ -89,16 +89,14 @@ public class CustomModel extends ModelBase {
 
     @Override
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        // Базові рухи ніг
         this.leftArm.rotateAngleX = (float) Math.cos(limbSwing * 0.6662F) * 1.1F * limbSwingAmount;
         this.rightArm.rotateAngleX = (float) Math.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.1F * limbSwingAmount;
         this.leftLeg.rotateAngleX = (float) Math.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.1F * limbSwingAmount;
         this.rightLeg.rotateAngleX = (float) Math.cos(limbSwing * 0.6662F) * 1.1F * limbSwingAmount;
 
-        // Анімація для правої руки при атаці
         if (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getSwingProgress(scaleFactor) > 0.0F) {
             float swingProgress = ((EntityLivingBase) entity).getSwingProgress(scaleFactor);
-            this.rightArm.rotateAngleX = -2.0F + 1.5F * swingProgress; // Підйом руки при атаці
+            this.rightArm.rotateAngleX = -2.0F + 1.5F * swingProgress; 
             this.rightArm.rotateAngleY = 0.0F;
             this.rightArm.rotateAngleZ = (float) Math.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         }

@@ -1,6 +1,9 @@
 package com.koteuka404.thaumicforever;
 
+import baubles.api.BaubleType;
+import baubles.api.IBauble;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -8,11 +11,12 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityRepurposer extends TileEntity implements ITickable {
 
-    private ItemStackHandler inventory = new ItemStackHandler(2); // 0 - лівий слот, 1 - правий слот
-
+    private ItemStackHandler inventory = new ItemStackHandler(2); 
+    
     @Override
     public void update() {
         if (!world.isRemote) {
+            System.out.println("Виконується метод update()");
             handleJewelryTransformation();
         }
     }
@@ -20,95 +24,80 @@ public class TileEntityRepurposer extends TileEntity implements ITickable {
     private void handleJewelryTransformation() {
         ItemStack leftSlot = inventory.getStackInSlot(0);  // Лівий слот
         ItemStack rightSlot = inventory.getStackInSlot(1); // Правий слот
-    
-        // Перевірка, чи обидва слоти заповнені і чи предмет у правому слоті є біжутерією
+
         if (!leftSlot.isEmpty() && !rightSlot.isEmpty() && isJewelryValid(rightSlot)) {
-            System.out.println("Лівий слот до трансформації: " + leftSlot);
-            System.out.println("Правий слот до трансформації: " + rightSlot);
-    
-            // Створюємо новий ItemStack на основі предмета з правого слота
-            ItemStack transformedJewelry = new ItemStack(rightSlot.getItem(), rightSlot.getCount());
-    
-            // Копіюємо оригінальні NBT-теги з правого предмета, якщо вони є
-            if (rightSlot.hasTagCompound()) {
-                transformedJewelry.setTagCompound(rightSlot.getTagCompound().copy());
-            }
-    
-            // Додаємо/об'єднуємо специфічні NBT-теги з лівого предмета
-            if (leftSlot.hasTagCompound()) {
-                if (transformedJewelry.hasTagCompound()) {
-                    transformedJewelry.getTagCompound().merge(leftSlot.getTagCompound());
+            System.out.println("Починаємо трансформацію біжутерії...");
+            System.out.println("Лівий слот: " + leftSlot.getDisplayName() + ", Правий слот: " + rightSlot.getDisplayName());
+
+            // Міняємо тип предмета у правому слоті на той, що в лівому
+            Item rightItem = rightSlot.getItem();
+            Item leftItem = leftSlot.getItem();
+
+            if (rightItem instanceof IBauble && leftItem instanceof IBauble) {
+                if (leftItem instanceof MutableBaubleItem) {
+                    BaubleType newType = ((IBauble) leftItem).getBaubleType(leftSlot);
+                    System.out.println("Новий тип біжутерії: " + newType);
+
+                    if (rightItem instanceof MutableBaubleItem) {
+                        MutableBaubleItem mutableBauble = (MutableBaubleItem) rightItem;
+                        mutableBauble.setBaubleType(rightSlot, newType);
+                        System.out.println("Змінено тип Bauble на: " + newType);
+
+                        // Оновлюємо предмет у правому слоті після зміни типу
+                        inventory.setStackInSlot(1, rightSlot);
+                        markDirty(); // Оновлюємо TileEntity для збереження змін
+
+                        // Вилучаємо предмет з лівого слоту
+                        inventory.setStackInSlot(0, ItemStack.EMPTY);
+                        System.out.println("Предмет у лівому слоті вилучено.");
+                    } else {
+                        System.out.println("Предмет у правому слоті не підтримує зміну типу");
+                    }
                 } else {
-                    transformedJewelry.setTagCompound(leftSlot.getTagCompound().copy());
+                    System.out.println("Предмет у лівому слоті не підтримує зміну типу");
                 }
-    
-                // Зміна типу біжутерії правого слота на основі лівого
-                String leftType = getBaubleTypeFrom(leftSlot);
-                transformedJewelry.getTagCompound().setString("BaubleType", leftType);
-                System.out.println("Тип біжутерії змінено на: " + leftType);
+            } else {
+                System.out.println("Один із предметів не є біжутерією");
             }
-    
-            System.out.println("Створено новий предмет: " + transformedJewelry);
-    
-            // Вставляємо новий предмет у правий слот
-            inventory.setStackInSlot(1, transformedJewelry);
-            System.out.println("Правий слот після трансформації: " + inventory.getStackInSlot(1));
-    
-            // Зменшуємо кількість предметів у лівому слоті на 1, щоб він зникав
-            leftSlot.shrink(1);
-            if (leftSlot.getCount() <= 0) {
-                inventory.setStackInSlot(0, ItemStack.EMPTY);
-            }
-    
-            markDirty(); // Оновлення стану TileEntity
-            System.out.println("Оновлено стан TileEntity.");
+        } else {
+            System.out.println("Слоти не підходять для трансформації або є порожніми");
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
-    
-    // Метод для отримання типу біжутерії з лівого слота
-    private String getBaubleTypeFrom(ItemStack stack) {
-        // Це приклад, змініть цей метод відповідно до ваших потреб, якщо потрібно отримувати тип із NBT
-        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("BaubleType")) {
-            return stack.getTagCompound().getString("BaubleType");
-        }
-        return "unknown"; // Значення за замовчуванням, якщо тип не знайдено
-    }
-    
-
-
-    
-    
 
     private boolean isJewelryValid(ItemStack stack) {
-        // Перевірка, чи є предмет одним з типів біжутерії
-        return stack.getDisplayName().toLowerCase().contains("ring") ||
-               stack.getDisplayName().toLowerCase().contains("amulet") ||
-               stack.getDisplayName().toLowerCase().contains("head") ||
-               stack.getDisplayName().toLowerCase().contains("belt") ||
-               stack.getDisplayName().toLowerCase().contains("body") ||
-               stack.getDisplayName().toLowerCase().contains("charm");
+        if (stack.getItem() instanceof IBauble) {
+            System.out.println("Предмет " + stack.getDisplayName() + " є дійсною біжутерією.");
+            return true;
+        } else {
+            System.out.println("Предмет " + stack.getDisplayName() + " не є біжутерією.");
+            return false;
+        }
     }
 
     public ItemStackHandler getInventory() {
         return this.inventory;
     }
-    public boolean isUsableByPlayer(EntityPlayer player) {
-    // Перевіряє, чи гравець знаходиться на допустимій відстані для взаємодії з TileEntity
-    if (this.world.getTileEntity(this.pos) != this) {
-        return false;
-    } else {
-        return player.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
+    
+    public boolean isUsableByPlayer(EntityPlayer playerIn) {
+        return this.world.getTileEntity(this.pos) == this && playerIn.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 }
 
+// Новий клас, що реалізує IBauble і дозволяє змінювати тип BaubleType
+class MutableBaubleItem extends Item implements IBauble {
+    private BaubleType baubleType;
+
+    public MutableBaubleItem(BaubleType defaultType) {
+        this.baubleType = defaultType;
+    }
+
+    @Override
+    public BaubleType getBaubleType(ItemStack itemstack) {
+        return this.baubleType;
+    }
+
+    public void setBaubleType(ItemStack itemstack, BaubleType newType) {
+        this.baubleType = newType;
+        System.out.println("Тип Bauble змінено на: " + newType);
+    }
 }

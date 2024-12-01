@@ -26,37 +26,32 @@ public class ClientProxy extends CommonProxy {
     
     @Override
     public void preInit(FMLPreInitializationEvent event) {
-        super.preInit(event); // Виклик основної ініціалізації
+        super.preInit(event); 
         registerRenderers();
 
-        // Реєстрація подій для клієнтської сторони
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
     public void init(FMLInitializationEvent event) {
-        super.init(event); // Виклик основної ініціалізації
+        super.init(event); 
     }
 
     private void registerRenderers() {
-        // Реєстрація рендера для моба GuardianMannequin
         RenderingRegistry.registerEntityRenderingHandler(EntityGuardianMannequin.class, manager -> new RenderGuardianMannequin(manager));
         RenderingRegistry.registerEntityRenderingHandler(AuraNodeEntity.class, AuraNodeRenderer::new);
 
-        // Реєстрація рендера для EntityTimeFreezeProjectile
         RenderingRegistry.registerEntityRenderingHandler(EntityTimeFreezeProjectile.class, manager -> new RenderInvisibleSnowball(manager, Items.SNOWBALL, Minecraft.getMinecraft().getRenderItem()));
         RenderingRegistry.registerEntityRenderingHandler(ReviveSkeletonEntity.class, ReviveSkeletonRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySkeletonAngry.class, RenderSkeletonAngry::new);
 
     }
 
-    // Використання події для реєстрації кольорів предметів
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onItemColorRegister(ColorHandlerEvent.Item event) {
         ItemColors itemColors = event.getItemColors();
         
-        // Реєстрація кольору для кастомного фокуса ItemFocus4
         itemColors.registerItemColorHandler(new IItemColor() {
             @Override
             public int colorMultiplier(ItemStack stack, int tintIndex) {
@@ -67,7 +62,6 @@ public class ClientProxy extends CommonProxy {
             }
         }, ModItems.FOCUS_4);
 
-        // Реєстрація кольору для кастомного фокуса ItemFocusComplex
         itemColors.registerItemColorHandler(new IItemColor() {
             @Override
             public int colorMultiplier(ItemStack stack, int tintIndex) {

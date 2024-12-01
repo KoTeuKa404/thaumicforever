@@ -12,7 +12,7 @@ public class magic_dust extends Item {
 
     @Override
     public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.RARE; // Встановлення рідкості на EPIC
+        return EnumRarity.RARE; 
     }
 }
     

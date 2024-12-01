@@ -26,12 +26,12 @@ public class FocusEffectMindControl extends FocusEffect {
 
     @Override
     public int getComplexity() {
-        return 11; // Складність фокусу
+        return 19; 
     }
 
     @Override
     public Aspect getAspect() {
-        return Aspect.AVERSION; // Вибір аспекту, який підходить для фокусу "Контроль розуму"
+        return Aspect.AVERSION; 
     }
 
     @Override
@@ -42,30 +42,28 @@ public class FocusEffectMindControl extends FocusEffect {
             EntityLiving entity = (EntityLiving) target;
             if (entity instanceof EntityMob) {
                 applyMindControl((EntityMob) entity);
-                return true; // Повертаємо true, якщо магія була виконана успішно
+                return true;
             }
         }
-        return false; // Повертаємо false, якщо магія не спрацювала
+        return false;
     }
 
     private void applyMindControl(EntityMob entity) {
-        // Логіка контролю над розумом, щоб змусити моба атакувати інших
         List<Entity> nearbyEntities = entity.world.getEntitiesWithinAABBExcludingEntity(entity, entity.getEntityBoundingBox().grow(10));
 
         for (Entity nearbyEntity : nearbyEntities) {
             if (nearbyEntity instanceof EntityLiving && nearbyEntity != entity) {
-                entity.setAttackTarget((EntityLiving) nearbyEntity); // Встановлюємо нову ціль для атаки
+                entity.setAttackTarget((EntityLiving) nearbyEntity);
             }
         }
     }
 
     @Override
     public NodeSetting[] createSettings() {
-        return new NodeSetting[0]; // Параметри для налаштування фокусу
+        return new NodeSetting[0]; 
     }
 
     @Override
     public void renderParticleFX(World world, double x, double y, double z, double vx, double vy, double vz) {
-        // Візуальний ефект при використанні фокусу (можна налаштувати за бажанням)
     }
 }

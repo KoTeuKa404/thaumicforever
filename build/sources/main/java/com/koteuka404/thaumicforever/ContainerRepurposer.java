@@ -14,17 +14,15 @@ public class ContainerRepurposer extends Container {
     public ContainerRepurposer(InventoryPlayer playerInv, TileEntityRepurposer tileEntity) {
         this.tileEntity = tileEntity;
 
-        // Input and output slots з обмеженням на тип предметів
         this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 0, 55, 13)); // Input слот
         this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 1, 104, 13)); // Output слот
 
-        // Player inventory slots
         bindPlayerInventory(playerInv);
     }
 
     private void bindPlayerInventory(InventoryPlayer playerInventory) {
-        int inventoryYOffset = 59; // Зміщення Y для інвентаря гравця
-        int hotbarYOffset = 117; // Зміщення Y для хот-бару
+        int inventoryYOffset = 59; 
+        int hotbarYOffset = 117;
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -50,14 +48,12 @@ public class ContainerRepurposer extends Container {
             ItemStack stackInSlot = slot.getStack();
             itemstack = stackInSlot.copy();
 
-            // Якщо предмет з блоку (слоти 0 та 1), переміщаємо в інвентар гравця
             if (index < 2) {
                 if (!this.mergeItemStack(stackInSlot, 2, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onSlotChange(stackInSlot, itemstack);
             } else {
-                // Якщо предмет з інвентаря гравця, переміщаємо у відповідні слоти блоку
                 if (index >= 2 && index < this.inventorySlots.size()) {
                     if (!this.mergeItemStack(stackInSlot, 0, 1, false)) {
                         return ItemStack.EMPTY;
@@ -88,7 +84,6 @@ public class ContainerRepurposer extends Container {
     
         @Override
         public boolean isItemValid(ItemStack stack) {
-            // Перевіряємо, чи предмет є одним з типів біжутерії
             return isJewelryValid(stack);
         }
     

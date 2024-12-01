@@ -66,15 +66,22 @@ public class ItemEternalBlade extends ItemSword {
 
     @SideOnly(Side.CLIENT)
     private void spawnFireParticles(World world, EntityPlayer player, int radius) {
-        for (int i = 0; i < 100; i++) {
-            double angle = Math.toRadians(i * (360.0 / 100)); 
-            double x = player.posX + radius * Math.cos(angle);
-            double z = player.posZ + radius * Math.sin(angle);
-            double y = player.posY;
+        for (int r = 1; r <= radius; r++) {
+            final double currentRadius = r; // Поточний радіус
+            for (int angle = 0; angle < 360; angle += 10) {
+                double radian = Math.toRadians(angle);
+                double x = player.posX + currentRadius * Math.cos(radian);
+                double z = player.posZ + currentRadius * Math.sin(radian);
+                double y = player.posY + 0.5;
 
-            world.spawnParticle(EnumParticleTypes.FLAME, x, y, z, 0, 0.05, 0);
+                // Відкласти спаун частинок
+                world.spawnParticle(EnumParticleTypes.FLAME, x, y, z, 0, 0.05, 0);
+            }
         }
     }
+
+
+
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
@@ -91,4 +98,5 @@ public class ItemEternalBlade extends ItemSword {
     public Multimap<String, AttributeModifier> getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack) {
         return slot == EntityEquipmentSlot.MAINHAND ? this.attributeModifiers : super.getAttributeModifiers(slot, stack);
     }
+    
 }

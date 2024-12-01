@@ -11,29 +11,27 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class PacketSelectPlate implements IMessage {
     private ItemStack selectedPlate;
-    private BlockPos pos; // Додайте поле для позиції
+    private BlockPos pos; 
 
-    // Порожній конструктор для десеріалізації
     public PacketSelectPlate() {}
 
-    // Конструктор для ініціалізації з параметрами
     public PacketSelectPlate(ItemStack selectedPlate, BlockPos pos) {
         this.selectedPlate = selectedPlate;
-        this.pos = pos; // Ініціалізуйте позицію
+        this.pos = pos;
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
         this.selectedPlate = new ItemStack(ByteBufUtils.readTag(buf));
-        this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt()); // Читаємо координати
+        this.pos = new BlockPos(buf.readInt(), buf.readInt(), buf.readInt());
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
         ByteBufUtils.writeTag(buf, this.selectedPlate.writeToNBT(new NBTTagCompound()));
-        buf.writeInt(pos.getX()); // Записуємо X координату
-        buf.writeInt(pos.getY()); // Записуємо Y координату
-        buf.writeInt(pos.getZ()); // Записуємо Z координату
+        buf.writeInt(pos.getX()); 
+        buf.writeInt(pos.getY());
+        buf.writeInt(pos.getZ()); 
     }
 
     public static class Handler implements IMessageHandler<PacketSelectPlate, IMessage> {

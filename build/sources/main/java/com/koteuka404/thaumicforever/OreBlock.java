@@ -15,8 +15,7 @@ public class OreBlock extends Block {
         setLightLevel(lightLevel / 15.0F);
         setHarvestLevel("pickaxe", 2);
         setSoundType(SoundType.STONE);
-        setCreativeTab(ThaumicForever.CREATIVE_TAB);  // Додаємо блок у вкладку "Building Blocks"
-
+        setCreativeTab(ThaumicForever.CREATIVE_TAB);  
     }
 }
 

@@ -26,24 +26,21 @@ public class ContainerMatteryDuplicator extends Container {
         addSlotToContainer(new Slot(tileEntity, 7, 56, 48));
         addSlotToContainer(new Slot(tileEntity, 8, 76, 48));
 
-        // Output slot for the crafted result
         addSlotToContainer(new Slot(tileEntity, 9, 132, 28) {
             @Override
             public boolean isItemValid(ItemStack stack) {
-                return false; // Prevent placing items into the output slot
+                return false; 
             }
 
             @Override
             public ItemStack onTake(EntityPlayer playerIn, ItemStack stack) {
-                // Витрачаємо есенсію після забору результату
                 if (tileEntity.hasEnoughEssentia()) {
                     tileEntity.consumeEssentia();
                 }
-                return super.onTake(playerIn, stack); // Викликаємо базову логіку після забору предмету
+                return super.onTake(playerIn, stack);
             }
         });
 
-        // Adding player inventory
         bindPlayerInventory(playerInventory);
     }
 
@@ -73,19 +70,15 @@ public class ContainerMatteryDuplicator extends Container {
             ItemStack stackInSlot = slot.getStack();
             itemstack = stackInSlot.copy();
 
-            // Перевірка, чи слот є вихідним (індекс 9)
             if (index == 9) {
                 if (this.tileEntity.hasEnoughEssentia()) {
-                    // Переносимо предмет у інвентар гравця
                     if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), true)) {
                         return ItemStack.EMPTY;
                     }
-                    // Витрачаємо есенсію тільки після успішного перенесення предмету
                     this.tileEntity.consumeEssentia();
                     slot.onSlotChange(stackInSlot, itemstack);
                 }
             } else {
-                // Забезпечуємо, щоб предмети не переміщувалися у слот крафту (0-8)
                 if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), false)) {
                     return ItemStack.EMPTY;
                 }
@@ -116,18 +109,15 @@ public class ContainerMatteryDuplicator extends Container {
             Slot slot = this.inventorySlots.get(i);
             ItemStack stackInSlot = slot.getStack();
 
-            // Перевіряємо, чи є стек пустим і приводимо його до ItemStack.EMPTY замість null
             if (stackInSlot == null) {
                 stackInSlot = ItemStack.EMPTY;
             }
 
-            // Перевірка чи існує стек у слоті
             ItemStack currentStack = slot.getStack();
             if (currentStack == null) {
                 currentStack = ItemStack.EMPTY;
             }
 
-            // Перевірка перед викликом areItemStacksEqual
             if (!ItemStack.areItemStacksEqual(currentStack, stackInSlot)) {
                 for (int j = 0; j < this.listeners.size(); ++j) {
                     this.listeners.get(j).sendSlotContents(this, i, stackInSlot);

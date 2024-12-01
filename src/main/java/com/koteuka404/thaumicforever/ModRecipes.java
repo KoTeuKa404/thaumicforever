@@ -34,6 +34,7 @@ public class ModRecipes {
             new ItemStack(ModBlocks.DECONSTRUCTION_TABLE), 
             new Object[] {
                 new ItemStack(Items.GOLDEN_AXE), 
+                new ItemStack(ItemsTC.thaumometer), 
                 new ItemStack(Items.GOLDEN_PICKAXE),
                 new ItemStack(BlocksTC.tableWood), 
             }
@@ -160,6 +161,23 @@ public class ModRecipes {
         );
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "FOCUS_COMPLEX"), FOCUS_COMPLEXRecipe);
+
+        ShapedArcaneRecipe BoneBladeRecipe = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "BoneBladeRecipe"), 
+            "!ANGRY_SKELET", 
+            0, 
+            new AspectList(),
+            new ItemStack(ModItems.ItemBoneBlade),
+            "E", 
+            "E", 
+            "P", 
+            'P', new ItemStack(ModItems.SILVER_INGOT), 
+            'E', new ItemStack(ModItems.Bone) 
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "BoneBladeRecipe"), BoneBladeRecipe);
+
+        
 
 
     }

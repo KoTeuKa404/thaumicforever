@@ -22,22 +22,21 @@ public class FocusEffectCleanse extends FocusEffect {
 
     @Override
     public String getResearch() {
-        return "FOCUSCLEANSE";  // Назва дослідження для фокуса очищення
+        return "FOCUSCLEANSE"; 
     }
 
     @Override
     public String getKey() {
-        return "thaumicforever.CLEANSE";  // Унікальний ключ для фокуса очищення
+        return "thaumicforever.CLEANSE";  
     }
 
     @Override
     public Aspect getAspect() {
-        return Aspect.ORDER;  // Використовує аспект порядку (Order)
+        return Aspect.ORDER; 
     }
 
     @Override
     public int getComplexity() {
-        // Складність фокуса визначається тривалістю
         return getSettingValue("duration") / 2 + 5;
     }
 
@@ -50,13 +49,10 @@ public class FocusEffectCleanse extends FocusEffect {
             if (caster instanceof EntityPlayer) {
                 EntityPlayer player = (EntityPlayer) caster;
 
-                // Тривалість очищення (в тиках)
                 durationInTicks = getSettingValue("duration") * 20;
 
-                // Очищення всіх негативних ефектів на початку
                 cleanseNegativeEffects(targetEntity);
 
-                // Реєструємо подію для кожного тіку (щоб очищення тривало протягом дії фокуса)
                 MinecraftForge.EVENT_BUS.register(this);
 
                 return true;
@@ -65,24 +61,21 @@ public class FocusEffectCleanse extends FocusEffect {
         return false;
     }
 
-    // Метод для очищення всіх негативних ефектів
     private void cleanseNegativeEffects(EntityLivingBase entity) {
         for (PotionEffect effect : entity.getActivePotionEffects()) {
             if (effect.getPotion().isBadEffect()) {
-                entity.removePotionEffect(effect.getPotion());  // Видаляємо негативний ефект
+                entity.removePotionEffect(effect.getPotion());  
             }
         }
     }
 
-    // Подія оновлення кожен тік
     @SubscribeEvent
     public void onWorldTick(TickEvent.WorldTickEvent event) {
         if (durationInTicks > 0 && targetEntity != null && !targetEntity.isDead) {
-            cleanseNegativeEffects(targetEntity);  // Очищуємо негативні ефекти кожен тік
+            cleanseNegativeEffects(targetEntity); 
             durationInTicks--;
 
             if (durationInTicks <= 0) {
-                // Скидаємо реєстрацію, коли тривалість завершилась
                 MinecraftForge.EVENT_BUS.unregister(this);
             }
         }
@@ -90,7 +83,7 @@ public class FocusEffectCleanse extends FocusEffect {
 
     @Override
     public NodeSetting[] createSettings() {
-        int[] duration = { 3, 5, 7};  // Тривалість дії (секунди)
+        int[] duration = { 3, 5, 7};  
         String[] durationDesc = { "3s", "5s", "7s"};
 
         return new NodeSetting[] {
@@ -101,6 +94,5 @@ public class FocusEffectCleanse extends FocusEffect {
     @Override
     @SideOnly(Side.CLIENT)
     public void renderParticleFX(World world, double x, double y, double z, double vx, double vy, double vz) {
-        // Візуальні ефекти (якщо потрібно додати частинки для очищення)
     }
 }

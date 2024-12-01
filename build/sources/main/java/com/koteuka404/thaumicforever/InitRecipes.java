@@ -15,22 +15,20 @@ public class InitRecipes {
     public static void initInfusionRecipes() {
         ItemStack diamondChestplate = new ItemStack(Items.DIAMOND_CHESTPLATE);
 
-        // Add the VOIDREPAIR infusion enchantment to the diamond chestplate
         EnumInfusionEnchantment.addInfusionEnchantment(diamondChestplate, EnumInfusionEnchantment.VOIDREPAIR, 1);
 
-        // Create the infusion recipe for VOIDREPAIR on a diamond chestplate
         ThaumcraftApi.addInfusionCraftingRecipe(
             new ResourceLocation("thaumicforever:void_repair_diamond_chestplate"),
             new InfusionRecipe(
-                "NEWINFUSION", // Research key
-                diamondChestplate, // Central item to enchant with VOIDREPAIR
-                6, // Instability level
+                "NEWINFUSION", 
+                diamondChestplate,
+                6, 
                 new AspectList()
                     .add(Aspect.ELDRITCH, 50)
                     .add(Aspect.DARKNESS, 50)
                     .add(Aspect.VOID, 50)
-                    .add(Aspect.MAGIC, 30),  // Aspects for the infusion
-                new ItemStack(Items.DIAMOND_CHESTPLATE),  // Base central ingredient
+                    .add(Aspect.MAGIC, 30), 
+                new ItemStack(Items.DIAMOND_CHESTPLATE),  
                 new Object[] {
                     new ItemStack(ItemsTC.salisMundus),
                     new ItemStack(ItemsTC.ingots,1,1), 

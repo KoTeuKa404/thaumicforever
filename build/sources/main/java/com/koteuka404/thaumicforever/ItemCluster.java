@@ -6,12 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public class ItemCluster extends Item {
-    // Масив з іменами варіантів кластерів
     public static final String[] CLUSTER_TYPES = new String[]{"chromium", "iridium", "quartz", "charged_quartz"};
 
     public ItemCluster() {
-        this.setHasSubtypes(true); // Вказуємо, що предмет має кілька варіантів
-        this.setMaxDamage(0); // Предмет не має міцності
+        this.setHasSubtypes(true);
+        this.setMaxDamage(0); 
     }
 
     @Override
@@ -27,7 +26,7 @@ public class ItemCluster extends Item {
     public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
         if (isInCreativeTab(tab)) {
             for (int i = 0; i < CLUSTER_TYPES.length; i++) {
-                items.add(new ItemStack(this, 1, i)); // Додаємо всі підтипи у вкладку
+                items.add(new ItemStack(this, 1, i)); 
             }
         }
     }

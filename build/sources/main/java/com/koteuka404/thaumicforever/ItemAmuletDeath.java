@@ -13,32 +13,29 @@ public class ItemAmuletDeath extends Item implements IBauble {
     public ItemAmuletDeath() {
         setUnlocalizedName("amulet_death");
         setRegistryName("amulet_death");
-        setMaxStackSize(1); // Це амулет, тому лише один у стеку
-        setCreativeTab(ThaumicForever.CREATIVE_TAB); // Вибираємо правильну вкладку
+        setMaxStackSize(1); 
+        setCreativeTab(ThaumicForever.CREATIVE_TAB);
     }
 
     @Override
     public BaubleType getBaubleType(ItemStack itemstack) {
-        return BaubleType.AMULET; // Визначаємо, що це амулет
+        return BaubleType.AMULET; 
     }
 
     @Override
     public void onUnequipped(ItemStack itemstack, EntityLivingBase player) {
-        // Метод, який викликається, коли амулет знято
         if (player instanceof EntityPlayer && !player.world.isRemote) {
             EntityPlayer entityPlayer = (EntityPlayer) player;
-            // Наносимо гравцеві смертельну шкоду
             entityPlayer.attackEntityFrom(DamageSource.OUT_OF_WORLD, Float.MAX_VALUE);
         }
     }
 
     @Override
     public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
-        // Тут можна додати логіку для роботи амулета, поки він надітий
     }
 
     @Override
     public boolean hasEffect(ItemStack stack) {
-        return true; // Амулет буде мати візуальний ефект (як наче він зачарований)
+        return true; 
     }
 }

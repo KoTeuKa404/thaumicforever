@@ -4,7 +4,7 @@ mouseSensitivity:0.5
 fov:0.0
 gamma:1.0
 saturation:0.0
-renderDistance:16
+renderDistance:5
 guiScale:0
 particles:0
 bobView:true
@@ -110,7 +110,22 @@ key_waila.keybind.usage:75
 key_key.carpet_forward:17
 key_key.carpet_backward:31
 key_key.planarartifice.openThaumonomicon:25
-key_WorldEdit Reference:50
+key_key.journeymap.zoom_in:13
+key_key.journeymap.zoom_out:12
+key_key.journeymap.minimap_type:26
+key_key.journeymap.minimap_preset:43
+key_key.journeymap.create_waypoint:48
+key_key.journeymap.toggle_waypoints:44
+key_key.journeymap.fullscreen_create_waypoint:48
+key_key.journeymap.fullscreen_chat_position:46
+key_key.journeymap.map_toggle_alt:36
+key_key.journeymap.fullscreen_waypoints:48:CONTROL
+key_key.journeymap.minimap_toggle_alt:36:CONTROL
+key_key.journeymap.fullscreen_options:24
+key_key.journeymap.fullscreen.north:200
+key_key.journeymap.fullscreen.south:208
+key_key.journeymap.fullscreen.east:205
+key_key.journeymap.fullscreen.west:203
 soundCategory_master:0.25165564
 soundCategory_music:0.1056338
 soundCategory_record:1.0

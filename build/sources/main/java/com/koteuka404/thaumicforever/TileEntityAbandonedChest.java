@@ -17,9 +17,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 public class TileEntityAbandonedChest extends TileEntityLockableLoot {
 
     private NonNullList<ItemStack> chestContents = NonNullList.withSize(27, ItemStack.EMPTY); // 27-slot chest
-    private String lootTableName = null;  // Store the loot table name for multiple loot table handling
-
-    // Method to set the loot table name dynamically
+    private String lootTableName = null;  
     public void setLootTable(String lootTableName) {
         this.lootTableName = lootTableName;
     }
@@ -63,7 +61,6 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
         this.markDirty();
     }
 
-    // Read the loot table name and chest contents from NBT
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
@@ -72,7 +69,6 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
 
         if (compound.hasKey("LootTableName", 8)) { // 8 означає String тег
             this.lootTableName = compound.getString("LootTableName");
-            System.out.println("Завантажено лут-таблицю: " + this.lootTableName);
         }
     }
 
@@ -83,7 +79,6 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
 
         if (this.lootTableName != null) {
             compound.setString("LootTableName", this.lootTableName);
-            System.out.println("Збережено лут-таблицю: " + this.lootTableName);
         }
         return compound;
     }
@@ -143,7 +138,6 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
     }
 
 
-    // Create the container for the chest
     @Override
     public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
         return new ContainerAbandonedChest(playerInventory, this);

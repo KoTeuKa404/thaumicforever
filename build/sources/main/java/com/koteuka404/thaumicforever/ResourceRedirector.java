@@ -15,7 +15,6 @@
 //     public static void onInitialization(FMLInitializationEvent event) {
 //         SimpleReloadableResourceManager resourceManager = (SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager();
 
-//         // Реєстрація кастомного ресурсного паку
 //         Minecraft.getMinecraft().getResourcePackRepository().addPackFinder((consumer, factory) -> {
 //             consumer.accept(new CustomResourcePack(new File("src/main/resources")));
 //         });

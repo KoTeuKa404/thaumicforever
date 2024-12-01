@@ -26,7 +26,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockAbandonedChest extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
 
-    // Визначаємо AABB для кожного напрямку
     protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(1.0D / 16.0D, 0.0D, 1.0D / 16.0D, 15.0D / 16.0D, 14.0D / 16.0D, 15.0D / 16.0D);
     protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(1.0D / 16.0D, 0.0D, 1.0D / 16.0D, 15.0D / 16.0D, 14.0D / 16.0D, 15.0D / 16.0D);
     protected static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(1.0D / 16.0D, 0.0D, 1.0D / 16.0D, 15.0D / 16.0D, 14.0D / 16.0D, 15.0D / 16.0D);
@@ -34,11 +33,11 @@ public class BlockAbandonedChest extends Block {
 
     public BlockAbandonedChest() {
         super(Material.WOOD);
-        setHardness(2.5F);  // Налаштування міцності
-        setUnlocalizedName("abandoned_chest");  // Локальна назва блоку
+        setHardness(2.5F);  
+        setUnlocalizedName("abandoned_chest"); 
         setRegistryName("abandoned_chest");
-        setCreativeTab(ThaumicForever.CREATIVE_TAB);  // Ідентифікатор блоку
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));  // Встановлюємо початковий стан блоку
+        setCreativeTab(ThaumicForever.CREATIVE_TAB);   
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH)); 
     }
 
     @SideOnly(Side.CLIENT)
@@ -76,7 +75,6 @@ public class BlockAbandonedChest extends Block {
         super.breakBlock(world, pos, state);
     }
 
-    // Метод для налаштування AABB в залежності від напрямку
     @Override
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         switch (state.getValue(FACING)) {

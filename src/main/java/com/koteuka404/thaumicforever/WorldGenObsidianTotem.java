@@ -95,7 +95,6 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
             generateLootInChest(world, pos); 
         } else {
-            System.out.println("Шаблон структури " + templateLocation + " не знайдено!");
         }
     }
 

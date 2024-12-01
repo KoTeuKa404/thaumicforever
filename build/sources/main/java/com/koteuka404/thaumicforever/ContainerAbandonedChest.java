@@ -13,30 +13,27 @@ public class ContainerAbandonedChest extends Container {
     public ContainerAbandonedChest(InventoryPlayer playerInventory, IInventory tileEntity) {
         this.tileEntity = tileEntity;
 
-        // Слоти для сундука (без лівого і правого ряду)
-        int chestSlotStartX = 46;  // Зсунули на 2 слота вправо (18 пікселів * 2)
-        int chestSlotStartY = 32;  // Зсуваємо слоти на 2 пікселі вниз
+        int chestSlotStartX = 46; 
+        int chestSlotStartY = 32;
 
         for (int i = 0; i < 3; ++i) {
-            for (int j = 1; j < 8; ++j) {  // Починаємо з 1 і закінчуємо на 8 (щоб пропустити перший і останній слот)
+            for (int j = 1; j < 8; ++j) {  
                 this.addSlotToContainer(new Slot(tileEntity, (j - 1) + i * 7, chestSlotStartX + (j - 1) * 18, chestSlotStartY + i * 18));
             }
         }
 
-        // Слоти інвентаря гравця
-        int playerInventoryStartY = 100 + 8;  // Зсуваємо інвентар гравця ще на 10 пікселів вниз
+        int playerInventoryStartY = 100 + 8; 
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, chestSlotStartX + j * 18 - 18, playerInventoryStartY + i * 18)); // зміщуємо на -18 для центрування
+                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, chestSlotStartX + j * 18 - 18, playerInventoryStartY + i * 18)); 
             }
         }
 
-        // Слоти гарячої панелі
-        int hotbarY = 160 + 6;  // Зсуваємо гарячу панель теж на 10 пікселів вниз
+        int hotbarY = 160 + 6; 
 
         for (int i = 0; i < 9; ++i) {
-            this.addSlotToContainer(new Slot(playerInventory, i, chestSlotStartX + i * 18 - 18, hotbarY)); // зміщуємо на -18 для центрування
+            this.addSlotToContainer(new Slot(playerInventory, i, chestSlotStartX + i * 18 - 18, hotbarY)); 
         }
     }
 

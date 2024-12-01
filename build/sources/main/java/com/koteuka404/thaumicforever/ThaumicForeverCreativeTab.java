@@ -6,14 +6,12 @@ import net.minecraft.item.ItemStack;
 
 public class ThaumicForeverCreativeTab extends CreativeTabs {
 
-    // Конструктор, що передає назву вкладки
     public ThaumicForeverCreativeTab() {
-        super("thaumicforever_tab");  // Унікальне ім'я вкладки
+        super("thaumicforever_tab"); 
     }
 
     @Override
     public ItemStack getTabIconItem() {
-        // Повертає предмет, що використовується як значок вкладки
-        return new ItemStack(ModItems.ItemBrassGear);  // Приклад з brass_gear
+        return new ItemStack(ModItems.ItemBrassGear);  
     }
 }

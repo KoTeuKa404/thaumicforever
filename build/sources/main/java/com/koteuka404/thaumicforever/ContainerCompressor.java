@@ -14,18 +14,15 @@ public class ContainerCompressor extends Container {
     public ContainerCompressor(InventoryPlayer playerInv, TileEntityCompressor tileEntity) {
         this.tileEntity = tileEntity;
 
-        // Input slot
         this.addSlotToContainer(new SlotItemHandler(tileEntity.getInventory(), 0, 47, 16));
 
-        // Output slot (no items can be inserted)
         this.addSlotToContainer(new SlotItemHandler(tileEntity.getInventory(), 1, 111, 16) {
             @Override
             public boolean isItemValid(ItemStack stack) {
-                return false; // Output slot can't accept items
+                return false;
             }
         });
 
-        // Player inventory
         bindPlayerInventory(playerInv);
     }
 
@@ -54,7 +51,6 @@ public class ContainerCompressor extends Container {
             ItemStack stackInSlot = slot.getStack();
             itemstack = stackInSlot.copy();
 
-            // If it's the output slot
             if (index == 1) {
                 if (!this.mergeItemStack(stackInSlot, 2, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;

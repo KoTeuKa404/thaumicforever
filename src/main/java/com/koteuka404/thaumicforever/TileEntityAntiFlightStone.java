@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 
 public class TileEntityAntiFlightStone extends TileEntity implements ITickable {
 
@@ -26,12 +27,35 @@ public class TileEntityAntiFlightStone extends TileEntity implements ITickable {
             List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, detectionBox);
 
             for (EntityPlayer player : players) {
-                if (player.capabilities.allowFlying) {
+                if (!player.isCreative() && player.capabilities.allowFlying) {
                     player.capabilities.allowFlying = false;
                     player.capabilities.isFlying = false;
                     player.sendPlayerAbilities();
                 }
             }
+
+            boolean hasNearbyAntiFlightBlocks = hasNearbyAntiFlightStones();
+            if (!hasNearbyAntiFlightBlocks) {
+                for (EntityPlayer player : players) {
+                    if (!player.isCreative() && !player.capabilities.allowFlying) {
+                        player.capabilities.allowFlying = true;
+                        player.sendPlayerAbilities();
+                    }
+                }
+            }
         }
+    }
+
+    private boolean hasNearbyAntiFlightStones() {
+        for (BlockPos checkPos : BlockPos.getAllInBoxMutable(
+                pos.add(-RADIUS_BLOCKS, -RADIUS_BLOCKS, -RADIUS_BLOCKS),
+                pos.add(RADIUS_BLOCKS, RADIUS_BLOCKS, RADIUS_BLOCKS))) {
+
+            TileEntity te = world.getTileEntity(checkPos);
+            if (te instanceof TileEntityAntiFlightStone) {
+                return true; 
+            }
+        }
+        return false;
     }
 }
