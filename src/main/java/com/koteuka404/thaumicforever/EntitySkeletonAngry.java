@@ -58,7 +58,6 @@ public class EntitySkeletonAngry extends EntityMob {
         this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F)); 
         this.tasks.addTask(6, new EntityAILookIdle(this)); 
 
-        // Цілі атаки
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true)); 
         this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, false)); 
     }
@@ -72,7 +71,7 @@ public class EntitySkeletonAngry extends EntityMob {
             double heightDifference = player.posY - this.posY;
 
             if (heightDifference > 0 && heightDifference <= 2.5 && this.collidedHorizontally) {
-                this.getJumpHelper().setJumping(); // Примус стрибка
+                this.getJumpHelper().setJumping(); 
             }
 
             if (this.getDistance(player) < 10.0D) {
@@ -99,7 +98,7 @@ public class EntitySkeletonAngry extends EntityMob {
             } else {
                 pathRecalculationTimer++;
                 if (pathRecalculationTimer >= 40) {
-                    this.getNavigator().tryMoveToEntityLiving(player, 1.2D); // Перерахунок шляху
+                    this.getNavigator().tryMoveToEntityLiving(player, 1.2D); 
                     pathRecalculationTimer = 0;
                 }
             }
@@ -135,7 +134,6 @@ public class EntitySkeletonAngry extends EntityMob {
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
-        // Потужне відкидання при ударі
         boolean success = super.attackEntityAsMob(entityIn);
         if (success && entityIn instanceof EntityLivingBase) {
             double knockbackStrength = 1.0;
@@ -147,7 +145,7 @@ public class EntitySkeletonAngry extends EntityMob {
     }
     @Override
     public EnumCreatureAttribute getCreatureAttribute() {
-        return EnumCreatureAttribute.UNDEAD; // Позначає моба як нежить
+        return EnumCreatureAttribute.UNDEAD;
     }
 
 }

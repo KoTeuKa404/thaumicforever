@@ -112,12 +112,12 @@ public class ModRecipes {
             "UNSTONE",
             300, 
             new AspectList().add(Aspect.ORDER, 30).add(Aspect.EARTH, 15).add(Aspect.AIR, 15), 
-            new ItemStack(ModBlocks.ANTI_FLIGHT_STONE), // Результат (ItemVoidGear)
+            new ItemStack(ModBlocks.ANTI_FLIGHT_STONE),
             "SBS", 
             "AIA", 
             "SCS", 
 
-            'B', new ItemStack(Blocks.ANVIL), // 'B' — це Void Ingot
+            'B', new ItemStack(Blocks.ANVIL),
             'I', new ItemStack(BlocksTC.pedestalArcane),
             'C', new ItemStack(ModItems.ItemThaumiumGear),
             'S', new ItemStack(BlocksTC.stoneArcane),
@@ -177,8 +177,42 @@ public class ModRecipes {
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "BoneBladeRecipe"), BoneBladeRecipe);
 
-        
+        ShapedArcaneRecipe CharmRecipe = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "Charm_recipe"), 
+            "STUFF",
+            150,
+            new AspectList().add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20), 
+            new ItemStack(ModItems.PRIMAL_CHARM),
+            "SBS", 
+            "AIA", 
+            "SAS", 
 
+            'B', new ItemStack(Items.NETHER_STAR), 
+            'I', new ItemStack(ItemsTC.visResonator),
+            'S', new ItemStack(ItemsTC.plate,1,3),
+            'A', new ItemStack(ItemsTC.plate,1,2)
+
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "Charm_recipe"), CharmRecipe);
+
+        ShapedArcaneRecipe primal_ingotRecipe = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "primal_ingotRecipe"), 
+            "PRIMAL",
+            150,
+            new AspectList().add(Aspect.ORDER, 20).add(Aspect.FIRE, 20).add(Aspect.AIR, 20).add(Aspect.EARTH, 20).add(Aspect.ENTROPY, 20).add(Aspect.WATER, 20),
+            new ItemStack(ModItems.primalingot),
+            "B", 
+            "I", 
+            "B", 
+
+            'B', new ItemStack(ItemsTC.primordialPearl), 
+            'I', new ItemStack(ItemsTC.ingots,1,1)
+      
+
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "primal_ingotRecipe"), primal_ingotRecipe);
 
     }
 }

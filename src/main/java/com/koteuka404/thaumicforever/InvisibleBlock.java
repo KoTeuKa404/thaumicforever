@@ -22,7 +22,7 @@ public class InvisibleBlock extends Block {
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.INVISIBLE; // Робимо блок невидимим
+        return EnumBlockRenderType.INVISIBLE; 
     }
 
     @Override

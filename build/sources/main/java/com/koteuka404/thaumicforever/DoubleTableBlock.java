@@ -8,23 +8,18 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class DoubleTableBlock extends Block {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
-
-    protected static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 2.0D, 1.0D, 1.0D);
-    protected static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(-1.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
-    protected static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, -1.0D, 1.0D, 1.0D, 1.0D);
-    protected static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 2.0D);
 
     public DoubleTableBlock() {
         super(Material.WOOD);
@@ -35,39 +30,67 @@ public class DoubleTableBlock extends Block {
     }
 
     @Override
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-        switch (state.getValue(FACING)) {
-            case NORTH:
-                return NORTH_AABB;
-            case SOUTH:
-                return SOUTH_AABB;
-            case WEST:
-                return WEST_AABB;
-            case EAST:
-                return EAST_AABB;
-            default:
-                return NORTH_AABB;
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
+        EnumFacing horizontalFacing = placer.getHorizontalFacing();
+        BlockPos secondPartPos = pos.offset(horizontalFacing.rotateYCCW()); // Позиція другої половини
+
+        // Якщо немає місця для другої частини
+        if (!worldIn.isAirBlock(secondPartPos) && !worldIn.getBlockState(secondPartPos).getMaterial().isReplaceable()) {
+            // Розміщуємо стіл, але він одразу руйнується
+            worldIn.scheduleUpdate(pos, this, 1); // Запланувати руйнування
+            return this.getDefaultState().withProperty(FACING, horizontalFacing.getOpposite());
+        }
+
+        // Розміщення невидимого блоку
+        if (!worldIn.isRemote) {
+            worldIn.setBlockState(secondPartPos, ModBlocks.INVISIBLE_PART.getDefaultState(), 3);
+        }
+
+        return this.getDefaultState().withProperty(FACING, horizontalFacing.getOpposite());
+    }
+
+    @Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, java.util.Random rand) {
+        // Якщо блок не має другого блоку, він сам руйнується
+        EnumFacing facing = state.getValue(FACING);
+        BlockPos secondPartPos = pos.offset(facing.rotateYCCW());
+
+        if (!worldIn.getBlockState(secondPartPos).getBlock().equals(ModBlocks.INVISIBLE_PART)) {
+            worldIn.setBlockToAir(pos);
+            spawnAsEntity(worldIn, pos, new ItemStack(this)); // Випадає стіл
         }
     }
 
     @Override
-    public boolean isOpaqueCube(IBlockState state) {
-        return false;
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        EnumFacing facing = state.getValue(FACING);
+        BlockPos secondPartPos = pos.offset(facing.rotateYCCW()); // Позиція другої половини
+
+        // Перевірка чи блок є основною частиною стола
+        if (worldIn.getBlockState(secondPartPos).getBlock().equals(ModBlocks.INVISIBLE_PART)) {
+            worldIn.setBlockToAir(secondPartPos); // Знищуємо невидимий блок
+        } else {
+            // Перевірка на невидимий блок, що залишився
+            for (EnumFacing direction : EnumFacing.HORIZONTALS) {
+                BlockPos possibleMainBlockPos = pos.offset(direction);
+                IBlockState possibleMainBlockState = worldIn.getBlockState(possibleMainBlockPos);
+
+                if (possibleMainBlockState.getBlock() instanceof DoubleTableBlock) {
+                    worldIn.setBlockToAir(possibleMainBlockPos); // Видаляємо основний блок
+                    break;
+                }
+            }
+        }
+
+        // Спавнимо предмет стола
+        // spawnAsEntity(worldIn, pos, new ItemStack(ModBlocks.DOUBLE_TABLE));
+        super.breakBlock(worldIn, pos, state); // Викликаємо базовий метод
     }
 
-    @Override
-    public boolean isFullCube(IBlockState state) {
-        return false;
-    }
-
+    
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
-    }
-
-    @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
     @Override
@@ -86,6 +109,16 @@ public class DoubleTableBlock extends Block {
     }
 
     @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public boolean isFullCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
     public IBlockState withRotation(IBlockState state, Rotation rot) {
         return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
@@ -94,16 +127,24 @@ public class DoubleTableBlock extends Block {
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
+        return new DoubleTableTileEntity();
+    }
 
     @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!worldIn.isRemote) {
-            playerIn.openGui(ThaumicForever.instance, ModGuiHandler.DOUBLE_TABLE_GUI, worldIn, pos.getX(), pos.getY(), pos.getZ());
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (!world.isRemote) {
+            TileEntity tileEntity = world.getTileEntity(pos);
+            if (tileEntity instanceof DoubleTableTileEntity) {
+                player.openGui(ThaumicForever.instance, ModGuiHandler.DOUBLE_TABLE_GUI, world, pos.getX(), pos.getY(), pos.getZ());
+            }
         }
         return true;
     }
-
-
-
+    
 }
- 

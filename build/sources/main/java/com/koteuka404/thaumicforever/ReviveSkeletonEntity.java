@@ -14,6 +14,7 @@ import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -32,6 +33,11 @@ public class ReviveSkeletonEntity extends EntityMob {
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
         this.setHealth(this.getMaxHealth());
+
+        // Встановлюємо скрол у руці моба з шансом 50%
+        if (this.rand.nextInt(100) < 5) {
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.SCROLL_P, 1, this.rand.nextInt(4))); // Випадкові метадані
+        }
     }
 
     @Override
@@ -114,6 +120,12 @@ public class ReviveSkeletonEntity extends EntityMob {
 
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
+        // Перевіряємо, чи є предмет у руці
+        ItemStack heldItem = this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
+        if (!heldItem.isEmpty()) {
+            this.entityDropItem(heldItem, 0.0F); // Додаємо предмет до дропу
+        }
+
         // Гарантоване випадіння 3 OldBone
         for (int i = 0; i < 3; i++) {
             this.entityDropItem(new ItemStack(ModItems.OldBone), 0.0F);
@@ -124,7 +136,7 @@ public class ReviveSkeletonEntity extends EntityMob {
             this.entityDropItem(new ItemStack(ModItems.OldBone), 0.0F);
         }
 
-        // Виклик базового методу для випадіння інших предметів (якщо є)
+        // Виклик базового методу для інших предметів
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
     }
 

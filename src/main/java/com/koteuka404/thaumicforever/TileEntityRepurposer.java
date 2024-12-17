@@ -22,14 +22,13 @@ public class TileEntityRepurposer extends TileEntity implements ITickable {
     }
 
     private void handleJewelryTransformation() {
-        ItemStack leftSlot = inventory.getStackInSlot(0);  // Лівий слот
-        ItemStack rightSlot = inventory.getStackInSlot(1); // Правий слот
+        ItemStack leftSlot = inventory.getStackInSlot(0);  
+        ItemStack rightSlot = inventory.getStackInSlot(1); 
 
         if (!leftSlot.isEmpty() && !rightSlot.isEmpty() && isJewelryValid(rightSlot)) {
             System.out.println("Починаємо трансформацію біжутерії...");
             System.out.println("Лівий слот: " + leftSlot.getDisplayName() + ", Правий слот: " + rightSlot.getDisplayName());
 
-            // Міняємо тип предмета у правому слоті на той, що в лівому
             Item rightItem = rightSlot.getItem();
             Item leftItem = leftSlot.getItem();
 
@@ -43,11 +42,9 @@ public class TileEntityRepurposer extends TileEntity implements ITickable {
                         mutableBauble.setBaubleType(rightSlot, newType);
                         System.out.println("Змінено тип Bauble на: " + newType);
 
-                        // Оновлюємо предмет у правому слоті після зміни типу
                         inventory.setStackInSlot(1, rightSlot);
-                        markDirty(); // Оновлюємо TileEntity для збереження змін
+                        markDirty();
 
-                        // Вилучаємо предмет з лівого слоту
                         inventory.setStackInSlot(0, ItemStack.EMPTY);
                         System.out.println("Предмет у лівому слоті вилучено.");
                     } else {
@@ -83,7 +80,6 @@ public class TileEntityRepurposer extends TileEntity implements ITickable {
     }
 }
 
-// Новий клас, що реалізує IBauble і дозволяє змінювати тип BaubleType
 class MutableBaubleItem extends Item implements IBauble {
     private BaubleType baubleType;
 

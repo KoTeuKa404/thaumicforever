@@ -5,12 +5,17 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.items.ItemsTC;///
 
@@ -379,6 +384,19 @@ public class RecipeCrucible {
         );
 
         ThaumcraftApi.addCrucibleRecipe(packedIceRecipeKey, packedIceRecipe);
+
+        ResourceLocation quarzRecipeKey = new ResourceLocation(MODID, "quarz_recipe");
+        CrucibleRecipe quarzIceRecipe = new CrucibleRecipe(
+            "TERRAALKIMIA",
+            new ItemStack(ItemsTC.nuggets,1,9), 
+            new ItemStack(Blocks.SAND),
+            new AspectList()
+                .add(Aspect.CRYSTAL, 3)
+                .add(Aspect.FIRE, 1) 
+
+        );
+
+        ThaumcraftApi.addCrucibleRecipe(quarzRecipeKey, quarzIceRecipe);
         
         
         ResourceLocation chromiumRecipeKey = new ResourceLocation("thaumicforever", "chromium_cluster_recipe");
@@ -419,6 +437,68 @@ public class RecipeCrucible {
             new AspectList().add(Aspect.ORDER, 10).add(Aspect.EARTH, 5)
         );
         ThaumcraftApi.addCrucibleRecipe(chargedQuartzRecipeKey, chargedQuartzClusterRecipe);
+
+        ResourceLocation cherRecipeKey = new ResourceLocation("thaumicforever", "appliedenergistics2material");
+        CrucibleRecipe charRecipe = new CrucibleRecipe(
+            "APPLIDALKIMIA", 
+            new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 0), // Змінено результат рецепта
+            new ItemStack(Items.QUARTZ),
+            new AspectList().add(Aspect.ORDER, 3).add(Aspect.EARTH, 5)
+        );
+        ThaumcraftApi.addCrucibleRecipe(cherRecipeKey, charRecipe);
+
+        ResourceLocation uranRecipeKey = new ResourceLocation("thaumicforever", "uran_recipes");
+        CrucibleRecipe uranRecipe = new CrucibleRecipe(
+            "IUALKIMIA", 
+            new ItemStack(Item.getByNameOrId("industrialupgradeclassiccore:uranium_ore"), 1, 3),
+            new ItemStack(BlocksTC.oreCinnabar),
+            new AspectList().add(Aspect.DEATH, 6).add(Aspect.ENERGY, 6)
+        );
+        ThaumcraftApi.addCrucibleRecipe(uranRecipeKey, uranRecipe);
+
+        ResourceLocation aquamarinRecipeKey = new ResourceLocation("thaumicforever", "aquamarin");
+        CrucibleRecipe aquamarinRecipe = new CrucibleRecipe(
+            "AQUAALKIMIA", 
+            new ItemStack(Item.getByNameOrId("astralsorcery:itemcraftingcomponent"), 1, 0), // Аквамарин
+            new ItemStack(Item.getByNameOrId("minecraft:dye"), 1, 4), // Лазуріт (дані Meta 4 для лазуріту)
+            new AspectList().add(Aspect.CRYSTAL, 4).add(Aspect.WATER, 4)
+        );
+        ThaumcraftApi.addCrucibleRecipe(aquamarinRecipeKey, aquamarinRecipe);
+        
+        // Рецепт для гірської руди
+        ResourceLocation gorRecipeKey = new ResourceLocation("thaumicforever", "gor_recipes");
+        CrucibleRecipe gorRecipe = new CrucibleRecipe(
+            "AQUAALKIMIA", 
+            new ItemStack(Item.getByNameOrId("astralsorcery:blockcustomore"), 1, 0), // Гірська кристальна руда
+            new ItemStack(Blocks.QUARTZ_BLOCK), // Блок кварцу
+            new AspectList().add(Aspect.DEATH, 6).add(Aspect.ENERGY, 6)
+        );
+        ThaumcraftApi.addCrucibleRecipe(gorRecipeKey, gorRecipe);
+
+        ResourceLocation CleanRecipeKey = new ResourceLocation(MODID, "Clean_recipe");
+        CrucibleRecipe CleanRecipe = new CrucibleRecipe(
+            "STUFF",
+            new ItemStack(ModItems.ItemBottleClean),
+            FluidUtil.getFilledBucket(new FluidStack(FluidRegistry.getFluid("purifying_fluid"), Fluid.BUCKET_VOLUME)),
+            new AspectList()
+                .add(Aspect.ORDER, 15)
+                .add(Aspect.WATER, 10)
+        );
+
+        ThaumcraftApi.addCrucibleRecipe(CleanRecipeKey, CleanRecipe);
+
+        ResourceLocation VisRecipeKey = new ResourceLocation(MODID, "Vis_recipe");
+        CrucibleRecipe VisRecipe = new CrucibleRecipe(
+            "STUFF",
+            new ItemStack(ModItems.ItemBottleVis), 
+            new ItemStack(ModItems.AuraPhial),
+            new AspectList()
+                .add(Aspect.AURA, 15)
+                .add(Aspect.MAGIC, 10) 
+
+        );
+
+        ThaumcraftApi.addCrucibleRecipe(VisRecipeKey, VisRecipe);
 
     }
 }

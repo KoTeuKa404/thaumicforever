@@ -16,7 +16,6 @@ public class RemoveRecipes {
         
         ResourceLocation voidIngotRecipe = new ResourceLocation("thaumcraft", "void_metal_ingot");
         
-        // Видаляємо рецепт
         if (modRegistry.containsKey(voidIngotRecipe)) {
             modRegistry.remove(voidIngotRecipe);
         }

@@ -14,7 +14,6 @@ public class ModConfig {
         @Config.Comment("If true, the mechanismComplex recipe will be enabled.")
         public boolean enableMechanismComplexRecipe = true;
 
-        // Налаштування для генерації руд
         @Config.Name("Enable Ancient Ore Generation")
         @Config.Comment("If true, Ancient ores will be generated.")
         public boolean enableAncientOreGeneration = true;
@@ -26,5 +25,19 @@ public class ModConfig {
         @Config.Name("Enable Standard Ore Generation")
         @Config.Comment("If true, standard ores like Copper, Tin, Lead, etc. will be generated.")
         public boolean enableStandardOreGeneration = true;
+
+        @Config.Name("Enable Thaumic Event Handler")
+        @Config.Comment("If true, the ThaumicEventHandler will remove event with mini stone(garden of glass).")
+        public boolean enableThaumicEventHandler = true;
+
+        @Config.Name("Research List")
+        @Config.Comment("List of researches that can be added dynamically.")
+        public String[] researchList = {
+            // "ETERNAL_BLADE",
+            // "TELEPORT",
+            // "STUFF"
+            // ^^^ add like this 
+        };
+        
     }
 }

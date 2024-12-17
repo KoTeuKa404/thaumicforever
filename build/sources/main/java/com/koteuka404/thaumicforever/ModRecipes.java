@@ -177,8 +177,42 @@ public class ModRecipes {
 
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "BoneBladeRecipe"), BoneBladeRecipe);
 
-        
+        ShapedArcaneRecipe CharmRecipe = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "Charm_recipe"), 
+            "STUFF",
+            150,
+            new AspectList().add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20), 
+            new ItemStack(ModItems.PRIMAL_CHARM),
+            "SBS", 
+            "AIA", 
+            "SAS", 
 
+            'B', new ItemStack(Items.NETHER_STAR), 
+            'I', new ItemStack(ItemsTC.visResonator),
+            'S', new ItemStack(ItemsTC.plate,1,3),
+            'A', new ItemStack(ItemsTC.plate,1,2)
+
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "Charm_recipe"), CharmRecipe);
+
+        ShapedArcaneRecipe primal_ingotRecipe = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "primal_ingotRecipe"), 
+            "PRIMAL",
+            150,
+            new AspectList().add(Aspect.ORDER, 20).add(Aspect.FIRE, 20).add(Aspect.AIR, 20).add(Aspect.EARTH, 20).add(Aspect.ENTROPY, 20).add(Aspect.WATER, 20),
+            new ItemStack(ModItems.primalingot),
+            "B", 
+            "I", 
+            "B", 
+
+            'B', new ItemStack(ItemsTC.primordialPearl), 
+            'I', new ItemStack(ItemsTC.ingots,1,1)
+      
+
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "primal_ingotRecipe"), primal_ingotRecipe);
 
     }
 }

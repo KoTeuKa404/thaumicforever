@@ -1,14 +1,11 @@
 package com.koteuka404.thaumicforever;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.Chunk;
@@ -16,79 +13,38 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 
 public class VoidChunkGenerator implements IChunkGenerator {
-    private final Set<Long> populatedChunks = new HashSet<>();
     private final World world;
-    private boolean isPopulating = false;
 
     public VoidChunkGenerator(World worldIn) {
         this.world = worldIn;
     }
 
-    @Override
-    public Chunk generateChunk(int x, int z) {
-        // Створюємо порожній чанк
-        ChunkPrimer chunkPrimer = new ChunkPrimer();
-        return new Chunk(this.world, chunkPrimer, x, z);
-    }
+   @Override
+public Chunk generateChunk(int x, int z) {
+    ChunkPrimer chunkPrimer = new ChunkPrimer();
 
-    @Override
-    public void populate(int x, int z) {
-        if (isPopulating) {
-            return;  
-        }
-        
-        isPopulating = true; 
-        
-        try {
-            long chunkPos = ChunkPos.asLong(x, z);
-
-            if (populatedChunks.contains(chunkPos)) {
-                return; 
-            }
-
-            populatedChunks.add(chunkPos);
-
-            BlockPos spawnPos = new BlockPos(x * 16, 64, z * 16);  // Позиція спавну
-            generateBarrierCube(this.world, spawnPos);
-        } finally {
-            isPopulating = false;  
-        }
-    }
-
-    private void generateBarrierCube(World world, BlockPos centerPos) {
-        int chunkWidth = 16;
-        int structureSize = 3 * chunkWidth; 
-        int height = 25;
-        
-        int halfWidth = structureSize / 2; 
-        
-        for (int x = -halfWidth; x <= halfWidth; x++) {
-            for (int y = 0; y <= height; y++) {
-                for (int z = -halfWidth; z <= halfWidth; z++) {
-                    BlockPos pos = centerPos.add(x, y, z);
-                    
-                    if (x == -halfWidth || x == halfWidth || z == -halfWidth || z == halfWidth || y == 0 || y == height) {
-                        if (world.getBlockState(pos).getBlock() != Blocks.BARRIER) {
-                            world.setBlockState(pos, Blocks.BARRIER.getDefaultState(), 2 | 4 | 16);
-                        }
-                    } else {
-                        world.setBlockState(pos, Blocks.AIR.getDefaultState(), 2 | 4 | 16);
-                    }
+    // Додаємо платформу у центрі для гравця
+    if (x == 0 && z == 0) {
+        for (int y = 0; y < 2; y++) {
+            for (int dx = 0; dx < 16; dx++) {
+                for (int dz = 0; dz < 16; dz++) {
+                    chunkPrimer.setBlockState(dx, 64 + y, dz, Blocks.STONE.getDefaultState());
                 }
             }
         }
-        
-        BlockPos spawnPos = centerPos.add(0, 2, 0);
-        world.setSpawnPoint(spawnPos); 
     }
-    
-    
-    
-    
+    return new Chunk(this.world, chunkPrimer, x, z);
+}
+
+
+    @Override
+    public void populate(int x, int z) {
+        // Порожній світ
+    }
 
     @Override
     public boolean generateStructures(Chunk chunkIn, int x, int z) {
-        return false; 
+        return false;
     }
 
     @Override
@@ -97,12 +53,13 @@ public class VoidChunkGenerator implements IChunkGenerator {
     }
 
     @Override
-    public void recreateStructures(Chunk chunkIn, int x, int z) {
+    public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
+        return false;
     }
 
     @Override
-    public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos) {
-        return false;
+    public void recreateStructures(Chunk chunkIn, int x, int z) {
+        // Нічого не генеруємо
     }
 
     @Override

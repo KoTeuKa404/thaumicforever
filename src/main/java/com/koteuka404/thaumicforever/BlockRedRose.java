@@ -16,7 +16,6 @@ public class BlockRedRose extends BlockBush {
 
     @Override
     protected boolean canSustainBush(IBlockState state) {
-        // Дозволяємо рости тільки на траві, ґрунті або ріллі
         return state.getBlock() == Blocks.GRASS
                 || state.getBlock() == Blocks.DIRT
                 || state.getBlock() == Blocks.FARMLAND;
@@ -24,14 +23,12 @@ public class BlockRedRose extends BlockBush {
 
     @Override
     public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
-        // Викликаємо метод для перевірки блоку під квіткою
         IBlockState soil = worldIn.getBlockState(pos.down());
         return this.canSustainBush(soil);
     }
 
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        // Видаляємо квітку, якщо блок під нею більше не підтримує її
         if (!canPlaceBlockAt(worldIn, pos)) {
             worldIn.destroyBlock(pos, true);
         }

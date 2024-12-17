@@ -6,18 +6,20 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 
 public class CustomTeleporter extends Teleporter {
-
     private final WorldServer world;
     private final BlockPos pos;
 
-    public CustomTeleporter(WorldServer world, BlockPos pos) {
-        super(world);
-        this.world = world;
+    public CustomTeleporter(BlockPos pos) {
+        super(null); // Необов'язковий виклик
+        this.world = null; // Просто для прикладу
         this.pos = pos;
     }
 
     @Override
     public void placeInPortal(Entity entity, float rotationYaw) {
-        entity.setPositionAndUpdate(pos.getX(), pos.getY(), pos.getZ());
+        entity.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+        entity.motionX = 0.0;
+        entity.motionY = 0.0;
+        entity.motionZ = 0.0;
     }
 }

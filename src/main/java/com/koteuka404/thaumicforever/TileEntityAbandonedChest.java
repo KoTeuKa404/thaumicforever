@@ -67,7 +67,7 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
         this.chestContents = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.chestContents);
 
-        if (compound.hasKey("LootTableName", 8)) { // 8 означає String тег
+        if (compound.hasKey("LootTableName", 8)) { 
             this.lootTableName = compound.getString("LootTableName");
         }
     }

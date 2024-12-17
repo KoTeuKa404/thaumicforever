@@ -60,7 +60,7 @@ public class FocusMediumOrbitSphere extends FocusMedium {
     @Override
     public NodeSetting[] createSettings() {
         return new NodeSetting[] {
-            new NodeSetting("radius", "focus.common.radius", new NodeSetting.NodeSettingIntRange(3, 5)) // Радіус обертання
+            new NodeSetting("radius", "focus.common.radius", new NodeSetting.NodeSettingIntRange(3, 5))
         };
     }
 
@@ -72,7 +72,7 @@ public class FocusMediumOrbitSphere extends FocusMedium {
     private void createOrbitSphere(EntityLivingBase player, int radius) {
         World world = player.world;
         Vec3d playerPos = player.getPositionVector();
-        double angleStep = Math.PI / 10; // Кутовий крок для обертання сфери
+        double angleStep = Math.PI / 10; 
 
         for (double theta = 0; theta < 2 * Math.PI; theta += angleStep) {
             for (double phi = 0; phi < Math.PI; phi += angleStep) {

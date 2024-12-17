@@ -55,7 +55,8 @@ public class ThaumicForever {
         GameRegistry.registerTileEntity(TileEntityTimeStone.class, new ResourceLocation(ThaumicForever.MODID, "time_stone"));
         GameRegistry.registerTileEntity(TileEntityTimeSlow.class, new ResourceLocation(ThaumicForever.MODID, "time_slow"));
         GameRegistry.registerTileEntity(TileMechanismAmplifier.class, new ResourceLocation(ThaumicForever.MODID, "mechanism_amplifier_tile"));
-        
+        GameRegistry.registerTileEntity(DoubleTableTileEntity.class, new ResourceLocation(ThaumicForever.MODID, "double_table_tile_entity"));
+
         new OreGeneration();
         ModFocuses.registerFocuses();
         // Mixins.addConfiguration("mixins.thaumicforever.json");
@@ -68,7 +69,9 @@ public class ThaumicForever {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "aura_node"), AuraNodeEntity.class, "AuraNode",id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "revive_skeleton"),ReviveSkeletonEntity.class,"ReviveSkeleton",id++,this,64,1,true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "skeleton_angry"), EntitySkeletonAngry.class, "SkeletonAngry", id++, this, 64, 1, true);
- 
+        EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever:bottle_clean"), EntityBottleClean.class, "bottle_clean", id++, ThaumicForever.instance, 64, 10, true);
+        EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever:bottle_vis"), EntityBottleVis.class, "bottle_vis", id++, ThaumicForever.instance, 64, 10, true);
+        
         proxy.preInit(event);
 
         GameRegistry.registerWorldGenerator(new WorldGenUnderloot(), 0);
@@ -82,12 +85,20 @@ public class ThaumicForever {
 
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketSelectPlate.Handler.class, PacketSelectPlate.class, 0, Side.SERVER);
+        network.registerMessage(PacketClickLupa.Handler.class, PacketClickLupa.class, 1, Side.SERVER);
+        network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 2, Side.CLIENT);
+        network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 3, Side.SERVER);
+        
         MinecraftForge.EVENT_BUS.register(new RainCauldronFiller()); 
         FlowerGenerator.register();
 
-        MinecraftForge.EVENT_BUS.register(new BoneToSkeletonHandler());
         MinecraftForge.EVENT_BUS.register(WorldTickHandler.getInstance());
-
+        if (ModConfig.general.enableThaumicEventHandler) {
+            MinecraftForge.EVENT_BUS.register(new ThaumicEventHandler());
+        }
+        ResearchList.initializeFromConfig();
+        // new VoidChestSpawner();
+        // MinecraftForge.EVENT_BUS.register(new Auraevent());
 
     }
 
@@ -120,6 +131,7 @@ public class ThaumicForever {
         new ScanObjects(); 
 
         ModSpawnEggs.registerEggs();
+        new CustomEventHandler();
 
         }
 

@@ -1,24 +1,35 @@
 package com.koteuka404.thaumicforever;
 
-import net.minecraft.init.Biomes;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.BiomeProviderSingle;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class VoidWorldProvider extends WorldProvider {
 
     @Override
     public void init() {
-        this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
-        this.hasSkyLight = false; 
+        this.biomeProvider = new net.minecraft.world.biome.BiomeProviderSingle(net.minecraft.init.Biomes.VOID);
     }
+    public void onEntityUpdate() {
+        for (EntityPlayer player : world.playerEntities) {
+            if (player.posY < 0) { // Перевірка на падіння в безодню
+                if (player instanceof EntityPlayerMP) {
+                    System.out.println("Гравець впав у безодню, повертаємо в Overworld...");
+                    EntityPlayerMP playerMP = (EntityPlayerMP) player;
 
-    @Override
-    public IChunkGenerator createChunkGenerator() {
-        return new VoidChunkGenerator(this.world);
+                    // Телепортуємо гравця назад в Overworld
+                    WorldServer overworld = playerMP.getServer().getWorld(0);
+                    if (overworld != null) {
+                        BlockPos overworldSpawn = overworld.getSpawnPoint();
+                        playerMP.changeDimension(0, new CustomTeleporter(overworldSpawn));
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -38,12 +49,16 @@ public class VoidWorldProvider extends WorldProvider {
 
     @Override
     public int getAverageGroundLevel() {
-        return 64; 
+        return 64;
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
-    public boolean doesXZShowFog(int x, int z) {
-        return false;
+    public IChunkGenerator createChunkGenerator() {
+        return new VoidChunkGenerator(this.world);
+    }
+
+    @Override
+    public BlockPos getSpawnPoint() {
+        return new BlockPos(0, 64, 0); // Точка спавну для виміру (за замовчуванням)
     }
 }

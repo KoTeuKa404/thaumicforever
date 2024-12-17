@@ -22,8 +22,8 @@ public class RavenCloakRender extends RenderLiving<EntityLiving> {
     protected void preRenderCallback(EntityLiving entity, float partialTickTime) {
         // Тестування масштабування і зміщення
         GlStateManager.pushMatrix();
-        GlStateManager.scale(0.06F, 0.06F, 0.06F); // зменшення моделі для тестування
-        GlStateManager.translate(0.0F, 1.5F, 0.0F); // зміщення для тестування
+        GlStateManager.scale(0.06F, 0.06F, 0.06F);
+        GlStateManager.translate(0.0F, 1.5F, 0.0F); 
 
         super.preRenderCallback(entity, partialTickTime);
         GlStateManager.popMatrix();

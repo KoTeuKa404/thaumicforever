@@ -21,43 +21,47 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+        if (world.isRemote) {
+            return; 
+        }
+    
         if (world.provider.getDimension() == 0) {
             if (random.nextInt(700) != 0) {
                 return;
             }
-
+    
             int x = chunkX * 16 + random.nextInt(16);
             int z = chunkZ * 16 + random.nextInt(16);
             int y = 10 + random.nextInt(31);
             BlockPos pos = new BlockPos(x, y, z);
             Biome biome = world.getBiome(pos);
-
+    
             if (biome instanceof BiomeTaiga) {
                 if (generateMaze(world, pos)) {
                     TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
                     Template template = templateManager.getTemplate(world.getMinecraftServer(), MAZE_STRUCTURE);
                     if (template != null) {
-                        BlockPos size = template.getSize(); // Отримуємо реальний розмір структури
-                        BlockPos endPos = pos.add(size); // Динамічно обчислюємо кінцеві межі
-
+                        BlockPos size = template.getSize();
+                        BlockPos endPos = pos.add(size);
+    
                         WorldTickHandler.getInstance().addDungeonBounds(pos, endPos);
                     }
                 }
             }
         }
     }
+    
 
     private boolean generateMaze(World world, BlockPos pos) {
         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
         Template template = templateManager.getTemplate(world.getMinecraftServer(), MAZE_STRUCTURE);
 
         if (template != null) {
-            // Створення налаштувань для генерації
             PlacementSettings settings = new PlacementSettings()
-                    .setIgnoreEntities(false) // Зберігати мобів у структурі
-                    .setReplacedBlock(Blocks.STRUCTURE_VOID); // Ігнорувати `structure_void`
+                    .setIgnoreEntities(false)
+                    .setReplacedBlock(Blocks.STRUCTURE_VOID); 
 
-            template.addBlocksToWorldChunk(world, pos, settings); // Генерація з налаштуваннями
+            template.addBlocksToWorldChunk(world, pos, settings); 
             return true;
         } else {
             return false;

@@ -57,6 +57,7 @@ public class ModBlocks {
     public static final Block BlockTimeSlow = new BlockTimeSlow();
     public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
     public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier();
+    public static final Block INVISIBLE_PART = new InvisiblePartBlock();
     
     
     @SubscribeEvent
@@ -81,7 +82,8 @@ public class ModBlocks {
             BlockRepurposer,
             BlockTimeStone,
             BlockTimeSlow,
-            BlockMechanismAmplifier
+            BlockMechanismAmplifier,
+            INVISIBLE_PART
 
 
         );
@@ -110,6 +112,7 @@ public class ModBlocks {
             new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName()),
             new ItemBlock(BlockTimeStone).setRegistryName(BlockTimeStone.getRegistryName()),
             new ItemBlock(BlockMechanismAmplifier).setRegistryName(BlockMechanismAmplifier.getRegistryName()),
+            new ItemBlock(INVISIBLE_PART).setRegistryName(INVISIBLE_PART.getRegistryName()),
             new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName())
        
             );
@@ -139,6 +142,7 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeStone), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeSlow), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockMechanismAmplifier), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(INVISIBLE_PART), 0, "inventory");
 
          
     }

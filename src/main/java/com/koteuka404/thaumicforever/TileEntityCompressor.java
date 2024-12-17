@@ -149,7 +149,6 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
 
-        // Збереження інвентаря
         compound.setTag("Inventory", inventory.serializeNBT());
 
         if (!selectedPlate.isEmpty()) {

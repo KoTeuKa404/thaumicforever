@@ -16,28 +16,28 @@ public class TileEntityTimeStone extends TileEntity implements ITickable {
     private static final int RADIUS = 3;
     private static final int BONUS_TICKS = 3;
 
-    private static final Set<TileEntity> processedTiles = new HashSet<>(); // Відслідковуємо оброблені TileEntity
-    private static final List<TileEntityTimeStone> activeTimeStones = new ArrayList<>(); // Відслідковуємо всі TimeStone
+    private static final Set<TileEntity> processedTiles = new HashSet<>();
+    private static final List<TileEntityTimeStone> activeTimeStones = new ArrayList<>();
     private static final ThreadLocal<Integer> tickDepth = ThreadLocal.withInitial(() -> 0);
 
     @Override
     public void onLoad() {
         if (!world.isRemote) {
-            activeTimeStones.add(this); // Додаємо блок до списку активних
+            activeTimeStones.add(this);
         }
     }
 
     @Override
     public void onChunkUnload() {
         if (!world.isRemote) {
-            activeTimeStones.remove(this); // Видаляємо блок зі списку активних
+            activeTimeStones.remove(this);
         }
     }
 
     @Override
     public void invalidate() {
         if (!world.isRemote) {
-            activeTimeStones.remove(this); // Видаляємо блок, якщо він зникає
+            activeTimeStones.remove(this);
         }
         super.invalidate();
     }
@@ -46,18 +46,17 @@ public class TileEntityTimeStone extends TileEntity implements ITickable {
     public void update() {
         if (!world.isRemote) {
             int depth = tickDepth.get();
-            if (depth > 10) { // Ліміт глибини рекурсій
+            if (depth > 10) {
                 return;
             }
             tickDepth.set(depth + 1);
 
-            // Дозволяємо вплив тільки першому блоку у списку
             if (activeTimeStones.isEmpty() || activeTimeStones.get(0) != this) {
                 tickDepth.set(depth);
-                return; // Цей блок не активний
+                return; 
             }
 
-            processedTiles.clear(); // Очищаємо перед початком нового циклу
+            processedTiles.clear(); 
             AxisAlignedBB area = new AxisAlignedBB(pos.add(-RADIUS, -RADIUS, -RADIUS), pos.add(RADIUS, RADIUS, RADIUS));
             speedUpTileEntities(world, BONUS_TICKS, area);
 
@@ -70,7 +69,7 @@ public class TileEntityTimeStone extends TileEntity implements ITickable {
                                                        new BlockPos(area.maxX, area.maxY, area.maxZ))) {
             TileEntity tile = world.getTileEntity(targetPos);
             if (tile instanceof ITickable && tile != this && !processedTiles.contains(tile)) {
-                processedTiles.add(tile); // Додаємо TileEntity до списку оброблених
+                processedTiles.add(tile); 
                 for (int i = 0; i < bonusTicks; i++) {
                     ((ITickable) tile).update();
                 }

@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHandSide;
 
 public class SkeletonReviveModel extends ModelBase {
     private final ModelRenderer head;
@@ -71,5 +72,12 @@ public class SkeletonReviveModel extends ModelBase {
             this.rightLeg.rotateAngleX = (float) (Math.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount * animationScale);
             this.leftLeg.rotateAngleX = (float) (Math.cos(limbSwing * 0.6662F + Math.PI) * 1.4F * limbSwingAmount * animationScale);
         }
+    public void postRenderArm(float scale, EnumHandSide handSide) {
+        if (handSide == EnumHandSide.RIGHT) {
+            this.rightArm.postRender(scale);
+        } else {
+            this.leftArm.postRender(scale);
+        }
+    }
 
 }

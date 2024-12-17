@@ -24,11 +24,11 @@ public class WorldGenUnderloot implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { // Генерація тільки в Overworld
-            if (random.nextInt(100) == 0) {  // Підвищена частота для тестування
+        if (world.provider.getDimension() == 0) { 
+            if (random.nextInt(100) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
-                int y = 10 + random.nextInt(21); // Випадкова висота від 10 до 40
+                int y = 10 + random.nextInt(21); 
                 BlockPos pos = new BlockPos(x, y, z);
 
                 if (isWithinHeightRange(pos.getY()) && isUnderground(world, pos)) {
@@ -70,7 +70,7 @@ public class WorldGenUnderloot implements IWorldGenerator {
     }
 
     private boolean isUnderground(World world, BlockPos pos) {
-        int requiredSolidBlocks = 20; // Мінімальна кількість суцільних блоків над структурою
+        int requiredSolidBlocks = 20;
 
         for (int y = pos.getY() + 1; y < pos.getY() + requiredSolidBlocks; y++) {
             BlockPos checkPos = new BlockPos(pos.getX(), y, pos.getZ());

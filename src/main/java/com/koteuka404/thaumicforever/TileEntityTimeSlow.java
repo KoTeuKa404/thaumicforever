@@ -10,10 +10,9 @@ import net.minecraft.util.math.BlockPos;
 
 public class TileEntityTimeSlow extends TileEntity implements ITickable {
 
-    private static final int RADIUS = 3; // Радіус охоплення
-    private static final int SLOWDOWN_INTERVAL = 3; // Кількість пропущених тиків
+    private static final int RADIUS = 3; 
+    private static final int SLOWDOWN_INTERVAL = 3;
 
-    // Глобальна мапа для контролю уповільнених TileEntity
     private static final Map<BlockPos, Integer> slowRegistry = new HashMap<>();
 
     @Override
@@ -43,7 +42,7 @@ public class TileEntityTimeSlow extends TileEntity implements ITickable {
         for (BlockPos targetPos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ),
                                                        new BlockPos(area.maxX, area.maxY, area.maxZ))) {
             if (!slowRegistry.containsKey(targetPos)) {
-                slowRegistry.put(targetPos, 0); // Додаємо блок у реєстр
+                slowRegistry.put(targetPos, 0); 
             }
         }
     }
@@ -52,14 +51,13 @@ public class TileEntityTimeSlow extends TileEntity implements ITickable {
         AxisAlignedBB area = new AxisAlignedBB(pos.add(-RADIUS, -RADIUS, -RADIUS), pos.add(RADIUS, RADIUS, RADIUS));
         for (BlockPos targetPos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ),
                                                        new BlockPos(area.maxX, area.maxY, area.maxZ))) {
-            slowRegistry.remove(targetPos); // Видаляємо блок із реєстру
+            slowRegistry.remove(targetPos); 
         }
     }
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            // Просто контролюємо реєстр, нічого іншого тут не робимо
         }
     }
 
@@ -68,13 +66,13 @@ public class TileEntityTimeSlow extends TileEntity implements ITickable {
             int ticksSkipped = slowRegistry.get(pos);
             ticksSkipped++;
             if (ticksSkipped >= SLOWDOWN_INTERVAL) {
-                slowRegistry.put(pos, 0); // Скидаємо лічильник
-                return true; // Дозволяємо оновлення
+                slowRegistry.put(pos, 0);
+                return true;
             } else {
-                slowRegistry.put(pos, ticksSkipped); // Оновлюємо лічильник
-                return false; // Блокуємо оновлення
+                slowRegistry.put(pos, ticksSkipped); 
+                return false; 
             }
         }
-        return true; // Якщо блок не під впливом, дозволяємо оновлення
+        return true; 
     }
 }

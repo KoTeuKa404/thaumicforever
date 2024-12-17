@@ -19,10 +19,10 @@ public class RecipeOverride {
     public static void onRecipeRegister(RegistryEvent.Register<IRecipe> event) {
         if (ModConfig.general.enableMechanismComplexRecipe) {
             ShapedArcaneRecipe mechanismComplexRecipe = new ShapedArcaneRecipe(
-                new ResourceLocation("thaumcraft", "mechanism_complex"), // Ім'я рецепту
+                new ResourceLocation("thaumcraft", "mechanism_complex"), 
                 "BASEARTIFICE",
                 50, 
-                new AspectList().add(Aspect.FIRE, 1).add(Aspect.WATER, 1), // Потрібні аспекти
+                new AspectList().add(Aspect.FIRE, 1).add(Aspect.WATER, 1), 
                 new ItemStack(ItemsTC.mechanismComplex), 
                 " B ",
                 "AIA",

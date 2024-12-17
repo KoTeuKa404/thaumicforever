@@ -226,6 +226,109 @@ public class InfusionRecipes {
                    
                 }
             ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:flying_crystal"), new InfusionRecipe(
+                "AQUAALKIMIA",
+                new ItemStack(Item.getByNameOrId("astralsorcery:blockcollectorcrystal"), 1, 0), // Літаючий кристал
+                5, // Рівень нестабільності (середній)
+                new AspectList()
+                    .add(Aspect.AIR, 50)
+                    .add(Aspect.CRYSTAL, 80)
+                    .add(Aspect.LIGHT, 60)
+                    .add(Aspect.ENERGY, 50)
+                    .add(Aspect.ELDRITCH, 70),
+                new ItemStack(Item.getByNameOrId("minecraft:beacon")), // Центральний предмет
+                new Object[] {
+                    new ItemStack(Item.getByNameOrId("minecraft:diamond"), 1),   // Діамант
+                    new ItemStack(Item.getByNameOrId("astralsorcery:itemcraftingcomponent"), 1, 0), // Аквамарин
+                    new ItemStack(Item.getByNameOrId("minecraft:nether_star")),  // Зоря Пекла
+                    new ItemStack(Item.getByNameOrId("minecraft:ghast_tear")),   // Сльоза гаста
+                    new ItemStack(Item.getByNameOrId("minecraft:ender_eye")),    // Око Ендермена
+                    new ItemStack(Item.getByNameOrId("astralsorcery:blockcustomore"), 1, 0), // Гірська кристальна руда
+                    new ItemStack(Item.getByNameOrId("minecraft:quartz"))       // Кварц
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:crystalworld"), new InfusionRecipe(
+                "TELEPORT",
+                new ItemStack(ModItems.VOID_TELEPORT_ITEM), // Літаючий кристал
+                15, // Рівень нестабільності (середній)
+                new AspectList()
+                    .add(Aspect.AIR, 150)
+                    .add(Aspect.CRYSTAL, 150)
+                    .add(Aspect.VOID, 150)
+                    .add(Aspect.SOUL, 150)
+                    .add(Aspect.FLIGHT, 150)
+                    .add(Aspect.PROTECT, 150)
+                    .add(Aspect.ELDRITCH, 150),
+                new ItemStack(BlocksTC.mirror), // Центральний предмет
+                new Object[] {
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.morphicResonator), 
+                    new ItemStack(ItemsTC.visResonator),
+                    new ItemStack(ModItems.primalingot),  
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.morphicResonator), 
+                    new ItemStack(ItemsTC.visResonator),
+                    new ItemStack(ModItems.primalingot), 
+ 
+
+
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:eternal_blade"), new InfusionRecipe(
+                "ETERNAL_BLADE",
+                new ItemStack(ModItems.ETERNAL_BLADE), // Літаючий кристал
+                15, // Рівень нестабільності (середній)
+                new AspectList()
+                    .add(Aspect.DEATH, 666)
+                    .add(Aspect.DARKNESS, 666)
+                    .add(Aspect.ELDRITCH, 666)
+                    .add(Aspect.SOUL, 666)
+                    .add(Aspect.UNDEAD, 666)
+                    .add(Aspect.BEAST, 666)
+                    .add(Aspect.ENTROPY, 666)
+                    .add(Aspect.AVERSION, 666),
+                new ItemStack(ItemsTC.crimsonBlade), // Центральний предмет
+                new Object[] {
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+
+
+
+                }
+            ));
+            
+
 
         
     }

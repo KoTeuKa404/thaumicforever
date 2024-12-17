@@ -215,17 +215,120 @@ public class InfusionRecipes {
                     .add(Aspect.ELDRITCH, 80),
                 new ItemStack(Blocks.GOLD_BLOCK),    
                 new Object[] {
-                    new ItemStack(ItemsTC.primordialPearl),      // Первісна перлина
+                    new ItemStack(ItemsTC.primordialPearl),     
                     new ItemStack(ItemsTC.salisMundus),
-                    new ItemStack(Items.ENDER_EYE),             // Око Ендермена
+                    new ItemStack(Items.ENDER_EYE),           
                     new ItemStack(ItemsTC.salisMundus),
-                    new ItemStack(ItemsTC.quicksilver),          // Ртуть
+                    new ItemStack(ItemsTC.quicksilver),        
                     new ItemStack(Blocks.BEACON),
-                    new ItemStack(ItemsTC.mechanismComplex),      // Простий механізм
-                    new ItemStack(Items.NETHER_STAR)            // Зоря Пекла
+                    new ItemStack(ItemsTC.mechanismComplex),     
+                    new ItemStack(Items.NETHER_STAR)           
                    
                 }
             ));
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:flying_crystal"), new InfusionRecipe(
+                "AQUAALKIMIA",
+                new ItemStack(Item.getByNameOrId("astralsorcery:blockcollectorcrystal"), 1, 0),
+                5, 
+                new AspectList()
+                    .add(Aspect.AIR, 50)
+                    .add(Aspect.CRYSTAL, 80)
+                    .add(Aspect.LIGHT, 60)
+                    .add(Aspect.ENERGY, 50)
+                    .add(Aspect.ELDRITCH, 70),
+                new ItemStack(Item.getByNameOrId("minecraft:beacon")),
+                new Object[] {
+                    new ItemStack(Item.getByNameOrId("minecraft:diamond"), 1),  
+                    new ItemStack(Item.getByNameOrId("astralsorcery:itemcraftingcomponent"), 1, 0), 
+                    new ItemStack(Item.getByNameOrId("minecraft:nether_star")),  
+                    new ItemStack(Item.getByNameOrId("minecraft:ghast_tear")),   
+                    new ItemStack(Item.getByNameOrId("minecraft:ender_eye")),   
+                    new ItemStack(Item.getByNameOrId("astralsorcery:blockcustomore"), 1, 0), 
+                    new ItemStack(Item.getByNameOrId("minecraft:quartz"))       
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:crystalworld"), new InfusionRecipe(
+                "TELEPORT",
+                new ItemStack(ModItems.VOID_TELEPORT_ITEM),
+                15, 
+                new AspectList()
+                    .add(Aspect.AIR, 150)
+                    .add(Aspect.CRYSTAL, 150)
+                    .add(Aspect.VOID, 150)
+                    .add(Aspect.SOUL, 150)
+                    .add(Aspect.FLIGHT, 150)
+                    .add(Aspect.PROTECT, 150)
+                    .add(Aspect.ELDRITCH, 150),
+                new ItemStack(BlocksTC.mirror),
+                new Object[] {
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.morphicResonator), 
+                    new ItemStack(ItemsTC.visResonator),
+                    new ItemStack(ModItems.primalingot),  
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(Items.ENDER_EYE),
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.morphicResonator), 
+                    new ItemStack(ItemsTC.visResonator),
+                    new ItemStack(ModItems.primalingot), 
+ 
+
+
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:eternal_blade"), new InfusionRecipe(
+                "ETERNAL_BLADE",
+                new ItemStack(ModItems.ETERNAL_BLADE),
+                15, 
+                new AspectList()
+                    .add(Aspect.DEATH, 666)
+                    .add(Aspect.DARKNESS, 666)
+                    .add(Aspect.ELDRITCH, 666)
+                    .add(Aspect.SOUL, 666)
+                    .add(Aspect.UNDEAD, 666)
+                    .add(Aspect.BEAST, 666)
+                    .add(Aspect.ENTROPY, 666)
+                    .add(Aspect.AVERSION, 666),
+                new ItemStack(ItemsTC.crimsonBlade),
+                new Object[] {
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+                    new ItemStack(ModItems.primalingot), 
+                    new ItemStack(ItemsTC.primordialPearl), 
+                    new ItemStack(Items.NETHER_STAR), 
+
+
+
+                }
+            ));
+            
+
 
         
     }

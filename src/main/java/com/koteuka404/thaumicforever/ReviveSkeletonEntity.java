@@ -14,50 +14,49 @@ import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class ReviveSkeletonEntity extends EntityMob {
 
-    private int attackCooldown = 0; // Змінна для контролю кулдауну атак
+    private int attackCooldown = 0; 
 
     public ReviveSkeletonEntity(World world) {
         super(world);
         this.setSize(0.6F, 1.8F);
 
-        // Налаштування атрибутів моба
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(11.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.18D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
         this.setHealth(this.getMaxHealth());
+
+        if (this.rand.nextInt(100) < 5) {
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.SCROLL_P, 1, this.rand.nextInt(4))); 
+        }
     }
 
     @Override
     protected void initEntityAI() {
-        // Додавання задач AI
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.2D, false)); // Атака в ближньому бою
-        this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.8D)); // Блукання
-        this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F)); // Спостереження за гравцем
-        this.tasks.addTask(4, new EntityAILookIdle(this)); // Бездіяльність
-
-        // Цілі атаки
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.2D, false));
+        this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.8D)); 
+        this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(4, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
-        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true)); // Реакція на атаку
+        this.targetTasks.addTask(2, new EntityAIHurtByTarget(this, true));
     }
 
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-        // Зменшуємо кулдаун атак
         if (attackCooldown > 0) {
             attackCooldown--;
         }
 
-        // Приєднання до групової атаки
         if (this.getAttackTarget() == null) {
             joinGroupAttack();
         }
@@ -66,14 +65,12 @@ public class ReviveSkeletonEntity extends EntityMob {
         if (player != null) {
             double distance = this.getDistance(player);
 
-            // Збільшуємо швидкість при наближенні до гравця
             if (distance < 10.0D) {
                 this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.18D);
             } else {
                 this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.18D);
             }
 
-            // Виконуємо атаку
             if (distance <= 2.0D && attackCooldown == 0) {
                 performAttack(player);
             }
@@ -81,17 +78,14 @@ public class ReviveSkeletonEntity extends EntityMob {
     }
 
     private void performAttack(EntityPlayer player) {
-        // Завдаємо шкоди гравцеві
         float damage = (float) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
         player.attackEntityFrom(DamageSource.causeMobDamage(this), damage);
 
-        // Встановлюємо кулдаун для атак
-        attackCooldown = 20; // 1 секунда між атаками
+        attackCooldown = 20; 
         System.out.println("Attacked player with " + damage + " damage!");
     }
 
     private void callForHelp() {
-        // Виклик союзників на допомогу
         List<ReviveSkeletonEntity> nearbySkeletons = this.world.getEntitiesWithinAABB(ReviveSkeletonEntity.class, this.getEntityBoundingBox().grow(10.0D));
         for (ReviveSkeletonEntity skeleton : nearbySkeletons) {
             if (skeleton != this && skeleton.getAttackTarget() == null) {
@@ -102,7 +96,6 @@ public class ReviveSkeletonEntity extends EntityMob {
     }
 
     private void synchronizeAttackTarget(EntityLivingBase target) {
-        // Узгодження цілі атаки з іншими мобами
         List<ReviveSkeletonEntity> nearbySkeletons = this.world.getEntitiesWithinAABB(ReviveSkeletonEntity.class, this.getEntityBoundingBox().grow(10.0D));
         for (ReviveSkeletonEntity skeleton : nearbySkeletons) {
             if (skeleton != this && skeleton.getAttackTarget() == null) {
@@ -114,22 +107,22 @@ public class ReviveSkeletonEntity extends EntityMob {
 
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-        // Гарантоване випадіння 3 OldBone
+        ItemStack heldItem = this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
+        if (!heldItem.isEmpty()) {
+            this.entityDropItem(heldItem, 0.0F); 
+        }
         for (int i = 0; i < 3; i++) {
             this.entityDropItem(new ItemStack(ModItems.OldBone), 0.0F);
         }
 
-        // Додатковий шанс 10% для 1 OldBone
-        if (this.world.rand.nextInt(100) < 10) { // 10% шанс
+        if (this.world.rand.nextInt(100) < 10) { 
             this.entityDropItem(new ItemStack(ModItems.OldBone), 0.0F);
         }
 
-        // Виклик базового методу для випадіння інших предметів (якщо є)
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
     }
 
     private void joinGroupAttack() {
-        // Приєднання до атаки інших мобів
         List<ReviveSkeletonEntity> nearbySkeletons = this.world.getEntitiesWithinAABB(ReviveSkeletonEntity.class, this.getEntityBoundingBox().grow(10.0D));
         for (ReviveSkeletonEntity skeleton : nearbySkeletons) {
             if (skeleton != this && skeleton.getAttackTarget() != null) {
@@ -143,7 +136,6 @@ public class ReviveSkeletonEntity extends EntityMob {
     public boolean attackEntityFrom(DamageSource source, float amount) {
         boolean result = super.attackEntityFrom(source, amount);
 
-        // Виклик союзників на допомогу
         if (source.getTrueSource() instanceof EntityLivingBase) {
             this.setAttackTarget((EntityLivingBase) source.getTrueSource());
             callForHelp();
@@ -154,6 +146,6 @@ public class ReviveSkeletonEntity extends EntityMob {
 
     @Override
     public EnumCreatureAttribute getCreatureAttribute() {
-        return EnumCreatureAttribute.UNDEAD; // Позначає моба як нежить
+        return EnumCreatureAttribute.UNDEAD; 
     }
 }

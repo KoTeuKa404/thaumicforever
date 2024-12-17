@@ -1,24 +1,27 @@
 Unsupposrted library path: C:\jaba\build\classes\api
 Unsupposrted library path: C:\jaba\build\resources\api
 Symbol range map extraction starting
-Processing 269 files
+Processing 286 files
 startProcessing "com/koteuka404/thaumicforever/ArmorStandToMannequinHandler.java" md5: e040f59a5287cf5db6eede7d7c1fb45d
 endProcessing "com/koteuka404/thaumicforever/ArmorStandToMannequinHandler.java"
 
 startProcessing "com/koteuka404/thaumicforever/AspectAdder.java" md5: 8e5a45c09efc46dc699ad2925eef8a0b
 endProcessing "com/koteuka404/thaumicforever/AspectAdder.java"
 
-startProcessing "com/koteuka404/thaumicforever/AspectRegistry.java" md5: 21b3ee87c1bad262ed2b651d46cefe24
+startProcessing "com/koteuka404/thaumicforever/AspectRegistry.java" md5: 018b339cadba2e1c73c77018a45c2db6
 endProcessing "com/koteuka404/thaumicforever/AspectRegistry.java"
 
-startProcessing "com/koteuka404/thaumicforever/AuraNodeEntity.java" md5: 75070b5755eeaaa653ff86f6c21aea61
+startProcessing "com/koteuka404/thaumicforever/AuraNodeEntity.java" md5: 7fa60d6c797516496747c253dcddc165
 endProcessing "com/koteuka404/thaumicforever/AuraNodeEntity.java"
 
-startProcessing "com/koteuka404/thaumicforever/AuraNodeRenderer.java" md5: bce2a854a1b9fc19fdcf2d862f3df87c
+startProcessing "com/koteuka404/thaumicforever/AuraNodeRenderer.java" md5: a419e9342ca9b7ac0528c6a3398a782b
 endProcessing "com/koteuka404/thaumicforever/AuraNodeRenderer.java"
 
 startProcessing "com/koteuka404/thaumicforever/AuraNodeWorldGen.java" md5: 0f4a19637d24e4275cae51f93c9d20d7
 endProcessing "com/koteuka404/thaumicforever/AuraNodeWorldGen.java"
+
+startProcessing "com/koteuka404/thaumicforever/Auraevent.java" md5: 06797a6ee70e4905cfd5be42e325c9d4
+endProcessing "com/koteuka404/thaumicforever/Auraevent.java"
 
 startProcessing "com/koteuka404/thaumicforever/BaublesRenderHandler.java" md5: 27f4aeba1719ccae3f602034765e2d42
 endProcessing "com/koteuka404/thaumicforever/BaublesRenderHandler.java"
@@ -59,34 +62,31 @@ endProcessing "com/koteuka404/thaumicforever/BlockTimeStone.java"
 startProcessing "com/koteuka404/thaumicforever/BlockTimeStop.java" md5: ecdf2bb33063e36f1ce2b892e077e90a
 endProcessing "com/koteuka404/thaumicforever/BlockTimeStop.java"
 
-startProcessing "com/koteuka404/thaumicforever/BoneToSkeletonHandler.java" md5: 64e84538cc75cb3daa2256c8ae83a612
-endProcessing "com/koteuka404/thaumicforever/BoneToSkeletonHandler.java"
-
 startProcessing "com/koteuka404/thaumicforever/BowlTreatMeat.java" md5: f0ebdb5a53948c92a89313152a08acdd
 endProcessing "com/koteuka404/thaumicforever/BowlTreatMeat.java"
 
 startProcessing "com/koteuka404/thaumicforever/BowlZombie.java" md5: 4236e710c9ec26659c788bc24717a621
 endProcessing "com/koteuka404/thaumicforever/BowlZombie.java"
 
-startProcessing "com/koteuka404/thaumicforever/ChestGui.java" md5: e1d8d7127a53cbfb3e06e51312f51b25
+startProcessing "com/koteuka404/thaumicforever/ChestGui.java" md5: f65e1c3913005df4995774440311deed
 endProcessing "com/koteuka404/thaumicforever/ChestGui.java"
 
 startProcessing "com/koteuka404/thaumicforever/ClientEventSubscriber.java" md5: 985d7f13c61655973dd7dad23313a344
 endProcessing "com/koteuka404/thaumicforever/ClientEventSubscriber.java"
 
-startProcessing "com/koteuka404/thaumicforever/ClientProxy.java" md5: 7835d5ff503991abd6927ee6adea6da1
+startProcessing "com/koteuka404/thaumicforever/ClientProxy.java" md5: 76d63d5b455627b0ae963c8818ab7cf8
 endProcessing "com/koteuka404/thaumicforever/ClientProxy.java"
 
 startProcessing "com/koteuka404/thaumicforever/CommonProxy.java" md5: dfb27e2b753ae4e1f246761e26f4b17f
 endProcessing "com/koteuka404/thaumicforever/CommonProxy.java"
 
-startProcessing "com/koteuka404/thaumicforever/ContainerAbandonedChest.java" md5: 075b9caaed47d5ef800bab8f15725975
+startProcessing "com/koteuka404/thaumicforever/ContainerAbandonedChest.java" md5: e18daf1ff57ec3af65f81eeea0401ae5
 endProcessing "com/koteuka404/thaumicforever/ContainerAbandonedChest.java"
 
 startProcessing "com/koteuka404/thaumicforever/ContainerCompressor.java" md5: f0b61fc39d42e0e45186f898196f315d
 endProcessing "com/koteuka404/thaumicforever/ContainerCompressor.java"
 
-startProcessing "com/koteuka404/thaumicforever/ContainerMatteryDuplicator.java" md5: 2bd7624f7fe81d42d5c56df61e984ef2
+startProcessing "com/koteuka404/thaumicforever/ContainerMatteryDuplicator.java" md5: c8e544e65bd2ef3dd6e10460b0e162c6
 endProcessing "com/koteuka404/thaumicforever/ContainerMatteryDuplicator.java"
 
 startProcessing "com/koteuka404/thaumicforever/ContainerRepurposer.java" md5: eb3fe61c1d668c3de7e0eb971595b2bf
@@ -94,6 +94,9 @@ endProcessing "com/koteuka404/thaumicforever/ContainerRepurposer.java"
 
 startProcessing "com/koteuka404/thaumicforever/CraftingRecipes.java" md5: b372d4ac2d70f5a3cd70c7e8b3564c70
 endProcessing "com/koteuka404/thaumicforever/CraftingRecipes.java"
+
+startProcessing "com/koteuka404/thaumicforever/CustomEventHandler.java" md5: 2b95e5a6a0a5311b6ceeb553b84ef252
+endProcessing "com/koteuka404/thaumicforever/CustomEventHandler.java"
 
 startProcessing "com/koteuka404/thaumicforever/CustomModel.java" md5: 4bda738a8695f9bb278ebb45a6aad3fa
 endProcessing "com/koteuka404/thaumicforever/CustomModel.java"
@@ -107,7 +110,7 @@ endProcessing "com/koteuka404/thaumicforever/CustomSalisMundusRecipe.java"
 startProcessing "com/koteuka404/thaumicforever/CustomSpawnEggItem.java" md5: 2cebcbc8cb329215ca8881fafcac0685
 endProcessing "com/koteuka404/thaumicforever/CustomSpawnEggItem.java"
 
-startProcessing "com/koteuka404/thaumicforever/CustomTeleporter.java" md5: 37e3c7bf5a024a8def837039e6f8fd0c
+startProcessing "com/koteuka404/thaumicforever/CustomTeleporter.java" md5: cf082612fbad5d5fd075aff76234abe2
 endProcessing "com/koteuka404/thaumicforever/CustomTeleporter.java"
 
 startProcessing "com/koteuka404/thaumicforever/DeconstructionTableBlock.java" md5: 4a6864ad7cceac5784546404c16ea2bf
@@ -125,20 +128,29 @@ endProcessing "com/koteuka404/thaumicforever/DeconstructionTableItemBlock.java"
 startProcessing "com/koteuka404/thaumicforever/DeconstructionTableTileEntity.java" md5: 28782a7a3b8223fb4134ee65bdfc77f6
 endProcessing "com/koteuka404/thaumicforever/DeconstructionTableTileEntity.java"
 
-startProcessing "com/koteuka404/thaumicforever/DoubleTableBlock.java" md5: c070ab4e19906c390dfd87ead0b8b422
+startProcessing "com/koteuka404/thaumicforever/DoubleTableBlock.java" md5: 30b26e744cce8741042212a5f6ccf66a
 endProcessing "com/koteuka404/thaumicforever/DoubleTableBlock.java"
 
-startProcessing "com/koteuka404/thaumicforever/DoubleTableContainer.java" md5: 8e3c0578e6e3082e267a347e95d0793c
+startProcessing "com/koteuka404/thaumicforever/DoubleTableContainer.java" md5: b570cf9f572ed19ff9c54f0ce58e031f
 endProcessing "com/koteuka404/thaumicforever/DoubleTableContainer.java"
 
-startProcessing "com/koteuka404/thaumicforever/DoubleTableGui.java" md5: e9b8961cdc6e8a61f894c4080fb1d5fa
+startProcessing "com/koteuka404/thaumicforever/DoubleTableGui.java" md5: 0841274fa19c39cbe86014fcddcdb4e1
 endProcessing "com/koteuka404/thaumicforever/DoubleTableGui.java"
+
+startProcessing "com/koteuka404/thaumicforever/DoubleTableTileEntity.java" md5: 4a65a395d40ecd3fca0810d185ed6645
+endProcessing "com/koteuka404/thaumicforever/DoubleTableTileEntity.java"
 
 startProcessing "com/koteuka404/thaumicforever/EldritchEyeAmulet.java" md5: 6a7bd7fa828cbb1d5af8e303a3cd33ba
 endProcessing "com/koteuka404/thaumicforever/EldritchEyeAmulet.java"
 
 startProcessing "com/koteuka404/thaumicforever/EnchantmentsFM.java" md5: 6a6493417efe5e6b4a40d54c295daf2b
 endProcessing "com/koteuka404/thaumicforever/EnchantmentsFM.java"
+
+startProcessing "com/koteuka404/thaumicforever/EntityBottleClean.java" md5: 5c780a4ee34bd10772c2229727c9631e
+endProcessing "com/koteuka404/thaumicforever/EntityBottleClean.java"
+
+startProcessing "com/koteuka404/thaumicforever/EntityBottleVis.java" md5: ae6498f511158c1de155cd75b10adead
+endProcessing "com/koteuka404/thaumicforever/EntityBottleVis.java"
 
 startProcessing "com/koteuka404/thaumicforever/EntityGuardianMannequin.java" md5: 60b64942f8a3fd5555113180d09018ae
 endProcessing "com/koteuka404/thaumicforever/EntityGuardianMannequin.java"
@@ -200,7 +212,7 @@ endProcessing "com/koteuka404/thaumicforever/GuiRepurposer.java"
 startProcessing "com/koteuka404/thaumicforever/InfusionEnchantmentRecipeFM.java" md5: 3e08f1e1b84e523a60ba953e5a8dfc86
 endProcessing "com/koteuka404/thaumicforever/InfusionEnchantmentRecipeFM.java"
 
-startProcessing "com/koteuka404/thaumicforever/InfusionRecipes.java" md5: 9aa7480969d15c5c684e2b53007dd805
+startProcessing "com/koteuka404/thaumicforever/InfusionRecipes.java" md5: 87956b1972d9bf026931bfb63a6c2d8f
 endProcessing "com/koteuka404/thaumicforever/InfusionRecipes.java"
 
 startProcessing "com/koteuka404/thaumicforever/InitRecipes.java" md5: 10187a8b3e03cea511b6a1309523c618
@@ -208,6 +220,9 @@ endProcessing "com/koteuka404/thaumicforever/InitRecipes.java"
 
 startProcessing "com/koteuka404/thaumicforever/InvisibleBlock.java" md5: 0b92600d2960a0ab9256858b1a6c4faa
 endProcessing "com/koteuka404/thaumicforever/InvisibleBlock.java"
+
+startProcessing "com/koteuka404/thaumicforever/InvisiblePartBlock.java" md5: d2c53fe2198d2b357c66817fdad5bbe2
+endProcessing "com/koteuka404/thaumicforever/InvisiblePartBlock.java"
 
 startProcessing "com/koteuka404/thaumicforever/IronRing.java" md5: c9ee53be01e945559c7bd826110b38bd
 endProcessing "com/koteuka404/thaumicforever/IronRing.java"
@@ -218,8 +233,17 @@ endProcessing "com/koteuka404/thaumicforever/ItemAmuletDeath.java"
 startProcessing "com/koteuka404/thaumicforever/ItemAquareiaGoggles.java" md5: 0cdf07693659ff5c2ac3826523350f22
 endProcessing "com/koteuka404/thaumicforever/ItemAquareiaGoggles.java"
 
+startProcessing "com/koteuka404/thaumicforever/ItemAuraPhial.java" md5: 3cc27574161b6efadd14dd5b2b1ea021
+endProcessing "com/koteuka404/thaumicforever/ItemAuraPhial.java"
+
 startProcessing "com/koteuka404/thaumicforever/ItemBoneBlade.java" md5: 5baeb3bd5c7008533ae706ecf56edd6d
 endProcessing "com/koteuka404/thaumicforever/ItemBoneBlade.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemBottleClean.java" md5: a8a2bbbd54ca836ea337859059fe3b7a
+endProcessing "com/koteuka404/thaumicforever/ItemBottleClean.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemBottleVis.java" md5: 03ac2b5bb01a5f5a1d33890836b191c1
+endProcessing "com/koteuka404/thaumicforever/ItemBottleVis.java"
 
 startProcessing "com/koteuka404/thaumicforever/ItemBrassGear.java" md5: d90007ea4a40c190214a7ff9e361bb53
 endProcessing "com/koteuka404/thaumicforever/ItemBrassGear.java"
@@ -233,7 +257,7 @@ endProcessing "com/koteuka404/thaumicforever/ItemCluster.java"
 startProcessing "com/koteuka404/thaumicforever/ItemCrimsonBook.java" md5: f8324e2f01b89d53d4cec8258ce49a68
 endProcessing "com/koteuka404/thaumicforever/ItemCrimsonBook.java"
 
-startProcessing "com/koteuka404/thaumicforever/ItemEternalBlade.java" md5: a221ff9a06c7dcd49b7192cee4d9b7b7
+startProcessing "com/koteuka404/thaumicforever/ItemEternalBlade.java" md5: 24be534aee024caccbb3a47cb173fad6
 endProcessing "com/koteuka404/thaumicforever/ItemEternalBlade.java"
 
 startProcessing "com/koteuka404/thaumicforever/ItemFocus4.java" md5: 711a96063e8c3f0906dc989af2709846
@@ -242,7 +266,7 @@ endProcessing "com/koteuka404/thaumicforever/ItemFocus4.java"
 startProcessing "com/koteuka404/thaumicforever/ItemFocusComplex.java" md5: ac9f44f5e55c197f48bfcccfa25e55fc
 endProcessing "com/koteuka404/thaumicforever/ItemFocusComplex.java"
 
-startProcessing "com/koteuka404/thaumicforever/ItemPrimalCharm.java" md5: de5711d73e24e105a3bd9f5474dbbddf
+startProcessing "com/koteuka404/thaumicforever/ItemPrimalCharm.java" md5: 4c76334ffdf096e052625296e1b2bfc8
 endProcessing "com/koteuka404/thaumicforever/ItemPrimalCharm.java"
 
 startProcessing "com/koteuka404/thaumicforever/ItemRingEnder.java" md5: d62ed5c497e9c35c2f65fd664e34dc3d
@@ -253,6 +277,9 @@ endProcessing "com/koteuka404/thaumicforever/ItemRingRunicCharge.java"
 
 startProcessing "com/koteuka404/thaumicforever/ItemRingVerdant.java" md5: e1025116c96b8837732923e703fbced0
 endProcessing "com/koteuka404/thaumicforever/ItemRingVerdant.java"
+
+startProcessing "com/koteuka404/thaumicforever/ItemScroll.java" md5: dc1e09221d68620bba8d98f117384485
+endProcessing "com/koteuka404/thaumicforever/ItemScroll.java"
 
 startProcessing "com/koteuka404/thaumicforever/ItemStructureSaver.java" md5: 294f936f294f32d6b6a93830fa10c29f
 endProcessing "com/koteuka404/thaumicforever/ItemStructureSaver.java"
@@ -281,10 +308,10 @@ endProcessing "com/koteuka404/thaumicforever/LootTableHandler.java"
 startProcessing "com/koteuka404/thaumicforever/MannequinInteractionHandler.java" md5: 0dc6d49ec3e2d2db16feeec5707a92a4
 endProcessing "com/koteuka404/thaumicforever/MannequinInteractionHandler.java"
 
-startProcessing "com/koteuka404/thaumicforever/ModBlocks.java" md5: 1410cf1700dc262e3bd6afec329867bd
+startProcessing "com/koteuka404/thaumicforever/ModBlocks.java" md5: d0d8e98c0faad3b14b34107003c4080c
 endProcessing "com/koteuka404/thaumicforever/ModBlocks.java"
 
-startProcessing "com/koteuka404/thaumicforever/ModConfig.java" md5: 58fbec67fabcb75120b9f4c2160cb4c9
+startProcessing "com/koteuka404/thaumicforever/ModConfig.java" md5: 97591a33a81a848109673c6291547c58
 endProcessing "com/koteuka404/thaumicforever/ModConfig.java"
 
 startProcessing "com/koteuka404/thaumicforever/ModDimensions.java" md5: ed976ed99cf79b807436a07e91ebd6e4
@@ -293,20 +320,23 @@ endProcessing "com/koteuka404/thaumicforever/ModDimensions.java"
 startProcessing "com/koteuka404/thaumicforever/ModFocuses.java" md5: 6046c4c44fbd4db91524540492bd5ef4
 endProcessing "com/koteuka404/thaumicforever/ModFocuses.java"
 
-startProcessing "com/koteuka404/thaumicforever/ModGuiHandler.java" md5: 003c3386974c3dce9eb4a2c9a3827aff
+startProcessing "com/koteuka404/thaumicforever/ModGuiHandler.java" md5: bac64c54d7ce94c3612564a9f9171f39
 endProcessing "com/koteuka404/thaumicforever/ModGuiHandler.java"
 
-startProcessing "com/koteuka404/thaumicforever/ModItems.java" md5: a65fefbd552ef6c35fba2038efe96b9f
+startProcessing "com/koteuka404/thaumicforever/ModItems.java" md5: 30ea78d5add1d41cd3144d12f15235d9
 endProcessing "com/koteuka404/thaumicforever/ModItems.java"
 
 startProcessing "com/koteuka404/thaumicforever/ModOreBlocks.java" md5: d25c424d552cdf77c30883a049181ddf
 endProcessing "com/koteuka404/thaumicforever/ModOreBlocks.java"
 
-startProcessing "com/koteuka404/thaumicforever/ModRecipes.java" md5: d205d080333a1d9964596b7a53366a13
+startProcessing "com/koteuka404/thaumicforever/ModRecipes.java" md5: 2901165e147f897713efa64d9cd619d3
 endProcessing "com/koteuka404/thaumicforever/ModRecipes.java"
 
 startProcessing "com/koteuka404/thaumicforever/ModSpawnEggs.java" md5: a3d3457086a219268ec03357ffe9a9ed
 endProcessing "com/koteuka404/thaumicforever/ModSpawnEggs.java"
+
+startProcessing "com/koteuka404/thaumicforever/OldBone.java" md5: 68a9f537d05c43bb74b7defe38366959
+endProcessing "com/koteuka404/thaumicforever/OldBone.java"
 
 startProcessing "com/koteuka404/thaumicforever/OreBlock.java" md5: 6efb1adb559e16718d749e27a9273582
 endProcessing "com/koteuka404/thaumicforever/OreBlock.java"
@@ -317,8 +347,17 @@ endProcessing "com/koteuka404/thaumicforever/OreDictionaryRegistration.java"
 startProcessing "com/koteuka404/thaumicforever/OreGeneration.java" md5: fcf3d85959745bbeb83ec9438a749d50
 endProcessing "com/koteuka404/thaumicforever/OreGeneration.java"
 
+startProcessing "com/koteuka404/thaumicforever/PacketClickLupa.java" md5: 38000ea16595003a6b491b20f4ac8d99
+endProcessing "com/koteuka404/thaumicforever/PacketClickLupa.java"
+
 startProcessing "com/koteuka404/thaumicforever/PacketSelectPlate.java" md5: c67a7ca67a50fb30bedf305de1eb8626
 endProcessing "com/koteuka404/thaumicforever/PacketSelectPlate.java"
+
+startProcessing "com/koteuka404/thaumicforever/PacketSyncAspects.java" md5: 14e0dbf3659e1e2ed2a44eb32409a4a1
+endProcessing "com/koteuka404/thaumicforever/PacketSyncAspects.java"
+
+startProcessing "com/koteuka404/thaumicforever/PlayerStructureManager.java" md5: 73765b309b5d8b42207c60cdadb97d66
+endProcessing "com/koteuka404/thaumicforever/PlayerStructureManager.java"
 
 startProcessing "com/koteuka404/thaumicforever/RainCauldronFiller.java" md5: 81c12eb551c9da39b113b2a7a875f187
 endProcessing "com/koteuka404/thaumicforever/RainCauldronFiller.java"
@@ -335,7 +374,7 @@ endProcessing "com/koteuka404/thaumicforever/RavenCloakModel1.java"
 startProcessing "com/koteuka404/thaumicforever/RavenCloakRender.java" md5: 9f94624fe14b6d4f9600654f4f4dea9a
 endProcessing "com/koteuka404/thaumicforever/RavenCloakRender.java"
 
-startProcessing "com/koteuka404/thaumicforever/RecipeCrucible.java" md5: 4ac692c0f07a1933930a258662af89fb
+startProcessing "com/koteuka404/thaumicforever/RecipeCrucible.java" md5: 8e4c4f759e584fa6369d1932690ecba0
 endProcessing "com/koteuka404/thaumicforever/RecipeCrucible.java"
 
 startProcessing "com/koteuka404/thaumicforever/RecipeOverride.java" md5: bff100ddfb7a0c7ec9bdf66f0f853262
@@ -353,13 +392,16 @@ endProcessing "com/koteuka404/thaumicforever/RenderInvisibleSnowball.java"
 startProcessing "com/koteuka404/thaumicforever/RenderSkeletonAngry.java" md5: f011361ed403fe9535d462c47f2f83ae
 endProcessing "com/koteuka404/thaumicforever/RenderSkeletonAngry.java"
 
-startProcessing "com/koteuka404/thaumicforever/ResearchHandler.java" md5: 088a2b855629f2ec13a1ba3f97d0295a
+startProcessing "com/koteuka404/thaumicforever/ResearchHandler.java" md5: 50adfe024da0bc893cb737a907d188dd
 endProcessing "com/koteuka404/thaumicforever/ResearchHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ResearchList.java" md5: 1eab7d7dc9883abe34511b05856664e8
+endProcessing "com/koteuka404/thaumicforever/ResearchList.java"
 
 startProcessing "com/koteuka404/thaumicforever/ResourceRedirector.java" md5: 4dbca3a2ed300f2e0a4ec1ebf3912af2
 endProcessing "com/koteuka404/thaumicforever/ResourceRedirector.java"
 
-startProcessing "com/koteuka404/thaumicforever/ReviveSkeletonEntity.java" md5: 82d3b8e8341a3edaa56195be85d2730a
+startProcessing "com/koteuka404/thaumicforever/ReviveSkeletonEntity.java" md5: c18b4982686ad37875eb1b2672f38a75
 endProcessing "com/koteuka404/thaumicforever/ReviveSkeletonEntity.java"
 
 startProcessing "com/koteuka404/thaumicforever/ReviveSkeletonRenderer.java" md5: 18f62ce172885697cf43e4111ff3d461
@@ -368,13 +410,16 @@ endProcessing "com/koteuka404/thaumicforever/ReviveSkeletonRenderer.java"
 startProcessing "com/koteuka404/thaumicforever/SalisMundusDoubleTableTrigger.java" md5: 03caf92904d7ea37326db08a2931769c
 endProcessing "com/koteuka404/thaumicforever/SalisMundusDoubleTableTrigger.java"
 
-startProcessing "com/koteuka404/thaumicforever/ScanObjects.java" md5: 3f7757ce00907b0781c0cd345a8932b8
+startProcessing "com/koteuka404/thaumicforever/ScanObjects.java" md5: 7ac36c8d38315a19d3e3c0c382ba786e
 endProcessing "com/koteuka404/thaumicforever/ScanObjects.java"
+
+startProcessing "com/koteuka404/thaumicforever/ScrollAspectHandler.java" md5: c2935e8500a531ec9551632723355aa2
+endProcessing "com/koteuka404/thaumicforever/ScrollAspectHandler.java"
 
 startProcessing "com/koteuka404/thaumicforever/ServerProxy.java" md5: 965936730536a14ba365d1379f491cf4
 endProcessing "com/koteuka404/thaumicforever/ServerProxy.java"
 
-startProcessing "com/koteuka404/thaumicforever/SkeletonReviveModel.java" md5: bd8332f8d1b5d5ed2650acad089b1dd8
+startProcessing "com/koteuka404/thaumicforever/SkeletonReviveModel.java" md5: 656700aad72abf11b73836c34f8b50d2
 endProcessing "com/koteuka404/thaumicforever/SkeletonReviveModel.java"
 
 startProcessing "com/koteuka404/thaumicforever/SpawnStructure.java" md5: e2437a7b55b183f4ade7fefa20da547e
@@ -383,7 +428,10 @@ endProcessing "com/koteuka404/thaumicforever/SpawnStructure.java"
 startProcessing "com/koteuka404/thaumicforever/TextureReplacementHandler.java" md5: 9e9dad56425c5972ea29924b6249a5df
 endProcessing "com/koteuka404/thaumicforever/TextureReplacementHandler.java"
 
-startProcessing "com/koteuka404/thaumicforever/ThaumicForever.java" md5: 16b9c2da06b40f6a9068940fc714d95b
+startProcessing "com/koteuka404/thaumicforever/ThaumicEventHandler.java" md5: 83a8f847cc52c3c4d35b855d0cd6f63f
+endProcessing "com/koteuka404/thaumicforever/ThaumicEventHandler.java"
+
+startProcessing "com/koteuka404/thaumicforever/ThaumicForever.java" md5: 559ef6fb5bb9ebb2192119d518ab34c5
     Compile Error! Pb(580) Type mismatch: cannot convert from element type Object to Biome
 endProcessing "com/koteuka404/thaumicforever/ThaumicForever.java"
 
@@ -399,7 +447,7 @@ endProcessing "com/koteuka404/thaumicforever/TileEntityAntiFlightStone.java"
 startProcessing "com/koteuka404/thaumicforever/TileEntityCompressor.java" md5: f11f511780d7d6ea1bd8cbf107123863
 endProcessing "com/koteuka404/thaumicforever/TileEntityCompressor.java"
 
-startProcessing "com/koteuka404/thaumicforever/TileEntityMatteryDuplicator.java" md5: 7ba9227ed0963792a5728d9569f552a5
+startProcessing "com/koteuka404/thaumicforever/TileEntityMatteryDuplicator.java" md5: b74ebba23e89e7071ae40fc9c431bc8b
 endProcessing "com/koteuka404/thaumicforever/TileEntityMatteryDuplicator.java"
 
 startProcessing "com/koteuka404/thaumicforever/TileEntityRepurposer.java" md5: 0c95709067e94e7a5d87097f1e63751d
@@ -414,16 +462,19 @@ endProcessing "com/koteuka404/thaumicforever/TileEntityTimeStone.java"
 startProcessing "com/koteuka404/thaumicforever/TileMechanismAmplifier.java" md5: 289f2681b88e011e2b8e0f0c85db11f2
 endProcessing "com/koteuka404/thaumicforever/TileMechanismAmplifier.java"
 
-startProcessing "com/koteuka404/thaumicforever/VoidChunkGenerator.java" md5: 6d9689db3dfdff8607ce7fd77f6721eb
+startProcessing "com/koteuka404/thaumicforever/VoidChestSpawner.java" md5: c1cb61cb6590da8e5c69e83fc011c791
+endProcessing "com/koteuka404/thaumicforever/VoidChestSpawner.java"
+
+startProcessing "com/koteuka404/thaumicforever/VoidChunkGenerator.java" md5: e2e610bd481e4b45777cf38ca0982150
 endProcessing "com/koteuka404/thaumicforever/VoidChunkGenerator.java"
 
 startProcessing "com/koteuka404/thaumicforever/VoidRepairHandler.java" md5: 301f2907fe9d532364a7c4d2eac7bb35
 endProcessing "com/koteuka404/thaumicforever/VoidRepairHandler.java"
 
-startProcessing "com/koteuka404/thaumicforever/VoidTeleportItem.java" md5: 3ea401eb82f0b3f674097aecffa4a0e9
+startProcessing "com/koteuka404/thaumicforever/VoidTeleportItem.java" md5: c9531011a8a2ef78f4f58f3cd552f4e7
 endProcessing "com/koteuka404/thaumicforever/VoidTeleportItem.java"
 
-startProcessing "com/koteuka404/thaumicforever/VoidWorldProvider.java" md5: d2c442cf1d32ed49b58ca234173a5c11
+startProcessing "com/koteuka404/thaumicforever/VoidWorldProvider.java" md5: 81b96858c60d1d9c6e46ee64f62b8ebf
 endProcessing "com/koteuka404/thaumicforever/VoidWorldProvider.java"
 
 startProcessing "com/koteuka404/thaumicforever/WorldGenEldritchRing.java" md5: 3ec9207eac15329ee6b86562b20a4120
@@ -432,7 +483,7 @@ endProcessing "com/koteuka404/thaumicforever/WorldGenEldritchRing.java"
 startProcessing "com/koteuka404/thaumicforever/WorldGenHilltopStones.java" md5: 481fab15d10c01cb51e363e020d49fda
 endProcessing "com/koteuka404/thaumicforever/WorldGenHilltopStones.java"
 
-startProcessing "com/koteuka404/thaumicforever/WorldGenMazeInTaiga.java" md5: c5339b1b005555159c77ef05a1de1fb6
+startProcessing "com/koteuka404/thaumicforever/WorldGenMazeInTaiga.java" md5: 8cd7a3466b507f874d8aa462bd1e08b5
 endProcessing "com/koteuka404/thaumicforever/WorldGenMazeInTaiga.java"
 
 startProcessing "com/koteuka404/thaumicforever/WorldGenObsidianTotem.java" md5: 5c07accb250d3021ad5938c790c74166
@@ -444,7 +495,7 @@ endProcessing "com/koteuka404/thaumicforever/WorldGenThaumicHouse.java"
 startProcessing "com/koteuka404/thaumicforever/WorldGenUnderloot.java" md5: 06d6849761529efedcb8905b973262b2
 endProcessing "com/koteuka404/thaumicforever/WorldGenUnderloot.java"
 
-startProcessing "com/koteuka404/thaumicforever/WorldTickHandler.java" md5: ba2efc23499f11826828298f845d08c5
+startProcessing "com/koteuka404/thaumicforever/WorldTickHandler.java" md5: 81b03a48939b00b288d6d873e56deab2
 endProcessing "com/koteuka404/thaumicforever/WorldTickHandler.java"
 
 startProcessing "com/koteuka404/thaumicforever/ZombieDropHandler.java" md5: ccc56bac000464d7a127dad8a7477186

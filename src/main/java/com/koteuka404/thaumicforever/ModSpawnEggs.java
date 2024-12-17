@@ -8,8 +8,8 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 public class ModSpawnEggs {
 
     public static void registerEggs() {
-        registerEgg("skeleton_angry", 0xFFFFFF, 0xFF0000); // Білий і червоний
-        registerEgg("revive_skeleton", 0x846232, 0x000000); // Коричневий і чорний
+        registerEgg("skeleton_angry", 0xFFFFFF, 0xFF0000);
+        registerEgg("revive_skeleton", 0x846232, 0x000000); 
     }
 
     private static void registerEgg(String entityName, int primaryColor, int secondaryColor) {

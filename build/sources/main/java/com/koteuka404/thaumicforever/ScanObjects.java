@@ -13,8 +13,9 @@ public class ScanObjects implements IScanThing {
     private final String researchKeyBlock = "!aquareia_ore_scan"; 
     private final String researchKeyItem = "!aquareia_gem_scan";  
     private final String researchKeyEntity = "!armor_stand_scan";
-    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; // Ключ для EntitySkeletonAngry
-    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; // Ключ для ReviveSkeletonEntity
+    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; 
+    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; 
+    private final String researchKeyTatteredScrolls = "!tattered_scrolls_scan"; 
 
     public ScanObjects() {
         ScanningManager.addScannableThing(this);
@@ -29,8 +30,18 @@ public class ScanObjects implements IScanThing {
         }
         if (obj instanceof ItemStack) {
             ItemStack stack = (ItemStack) obj;
+            // Логіка для Aquareia Gem
             if (stack.getItem() == ModItems.AQUAREIA_GEM) {
                 return true;
+            }
+            // Логіка для Tattered Scrolls
+            if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                String registryName = stack.getItem().getRegistryName().toString();
+                int meta = stack.getMetadata();
+                System.out.println("[DEBUG] RegistryName: " + registryName + ", Meta: " + meta); // Дебаг
+                if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                    return true;
+                }
             }
         }
         if (obj instanceof Entity) {
@@ -38,10 +49,10 @@ public class ScanObjects implements IScanThing {
             if (entity instanceof EntityArmorStand) {
                 return true;
             }
-            if (entity instanceof EntitySkeletonAngry) { // Перевірка на EntitySkeletonAngry
+            if (entity instanceof EntitySkeletonAngry) {
                 return true;
             }
-            if (entity instanceof ReviveSkeletonEntity) { // Перевірка на ReviveSkeletonEntity
+            if (entity instanceof ReviveSkeletonEntity) {
                 return true;
             }
         }
@@ -54,16 +65,27 @@ public class ScanObjects implements IScanThing {
             return researchKeyBlock;
         }
         if (object instanceof ItemStack) {
-            return researchKeyItem;
+            ItemStack stack = (ItemStack) object;
+            // Ключ для Tattered Scrolls
+            if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                String registryName = stack.getItem().getRegistryName().toString();
+                int meta = stack.getMetadata();
+                if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                    return researchKeyTatteredScrolls;
+                }
+            }
+            if (stack.getItem() == ModItems.AQUAREIA_GEM) {
+                return researchKeyItem;
+            }
         }
         if (object instanceof Entity) {
             if (object instanceof EntityArmorStand) {
                 return researchKeyEntity;
             }
-            if (object instanceof EntitySkeletonAngry) { // Ключ для EntitySkeletonAngry
+            if (object instanceof EntitySkeletonAngry) {
                 return researchKeySkeletonAngry;
             }
-            if (object instanceof ReviveSkeletonEntity) { // Ключ для ReviveSkeletonEntity
+            if (object instanceof ReviveSkeletonEntity) {
                 return researchKeySkeletonRevive;
             }
         }

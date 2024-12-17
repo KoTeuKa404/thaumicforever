@@ -30,8 +30,8 @@ public class ModGuiHandler implements IGuiHandler {
             return new DeconstructionTableContainer(player.inventory, (IInventory) tileEntity);
         } else if (ID == CHEST_GUI_ID && tileEntity instanceof TileEntityAbandonedChest) {
             return new ContainerAbandonedChest(player.inventory, (TileEntityAbandonedChest) tileEntity);
-        } else if (ID == DOUBLE_TABLE_GUI) {
-            return new DoubleTableContainer(player.inventory);
+        } else if (ID == DOUBLE_TABLE_GUI && tileEntity instanceof DoubleTableTileEntity) {
+            return new DoubleTableContainer(player.inventory, (DoubleTableTileEntity) tileEntity);
         } else if (ID == CRIMSON_BOOK_GUI) {
             return null;
         } else if (ID == GUI_ID_MATTERY_DUPLICATOR && tileEntity instanceof TileEntityMatteryDuplicator) {
@@ -52,8 +52,8 @@ public class ModGuiHandler implements IGuiHandler {
             return new DeconstructionTableGui(player.inventory, (IInventory) tileEntity);
         } else if (ID == CHEST_GUI_ID && tileEntity instanceof TileEntityAbandonedChest) {
             return new ChestGui(player.inventory, (TileEntityAbandonedChest) tileEntity);
-        } else if (ID == DOUBLE_TABLE_GUI) {
-            return new DoubleTableGui(new DoubleTableContainer(player.inventory));
+        } else if (ID == DOUBLE_TABLE_GUI && tileEntity instanceof DoubleTableTileEntity) {
+            return new DoubleTableGui(player.inventory, (DoubleTableTileEntity) tileEntity);
         } else if (ID == CRIMSON_BOOK_GUI) {
             return new GuiCrimsonBook();
         } else if (ID == GUI_ID_MATTERY_DUPLICATOR && tileEntity instanceof TileEntityMatteryDuplicator) {

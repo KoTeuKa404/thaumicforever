@@ -62,43 +62,51 @@ public class ContainerMatteryDuplicator extends Container {
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(index);
+public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+    ItemStack itemstack = ItemStack.EMPTY;
+    Slot slot = this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack()) {
-            ItemStack stackInSlot = slot.getStack();
-            itemstack = stackInSlot.copy();
+    if (slot != null && slot.getHasStack()) {
+        ItemStack stackInSlot = slot.getStack();
+        itemstack = stackInSlot.copy();
 
-            if (index == 9) {
-                if (this.tileEntity.hasEnoughEssentia()) {
-                    if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), true)) {
-                        return ItemStack.EMPTY;
-                    }
-                    this.tileEntity.consumeEssentia();
-                    slot.onSlotChange(stackInSlot, itemstack);
-                }
-            } else {
-                if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), false)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-
-            if (stackInSlot.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
-            } else {
-                slot.onSlotChanged();
-            }
-
-            if (stackInSlot.getCount() == itemstack.getCount()) {
+        // Якщо слот - результатний (9-й)
+        if (index == 9) {
+            if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), true)) {
                 return ItemStack.EMPTY;
             }
-
-            slot.onTake(playerIn, stackInSlot);
+            slot.onSlotChange(stackInSlot, itemstack);
+        } 
+        // Якщо слот входить до інвентаря дуплікатора (0-8)
+        else if (index < 9) {
+            if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), false)) {
+                return ItemStack.EMPTY;
+            }
+        } 
+        // Якщо слот входить до інвентаря гравця (10+)
+        else if (index >= 10) {
+            // Переміщення в слоти дуплікатора
+            if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+                return ItemStack.EMPTY;
+            }
         }
 
-        return itemstack;
+        if (stackInSlot.isEmpty()) {
+            slot.putStack(ItemStack.EMPTY);
+        } else {
+            slot.onSlotChanged();
+        }
+
+        if (stackInSlot.getCount() == itemstack.getCount()) {
+            return ItemStack.EMPTY;
+        }
+
+        slot.onTake(playerIn, stackInSlot);
     }
+
+    return itemstack;
+}
+
 
 
     @Override

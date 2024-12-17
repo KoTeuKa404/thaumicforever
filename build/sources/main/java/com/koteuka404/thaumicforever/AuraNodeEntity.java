@@ -1,10 +1,14 @@
 package com.koteuka404.thaumicforever;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import thaumcraft.api.aura.AuraHelper;
+import thaumcraft.api.items.ItemsTC;
 
 public class AuraNodeEntity extends Entity {
     private static final float MAX_AURA = 300.0f; 
@@ -15,21 +19,21 @@ public class AuraNodeEntity extends Entity {
 
     public AuraNodeEntity(World world) {
         super(world);
+        this.setSize(0.6F, 0.6F); // Установка розміру сутності
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
-        
+
         tickCounter++;
-        
+
         if (tickCounter >= TICKS_PER_SECOND) {
             tickCounter = 0;
             increaseAura();
         }
     }
 
-    
     private void increaseAura() {
         BlockPos nodePos = this.getPosition();
 
@@ -56,5 +60,58 @@ public class AuraNodeEntity extends Entity {
 
     @Override
     protected void writeEntityToNBT(NBTTagCompound compound) {
+    }
+
+    @Override
+    public boolean processInitialInteract(EntityPlayer player, EnumHand hand) {
+        if (!world.isRemote) {
+            System.out.println("Interaction triggered");
+
+            ItemStack heldItem = player.getHeldItem(hand);
+            if (!heldItem.isEmpty() && heldItem.getItem() == ItemsTC.phial) {
+                System.out.println("Player is holding a valid phial");
+
+                // Створюємо новий предмет AuraPhial
+                ItemStack auraPhial = new ItemStack(ModItems.AuraPhial);
+                NBTTagCompound nbt = new NBTTagCompound();
+                nbt.setFloat("storedAura", MAX_AURA);
+                auraPhial.setTagCompound(nbt);
+
+                // Замінюємо предмет у руці
+                heldItem.shrink(1); // Зменшуємо кількість порожніх phial
+                if (!player.addItemStackToInventory(auraPhial)) {
+                    this.entityDropItem(auraPhial, 0.5F); // Якщо інвентар повний, скидаємо предмет
+                }
+
+                System.out.println("Exchanged empty phial for aura phial");
+                return true;
+            } else if (!heldItem.isEmpty() && heldItem.getItem() == ModItems.AuraPhial) {
+                System.out.println("Player is holding an aura phial");
+
+                // Логіка взаємодії із заповненим aura phial
+                NBTTagCompound nbt = heldItem.getTagCompound();
+                if (nbt != null && nbt.hasKey("storedAura")) {
+                    float storedAura = nbt.getFloat("storedAura");
+                    System.out.println("Stored aura: " + storedAura);
+
+                    // Додаємо ауру в локацію
+                    AuraHelper.addVis(world, this.getPosition(), storedAura);
+
+                    // Забираємо використаний предмет
+                    heldItem.shrink(1);
+                    System.out.println("Aura returned to the node");
+                }
+
+                return true;
+            } else {
+                System.out.println("Player is not holding a valid phial");
+            }
+        }
+        return super.processInitialInteract(player, hand);
+    }
+
+    @Override
+    public boolean canBeCollidedWith() {
+        return true; // Дозволяємо взаємодію з сутністю
     }
 }
