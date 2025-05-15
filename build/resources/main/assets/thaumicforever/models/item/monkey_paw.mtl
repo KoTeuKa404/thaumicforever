@@ -1,0 +1,32 @@
+# Blender 4.0.1 MTL File: 'None'
+# www.blender.org
+
+newmtl m_43859887-9836-40d8-86be-a51323aa0e1a
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd thaumicforever:blocks/monkeypaw_black.png
+
+newmtl m_c6914123-e9fc-8118-341e-883db420d0c1
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd thaumicforever:blocks/monkeypaw_skin.png
+
+newmtl m_ff3b7aa9-96cd-c079-cc68-682a07998ad4
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd thaumicforever:blocks/quarz.png

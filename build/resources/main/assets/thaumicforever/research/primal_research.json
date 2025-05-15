@@ -1,0 +1,86 @@
+{
+    "entries" :[
+        {
+        "key": "PRIMAL",    
+        "name": "research.PRIMAL.title",
+        "icons": [ "thaumcraft:primordial_pearl" ],
+        "category": "PRIMAL", "location": [ 0,0 ], 
+        "parents": [ "FIRSTSTEPS" ],         
+        "meta": ["HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.PRIMAL.stage.1",
+                    "recipes": ["THAUMICFOREVER:primal_ingotRecipe"]  
+                }
+            ]
+        },
+        {
+        "key": "ETERNAL_BLADE",    
+        "name": "research.ETERNAL_BLADE.title",
+        "icons": [ "thaumicforever:textures/items/eternal_blade.png" ],
+        "category": "PRIMAL", "location": [ 0,2 ], 
+        "meta": ["SPIKY","HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.ETERNAL_BLADE.stage.1",
+                    "recipes": ["THAUMICFOREVER:eternal_blade"]  
+                }
+            ]
+        },
+
+        {
+        "key": "TELEPORT",    
+        "name": "research.TELEPORT.title",
+        "icons": [ "thaumicforever:textures/items/crystalworld.png" ],
+        "category": "PRIMAL", "location": [ 0,-2 ], 
+        "meta": ["SPIKY","HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.TELEPORT.stage.1",
+                    "recipes": ["THAUMICFOREVER:crystalworld"]  
+                }
+            ]
+        },
+        {
+        "key": "STUFF",    
+        "name": "research.STUFF.title",
+        "icons": [ "thaumicforever:textures/items/bottle_clean.png", "thaumicforever:textures/items/bottle_vis.png"],
+        "category": "PRIMAL", "location": [ 2,0 ], 
+        "meta": ["SPIKY","HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.STUFF.stage.1",
+                    "recipes": ["THAUMICFOREVER:Clean_recipe","THAUMICFOREVER:Vis_recipe","THAUMICFOREVER:Charm_recipe"]  
+                }
+            ]
+        },
+        {
+        "key": "PrimordialGuardian",    
+        "name": "research.PrimordialGuardian.title",
+        "icons": [ "thaumicforever:immortalizer"],
+        "category": "PRIMAL", "location": [ 2,-2 ], 
+        "meta": ["SPIKY","HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.PrimordialGuardian.stage.1",
+                    "recipes": ["THAUMICFOREVER:PrimordialGuardian"]  
+                }
+            ]
+        },
+        {
+        "key": "TAINT_AMULET",    
+        "name": "research.TAINT_AMULET.title",
+        "icons": [ "thaumicforever:taint_amulet"],
+        "category": "PRIMAL", "location": [ 4,-4 ], 
+        "meta": ["SPIKY","HIDDEN" ],        
+        "stages": [
+                {
+                    "text": "research.TAINT_AMULET.stage.1",
+                    "recipes": ["thaumicforever:TAINT_AMULET"]  
+                }
+            ]
+        }       
+   
+    ]
+}
+

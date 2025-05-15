@@ -7,6 +7,15 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
 public class AspectAdder {
+    
+    private static Aspect CAELES;
+    static {
+        try {
+            Class<?> knowledgeTarClass = Class.forName("org.zeith.thaumicadditions.init.KnowledgeTAR");
+            CAELES = (Aspect) knowledgeTarClass.getField("CAELES").get(null);
+        } catch (Exception e) {
+        }
+    }
 
     public void registerAspects() {
         // DOUBLE_TABLE: PLANT * 8
@@ -109,5 +118,164 @@ public class AspectAdder {
         snowAspects.add(weaterAspect, 1);
         snowAspects.add(gelumAspect, 1);
         ThaumcraftApi.registerObjectTag(new ItemStack(Items.SNOWBALL), snowAspects);
+
+        Aspect victus = Aspect.LIFE;
+        Aspect aqua = Aspect.WATER;
+        Aspect vitium = Aspect.FLUX;
+        Aspect alik = Aspect.ALCHEMY;
+        AspectList taint_slime = new AspectList();
+        taint_slime.add(vitium, 5);
+        taint_slime.add(aqua, 5);
+        taint_slime.add(victus, 5);
+        taint_slime.add(alik, 1);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.taint_slime), taint_slime);
+
+
+
+        Aspect spiriAspect = Aspect.SOUL;
+        Aspect death = Aspect.DEATH;
+        Aspect alienAspect = Aspect.ELDRITCH;
+        AspectList soul = new AspectList();
+        soul.add(spiriAspect, 10);
+        soul.add(death, 5);
+        soul.add(alienAspect, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.soul), soul);
+
+        Aspect terra = Aspect.EARTH;
+        Aspect magic = Aspect.MAGIC;
+        AspectList stone = new AspectList();
+        stone.add(terra, 5);
+        stone.add(magic, 5);
+        stone.add(alienAspect, 5);
+        stone.add(alienAspect, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.stone), stone);
+
+        Aspect need = Aspect.DESIRE;
+        AspectList lootbag = new AspectList();
+        lootbag.add(need, 15);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.lootbag), lootbag);
+
+        AspectList endDustAspects = new AspectList();
+        endDustAspects.add(Aspect.MAGIC, 5);
+        endDustAspects.add(Aspect.ENERGY, 5);
+        if (CAELES != null) {endDustAspects.add(CAELES, 3);}
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.end_dust), endDustAspects);
+
+
+
+        AspectList endore = new AspectList();
+        endore.add(Aspect.MAGIC, 10);
+        endore.add(Aspect.ENERGY, 1);
+        if (CAELES != null) {endore.add(CAELES, 5);}
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.EndOreBlock), endore);
+
+
+
+        AspectList coin = new AspectList();
+        coin.add(need, 2);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.coin), coin);
+
+
+        Aspect aura = Aspect.AURA;
+        Aspect herba = Aspect.PLANT;
+        Aspect ordo = Aspect.ORDER;
+        AspectList VisPlant = new AspectList();
+        VisPlant.add(aura, 15);
+        VisPlant.add(herba, 5);
+        VisPlant.add(ordo, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.VisPlant), VisPlant);
+
+        AspectList banana = new AspectList();
+        banana.add(need, 1);
+        banana.add(victus, 5);
+        banana.add(herba, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.banana), banana);
+
+        Aspect metall = Aspect.METAL;
+        AspectList ring_master = new AspectList();
+        ring_master.add(magic, 40);
+        ring_master.add(aura, 15);
+        ring_master.add(metall, 15);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ring_master), ring_master);
+
+        Aspect alien = Aspect.ELDRITCH;
+        Aspect brain = Aspect.MIND;
+        AspectList wand = new AspectList();
+        wand.add(magic, 90);
+        wand.add(alien, 25);
+        wand.add(need, 20);
+        wand.add(brain, 20);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.wand), wand);
+
+        Aspect ignis = Aspect.FIRE;
+        AspectList SMOOTH_STONE = new AspectList();
+        SMOOTH_STONE.add(ignis, 1);
+        SMOOTH_STONE.add(terra, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModOreBlocks.SMOOTH_STONE), SMOOTH_STONE);
+
+
+        Aspect eldr = Aspect.ELDRITCH;
+        AspectList ItemTaintAmulet = new AspectList();
+        ItemTaintAmulet.add(victus, 40);
+        ItemTaintAmulet.add(eldr, 40);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ItemTaintAmulet), ItemTaintAmulet);
+
+        Aspect best = Aspect.BEAST;
+        AspectList ItemGoldenFish = new AspectList();
+        ItemGoldenFish.add(victus, 5);
+        ItemGoldenFish.add(aqua, 5);
+        ItemGoldenFish.add(best, 5);
+        ItemGoldenFish.add(magic, 5);
+        ItemGoldenFish.add(need, 25);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ItemGoldenFish), ItemGoldenFish);
+
+        Aspect taint = Aspect.FLUX;
+        AspectList taint_tendril = new AspectList();
+        taint_tendril.add(taint, 5);
+        taint_tendril.add(victus, 1);
+
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.taint_tendril), taint_tendril);
+
+        
+        Aspect cogn = Aspect.MIND;
+        Aspect teneb = Aspect.DARKNESS;
+        Aspect lux = Aspect.LIGHT;
+        AspectList celestial_notes_blood_moon = new AspectList();
+        celestial_notes_blood_moon.add(cogn, 5);
+        celestial_notes_blood_moon.add(teneb, 5);
+        celestial_notes_blood_moon.add(lux, 5);
+
+
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.celestial_notes), celestial_notes_blood_moon);
+
+        Aspect vitr = Aspect.CRYSTAL;
+        Aspect poten = Aspect.ENERGY;
+        AspectList ruby_gem = new AspectList();
+        ruby_gem.add(vitr, 10);
+        ruby_gem.add(need, 10);
+        ruby_gem.add(poten, 5);
+        ruby_gem.add(ignis, 5);
+
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.ruby_gem), ruby_gem);
+
+
+
+        AspectList RubyOre = new AspectList();
+        RubyOre.add(vitr, 13);
+        RubyOre.add(need, 13);
+        RubyOre.add(poten, 5);
+        RubyOre.add(terra, 5);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.RubyOre), RubyOre);
+
+
+        AspectList OldPlank = new AspectList();
+        OldPlank.add(herba, 3);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.OldPlank), OldPlank);
+
+        AspectList holywater = new AspectList();
+        holywater.add(need, 7);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.holywater), holywater);
+
+
     }
 }

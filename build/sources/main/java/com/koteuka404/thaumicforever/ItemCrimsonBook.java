@@ -14,7 +14,7 @@ public class ItemCrimsonBook extends Item {
     public static final int CRIMSON_BOOK_GUI = 3;
 
     public ItemCrimsonBook() {
-        this.setMaxStackSize(1); // Only one book in a stack
+        this.setMaxStackSize(1); 
     }
 
     @Override

@@ -14,8 +14,8 @@ public class ContainerRepurposer extends Container {
     public ContainerRepurposer(InventoryPlayer playerInv, TileEntityRepurposer tileEntity) {
         this.tileEntity = tileEntity;
 
-        this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 0, 55, 13)); // Input слот
-        this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 1, 104, 13)); // Output слот
+        this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 0, 55, 13)); 
+        this.addSlotToContainer(new JewelrySlot(tileEntity.getInventory(), 1, 104, 13)); 
 
         bindPlayerInventory(playerInv);
     }

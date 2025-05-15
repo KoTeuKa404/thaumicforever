@@ -38,9 +38,8 @@ public class RainCauldronFiller {
                     if (state.getBlock() instanceof BlockCauldron) {
                         int level = state.getValue(BlockCauldron.LEVEL);
 
-                        
                         if (level < 3) {
-                            if (random.nextInt(100) < 60) { 
+                            if (random.nextInt(100) < 90) { 
                                 world.setBlockState(cauldronPos, state.withProperty(BlockCauldron.LEVEL, level + 1), 2);
                             }
                         }

@@ -1,4 +1,3 @@
-// FlowerGenerator.java
 package com.koteuka404.thaumicforever;
 
 import java.util.Random;

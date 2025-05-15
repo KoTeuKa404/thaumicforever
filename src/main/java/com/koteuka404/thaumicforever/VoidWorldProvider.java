@@ -1,34 +1,27 @@
 package com.koteuka404.thaumicforever;
 
-import net.minecraft.init.Biomes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.BiomeProviderSingle;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class VoidWorldProvider extends WorldProvider {
 
     @Override
-    public void init() {
-        this.biomeProvider = new BiomeProviderSingle(Biomes.VOID);
-        this.hasSkyLight = false; 
+    public DimensionType getDimensionType() {
+        return DimensionType.getById(0);
     }
 
     @Override
     public IChunkGenerator createChunkGenerator() {
-        return new VoidChunkGenerator(this.world);
-    }
-
-    @Override
-    public DimensionType getDimensionType() {
-        return ModDimensions.VOID_DIMENSION;
+        return new VoidChunkGenerator(world);
     }
 
     @Override
     public boolean canRespawnHere() {
-        return true;
+        return false; 
     }
 
     @Override
@@ -37,13 +30,8 @@ public class VoidWorldProvider extends WorldProvider {
     }
 
     @Override
-    public int getAverageGroundLevel() {
-        return 64; 
+    public Biome getBiomeForCoords(BlockPos pos) {
+        return Biome.REGISTRY.getObject(new ResourceLocation("minecraft:void"));
     }
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    public boolean doesXZShowFog(int x, int z) {
-        return false;
-    }
 }

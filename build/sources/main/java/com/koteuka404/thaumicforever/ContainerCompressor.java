@@ -13,18 +13,19 @@ public class ContainerCompressor extends Container {
 
     public ContainerCompressor(InventoryPlayer playerInv, TileEntityCompressor tileEntity) {
         this.tileEntity = tileEntity;
-
-        this.addSlotToContainer(new SlotItemHandler(tileEntity.getInventory(), 0, 47, 16));
-
-        this.addSlotToContainer(new SlotItemHandler(tileEntity.getInventory(), 1, 111, 16) {
+    
+        this.addSlotToContainer(new SlotItemHandler(tileEntity.getInputHandler(), 0, 47, 16));
+    
+        this.addSlotToContainer(new SlotItemHandler(tileEntity.getOutputHandler(), 0, 111, 16) {
             @Override
             public boolean isItemValid(ItemStack stack) {
-                return false;
+                return false; 
             }
         });
-
+    
         bindPlayerInventory(playerInv);
     }
+    
 
     private void bindPlayerInventory(InventoryPlayer playerInventory) {
         for (int i = 0; i < 3; i++) {

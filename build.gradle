@@ -2,14 +2,16 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url = "https://files.minecraftforge.net/maven" }
+
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "4.1.5"
+version = "5.1.8.1"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
@@ -19,18 +21,42 @@ minecraft {
     version = "1.12.2-14.23.5.2820"
     runDir = "run"
     mappings = "snapshot_20171003"
-    // makeObfSourceJar = true 
+    // makeObfSourceJar = false
+    
 }
 
+
 repositories {
-    mavenCentral()  // Використання Maven Central
+    mavenCentral()  
     maven { url = "https://files.minecraftforge.net/maven" }
-    maven { url = "https://modmaven.dev" }  // Додавання ModMaven для JEI
+    maven { url = "https://modmaven.dev" }
+    maven { url = "https://maven.thiakil.com" }
+  
 }
 
 dependencies {
-    // compile "org.spongepowered:mixin:0.8.5" 
-    compile 'mezz.jei:jei_1.12.2:4.15.0.268'  
+    // compileOnly  "org.spongepowered:mixin:0.8.5"
+    compile 'mezz.jei:jei_1.12.2:4.15.0.268'
+    
+    // compileOnly files("libs/Baubles-1.12-1.5.3.jar")
+    // compileOnly files("libs/Bubbles-2.4.5.jar")
+
+    // deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2:deobf"
+
+}
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+
+jar {
+    manifest {
+        attributes(
+            "FMLCorePlugin": "com.example.coremod.CoreModPlugin",
+            "FMLCorePluginContainsFMLMod": "true"
+
+        )
+    }
 }
 
 processResources {

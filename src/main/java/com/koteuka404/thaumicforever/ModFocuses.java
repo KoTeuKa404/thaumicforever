@@ -13,6 +13,7 @@ public class ModFocuses {
         FocusEngine.registerElement(FocusEffectMindControl.class, new ResourceLocation("thaumicforever", "textures/foci/mindcontrol.png"),0x66071f);
         // FocusEngine.registerElement(FocusMediumSkyBeam.class, new ResourceLocation("thaumicforever", "textures/foci/beam_focus.png"), 0xFFDD44);
         // FocusEngine.registerElement(FocusMediumOrbitSphere.class, new ResourceLocation("thaumicforever", "textures/foci/seeker.png"), 0xFFFFFF);
+        FocusEngine.registerElement(FocusEffectFlight.class, new ResourceLocation("thaumcraft", "textures/aspects/volatus.png"),0xC0C0C0);
 
     }
 }

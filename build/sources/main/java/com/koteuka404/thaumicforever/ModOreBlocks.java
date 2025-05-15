@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = ThaumicForever.MODID)
 public class ModOreBlocks {
 
     public static final Block AQUAREIA_ORE = new OreBlock("aquareia_ore", 4.0F, 3.0F, 8);

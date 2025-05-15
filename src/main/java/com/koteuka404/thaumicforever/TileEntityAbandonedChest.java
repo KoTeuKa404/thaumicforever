@@ -16,7 +16,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 
 public class TileEntityAbandonedChest extends TileEntityLockableLoot {
 
-    private NonNullList<ItemStack> chestContents = NonNullList.withSize(27, ItemStack.EMPTY); // 27-slot chest
+    private NonNullList<ItemStack> chestContents = NonNullList.withSize(27, ItemStack.EMPTY); 
     private String lootTableName = null;  
     public void setLootTable(String lootTableName) {
         this.lootTableName = lootTableName;
@@ -67,7 +67,7 @@ public class TileEntityAbandonedChest extends TileEntityLockableLoot {
         this.chestContents = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
         ItemStackHelper.loadAllItems(compound, this.chestContents);
 
-        if (compound.hasKey("LootTableName", 8)) { // 8 означає String тег
+        if (compound.hasKey("LootTableName", 8)) { 
             this.lootTableName = compound.getString("LootTableName");
         }
     }

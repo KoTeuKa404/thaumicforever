@@ -13,8 +13,11 @@ public class ScanObjects implements IScanThing {
     private final String researchKeyBlock = "!aquareia_ore_scan"; 
     private final String researchKeyItem = "!aquareia_gem_scan";  
     private final String researchKeyEntity = "!armor_stand_scan";
-    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; // Ключ для EntitySkeletonAngry
-    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; // Ключ для ReviveSkeletonEntity
+    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; 
+    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; 
+    private final String researchKeyTatteredScrolls = "!tattered_scrolls_scan";
+    private final String researchKeyEndOre = "!end_ore_scan"; 
+    private final String researchKeyTaintItem = "!orb_of_taint";  
 
     public ScanObjects() {
         ScanningManager.addScannableThing(this);
@@ -26,10 +29,16 @@ public class ScanObjects implements IScanThing {
             if (player.world.getBlockState((BlockPos) obj).getBlock() == ModOreBlocks.AQUAREIA_ORE) {
                 return true;
             }
+            if (player.world.getBlockState((BlockPos) obj).getBlock() == ModBlocks.EndOreBlock) { 
+                return true;
+            }
         }
         if (obj instanceof ItemStack) {
             ItemStack stack = (ItemStack) obj;
             if (stack.getItem() == ModItems.AQUAREIA_GEM) {
+                return true;
+            }
+            if (stack.getItem() == ModItems.orb_of_taint) {
                 return true;
             }
         }
@@ -38,10 +47,10 @@ public class ScanObjects implements IScanThing {
             if (entity instanceof EntityArmorStand) {
                 return true;
             }
-            if (entity instanceof EntitySkeletonAngry) { // Перевірка на EntitySkeletonAngry
+            if (entity instanceof EntitySkeletonAngry) {
                 return true;
             }
-            if (entity instanceof ReviveSkeletonEntity) { // Перевірка на ReviveSkeletonEntity
+            if (entity instanceof ReviveSkeletonEntity) {
                 return true;
             }
         }
@@ -51,19 +60,38 @@ public class ScanObjects implements IScanThing {
     @Override
     public String getResearchKey(EntityPlayer player, Object object) {
         if (object instanceof BlockPos) {
-            return researchKeyBlock;
+            BlockPos pos = (BlockPos) object;
+            if (player.world.getBlockState(pos).getBlock() == ModOreBlocks.AQUAREIA_ORE) {
+                return researchKeyBlock;
+            }
+            if (player.world.getBlockState(pos).getBlock() == ModBlocks.EndOreBlock) {
+                return researchKeyEndOre;
+            }
         }
         if (object instanceof ItemStack) {
-            return researchKeyItem;
+            ItemStack stack = (ItemStack) object;
+            if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                String registryName = stack.getItem().getRegistryName().toString();
+                int meta = stack.getMetadata();
+                if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                    return researchKeyTatteredScrolls;
+                }
+            }
+            if (stack.getItem() == ModItems.AQUAREIA_GEM) {
+                return researchKeyItem;
+            }
+            if (stack.getItem() == ModItems.orb_of_taint) {
+                return researchKeyTaintItem;
+            }
         }
         if (object instanceof Entity) {
             if (object instanceof EntityArmorStand) {
                 return researchKeyEntity;
             }
-            if (object instanceof EntitySkeletonAngry) { // Ключ для EntitySkeletonAngry
+            if (object instanceof EntitySkeletonAngry) {
                 return researchKeySkeletonAngry;
             }
-            if (object instanceof ReviveSkeletonEntity) { // Ключ для ReviveSkeletonEntity
+            if (object instanceof ReviveSkeletonEntity) {
                 return researchKeySkeletonRevive;
             }
         }

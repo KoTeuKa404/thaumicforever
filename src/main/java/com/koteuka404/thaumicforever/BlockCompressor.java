@@ -1,8 +1,12 @@
 package com.koteuka404.thaumicforever;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -17,6 +21,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCompressor extends Block {
 
+    public static final PropertyDirection FACING = BlockHorizontal.FACING;
+
     public BlockCompressor() {
         super(Material.IRON);
         setUnlocalizedName("compressor");
@@ -24,6 +30,7 @@ public class BlockCompressor extends Block {
         setHardness(5.0F);
         setResistance(10.0F);
         setHarvestLevel("pickaxe", 2);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
     @Override
@@ -34,6 +41,16 @@ public class BlockCompressor extends Block {
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileEntityCompressor();
+    }
+
+    @Override
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
+    }
+
+    @Override
+    public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+        world.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing()), 2);
     }
 
     @Override
@@ -82,5 +99,21 @@ public class BlockCompressor extends Block {
         }
 
         super.breakBlock(world, pos, state);
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, FACING);
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta) {
+        EnumFacing facing = EnumFacing.getHorizontal(meta);
+        return this.getDefaultState().withProperty(FACING, facing);
+    }
+
+    @Override
+    public int getMetaFromState(IBlockState state) {
+        return state.getValue(FACING).getHorizontalIndex();
     }
 }

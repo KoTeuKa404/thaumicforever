@@ -82,7 +82,6 @@ public class OreDictionaryEntries {
 		OreDictionary.registerOre("clusterCinnabar", new ItemStack(ItemsTC.clusters,1,6));
 		OreDictionary.registerOre("clusterQuartz", new ItemStack(ItemsTC.clusters,1,7));
 		
-		// for mod recipe compatibility
 		OreDictionary.registerOre("trapdoorWood", new ItemStack(Blocks.TRAPDOOR));
 	
 	}

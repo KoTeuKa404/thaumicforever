@@ -1,0 +1,20 @@
+
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/immortalizer_0",
+  "uvlock": false,
+  "transform": "forge:default-block",
+  "textures": {
+    "particle": "thaumicforever:blocks/life_0"
+  }
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:immortalizer_0" }],
+    "inventory": [{ "model": "thaumicforever:immortalizer_0"}],
+    "state=0": { "model": "thaumicforever:immortalizer_0" },
+    "state=1": { "model": "thaumicforever:immortalizer_1" },
+    "state=2": { "model": "thaumicforever:immortalizer_2" },
+    "state=3": { "model": "thaumicforever:immortalizer_3" }
+  }
+}

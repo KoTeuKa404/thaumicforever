@@ -1,0 +1,10 @@
+# Made in Blockbench 4.11.2
+newmtl m_4f8a4499-0a0c-c97f-1feb-5a3b6321c0ea
+map_Kd thaumicforever:blocks/arcane_stone_1
+newmtl m_cf9e686b-cd7a-dac3-f400-a8e1627af265
+map_Kd thaumicforever:blocks/quarz
+
+
+# for hand vvv
+newmtl m_d4871d22-c1fe-b780-9f46-6833c159c97c
+map_Kd thaumicforever:blocks/monkeypaw

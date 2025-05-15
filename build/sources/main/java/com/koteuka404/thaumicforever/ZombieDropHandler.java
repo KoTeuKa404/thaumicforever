@@ -19,7 +19,6 @@ public class ZombieDropHandler {
     public static void onEntityDrop(LivingDropsEvent event) {
         EntityLivingBase entity = event.getEntityLiving();
 
-        // GiantBrainyZombie - 50%
         if (entity instanceof EntityGiantBrainyZombie) {
             if (RANDOM.nextFloat() <= 0.5) {
                 event.getDrops().add(new net.minecraft.entity.item.EntityItem(
@@ -32,7 +31,6 @@ public class ZombieDropHandler {
             }
         }
 
-        // BrainyZombie -  10%
         else if (entity instanceof EntityBrainyZombie) {
             if (RANDOM.nextFloat() <= 0.1) {
                 event.getDrops().add(new net.minecraft.entity.item.EntityItem(

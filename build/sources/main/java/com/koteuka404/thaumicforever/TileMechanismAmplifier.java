@@ -15,21 +15,14 @@ public class TileMechanismAmplifier extends TileThaumcraft implements ITickable 
 
     @Override
     public void update() {
-        // Виконуємо лише на сервері
         if (this.getWorld().isRemote) return;
 
         delay++;
-        if (delay >= 20) { // Раз на секунду
+        if (delay >= 20) { 
             delay = 0;
 
-            // Логування
-            // System.out.println("[MechanismAmplifier] Updating at position: " + this.getPos());
-
-            // Підраховуємо boost
             int totalBoost = calculateTotalBoost();
-            // System.out.println("[MechanismAmplifier] Calculated total boost: " + totalBoost);
 
-            // Застосовуємо boost до механізму
             applyBoostToMechanism(totalBoost);
         }
     }
@@ -42,7 +35,7 @@ public class TileMechanismAmplifier extends TileThaumcraft implements ITickable 
             TileEntity neighborTile = getWorld().getTileEntity(neighborPos);
 
             if (neighborTile instanceof TileMechanismAmplifier) {
-                totalBoost += 2; // Інший Mechanism Amplifier
+                totalBoost += 2; 
             } else if (neighborTile instanceof TileEntityFurnace) {
                 int bellowsBoost = countConnectedBellows(neighborPos);
                 totalBoost += bellowsBoost;
@@ -80,7 +73,7 @@ public class TileMechanismAmplifier extends TileThaumcraft implements ITickable 
         if (targetTile instanceof TileEntityFurnace) {
             TileEntityFurnace furnace = (TileEntityFurnace) targetTile;
 
-            int cookTime = furnace.getField(2); // Отримуємо поточний cookTime
+            int cookTime = furnace.getField(2); 
             if (cookTime > 0 && cookTime < 199) {
                 furnace.setField(2, cookTime + boost);
             }

@@ -2,7 +2,6 @@ package com.koteuka404.thaumicforever;
 
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -10,6 +9,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import thaumcraft.common.lib.potions.PotionWarpWard;
 
 public class ItemPrimalCharm extends Item implements IBauble {
 
@@ -17,7 +17,6 @@ public class ItemPrimalCharm extends Item implements IBauble {
         this.setUnlocalizedName("primal_charm");
         this.setRegistryName("primal_charm");
         this.setMaxStackSize(1);
-        this.setCreativeTab(CreativeTabs.TOOLS); 
     }
 
     @Override
@@ -30,6 +29,7 @@ public class ItemPrimalCharm extends Item implements IBauble {
         if (player instanceof EntityPlayer) {
             EntityPlayer entityPlayer = (EntityPlayer) player;
             entityPlayer.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 200, 0, true, true));
+            entityPlayer.addPotionEffect(new PotionEffect(PotionWarpWard.instance, 200, 0, true, true));
         }
     }
     @Override

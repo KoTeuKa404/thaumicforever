@@ -44,39 +44,40 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
 
 
     @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0 && random.nextInt(360) == 0) { // Генерація з шансом 1/360
-            int x = chunkX * 16 + random.nextInt(16);
-            int z = chunkZ * 16 + random.nextInt(16);
-            int y = world.getHeight(x, z); // Знайти висоту на поверхні
-            BlockPos pos = new BlockPos(x, y, z);
+public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+    if (world.provider.getDimension() == 0 && random.nextInt(360) == 0) {
+        int x = chunkX * 16 + random.nextInt(16);
+        int z = chunkZ * 16 + random.nextInt(16);
+        int y = world.getHeight(x, z);
+        BlockPos pos = new BlockPos(x, y, z);
 
-            if (isSolidBlockBelow(world, pos.down()) && isAreaClear(world, pos, 5, 10)) {
-                int totemType = random.nextInt(6); // 0 - def, 1 - leed, 2 - high, 3 - із сундуком, 4 - leed_ch, 5 - high_ch
+        if (isSolidBlockBelow(world, pos.down()) && isAreaClear(world, pos, 5, 10)) {
+            int totemType = random.nextInt(6);
 
-                switch (totemType) {
-                    case 0:
-                        generateStructure(world, pos, TOTEM_TEMPLATE);
-                        break;
-                    case 1:
-                        generateStructure(world, pos, TOTEM_LEED_TEMPLATE);
-                        break;
-                    case 2:
-                        generateStructure(world, pos, TOTEM_HIGH_TEMPLATE);
-                        break;
-                    case 3:
-                        generateStructureWithChest(world, pos.down(), TOTEM_WITH_CHEST_TEMPLATE);
-                        break;
-                    case 4:
-                        generateStructureWithChest(world, pos.down(), TOTEM_LEED_WITH_CHEST_TEMPLATE);
-                        break;
-                    case 5:
-                        generateStructureWithChest(world, pos.down(), TOTEM_HIGH_WITH_CHEST_TEMPLATE);
-                        break;
-                }
+            switch (totemType) {
+                case 0:
+                    generateStructure(world, pos, TOTEM_TEMPLATE);
+                    break;
+                case 1:
+                    generateStructure(world, pos, TOTEM_LEED_TEMPLATE);
+                    break;
+                case 2:
+                    generateStructure(world, pos, TOTEM_HIGH_TEMPLATE);
+                    break;
+                case 3:
+                    generateStructureWithChest(world, pos.down(), TOTEM_WITH_CHEST_TEMPLATE);
+                    break;
+                case 4:
+                    generateStructureWithChest(world, pos.down(), TOTEM_LEED_WITH_CHEST_TEMPLATE);
+                    break;
+                case 5:
+                    generateStructureWithChest(world, pos.down(), TOTEM_HIGH_WITH_CHEST_TEMPLATE);
+                    break;
             }
         }
     }
+}
+
 
     private void generateStructure(World world, BlockPos pos, ResourceLocation templateLocation) {
         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();

@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
 
 public class CraftingRecipes {
@@ -19,6 +20,21 @@ public class CraftingRecipes {
             " S ",
             'P', Blocks.WOODEN_SLAB, 
             'S', Blocks.PLANKS 
+        );
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "RubyOre"),
+            null,
+            new ItemStack(ModBlocks.RubyBlock),
+            "III", "III", "III",
+            'I', Ingredient.fromItems(ModItems.ruby_gem)
+        );
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "RubyOre"),
+            null,
+            new ItemStack(ModItems.ruby_gem,9),
+            "I",
+            'I', Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.RubyBlock))
         );
 
         GameRegistry.addShapedRecipe(
@@ -91,7 +107,7 @@ public class CraftingRecipes {
             new ItemStack(Items.DYE, 1, 12), 
             Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.BLUE_ROSE)) 
         );
-
+// // // // // // // // // // // // // // // // // // // // // // // // // // // //
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "silver_ingot_from_block"),
             null,
@@ -109,36 +125,86 @@ public class CraftingRecipes {
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "copper_ingot_from_block"),
             null,
-            new ItemStack(ModItems.COPPER_INGOT, 9),
+            new ItemStack(ModItems.COPPER_INGOT, 9,1),
             Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.COPPER_BLOCK))
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "lead_nugget"),
             null,
-            new ItemStack(ModItems.LEAD_NUGGET, 9),
+            new ItemStack(ItemsTC.nuggets, 9,4),
             Ingredient.fromItems(ModItems.LEAD_INGOT)
         );
+// // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "silver_nugget"),
             null,
-            new ItemStack(ModItems.SILVER_NUGGET, 9),
+            new ItemStack(ItemsTC.nuggets, 9,3),
             Ingredient.fromItems(ModItems.SILVER_INGOT)
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "tin_nugget"),
             null,
-            new ItemStack(ModItems.TIN_NUGGET, 9),
+            new ItemStack(ItemsTC.nuggets, 9,2),
             Ingredient.fromItems(ModItems.TIN_INGOT)
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "copper_nugget"),
             null,
-            new ItemStack(ModItems.COPPER_NUGGET, 9),
+            new ItemStack(ItemsTC.nuggets, 9,1),
             Ingredient.fromItems(ModItems.COPPER_INGOT)
+        );
+        
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "lead_ingot_from_nuggets"),
+            null,
+            new ItemStack(ModItems.LEAD_INGOT),
+            "III", "III", "III",
+            'I', Ingredient.fromStacks(new ItemStack(ItemsTC.nuggets, 1, 4))
+            );
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "silver_ingot_from_nuggets"),
+            null,
+            new ItemStack(ModItems.SILVER_INGOT),
+            "III", "III", "III",
+            'I', Ingredient.fromStacks(new ItemStack(ItemsTC.nuggets, 1, 3))
+            );
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "tin_ingot_from_nuggets"),
+            null,
+            new ItemStack(ModItems.TIN_INGOT),
+            "III", "III", "III",
+            'I', Ingredient.fromStacks(new ItemStack(ItemsTC.nuggets, 1, 2))
+            );
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "copper_ingot_from_nuggets"),
+            null,
+            new ItemStack(ModItems.COPPER_INGOT),
+            "III", "III", "III",
+            'I', Ingredient.fromStacks(new ItemStack(ItemsTC.nuggets, 1, 1))
+            );
+// // // // // // // // // // // // // // // // // // // // // // // // // // // //       
+
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "iron_ring"),
+            null,
+            new ItemStack(ModItems.IRONRING),
+            " I ", "I I", " I ",
+            'I', Ingredient.fromItems(Items.IRON_NUGGET)
+        );
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "ring_iron"),
+            null,
+            new ItemStack(ModItems.RingIron),
+            "III", "I I", "III",
+            'I', Ingredient.fromItems(Items.IRON_NUGGET)
         );
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "amulet_fix"),
@@ -151,22 +217,6 @@ public class CraftingRecipes {
         );
 
         GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "lead_ingot_from_nuggets"),
-            null,
-            new ItemStack(ModItems.LEAD_INGOT),
-            "III", "III", "III",
-            'I', Ingredient.fromItems(ModItems.LEAD_NUGGET)
-        );
-
-        GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "silver_ingot_from_nuggets"),
-            null,
-            new ItemStack(ModItems.SILVER_INGOT),
-            "III", "III", "III",
-            'I', Ingredient.fromItems(ModItems.SILVER_NUGGET)
-        );
-
-        GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "aquareiagoggles"),
             null,
             new ItemStack(ModItems.ItemAquareiaGoggles),
@@ -174,28 +224,19 @@ public class CraftingRecipes {
             'I', Ingredient.fromItems(ModItems.AQUAREIA_GEM),
             'A', Ingredient.fromItems(ItemsTC.goggles)
         );
-
         GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "tin_ingot_from_nuggets"),
+            new ResourceLocation("thaumicforever", "primal_block"),
             null,
-            new ItemStack(ModItems.TIN_INGOT),
+            new ItemStack(ModBlocks.PRIMALBLOCK),
             "III", "III", "III",
-            'I', Ingredient.fromItems(ModItems.TIN_NUGGET)
-        );
-
-        GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "copper_ingot_from_nuggets"),
-            null,
-            new ItemStack(ModItems.COPPER_INGOT),
-            "III", "III", "III",
-            'I', Ingredient.fromItems(ModItems.COPPER_NUGGET)
+            'I', Ingredient.fromItems(ModItems.primalingot)
         );
         GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "iron_ring"),
+            new ResourceLocation("thaumicforever", "taintFeature"),
             null,
-            new ItemStack(ModItems.IRONRING),
-            "III", "I I", "III",
-            'I', Ingredient.fromItems(Items.IRON_NUGGET)
+            new ItemStack(BlocksTC.taintFeature),
+            "II", "II", 
+            'I', Ingredient.fromItems(ModItems.taint_slime)
         );
     }
 }

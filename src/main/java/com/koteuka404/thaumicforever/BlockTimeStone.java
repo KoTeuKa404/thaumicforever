@@ -30,6 +30,6 @@ public class BlockTimeStone extends Block {
     }
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(this); // Блок буде випадати сам як предмет
+        return Item.getItemFromBlock(this); 
     }
 }

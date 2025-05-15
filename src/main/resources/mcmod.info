@@ -1,16 +1,13 @@
 [
-{
-  "modid": "thaumicforever",
-  "name": "Thaumic Forever",
-  "description": "A mod for extending Thaumcraft functionalities."
-  "version": "4.1.3",
-  "mcversion": "1.12.2",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["KoTeuKa404"],
-  "credits": ",
-  "logoFile": "TCLogo.png",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "thaumicforever",
+    "name": "Thaumic Forever",
+    "description": "This is a Thaumcraft addon what extended thaumcraft base features  and added some staff what thaumcraft need like ore and other .",
+    "version": "5.1.8",
+    "mcversion": "1.12.2",
+    "url": "http://example.com",
+    "authorList": ["KoTeuKa404"],
+    "credits": "Thanks to Minecraft Forge and the community.",
+    "logoFile": "assets/thaumicforever/logo.png"
+  }
 ]

@@ -1,0 +1,12 @@
+{
+    "coins": {
+      "category": "player",
+      "sounds": [
+        {
+          "name": "thaumicforever:coins",
+          "stream": false
+        }
+      ]
+    }
+  }
+  

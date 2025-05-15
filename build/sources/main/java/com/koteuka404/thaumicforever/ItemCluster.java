@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 
 public class ItemCluster extends Item {
-    public static final String[] CLUSTER_TYPES = new String[]{"chromium", "iridium", "quartz", "charged_quartz"};
+    public static final String[] CLUSTER_TYPES = new String[]{"chromium", "iridium", "quartz", "charged_quartz","amber"};
 
     public ItemCluster() {
         this.setHasSubtypes(true);

@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/ruby_ore",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:ruby_ore" }],
+    "inventory": [{ "model": "thaumicforever:ruby_ore"}]
+  }
+}

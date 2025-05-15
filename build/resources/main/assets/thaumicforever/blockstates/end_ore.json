@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+  "model": "thaumicforever:block/end_ore",
+  "uvlock": true,
+  "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:end_ore" }],
+    "inventory": [{ "model": "thaumicforever:end_ore"}]
+  }
+}

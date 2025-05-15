@@ -9,7 +9,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
 public enum EnumInfusionEnchantment {
-    VOIDREPAIR(ImmutableSet.of("weapon", "axe", "pickaxe", "shovel", "armor"), 1, "NEWINFUSION");
+    VOIDREPAIR(ImmutableSet.of("weapon", "axe", "pickaxe", "shovel", "armor"), 1, "NEWINFUSION"),
+    POISON(ImmutableSet.of("weapon", "axe", "pickaxe", "shovel"), 7, "NEWINFUSION"),
+    RUBYPROTECT(ImmutableSet.of("armor"), 15, "NEWINFUSION"); 
+
 
     public final Set<String> applicableItems;
     public final int maxLevel;
@@ -23,35 +26,39 @@ public enum EnumInfusionEnchantment {
 
     public static NBTTagList getInfusionEnchantmentTagList(ItemStack stack) {
         if (stack == null || stack.isEmpty() || !stack.hasTagCompound()) {
-            return null;
+            return new NBTTagList(); 
         }
         return stack.getTagCompound().getTagList("infenchtf", 10);
     }
-
+    
     public static void addInfusionEnchantment(ItemStack stack, EnumInfusionEnchantment enchantment, int level) {
         if (stack == null || stack.isEmpty() || level > enchantment.maxLevel) {
             return;
         }
-
+    
         NBTTagList nbttaglist = getInfusionEnchantmentTagList(stack);
-        if (nbttaglist == null) {
-            nbttaglist = new NBTTagList();
-        }
-
+        boolean found = false;
+    
         for (int i = 0; i < nbttaglist.tagCount(); i++) {
             NBTTagCompound tag = nbttaglist.getCompoundTagAt(i);
             if (tag.getShort("id") == (short) enchantment.ordinal()) {
-                return;
+                int currentLevel = tag.getShort("lvl");
+                tag.setShort("lvl", (short) Math.min(level, enchantment.maxLevel)); 
+                found = true;
+                break;
             }
         }
-
-        NBTTagCompound nbttagcompound = new NBTTagCompound();
-        nbttagcompound.setShort("id", (short) enchantment.ordinal());
-        nbttagcompound.setShort("lvl", (short) level);
-        nbttaglist.appendTag(nbttagcompound);
-
+    
+        if (!found) {
+            NBTTagCompound nbttagcompound = new NBTTagCompound();
+            nbttagcompound.setShort("id", (short) enchantment.ordinal());
+            nbttagcompound.setShort("lvl", (short) level);
+            nbttaglist.appendTag(nbttagcompound);
+        }
+    
         stack.setTagInfo("infenchtf", nbttaglist);
     }
+    
 
     public static int getInfusionEnchantmentLevel(ItemStack stack, EnumInfusionEnchantment enchantment) {
         NBTTagList nbttaglist = getInfusionEnchantmentTagList(stack);

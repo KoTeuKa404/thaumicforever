@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+    "model": "thaumicforever:block/old_plank",
+    "uvlock": true,
+    "transform": "forge:default-block"
+    },
+    "variants": {
+      "normal": [{ "model": "thaumicforever:old_plank" }],
+      "inventory": [{ "model": "thaumicforever:old_plank"}]
+    }
+  }
+  

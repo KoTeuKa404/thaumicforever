@@ -13,7 +13,6 @@ public class ContainerMatteryDuplicator extends Container {
     public ContainerMatteryDuplicator(InventoryPlayer playerInventory, TileEntityMatteryDuplicator tileEntity) {
         this.tileEntity = tileEntity;
 
-        // Adding slots for the duplicator inventory
         addSlotToContainer(new Slot(tileEntity, 0, 36, 8));
         addSlotToContainer(new Slot(tileEntity, 1, 56, 8));
         addSlotToContainer(new Slot(tileEntity, 2, 76, 8));
@@ -62,43 +61,47 @@ public class ContainerMatteryDuplicator extends Container {
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
-        ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(index);
+public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
+    ItemStack itemstack = ItemStack.EMPTY;
+    Slot slot = this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack()) {
-            ItemStack stackInSlot = slot.getStack();
-            itemstack = stackInSlot.copy();
+    if (slot != null && slot.getHasStack()) {
+        ItemStack stackInSlot = slot.getStack();
+        itemstack = stackInSlot.copy();
 
-            if (index == 9) {
-                if (this.tileEntity.hasEnoughEssentia()) {
-                    if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), true)) {
-                        return ItemStack.EMPTY;
-                    }
-                    this.tileEntity.consumeEssentia();
-                    slot.onSlotChange(stackInSlot, itemstack);
-                }
-            } else {
-                if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), false)) {
-                    return ItemStack.EMPTY;
-                }
-            }
-
-            if (stackInSlot.isEmpty()) {
-                slot.putStack(ItemStack.EMPTY);
-            } else {
-                slot.onSlotChanged();
-            }
-
-            if (stackInSlot.getCount() == itemstack.getCount()) {
+        if (index == 9) {
+            if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), true)) {
                 return ItemStack.EMPTY;
             }
-
-            slot.onTake(playerIn, stackInSlot);
+            slot.onSlotChange(stackInSlot, itemstack);
+        } 
+        else if (index < 9) {
+            if (!this.mergeItemStack(stackInSlot, 10, this.inventorySlots.size(), false)) {
+                return ItemStack.EMPTY;
+            }
+        } 
+        else if (index >= 10) {
+            if (!this.mergeItemStack(stackInSlot, 0, 9, false)) {
+                return ItemStack.EMPTY;
+            }
         }
 
-        return itemstack;
+        if (stackInSlot.isEmpty()) {
+            slot.putStack(ItemStack.EMPTY);
+        } else {
+            slot.onSlotChanged();
+        }
+
+        if (stackInSlot.getCount() == itemstack.getCount()) {
+            return ItemStack.EMPTY;
+        }
+
+        slot.onTake(playerIn, stackInSlot);
     }
+
+    return itemstack;
+}
+
 
 
     @Override

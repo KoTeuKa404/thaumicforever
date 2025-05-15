@@ -12,30 +12,31 @@ public class ContainerAbandonedChest extends Container {
 
     public ContainerAbandonedChest(InventoryPlayer playerInventory, IInventory tileEntity) {
         this.tileEntity = tileEntity;
-
-        int chestSlotStartX = 46; 
+    
+        int chestSlotStartX = 78; 
         int chestSlotStartY = 32;
-
+    
         for (int i = 0; i < 3; ++i) {
-            for (int j = 1; j < 8; ++j) {  
+            for (int j = 1; j < 8; ++j) {
                 this.addSlotToContainer(new Slot(tileEntity, (j - 1) + i * 7, chestSlotStartX + (j - 1) * 18, chestSlotStartY + i * 18));
             }
         }
-
-        int playerInventoryStartY = 100 + 8; 
-
+    
+        int playerInventoryStartY = 100 + 8;
+    
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, chestSlotStartX + j * 18 - 18, playerInventoryStartY + i * 18)); 
+                this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, chestSlotStartX + j * 18 - 18, playerInventoryStartY + i * 18));
             }
         }
-
-        int hotbarY = 160 + 6; 
-
+    
+        int hotbarY = 160 + 6;
+    
         for (int i = 0; i < 9; ++i) {
-            this.addSlotToContainer(new Slot(playerInventory, i, chestSlotStartX + i * 18 - 18, hotbarY)); 
+            this.addSlotToContainer(new Slot(playerInventory, i, chestSlotStartX + i * 18 - 18, hotbarY));
         }
     }
+    
 
     @Override
     public boolean canInteractWith(EntityPlayer playerIn) {

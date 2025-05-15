@@ -60,7 +60,6 @@ public class ReviveSkeletonRenderer extends RenderLiving<ReviveSkeletonEntity> {
         private void renderHeldItem(EntityLivingBase entity, ItemStack stack, EnumHandSide handSide) {
             if (!stack.isEmpty()) {
                 GlStateManager.pushMatrix();
-                // Використовуємо стандартний рендеринг предметів Minecraft
                 Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, handSide == EnumHandSide.LEFT ? ItemCameraTransforms.TransformType.THIRD_PERSON_LEFT_HAND : ItemCameraTransforms.TransformType.THIRD_PERSON_RIGHT_HAND, handSide == EnumHandSide.LEFT);
                 GlStateManager.popMatrix();
             }

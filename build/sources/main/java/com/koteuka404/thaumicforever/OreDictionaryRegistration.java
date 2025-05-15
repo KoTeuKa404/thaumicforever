@@ -22,14 +22,18 @@ public class OreDictionaryRegistration {
         OreDictionary.registerOre("ingotTin", ModItems.TIN_INGOT);
         OreDictionary.registerOre("ingotCopper", ModItems.COPPER_INGOT);
 
-        OreDictionary.registerOre("nuggetLead", ModItems.LEAD_NUGGET);
-        OreDictionary.registerOre("nuggetSilver", ModItems.SILVER_NUGGET);
-        OreDictionary.registerOre("nuggetTin", ModItems.TIN_NUGGET);
-        OreDictionary.registerOre("nuggetCopper", ModItems.COPPER_NUGGET);
+        // OreDictionary.registerOre("nuggetLead", ModItems.LEAD_NUGGET);
+        // OreDictionary.registerOre("nuggetSilver", ModItems.SILVER_NUGGET);
+        // OreDictionary.registerOre("nuggetTin", ModItems.TIN_NUGGET);
+        // OreDictionary.registerOre("nuggetCopper", ModItems.COPPER_NUGGET);
 
         OreDictionary.registerOre("blockLead", ModBlocks.LEAD_BLOCK);
         OreDictionary.registerOre("blockSilver", ModBlocks.SILVER_BLOCK);
         OreDictionary.registerOre("blockTin", ModBlocks.TIN_BLOCK);
         OreDictionary.registerOre("blockCopper", ModBlocks.COPPER_BLOCK);
+
+        OreDictionary.registerOre("oreRuby", ModBlocks.RubyOre);
+        OreDictionary.registerOre("gemRuby", ModItems.ruby_gem);
+        OreDictionary.registerOre("blockRuby", ModBlocks.RubyBlock);
     }
 }

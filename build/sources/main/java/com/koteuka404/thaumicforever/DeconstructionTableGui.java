@@ -3,15 +3,16 @@ package com.koteuka404.thaumicforever;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
 public class DeconstructionTableGui extends GuiContainer {
     private static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ThaumicForever.MODID, "textures/gui/deconstruction_table.png");
     private final InventoryPlayer playerInventory;
-    private final IInventory tileEntity;
+    private final DeconstructionTableTileEntity tileEntity;
 
-    public DeconstructionTableGui(InventoryPlayer playerInventory, IInventory tileEntity) {
+    private static final int MAX_PROGRESS_HEIGHT = 36;
+
+    public DeconstructionTableGui(InventoryPlayer playerInventory, DeconstructionTableTileEntity tileEntity) {
         super(new DeconstructionTableContainer(playerInventory, tileEntity));
         this.playerInventory = playerInventory;
         this.tileEntity = tileEntity;
@@ -19,10 +20,12 @@ public class DeconstructionTableGui extends GuiContainer {
         this.ySize = 166;
     }
 
-    @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-        
+    private int getProgressScaled(int pixels) {
+        return (int) ((float) tileEntity.burnTime / 80.0F * pixels);
     }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {}
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
@@ -30,8 +33,20 @@ public class DeconstructionTableGui extends GuiContainer {
         this.mc.getTextureManager().bindTexture(GUI_TEXTURE);
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
+
         this.drawTexturedModalRect(i, j, 0, 0, this.xSize, this.ySize);
+
+        if (tileEntity.getInputHandler().getStackInSlot(0).isEmpty()) {
+            tileEntity.burnTime = 0;
+        }
+
+        if (tileEntity.isProcessing()) {
+            int progress = getProgressScaled(MAX_PROGRESS_HEIGHT);
+            this.drawTexturedModalRect(i + 93, j + 14 + (MAX_PROGRESS_HEIGHT - progress), 176, (MAX_PROGRESS_HEIGHT - progress), 8, progress + 12);
+
+        }
     }
+
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();

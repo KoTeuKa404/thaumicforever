@@ -2,8 +2,10 @@ package com.koteuka404.thaumicforever;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.items.ItemsTC;
 public class FurnaceRecipes {
 
@@ -31,7 +33,12 @@ public class FurnaceRecipes {
         GameRegistry.addSmelting(ModOreBlocks.AQUAREIA_ORE, new ItemStack(ModItems.AQUAREIA_GEM), 1.0F);
         GameRegistry.addSmelting(new ItemStack(Blocks.STONE, 1, 0), new ItemStack(ModOreBlocks.SMOOTH_STONE), 0.0F);
 
+        GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 4), new ItemStack(ItemsTC.amber,3), 0.0F);
 
+
+        ThaumcraftApi.addSmeltingBonus(new ItemStack(Item.getByNameOrId("industrialupgrade:raw_metals"), 1, 18), new ItemStack(Items.IRON_NUGGET, 3));
+
+        ThaumcraftApi.addSmeltingBonus(new ItemStack(ModItems.CLUSTER, 1, 4),new ItemStack(ItemsTC.amber, 1));
         
     }
 }

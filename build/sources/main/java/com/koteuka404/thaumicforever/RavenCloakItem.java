@@ -31,6 +31,7 @@ public class RavenCloakItem extends Item implements IBauble, IRenderBauble {
         return BaubleType.BODY;
     }
 
+
     @Override
     public void onPlayerBaubleRender(ItemStack stack, EntityPlayer player, RenderType type, float partialTicks) {
         if (type == RenderType.BODY) {
@@ -104,22 +105,28 @@ public class RavenCloakItem extends Item implements IBauble, IRenderBauble {
         }
     }
     @Override
-    public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
+public void onWornTick(ItemStack itemstack, EntityLivingBase player) {
     if (player instanceof EntityPlayer) {
         EntityPlayer entityPlayer = (EntityPlayer) player;
 
         int lightLevel = player.world.getLight(player.getPosition());
 
         if (lightLevel < 6) {
-            if (!entityPlayer.isPotionActive(MobEffects.INVISIBILITY)) {
-                entityPlayer.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 200, 0, true, false));
+            if (entityPlayer.isPotionActive(MobEffects.INVISIBILITY)) {
+                PotionEffect invisibility = entityPlayer.getActivePotionEffect(MobEffects.INVISIBILITY);
+                if (invisibility != null && invisibility.getDuration() <= 210) { 
+                    entityPlayer.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 40, 0, true, false));
+                }
+            } else {
+                entityPlayer.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 40, 0, true, false));
             }
         } else {
             if (entityPlayer.isPotionActive(MobEffects.INVISIBILITY)) {
                 entityPlayer.removePotionEffect(MobEffects.INVISIBILITY);
             }
         }
-        }
-    }    
+    }
+}
+
 } 
     

@@ -34,7 +34,6 @@ public class SalisMundusDoubleTableTrigger implements IDustTrigger {
         return null; 
     }
 
-    // Реалізація основної дії
     @Override
     public void execute(World world, EntityPlayer player, BlockPos pos, Placement placement, EnumFacing side) {
         IBlockState state = world.getBlockState(pos);

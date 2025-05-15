@@ -6,6 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class DeconstructionTableBlock extends Block {
 
@@ -55,10 +57,30 @@ public class DeconstructionTableBlock extends Block {
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
         TileEntity tileEntity = world.getTileEntity(pos);
         if (tileEntity instanceof DeconstructionTableTileEntity) {
-            InventoryHelper.dropInventoryItems(world, pos, (DeconstructionTableTileEntity) tileEntity);
+            DeconstructionTableTileEntity tableEntity = (DeconstructionTableTileEntity) tileEntity;
+    
+            ItemStackHandler inputHandler = tableEntity.getInputHandler();
+            ItemStackHandler outputHandler = tableEntity.getOutputHandler();
+    
+            for (int i = 0; i < inputHandler.getSlots(); i++) {
+                ItemStack stack = inputHandler.getStackInSlot(i);
+                if (!stack.isEmpty()) {
+                    InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                }
+            }
+    
+            for (int i = 0; i < outputHandler.getSlots(); i++) {
+                ItemStack stack = outputHandler.getStackInSlot(i);
+                if (!stack.isEmpty()) {
+                    InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
+                }
+            }
         }
         super.breakBlock(world, pos, state);
     }
+    
+
+
 
     @Override
     public boolean isOpaqueCube(IBlockState state) {

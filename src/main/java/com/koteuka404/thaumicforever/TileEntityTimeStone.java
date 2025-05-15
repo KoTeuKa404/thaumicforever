@@ -1,8 +1,6 @@
 package com.koteuka404.thaumicforever;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import net.minecraft.tileentity.TileEntity;
@@ -16,65 +14,65 @@ public class TileEntityTimeStone extends TileEntity implements ITickable {
     private static final int RADIUS = 3;
     private static final int BONUS_TICKS = 3;
 
-    private static final Set<TileEntity> processedTiles = new HashSet<>(); // Відслідковуємо оброблені TileEntity
-    private static final List<TileEntityTimeStone> activeTimeStones = new ArrayList<>(); // Відслідковуємо всі TimeStone
-    private static final ThreadLocal<Integer> tickDepth = ThreadLocal.withInitial(() -> 0);
+    private static final Set<TileEntity> processedTiles = new HashSet<>();
 
     @Override
     public void onLoad() {
         if (!world.isRemote) {
-            activeTimeStones.add(this); // Додаємо блок до списку активних
+            synchronized (processedTiles) {
+                processedTiles.clear(); 
+            }
         }
-    }
-
-    @Override
-    public void onChunkUnload() {
-        if (!world.isRemote) {
-            activeTimeStones.remove(this); // Видаляємо блок зі списку активних
-        }
-    }
-
-    @Override
-    public void invalidate() {
-        if (!world.isRemote) {
-            activeTimeStones.remove(this); // Видаляємо блок, якщо він зникає
-        }
-        super.invalidate();
     }
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            int depth = tickDepth.get();
-            if (depth > 10) { // Ліміт глибини рекурсій
-                return;
-            }
-            tickDepth.set(depth + 1);
-
-            // Дозволяємо вплив тільки першому блоку у списку
-            if (activeTimeStones.isEmpty() || activeTimeStones.get(0) != this) {
-                tickDepth.set(depth);
-                return; // Цей блок не активний
+            if (isOtherTimeStoneActive()) {
+                return; 
             }
 
-            processedTiles.clear(); // Очищаємо перед початком нового циклу
             AxisAlignedBB area = new AxisAlignedBB(pos.add(-RADIUS, -RADIUS, -RADIUS), pos.add(RADIUS, RADIUS, RADIUS));
-            speedUpTileEntities(world, BONUS_TICKS, area);
 
-            tickDepth.set(depth);
+            synchronized (processedTiles) {
+                processedTiles.clear(); 
+                speedUpTileEntities(world, BONUS_TICKS, area);
+            }
         }
     }
 
-    private void speedUpTileEntities(World world, int bonusTicks, AxisAlignedBB area) {
-        for (BlockPos targetPos : BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ),
-                                                       new BlockPos(area.maxX, area.maxY, area.maxZ))) {
+    private boolean isOtherTimeStoneActive() {
+        AxisAlignedBB checkArea = new AxisAlignedBB(pos.add(-RADIUS, -RADIUS, -RADIUS), pos.add(RADIUS, RADIUS, RADIUS));
+    
+        for (BlockPos targetPos : BlockPos.getAllInBox(new BlockPos(checkArea.minX, checkArea.minY, checkArea.minZ),
+                                                       new BlockPos(checkArea.maxX, checkArea.maxY, checkArea.maxZ))) {
             TileEntity tile = world.getTileEntity(targetPos);
-            if (tile instanceof ITickable && tile != this && !processedTiles.contains(tile)) {
-                processedTiles.add(tile); // Додаємо TileEntity до списку оброблених
-                for (int i = 0; i < bonusTicks; i++) {
-                    ((ITickable) tile).update();
-                }
+            if (tile instanceof TileEntityTimeStone && tile != this) {
+                return true; 
             }
         }
+        return false;
+    }
+    
+
+    private void speedUpTileEntities(World world, int bonusTicks, AxisAlignedBB area) {
+        BlockPos.getAllInBox(new BlockPos(area.minX, area.minY, area.minZ),
+                             new BlockPos(area.maxX, area.maxY, area.maxZ))
+                .forEach(targetPos -> {
+                    TileEntity tile = world.getTileEntity(targetPos);
+
+                    if (tile instanceof ITickable && tile != this && !(tile instanceof TileEntityTimeStone)) {
+                        synchronized (processedTiles) {
+                            if (processedTiles.add(tile)) {
+                                for (int i = 0; i < bonusTicks; i++) {
+                                    try {
+                                        ((ITickable) tile).update();
+                                    } catch (Exception e) {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
     }
 }

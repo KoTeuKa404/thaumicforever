@@ -2,66 +2,27 @@
   {
     "user": {
       "type": "player",
-      "name": "Player437",
-      "uniqueId": "538c2a55-7afc-37c7-ab76-b8f0ee8467dd"
+      "name": "Player93",
+      "uniqueId": "04ba6478-628e-32a2-915d-0b45ca8b366b"
     },
-    "time": 1730888617071,
+    "time": 1746803344696,
     "type": "Profiler",
     "data": {
       "type": "url",
-      "value": "https://spark.lucko.me/7l5MFncl54"
+      "value": "https://spark.lucko.me/waI0ezCoax"
     }
   },
   {
     "user": {
       "type": "player",
-      "name": "Player187",
-      "uniqueId": "6b70ab1d-ea1f-3080-82f2-6a9952eea911"
+      "name": "Player890",
+      "uniqueId": "2210beb6-4dc2-38a8-8f45-f0cb49bb6846"
     },
-    "time": 1730635095742,
+    "time": 1743008389168,
     "type": "Profiler",
     "data": {
       "type": "url",
-      "value": "https://spark.lucko.me/5NIvrNW8Kj"
-    }
-  },
-  {
-    "user": {
-      "type": "player",
-      "name": "Player812",
-      "uniqueId": "34692304-57b2-31f8-a84c-d22c6ff753f7"
-    },
-    "time": 1730631982592,
-    "type": "Profiler",
-    "data": {
-      "type": "url",
-      "value": "https://spark.lucko.me/ffOJbrcC7g"
-    }
-  },
-  {
-    "user": {
-      "type": "player",
-      "name": "Player906",
-      "uniqueId": "f8a1463c-07b2-3433-918f-386b8accf0f1"
-    },
-    "time": 1730630787046,
-    "type": "Profiler",
-    "data": {
-      "type": "url",
-      "value": "https://spark.lucko.me/b5vYERmnFv"
-    }
-  },
-  {
-    "user": {
-      "type": "player",
-      "name": "Player734",
-      "uniqueId": "3f66a67c-db6c-36b7-b762-d7a40c17883b"
-    },
-    "time": 1730628575624,
-    "type": "Profiler",
-    "data": {
-      "type": "url",
-      "value": "https://spark.lucko.me/0MG1UOOkH9"
+      "value": "https://spark.lucko.me/29VSqmi6tx"
     }
   }
 ]

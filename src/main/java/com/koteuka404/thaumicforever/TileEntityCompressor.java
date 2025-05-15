@@ -4,28 +4,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.IEssentiaTransport;
 
-public class TileEntityCompressor extends TileEntity implements ITickable {
+public class TileEntityCompressor extends TileEntity implements ITickable, IEssentiaTransport {
 
-    private ItemStackHandler inventory = new ItemStackHandler(2); 
+    private final ItemStackHandler inputHandler = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            markDirty();
+        }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return isValidInput(stack);
+        }
+    };
+
+    private final ItemStackHandler outputHandler = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            markDirty();
+        }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return false; 
+        }
+
+        @Override
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            return super.extractItem(slot, amount, simulate);
+        }
+    };
+
     private int compressTime = 0;
     private ItemStack selectedPlate = ItemStack.EMPTY;  
     private ItemStack lastInput = ItemStack.EMPTY;  
+    private int mechanismEssentia = 0; 
+    private static final int MAX_MECHANISM_ESSENTIA = 100; 
+    private static final int ESSENTIA_COST_PER_PLATE = 10; 
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            ItemStack input = inventory.getStackInSlot(0);  
-            ItemStack output = inventory.getStackInSlot(1);  
+            fillWithEssentia(); 
+
+            ItemStack input = inputHandler.getStackInSlot(0);  
+            ItemStack output = outputHandler.getStackInSlot(0);  
 
             if (!ItemStack.areItemsEqual(input, lastInput)) {
                 selectedPlate = ItemStack.EMPTY;
@@ -38,11 +79,15 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
                     return; 
                 }
 
+                int requiredTime = hasEnoughEssentia() ? 20 : 80; 
                 compressTime++;
 
-                if (compressTime >= 50) { 
+                if (compressTime >= requiredTime) {
                     compressItem(input);
                     compressTime = 0;
+                    if (hasEnoughEssentia()) {
+                        consumeEssentia(); 
+                    }
                 }
             } else {
                 compressTime = 0;
@@ -52,7 +97,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
 
     private void compressItem(ItemStack input) {
         if (!selectedPlate.isEmpty() || isThauminite(input)) {
-            ItemStack output = inventory.getStackInSlot(1);
+            ItemStack output = outputHandler.getStackInSlot(0);
             ItemStack plateToCreate = selectedPlate;
 
             if (isThauminite(input)) {
@@ -61,14 +106,50 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
 
             if (!output.isEmpty() && output.isItemEqual(plateToCreate)) {
                 output.grow(1); 
-                inventory.setStackInSlot(1, output); 
+                outputHandler.setStackInSlot(0, output); 
             } else if (output.isEmpty()) {
-                inventory.setStackInSlot(1, plateToCreate.copy());
+                outputHandler.setStackInSlot(0, plateToCreate.copy());
             }
 
-            inventory.extractItem(0, 1, false); 
+            inputHandler.extractItem(0, 1, false); 
             markDirty(); 
+            if (!world.isRemote) {
+            world.playSound(
+                null,                        
+                pos,                          
+                SoundEvents.BLOCK_ANVIL_USE, 
+                SoundCategory.BLOCKS,       
+                0.5F,                      
+                1.0F                         
+            );
         }
+    
+        }
+    }
+
+    private void fillWithEssentia() {
+        if (mechanismEssentia >= MAX_MECHANISM_ESSENTIA) {
+            return;
+        }
+
+        for (EnumFacing facing : EnumFacing.values()) {
+            TileEntity te = world.getTileEntity(pos.offset(facing));
+            if (te instanceof IEssentiaTransport) {
+                IEssentiaTransport transport = (IEssentiaTransport) te;
+                if (transport.canOutputTo(facing.getOpposite())) {
+                    Aspect essentiaType = transport.getEssentiaType(facing.getOpposite());
+                    if (essentiaType == Aspect.MECHANISM) {
+                        int taken = transport.takeEssentia(essentiaType, 1, facing.getOpposite());
+                        mechanismEssentia += taken;
+                        if (mechanismEssentia >= MAX_MECHANISM_ESSENTIA) {
+                            mechanismEssentia = MAX_MECHANISM_ESSENTIA;
+                            break; 
+                        }
+                    }
+                }
+            }
+        }
+        markDirty();
     }
 
     private boolean isThauminite(ItemStack stack) {
@@ -99,14 +180,14 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         if (input == null || output == null || input.isEmpty() || output.isEmpty()) {
             return false;
         }
-    
+
         if (isThauminite(input) && isThauminite(output)) {
             return true; 
         }
-    
+
         int[] inputOreIds = OreDictionary.getOreIDs(input);
         int[] outputOreIds = OreDictionary.getOreIDs(output);
-    
+
         for (int inputId : inputOreIds) {
             for (int outputId : outputOreIds) {
                 if (inputId == outputId) {
@@ -116,10 +197,9 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         }
         return false; 
     }
-    
 
     public List<ItemStack> getPlateOptions() {
-        ItemStack input = inventory.getStackInSlot(0); 
+        ItemStack input = inputHandler.getStackInSlot(0); 
         List<ItemStack> plateOptions = new ArrayList<>();
 
         if (!input.isEmpty()) {
@@ -145,12 +225,79 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
         return this.selectedPlate;
     }
 
+    private boolean hasEnoughEssentia() {
+        return mechanismEssentia >= ESSENTIA_COST_PER_PLATE;
+    }
+
+    private void consumeEssentia() {
+        mechanismEssentia -= ESSENTIA_COST_PER_PLATE;
+        if (mechanismEssentia < 0) {
+            mechanismEssentia = 0;
+        }
+        markDirty();
+    }
+
+    @Override
+    public boolean isConnectable(EnumFacing face) {
+        return true;
+    }
+
+    @Override
+    public boolean canInputFrom(EnumFacing face) {
+        return true;
+    }
+
+    @Override
+    public boolean canOutputTo(EnumFacing face) {
+        return false;
+    }
+
+    @Override
+    public int addEssentia(Aspect aspect, int amount, EnumFacing face) {
+        if (aspect == Aspect.MECHANISM) {
+            int toAdd = Math.min(amount, MAX_MECHANISM_ESSENTIA - mechanismEssentia);
+            mechanismEssentia += toAdd;
+            markDirty();
+            return toAdd;
+        }
+        return 0;
+    }
+
+    @Override
+    public int takeEssentia(Aspect aspect, int amount, EnumFacing face) {
+        return 0; 
+    }
+
+    @Override
+    public int getEssentiaAmount(EnumFacing face) {
+        return mechanismEssentia;
+    }
+
+    @Override
+    public Aspect getEssentiaType(EnumFacing face) {
+        return Aspect.MECHANISM;
+    }
+
+    @Override
+    public int getMinimumSuction() {
+        return 128;
+    }
+
+    @Override
+    public int getSuctionAmount(EnumFacing face) {
+        return mechanismEssentia < MAX_MECHANISM_ESSENTIA ? 128 : 0;
+    }
+
+    @Override
+    public Aspect getSuctionType(EnumFacing face) {
+        return Aspect.MECHANISM;
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-
-        // Збереження інвентаря
-        compound.setTag("Inventory", inventory.serializeNBT());
+        compound.setTag("InputHandler", inputHandler.serializeNBT());
+        compound.setTag("OutputHandler", outputHandler.serializeNBT());
 
         if (!selectedPlate.isEmpty()) {
             NBTTagCompound selectedPlateTag = new NBTTagCompound();
@@ -164,6 +311,8 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
             compound.setTag("LastInput", lastInputTag);
         }
 
+        compound.setInteger("MechanismEssentia", mechanismEssentia);
+
         return compound;
     }
 
@@ -171,8 +320,12 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
 
-        if (compound.hasKey("Inventory")) {
-            inventory.deserializeNBT(compound.getCompoundTag("Inventory"));
+        if (compound.hasKey("InputHandler")) {
+            inputHandler.deserializeNBT(compound.getCompoundTag("InputHandler"));
+        }
+
+        if (compound.hasKey("OutputHandler")) {
+            outputHandler.deserializeNBT(compound.getCompoundTag("OutputHandler"));
         }
 
         if (compound.hasKey("SelectedPlate")) {
@@ -185,11 +338,12 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
             lastInput = new ItemStack(lastInputTag);
         }
 
+        this.mechanismEssentia = compound.getInteger("MechanismEssentia");
         markDirty(); 
     }
 
     public ItemStackHandler getInventory() {
-        return this.inventory;
+        return inputHandler;
     }
 
     public boolean isUsableByPlayer(EntityPlayer player) {
@@ -199,4 +353,40 @@ public class TileEntityCompressor extends TileEntity implements ITickable {
             return player.getDistanceSq((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D) <= 64.0D;
         }
     }
+
+    @Override
+    public void setSuction(Aspect aspect, int amount) {
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
+    }
+
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(getSidedHandler(facing));
+        }
+        return super.getCapability(capability, facing);
+    }
+
+    private IItemHandler getSidedHandler(EnumFacing facing) {
+        if (facing == EnumFacing.DOWN) {
+            return outputHandler; 
+        } else {
+            return inputHandler; 
+        }
+    }
+    public ItemStackHandler getInputHandler() {
+        return inputHandler;
+    }
+    
+    public ItemStackHandler getOutputHandler() {
+        return outputHandler;
+    }
+    
 }

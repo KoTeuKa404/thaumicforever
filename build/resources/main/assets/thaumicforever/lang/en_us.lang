@@ -16,7 +16,7 @@ tile.thaumicforever.ancient_coal.name=Ancient Coal
 tile.thaumicforever.ancient_gold.name=Ancient Gold
 tile.thaumicforever.ancient_iron.name=Ancient Iron
 
-tile.duplicator.name=Duplicator
+tile.duplicator.name=Mattery Duplicator
 tile.compressor.name=Compressor
 
 item.lead_ingot.name=Lead Ingot
@@ -70,6 +70,8 @@ item.focus_5.name=Blank Ultimate Focus
 item.iron_ring.name=Iron ring
 item.oldbone.name=Old Bone
 
+tile.invisible_part.name=Double Table
+
 item.thaumium_gear.name=Thaumium Gear
 item.void_gear.name=Viod Gear
 item.brass_gear.name=Brass Gear
@@ -85,21 +87,22 @@ item.empty_focus.name=Empty Focus
 item.eternal_blade.name=Eternal Blade
 item.raven_cloak_bauble.name=Shadow Cloak
 
-tc.aspect.Weather=Weather, Nature
-tc.aspect.Mattery=Mattery
+tc.aspect.weather=Weather, Nature
+tc.aspect.matterya=Mattery
 item.bowl_treatmeat.name=Bowl of Treat Meat
 item.bowl_zombie.name=Zombie Bowl
 research.NEWRUNICS.title=NEW RUNICS
 
-research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the arcane in a portable and versatile form.
-research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.
+research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the magic in a portable and versatile form.
+research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.<PAGE/><BR>§lRegeneration Ring§r<BR/>The Regeneration Ring draws upon the very essence of life, granting the wearer periodic surges of healing. Every 13 seconds it radiates a verdant glow, applying Regeneration I for 3 seconds. The effect stacks: each additional ring raises the regeneration level (Regeneration II, III, etc.), ensuring ever‑quicker recovery for those who don more than one.<PAGE/><BR>§lRevive Ring§r<BR/>When a fatal strike would drop its bearer, the Revive Ring intervenes, halting damage at 1 health. All negative effects are instantly cleansed, and the ring then enters a 5‑minute cooldown. This single‑use salvation offers a second chance to anyone caught in truly desperate circumstances.<PAGE/><BR>§lCooldown Ring§r<BR/>The Cooldown Ring is inscribed with ancient magic that steadily lighten the burden of spellcraft. For each ring worn, caster cooldowns are reduced.Effects stack multiplicatively: every extra ring further trims cooldown times, making this relic indispensable for prolonged confrontations.
+
 
 research.REVIVE_SKELET.title=Revive Skeleton
-research.REVIVE_SKELET.stage.1="Revive Skeletons" are an enigma of magic and decay. Bound together by ancient spells, they roam not as mere undead but as fragments of lost rituals, pulsing with dark energy. Each bone whispers secrets of forbidden arts, a chilling reminder of the power that bends death to its will
+research.REVIVE_SKELET.stage.1=Revive Skeletons<DIV> are an enigma of magic and decay. Bound together by ancient spells, they roam not as mere undead but as fragments of lost rituals, pulsing with dark energy. Each bone whispers secrets of forbidden arts, a chilling reminder of the power that bends death to its will. I've noticed that some of these skeletons harbor mysterious scrolls within their chests. What secrets might they hold?
 
 research.TIMESTONE.title=The Temporal Catalyst
 research.TIMESTONE.stage.1=Unlock the ancient secrets of time manipulation, channeling its power to accelerate the flow of reality within its grasp. The radius of its influence and the depth of its acceleration depend on your understanding.
-research.TIMESTONE.stage.2=With the power of the Time Stone, manipulate the very essence of progress. Beware, for reckless acceleration may lead to unforeseen chaos within the world.
+research.TIMESTONE.stage.2=§lTime Stone§r<DIV><BR>With the power of the Time Stone, manipulate the very essence of progress. Beware, for reckless acceleration may lead to unforeseen chaos within the world.
 
 
 thaumicforever.enchantment.voidrepair=Void Repair
@@ -125,21 +128,21 @@ research.MINDCONTROL.stage.2=Enhance your mastery of mind control, allowing for 
 
 research.NEWARTIFICE.title=New Artifice
 research.NEWARTIFICE.stage.1=Develop basic mechanisms that integrate magical energy into mechanical constructs.
-research.NEWARTIFICE.stage.2=Unlock the potential of hybrid machines, blending arcane energy with mechanical precision to create unprecedented inventions.<PAGE>§lTime Trap§r<BR>The Time Trap is a unique and powerful device that manipulates the flow of time within a confined area. Utilizing arcane energies, it is capable of creating a zone where time itself is distorted, slowing down everything inside.Upon activation, the device emits a powerful burst of magic, creating an area of effect that freezes any movement within its radius.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR> To use the Time Trap effectively, aim and release the projectile towards the desired target.<PAGE>
+research.NEWARTIFICE.stage.2=Unlock the potential of hybrid machines, blending magic energy with mechanical precision to create unprecedented inventions.<PAGE>§lTime Trap§r<BR>The Time Trap is a unique and powerful device that manipulates the flow of time within a confined area. Utilizing magic energies, it is capable of creating a zone where time itself is distorted, slowing down everything inside.Upon activation, the device emits a powerful burst of magic, creating an area of effect that freezes any movement within its radius.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR> To use the Time Trap effectively, aim and release the projectile towards the desired target.<PAGE>
 
 research.GUARD.title=Guardian Stand
 research.GUARD.stage.1=You've discovered a way to use magic to alive a simple wooden armor stand. Through the infusion of magic, this stand can be transformed into a loyal guardian.
-research.GUARD.stage.2=With the proper application of magic dust, your newly awakened sentinel will defend you from threats, ready to serve its master at all times.<IMG>thaumicforever:textures/misc/research2.png:0:0:128:128:0.2</IMG>
+research.GUARD.stage.2=With the proper application of magic dust, your newly awakened sentinel will defend you from threats, ready to serve its master at all times.<PAGE><BR><IMG>thaumicforever:textures/misc/research2.png:0:0:255:255:0.5</IMG>
  
 research.NEWINFUSION.title=New Infusion Enchantment
 research.NEWINFUSION.stage.1=Through careful study of ancient magical techniques, you have unlocked the ability to perform infusion enchantments. This form of magic allows you to imbue your tools, weapons, and armor with powerful enchantments that exceed those of traditional means. By utilizing magical energy, you can infuse objects with aspects that will enhance their abilities and grant them additional properties.
-research.NEWINFUSION.stage.2=The discovery of Void Repair has revolutionized the way items can be maintained. By harnessing the essence of the void, enchanted items can now slowly repair themselves over time. Every few seconds, a small fraction of the item's durability is restored, keeping it in pristine condition without any external effort. This magical property makes Void Repair a powerful tool for those who rely on their gear for prolonged expeditions or combat, ensuring that no weapon or piece of armor remains broken for long.
+research.NEWINFUSION.stage.2=I have made progress in understanding advanced infusion enchantments, which allow powerful effects to be embedded directly into equipment. Each additional rank of the same enchantment will cost more essentia and increase the chance of instability. Different infusion enchantments applied together further raise these costs, and may also inflict the item with Warp.<BR>Not all enchantments are universal — each has specific item types they can be applied to, listed below.<BR>Infusion-enchanted tools can still be used with a standard enchanting table, and sneaking suppresses any active effect while in use.<PAGE>§oVoid Repair§r<DIV>This enchantment causes the item to slowly regenerate durability over time, repairing itself without any user action.<DIV>§oRanks§r: none<BR>§oTarget§r: armor, tool, weapon<PAGE>§oPoison§r<DIV>Applies a poison effect when striking a target. At higher ranks, the poison becomes withering. May destabilize the surrounding aura.<DIV>§oRanks§r: 1-7<BR>§oTarget§r: weapon<PAGE>§oRuby Protection§r<DIV>Deals damage to attackers when the wearer is hit. This retaliation increases with enchantment rank and manifests visually as a red glyph flash.<DIV>§oRanks§r: 1-15<BR>§oTarget§r: armor
 
 
 thaumicforever.BOOSTPOWER.name=Double Power
 research.COMPRESSOR.title=Compressor
 research.COMPRESSOR.stage.1=Creating plates can often be a costly endeavor, especially if you do not work with them frequently. This Compressor is an indispensable tool for any thaumaturge, making the process far more efficient and accessible.
-research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes raw ingots and transforms them into refined plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different arcane applications. This includes specialized plates.<PAGE>
+research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes ingots and transforms them into plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different magic applications. This includes specialized plates.<PAGE>
 
 research.CLOAK.title=Shadowed Cloak
 research.CLOAK.stage.1=The veil of shadows whispers secrets of concealment. Its essence lies in blending with the darkness, evading prying eyes.
@@ -154,19 +157,22 @@ research.DUPLICATOR.title=Mattery Duplicator
 research.DUPLICATOR.stage.1=When the limitations of the Pattern Crafter became evident, a new concept emerged — a mechanism capable of harnessing the essence of Mattery to replicate objects. Thus, the Mattery Duplicator was conceived, a device that captures the very essence of matter and transforms it into tangible forms, meeting the diverse needs of thaumaturges
 research.DUPLICATOR.stage.2=§lMattery Duplicator§r<BR>The Mattery Duplicator utilizes the unique properties of the Mattery essence to perform its duplication process. By absorbing Mattery essence from nearby containers, the machine gathers the energy necessary to replicate items placed in the crafting grid.To complete the duplication, a significant amount of Mattery essence is required, and the machine will only proceed if sufficient mattery is available. Carefully monitor the amount of essence to ensure successful duplications.<PAGE>
 
-research.OREAQUA.title=Aquareia Ore
-research.OREAQUA.stage.1=Aquareia Ore is a rare and magical mineral that can only be found deep within the mysterious **Magical Forest** biome. This ore is known for its unique properties and affinity with arcane energies. The deposits of Aquareia can be discovered between Y-levels 28 and 32, making them accessible only to those who delve into the depths of these enchanted forests.<BR><BR>It appears in small veins, usually ranging from 2 to 6 blocks, and can only be found where the natural magic of the forest is strongest.
+research.OREAQUA.title=Ores
+research.OREAQUA.stage.1=§oAquareia Ore§r<IMG>thaumicforever:textures/misc/aqa.png:0:0:256:256:0.5</IMG>Aquareia Ore is a rare and magical mineral that can only be found deep within the mysterious *Magical Forest* biome. This ore is known for its unique properties and affinity with magic energies. The deposits of Aquareia can be discovered between Y-levels 28 and 32, making them accessible only to those who delve into the depths of these enchanted forests.<BR><BR>It appears in small veins, usually ranging from 2 to 6 blocks, and can only be found where the natural magic of the forest is strongest.
+
 entity.ItemFrame.name=Item Frame
+
 research.FOOD.title=Special Food
 research.FOOD.stage.1=You've discovered that food can offer more than simple nourishment. Begin experimenting with ingredients that may unlock unique effects.
 research.FOOD.stage.2=Your studies reveal that certain meals can grant extraordinary abilities.Experiment with mystical ingredients to create powerful meals.
 
-research.ANGRY_SKELET.title=Angry Skelet
+
+research.ANGRY_SKELET.title=Angry Skeleton
 research.ANGRY_SKELET.stage.1=During my explorations, I stumbled upon a strange variation of a skeleton. Unlike the common undead warriors, this one displayed unusual aggression and speed, as if fueled by an unquenchable rage. It seems to possess higher durability and intelligence, dodging attacks with unexpected precision. Could it be a result of some dark magic, or is it simply an evolved form of an ordinary skeleton? Further study is required to unravel the mystery behind its origin.<BR>Upon examining its remains, I noticed something peculiar about its bones. They are significantly denser and stronger than those of regular skeletons. This discovery leads me to wonder—could these bones be used to forge a weapon, perhaps one infused with the same unrelenting rage that fueled this creature?
 
 research.DeconstructionTable.title=Deconstruction Table
-research.DeconstructionTable.stage.1=The Deconstruction Table is a unique device that allows thaumaturges to break down common items into their base components. By carefully deconstructing these items, one can gain valuable insights into the magical properties hidden within. The table's ability to extract curios makes it an indispensable tool for those who wish to study the arcane secrets embedded in mundane materials.
-research.DeconstructionTable.stage.2=<PAGE>§lOperation§r<BR>To use the Deconstruction Table, place an item into the input slot. The table will attempt to extract any magical properties the item possesses over a short period.<BR><BR>The table is configured with specific recipes that yield unique rewards. For example, a **Crafting Table** has a chance to reveal shards of arcane knowledge, while **Ender Pearls** can uncover mysterious trinkets imbued with magic. More complex items, such as **Ghast Tears**, may even provide relics of immense power.<PAGE>§lRecipes§r<BR>Some items have higher chances of yielding valuable results. These include:<BR>- **Crafting Table**: A 35% chance to produce knowledge shards.<BR>- **Ender Pearls**: A 45% chance to produce magical curiosities.<BR>- **Ghast Tears**: A 95% chance to produce powerful trinkets.<BR>- **Condensed Crystal Clusters**: A 50% chance to yield rare dimensional curiosities.<BR><BR>With the mod **Old Research** installed, even mundane items like **Books** can yield insights into ancient secrets, making this table an essential asset for any thaumaturge.<PAGE>
+research.DeconstructionTable.stage.1=The Deconstruction Table is a unique device that allows thaumaturges to break down common items into their base components. By carefully deconstructing these items, one can gain valuable insights into the magical properties hidden within. The table's ability to extract curios makes it an indispensable tool for those who wish to study the magic secrets embedded in mundane materials.
+research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>To use the Deconstruction Table, place an item into the input slot. The table will attempt to extract any magical properties the item possesses over a short period.<BR><BR>The table is configured with specific recipes that yield unique rewards. For example, a **Crafting Table** has a chance to reveal shards of magic knowledge, while **Ender Pearls** can uncover mysterious trinkets imbued with magic. More complex items, such as **Ghast Tears**, may even provide relics of immense power.<PAGE>§lRecipes§r<BR>Some items have higher chances of yielding valuable results. These include:<BR>- **Crafting Table**: A 35% chance to produce knowledge shards.<BR>- **Ender Pearls**: A 45% chance to produce magical curiosities.<BR>- **Ghast Tears**: A 95% chance to produce powerful trinkets.<BR>- **Condensed Crystal Clusters**: A 50% chance to yield rare dimensional curiosities.<BR>- **Bookshelves**: A 60-85% chance to extract mystical inscriptions or aspect shards.<BR><BR><PAGE>With the **oldresearch** mod installed, Bookshelves will yield Aspect Shards with a higher chance.
 
 item.ring_ender.name=Ender Ring 
 item.time_freeze_item.name=Time Trap 
@@ -180,7 +186,6 @@ tile.time_stop_block.name=Time Stop
 tc.research_category.THAUMICFOREVER=Thaumic Forever
 research.THAUMICFOREVER.title=Thaumic Forever
 
-research.THAUMICFOREVER.title=Thaumic Forever
 research.NEWALKIMIA.title=New Alchemy
 research.TENEBRAEALKIMIA.title=Tenebrae Alchemy
 research.HERBAALKIMIA.title=Herba Alchemy
@@ -196,7 +201,7 @@ research.IUALKIMIA.title=Industrial Alchemy
 research.ETERNALBLADE.title=Eternal Blade
 
 research.THAUMICFOREVER.stage.1=Your journey into Thaumic knowledge begins here. Start by crafting a Crucible.
-research.THAUMICFOREVER.stage.2=You are ready for more advanced research. <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<BR/>
+research.THAUMICFOREVER.stage.2=You are ready for more advanced research. <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<BR/><PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
 
 research.NEWALKIMIA.stage.1=Delve into the mysteries of New Alchemy. Start with the basics.
 research.NEWALKIMIA.stage.2=Your understanding of Alchemy grows stronger.
@@ -216,7 +221,7 @@ research.TERRAALKIMIA.stage.2=You have mastered the basics of Terra Alchemy. A n
 research.AQUAALKIMIA.stage.1=Aqua Alchemy taps into the essence of water. Collect what you need to begin.
 research.AQUAALKIMIA.stage.2=Aqua Alchemy now flows through your veins.
 
-research.PRAECANTATIOALKIMIA.stage.1=Praecantatio Alchemy is the magic of the arcane. Prepare yourself with the right ingredients.
+research.PRAECANTATIOALKIMIA.stage.1=Praecantatio Alchemy is the magic of the vis. Prepare yourself with the right ingredients.
 research.PRAECANTATIOALKIMIA.stage.2=You now wield the power of Praecantatio Alchemy.
 
 research.ADDITIONALALKIMIA.stage.1=Additional Alchemy adds new layers to your knowledge. Study the required theories.
@@ -225,14 +230,170 @@ research.ADDITIONALALKIMIA.stage.2=You have expanded your alchemical knowledge.
 research.APPLIDALKIMIA.stage.1=Applied Alchemy combines ancient magic with modern technology. Start by gathering the components.
 research.APPLIDALKIMIA.stage.2=You have successfully integrated magic and technology.
 
-research.BOTANIAALKIMIA.stage.1=Botania Alchemy merges nature's power with arcane knowledge. Collect the necessary items.
+research.BOTANIAALKIMIA.stage.1=Botania Alchemy merges nature's power with magic knowledge. Collect the necessary items.
 research.BOTANIAALKIMIA.stage.2=Botania Alchemy now blooms under your command.
 
-research.IMMERALKIMIA.stage.1=Immersive Alchemy brings the power of the forge into the arcane. Gather what you need to proceed.
+research.IMMERALKIMIA.stage.1=Immersive Alchemy brings the power of the forge into the magic. Gather what you need to proceed.
 research.IMMERALKIMIA.stage.2=You have mastered Immersive Alchemy.
 
-research.IUALKIMIA.stage.1=Industrial Alchemy applies the principles of automation to the arcane. Start your research by gathering the essentials.
+research.IUALKIMIA.stage.1=Industrial Alchemy applies the principles of automation to the magic. Start your research by gathering the essentials.
 research.IUALKIMIA.stage.2=You have unlocked the secrets of Industrial Alchemy.
 
-research.ETERNALBLADE.stage.1=The Eternal Blade is a weapon of unparalleled power. Begin your research with the Primordial Pearl.
-research.ETERNALBLADE.stage.2=The blade is now within your reach, but it comes with a cost of great warp.
+
+
+research.RESEARCHPRIMAL.title=Ancient Research
+research.RESEARCHPRIMAL.stage.1=During your magical studies, you uncovered cryptic mentions of unknown yet incredibly powerful relics. These artifacts, forged in the dawn of magic, harbor a force beyond mortal comprehension. Legends speak of them as sources of unseen power capable of shifting the very balance of the world. Yet, they also warn: those who dare approach such power may rise to unparalleled heights or be utterly consumed by its weight. Are you prepared to take this step into the unknown?
+
+
+
+item.scroll_c_0.name=Scroll Complete
+item.scroll_c_1.name=Scroll Complete
+item.scroll_c_2.name=Scroll Complete
+item.scroll_c_3.name=Scroll Complete
+
+item.scroll_o_0.name=Scroll Open
+item.scroll_o_1.name=Scroll Open
+item.scroll_o_2.name=Scroll Open
+item.scroll_o_3.name=Scroll Open
+
+item.scroll_p_0.name=Scroll Package
+item.scroll_p_1.name=Scroll Package
+item.scroll_p_2.name=Scroll Package
+item.scroll_p_3.name=Scroll Package
+
+tc.research_category.PRIMAL=Primal
+
+research.PRIMAL.title=Primal
+research.PRIMAL.stage.1=This category holds the most powerful artifacts, forged from the essence of ancient primal forces. They are the key to unfathomable magical might, bending time and space to their will. But beware: such power submits only to the most worthy.
+
+research.ETERNAL_BLADE.title=Eternal Blade
+research.ETERNAL_BLADE.stage.1=§EEternal Blade§r<BR><IMG>thaumicforever:textures/items/eternal_blade.png:0:0:256:256:0.13</IMG><BR> This blade, infused with malevolent magic, burns with hatred toward all that exists and all that does not. Its edge delivers death and destruction, while its wielder bears the weight of eternal wrath, offering no peace even in moments of triumph.
+
+item.void_teleport_item.name=Crystal World
+item.purifying_bottle.name=Bottle of Purifying Fluid
+item.vis_bottle.name=Bottle of Vis
+item.auraphial.name=Phial of Aura
+item.primalingot.name=Primal Ingot
+
+research.STUFF.title=Stuff
+research.STUFF.title=Stuff
+research.STUFF.stage.1=The §bStuff§r category includes magic tools and artifacts. Each item holds unique powers, such as:<PAGE> §lPrimal Charm§r<BR>which protects body and mind.<IMG>thaumicforever:textures/misc/charm_amin.png:0:0:256:256:0.13</IMG><BR><PAGE>§lCleansing Bottle§r<BR>when used, it pours purifying water.<IMG>thaumicforever:textures/items/bottle_clean.png:0:0:256:256:0.13</IMG><BR><PAGE>  §lVis Infusion Bottle§r<BR>which boosts aura energy.<IMG>thaumicforever:textures/items/bottle_vis.png:0:0:256:256:0.13</IMG><BR><BR> Explore to reveal their full potential!
+
+entity.AuraNode.name= 
+
+research.TELEPORT.title=Crystal World
+research.TELEPORT.stage.1=§bCrystal World§r<BR><IMG>thaumicforever:textures/items/crystalworld.png:0:0:256:256:0.13</IMG><BR> is a mysterious, empty dimension, accessible to only one individual at a time. This isolated realm serves as a personal sanctuary, untouched by external forces. Within its shimmering crystalline expanse, time feels still, and the whispers of the void echo faintly. Who knows what secrets lie hidden in its infinite quiet?
+
+tile.immortalizer.name=Primordial Guardian
+tile.primal_block.name=Primal Block
+tile.end_ore.name=End Ore
+
+
+item.coin.name=Coin
+item.stone.name=Stone
+item.soul.name=Soul
+item.lootbag.name=Loot Bag
+item.skull.name=Skull Head
+item.end_dust.name=End Dust
+item.taint_slime.name=Taint Slime
+item.cluster.amber.name=Cluster Amber
+item.eldritch_eye_amulet.name=Eldritch Eye Amulet
+research.ELDRITCHAMULET.stage.1=This amulet, crafted with eldritch materials, exudes an unsettling aura that bends reality around the wearer. Initial observations suggest that it mimics the aura of the Eldritch Warden, drawing the attention of nearby entities.
+research.ELDRITCHAMULET.stage.2=When worn, the amulet alters the environment, veiling the area in eldritch fog. It is said to echo the presence of the Warden itself, potentially granting insight into its mysterious powers. Further study could reveal the full extent of its abilities.
+research.OREEND.amber=§oEnd Ore§r<IMG>thaumicforever:textures/misc/end.png:0:0:256:256:0.5</IMG>This mysterious ore is found exclusively in the End and resonates with a peculiar arcane energy. When mined, it drops fine particles of essence-rich dust that thaumaturges can use in advanced magical constructs.<BR>Strangely, its presence appears to be influenced by the otherworldly energies of the End dimension. The ore glimmers faintly, almost as if alive with purpose.<BR>End Ore could be the key to unlocking deeper secrets of the Void, or perhaps it is best left untouched by mortal hands.
+research.ELDRITCHAMULET.title=Eldritch Eye Amulet
+
+research.ELDRITCHALKIMIA.title=Eldritch Alchemy
+research.ELDRITCHALKIMIA.stage.1=Eldritch Alchemy is the art of combining forbidden knowledge with arcane practices. By utilizing the essence of the alienis, you can transmute mundane materials into something far more potent. This ancient knowledge hints at the power to reshape reality itself.
+research.ELDRITCHALKIMIA.stage.2=Further study reveals that Eldritch Alchemy requires precision and control. Harnessing its power may allow you to infuse items with otherworldly properties, but one wrong step could invite chaos. Experimentation is key to uncovering its true potential.
+
+research.DECORATION.title=Decorations
+research.DECORATION.stage.1=Through careful study and experimentation, you have devised a way to mimic the essence of various creatures, capturing their forms in hauntingly detailed replicas. These creations resonate with a faint magical aura, hinting at their hidden potential beyond mere decoration.
+research.DECORATION.stage.2=While their decorative value is undeniable, these creations serve a greater purpose. When placed around a Runic Matrix, they emit stabilizing energies, aiding in complex infusions. Their dual role as ornaments and ritual components makes them a valuable addition to your arsenal.
+
+research.PrimordialGuardian.title=Primordial Guardian
+research.PrimordialGuardian.stage.1=Primordial Guardian<BR><IMG>thaumicforever:textures/misc/pgrsh.png:0:0:256:256:0.2</IMG><BR>The Primordial Guardian is a powerful arcane device that grants temporary immortality using Primordial Pearls, but requires a steady supply of essentia and carries risks of destabilizing the aura if misused.
+
+item.banana.name=Banana
+item.ring_master.name=Master's Ring
+item.tf_wand.name=Wand
+
+entity.coinvilager.name=Coin Villager
+entity.wizard.name=Wizard
+entity.Villager.wizard=Wizard
+entity.Villager.coin_trader=Coin Trader
+entity.bvilager.name=Zombie Villager
+entity.gorilla.name=Gorilla
+item.seal.golem_core_fish.name=Control Seal: Fishing
+item.seal.golem_core_essentia.name=Control Seal: Crystal Refill
+
+item.holywater.name=Holy Water
+item.taint_tendril.name=Tainted Tendril
+item.taint_amulet.name=Amulet of Taint
+
+item.orb_of_taint.name=Orb of Taint
+item.orb_of_crimson.name=Orb of Crimson
+item.orb_of_dark.name=Orb of Darkness
+item.golden_fish.cod.cooked.name=Golden Fish
+item.golden_fish.name=Golden Fish
+
+
+research.golem_core_fish.title=Control Seal: Fishing
+research.golem_core_fish.stage.1=This seal allows golems to engage in fishing by reacting to movement within nearby bodies of water, much like a simple predator. At first, their behavior is crude—they lash out at anything that stirs the surface.<BR>However, I have found that by fine-tuning the core's configuration, the golem can be taught to focus on specific targets, even distinguishing between different types of fish.
+research.golem_core_fish.stage.2=I have refined the seal further by synchronizing it with the natural flow of water. As a result, golems now react more precisely and efficiently when fish are nearby.<BR>More intriguingly, it appears possible to apply a minor enchantment to the core, enhancing the likelihood of capturing rare aquatic specimens. With additional adjustments, this seal could become a reliable method of gathering valuable resources from the depths.
+
+research.ORB.title=Orb
+research.ORBNONE.stage.1=Throughout the arcane world, various concentrations of raw magical energy can take form, solidifying into what scholars call "orb." These enigmatic objects serve as focal points of power, embodying different essences and influences. Each core resonates with a unique force, shaping the way it interacts with the environment and those who study it. Whether formed naturally or through deliberate alchemical processes, these orb hold untapped potential, waiting to be understood.
+research.ORBTAINT.amber=This orb holds the essence of corruption. Its energy is unstable, and a dark substance occasionally seeps from its surface, spreading around and infecting everything it touches. Studying this artifact may reveal new ways to control and contain the spread of Taint.
+research.ORBCRIMS.amber=This orb radiates a deep crimson light, its very essence infused with an unsettling and ancient power. It hums with the echoes of forgotten knowledge, drawing those who seek the secrets of Blood Magic. In its presence, the atmosphere thickens, whispers linger in the air, and the darkness itself seems to watch and wait.
+
+research.TAINT_AMULET.title=Amulet of Taint
+research.TAINT_AMULET.stage.1=§bTaint Amulet§r<BR><IMG>thaumicforever:textures/items/taint_amulet.png:0:0:256:256:0.13</IMG><BR>This curious artifact is imbued with stabilizing essence, shielding its wearer from the effects of Taint poisoning. More intriguingly, it appears to render the user unseen by Tainted entities, as if cloaked in the corruption itself.<BR>And yet... the amulet's true nature remains uncertain. Does it truly repel the Taint, or is it merely masking the wearer while gradually binding them to the very essence it claims to ward against?
+
+research.seal_golem_core_essentia.title=Control Seal: Crystal Refill
+research.seal_golem_core_essentia.stage.1=This seal allows golems to automatically replenish essentia crystals in designated containers. When the supply of crystals runs low, the golem is instructed to locate the required ones and refill the workbench.<BR>The seal remains active even if the container is removed, allowing it to function in unstable environments or with mobile storage.
+research.seal_golem_core_essentia.stage.2=I have refined the seal's logic, granting it the ability to monitor the quantity of crystals present. If suitable crystals are nearby, the golem will immediately begin the refill process, minimizing any interruption in arcane operations.<BR>This seal is especially effective when used with automated systems, where maintaining a constant flow of crystals is essential without the thaumaturge’s direct involvement.
+
+item.ruby_gem.name=Ruby Gem
+tile.ruby_block.name=Ruby Block
+tile.ruby_ore.name=Ruby Ore
+item.celestial_notes.blood_moon.name=Celestial Notes
+
+tile.old_plank.name=Old Plank
+entity.watcher_guard.name=Watcher
+item.wind_charge.name=Wind Charge
+item.raven_cloak_bauble_head.name=Shadow Cloak
+item.orb_of_soul.name=Orb of Soul
+thaumicforever.FLIGHT.name=Essence of Flight
+
+research.FLIGHT.title=Focus Effect: Flight
+research.FLIGHT.stage.1=The idea of manipulating gravitational forces has long fascinated those who study the arcane. Through rigorous experimentation, I have stabilized a focus effect capable of altering the vertical momentum of living beings. The higher the power level, the stronger and more persistent the elevation effect.
+research.FLIGHT.stage.2=With the proper configuration, I can now create a focus effect that lifts targets off the ground. Lower power levels result in brief levitation, while higher ones allow extended suspension in midair. This could be used tactically to displace enemies or explore hard-to-reach locations.
+thaumicforever.FLIGHT.text=Manipulates vertical momentum of living targets. Higher power levels allow extended levitation or temporary flight.
+item.monkey_paw.name=Monkey Paw
+jei.thaumicforever.deconstruction=Deconstruction Table
+
+
+item.ring_iron.name=Iron Ring
+
+research.IGNISALKIMIA.title=Ignis Alkimia
+research.IGNISALKIMIA.stage.1=I must imbue a Salis Mundus with at least ten points of Ignis essentia from a phial.<BR>This will attune my alchemical practice to the primal fire
+research.IGNISALKIMIA.stage.2=My experiments have unlocked new crucible recipes with ignis
+
+item.ring_cooldown.name=Ring of Haste
+item.ring_revive.name=Ring of Lesser Resurrection
+item.ring_regeneration.name=Ring of Regeneration
+
+research.PERDITIOALKIMIA.title=Perditio Alkimia
+research.PERDITIOALKIMIA.stage.1=I must imbue a Salis Mundus with at least ten points of Perditio essentia from a phial.<BR>This will attune my alchemical practice to the power of entropy.
+research.PERDITIOALKIMIA.stage.2=I have unlocked crucible recipes to decompose stuff to their base ingredients.<BR>Perditio will now unmake as well as make.
+
+
+
+
+item.ring_regeneration.name=Ring of Regeneration
+
+
+name.HAND=Bauble (Hand)
+item.hand_knight.name=Knight’s Handguard
+ 

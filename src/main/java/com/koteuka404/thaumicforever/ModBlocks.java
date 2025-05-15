@@ -2,10 +2,13 @@ package com.koteuka404.thaumicforever;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,23 +32,22 @@ public class ModBlocks {
 
     public static final Block LEAD_BLOCK = new BlockBase(Material.IRON, "lead_block")
         .setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
+
     public static final Block SILVER_BLOCK = new BlockBase(Material.IRON, "silver_block")
         .setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
+
     public static final Block TIN_BLOCK = new BlockBase(Material.IRON, "tin_block")
         .setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
+
     public static final Block COPPER_BLOCK = new BlockBase(Material.IRON, "copper_block")
         .setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
+
     public static final Block OBSIDIAN_TOTEM = new BlockBase(Material.IRON, "obsidian_totem")
         .setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
 
-    public static final Block TIME_STOP = new BlockTimeStop().setCreativeTab(ThaumicForever.CREATIVE_TAB);    
+    public static final Block TIME_STOP = new BlockTimeStop().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block ABANDONED_CHEST = new BlockAbandonedChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    
+
     public static final Block ANTI_FLIGHT_STONE = new BlockAntiFlightStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block Duplicator = new BlockMatteryDuplicator().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block COMPRESSOR = new BlockCompressor().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -57,7 +59,17 @@ public class ModBlocks {
     public static final Block BlockTimeSlow = new BlockTimeSlow();
     public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
     public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier();
-    
+    public static final Block INVISIBLE_PART = new InvisiblePartBlock();
+    public static final Block PRIMALBLOCK = new PrimalBlock();
+    public static final Block EndOreBlock = new EndOreBlock();
+    public static final Block Port = new PortBlock();
+    public static final Block VisPlant = new VisPlantBlock();
+
+    public static final Block BlockImmortalizer = Loader.isModLoaded("thaumadditions") ? new BlockImmortalizer() : null;
+    public static final Block RubyOre = new RubyOre();
+    public static final Block RubyBlock = new RubyBlock();
+    public static final Block OldPlank = new OldPlank();
+
     
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -81,11 +93,20 @@ public class ModBlocks {
             BlockRepurposer,
             BlockTimeStone,
             BlockTimeSlow,
-            BlockMechanismAmplifier
-
-
+            BlockMechanismAmplifier,
+            INVISIBLE_PART,
+            PRIMALBLOCK,
+            EndOreBlock,
+            Port,
+            VisPlant,
+            RubyOre,
+            RubyBlock,
+            OldPlank
         );
-        
+
+        if (BlockImmortalizer != null) {
+            registry.register(BlockImmortalizer);
+        }
     }
 
     @SubscribeEvent
@@ -109,12 +130,24 @@ public class ModBlocks {
             new ItemBlock(COMPRESSOR).setRegistryName(COMPRESSOR.getRegistryName()),
             new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName()),
             new ItemBlock(BlockTimeStone).setRegistryName(BlockTimeStone.getRegistryName()),
+            new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName()),
             new ItemBlock(BlockMechanismAmplifier).setRegistryName(BlockMechanismAmplifier.getRegistryName()),
-            new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName())
-       
-            );
+            new ItemBlock(Port).setRegistryName(Port.getRegistryName()),
+            new ItemBlock(PRIMALBLOCK).setRegistryName(PRIMALBLOCK.getRegistryName()),
+            new ItemBlock(EndOreBlock).setRegistryName(EndOreBlock.getRegistryName()),
+            new ItemBlock(VisPlant).setRegistryName(VisPlant.getRegistryName()),
+            new ItemBlock(RubyOre).setRegistryName(RubyOre.getRegistryName()),
+            new ItemBlock(RubyBlock).setRegistryName(RubyBlock.getRegistryName()),
+            new ItemBlock(OldPlank).setRegistryName(OldPlank.getRegistryName()),
+             
             
-            
+
+            new ItemBlock(INVISIBLE_PART).setRegistryName(INVISIBLE_PART.getRegistryName())
+        );
+
+        if (BlockImmortalizer != null) {
+            registry.register(new ItemBlock(BlockImmortalizer).setRegistryName(BlockImmortalizer.getRegistryName()));
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -139,7 +172,19 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeStone), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeSlow), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockMechanismAmplifier), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(INVISIBLE_PART), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(PRIMALBLOCK), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(EndOreBlock), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VisPlant), 0, "thaumicforever:vis_plant");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyOre), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyBlock), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OldPlank), 0, "inventory");
 
-         
+        
+        
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(Port), 0, new ModelResourceLocation("thaumicforever:port", "inventory"));
+        if (BlockImmortalizer != null) {
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockImmortalizer), 0, "inventory");
+        }
     }
 }

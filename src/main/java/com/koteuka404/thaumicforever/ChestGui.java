@@ -15,8 +15,8 @@ public class ChestGui extends GuiContainer {
         super(new ContainerAbandonedChest(playerInventory, tileEntity));
         this.playerInventory = playerInventory;
         this.tileEntity = tileEntity;
-        this.xSize = 256;  
-        this.ySize = 220;  
+        this.xSize = 246;  
+        this.ySize = 215;  
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ChestGui extends GuiContainer {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(new ResourceLocation(ThaumicForever.MODID, "textures/gui/abandoned_chest.png"));
 
-        int guiLeft = (this.width - this.xSize) / 2 + 20;
+        int guiLeft = (this.width - this.xSize) / 2 + 52;
         int guiTop = (this.height - this.ySize) / 2;
 
         this.drawTexturedModalRect(guiLeft, guiTop + 5, 0, 0, this.xSize, this.ySize);

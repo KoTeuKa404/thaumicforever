@@ -181,10 +181,11 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
 
         NBTTagList nbtTagList = new NBTTagList();
         for (int i = 0; i < this.inventory.length; i++) {
-            if (!this.inventory[i].isEmpty()) {
+            ItemStack stack = this.inventory[i];
+            if (stack != null && !stack.isEmpty()) {
                 NBTTagCompound itemTag = new NBTTagCompound();
                 itemTag.setByte("Slot", (byte) i);
-                this.inventory[i].writeToNBT(itemTag);
+                stack.writeToNBT(itemTag);
                 nbtTagList.appendTag(itemTag);
             }
         }
@@ -192,13 +193,18 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
         return compound;
     }
 
+
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         this.essentiaAmount = compound.getInteger("EssentiaAmount");
-
-        NBTTagList nbtTagList = compound.getTagList("Items", 10);
+    
         this.inventory = new ItemStack[this.getSizeInventory()];
+        for (int i = 0; i < this.inventory.length; i++) {
+            this.inventory[i] = ItemStack.EMPTY;
+        }
+    
+        NBTTagList nbtTagList = compound.getTagList("Items", 10);
         for (int i = 0; i < nbtTagList.tagCount(); i++) {
             NBTTagCompound itemTag = nbtTagList.getCompoundTagAt(i);
             int slot = itemTag.getByte("Slot") & 255;
@@ -207,6 +213,7 @@ public class TileEntityMatteryDuplicator extends TileEntity implements IInventor
             }
         }
     }
+    
 
     @Override
     public AspectList getAspects() {

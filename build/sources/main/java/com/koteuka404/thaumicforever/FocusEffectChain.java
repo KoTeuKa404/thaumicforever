@@ -12,7 +12,7 @@ import thaumcraft.api.casters.Trajectory;
 
 public class FocusEffectChain extends FocusEffect {
 
-    private static final int FLIGHT_DISABLE_DURATION_TICKS = 200; // 10 секунд = 200 тактів
+    private static final int FLIGHT_DISABLE_DURATION_TICKS = 200; 
 
     @Override
     public String getResearch() {

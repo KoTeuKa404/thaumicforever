@@ -76,7 +76,7 @@ public class FocusEffectCalm extends FocusEffect {
 
     @Override
     public NodeSetting[] createSettings() {
-        int[] duration = { 3, 5, 7, 9, 11, 13, 15 };  // Тривалість дії (секунди)
+        int[] duration = { 3, 5, 7, 9, 11, 13, 15 };  
         String[] durationDesc = { "3s", "5s", "7s", "9s", "11s", "13s", "15s" };
         
         return new NodeSetting[] {

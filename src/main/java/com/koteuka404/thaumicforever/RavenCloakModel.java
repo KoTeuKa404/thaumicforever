@@ -18,7 +18,7 @@ public class RavenCloakModel extends ModelBase {
     public float rotateAngleY = 0.0F;
     public float rotateAngleX = 0.0F;
 
-	public RavenCloakModel() {
+    	public RavenCloakModel() {
 		textureWidth = 128;
 		textureHeight = 64;
 
@@ -41,7 +41,7 @@ public class RavenCloakModel extends ModelBase {
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, -19.0F, 0.0F);
 		cloac.addChild(head);
-		head.cubeList.add(new ModelBox(head, 3, 2, -4.5F, -9.5F, -4.2F, 9, 9, 9, 0.0F, false));
+		head.cubeList.add(new ModelBox(head, 1, 1, -5.0F, -10.0F, -5.0F, 10, 10, 10, 0.0F, false));
 
 		right_arm = new ModelRenderer(this);
 		right_arm.setRotationPoint(-5.0F, -20.0F, 0.0F);
@@ -55,8 +55,9 @@ public class RavenCloakModel extends ModelBase {
 
 		chest = new ModelRenderer(this);
 		chest.setRotationPoint(0.0F, 0.0F, 0.0F);
-		chest.cubeList.add(new ModelBox(chest, 78, 7, -4.0F, 5.0F, -0.25F, 8, 12, 3, 0.9F, false));
+		chest.cubeList.add(new ModelBox(chest, 77, 6, -4.0F, 5.0F, 0.15F, 8, 12, 4, 0.9F, false));
 	}
+
     // Рендер голови
     public void renderHead(Entity entity, float scale) {
         head.rotateAngleY = this.rotateAngleY;
