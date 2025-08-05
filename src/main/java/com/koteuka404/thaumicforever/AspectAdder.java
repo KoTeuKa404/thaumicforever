@@ -58,7 +58,6 @@ public class AspectAdder {
         brokenAmuletAspects.add(Aspect.BEAST, 2);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.BROKEN_AMULET), brokenAmuletAspects);
 
-        // AQUAREIA_GEM: додаємо MATTERYA аспект
         Aspect matteryaAspect = AspectRegistry.MATTERYA;
         AspectList aquareiaGemAspects = new AspectList();
         aquareiaGemAspects.add(matteryaAspect, 1);

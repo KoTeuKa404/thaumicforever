@@ -83,7 +83,7 @@ public class RenderTileJarredNode extends TileEntitySpecialRenderer<TileEntityJa
             float maxV = 1f / 32f;
 
             GlStateManager.depthMask(false);
-            GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE); // ADDITIVE glow
+            GlStateManager.blendFunc(GL11.GL_ONE, GL11.GL_ONE); 
 
             float size = baseSize;
             buffer.begin(GL11.GL_QUADS, net.minecraft.client.renderer.vertex.DefaultVertexFormats.POSITION_TEX_COLOR);
@@ -112,7 +112,7 @@ public class RenderTileJarredNode extends TileEntitySpecialRenderer<TileEntityJa
             int coreG = (int)(g * 0.45 + 255 * 0.55);
             int coreB = (int)(b * 0.45 + 255 * 0.55);
             int coreA = 140;
-            GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE); // ядро (core)
+            GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE); 
             buffer.begin(GL11.GL_QUADS, net.minecraft.client.renderer.vertex.DefaultVertexFormats.POSITION_TEX_COLOR);
             buffer.pos(-coreSize, -coreSize, 0.0).tex(minU, maxV).color(coreR, coreG, coreB, coreA).endVertex();
             buffer.pos(coreSize, -coreSize, 0.0).tex(maxU, maxV).color(coreR, coreG, coreB, coreA).endVertex();

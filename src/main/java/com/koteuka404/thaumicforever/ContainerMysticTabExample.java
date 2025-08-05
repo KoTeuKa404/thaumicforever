@@ -1,4 +1,3 @@
-// File: ContainerMysticTabExample.java
 package com.koteuka404.thaumicforever;
 
 import java.util.List;

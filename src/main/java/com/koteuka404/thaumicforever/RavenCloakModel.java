@@ -111,7 +111,6 @@ public class RavenCloakModel extends ModelBase {
     left_wing.rotateAngleY = chest.rotateAngleY;
     left_wing.rotateAngleZ = chest.rotateAngleZ;
 
-    // // Динамічне зміщення залежно від стану гравця (присів чи ні)
     // float yOffset = player.isSneaking() ? 0.0F : -0.25F;
     // float zOffset = player.isSneaking() ? 0.0F : 0.0F;
     // chest.offsetY = yOffset; // Зміщення тіла вниз
