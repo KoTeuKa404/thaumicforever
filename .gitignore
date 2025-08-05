@@ -1,2 +1,5 @@
 run/saves/ 
 .gradle/
+.vscode/
+.bin/
+.libs/
