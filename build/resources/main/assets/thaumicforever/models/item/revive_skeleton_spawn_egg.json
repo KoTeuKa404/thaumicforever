@@ -1,6 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "thaumicforever:items/revive_skeleton_spawn_egg"
-    }
-}

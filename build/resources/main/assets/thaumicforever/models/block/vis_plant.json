@@ -1,7 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-      "cross": "thaumicforever:blocks/vis_plant"
-    }
-  }
-  

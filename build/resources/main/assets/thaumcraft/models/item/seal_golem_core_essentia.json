@@ -1,7 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "thaumicforever:items/seals/seal_golem_core_essentia"
-    }
-  }
-  

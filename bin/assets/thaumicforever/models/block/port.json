@@ -1,9 +1,0 @@
-{
-    "loader": "forge:obj",
-    "model":  "thaumicforever:models/block/port.obj",
-    "flip-v": true,
-    "textures": {
-      "texture": "thaumicforever:blocks/port"
-    }
-  }
-  
