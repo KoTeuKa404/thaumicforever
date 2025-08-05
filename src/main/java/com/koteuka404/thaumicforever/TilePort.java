@@ -41,7 +41,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
             return;
         }
     
-        // --- Якщо targetPort вказано й там теж TilePort, передаємо туди ессенцію ---
         if (targetPort != null) {
             TileEntity teTarget = world.getTileEntity(targetPort);
             if (teTarget instanceof TilePort) {
@@ -49,22 +48,19 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
                 if (transferAspectToPort(tgt)) {
                     transferCooldown = 5;
                 }
-                return; // не передаємо вниз, якщо передаємо в інший порт
+                return; 
             }
         }
     
-        // --- Додано: якщо НАД портом стоїть TilePort — просимо аспект з нього ---
         TileEntity teAbove = world.getTileEntity(pos.up());
         if (teAbove instanceof TilePort) {
             TilePort prev = (TilePort) teAbove;
-            // Просимо аспект у попереднього порта (цей метод сам все зробить, якщо може)
             if (prev.transferAspectToPort(this)) {
                 transferCooldown = 5;
             }
             return;
         }
     
-        // --- Класичний режим: вниз у банку/трубу/банку ---
         if (!(teAbove instanceof TileBuffNodeStabilizer)) {
             return;
         }
@@ -87,7 +83,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
         }
     }
     
-    // --- Передача ессенції між Port-ами ---
     private boolean transferAspectToPort(TilePort target) {
         TileEntity teAbove = world.getTileEntity(pos.up());
         if (!(teAbove instanceof TileBuffNodeStabilizer)) return false;
@@ -95,7 +90,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
         EntityAuraNode node = stab.getFirstNode();
         if (node == null) return false;
 
-        // Передаємо головний аспект (якщо >=2)
         for (Aspect aspect : node.getNodeAspects().getAspectsSortedByAmount()) {
             if (node.getNodeAspects().getAmount(aspect) >= 2) {
                 int moved = target.receiveEssentia(aspect, 1);
@@ -113,9 +107,7 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
         return false;
     }
 
-    // --- Прийом ессенції від іншого порта ---
     public int receiveEssentia(Aspect aspect, int amount) {
-        // Якщо під портом є банка/труба – пихай туди!
         TileEntity teBelow = world.getTileEntity(pos.down());
         if (teBelow instanceof IEssentiaTransport) {
             IEssentiaTransport transport = (IEssentiaTransport) teBelow;
@@ -137,7 +129,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
         return 0;
     }
 
-    // --- Класична логіка в банк/трубу ---
     private boolean transferAspectFromNodeToContainer(EntityAuraNode node) {
         TileEntity teBelow = world.getTileEntity(pos.down());
 
@@ -215,7 +206,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
     @Override public int getEssentiaAmount(EnumFacing face) { return 0; }
     @Override public int getMinimumSuction() { return 0; }
 
-    // --- Методи для wand/renderer/beam ---
     public void setTargetPort(BlockPos pos) {
         this.targetPort = pos;
         markDirty();
@@ -286,21 +276,16 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
         readFromNBT(pkt.getNbtCompound());
     }
     private int computeBeamColorRecursive(int depth) {
-        // Захист від кільцевих посилань/глибоких ланцюгів
         if (depth > MAX_COLOR_DEPTH)
             return 0x6600E5;
     
-        // Якщо targetPort не null і не сам на себе — ідемо далі по ланцюгу
         if (targetPort != null && !targetPort.equals(getPos())) {
             TileEntity te = world.getTileEntity(targetPort);
             if (te instanceof TilePort) {
                 int col = ((TilePort) te).computeBeamColorRecursive(depth + 1);
-                // Якщо targetPort не дає дефолтний, то він кінцевий — повертаємо його
                 if (col != 0x6600E5) return col;
-                // інакше шукаємо свій вузол
             }
         }
-        // Якщо над цим портом є вузол — його і беремо
         TileEntity teAbove = world.getTileEntity(pos.up());
         if (teAbove instanceof TileBuffNodeStabilizer) {
             TileBuffNodeStabilizer stab = (TileBuffNodeStabilizer) teAbove;
@@ -310,7 +295,6 @@ public class TilePort extends TileEntity implements ITickable, IAspectContainer,
                 if (main != null) return main.getColor();
             }
         }
-        // Дефолтний fallback
         return 0x6600E5;
     }
     

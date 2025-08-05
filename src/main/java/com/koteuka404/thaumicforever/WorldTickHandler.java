@@ -83,7 +83,7 @@ public class WorldTickHandler {
                 ReviveSkeletonEntity reviveSkeleton = new ReviveSkeletonEntity(world);
                 reviveSkeleton.setPosition(spawnPos.getX() + 0.5, spawnPos.getY() + 0.5, spawnPos.getZ() + 0.5);
 
-                if (random.nextInt(100) < 5) { // 5% шанс дати скрол
+                if (random.nextInt(100) < 5) { // 5% 
                     int randomMeta = random.nextInt(4);
                     ItemStack scroll = new ItemStack(ModItems.SCROLL_P, 1, randomMeta);
                     reviveSkeleton.setHeldItem(EnumHand.MAIN_HAND, scroll);
@@ -100,11 +100,11 @@ public class WorldTickHandler {
 
             boolean visibleToAnyPlayer = false;
             for (EntityPlayer player : world.playerEntities) {
-                if (!box.isVecInside(player.getPosition())) { // гравець в межах лабіринту
+                if (!box.isVecInside(player.getPosition())) {
                     continue;
                 }
                 double distSq = player.getDistanceSq(pos);
-                if (distSq < 36.0D) continue; // не дуже близько (мін. 6 блоків)
+                if (distSq < 36.0D) continue; 
 
                 if (canPlayerSeePos(world, player, pos)) {
                     visibleToAnyPlayer = true;

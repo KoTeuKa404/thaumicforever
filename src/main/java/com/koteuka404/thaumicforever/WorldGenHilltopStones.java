@@ -83,7 +83,7 @@ public class WorldGenHilltopStones implements IWorldGenerator {
     private void spawnSinisterNode(World world, BlockPos basePos, Template template) {
         int centerX = template.getSize().getX() / 2;
         int centerZ = template.getSize().getZ() / 2;
-        int centerY = 2; // по y + 4
+        int centerY = 2; 
     
         BlockPos nodePos = basePos.add(centerX, centerY, centerZ);
     
