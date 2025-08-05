@@ -1,0 +1,18 @@
+{
+  "id": "unsbl_627,72,-40",
+  "name": "unsbl",
+  "icon": "waypoint-normal.png",
+  "x": 627,
+  "y": 72,
+  "z": -40,
+  "r": 82,
+  "g": 100,
+  "b": 85,
+  "enable": true,
+  "type": "Normal",
+  "origin": "journeymap",
+  "dimensions": [
+    0
+  ],
+  "persistent": true
+}

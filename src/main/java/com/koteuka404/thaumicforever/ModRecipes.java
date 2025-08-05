@@ -2,7 +2,9 @@ package com.koteuka404.thaumicforever;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -157,7 +159,7 @@ public class ModRecipes {
             " P ", 
             " E ", 
             " P ", 
-            'P', new ItemStack(ItemsTC.primordialPearl), 
+            'P', Ingredient.fromItem(ItemsTC.primordialPearl), 
             'E', new ItemStack(ModItems.EMPTY_FOCUS) 
         );
 
@@ -207,7 +209,7 @@ public class ModRecipes {
             "I", 
             "B", 
 
-            'B', new ItemStack(ItemsTC.primordialPearl), 
+            'B', Ingredient.fromItem(ItemsTC.primordialPearl), 
             'I', new ItemStack(ItemsTC.ingots,1,1)
         );
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "primal_ingotRecipe"), primal_ingotRecipe);
@@ -215,7 +217,7 @@ public class ModRecipes {
         ShapedArcaneRecipe skuleRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "skuleRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.ORDER, 20).add(Aspect.ENTROPY, 20),
             new ItemStack(ModItems.skull),
             "BBB", 
@@ -229,7 +231,7 @@ public class ModRecipes {
         ShapedArcaneRecipe skeleRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "skeleRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.ORDER, 15),
             new ItemStack(Items.SKULL,1,0),
             " B ", 
@@ -244,7 +246,7 @@ public class ModRecipes {
         ShapedArcaneRecipe witrRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "witrRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.ENTROPY, 15),
             new ItemStack(Items.SKULL,1,1),
             " A ", 
@@ -260,7 +262,7 @@ public class ModRecipes {
         ShapedArcaneRecipe zombRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "zombRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.WATER, 15).add(Aspect.EARTH, 15),
             new ItemStack(Items.SKULL,1,2),
             " A ", 
@@ -276,7 +278,7 @@ public class ModRecipes {
         ShapedArcaneRecipe crepRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "crepRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.ENTROPY, 15).add(Aspect.EARTH, 15),
             new ItemStack(Items.SKULL,1,4),
             " A ", 
@@ -292,7 +294,7 @@ public class ModRecipes {
         ShapedArcaneRecipe headRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "headRecipe"), 
             "DECORATION",
-        40,
+            40,
             new AspectList().add(Aspect.AIR, 15).add(Aspect.EARTH, 15).add(Aspect.WATER, 15),
             new ItemStack(Items.SKULL,1,3),
             " A ", 
@@ -304,6 +306,116 @@ public class ModRecipes {
             'B', new ItemStack(Items.ROTTEN_FLESH)
         );
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "headRecipe"), headRecipe);
+
+
+
+
+
+
+
+
+        ItemStack solarPanel = new ItemStack(Item.getByNameOrId("industrialupgrade:thaumcraftpanel"), 1, 0);
+        ShapedArcaneRecipe panel0 = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "panel0"), 
+            "IUALKIMIA",
+            120,
+            new AspectList().add(Aspect.AIR, 15).add(Aspect.EARTH, 15).add(Aspect.ORDER, 15),
+            solarPanel,
+            " B ", 
+            "BSB", 
+            " B ", 
+            'S', new ItemStack(ModItems.thaumium_core), 
+            'B', new ItemStack(Item.getByNameOrId("industrialupgrade:machines"), 1, 0)
+            );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "panel0"), panel0);
+
+
+
+
+        ItemStack solarPanel1 = new ItemStack(Item.getByNameOrId("industrialupgrade:thaumcraftpanel"), 1, 1);
+        ShapedArcaneRecipe panel1 = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "panel1"), 
+            "IUALKIMIA",
+            120,
+            new AspectList().add(Aspect.ENTROPY, 25).add(Aspect.ORDER, 25),
+            solarPanel1,
+            " B ", 
+            "BSB", 
+            " B ", 
+            'S', new ItemStack(ModItems.void_core), 
+            'B', new ItemStack(Item.getByNameOrId("industrialupgrade:thaumcraftpanel"), 1, 0)
+            );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "panel1"), panel1);
+
+        ShapedArcaneRecipe large_tool_tf = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "large_tool_tf"), 
+            "TFSCRIBINGTOOLS",
+            5,
+            new AspectList().add(Aspect.WATER, 1),
+            new ItemStack(ModItems.ItemScribeToolLarge),
+            "III", "III", "IBS",
+            'B', Ingredient.fromStacks(new ItemStack(ItemsTC.scribingTools)),
+            'I', Ingredient.fromStacks(new ItemStack(Items.DYE,1,0)),
+            'S', Ingredient.fromStacks(new ItemStack(Items.GLASS_BOTTLE))
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "large_tool_tf"), large_tool_tf);
+
+
+       
+
+
+
+        ShapelessArcaneRecipe prime_tool_tf = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "prime_tool_tf"), 
+            "TFSCRIBINGTOOLS",
+            50, 
+            new AspectList().add(Aspect.AIR, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.EARTH, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5), 
+            new ItemStack(ModItems.ItemPrimalScribeTool),
+            new Object[] {"feather", new ItemStack(ModItems.ItemScribeToolLarge),Ingredient.fromItem(ItemsTC.primordialPearl)} 
+        );
+
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "prime_tool_tf"), prime_tool_tf);
+
+        ShapedArcaneRecipe nodeStabilazer = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "nodeStabilazer"),
+            "STABILIZER",
+            30,
+            new AspectList().add(Aspect.WATER, 32).add(Aspect.ORDER, 32).add(Aspect.EARTH, 32),
+            ModBlocks.nodeStabilizer,
+            " G ",
+            "QPQ",
+            "ANA",
+            'G', new ItemStack(Items.GOLD_INGOT),
+            'Q', new ItemStack(Blocks.QUARTZ_BLOCK),
+            'P', new ItemStack(Blocks.PISTON),
+            'A', new ItemStack(BlocksTC.stoneArcane),
+            'N', "nitor" 
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "nodeStabilazer"), nodeStabilazer);
+
+        ShapedArcaneRecipe bonecompass = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "bonecompass"),
+            "THAUMICFOREVER",
+            15,
+            new AspectList().add(Aspect.ORDER, 2).add(Aspect.EARTH, 2),
+            ModItems.ItemCompassMaze,
+            " B ",
+            "BCB",
+            " B ",
+            'B', new ItemStack(Items.BONE),
+            'C', new ItemStack(Items.COMPASS)
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "bonecompass"), bonecompass);
+
+        ShapelessArcaneRecipe port = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "port"), 
+            "BUFFSTABILIZER",
+            5, 
+            new AspectList().add(Aspect.WATER, 3).add(Aspect.ORDER, 3).add(Aspect.AIR, 3),
+            new ItemStack(ModBlocks.Port),
+            new Object[] {Items.QUARTZ, new ItemStack(BlocksTC.stoneArcane),new ItemStack(ItemsTC.visResonator)} 
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "port"), port);
 
     }
 }

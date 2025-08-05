@@ -14,28 +14,38 @@ import thaumcraft.api.research.ResearchCategory;
 public final class MysticBaubleSlots {
     private MysticBaubleSlots() {}
 
-    public static List<BaubleType> getForPlayer(EntityPlayer player) {
-        IPlayerKnowledge know = ThaumcraftCapabilities.getKnowledge(player);
-        List<BaubleType> slots = new ArrayList<>();
+    public static class SlotInfo {
+        public final BaubleType type;
+        public final String    categoryKey;  
+        public SlotInfo(BaubleType t, String key) {
+            this.type       = t;
+            this.categoryKey = key;
+        }
+    }
 
-        slots.addAll(ResearchBaubleMapping.IMMEDIATE);
-
+    public static List<SlotInfo> getAllSlots(EntityPlayer player) {
+        List<SlotInfo> out = new ArrayList<>();
+        for (BaubleType t : ResearchBaubleMapping.IMMEDIATE) {
+            out.add(new SlotInfo(t, null));
+        }
         for (Map.Entry<String, BaubleType> e : ResearchBaubleMapping.BY_CATEGORY.entrySet()) {
-            ResearchCategory rc = ResearchCategories.getResearchCategory(e.getKey());
-            if (rc==null) continue;
+            out.add(new SlotInfo(e.getValue(), e.getKey()));
+        }
+        return out;
+    }
 
-            boolean done = true;
-            for (String rkey : rc.research.keySet()) {
-                if (!know.isResearchComplete(rkey)) {
-                    done = false;
-                    break;
-                }
-            }
-            if (done) {
-                slots.add(e.getValue());
+    public static boolean isUnlocked(EntityPlayer player, String categoryKey) {
+        // IMMEDIATE
+        if (categoryKey == null) return true;
+        IPlayerKnowledge know = ThaumcraftCapabilities.getKnowledge(player);
+        ResearchCategory rc = ResearchCategories.getResearchCategory(categoryKey);
+        if (rc == null) return false;
+        if (rc.research.isEmpty()) return false;
+        for (String key : rc.research.keySet()) {
+            if (!know.isResearchComplete(key)) {
+                return false;
             }
         }
-
-        return slots;
+        return true;
     }
 }

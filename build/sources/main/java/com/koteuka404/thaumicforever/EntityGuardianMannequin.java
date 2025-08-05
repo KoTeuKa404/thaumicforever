@@ -37,6 +37,7 @@ public class EntityGuardianMannequin extends EntityCreature {
     private UUID ownerUUID;
     private static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("5d7e7c84-7b10-4c78-bd3f-fc6c7efddc71");
     private static final UUID ARMOR_TOUGHNESS_MODIFIER_UUID = UUID.fromString("9f38e78e-3f09-4f62-8802-34d3ff8ff747");
+    private boolean isHostile = false;
 
     public EntityGuardianMannequin(World worldIn, EntityPlayer owner) {
         super(worldIn);
@@ -53,11 +54,24 @@ public class EntityGuardianMannequin extends EntityCreature {
         this.experienceValue = 5;
         this.initEntityAI();
     }
+    public EntityGuardianMannequin(World world, boolean hostile) {
+        super(world);
+        this.isHostile = hostile;
+        this.setSize(0.6F, 1.6F);
+        this.experienceValue = 5;
+        this.initEntityAI();
+    }
+    
+    @Override
+protected void initEntityAI() {
+    this.tasks.addTask(0, new EntityAISwimming(this));
+    this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, true));
+    this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.6D));
+    this.targetTasks.taskEntries.clear(); 
 
-    protected void initEntityAI() {
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, true));
-        this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 0.6D));
+    if (this.isHostile) {
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+    } else {
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true) {
             @Override
             public boolean shouldExecute() {
@@ -77,7 +91,17 @@ public class EntityGuardianMannequin extends EntityCreature {
             return entity instanceof IMob;
         }));
     }
-    
+}
+
+    public void setHostile(boolean hostile) {
+        this.isHostile = hostile;
+    }
+    public boolean wasActivatedByPedestal = false;
+
+public boolean isHostile() { return this.isHostile; }
+public boolean wasActivatedByPedestal() { return wasActivatedByPedestal; }
+public void setWasActivatedByPedestal(boolean b) { this.wasActivatedByPedestal = b; }
+
     private boolean isOwner(EntityPlayer player) {
         return this.ownerUUID != null && this.ownerUUID.equals(player.getUniqueID());
     }
@@ -224,11 +248,18 @@ public class EntityGuardianMannequin extends EntityCreature {
 
     @Override
     public EnumActionResult applyPlayerInteraction(EntityPlayer player, Vec3d vec, EnumHand hand) {
+        if (this.isHostile || this.getOwner() == null) {
+            return EnumActionResult.PASS;
+        }
+        if (!player.getUniqueID().equals(this.ownerUUID)) {
+            return EnumActionResult.PASS;
+        }
+    
         ItemStack heldItem = player.getHeldItem(hand);
         ItemStack currentItem = this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         boolean isArmor = heldItem.getItem() instanceof ItemArmor;
         EntityEquipmentSlot slot = isArmor ? ((ItemArmor) heldItem.getItem()).armorType : EntityEquipmentSlot.MAINHAND;
-
+    
         if (!this.world.isRemote) {
             if (!heldItem.isEmpty()) {
                 if (!currentItem.isEmpty()) {
@@ -245,7 +276,7 @@ public class EntityGuardianMannequin extends EntityCreature {
         }
         return EnumActionResult.PASS;
     }
-
+    
     @Override
     public boolean isPotionApplicable(PotionEffect potioneffectIn) {
         if (potioneffectIn.getPotion() == MobEffects.POISON || potioneffectIn.getPotion() == MobEffects.WITHER) {
@@ -260,11 +291,13 @@ public class EntityGuardianMannequin extends EntityCreature {
         if (this.ownerUUID != null) {
             compound.setString("OwnerUUID", this.ownerUUID.toString());
         }
+        compound.setBoolean("IsHostile", this.isHostile); 
         ItemStack mainHandItem = this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         if (!mainHandItem.isEmpty()) {
             compound.setTag("MainHandItem", mainHandItem.writeToNBT(new NBTTagCompound()));
         }
     }
+    
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -276,5 +309,19 @@ public class EntityGuardianMannequin extends EntityCreature {
             ItemStack mainHandItem = new ItemStack(compound.getCompoundTag("MainHandItem"));
             this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, mainHandItem);
         }
+        if (compound.hasKey("IsHostile")) {
+            this.isHostile = compound.getBoolean("IsHostile");
+        } else {
+            this.isHostile = false;
+        }
+        this.initEntityAI(); 
     }
+    @Override
+    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+        if (isHostile) {
+            return;
+        }
+        super.dropFewItems(wasRecentlyHit, lootingModifier);
+    }
+
 }

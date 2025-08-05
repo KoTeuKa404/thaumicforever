@@ -2,7 +2,6 @@ package com.koteuka404.thaumicforever;
 
 import java.util.List;
 
-import baubles.api.BaubleType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,10 +12,9 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiMysticTabExample extends InventoryEffectRenderer {
-    
-    private static final ResourceLocation OVERLAY = new ResourceLocation("thaumicforever", "textures/gui/baubles_container_1.png");
-    private static final int SLOT_U    = 177, SLOT_V = 0, SLOT_SIZE = 18;
-    
+    private static final ResourceLocation OVERLAY = new ResourceLocation("thaumicforever","textures/gui/baubles_container_1.png");
+    private static final int SLOT_U = 177, SLOT_V = 0, SLOT_SIZE = 18;
+
     private float mouseXOffset;
     private float mouseYOffset;
 
@@ -32,34 +30,48 @@ public class GuiMysticTabExample extends InventoryEffectRenderer {
     ) {
         Minecraft mc = Minecraft.getMinecraft();
         GlStateManager.disableLighting();
-        GlStateManager.color(1,1,1,1);
+        GlStateManager.color(1F,1F,1F,1F);
 
-        int left = (width - xSize) / 2, top = (height - ySize) / 2;
+        int left = (width  - xSize) / 2;
+        int top  = (height - ySize) / 2;
         mc.getTextureManager().bindTexture(OVERLAY);
         drawTexturedModalRect(left, top, 0, 0, xSize, ySize);
 
-        List<BaubleType> types = MysticBaubleSlots.getForPlayer(mc.player);
+        List<MysticBaubleSlots.SlotInfo> slots =
+            MysticBaubleSlots.getAllSlots(mc.player);
         int vanillaCount = ContainerMysticTabExample.VANILLA_SLOT_COUNT;
-        for (int i = 0; i < types.size(); i++) {
-            Slot s = inventorySlots.getSlot(vanillaCount + i);
-            if (!(s instanceof SlotMystic)) continue;
 
-            int x = left + s.xPos, y = top + s.yPos;
-            drawTexturedModalRect(x - 1, y - 1, SLOT_U, SLOT_V, SLOT_SIZE, SLOT_SIZE);
-            if (s.getHasStack()) {
+        for (int i = 0; i < slots.size(); i++) {
+            Slot slot = inventorySlots.getSlot(vanillaCount + i);
+            if (!(slot instanceof SlotMystic)) continue;
+
+            int x = left + slot.xPos;
+            int y = top  + slot.yPos;
+            drawTexturedModalRect(x-1, y-1, SLOT_U, SLOT_V, SLOT_SIZE, SLOT_SIZE);
+
+            SlotMystic sm = (SlotMystic) slot;
+            boolean unlocked = MysticBaubleSlots.isUnlocked(
+                mc.player, sm.getCategoryKey()
+            );
+
+            if (unlocked && slot.getHasStack()) {
                 RenderHelper.enableGUIStandardItemLighting();
-                mc.getRenderItem().renderItemAndEffectIntoGUI(s.getStack(), x, y);
+                mc.getRenderItem()
+                  .renderItemAndEffectIntoGUI(slot.getStack(), x, y);
                 RenderHelper.disableStandardItemLighting();
             }
-            SlotMystic sm = (SlotMystic) s;
-            String typeName = sm.getType().toString().toLowerCase();
+
+            String iconName = unlocked
+                ? sm.getType().toString().toLowerCase()
+                : "unk";
             ResourceLocation icon = new ResourceLocation(
-                "thaumicforever", "textures/gui/slots/" + typeName + ".png"
+                "thaumicforever",
+                "textures/gui/slots/" + iconName + ".png"
             );
             mc.getTextureManager().bindTexture(icon);
             GlStateManager.enableBlend();
             drawModalRectWithCustomSizedTexture(
-                x - 1, y - 1,
+                x-1, y-1,
                 0, 0,
                 SLOT_SIZE, SLOT_SIZE,
                 SLOT_SIZE, SLOT_SIZE
@@ -67,16 +79,16 @@ public class GuiMysticTabExample extends InventoryEffectRenderer {
             GlStateManager.disableBlend();
         }
 
-        int modelX = left + 51;       
-        int modelY = top + 75;
-        int scale = 30;
+        int modelX = left + 51;
+        int modelY = top  + 75;
+        int scale  = 30;
         GlStateManager.enableRescaleNormal();
         RenderHelper.enableStandardItemLighting();
         GlStateManager.enableColorMaterial();
         GuiInventory.drawEntityOnScreen(
             modelX, modelY, scale,
-            (float)(modelX) - mouseXOffset,
-            (float)(modelY) - 50f - mouseYOffset,
+            (float)modelX - mouseXOffset,
+            (float)modelY - 50F - mouseYOffset,
             mc.player
         );
         GlStateManager.disableRescaleNormal();
@@ -87,7 +99,6 @@ public class GuiMysticTabExample extends InventoryEffectRenderer {
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.mouseXOffset = mouseX;
         this.mouseYOffset = mouseY;
-
         drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
         renderHoveredToolTip(mouseX, mouseY);

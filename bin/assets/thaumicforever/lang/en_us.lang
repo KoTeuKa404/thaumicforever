@@ -140,6 +140,7 @@ research.NEWINFUSION.stage.2=I have made progress in understanding advanced infu
 
 
 thaumicforever.BOOSTPOWER.name=Double Power
+thaumicforever.BOOSTPOWER.text=Double Power
 research.COMPRESSOR.title=Compressor
 research.COMPRESSOR.stage.1=Creating plates can often be a costly endeavor, especially if you do not work with them frequently. This Compressor is an indispensable tool for any thaumaturge, making the process far more efficient and accessible.
 research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes ingots and transforms them into plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different magic applications. This includes specialized plates.<PAGE>
@@ -377,7 +378,7 @@ jei.thaumicforever.deconstruction=Deconstruction Table
 item.ring_iron.name=Iron Ring
 
 research.IGNISALKIMIA.title=Ignis Alkimia
-research.IGNISALKIMIA.stage.1=I must imbue a Salis Mundus with at least ten points of Ignis essentia from a phial.<BR>This will attune my alchemical practice to the primal fire
+research.IGNISALKIMIA.stage.1=I must imbue a §esalis mundus§0 with at least ten points of Ignis essentia from a phial.<BR>This will attune my alchemical practice to the primal fire
 research.IGNISALKIMIA.stage.2=My experiments have unlocked new crucible recipes with ignis
 
 item.ring_cooldown.name=Ring of Haste
@@ -385,8 +386,8 @@ item.ring_revive.name=Ring of Lesser Resurrection
 item.ring_regeneration.name=Ring of Regeneration
 
 research.PERDITIOALKIMIA.title=Perditio Alkimia
-research.PERDITIOALKIMIA.stage.1=I must imbue a Salis Mundus with at least ten points of Perditio essentia from a phial.<BR>This will attune my alchemical practice to the power of entropy.
-research.PERDITIOALKIMIA.stage.2=I have unlocked crucible recipes to decompose stuff to their base ingredients.<BR>Perditio will now unmake as well as make.
+research.PERDITIOALKIMIA.stage.1=I must imbue a §esalis mundus§0 with at least ten points of Perditio essentia from a phial.<BR>This will attune my alchemical practice to the power of entropy.
+research.PERDITIOALKIMIA.stage.2=I have unlocked crucible recipes to decompose stuff to their base ingredients.
 
 
 
@@ -397,3 +398,93 @@ item.ring_regeneration.name=Ring of Regeneration
 name.HAND=Bauble (Hand)
 item.hand_knight.name=Knight’s Handguard
  
+item.core_nature.name=Nature Seed
+
+research.ORDOOALKIMIA.title=Ordo Alkimia
+
+research.ORDOOALKIMIA.stage.1=I must imbue a §esalis mundus§0 with at least ten points of Ordo essentia from a phial.<BR>This will attune my alchemical practice to the power of order
+research.ORDOOALKIMIA.stage.2=I have unlocked the crucible recipes for turning basic ingredients into complete form
+
+
+item.void_core.name=Void Core
+item.thaumium_core.name=Thaumium Core
+item.scribing_tools_large.name=Large Scribe Tool
+item.primal_scribing_tools.name=Primal Scribing Tools
+
+item.thaumicforever.primal_scribe_tool.desc=Infused with raw primal essence, the ink within these tools is eternally restored, ensuring you are never left wanting for inspiration
+
+
+
+
+research.TFSCRIBINGTOOLS.title=Scribing Tools
+
+research.TFSCRIBINGTOOLS.stage.1=Many thaumaturges lament that ordinary inks run dry after almost every theory; the constant refilling of vials distracts from the true work of research and disrupts the rhythm of scholarly endeavor.
+
+research.TFSCRIBINGTOOLS.stage.2=In response to this vexing shortage, the “Large Inks” were fashioned, their flasks holding far more ink. Thaumaturges wrote without pause, and the pages of their tomes multiplied without end, freeing them from the endless race for empty vials.
+
+research.TFSCRIBINGTOOLS.stage.3=Yet even the Large Inks would wane in time, until the Primal Tools emerged—boundless essences of writing that require no replenishment and never lose potency, becoming the crowning achievement of alchemical thought.    
+
+nodetype.0=Normal
+nodetype.1=Sinister
+nodetype.2=Hungry
+nodetype.3=Pure
+nodetype.4=Tainted
+nodetype.5=Unstable
+nodetype.6=Primal
+
+entity.NodeMagnet.name=Node Magnet
+
+node.regen.fast=Bright
+node.regen.slow=Pale
+node.regen.fading=Fading
+
+
+#
+research.AURANODE.title=Aura Node
+research.AURANODE.stage.1=Throughout the world, §5Aura Nodes§0 serve as reservoirs of raw magical energy, hidden to all but the most observant thaumaturge.<BR>Scholars still debate their true origins: are they tears in reality, echoes of ancient power, or living entities in their own right?<BR>To study and interact with aura nodes safely, it is recommended to bring a §5Thaumometer§0 and be prepared for the unexpected.<LINE>Careful observation and the proper tools are essential for uncovering the secrets of these mysterious phenomena.
+research.AURANODE.stage.2=NORMAL NODE<DIV><BR>The most common form of aura node.<BR>Contains 1 – 3 random aspects.<BR>Slowly regenerates §eVis§0 over time.<BR>Can interact and merge with nearby nodes.<PAGE/><BR>PURE NODE<DIV><BR>A rare node glowing with pure energy.<BR>Contains only §cVis§0 or §dAura§0.<BR>Purifies nearby flux and stabilizes the environment.<BR>Regenerates §eVis§0 more quickly than others.<PAGE/><BR>SINISTER NODE<DIV><BR>A node shrouded in shadow and dark magic.<BR>Contains only §8Darkness§0 or §2Undead§0.<BR>Spreads negative effects to the area.<BR>May attract hostile creatures.Long-term presence of this node corrupts the land, creating an area steeped in malice and hatred.<PAGE/><BR>HUNGRY NODE<DIV><BR>A dangerous node driven by insatiable hunger.<BR>Contains only §8Void§0, often in great amounts.<BR>Devours nearby blocks and entities.<BR>Extremely difficult to control.<PAGE/><BR>TAINTED NODE<DIV><BR>A node corrupted by §5flux§0 and mutation.<BR>Contains only §5Flux§0.<BR>Spreads taint and mutates nearby life.<BR>Can corrupt other nodes.<BR>This is the most dangerous of all node types: it infects the surrounding aura with §5flux§0 and, over time, can contaminate the nearby land itself.<PAGE/><BR>UNSTABLE NODE<DIV><BR>A volatile node of shifting energies.<BR>Holds random aspects that change unpredictably.<BR>Gains or loses aspects at random.<BR>Approach with caution!
+#
+#
+research.NODEJAR.title=Node in a Jar
+research.NODEJAR.text=For Thaumaturges on the move
+research.NODEJAR.stage.1=Thaumic jars have proven useful for storing various magical substances and items, but it seems you have discovered yet another use for them - containing aura nodes.<BR>Construct an enlarged version of the Jar around an aura node and apply the required mystical formula to it using salis mundus. After this, the aura node will be drawn inside the structure, which will quickly shrink down to a more manageable size. The Jar can then be safely picked up and moved elsewhere, but remember - at the start of the process, there is a very high chance of damaging the aura node.
+research.NODEJAR.stage.2=Thaumic jars have proven useful for storing various magical substances and items, but it seems you have discovered yet another use for them - containing aura nodes.<BR>Construct an enlarged version of the Jar around an aura node and apply the required mystical formula to it using salis mundus. After this, the aura node will be drawn inside the structure, which will quickly shrink down to a more manageable size. The Jar can then be safely picked up and moved elsewhere, but remember - at the start of the process, there is a very high chance of damaging the aura node.<BR>Additionally, the node is "frozen" at the moment of capture, preventing it from regenerating aspects whose amount was zero. While jarred, the aura node becomes dormant and will not regenerate Vis, nor can §eVis§0 be drawn from it. You may release the node by placing the jar and applying your gaunter to it, but the jar will be destroyed in the process.
+#
+#
+research.STABILIZER.title=Node Stabilizers
+research.STABILIZER.text=Therapy for your aura nodes
+research.STABILIZER.stage.1=This excellent device can affect the aura node above it.<BR>First, the stabilizer prevents the node from drawing §eVis§0 from nearby nodes. Second, it stops unstable nodes from losing Vis, and might even stabilize the node completely. Finally, the stabilizer has a very small chance to turn a fading node into a dim one.<BR>All these processes require energy, which is drawn from the node by the stabilizer. It does not drain all the §eVis§0 - it simply halves the rate at which §eVis§0 regenerates.
+research.STABILIZER.stage.2=This excellent device can affect the aura node above it.<BR>First, the stabilizer prevents the node from drawing §eVis§0 from nearby nodes. Second, it stops unstable nodes from losing Vis, and might even stabilize the node completely. Finally, the stabilizer has a very small chance to turn a fading node into a dim one.<BR>All these processes require energy, which is drawn from the node by the stabilizer. It does not drain all the §eVis§0 - it simply halves the rate at which §eVis§0 regenerates.A redstone signal will disable the stabilizer.
+#
+#
+research.BUFFSTABILIZER.title=Advanced Node Stabilizers
+research.BUFFSTABILIZER.text=Selective stabilization
+research.BUFFSTABILIZER.stage.1=The advanced node stabilizer can do everything the basic one does, and more.<BR>First, it protects its node from being "drained" by other nodes, but still allows it to drain §eVis§0 from nearby nodes.<BR>Second, it has a higher chance to stabilize and transform the node.
+research.BUFFSTABILIZER.stage.2=The advanced node stabilizer can do everything the basic one does, and more.<BR>First, it protects its node from being "drained" by other nodes, but still allows it to drain §eVis§0 from nearby nodes.<BR>Second, it has a higher chance to stabilize and transform the node.With the aid of a simple device known as a §9Port§0, placed beneath the stabilizer, it becomes possible to channel §eVis§0 and aspects from an aura node directly into pipes, jars, or other containers.<BR>By linking two Ports together, you can transfer magical energy across great distances—forming a bridge between source and destination.<BR>When a Port is positioned below an advanced stabilizer, it will safely extract aspects from the node above, provided there is at least §72§0 units of the chosen aspect available.<BR>Simply connect two Ports together, then place any compatible essentia pipe or jar beneath the receiving Port.<BR><LINE>But how does one actually link these mysterious devices? Where can a thaumaturge acquire such a connector, or learn the art of node linking? Perhaps it is time to seek guidance from others versed in the secrets of §9Port§0 technology—rumor has it that a certain adept dwells somewhere within the magical forest, offering rare wisdom to those who dare to search.<BR><LINE>This setup enables stable and selective extraction of magical energy, making it ideal for complex automation or research.<BR>§4Caution:§0 Attempting to drain a node below safe limits may damage it or cause it to vanish entirely.<BR>Further advancements may allow for even more refined control over the flow of §eVis§0.
+#
+#
+research.VISAURA.title=Aura and Nodes
+research.VISAURA.text=Magic is everywhere!
+research.VISAURA.stage.1=§5Aura§0 is a field of magical energy spread throughout the world. Its origin remains unclear. Some believe it to be the accumulated life force of living beings; others say it is a type of energy that has seeped in from another dimension. The latter theory seems more likely, as aura often clusters around nodes of concentrated mystical energy known as §5Aura Nodes§0.<BR>Each aura node contains a certain amount of energy, divided into aspects (from 1 and up). Usually, an aura node consists of §5Primal Aspects§0, but it is possible to find nodes containing §5Compound Aspects§0.
+research.VISAURA.stage.2=The aspects within an aura node can be drawn out by a thaumaturge for their own needs. The simplest way to do this is with a stabilizer.<BR><LINE>Aura nodes are difficult to spot with the naked eye, but their faint glow can sometimes reveal them. Using a §5Thaumometer§0 makes finding such nodes much easier, thanks to its magical prism.<BR>§4Important:§0 Be careful when extracting aspects from an aura node. If a certain aspect in a node is depleted to 0, there is a small chance that this could cause the entire aura node to vanish or become damaged.<BR>The node may also disappear completely if all its aspects are depleted to 0 and the stabilizer is destroyed.<LINE>Fortunately, most aura nodes slowly regenerate their aspects, and if you extract §eVis§0 properly, you can do so almost continuously.<BR>Aura nodes interact interestingly with each other. Larger nodes will try to "consume" and drain §eVis§0 from their smaller neighbors to increase their own size.
+#
+tc.research_name.PRIMNODE=Singular Aura Node
+tc.research_text.PRIMNODE=Just rub them together, and something will happen
+tc.research_page.PRIMNODE.1=You have developed a wild theory worth investigating. Why not try merging a singular pearl with an aura node?<BR>Seriously, combining two sources of raw magical energy could be catastrophic, but it’s also extremely exciting and interesting.<BR>You are certain this research will increase your chances of success. Just a little bit.
+#
+tile.port.name=Port
+tile.buff_node_stabilizer.name=Advanced Node Stabilizer
+item.compass_maze.name=Maze Compass
+item.turret_magnet.name=Turret Magnet
+tile.node_stabilizer.name=Node Stabilizer
+research.!aura_node_scan.text=Scan Aura Nodes
+tile.jarred_node.name=Jarred Node
+tile.node_transducer.name=Node Transducer
+#
+research.NODEMAGNET.title=Node Attraction
+research.NODEMAGNET.text=It works with magnets
+research.NODEMAGNET.stage.1=Manipulating the aura is one thing, but if you were able to move nodes around you could insure a steady supply of vis where and when you want it. To this end you have developed Node Magnets.<BR>The magnet focuses on the nearest node within 32 blocks and slowly draws it towards itself. It sounds simple, but in effect the node is being forcefully ripped through the aura. This not only requires large amounts of vis of all types, but causes considerable amounts of flux.<BR>The larger a node is, the slower the it moves.
+research.NODEMAGNET.stage.2=Manipulating the aura is one thing, but if you were able to move nodes around you could insure a steady supply of vis where and when you want it. To this end you have developed Node Magnets.<BR>The magnet focuses on the nearest node within 32 blocks and slowly draws it towards itself. It sounds simple, but in effect the node is being forcefully ripped through the aura. This not only requires large amounts of vis of all types, but causes considerable amounts of flux.<BR>The larger a node is, the slower the it moves.<BR>The Node Magnet itself is quite fragile and care must be taken not to damage or topple it. It can survive minor knocks, but anything more will shatter the delicate components.<BR>It can be picked up by right-clicking on it with a hand.<PAGE>§nWarning!§r<BR><BR>The moment you place down the node magnet you notice something strange: It seems to emit an almost inaudible humming noise that still manages to set your teeth on edge.<BR>Angry grunts and howls from the surrounding area seems to indicate you are not the only one disturbed by the noise.
+#
+thaumicforeverMazeTitleSeen=§7You hear a strange sound beneath your feet... Is that the rattle of bones?
+thaumicforever.title.labyrinth_found=§7You hear a strange sound beneath your feet... Is that the rattle of bones?

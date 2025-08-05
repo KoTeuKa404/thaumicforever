@@ -12,11 +12,13 @@ public class IUEventHandlerClassVisitor extends ClassVisitor {
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String desc, String signature, String[] exceptions) {
-        MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
+        if ("onBlockHarvested".equals(name) && desc.equals("(Lnet/minecraftforge/event/world/BlockEvent$HarvestDropsEvent;)V")) {
+            return new EmptyOnBlockHarvestedMethodVisitor(null);
+        }
         if ("addInformItem".equals(name) && desc.equals("(Lnet/minecraftforge/event/entity/player/ItemTooltipEvent;)V")) {
+            MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
             return new AddInformItemMethodVisitor(mv);
         }
-        return mv;
+        return super.visitMethod(access, name, desc, signature, exceptions);
     }
 }
-    

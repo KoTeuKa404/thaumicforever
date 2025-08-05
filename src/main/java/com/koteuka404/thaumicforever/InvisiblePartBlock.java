@@ -33,17 +33,19 @@ public class InvisiblePartBlock extends Block {
         setRegistryName("invisible_part");
         setHardness(2.5F);
         setResistance(12.5F);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing()); 
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing,
+                                            float hitX, float hitY, float hitZ,
+                                            int meta, EntityLivingBase placer, EnumHand hand) {
+        return getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
     }
 
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.INVISIBLE;
+        return EnumBlockRenderType.MODEL;
     }
 
     @Override
@@ -52,59 +54,74 @@ public class InvisiblePartBlock extends Block {
     }
 
     @Override
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, java.util.Random rand) {
-        boolean mainBlockExists = false;
-
-        for (EnumFacing direction : EnumFacing.HORIZONTALS) {
-            BlockPos possibleMainBlockPos = pos.offset(direction);
-            IBlockState possibleMainBlockState = worldIn.getBlockState(possibleMainBlockPos);
-
-            if (possibleMainBlockState.getBlock() instanceof DoubleTableBlock) {
-                mainBlockExists = true;
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        boolean found = false;
+        for (EnumFacing dir : EnumFacing.HORIZONTALS) {
+            BlockPos neighbor = pos.offset(dir);
+            IBlockState s = worldIn.getBlockState(neighbor);
+            if (s.getBlock() instanceof DoubleTableBlock) {
+                found = true;
                 break;
             }
         }
-
-        if (!mainBlockExists) {
+        if (!found) {
             worldIn.setBlockToAir(pos);
         }
     }
 
     @Override
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
+    public void neighborChanged(IBlockState state, World worldIn,
+                                BlockPos pos, Block blockIn, BlockPos fromPos) {
         worldIn.scheduleUpdate(pos, this, 1);
     }
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        for (EnumFacing direction : EnumFacing.HORIZONTALS) {
-            BlockPos possibleMainBlockPos = pos.offset(direction);
-            IBlockState possibleMainBlockState = worldIn.getBlockState(possibleMainBlockPos);
-    
-            if (possibleMainBlockState.getBlock() instanceof DoubleTableBlock) {
-                worldIn.setBlockToAir(possibleMainBlockPos);
-                worldIn.spawnEntity(new EntityItem(worldIn, possibleMainBlockPos.getX() + 0.5, possibleMainBlockPos.getY() + 0.5, possibleMainBlockPos.getZ() + 0.5, new ItemStack(ModBlocks.DOUBLE_TABLE)));
+        super.breakBlock(worldIn, pos, state);
+        for (EnumFacing dir : EnumFacing.HORIZONTALS) {
+            BlockPos neighbor = pos.offset(dir);
+            IBlockState s = worldIn.getBlockState(neighbor);
+            if (s.getBlock() instanceof DoubleTableBlock) {
+                worldIn.setBlockToAir(neighbor);
+                EntityItem drop = new EntityItem(
+                    worldIn,
+                    neighbor.getX() + 0.5,
+                    neighbor.getY() + 0.5,
+                    neighbor.getZ() + 0.5,
+                    new ItemStack(ModBlocks.DOUBLE_TABLE)
+                );
+                worldIn.spawnEntity(drop);
                 break;
             }
         }
     }
-    
+
     @Override
     public boolean hasTileEntity(IBlockState state) {
         return true;
     }
-    
+
     @Override
     public TileEntity createTileEntity(World world, IBlockState state) {
         return new DoubleTableTileEntity();
     }
-    
+
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
-            TileEntity tileEntity = world.getTileEntity(pos);
-            if (tileEntity instanceof DoubleTableTileEntity) {
-                player.openGui(ThaumicForever.instance, ModGuiHandler.DOUBLE_TABLE_GUI, world, pos.getX(), pos.getY(), pos.getZ());
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state,
+                                    EntityPlayer player, EnumHand hand,
+                                    EnumFacing side, float hitX, float hitY, float hitZ) {
+        if (world.isRemote) return true;
+        for (EnumFacing dir : EnumFacing.HORIZONTALS) {
+            BlockPos neighbor = pos.offset(dir);
+            IBlockState s = world.getBlockState(neighbor);
+            if (s.getBlock() instanceof DoubleTableBlock) {
+                player.openGui(
+                    ThaumicForever.instance,
+                    ModGuiHandler.DOUBLE_TABLE_GUI,
+                    world,
+                    neighbor.getX(), neighbor.getY(), neighbor.getZ()
+                );
+                return true;
             }
         }
         return true;
@@ -121,13 +138,14 @@ public class InvisiblePartBlock extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public net.minecraft.util.BlockRenderLayer getRenderLayer() {
+    @Override
+    public net.minecraft.util.BlockRenderLayer getBlockLayer() {
         return net.minecraft.util.BlockRenderLayer.CUTOUT;
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
+        return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
     }
 
     @Override
@@ -149,20 +167,19 @@ public class InvisiblePartBlock extends Block {
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
         return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
+
     @Override
     public boolean canDropFromExplosion(net.minecraft.world.Explosion explosion) {
         return false;
     }
 
     @Override
-    public int quantityDropped(java.util.Random random) {
+    public int quantityDropped(Random random) {
         return 0;
     }
 
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return null; 
+        return null;
     }
-    
-
 }

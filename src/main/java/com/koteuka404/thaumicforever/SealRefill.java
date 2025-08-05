@@ -27,6 +27,7 @@ import thaumcraft.common.golems.tasks.TaskHandler;
 import thaumcraft.common.items.resources.ItemCrystalEssence;
 import thaumcraft.common.tiles.crafting.TileArcaneWorkbench;
 
+
 public class SealRefill extends SealFiltered {
     private ResourceLocation icon;
     private static final Map<Aspect, Integer> ASPECT_SLOT_MAP = new HashMap<>();

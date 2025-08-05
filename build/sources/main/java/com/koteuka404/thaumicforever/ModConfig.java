@@ -20,6 +20,12 @@ public class ModConfig {
     public static int thaumicHouseSpawnChance;
     public static String[] immediateBaubles;
     public static String[] categoryBaubles;
+    public static boolean enableSilkTouchFix;
+    public static int obsidianTotemChance;
+    public static int hilltopStonesChance;
+    public static int focus4MaxComplexity;
+    public static int focus5UltimateComplexity;
+    public static int mazeChance;
 
     public static void loadConfig(FMLPreInitializationEvent event) {
         File configFile = new File(event.getModConfigurationDirectory(), "thaumicforever.cfg");
@@ -49,7 +55,7 @@ public class ModConfig {
         );
 
         enableThaumicEventHandler = config.getBoolean(
-            "Enable Thaumic Event Handler", "General", true,
+            "Enable Thaumic Event Handler", "General", false,
             "If true, the ThaumicEventHandler will remove event with mini stone (garden of glass)."
         );
 
@@ -71,7 +77,7 @@ public class ModConfig {
         );
 
         thaumicHouseSpawnChance = config.getInt(
-            "Thaumic House Spawn Chance", "General", 700, 1, Integer.MAX_VALUE,
+            "Thaumic House Spawn Chance", "General", 300, 1, Integer.MAX_VALUE,
             "Chance per chunk for a Thaumic House: 1 in N."
         );
 
@@ -95,6 +101,36 @@ public class ModConfig {
                 "ELDRITCH=CHARM"
             },
             "Mappings CATEGORY=BaubleType for slots unlocked at 100% research"
+        );
+
+        enableSilkTouchFix = config.getBoolean(
+            "Enable Silk Touch Fix", "General", false,
+            "If true, Silk Touch will drop correct iron/gold ore when industrialupgrade breaks it."
+        );
+    
+        obsidianTotemChance = config.getInt(
+            "Obsidian Totem Spawn Chance","WorldGen",300, 1,   Integer.MAX_VALUE,
+            "Chance per chunk for a Obsidian Totem(default 300): 1 in N."
+        );
+
+        hilltopStonesChance = config.getInt(
+            "Hilltop Stones Spawn Chance","WorldGen", 40, 1,   Integer.MAX_VALUE,
+            "Chance per chunk for a Hilltop Stones(default  40): 1 in N."
+        );
+
+        focus4MaxComplexity = config.getInt(
+            "Focus4 Complexity", "Foci", 80, 1, 1000,
+            "Complexity (cost) for focus_4 (Focus Max)."
+        );
+
+        focus5UltimateComplexity = config.getInt(
+            "Focus5 Complexity", "Foci", 120, 1, 1000,
+            "Complexity  for focus_5 (Focus Ultimate)."
+        );
+
+        mazeChance = config.getInt(
+            "Maze Chance", "Maze", 450, 1, 1000,
+            "Chance Maze(in Taiga) spawn."
         );
 
         if (config.hasChanged()) {

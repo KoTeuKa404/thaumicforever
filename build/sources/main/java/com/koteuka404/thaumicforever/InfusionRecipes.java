@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import thaumcraft.api.ThaumcraftApi;
@@ -96,9 +97,9 @@ public class InfusionRecipes {
                     .add(Aspect.VOID, 80),
                 new ItemStack(ItemsTC.focus3),
                     new ItemStack(ItemsTC.focus2), 
-                    new ItemStack(ItemsTC.primordialPearl), 
-                    new ItemStack(ItemsTC.primordialPearl), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
 
                     new ItemStack(ItemsTC.focus2), 
                     new ItemStack(Items.NETHER_STAR), 
@@ -181,7 +182,7 @@ public class InfusionRecipes {
                     .add(Aspect.ORDER, 40),
                 new ItemStack(BlocksTC.tableStone),    
                 new Object[] {
-                    new ItemStack(ItemsTC.primordialPearl),   
+                    Ingredient.fromItem(ItemsTC.primordialPearl),   
                     new ItemStack(BlocksTC.matrixCost),
                     new ItemStack(BlocksTC.visBattery),
                     new ItemStack(BlocksTC.stoneArcane),
@@ -255,7 +256,7 @@ public class InfusionRecipes {
                     .add(Aspect.ELDRITCH, 80),
                 new ItemStack(Blocks.GOLD_BLOCK),    
                 new Object[] {
-                    new ItemStack(ItemsTC.primordialPearl),     
+                    Ingredient.fromItem(ItemsTC.primordialPearl),     
                     new ItemStack(ItemsTC.salisMundus),
                     new ItemStack(Items.ENDER_EYE),           
                     new ItemStack(ItemsTC.salisMundus),
@@ -266,6 +267,10 @@ public class InfusionRecipes {
                    
                 }
             ));
+
+
+
+
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:flying_crystal"), new InfusionRecipe(
                 "AQUAALKIMIA",
                 new ItemStack(Item.getByNameOrId("astralsorcery:blockcollectorcrystal"), 1, 0),
@@ -305,7 +310,7 @@ public class InfusionRecipes {
                     new ItemStack(ItemsTC.salisMundus),
                     new ItemStack(Items.ENDER_EYE),
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
                     new ItemStack(ItemsTC.morphicResonator), 
@@ -314,7 +319,7 @@ public class InfusionRecipes {
                     new ItemStack(ItemsTC.salisMundus),
                     new ItemStack(Items.ENDER_EYE),
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
                     new ItemStack(ItemsTC.morphicResonator), 
@@ -342,25 +347,25 @@ public class InfusionRecipes {
                 new ItemStack(ItemsTC.crimsonBlade),
                 new Object[] {
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR), 
                     new ItemStack(ModItems.primalingot), 
-                    new ItemStack(ItemsTC.primordialPearl), 
+                    Ingredient.fromItem(ItemsTC.primordialPearl), 
                     new ItemStack(Items.NETHER_STAR)
 
 
@@ -407,7 +412,7 @@ public class InfusionRecipes {
                     .add(Aspect.MAGIC, 100),
                 new ItemStack(ModBlocks.PRIMALBLOCK),
                 new Object[] {
-                    new ItemStack(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
                     new ItemStack(BlocksTC.metalBlockVoid),
                     new ItemStack(Item.getByNameOrId("thaumadditions:mithrillium_resonator")),
                     new ItemStack(BlocksTC.metalAlchemicalAdvanced),
@@ -415,7 +420,7 @@ public class InfusionRecipes {
                     new ItemStack(BlocksTC.metalAlchemicalAdvanced),
                     new ItemStack(Item.getByNameOrId("thaumadditions:mithrillium_resonator")),
                     new ItemStack(BlocksTC.metalBlockVoid),
-                    new ItemStack(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
                     new ItemStack(Item.getByNameOrId("thaumadditions:mithminite_block"))
 
                 }
@@ -500,23 +505,106 @@ public class InfusionRecipes {
                 new ItemStack(ModItems.RegenRing),
                 5, 
                 new AspectList()
-                    .add(Aspect.DESIRE, 70)
-                    .add(Aspect.LIFE, 50)
-                    .add(Aspect.MAN, 40)
-                    .add(Aspect.PROTECT, 60)
+                    .add(Aspect.DESIRE, 30)
+                    .add(Aspect.LIFE, 45)
+                    .add(Aspect.MAN, 20)
+                    .add(Aspect.PROTECT, 40)
                     .add(Aspect.BEAST, 30)
-                    .add(Aspect.SOUL, 35),
+                    .add(Aspect.SOUL, 15),
                     
                 new ItemStack(ModItems.IRONRING),
                 new Object[] {
-                    new ItemStack(ItemsTC.morphicResonator),
+                    new ItemStack(ItemsTC.visResonator),
                     new ItemStack(ItemsTC.salisMundus),
-                    new ItemStack(Blocks.GOLD_BLOCK),
+                    new ItemStack(ModItems.ItemZombieHeart),
                     new ItemStack(ItemsTC.amber),                      
-                    new ItemStack(ItemsTC.morphicResonator),
+                    new ItemStack(ItemsTC.visResonator),
                     new ItemStack(ItemsTC.salisMundus),
-                    new ItemStack(Blocks.GOLD_BLOCK),
-                    new ItemStack(ItemsTC.amber)      
+                    new ItemStack(Items.GOLDEN_APPLE),
+                    new ItemStack(ItemsTC.nuggets,1,10)      
+                }
+            ));
+// // // / // / / / // / // /// // / //// / / / / // / / // / //
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:thaumium_core"), new InfusionRecipe(
+                "IUALKIMIA", 
+                new ItemStack(ModItems.thaumium_core), 
+                4, 
+                new AspectList().add(Aspect.AIR, 85).add(Aspect.EARTH, 60).add(Aspect.METAL, 80).add(Aspect.ORDER, 75).add(Aspect.MAGIC, 110).add(Aspect.ENERGY, 90),
+                new ItemStack(Item.getByNameOrId("industrialupgrade:itemcore"), 1, 0),
+                new Object[] {
+                    new ItemStack(ItemsTC.morphicResonator),                    
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:crafting_elements"), 1, 273), 
+                    new ItemStack(ItemsTC.visResonator),                        
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"),1,5),            
+                    new ItemStack(ItemsTC.plate,1,2),    
+                    new ItemStack(ModItems.ItemThaumiumGear),                   
+                      
+                    new ItemStack(ItemsTC.plate,1,2)     ,
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"),1,5),   
+                       
+            
+                }
+            ));
+            
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:void_core"), new InfusionRecipe(
+                "IUALKIMIA", 
+                new ItemStack(ModItems.void_core),
+                6,
+                new AspectList().add(Aspect.FIRE, 90).add(Aspect.ORDER, 110).add(Aspect.VOID, 80).add(Aspect.METAL, 140).add(Aspect.ENERGY, 120),
+                new ItemStack(ModItems.thaumium_core),
+                new Object[] {
+                    new ItemStack(ItemsTC.mirroredGlass),                       
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:crafting_elements"), 1, 273),
+                    new ItemStack(ItemsTC.mirroredGlass),                       
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:photoniy_ingot")) ,
+                    new ItemStack(ItemsTC.plate,1,3),                           
+                    new ItemStack(ModItems.ItemVoidGear),                       
+                    new ItemStack(ItemsTC.plate,1,3)     ,
+                    new ItemStack(Item.getByNameOrId("industrialupgrade:photoniy_ingot")) 
+                }
+            ));
+            
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:advanced_node_stabilizer"), new InfusionRecipe(
+                "BUFFSTABILIZER", 
+                new ItemStack(ModBlocks.buffnodeStabilizer),
+                8,
+                new AspectList().add(Aspect.AURA, 32).add(Aspect.MAGIC, 16).add(Aspect.ORDER, 16).add(Aspect.ENERGY, 16),
+                new ItemStack(ModBlocks.nodeStabilizer),
+                new Object[] {
+                    new ItemStack(Blocks.REDSTONE_BLOCK),                     
+                    new ItemStack(ItemsTC.alumentum),                       
+                    new ItemStack(Blocks.REDSTONE_BLOCK),
+                    "nitor",                       
+                    new ItemStack(Blocks.REDSTONE_BLOCK),
+                    new ItemStack(ItemsTC.alumentum),                       
+                    new ItemStack(Blocks.REDSTONE_BLOCK),
+                    "nitor",                       
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:node_magnet"), new InfusionRecipe(
+                "NODEMAGNET", 
+                new ItemStack(ModItems.itemNodeMagnet),
+                6,
+                new AspectList().add(Aspect.AURA, 200).add(Aspect.MECHANISM, 50).add(Aspect.MOTION, 100),
+                new ItemStack(ItemsTC.morphicResonator),
+                new Object[] {
+                    new ItemStack(BlocksTC.crystalAir),
+                    new ItemStack(BlocksTC.crystalFire),
+                    new ItemStack(BlocksTC.crystalWater),
+                    new ItemStack(BlocksTC.crystalEarth),
+                    new ItemStack(BlocksTC.crystalOrder), 
+                    new ItemStack(BlocksTC.crystalEntropy), 
+                    new ItemStack(BlocksTC.crystalTaint), 
+                    new ItemStack(BlocksTC.plankGreatwood), 
+                    new ItemStack(ItemsTC.mind, 1, 1), 
+                    "blockIron", 
+                    "plateBrass", 
+                    new ItemStack(ItemsTC.mechanismSimple)
+                                   
                 }
             ));
     }

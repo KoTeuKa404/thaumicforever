@@ -50,7 +50,7 @@ public class CustomDrops {
                 }
             }
         }
-        if (event.getState().getBlock().getRegistryName() != null&& "thaumicbases:ender_leaves".equals(event.getState().getBlock().getRegistryName().toString())) {
+        if (event.getState().getBlock().getRegistryName() != null&& "thaumicbases:enderleaves".equals(event.getState().getBlock().getRegistryName().toString())) {
             float dropChance = 0.1f; 
             if (RANDOM.nextFloat() < dropChance) {
                 event.getDrops().add(new ItemStack(Items.ENDER_PEARL, 1));

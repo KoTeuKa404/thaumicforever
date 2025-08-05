@@ -4,16 +4,16 @@ mouseSensitivity:0.5
 fov:0.25
 gamma:1.0
 saturation:0.0
-renderDistance:20
+renderDistance:6
 guiScale:0
 particles:0
 bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:3
+difficulty:0
 fancyGraphics:true
-ao:2
+ao:0
 renderClouds:false
 resourcePacks:[]
 incompatibleResourcePacks:[]
@@ -27,7 +27,7 @@ chatOpacity:1.0
 snooperEnabled:true
 fullscreen:false
 enableVsync:false
-useVbo:true
+useVbo:false
 hideServerAddress:false
 advancedItemTooltips:true
 pauseOnLostFocus:true
@@ -102,7 +102,7 @@ key_key.jei.previousPage:201
 key_key.jei.nextPage:209
 key_key.jei.bookmark:30
 key_key.jei.toggleBookmarkOverlay:0
-key_key.toggle_hitbox:37
+key_key.toggle_hitbox:0
 key_waila.keybind.wailaconfig:82
 key_waila.keybind.wailadisplay:79
 key_waila.keybind.liquid:80
@@ -117,7 +117,7 @@ key_key.journeymap.minimap_type:26
 key_key.journeymap.minimap_preset:43
 key_key.journeymap.create_waypoint:0
 key_key.journeymap.toggle_waypoints:44
-key_key.journeymap.fullscreen_create_waypoint:47
+key_key.journeymap.fullscreen_create_waypoint:48
 key_key.journeymap.fullscreen_chat_position:46
 key_key.journeymap.map_toggle_alt:36
 key_key.journeymap.fullscreen_waypoints:0

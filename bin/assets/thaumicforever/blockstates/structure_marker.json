@@ -1,0 +1,13 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+    "model": "thaumicforever:block/structure_marker",
+    "uvlock": true,
+    "transform": "forge:default-block"
+    },
+    "variants": {
+      "normal": [{ "model": "thaumicforever:structure_marker" }],
+      "inventory": [{ "model": "thaumicforever:structure_marker"}]
+    }
+  }
+  

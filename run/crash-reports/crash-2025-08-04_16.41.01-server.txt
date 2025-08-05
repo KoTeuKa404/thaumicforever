@@ -1,0 +1,139 @@
+---- Minecraft Crash Report ----
+
+WARNING: coremods are present:
+  CoreModPlugin (ThaumicForever-5.9.1.1.jar)
+  MixinBooter (!mixinbooter-10.5.jar)
+  Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  HCASM (HammerLib-1.12.2-12.2.50.jar)
+Contact their authors BEFORE contacting forge
+
+// Uh... Did I do that?
+
+Time: 8/4/25 4:41 PM
+Description: Ticking memory connection
+
+java.lang.RuntimeException: Slot 7 not in valid range - [0,7)
+	at net.minecraftforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:214)
+	at net.minecraftforge.items.ItemStackHandler.getStackInSlot(ItemStackHandler.java:73)
+	at com.koteuka404.thaumicforever.MysticEventHandler.syncSlots(MysticEventHandler.java:102)
+	at com.koteuka404.thaumicforever.MysticEventHandler.onJoin(MysticEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_75_MysticEventHandler_onJoin_EntityJoinWorldEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraft.world.World.spawnEntity(World.java:1206)
+	at net.minecraft.world.WorldServer.spawnEntity(WorldServer.java:1058)
+	at net.minecraft.server.management.PlayerList.playerLoggedIn(PlayerList.java:377)
+	at net.minecraft.server.management.PlayerList.initializeConnectionToPlayer(PlayerList.java:166)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:255)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.access$100(NetworkDispatcher.java:72)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.update(NetworkDispatcher.java:205)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:790)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+No Mixin Metadata is found in the Stacktrace.
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at net.minecraftforge.items.ItemStackHandler.validateSlotIndex(ItemStackHandler.java:214)
+	at net.minecraftforge.items.ItemStackHandler.getStackInSlot(ItemStackHandler.java:73)
+	at com.koteuka404.thaumicforever.MysticEventHandler.syncSlots(MysticEventHandler.java:102)
+	at com.koteuka404.thaumicforever.MysticEventHandler.onJoin(MysticEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_75_MysticEventHandler_onJoin_EntityJoinWorldEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraft.world.World.spawnEntity(World.java:1206)
+	at net.minecraft.world.WorldServer.spawnEntity(WorldServer.java:1058)
+	at net.minecraft.server.management.PlayerList.playerLoggedIn(PlayerList.java:377)
+	at net.minecraft.server.management.PlayerList.initializeConnectionToPlayer(PlayerList.java:166)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:255)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.access$100(NetworkDispatcher.java:72)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.update(NetworkDispatcher.java:205)
+	at net.minecraft.network.NetworkManager.processReceivedPackets(NetworkManager.java:285)
+
+-- Ticking connection --
+Details:
+	Connection: net.minecraft.network.NetworkManager@5350f492
+Stacktrace:
+	at net.minecraft.network.NetworkSystem.networkTick(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.updateTimeLightAndEntities(MinecraftServer.java:790)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:668)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:185)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.12.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_412, Temurin
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), Temurin
+	Memory: 829890840 bytes (791 MB) / 1806172160 bytes (1722 MB) up to 3749183488 bytes (3575 MB)
+	JVM Flags: 0 total; 
+	IntCache: cache: 0, tcache: 0, allocated: 12, tallocated: 94
+	FML: MCP 9.42 Powered by Forge 14.23.5.2820 26 mods loaded, 26 mods active
+	States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+
+	| State  | ID                  | Version                 | Source                                         | Signature                                |
+	|:------ |:------------------- |:----------------------- |:---------------------------------------------- |:---------------------------------------- |
+	| LCHIJA | minecraft           | 1.12.2                  | minecraft.jar                                  | None                                     |
+	| LCHIJA | mcp                 | 9.42                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | FML                 | 8.0.99.99               | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | forge               | 14.23.5.2820            | forgeBin-1.12.2-14.23.5.2820-PROJECT(jaba).jar | None                                     |
+	| LCHIJA | mixinbooter         | 10.5                    | minecraft.jar                                  | None                                     |
+	| LCHIJA | baubles             | 1.5.2                   | Baubles-1.12-1.5.2.jar                         | None                                     |
+	| LCHIJA | thaumcraft          | 6.1.BETA26              | Thaumcraft-1.12.2-6.1.BETA26.jar               | None                                     |
+	| LCHIJA | jei                 | 4.15.0.268              | jei_1.12.2-4.15.0.268.jar                      | None                                     |
+	| LCHIJA | thaumicforever      | 5.1.8                   | ThaumicForever-5.9.1.1.jar                     | None                                     |
+	| LCHIJA | ea                  | 1.0.1                   | ExpandedArcanum-1.0.1.jar                      | None                                     |
+	| LCHIJA | hammercore          | 12.2.50                 | HammerLib-1.12.2-12.2.50.jar                   | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | waila               | 1.8.26                  | Hwyla_1.8.26_B41_1.12.2 (1).jar                | None                                     |
+	| LCHIJA | journeymap          | 1.12.2-5.7.1            | journeymap_1.12.2_5.7.1 (1).jar                | None                                     |
+	| LCHIJA | naturescompass      | 1.8.5                   | NaturesCompass-1.12.2-1.8.5.jar                | None                                     |
+	| LCHIJA | thaumicaugmentation | 1.12.2-2.1.13           | ThaumicAugmentation-1.12.2-2.1.13.jar          | 8f678591ba6f78d579e553a8aa94b4c4766cb13d |
+	| LCHIJA | thaumicwonders      | 1.8.2                   | thaumicwonders-1.8.2 (4).jar                   | None                                     |
+	| LCHIJA | planarartifice      | 1.4.0-pre7              | planarartifice-1.4.0-pre7 (5).jar              | None                                     |
+	| LCHIJA | spark               | 1.6.3                   | spark-forge (1).jar                            | None                                     |
+	| LCHIJA | tg                  | 0.1.6.0                 | Thaumic_Gadgets_1.12.2_0.1.6_tb.26 (3).jar     | None                                     |
+	| LCHIJA | thaumadditions      | 12.7.9                  | ThaumicAdditions-1.12.2-12.7.9.jar             | 9f5e2a811a8332a842b34f6967b7db0ac4f24856 |
+	| LCHIJA | thaumicbases        | 3.6.011.0               | thaumicbases-3.6.011.0.jar                     | None                                     |
+	| LCHIJA | thaumicjei          | 1.6.0                   | ThaumicJEI-1.12.2-1.6.0-27.jar                 | None                                     |
+	| LCHIJA | thaumicperiphery    | 0.3.1                   | thaumicperiphery-0.3.1.jar                     | None                                     |
+	| LCHIJA | thaumicrestoration  | 1.5.0                   | ThaumicRestoration-1.5.0 (4).jar               | None                                     |
+	| LCHIJA | thaumictinkerer     | 1.12.2-5.5.1-Unofficial | thaumictinkerer-1.12.2-5.5.1-Unofficial.jar    | None                                     |
+	| LCHIJA | keletupack          | 3.1.0 - Alpha           | thaumisc-3.1.0+-+Alpha+-+3 (2).jar             | None                                     |
+
+	Loaded coremods (and transformers): 
+CoreModPlugin (ThaumicForever-5.9.1.1.jar)
+  com.example.coremod.IUEventHandlerTransformer
+  com.example.coremod.ThaumicPeripheryTransformer
+MixinBooter (!mixinbooter-10.5.jar)
+  
+Planar Artifice Coremod (planarartifice-1.4.0-pre7 (5).jar)
+  leppa.planarartifice.core.PATransformer
+TARCore (ThaumicAdditions-1.12.2-12.7.9.jar)
+  org.zeith.thaumicadditions.asm.TARTransformer
+Thaumic Augmentation Core Plugin (ThaumicAugmentation-1.12.2-2.1.13.jar)
+  thecodex6824.thaumicaugmentation.core.TATransformer
+HCASM (HammerLib-1.12.2-12.2.50.jar)
+  com.zeitheron.hammercore.asm.HammerCoreTransformer
+	GL info: ~~ERROR~~ RuntimeException: No OpenGL context found in the current thread.
+	HammerCore Debug Information: 
+		Dependent Mods:
+			-Thaumic Additions: Reconstructed (thaumadditions) @ 12.7.9
+
+	Profiler Position: N/A (disabled)
+	Player Count: 1 / 8; [EntityPlayerMP['Player140'/296, l='New WorldСе', x=88.21, y=66.25, z=81.19]]
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fml,forge'

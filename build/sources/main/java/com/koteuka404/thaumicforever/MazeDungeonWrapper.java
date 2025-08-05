@@ -14,12 +14,12 @@ public class MazeDungeonWrapper {
         this.name = name;
     }
 
-    public BoundingBox getBox() {
-        return box;
-    }
-
-    public String getName() {
-        return name;
+    public BlockPos getOrigin() {
+        return new BlockPos(
+            box.getMinX(),
+            box.getMinY(),
+            box.getMinZ()
+        );
     }
 
     public BlockPos getCenter() {
@@ -30,31 +30,43 @@ public class MazeDungeonWrapper {
         );
     }
 
+    public String getName() {
+        return name;
+    }
+    public static boolean isInMaze(World world, BlockPos pos) {
+        Set<BoundingBox> bounds = WorldTickHandler.getInstance().getAllDungeonBounds();
+        for (BoundingBox box : bounds) {
+            if (box.isVecInside(pos)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+ 
     public static MazeDungeonWrapper findClosest(World world, BlockPos from) {
         Set<BoundingBox> bounds = WorldTickHandler.getInstance().getAllDungeonBounds();
-
-        BoundingBox closestBox = null;
+        BoundingBox closest = null;
         double minDistSq = Double.MAX_VALUE;
 
-        for (BoundingBox box : bounds) {
-            BlockPos center = new BlockPos(
-                (box.getMinX() + box.getMaxX()) / 2,
-                (box.getMinY() + box.getMaxY()) / 2,
-                (box.getMinZ() + box.getMaxZ()) / 2
-            );
-
-            double distSq = center.distanceSq(from);
+        for (BoundingBox b : bounds) {
+            BlockPos origin = new BlockPos(b.getMinX(), b.getMinY(), b.getMinZ());
+            double distSq = origin.distanceSq(from);
             if (distSq < minDistSq) {
                 minDistSq = distSq;
-                closestBox = box;
+                closest = b;
             }
         }
 
-        return closestBox != null ? new MazeDungeonWrapper(closestBox, "Таємничий лабіринт") : null;
+        if (closest != null) {
+            return new MazeDungeonWrapper(closest, "Mystery Maze");
+        }
+        return null;
     }
 
     @Override
     public String toString() {
-        return name + " at " + getCenter();
+        BlockPos o = getOrigin();
+        return name + " at " + o.getX() + ", " + o.getY() + ", " + o.getZ();
     }
 }

@@ -7,9 +7,11 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -28,16 +30,19 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent event) {
         super.preInit(event); 
+        OBJLoader.INSTANCE.addDomain(ThaumicForever.MODID);
+
         registerRenderers();
-        if (event.getSide() == Side.CLIENT) { 
-            OBJLoader.INSTANCE.addDomain("thaumicforever");
-        }       
+               
         MinecraftForge.EVENT_BUS.register(this); 
         if (ModItems.hand != null) {
             ModItems.hand.setTileEntityItemStackRenderer(new GorillaHandTileEntityItemStackRenderer());
         }
-        // MinecraftForge.EVENT_BUS.register(AirCurrentManager.class);
-
+        ModelLoader.setCustomModelResourceLocation(
+        Item.getItemFromBlock(ModBlocks.Port),
+        0,
+        new ModelResourceLocation("thaumicforever:port", "inventory")
+    );
     }
 
     
@@ -51,9 +56,19 @@ public class ClientProxy extends CommonProxy {
             ModItems.hand.setTileEntityItemStackRenderer(new GorillaHandTileEntityItemStackRenderer());
         }         
         MinecraftForge.EVENT_BUS.register(new GuiTabHandler());
+        // MinecraftForge.EVENT_BUS.register(new CustomHelmetRenderHandler());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileNodeStabilizer.class, new TileNodeStabilizerRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileBuffNodeStabilizer.class, new TileBuffNodeStabilizerRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileInvertedBuffNodeStabilizer.class, new TileInvertedBuffNodeStabilizerRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJarredNode.class, new RenderTileJarredNode());
+        ClientRegistry.bindTileEntitySpecialRenderer(TilePort.class, new TilePortRenderer());
 
-      
-    
+// 
+		RenderingRegistry.registerEntityRenderingHandler(EntityAuraNode.class, new RenderAuraNode(Minecraft.getMinecraft().getRenderManager()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNodeMagnet.class, new RenderNodeMagnet(Minecraft.getMinecraft().getRenderManager()));
+        ModBlocks.ITEMBLOCK_JARRED_NODE.setTileEntityItemStackRenderer(new JarredNodeItemRenderer());
+
+       
     }
 
     private void registerRenderers() {
@@ -71,7 +86,6 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(WatcherEntity.class, WatcherRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityWindCharge.class, RenderWindCharge::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityGorillaHand.class, RenderGorillaHand::new);
-        // RenderingRegistry.registerEntityRenderingHandler(EntityAirCurrent.class, RenderAirCurrent::new);
 
     }
 
@@ -95,7 +109,7 @@ public class ClientProxy extends CommonProxy {
         }, ModItems.FOCUS_COMPLEX);
     }
 
-   
+
 
     // @SubscribeEvent
     // @SideOnly(Side.CLIENT)
@@ -112,7 +126,16 @@ public class ClientProxy extends CommonProxy {
     // }
 
 
-    
-    
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void onModelRegistry(ModelRegistryEvent event) {
+        System.out.println("Setting renderer for jarred node: " + ModBlocks.ITEMBLOCK_JARRED_NODE);
+        if (ModBlocks.ITEMBLOCK_JARRED_NODE != null) {
+            ModBlocks.ITEMBLOCK_JARRED_NODE.setTileEntityItemStackRenderer(new JarredNodeItemRenderer());
+        }
+    }
+
+
+
 
 }

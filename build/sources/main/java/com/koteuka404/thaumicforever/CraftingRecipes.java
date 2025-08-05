@@ -30,7 +30,7 @@ public class CraftingRecipes {
             'I', Ingredient.fromItems(ModItems.ruby_gem)
         );
         GameRegistry.addShapedRecipe(
-            new ResourceLocation("thaumicforever", "RubyOre"),
+            new ResourceLocation("thaumicforever", "Rubyuncraft"),
             null,
             new ItemStack(ModItems.ruby_gem,9),
             "I",
@@ -173,7 +173,7 @@ public class CraftingRecipes {
             new ItemStack(ModItems.SILVER_INGOT),
             "III", "III", "III",
             'I', Ingredient.fromStacks(new ItemStack(ItemsTC.nuggets, 1, 3))
-            );
+        );
 
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "tin_ingot_from_nuggets"),
@@ -238,5 +238,13 @@ public class CraftingRecipes {
             "II", "II", 
             'I', Ingredient.fromItems(ModItems.taint_slime)
         );
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "wood_pressure_plate_from_any_log"),
+            null,
+            new ItemStack(Blocks.WOODEN_PRESSURE_PLATE, 4),
+            "LL",
+            'L',"logWood"
+        );
+
     }
 }

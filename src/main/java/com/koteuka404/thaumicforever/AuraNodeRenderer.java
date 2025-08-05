@@ -2,16 +2,15 @@ package com.koteuka404.thaumicforever;
 
 import org.lwjgl.opengl.GL11;
 
-import baubles.api.BaublesApi;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
-import thaumcraft.api.items.ItemsTC;
-import thaumcraft.client.lib.UtilsFX;
 
 public class AuraNodeRenderer extends Render<AuraNodeEntity> {
     private static final ResourceLocation[] NODE_TEXTURES = {
@@ -19,74 +18,67 @@ public class AuraNodeRenderer extends Render<AuraNodeEntity> {
         new ResourceLocation("thaumicforever", "textures/misc/aura_2.png"),
         new ResourceLocation("thaumicforever", "textures/misc/aura_3.png")
     };
+    private static final float CYCLE = 30.0f;
+    private static final float SCALE = 2.5f;  
 
     public AuraNodeRenderer(RenderManager renderManager) {
         super(renderManager);
     }
 
     @Override
-    public void doRender(AuraNodeEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
+    public void doRender(AuraNodeEntity entity, double x, double y, double z,
+                         float entityYaw, float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
-        boolean isWearingAquareiaGoggles = player.inventory.armorInventory.get(3).getItem() instanceof ItemAquareiaGoggles 
-                                           || (BaublesApi.getBaublesHandler(player) != null 
-                                           && BaublesApi.getBaublesHandler(player).getStackInSlot(4).getItem() instanceof ItemAquareiaGoggles);
-    
-        if (!isWearingAquareiaGoggles) {
+        if (!ItemAquareiaGoggles.shouldRenderHud(player)) {
             return;
         }
-    
+
+        float time  = entity.ticksExisted + partialTicks;
+        float blend = (time % CYCLE) / CYCLE;
+        int idx     = (int)(time / CYCLE) % NODE_TEXTURES.length;
+        int nextIdx = (idx + 1) % NODE_TEXTURES.length;
+
         GlStateManager.pushMatrix();
-    
-        
-        double xOffset = 0.5;
-        double yOffset = 0.0;
-        double zOffset = 0.0; 
-    
-        GlStateManager.translate(x + xOffset, y + yOffset, z + zOffset);
-    
-        GlStateManager.rotate(-renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(renderManager.playerViewX, 0.0F, 1.0F, 0.0F);
-    
-        float scale = 3.0F; 
-        GlStateManager.scale(scale, scale, scale);
-    
+        GlStateManager.translate(x, y + 0.5, z);
+        GlStateManager.rotate(-renderManager.playerViewY, 0, 1, 0);
+        GlStateManager.rotate( renderManager.playerViewX, 1, 0, 0);
+
+        GlStateManager.disableDepth();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
         GlStateManager.disableLighting();
-    
-        float time = Minecraft.getMinecraft().world.getTotalWorldTime() + partialTicks;
-        float cycleDuration = 30.0F;
-        float blendFactor = (time % cycleDuration) / cycleDuration;
-    
-        int currentTextureIndex = (int) (time / cycleDuration) % NODE_TEXTURES.length;
-        int nextTextureIndex = (currentTextureIndex + 1) % NODE_TEXTURES.length;
-    
-        ResourceLocation currentTexture = NODE_TEXTURES[currentTextureIndex];
-        Minecraft.getMinecraft().getTextureManager().bindTexture(currentTexture);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F - blendFactor);
-        UtilsFX.renderTextureIn3D(0.0F, 0.0F, 1.0F, 1.0F, 16, 16, 0.1F);
-    
-        ResourceLocation nextTexture = NODE_TEXTURES[nextTextureIndex];
-        Minecraft.getMinecraft().getTextureManager().bindTexture(nextTexture);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, blendFactor);
-        UtilsFX.renderTextureIn3D(0.0F, 0.0F, 1.0F, 1.0F, 16, 16, 0.1F);
-    
+
+        for (int layer = 0; layer < 3; layer++) {
+            float pulse = (float)(Math.sin(time/10.0 + layer) * 0.1);
+            float baseSize = 0.5f + layer * 0.25f + pulse;
+            float size = baseSize * SCALE;  
+            float alpha = 1.0f - Math.min(1.0f, entity.getDistance(player) / 30.0f);
+            alpha *= (1.0f - layer * 0.3f);
+
+            Minecraft.getMinecraft().getTextureManager().bindTexture(NODE_TEXTURES[idx]);
+            drawQuad(size, alpha * (1 - blend));
+
+            Minecraft.getMinecraft().getTextureManager().bindTexture(NODE_TEXTURES[nextIdx]);
+            drawQuad(size, alpha * blend);
+        }
+
+        GlStateManager.enableDepth();
         GlStateManager.enableLighting();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }
-    
 
+    private void drawQuad(float size, float alpha) {
+        Tessellator tess = Tessellator.getInstance();
+        BufferBuilder buf = tess.getBuffer();
+        buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
 
-    private boolean hasAquareiaGoggles(EntityPlayer player) {
-        if (player.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() == ItemsTC.goggles) {
-            return true;
-        }
+        buf.pos(-size, -size, 0).tex(0, 1).color(1f, 1f, 1f, alpha).endVertex();
+        buf.pos(-size,  size, 0).tex(0, 0).color(1f, 1f, 1f, alpha).endVertex();
+        buf.pos( size,  size, 0).tex(1, 0).color(1f, 1f, 1f, alpha).endVertex();
+        buf.pos( size, -size, 0).tex(1, 1).color(1f, 1f, 1f, alpha).endVertex();
 
-        if (BaublesApi.isBaubleEquipped(player, ItemsTC.goggles) != -1) {
-            return true;
-        }
-        return false;
+        tess.draw();
     }
 
     @Override

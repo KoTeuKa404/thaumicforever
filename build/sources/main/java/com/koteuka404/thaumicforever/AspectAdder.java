@@ -112,11 +112,13 @@ public class AspectAdder {
         boneAspects.add(Aspect.AVERSION, 5);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.Bone), boneAspects);
     
+
+        ItemStack snoweStack = new ItemStack(Items.SNOWBALL);
         Aspect weaterAspect = AspectRegistry.WEATHER;
-        Aspect gelumAspect = Aspect.COLD;
+        AspectList gelumAspects = new AspectList(snoweStack);
         AspectList snowAspects = new AspectList();
         snowAspects.add(weaterAspect, 1);
-        snowAspects.add(gelumAspect, 1);
+        snowAspects.add(gelumAspects);
         ThaumcraftApi.registerObjectTag(new ItemStack(Items.SNOWBALL), snowAspects);
 
         Aspect victus = Aspect.LIFE;

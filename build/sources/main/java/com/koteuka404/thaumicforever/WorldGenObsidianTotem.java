@@ -18,6 +18,8 @@ import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.blocks.BlocksTC;
 
 public class WorldGenObsidianTotem implements IWorldGenerator {
 
@@ -40,43 +42,113 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
     }
     
     
-
-
-
-    @Override
-public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-    if (world.provider.getDimension() == 0 && random.nextInt(360) == 0) {
-        int x = chunkX * 16 + random.nextInt(16);
-        int z = chunkZ * 16 + random.nextInt(16);
-        int y = world.getHeight(x, z);
-        BlockPos pos = new BlockPos(x, y, z);
-
-        if (isSolidBlockBelow(world, pos.down()) && isAreaClear(world, pos, 5, 10)) {
-            int totemType = random.nextInt(6);
-
-            switch (totemType) {
-                case 0:
-                    generateStructure(world, pos, TOTEM_TEMPLATE);
-                    break;
-                case 1:
-                    generateStructure(world, pos, TOTEM_LEED_TEMPLATE);
-                    break;
-                case 2:
-                    generateStructure(world, pos, TOTEM_HIGH_TEMPLATE);
-                    break;
-                case 3:
-                    generateStructureWithChest(world, pos.down(), TOTEM_WITH_CHEST_TEMPLATE);
-                    break;
-                case 4:
-                    generateStructureWithChest(world, pos.down(), TOTEM_LEED_WITH_CHEST_TEMPLATE);
-                    break;
-                case 5:
-                    generateStructureWithChest(world, pos.down(), TOTEM_HIGH_WITH_CHEST_TEMPLATE);
-                    break;
+    private void spawnSinisterNodeInTotemFromTemplate(World world, BlockPos origin, Template template) {
+        Block obsidianTotem = ModBlocks.OBSIDIAN_TOTEM; 
+        for (int x = 0; x < template.getSize().getX(); x++) {
+            for (int y = 0; y < template.getSize().getY(); y++) {
+                for (int z = 0; z < template.getSize().getZ(); z++) {
+                    BlockPos blockPosInWorld = origin.add(x, y, z);
+                    Block block = world.getBlockState(blockPosInWorld).getBlock();
+                    if (block == obsidianTotem) {
+                        java.util.Random rand = world.rand;
+                        int base = 100 / 3;
+                        int size = 2 + base + rand.nextInt(2 + base);
+                        EntityAuraNode node = new EntityAuraNode(world);
+                        node.setPosition(blockPosInWorld.getX() + 0.5, blockPosInWorld.getY() + 0.5, blockPosInWorld.getZ() + 0.5);
+                        node.setNodeSize(size);
+                        node.setNodeType(1);
+                        node.getNodeAspects().aspects.clear();
+                        Aspect aspect = rand.nextBoolean() ? Aspect.DARKNESS : Aspect.UNDEAD;
+                        node.getNodeAspects().add(aspect, size);
+                        node.updateSyncAspects();
+                        node.enforceAspectLimit();
+                        if (!world.isRemote) world.spawnEntity(node);
+                        // return; 
+                    }
+                }
             }
         }
     }
+    
+
+    private void buryChest(World world, BlockPos chestPos) {
+    BlockPos[] around = new BlockPos[] {
+        // chestPos.up(),
+        chestPos.down(),
+        chestPos.north(),
+        chestPos.south(),
+        chestPos.west(),
+        chestPos.east()
+    };
+
+    Block replacement = null;
+    for (BlockPos adj : around) {
+        Block b = world.getBlockState(adj).getBlock();
+        if (
+            b != Blocks.AIR && b != Blocks.WATER && b != Blocks.FLOWING_WATER &&
+            b != Blocks.SNOW_LAYER && b != Blocks.TALLGRASS && b != Blocks.GRASS &&
+            b != Blocks.LEAVES && b != Blocks.LEAVES2 && b != Blocks.LOG && b != Blocks.LOG2 &&
+            b != ModBlocks.OBSIDIAN_TOTEM && b != BlocksTC.stoneAncient 
+        ) {
+            replacement = b;
+            break;
+        }
+    }
+    if (replacement == null) replacement = Blocks.GRASS;
+
+    BlockPos[] fillAround = new BlockPos[] {
+        // chestPos.up(),      
+        chestPos.down(),
+        chestPos.north(),
+        chestPos.south(),
+        chestPos.west(),
+        chestPos.east()
+    };
+    for (BlockPos adj : fillAround) {
+        Block b = world.getBlockState(adj).getBlock();
+        if (
+            b == Blocks.AIR || b == Blocks.SNOW_LAYER || b == Blocks.TALLGRASS ||
+            b == Blocks.GRASS || b == Blocks.LEAVES || b == Blocks.LEAVES2
+        ) {
+            world.setBlockState(adj, replacement.getDefaultState());
+        }
+    }
 }
+
+        @Override
+        public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+            if (world.provider.getDimension() == 0 && random.nextInt(ModConfig.obsidianTotemChance) == 0) {
+                int x = chunkX * 16 + random.nextInt(16);
+                int z = chunkZ * 16 + random.nextInt(16);
+                int y = world.getHeight(x, z);
+                BlockPos pos = new BlockPos(x, y, z);
+
+                if (isSolidBlockBelow(world, pos.down()) && isAreaClear(world, pos, 5, 10)) {
+                    int totemType = random.nextInt(6);
+
+                    switch (totemType) {
+                        case 0:
+                            generateStructure(world, pos, TOTEM_TEMPLATE);
+                            break;
+                        case 1:
+                            generateStructure(world, pos, TOTEM_LEED_TEMPLATE);
+                            break;
+                        case 2:
+                            generateStructure(world, pos, TOTEM_HIGH_TEMPLATE);
+                            break;
+                        case 3:
+                            generateStructureWithChest(world, pos.down(), TOTEM_WITH_CHEST_TEMPLATE);
+                            break;
+                        case 4:
+                            generateStructureWithChest(world, pos.down(), TOTEM_LEED_WITH_CHEST_TEMPLATE);
+                            break;
+                        case 5:
+                            generateStructureWithChest(world, pos.down(), TOTEM_HIGH_WITH_CHEST_TEMPLATE);
+                            break;
+                    }
+                }
+            }
+        }
 
 
     private void generateStructure(World world, BlockPos pos, ResourceLocation templateLocation) {
@@ -85,6 +157,8 @@ public void generate(Random random, int chunkX, int chunkZ, World world, IChunkG
 
         if (template != null) {
             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
+            spawnSinisterNodeInTotemFromTemplate(world, pos, template); 
+
         } 
     }
 
@@ -95,6 +169,7 @@ public void generate(Random random, int chunkX, int chunkZ, World world, IChunkG
         if (template != null) {
             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
             generateLootInChest(world, pos); 
+            spawnSinisterNodeInTotemFromTemplate(world, pos, template); 
         } else {
         }
     }
@@ -105,11 +180,27 @@ public void generate(Random random, int chunkX, int chunkZ, World world, IChunkG
                 for (int z = -5; z < 5; z++) {
                     BlockPos checkPos = pos.add(x, y, z);
                     if (world.getBlockState(checkPos).getBlock() == Blocks.CHEST) {
-                        TileEntity tileEntity = world.getTileEntity(checkPos);
-                        if (tileEntity instanceof TileEntityLockableLoot) {
-                            ((TileEntityLockableLoot) tileEntity).setLootTable(BASIC_LOOT_TABLE, world.rand.nextLong());
+                        buryChest(world, checkPos);
+
+                        boolean isCovered = true;
+                        for (int i = 1; i <= 2; i++) { 
+                            BlockPos above = checkPos.up(i);
+                            Block aboveBlock = world.getBlockState(above).getBlock();
+                            if (!aboveBlock.getMaterial(world.getBlockState(above)).isSolid()) {
+                                isCovered = false;
+                                break;
+                            }
+                        }
+                        if (isCovered) {
+                            TileEntity tileEntity = world.getTileEntity(checkPos);
+                            if (tileEntity instanceof TileEntityLockableLoot) {
+                                ((TileEntityLockableLoot) tileEntity).setLootTable(BASIC_LOOT_TABLE, world.rand.nextLong());
+                            }
+                        } else {
+                                
                         }
                     }
+                    
                 }
             }
         }
@@ -117,8 +208,12 @@ public void generate(Random random, int chunkX, int chunkZ, World world, IChunkG
 
     private boolean isSolidBlockBelow(World world, BlockPos pos) {
         Block blockBelow = world.getBlockState(pos).getBlock();
+        if (blockBelow == Blocks.LOG || blockBelow == Blocks.LOG2 || blockBelow == Blocks.LEAVES || blockBelow == Blocks.LEAVES2) {
+            return false;
+        }
         return blockBelow != Blocks.WATER && blockBelow != Blocks.FLOWING_WATER && blockBelow.getMaterial(world.getBlockState(pos)).isSolid();
     }
+    
 
     private boolean isAreaClear(World world, BlockPos pos, int width, int height) {
         for (int x = -width / 2; x < width / 2; x++) {

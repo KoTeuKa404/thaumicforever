@@ -47,7 +47,7 @@ public class ModItems {
     
     public static final Item AMULET_DEATH = new ItemAmuletDeath().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item mechanism_improved = new Item().setUnlocalizedName("mechanism_improved").setRegistryName("mechanism_improved").setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    public static final Item MAGIC_DUST = new magic_dust().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item MAGIC_DUST = new MagicDust().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Item ItemTimeFreeze  = new ItemTimeFreeze().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item RING_ENDER = new ItemRingEnder().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -57,7 +57,7 @@ public class ModItems {
     public static final Item CRIMSON_BOOK = new ItemCrimsonBook().setUnlocalizedName("crimson_book").setRegistryName("crimson_book");
     public static final Item ItemAquareiaGoggles = new ItemAquareiaGoggles("aquareia_goggles", ArmorMaterial.DIAMOND).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
-    public static final Item Bone = new Item().setUnlocalizedName("bone").setRegistryName("bone").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item Bone = new Item().setUnlocalizedName("stront_bone").setRegistryName("stront_bone").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item OldBone = new OldBone().setUnlocalizedName("oldbone").setRegistryName("oldbone").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item EMPTY_FOCUS = new Item().setUnlocalizedName("empty_focus").setRegistryName("empty_focus").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
@@ -115,6 +115,16 @@ public class ModItems {
     public static final Item ReviveRing = new ItemRingRevive().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item CdRing = new ItemRingCooldown().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemHand = new ItemHand().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item bigOakGrower = new ItemBigOakGrower().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    
+    public static final Item void_core = new Item().setUnlocalizedName("void_core").setRegistryName("void_core").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item thaumium_core = new Item().setUnlocalizedName("thaumium_core").setRegistryName("thaumium_core").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item ItemPrimalScribeTool = new ItemPrimalScribeTool().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item ItemScribeToolLarge = new ItemScribeToolLarge().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item itemNodeMagnet = new ItemNodeMagnet().setUnlocalizedName("turret_magnet").setRegistryName("turret_magnet").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item debstick = new ItemDebugStick().setUnlocalizedName("debstick").setRegistryName("debstick");
+    public static final Item ItembugStick = new ItemVoidEraser().setUnlocalizedName("void_stick").setRegistryName("void_stick");
+
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -198,7 +208,15 @@ public class ModItems {
             RegenRing,
             ReviveRing,
             CdRing,
-            ItemHand
+            ItemHand,
+            bigOakGrower,
+            void_core,
+            thaumium_core,
+            ItemPrimalScribeTool,
+            ItemScribeToolLarge,
+            itemNodeMagnet,
+            debstick,
+            ItembugStick
         );
         if (hand != null) {
             registry.register(hand);
@@ -299,7 +317,15 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.ReviveRing, 0, new ModelResourceLocation(ModItems.ReviveRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.CdRing, 0, new ModelResourceLocation(ModItems.CdRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemHand, 0, new ModelResourceLocation(ModItems.ItemHand.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.bigOakGrower, 0, new ModelResourceLocation(ModItems.bigOakGrower.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.thaumium_core, 0, new ModelResourceLocation(ModItems.thaumium_core.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.void_core, 0, new ModelResourceLocation(ModItems.void_core.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.ItemPrimalScribeTool, 0, new ModelResourceLocation(ModItems.ItemPrimalScribeTool.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.ItemScribeToolLarge, 0, new ModelResourceLocation(ModItems.ItemScribeToolLarge.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.itemNodeMagnet, 0, new ModelResourceLocation(ModItems.itemNodeMagnet.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.debstick, 0, new ModelResourceLocation(ModItems.debstick.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.ItembugStick, 0, new ModelResourceLocation(ModItems.ItembugStick.getRegistryName(), "inventory"));
 
     } 
-
-}
+    
+}            

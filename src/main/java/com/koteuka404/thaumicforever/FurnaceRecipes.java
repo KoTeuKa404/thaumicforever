@@ -33,12 +33,20 @@ public class FurnaceRecipes {
         GameRegistry.addSmelting(ModOreBlocks.AQUAREIA_ORE, new ItemStack(ModItems.AQUAREIA_GEM), 1.0F);
         GameRegistry.addSmelting(new ItemStack(Blocks.STONE, 1, 0), new ItemStack(ModOreBlocks.SMOOTH_STONE), 0.0F);
 
+
         GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 4), new ItemStack(ItemsTC.amber,3), 0.0F);
+        GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 0), new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"), 1, 11), 0.0F);
+        GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 1), new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"), 1, 17), 0.0F);
+        GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 2), new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 0), 0.0F);
+        GameRegistry.addSmelting(new ItemStack(ModItems.CLUSTER, 1, 3), new ItemStack(Item.getByNameOrId("appliedenergistics2:material"), 1, 1), 0.0F);
 
 
         ThaumcraftApi.addSmeltingBonus(new ItemStack(Item.getByNameOrId("industrialupgrade:raw_metals"), 1, 18), new ItemStack(Items.IRON_NUGGET, 3));
 
         ThaumcraftApi.addSmeltingBonus(new ItemStack(ModItems.CLUSTER, 1, 4),new ItemStack(ItemsTC.amber, 1));
-        
+        ThaumcraftApi.addSmeltingBonus(new ItemStack(ModItems.CLUSTER, 1, 0),new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"), 1, 11));
+        ThaumcraftApi.addSmeltingBonus(new ItemStack(ModItems.CLUSTER, 1, 1),new ItemStack(Item.getByNameOrId("industrialupgrade:itemingots"), 1, 17));
+
     }
-}
+}            
+

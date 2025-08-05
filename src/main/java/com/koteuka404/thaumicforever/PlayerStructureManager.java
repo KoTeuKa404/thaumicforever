@@ -1,134 +1,109 @@
 package com.koteuka404.thaumicforever;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
-import net.minecraft.world.storage.WorldSavedData;
 
 public class PlayerStructureManager {
     private static final String STRUCTURE_NAME = "thaumicforever:void";
-    private static final String SAVE_DATA_NAME = "ThaumicForever_Structures";
-
-    private static final Map<UUID, BlockPos> structureCache = new HashMap<>();
 
     public static BlockPos getOrCreateStructureForPlayer(UUID playerID, World world) {
-        WorldSavedStructureData savedData = WorldSavedStructureData.get(world);
+        System.out.println("ThaumicForever DEBUG: getOrCreateStructureForPlayer " + playerID);
 
-        if (structureCache.containsKey(playerID)) {
-            return structureCache.get(playerID);
+        PlayerStructureData data = PlayerStructureData.get(world);
+
+        if (data.hasPlayerStructure(playerID)) {
+            System.out.println("ThaumicForever DEBUG: Структура вже є для " + playerID);
+            return data.getPlayerStructure(playerID);
         }
 
-        if (savedData.hasStructure(playerID)) {
-            BlockPos centerPos = savedData.getStructurePos(playerID);
+        BlockPos genPos = generateStructurePosition(playerID);
 
-            if (!world.isAirBlock(centerPos)) {
-                structureCache.put(playerID, centerPos); 
-                return centerPos;
-            }
+        forceLoadChunks(world, genPos, 100);
+
+        BlockPos existing = findExistingStructure(world, genPos, 100);
+        if (existing != null) {
+            System.out.println("ThaumicForever DEBUG: Знайдено існуючу структуру (бар'єр) у " + existing + ". НЕ генеруємо!");
+            data.setPlayerStructure(playerID, existing);
+            return existing;
         }
 
-        BlockPos structurePos = generateStructurePosition(playerID);
-        BlockPos centerPos = placeStructure(world, structurePos);
+        BlockPos centerPos = placeStructure(world, genPos);
+        data.setPlayerStructure(playerID, centerPos);
 
-        savedData.addStructure(playerID, centerPos);
-        savedData.markDirty();
-        structureCache.put(playerID, centerPos);
+        System.out.println("ThaumicForever DEBUG: Згенерували нову структуру для " + playerID + " у " + centerPos);
 
         return centerPos;
     }
 
     private static BlockPos generateStructurePosition(UUID playerID) {
-        return new BlockPos(0, 64, 0).add(playerID.hashCode() % 1000, 0, playerID.hashCode() / 1000);
+        int hash = playerID.hashCode();
+        int x = (hash % 1000);
+        int z = (hash / 1000);
+        return new BlockPos(x, 64, z);
+    }
+
+    private static void forceLoadChunks(World world, BlockPos center, int radius) {
+        int minChunkX = (center.getX() - radius) >> 4;
+        int maxChunkX = (center.getX() + radius) >> 4;
+        int minChunkZ = (center.getZ() - radius) >> 4;
+        int maxChunkZ = (center.getZ() + radius) >> 4;
+        for (int cx = minChunkX; cx <= maxChunkX; cx++) {
+            for (int cz = minChunkZ; cz <= maxChunkZ; cz++) {
+                world.getChunkProvider().provideChunk(cx, cz);
+            }
+        }
+        System.out.println("ThaumicForever DEBUG: forceLoaded chunks for " + center + " r=" + radius);
+    }
+
+    private static BlockPos findExistingStructure(World world, BlockPos center, int radius) {
+        int startX = center.getX() - radius;
+        int endX   = center.getX() + radius;
+        int startY = Math.max(0, center.getY() - radius);
+        int endY   = Math.min(255, center.getY() + radius);
+        int startZ = center.getZ() - radius;
+        int endZ   = center.getZ() + radius;
+
+        for (int x = startX; x <= endX; x++) {
+            for (int z = startZ; z <= endZ; z++) {
+                for (int y = startY; y <= endY; y += 2) {
+                    BlockPos checkPos = new BlockPos(x, y, z);
+                    if (world.isBlockLoaded(checkPos) &&
+                        world.getBlockState(checkPos).getBlock() == Blocks.BARRIER) {
+                        System.out.println("ThaumicForever DEBUG: findExistingStructure: barrier found at " + checkPos);
+                        return checkPos;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     private static BlockPos placeStructure(World world, BlockPos pos) {
-        TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
-        Template template = templateManager.getTemplate(world.getMinecraftServer(), new ResourceLocation(STRUCTURE_NAME));
+        TemplateManager mgr = world.getSaveHandler().getStructureTemplateManager();
+        Template tmpl = mgr.getTemplate(world.getMinecraftServer(), new ResourceLocation(STRUCTURE_NAME));
 
-        if (template != null) {
-            int centerX = template.getSize().getX() / 2;
-            int centerZ = template.getSize().getZ() / 2;
-            BlockPos structureCenter = pos.add(centerX, 1, centerZ);
-
-            System.out.println("Generating structure at: " + pos);
+        if (tmpl != null) {
+            int cx = tmpl.getSize().getX() / 2;
+            int cz = tmpl.getSize().getZ() / 2;
+            BlockPos center = pos.add(cx, 1, cz);
 
             if (!world.isBlockLoaded(pos)) {
                 world.getChunkProvider().provideChunk(pos.getX() >> 4, pos.getZ() >> 4);
             }
 
-            template.addBlocksToWorld(world, pos, new PlacementSettings());
-
-            System.out.println("Structure generated successfully at: " + structureCenter);
-            return structureCenter;
-        }
-
-        System.out.println("Failed to load structure template!");
-        return pos;
-    }
-
-    public static class WorldSavedStructureData extends WorldSavedData {
-        private final Map<UUID, BlockPos> structures = new HashMap<>();
-
-        public WorldSavedStructureData() {
-            super(SAVE_DATA_NAME);
-        }
-
-        public static WorldSavedStructureData get(World world) {
-            WorldSavedData data = world.getPerWorldStorage().getOrLoadData(WorldSavedStructureData.class, SAVE_DATA_NAME);
-            if (data == null) {
-                data = new WorldSavedStructureData();
-                world.getPerWorldStorage().setData(SAVE_DATA_NAME, data);
-            }
-            return (WorldSavedStructureData) data;
-        }
-
-        public boolean hasStructure(UUID playerID) {
-            return structures.containsKey(playerID);
-        }
-
-        public BlockPos getStructurePos(UUID playerID) {
-            return structures.get(playerID);
-        }
-
-        public void addStructure(UUID playerID, BlockPos pos) {
-            structures.put(playerID, pos);
-            markDirty();
-        }
-
-        @Override
-        public void readFromNBT(NBTTagCompound nbt) {
-            structures.clear();
-            NBTTagList list = nbt.getTagList("structures", 10);
-            for (int i = 0; i < list.tagCount(); i++) {
-                NBTTagCompound entry = list.getCompoundTagAt(i);
-                UUID playerID = UUID.fromString(entry.getString("playerID"));
-                BlockPos pos = new BlockPos(entry.getInteger("x"), entry.getInteger("y"), entry.getInteger("z"));
-                structures.put(playerID, pos);
-            }
-        }
-
-        @Override
-        public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-            NBTTagList list = new NBTTagList();
-            for (Map.Entry<UUID, BlockPos> entry : structures.entrySet()) {
-                NBTTagCompound entryTag = new NBTTagCompound();
-                entryTag.setString("playerID", entry.getKey().toString());
-                entryTag.setInteger("x", entry.getValue().getX());
-                entryTag.setInteger("y", entry.getValue().getY());
-                entryTag.setInteger("z", entry.getValue().getZ());
-                list.appendTag(entryTag);
-            }
-            compound.setTag("structures", list);
-            return compound;
+            tmpl.addBlocksToWorld(world, pos, new PlacementSettings());
+            System.out.println("ThaumicForever DEBUG: placeStructure at " + pos);
+            return center;
+        } else {
+            System.err.println("ThaumicForever: Failed to load structure template: " + STRUCTURE_NAME);
+            return pos;
         }
     }
 }

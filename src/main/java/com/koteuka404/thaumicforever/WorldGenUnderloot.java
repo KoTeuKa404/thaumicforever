@@ -25,7 +25,7 @@ public class WorldGenUnderloot implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         if (world.provider.getDimension() == 0) { 
-            if (random.nextInt(100) == 0) {  
+            if (random.nextInt(250) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
                 int y = 10 + random.nextInt(21); 

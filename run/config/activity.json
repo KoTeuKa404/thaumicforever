@@ -2,27 +2,27 @@
   {
     "user": {
       "type": "player",
-      "name": "Player93",
-      "uniqueId": "04ba6478-628e-32a2-915d-0b45ca8b366b"
+      "name": "Player347",
+      "uniqueId": "945b4d90-8964-318c-b289-be6438caa78f"
     },
-    "time": 1746803344696,
+    "time": 1750448763615,
     "type": "Profiler",
     "data": {
       "type": "url",
-      "value": "https://spark.lucko.me/waI0ezCoax"
+      "value": "https://spark.lucko.me/AJ1mXxiTw4"
     }
   },
   {
     "user": {
       "type": "player",
-      "name": "Player890",
-      "uniqueId": "2210beb6-4dc2-38a8-8f45-f0cb49bb6846"
+      "name": "Player675",
+      "uniqueId": "fdd35a29-06a9-343e-abe1-1b90a6820307"
     },
-    "time": 1743008389168,
+    "time": 1750447887749,
     "type": "Profiler",
     "data": {
       "type": "url",
-      "value": "https://spark.lucko.me/29VSqmi6tx"
+      "value": "https://spark.lucko.me/f0r0KXbUEw"
     }
   }
 ]

@@ -2,6 +2,8 @@ package com.koteuka404.thaumicforever;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockChest;
+import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockableLoot;
 import net.minecraft.util.Mirror;
@@ -15,12 +17,20 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
+import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGenThaumicHouse implements IWorldGenerator {
 
     public static final ResourceLocation HOUSE_LOOT_TABLE =
         new ResourceLocation("thaumicforever", "chests/house");
+
+  
+    public static void registerLootTables() {
+        if (!LootTableList.getAll().contains(HOUSE_LOOT_TABLE)) {
+            LootTableList.register(HOUSE_LOOT_TABLE);
+        }
+    }
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world,
@@ -29,64 +39,58 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
             return;
         }
 
-        Biome targetBiome = Biome.REGISTRY.getObject(
+        Biome target = Biome.REGISTRY.getObject(
             new ResourceLocation("thaumcraft", "magical_forest")
         );
-        Biome biome = world.getBiome(
-            new BlockPos(chunkX * 16, 0, chunkZ * 16)
-        );
+        Biome here = world.getBiome(new BlockPos(chunkX * 16, 0, chunkZ * 16));
+        if (here != target) return;
 
-        if (biome == targetBiome && random.nextInt(ModConfig.thaumicHouseSpawnChance) == 0) {
-            int x = chunkX * 16 + random.nextInt(16);
-            int z = chunkZ * 16 + random.nextInt(16);
-            int y = world.getHeight(x, z);
-            BlockPos pos = new BlockPos(x, y, z);
+        if (random.nextInt(ModConfig.thaumicHouseSpawnChance) != 0) return;
 
-            if (isValidGround(world, pos.down())) {
-                TemplateManager templateManager =
-                    world.getSaveHandler().getStructureTemplateManager();
-                Template template = templateManager.getTemplate(
-                    world.getMinecraftServer(),
-                    new ResourceLocation("thaumicforever", "thaumic_house")
-                );
+        int x = chunkX * 16 + random.nextInt(16);
+        int z = chunkZ * 16 + random.nextInt(16);
+        int y = world.getHeight(x, z);
+        BlockPos origin = new BlockPos(x, y, z);
 
-                if (template != null) {
-                    template.addBlocksToWorld(world, pos,
-                        new PlacementSettings()
-                            .setMirror(Mirror.NONE)
-                            .setRotation(Rotation.NONE)
-                    );
+        if (!isValidGround(world, origin.down())) return;
 
-                    generateLootInChests(world, pos);
-                    spawnWizard(world, pos, random);
-                }
-            }
-        }
+        TemplateManager tm = world.getSaveHandler().getStructureTemplateManager();
+        Template tpl = tm.getTemplate(world.getMinecraftServer(),
+            new ResourceLocation("thaumicforever", "thaumic_house"));
+        if (tpl == null) return;
+
+        PlacementSettings settings = new PlacementSettings()
+            .setMirror(Mirror.NONE)
+            .setRotation(Rotation.NONE)
+            .setIgnoreEntities(true);
+        tpl.addBlocksToWorld(world, origin, settings);
+
+        generateLootInChests(world, origin, tpl, random);
+
+        spawnWizard(world, origin, random);
     }
 
     private boolean isValidGround(World world, BlockPos pos) {
-        return world.getBlockState(pos).getBlock() ==
-                   net.minecraft.init.Blocks.GRASS
-            || world.getBlockState(pos).getBlock() ==
-                   net.minecraft.init.Blocks.DIRT
-            || world.getBlockState(pos).getBlock() ==
-                   net.minecraft.init.Blocks.STONE
-            || world.getBlockState(pos).getBlock() ==
-                   net.minecraft.init.Blocks.SAND
-            || world.getBlockState(pos).getBlock() ==
-                   net.minecraft.init.Blocks.SNOW_LAYER;
+        return world.getBlockState(pos).getBlock() == Blocks.GRASS
+            || world.getBlockState(pos).getBlock() == Blocks.DIRT
+            || world.getBlockState(pos).getBlock() == Blocks.STONE
+            || world.getBlockState(pos).getBlock() == Blocks.SAND
+            || world.getBlockState(pos).getBlock() == Blocks.SNOW_LAYER;
     }
 
-    private void generateLootInChests(World world, BlockPos pos) {
-        for (int x = -5; x < 5; x++) {
-            for (int y = 0; y < 5; y++) {
-                for (int z = -5; z < 5; z++) {
-                    BlockPos checkPos = pos.add(x, y, z);
-                    TileEntity tileEntity = world.getTileEntity(checkPos);
-
-                    if (tileEntity instanceof TileEntityLockableLoot) {
-                        ((TileEntityLockableLoot) tileEntity)
-                            .setLootTable(HOUSE_LOOT_TABLE, world.rand.nextLong());
+    private void generateLootInChests(World world, BlockPos origin, Template tpl, Random random) {
+        BlockPos size = tpl.getSize();
+        for (int dx = 0; dx < size.getX(); dx++) {
+            for (int dy = 0; dy < size.getY(); dy++) {
+                for (int dz = 0; dz < size.getZ(); dz++) {
+                    BlockPos pos = origin.add(dx, dy, dz);
+                    if (world.getBlockState(pos).getBlock() instanceof BlockChest) {
+                        TileEntity te = world.getTileEntity(pos);
+                        if (te instanceof TileEntityLockableLoot) {
+                            TileEntityLockableLoot loot = (TileEntityLockableLoot) te;
+                            loot.setLootTable(HOUSE_LOOT_TABLE, random.nextLong());
+                            loot.fillWithLoot(null);
+                        }
                     }
                 }
             }
@@ -97,8 +101,8 @@ public class WorldGenThaumicHouse implements IWorldGenerator {
         if (!world.isRemote) {
             WizardVillager wizard = new WizardVillager(world);
             wizard.setLocationAndAngles(
-                pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
-                random.nextFloat() * 360.0F, 0.0F
+                pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+                random.nextFloat() * 360F, 0F
             );
             world.spawnEntity(wizard);
         }

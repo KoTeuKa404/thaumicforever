@@ -9,24 +9,30 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class SlotMystic extends SlotItemHandler {
-    private final EntityPlayer player;
-    private final BaubleType    type;
-    private ItemStack lastStack = ItemStack.EMPTY;
+    private final EntityPlayer   player;
+    private final BaubleType     type;
+    private final String         categoryKey;
+    private       ItemStack      lastStack = ItemStack.EMPTY;
 
-    public SlotMystic(IItemHandler handler, int index, int x, int y,
-                      EntityPlayer player, BaubleType type) {
+    public SlotMystic(IItemHandler handler, int index, int x, int y, EntityPlayer player, BaubleType type, String categoryKey) {
         super(handler, index, x, y);
-        this.player = player;
-        this.type   = type;
+        this.player      = player;
+        this.type        = type;
+        this.categoryKey = categoryKey;
     }
 
     @Override
     public boolean isItemValid(ItemStack stack) {
+        if (!MysticBaubleSlots.isUnlocked(player, categoryKey)) {
+            return false;
+        }
         if (stack.isEmpty()) return false;
         if (!stack.hasCapability(BaublesCapabilities.CAPABILITY_ITEM_BAUBLE, null))
             return false;
+
         IBauble ba = stack.getCapability(BaublesCapabilities.CAPABILITY_ITEM_BAUBLE, null);
         BaubleType itemType = ba.getBaubleType(stack);
+
         if (itemType == BaubleType.TRINKET) {
             return ba.canEquip(stack, player);
         }
@@ -54,5 +60,9 @@ public class SlotMystic extends SlotItemHandler {
 
     public BaubleType getType() {
         return type;
+    }
+
+    public String getCategoryKey() {
+        return categoryKey;
     }
 }

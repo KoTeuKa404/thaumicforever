@@ -1,6 +1,6 @@
-package com.koteuka404.thaumicforever;
+// package com.koteuka404.thaumicforever;
 
-public class SealUseUpdater {
-    
+// import thaumcraft.common.golems.seals.SealBreaker;
 
-}
+// public class SealUseUpdater extends SealBreaker {
+// }

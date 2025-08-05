@@ -1,5 +1,7 @@
 package com.koteuka404.thaumicforever;
 
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class OreDictionaryRegistration {
@@ -35,5 +37,23 @@ public class OreDictionaryRegistration {
         OreDictionary.registerOre("oreRuby", ModBlocks.RubyOre);
         OreDictionary.registerOre("gemRuby", ModItems.ruby_gem);
         OreDictionary.registerOre("blockRuby", ModBlocks.RubyBlock);
+
+
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_yellow")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_white")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_cyan")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_green")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_purple")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_red")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_black")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_gray")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_blue")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_brown")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_light_blue")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_lime")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_magenta")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_orange")));
+        OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_pink")));
+
     }
 }

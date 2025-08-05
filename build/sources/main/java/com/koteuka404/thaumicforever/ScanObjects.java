@@ -18,6 +18,7 @@ public class ScanObjects implements IScanThing {
     private final String researchKeyTatteredScrolls = "!tattered_scrolls_scan";
     private final String researchKeyEndOre = "!end_ore_scan"; 
     private final String researchKeyTaintItem = "!orb_of_taint";  
+    private final String researchKeyAuraNode = "!aura_node_scan";
 
     public ScanObjects() {
         ScanningManager.addScannableThing(this);
@@ -51,6 +52,9 @@ public class ScanObjects implements IScanThing {
                 return true;
             }
             if (entity instanceof ReviveSkeletonEntity) {
+                return true;
+            }
+            if (entity instanceof EntityAuraNode) {
                 return true;
             }
         }
@@ -93,6 +97,9 @@ public class ScanObjects implements IScanThing {
             }
             if (object instanceof ReviveSkeletonEntity) {
                 return researchKeySkeletonRevive;
+            }
+            if (object instanceof EntityAuraNode) {
+                return researchKeyAuraNode;
             }
         }
         return null;

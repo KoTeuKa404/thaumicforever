@@ -1,0 +1,13 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumicforever:buff_node_stabilizer","x": 180 ,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "inventory":[{"model": "thaumicforever:node_charger.obj"}],
+    "normal": [
+
+    ]
+  }
+}

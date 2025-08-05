@@ -28,32 +28,37 @@ public class DoubleTableBlock extends Block {
         setUnlocalizedName(ThaumicForever.MODID + ".double_table");
         setHardness(2.5F);
         setResistance(12.5F);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        setDefaultState(getBlockState().getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer, EnumHand hand) {
-        EnumFacing horizontalFacing = placer.getHorizontalFacing();
-        BlockPos secondPartPos = pos.offset(horizontalFacing.rotateYCCW());
-
-        if (!worldIn.isAirBlock(secondPartPos) && !worldIn.getBlockState(secondPartPos).getMaterial().isReplaceable()) {
-            worldIn.scheduleUpdate(pos, this, 1); 
-            return this.getDefaultState().withProperty(FACING, horizontalFacing.getOpposite());        
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing,
+                                            float hitX, float hitY, float hitZ,
+                                            int meta, EntityLivingBase placer, EnumHand hand) {
+        EnumFacing dir = placer.getHorizontalFacing().getOpposite();
+        BlockPos invisiblePos = pos.offset(dir.rotateY());
+        if (!worldIn.isAirBlock(invisiblePos) &&
+            !worldIn.getBlockState(invisiblePos).getMaterial().isReplaceable()) {
+            worldIn.scheduleUpdate(pos, this, 1);
+            return getDefaultState().withProperty(FACING, dir);
         }
-
         if (!worldIn.isRemote) {
-            worldIn.setBlockState(secondPartPos, ModBlocks.INVISIBLE_PART.getDefaultState(), 3);
+            IBlockState invState = ModBlocks.INVISIBLE_PART.getDefaultState().withProperty(InvisiblePartBlock.FACING, dir);
+            worldIn.setBlockState(invisiblePos, invState, 3);
         }
+        return getDefaultState().withProperty(FACING, dir);
+    }
 
-        return this.getDefaultState().withProperty(FACING, horizontalFacing.getOpposite()); 
-       }
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+        return EnumBlockRenderType.MODEL;
+    }
 
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, java.util.Random rand) {
-        EnumFacing facing = state.getValue(FACING);
-        BlockPos secondPartPos = pos.offset(facing.rotateYCCW());
-
-        if (!worldIn.getBlockState(secondPartPos).getBlock().equals(ModBlocks.INVISIBLE_PART)) {
+        EnumFacing dir = state.getValue(FACING);
+        BlockPos invisiblePos = pos.offset(dir.rotateY());
+        if (!(worldIn.getBlockState(invisiblePos).getBlock() instanceof InvisiblePartBlock)) {
             worldIn.setBlockToAir(pos);
             spawnAsEntity(worldIn, pos, new ItemStack(this));
         }
@@ -61,45 +66,23 @@ public class DoubleTableBlock extends Block {
 
     @Override
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        EnumFacing facing = state.getValue(FACING);
-        BlockPos secondPartPos = pos.offset(facing.rotateYCCW()); 
-
-        if (worldIn.getBlockState(secondPartPos).getBlock().equals(ModBlocks.INVISIBLE_PART)) {
-            worldIn.setBlockToAir(secondPartPos);
-        } else {
-            for (EnumFacing direction : EnumFacing.HORIZONTALS) {
-                BlockPos possibleMainBlockPos = pos.offset(direction);
-                IBlockState possibleMainBlockState = worldIn.getBlockState(possibleMainBlockPos);
-
-                if (possibleMainBlockState.getBlock() instanceof DoubleTableBlock) {
-                    worldIn.setBlockToAir(possibleMainBlockPos); 
-                    break;
-                }
-            }
+        super.breakBlock(worldIn, pos, state);
+        EnumFacing dir = state.getValue(FACING);
+        BlockPos invisiblePos = pos.offset(dir.rotateY());
+        if (worldIn.getBlockState(invisiblePos).getBlock() instanceof InvisiblePartBlock) {
+            worldIn.setBlockToAir(invisiblePos);
         }
-
-        super.breakBlock(worldIn, pos, state); 
     }
 
-
-
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-        return EnumBlockRenderType.MODEL;
-    }
-    
     @SideOnly(Side.CLIENT)
     @Override
     public net.minecraft.util.BlockRenderLayer getBlockLayer() {
-        return net.minecraft.util.BlockRenderLayer.CUTOUT; 
+        return net.minecraft.util.BlockRenderLayer.CUTOUT;
     }
-
-
-
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
+        return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta & 3));
     }
 
     @Override
@@ -113,6 +96,27 @@ public class DoubleTableBlock extends Block {
     }
 
     @Override
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+    }
+
+    @Override
+    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
+    }
+
+    @Override
+    public boolean hasTileEntity(IBlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(World world, IBlockState state) {
+        return new DoubleTableTileEntity();
+    }
+
+
+    @Override
     public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
@@ -122,35 +126,17 @@ public class DoubleTableBlock extends Block {
         return false;
     }
 
-    @Override
-    public IBlockState withRotation(IBlockState state, Rotation rot) {
-        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
+
+    @SideOnly(Side.CLIENT)
+    public net.minecraft.util.BlockRenderLayer getRenderLayer() { 
+        return net.minecraft.util.BlockRenderLayer.CUTOUT;
     }
 
     @Override
-    public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
-    }
-    @Override
-    public boolean hasTileEntity(IBlockState state) {
-        return true;
-    }
-    @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
-        return new DoubleTableTileEntity();
-    }
-
-    @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            TileEntity tileEntity = world.getTileEntity(pos);
-            if (tileEntity instanceof DoubleTableTileEntity) {
-                player.openGui(ThaumicForever.instance, ModGuiHandler.DOUBLE_TABLE_GUI, world, pos.getX(), pos.getY(), pos.getZ());
-            }
+            player.openGui(ThaumicForever.instance,ModGuiHandler.DOUBLE_TABLE_GUI,world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
     }
- 
-
-
 }

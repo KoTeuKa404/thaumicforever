@@ -1,13 +1,13 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "thaumicforever:block/double_table",
+    "model": "thaumicforever:block/double_table_ico",
     "uvlock": false,
     "transform": "forge:default-block"
   },
   "variants": {
-      "normal": [{ "model": "thaumicforever:double_table" }],
-      "inventory": [{ "model": "thaumicforever:double_table"}],
+      "normal": [{ "model": "thaumicforever:double_table_ico" }],
+      "inventory": [{ "model": "thaumicforever:double_table_ico"}],
       "facing=north": { "model":"thaumicforever:double_table" , "y": 180 },
       "facing=south": { "model":"thaumicforever:double_table", "y": 0 },
       "facing=west": { "model":"thaumicforever:double_table", "y": 90 },

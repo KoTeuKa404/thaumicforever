@@ -15,8 +15,9 @@
                     "text": "research.THAUMICFOREVER.stage.1"  
                 },
                 {
-                    "recipes": ["thaumicforever:greatwood_table"],
-                    "text": "research.THAUMICFOREVER.stage.2"
+                    "recipes": ["thaumicforever:greatwood_table","thaumicforever:bonecompass"],
+                    "text": "research.THAUMICFOREVER.stage.2",
+                    "reward_item": ["thaumicforever:compass_maze"]
                 }
             ]
         },
@@ -58,6 +59,24 @@
                 {
                     "text": "research.PERDITIOALKIMIA.stage.2",
                     "recipes": ["THAUMICFOREVER:wool_d_recipe","THAUMICFOREVER:nethb_d_recipe","THAUMICFOREVER:quarzb_d_recipe","THAUMICFOREVER:magma_d_recipe","THAUMICFOREVER:netrhbv_d_recipe"]
+                }
+            ]
+        },
+        {
+            "key": "ORDOOALKIMIA",    
+            "name": "research.ORDOOALKIMIA.title",
+            "icons": [ "thaumcraft:textures/aspects/ordo.png" ],
+            "parents": [ "~NEWALKIMIA" ],
+            "category": "THAUMICFOREVER", "location": [ 5,7 ], 
+            "stages": [
+                {
+                    "required_item":["thaumcraft:salis_mundus","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'ordo'}]}"],
+                    "text": "research.ORDOOALKIMIA.stage.1",   
+                    "required_knowledge":["THEORY;ELDRITCH;2"]        
+                },
+                {
+                    "text": "research.ORDOOALKIMIA.stage.2",
+                    "recipes": ["THAUMICFOREVER:wool_c_recipe","THAUMICFOREVER:netrhbv_c_recipe"]
                 }
             ]
         },
@@ -148,7 +167,7 @@
                 },
                 {
                     "text": "research.HERBAALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:slime_ball_recipe","THAUMICFOREVER:waterlily_recipe","THAUMICFOREVER:dye_green_recipe","THAUMICFOREVER:reeds_recipe","THAUMICFOREVER:beetroot_seeds_recipe"]
+                    "recipes": ["THAUMICFOREVER:slime_ball_recipe","THAUMICFOREVER:waterlily_recipe","THAUMICFOREVER:dye_green_recipe","THAUMICFOREVER:reeds_recipe","THAUMICFOREVER:beetroot_seeds_recipe","THAUMICFOREVER:nature_core_recipe"]
                 }
             ]
         },
@@ -185,7 +204,7 @@
                 },
                 {
                     "text": "research.PRAECANTATIOALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:diamond_recipe","THAUMICFOREVER:emerald_recipe","THAUMICFOREVER:dragon_breath_recipe","THAUMICFOREVER:MAGIC_DUST"]
+                    "recipes": ["THAUMICFOREVER:diamond_recipe","THAUMICFOREVER:emerald_recipe","THAUMICFOREVER:dragon_breath_recipe","THAUMICFOREVER:MAGIC_DUST","THAUMICFOREVER:salis_d_recipe","THAUMICFOREVER:salis_recipe"]
                 }
             ]
         },
@@ -546,7 +565,7 @@
             "category": "THAUMICFOREVER",
             "location": [ 1, -1 ],
             "parents": [ "!skeleton_angry_scan" ],        
-            "meta": [ "ROUND","HIDDEN" ],       
+            "meta": [ "HEX","HIDDEN" ],       
             "stages": [
                 {
                     "text": "research.ANGRY_SKELET.stage.1",
@@ -562,7 +581,7 @@
             "category": "THAUMICFOREVER",
             "location": [ 2, -2 ],
             "parents": [ "!skeleton_revive_scan" ],        
-            "meta": [ "ROUND","HIDDEN" ],       
+            "meta": [ "HEX","HIDDEN" ],       
             "stages": [
                 {
                     "text": "research.REVIVE_SKELET.stage.1",
@@ -605,21 +624,35 @@
                 }
             ]
         },
+
+
         {
-            "key": "OREAQUA",
-            "name": "research.OREAQUA.title",
-            "icons": [ "thaumicforever:aquareia_ore" ],
+            "key": "TFSCRIBINGTOOLS",
+            "name": "research.TFSCRIBINGTOOLS.title",
+            "icons": ["thaumicforever:scribing_tools_large"],
             "category": "THAUMICFOREVER",
-            "location": [ 1, 1 ],
-            "parents": [ "!aquareia_ore_scan" ],        
-            "meta": [ "ROUND","HIDDEN" ],       
-            "stages": [{"text": "research.OREAQUA.stage.1"}],
-            "addenda": [
-                {"text": "research.OREAQUA.amber","required_research":["!AQUAREIA_ORE"]},
-                {"text": "research.OREEND.amber","required_research":["!end_ore_scan"]}
+            "parents": ["~THAUMICFOREVER"],
+            "location": [1, 0],
+            "meta": ["ROUND"],
+            "stages": [
+              {
+                "text": "research.TFSCRIBINGTOOLS.stage.1",
+                "required_item": ["minecraft:dye;1;0"],
+                "required_craft": ["thaumcraft:scribing_tools"]
+              },
+              {
+                "text": "research.TFSCRIBINGTOOLS.stage.2",
+                "recipes": ["THAUMICFOREVER:large_tool_tf"],
+                "required_research": ["PRIMPEARL"]
+              },
+              {
+                "text": "research.TFSCRIBINGTOOLS.stage.3",
+                "recipes": ["THAUMICFOREVER:large_tool_tf","THAUMICFOREVER:prime_tool_tf"]
+              }
             ]
-        },
-        {
+          },
+        
+        {   
             "key": "OREAQUA",
             "name": "research.OREAQUA.title",
             "icons": [ "thaumicforever:aquareia_ore" ],
@@ -710,10 +743,12 @@
                 {
                     "required_item":["thaumcraft:salis_mundus","immersiveengineering:metal:8"],
                     "text": "research.IMMERALKIMIA.stage.1",   
-                    "required_knowledge":["THEORY;ARTIFICE;2"]         
+                    "required_knowledge":["THEORY;ALCHEMY;2"]         
                 },
                 {
-                    "text": "research.IMMERALKIMIA.stage.2"
+                    "text": "research.IMMERALKIMIA.stage.2",
+                    "recipes": ["THAUMICFOREVER:stell_recipes"]
+
                 }
             ]
         },
@@ -727,13 +762,13 @@
                 {
                     "required_item":["thaumcraft:salis_mundus"],
                     "text": "research.IUALKIMIA.stage.1",   
-                    "required_knowledge":["THEORY;ARTIFICE;2"]         
+                    "required_knowledge":["THEORY;ALCHEMY;2"]         
                 },
                 {
                     "text": "research.IUALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:iridium_cluster_recipe","THAUMICFOREVER:chromium_cluster_recipe"]
+                    "recipes": ["THAUMICFOREVER:iridium_cluster_recipe","THAUMICFOREVER:chromium_cluster_recipe","THAUMICFOREVER:panel0","THAUMICFOREVER:panel1","THAUMICFOREVER:thaumium_core","THAUMICFOREVER:void_core","THAUMICFOREVER:uran_recipes"]
 
-                }
+                } 
             ]
         },
         {
@@ -752,7 +787,132 @@
                     "recipes": ["THAUMICFOREVER:deconstruction_table"]
                 }
             ]
-        }   
+        },
+
+
+        {
+            "key": "VISAURA",    
+            "name": "research.VISAURA.title",
+            "icons": [ "thaumicforever:textures/misc/r_nodetap2.png" ],
+            "category": "THAUMICFOREVER","location": [ 4,-4 ], 
+            "meta": ["SPIKY"],
+            "parents": [ "NEWARTIFICE","NEWAUROMANCY" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"],
+                    "text": "research.VISAURA.stage.1",
+                    "required_research":["BASEARTIFICE","NEWAUROMANCY"]
+
+                },
+                {
+                    "text": "research.VISAURA.stage.2",
+                    "reward_knowledge": ["OBSERVATION;AUROMANCY;1"]
+                }
+            ]
+        },
+        {
+            "key": "AURANODE",    
+            "name": "research.AURANODE.title",
+            "icons": [ "thaumicforever:textures/misc/r_nodes.png" ],
+            "meta": [ "ROUND" ],
+            "category": "THAUMICFOREVER","location": [ 6,-6 ], 
+            "parents": [ "VISAURA"],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;2","THEORY;AUROMANCY;1"],
+                    "text": "research.AURANODE.stage.1",
+                    "required_research":["!aura_node_scan"]
+
+                },
+                {
+                    "text": "research.AURANODE.stage.2",
+                    "reward_knowledge": ["OBSERVATION;BASICS;1"]
+                }
+            ]
+        },
+        {
+            "key": "STABILIZER",    
+            "name": "research.STABILIZER.title",
+            "icons": [ "thaumicforever:node_stabilizer" ],
+            "category": "THAUMICFOREVER","location": [ 6,-4 ], 
+            "parents": [ "BASEARTIFICE","VISAURA","~AURANODE" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;2"],
+                    "text": "research.STABILIZER.stage.1",
+                    "required_item": ["thaumcraft:mechanism_simple"]
+
+                },
+                {
+                    "recipes": ["THAUMICFOREVER:nodeStabilazer"],
+                    "text": "research.STABILIZER.stage.2"
+                }
+            ]
+        },
+        {
+            "key": "BUFFSTABILIZER",    
+            "name": "research.BUFFSTABILIZER.title",
+            "icons": [ "thaumicforever:buff_node_stabilizer" ],
+            "category": "THAUMICFOREVER","location": [ 8,-4 ], 
+            "parents": [ "STABILIZER" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;2","THEORY;BASICS;1"],
+                    "text": "research.BUFFSTABILIZER.stage.1",
+                    "required_item": ["thaumcraft:mechanism_simple"]
+
+                },
+                {
+                    "recipes": ["THAUMICFOREVER:advanced_node_stabilizer","THAUMICFOREVER:port"],
+                    "text": "research.BUFFSTABILIZER.stage.2",
+                    "reward_knowledge": ["OBSERVATION;AUROMANCY;1"]
+                }
+            ]
+        },
+        {
+            "key": "NODEJAR",    
+            "name": "research.NODEJAR.title",
+            "icons": [ "thaumicforever:jarred_node" ],
+            "meta": [ "HIDDEN" ],
+            "category": "THAUMICFOREVER","location": [ 4,-6 ], 
+            "parents": [ "BASEARTIFICE" ,"VISAURA"],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;1","THEORY;BASICS;2"],
+                    "text": "research.NODEJAR.stage.1",
+                    "required_item":["thaumcraft:jar_normal"]
+
+                },
+                {
+                    "text": "research.NODEJAR.stage.2",
+                    "reward_knowledge": ["OBSERVATION;AUROMANCY;1"],
+                    "recipes": ["thaumicforever:nodejar"]
+
+                }
+            ]
+        },
+        {
+            "key": "NODEMAGNET",    
+            "name": "research.NODEMAGNET.title",
+            "icons": [ "thaumicforever:textures/items/turret_magnet.png" ],
+            "meta": [ "HIDDEN" ],
+            "category": "THAUMICFOREVER","location": [ 8,-6 ], 
+            "parents": [ "BASICTURRET" ,"~VISAURA","AURANODE"],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;2","THEORY;BASICS;1"],
+                    "text": "research.NODEMAGNET.stage.1",
+                    "required_item": ["thaumcraft:vis_resonator"],
+                    "required_research":"AURANODE"
+
+                    
+                },
+                {
+                    "recipes": ["THAUMICFOREVER:node_magnet"],
+                    "text": "research.NODEMAGNET.stage.2"
+                }
+            ]
+        }
     ]
 }
 

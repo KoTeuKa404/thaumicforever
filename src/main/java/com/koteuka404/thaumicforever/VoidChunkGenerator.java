@@ -1,5 +1,8 @@
 package com.koteuka404.thaumicforever;
 
+import java.util.Collections;
+import java.util.List;
+
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -7,9 +10,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
-
-import java.util.Collections;
-import java.util.List;
 
 public class VoidChunkGenerator implements IChunkGenerator {
     private final World world;

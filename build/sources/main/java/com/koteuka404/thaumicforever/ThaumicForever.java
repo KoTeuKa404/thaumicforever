@@ -34,8 +34,10 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.golems.GolemHelper;
+import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
 
 @Mod(modid = ThaumicForever.MODID, name = ThaumicForever.NAME, version = ThaumicForever.VERSION,dependencies = "required-after:forge@[14.23.5.2820,);required-after:thaumcraft@[6.1.BETA26,);")
 // required-after:mixinbooter@[0.8,);
@@ -59,19 +61,22 @@ public class ThaumicForever {
         ModConfig.loadConfig(event);
 
         ResearchList.initializeFromConfig();
+        ModDimensions.init(event);
 
         ResearchBaubleMapping.reloadFromConfig();
 
         MinecraftForge.EVENT_BUS.register(new MysticEventHandler());
 
-       
+        MinecraftForge.EVENT_BUS.register(new MannequinUnfreezeHandler());
+
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         NetworkHandler.INSTANCE = network;
         NetworkHandler.registerPackets();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
 
-  
+        // CapabilityHandler.register();
+
         try {
             setupBubblesSlots();
         } catch (Throwable t) {
@@ -80,6 +85,8 @@ public class ThaumicForever {
         
         // TConstructFix.fixModifierConflict();
         MinecraftForge.EVENT_BUS.register(new ModRecipes());
+        new OreGeneration();
+        ModFocuses.registerFocuses();
 
         GameRegistry.registerTileEntity(DeconstructionTableTileEntity.class,new ResourceLocation(ThaumicForever.MODID, ":deconstruction_table"));
         GameRegistry.registerTileEntity(TileEntityAbandonedChest.class,new ResourceLocation(ThaumicForever.MODID, ":abandoned_chest"));
@@ -92,15 +99,17 @@ public class ThaumicForever {
         GameRegistry.registerTileEntity(DoubleTableTileEntity.class,new ResourceLocation(ThaumicForever.MODID, "double_table_tile_entity"));
         GameRegistry.registerTileEntity(TileEntityImmortalizer.class,new ResourceLocation(ThaumicForever.MODID, "immortalizer"));
         GameRegistry.registerTileEntity(TileEntityAntiFlightStone.class,new ResourceLocation(ThaumicForever.MODID, "anti_flight_stone"));
-        // GameRegistry.registerTileEntity(TileEntityMysticTab.class,new ResourceLocation(ThaumicForever.MODID, "mystic_tab"));
-        
+        GameRegistry.registerTileEntity(TileNodeStabilizer.class,new ResourceLocation(ThaumicForever.MODID, "node_stabilizer"));
+        GameRegistry.registerTileEntity(TilePort.class, new ResourceLocation(ThaumicForever.MODID, "tile_port"));
+        GameRegistry.registerTileEntity(TileBuffNodeStabilizer.class, new ResourceLocation(ThaumicForever.MODID, "buff_node_stabilizer"));
+        GameRegistry.registerTileEntity(TileInvertedBuffNodeStabilizer.class,new ResourceLocation(ThaumicForever.MODID, "inverted_node_stabilizer"));
+        GameRegistry.registerTileEntity(TileEntityJarredNode.class, new ResourceLocation(ThaumicForever.MODID,"thaumicforever:jarred_node"));
+
         // MinecraftForge.EVENT_BUS.register(AirCurrentManager.class);
         // MinecraftForge.EVENT_BUS.register(AirCurrentHandler.class);
-        new OreGeneration();
-        ModFocuses.registerFocuses();
 
         proxy.preInit(event);
-        GameRegistry.registerWorldGenerator(new AuraNodeWorldGen(), 0);
+
 
         // Реєстрація сутностей
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "guardian_mannequin"),EntityGuardianMannequin.class, "GuardianMannequin", id++, this, 64, 1, true);
@@ -115,22 +124,33 @@ public class ThaumicForever {
         EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever:wizard"), WizardVillager.class, "wizard",id++, ThaumicForever.instance, 64, 4, true);
         EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever:gorilla"), EntityGorilla.class, "gorilla",id++, ThaumicForever.instance, 64, 4, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "watcher_guard"), WatcherEntity.class,"watcher_guard", id++, ThaumicForever.instance, 64, 10, true);
-        EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever", "WindCharge"), EntityWindCharge.class,"WindCharge", id++, this, 64, 1, true);
-        EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever", "gorilla_hand"),EntityGorillaHand.class, "gorilla_hand", id++, this, 64, 1, true);
-        // EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever",
-        // "air_current"), EntityAirCurrent.class, "air_current", id++,
-        // ThaumicForever.instance, 64, 1, true);
-        // MinecraftForge.EVENT_BUS.register(new CrashPreventTooltipPatch());
-
-
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "WindCharge"), EntityWindCharge.class,"WindCharge", id++, this, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "gorilla_hand"),EntityGorillaHand.class, "gorilla_hand", id++, this, 64, 1, true);
+        // EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever","air_current"), EntityAirCurrent.class, "air_current", id++, ThaumicForever.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "AuraNode"), EntityAuraNode.class, "AuraNode", id++, ThaumicForever.instance, 160, 20, true);
+		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "NodeMagnet"), EntityNodeMagnet.class, "NodeMagnet", id++, ThaumicForever.instance, 64, 3, true);
+        WorldGenHilltopStones.registerLootTables();
+        WorldGenUnderloot.registerLootTables();
+        WorldGenThaumicHouse.registerLootTables();
+        
         GameRegistry.registerWorldGenerator(new WorldGenUnderloot(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenEldritchRing(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenObsidianTotem(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenThaumicHouse(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenHilltopStones(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenMazeInTaiga(), 0);
+        GameRegistry.registerWorldGenerator(new AuraNodeWorldGen(), 0);
+        GameRegistry.registerWorldGenerator(ANWorldGenerator.INSTANCE, 0);
+
+        IDustTrigger.registerDustTrigger(new DustTriggerMultiblock("NODEJAR", NodeJarMultiblockDef.SHAPE));
+        ThaumcraftApi.addMultiblockRecipeToCatalog(
+            new ResourceLocation("thaumicforever", "nodejar"),
+            new ThaumcraftApi.BluePrint("NODEJAR", NodeJarMultiblockDef.SHAPE)
+        );
+
         MinecraftForge.EVENT_BUS.register(RemoveRecipes.class);
         AspectRegistry.registerAspects();
+        MinecraftForge.EVENT_BUS.register(new PlayerMazeEvents());
 
         network.registerMessage(PacketSelectPlate.Handler.class, PacketSelectPlate.class, 0, Side.SERVER);
         network.registerMessage(PacketClickLupa.Handler.class, PacketClickLupa.class, 1, Side.SERVER);
@@ -170,7 +190,7 @@ public class ThaumicForever {
         WizardVillagerProfession.registerTrades();
         MinecraftForge.EVENT_BUS.register(WizardVillagerProfession.class);
         GolemHelper.registerSeal(new SealGolemCoreFish());
-        MinecraftForge.EVENT_BUS.register(new SealUseUpdater());
+        // MinecraftForge.EVENT_BUS.register(new SealUseUpdater());
         GolemHelper.registerSeal(new SealRefill());
         // GolemHelper.registerSeal(new SealProviderAdvanced());
         // MinecraftForge.EVENT_BUS.register(MysticEntityEventHandler.class);
@@ -187,7 +207,6 @@ public class ThaumicForever {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new ModGuiHandler());
         MinecraftForge.EVENT_BUS.register(ModItems.class);
         ResearchHandler.init();
-        ModDimensions.init(event);
         MinecraftForge.EVENT_BUS.register(new VoidRepairHandler());
         MinecraftForge.EVENT_BUS.register(new PoisonEnchantmentHandler());
 
@@ -202,11 +221,12 @@ public class ThaumicForever {
         MinecraftForge.EVENT_BUS.register(new ArmorStandToMannequinHandler());
         MinecraftForge.EVENT_BUS.register(new MannequinInteractionHandler());
 
-        WorldGenHilltopStones.registerLootTables();
-        WorldGenUnderloot.registerLootTables();
+
 
         registerRecipeOverride();
-        IDustTrigger.registerDustTrigger(new SalisMundusDoubleTableTrigger());
+        IDustTrigger.registerDustTrigger(new SalisMundusTrigger());
+        IDustTrigger.registerDustTrigger(new NodeJarDustTrigger());
+        
         proxy.init(event);
         registerCustomRecipes();
         new ScanObjects();
@@ -265,15 +285,12 @@ public class ThaumicForever {
     }
     
 
-  // та реальної реалізації setupBubblesSlots():
 
 private void setupBubblesSlots() {
     JsonArray slotsArray = new JsonArray();
-    // базові слоти
     for (String s : new String[]{"amulet","ring","ring","belt","head","body","charm"}) {
         slotsArray.add(s);
     }
-    // динамічні
     for (BaubleType type : ResearchBaubleMapping.IMMEDIATE) {
         slotsArray.add(type.name().toLowerCase());
     }
@@ -292,7 +309,6 @@ private void setupBubblesSlots() {
         e.printStackTrace();
     }
 
-    // спробуємо рефлексією включити expandedMode, якщо воно є
     try {
         Class<?> cfg = Class.forName("baubles.common.Config");
         Field fld = cfg.getDeclaredField("expandedMode");

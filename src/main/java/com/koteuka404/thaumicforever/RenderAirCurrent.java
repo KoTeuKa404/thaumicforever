@@ -23,7 +23,7 @@
 //     @Override
 //     public void doRender(EntityAirCurrent entity, double x, double y, double z, float entityYaw, float partialTicks) {
 //         float scale = 0.2f;
-//         float alpha = 0.4f; // Прозорість
+//         float alpha = 0.4f;
 
 //         GlStateManager.pushMatrix();
 //         GlStateManager.translate(x, y, z);

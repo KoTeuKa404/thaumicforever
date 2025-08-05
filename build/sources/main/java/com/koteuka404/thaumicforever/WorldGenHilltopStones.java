@@ -29,15 +29,15 @@ public class WorldGenHilltopStones implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         if (world.provider.getDimension() == 0) { 
-            if (random.nextInt(400) == 0) {  
+            if (random.nextInt(ModConfig.hilltopStonesChance) == 0) {  
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
                 int y = world.getHeight(x, z);
 
                 BlockPos pos = new BlockPos(x, y, z);
 
-                if (y >= 65 && isSkyOpen(world, pos) && isValidGround(world, pos.down())) {
-                    if (canPlaceStructureHere(world, pos, 8, 8, 8)) { 
+                if (y >= 85 && isSkyOpen(world, pos) /*&& isValidGround(world, pos.down()) */ ) {
+                    if (canPlaceStructureHere(world, pos, 8, 8)) { 
                         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
                         Template template = templateManager.getTemplate(world.getMinecraftServer(), new ResourceLocation("thaumicforever", "hilltop_stones"));
 
@@ -45,6 +45,8 @@ public class WorldGenHilltopStones implements IWorldGenerator {
                             template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
 
                             generateLootInChests(world, pos);
+                            spawnSinisterNode(world, pos, template); 
+
 
                          } 
                     }  
@@ -52,7 +54,6 @@ public class WorldGenHilltopStones implements IWorldGenerator {
             }
         }
     }
-
     private void generateLootInChests(World world, BlockPos pos) {
         for (int x = -5; x < 5; x++) {  
             for (int y = 0; y < 5; y++) {
@@ -79,18 +80,43 @@ public class WorldGenHilltopStones implements IWorldGenerator {
             || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.SNOW
             || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.SNOW_LAYER;
     }
-
-    private boolean canPlaceStructureHere(World world, BlockPos pos, int width, int height, int depth) {
+    private void spawnSinisterNode(World world, BlockPos basePos, Template template) {
+        int centerX = template.getSize().getX() / 2;
+        int centerZ = template.getSize().getZ() / 2;
+        int centerY = 2; // по y + 4
+    
+        BlockPos nodePos = basePos.add(centerX, centerY, centerZ);
+    
+        java.util.Random rand = world.rand;
+        int base = 100 / 3;
+        int size = 2 + base + rand.nextInt(2 + base);
+    
+        EntityAuraNode node = new EntityAuraNode(world);
+        node.setPosition(nodePos.getX() + 0.5, nodePos.getY() + 0.5, nodePos.getZ() + 0.5);
+        node.setNodeSize(size);
+        node.setNodeType(1); // Sinister/Dark
+    
+        node.getNodeAspects().aspects.clear();
+        thaumcraft.api.aspects.Aspect aspect = rand.nextBoolean()
+            ? thaumcraft.api.aspects.Aspect.DARKNESS
+            : thaumcraft.api.aspects.Aspect.UNDEAD;
+        node.getNodeAspects().add(aspect, size);
+    
+        node.updateSyncAspects();
+        node.enforceAspectLimit();
+        if (!world.isRemote) world.spawnEntity(node);
+    }
+    
+    private boolean canPlaceStructureHere(World world, BlockPos pos, int width, int depth) {
         for (int x = -width / 2; x < width / 2; x++) {
-            for (int y = 0; y < height; y++) {
-                for (int z = -depth / 2; z < depth / 2; z++) {
-                    BlockPos checkPos = pos.add(x, y, z);
-                    if (!world.isAirBlock(checkPos)) {
-                        return false;  
-                    }
+            for (int z = -depth / 2; z < depth / 2; z++) {
+                BlockPos checkPos = pos.add(x, 0, z);
+                if (!world.isAirBlock(checkPos) && !world.getBlockState(checkPos).getMaterial().isReplaceable()) {
+                    return false;
                 }
             }
         }
-        return true;   
+        return true;
     }
+    
 }

@@ -40,7 +40,10 @@ public class ItemEternalBlade extends ItemSword {
                 new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", ATTACK_SPEED, 0));
         this.attributeModifiers = builder.build();
     }
-
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        super.setDamage(stack, 0);
+    }
     @Override
 public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
     if (!world.isRemote) {

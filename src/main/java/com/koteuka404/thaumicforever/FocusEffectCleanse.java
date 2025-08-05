@@ -1,5 +1,8 @@
 package com.koteuka404.thaumicforever;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
@@ -60,14 +63,18 @@ public class FocusEffectCleanse extends FocusEffect {
         }
         return false;
     }
-
-    private void cleanseNegativeEffects(EntityLivingBase entity) {
-        for (PotionEffect effect : entity.getActivePotionEffects()) {
-            if (effect.getPotion().isBadEffect()) {
-                entity.removePotionEffect(effect.getPotion());  
-            }
+private void cleanseNegativeEffects(EntityLivingBase entity) {
+    List<PotionEffect> toRemove = new ArrayList<>();
+    for (PotionEffect effect : entity.getActivePotionEffects()) {
+        if (effect.getPotion().isBadEffect()) {
+            toRemove.add(effect);
         }
     }
+    for (PotionEffect effect : toRemove) {
+        entity.removePotionEffect(effect.getPotion());
+    }
+}
+
 
     @SubscribeEvent
     public void onWorldTick(TickEvent.WorldTickEvent event) {

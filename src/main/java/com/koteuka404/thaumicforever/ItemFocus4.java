@@ -5,10 +5,6 @@ import thaumcraft.common.items.casters.ItemFocus;
 public class ItemFocus4 extends ItemFocus {
 
     public ItemFocus4() {
-        super("focus_4", 80); 
+        super("focus_4", ModConfig.focus4MaxComplexity); 
     }
-
-
-   
-    
 }

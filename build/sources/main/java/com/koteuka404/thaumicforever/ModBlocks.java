@@ -18,32 +18,21 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber(modid = ThaumicForever.MODID)
 public class ModBlocks {
 
-    public static final Block DECONSTRUCTION_TABLE = new DeconstructionTableBlock()
-        .setUnlocalizedName(ThaumicForever.MODID + ".deconstruction_table")
-        .setRegistryName(ThaumicForever.MODID, "deconstruction_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block DECONSTRUCTION_TABLE = new DeconstructionTableBlock().setUnlocalizedName(ThaumicForever.MODID + ".deconstruction_table").setRegistryName(ThaumicForever.MODID, "deconstruction_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block GREATWOOD_TABLE = new GreatwoodTableBlock()
-        .setUnlocalizedName(ThaumicForever.MODID + ".greatwood_table")
-        .setRegistryName(ThaumicForever.MODID, "greatwood_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block GREATWOOD_TABLE = new GreatwoodTableBlock().setUnlocalizedName(ThaumicForever.MODID + ".greatwood_table").setRegistryName(ThaumicForever.MODID, "greatwood_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block DOUBLE_TABLE = new DoubleTableBlock()
-        .setUnlocalizedName(ThaumicForever.MODID + ".double_table")
-        .setRegistryName(ThaumicForever.MODID, "double_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block DOUBLE_TABLE = new DoubleTableBlock().setUnlocalizedName(ThaumicForever.MODID + ".double_table").setRegistryName(ThaumicForever.MODID, "double_table").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block LEAD_BLOCK = new BlockBase(Material.IRON, "lead_block")
-        .setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block LEAD_BLOCK = new BlockBase(Material.IRON, "lead_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block SILVER_BLOCK = new BlockBase(Material.IRON, "silver_block")
-        .setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block SILVER_BLOCK = new BlockBase(Material.IRON, "silver_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block TIN_BLOCK = new BlockBase(Material.IRON, "tin_block")
-        .setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block TIN_BLOCK = new BlockBase(Material.IRON, "tin_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block COPPER_BLOCK = new BlockBase(Material.IRON, "copper_block")
-        .setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block COPPER_BLOCK = new BlockBase(Material.IRON, "copper_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block OBSIDIAN_TOTEM = new BlockBase(Material.IRON, "obsidian_totem")
-        .setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block OBSIDIAN_TOTEM = new BlockBase(Material.IRON, "obsidian_totem").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block TIME_STOP = new BlockTimeStop().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block ABANDONED_CHEST = new BlockAbandonedChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -57,7 +46,7 @@ public class ModBlocks {
     public static final Block BlockRepurposer = new BlockRepurposer();
     public static final Block BlockTimeStone = new BlockTimeStone();
     public static final Block BlockTimeSlow = new BlockTimeSlow();
-    public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
+    // public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
     public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier();
     public static final Block INVISIBLE_PART = new InvisiblePartBlock();
     public static final Block PRIMALBLOCK = new PrimalBlock();
@@ -69,7 +58,13 @@ public class ModBlocks {
     public static final Block RubyOre = new RubyOre();
     public static final Block RubyBlock = new RubyBlock();
     public static final Block OldPlank = new OldPlank();
+    public static final Block nodeStabilizer = new BlockNodeStabilizer();
+    public static final Block buffnodeStabilizer = new BlockBuffNodeStabilizer();
+    public static final Block JARRED_NODE = new BlockJarredNode().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static ItemBlockJarredNode ITEMBLOCK_JARRED_NODE;
 
+    public static final Block STRUCTURE_MARKER_HOLDER = new BlockStructureMarker();
+    public static final Block BlockNodeCharger = new BlockNodeCharger().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -101,14 +96,22 @@ public class ModBlocks {
             VisPlant,
             RubyOre,
             RubyBlock,
-            OldPlank
+            OldPlank,
+            nodeStabilizer,
+            buffnodeStabilizer,
+            JARRED_NODE,
+            STRUCTURE_MARKER_HOLDER        ,
+            BlockNodeCharger
         );
 
         if (BlockImmortalizer != null) {
             registry.register(BlockImmortalizer);
         }
+
     }
 
+
+    
     @SubscribeEvent
     public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
@@ -139,15 +142,26 @@ public class ModBlocks {
             new ItemBlock(RubyOre).setRegistryName(RubyOre.getRegistryName()),
             new ItemBlock(RubyBlock).setRegistryName(RubyBlock.getRegistryName()),
             new ItemBlock(OldPlank).setRegistryName(OldPlank.getRegistryName()),
-             
+            new ItemBlock(nodeStabilizer).setRegistryName(nodeStabilizer.getRegistryName()),
+            new ItemBlock(buffnodeStabilizer).setRegistryName(buffnodeStabilizer.getRegistryName()),
+            new ItemBlock(STRUCTURE_MARKER_HOLDER).setRegistryName(STRUCTURE_MARKER_HOLDER.getRegistryName()),
+            new ItemBlock(BlockNodeCharger).setRegistryName(BlockNodeCharger.getRegistryName()),
+
             
 
             new ItemBlock(INVISIBLE_PART).setRegistryName(INVISIBLE_PART.getRegistryName())
         );
 
+        if (ITEMBLOCK_JARRED_NODE == null) { 
+            ITEMBLOCK_JARRED_NODE = new ItemBlockJarredNode(JARRED_NODE);
+            ITEMBLOCK_JARRED_NODE.setRegistryName(JARRED_NODE.getRegistryName());
+            registry.register(ITEMBLOCK_JARRED_NODE); 
+        }    
+
         if (BlockImmortalizer != null) {
             registry.register(new ItemBlock(BlockImmortalizer).setRegistryName(BlockImmortalizer.getRegistryName()));
         }
+
     }
 
     @SideOnly(Side.CLIENT)
@@ -179,12 +193,18 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyOre), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyBlock), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OldPlank), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(JARRED_NODE), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(STRUCTURE_MARKER_HOLDER), 0, "inventory");
+
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BlockNodeCharger), 0, new ModelResourceLocation("thaumicforever:node_transducer", "inventory"));
 
         
-        
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(Port), 0, new ModelResourceLocation("thaumicforever:port", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(nodeStabilizer), 0, new ModelResourceLocation("thaumicforever:node_stabilizer", "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(buffnodeStabilizer), 0, new ModelResourceLocation("thaumicforever:buff_node_stabilizer", "inventory"));
         if (BlockImmortalizer != null) {
             ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockImmortalizer), 0, "inventory");
         }
     }
+    
 }

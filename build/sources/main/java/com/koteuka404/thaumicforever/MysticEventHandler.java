@@ -1,6 +1,5 @@
 package com.koteuka404.thaumicforever;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,7 +8,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.cap.BaublesContainer;
 import baubles.api.cap.IBaublesItemHandler;
@@ -25,7 +23,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent.Clone;
 import net.minecraftforge.event.entity.player.PlayerEvent.StartTracking;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 @Mod.EventBusSubscriber(modid = ThaumicForever.MODID)
@@ -39,12 +36,12 @@ public class MysticEventHandler {
         IBaublesItemHandler newH = BaublesApi.getBaublesHandler(ev.getEntityPlayer());
         if (oldH instanceof BaublesContainer && newH instanceof BaublesContainer) {
             ((BaublesContainer)newH)
-                .deserializeNBT(((BaublesContainer)oldH).serializeNBT());
+              .deserializeNBT(((BaublesContainer)oldH).serializeNBT());
         }
     }
 
     @SubscribeEvent
-    public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent ev) {
+    public static void onPlayerLogout(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent ev) {
         mysticSync.remove(ev.player.getUniqueID());
     }
 
@@ -56,9 +53,10 @@ public class MysticEventHandler {
         IBaublesItemHandler handler = BaublesApi.getBaublesHandler(player);
 
         int originalSlots = handler.getSlots();
-        List<BaubleType> types = MysticBaubleSlots.getForPlayer(player);
+        List<MysticBaubleSlots.SlotInfo> slots = MysticBaubleSlots.getAllSlots(player);
 
-        for (int i = 0; i < types.size(); i++) {
+        // onWornTick
+        for (int i = 0; i < slots.size(); i++) {
             ItemStack stack = handler.getStackInSlot(originalSlots + i);
             if (!stack.isEmpty() &&
                 stack.hasCapability(baubles.api.cap.BaublesCapabilities.CAPABILITY_ITEM_BAUBLE, null)) {
@@ -67,7 +65,7 @@ public class MysticEventHandler {
             }
         }
 
-        syncChanged(player, handler, originalSlots, types);
+        syncChanged(player, handler, originalSlots, slots.size());
     }
 
     @SubscribeEvent
@@ -82,30 +80,25 @@ public class MysticEventHandler {
     public static void onStartTracking(StartTracking ev) {
         if (ev.getTarget() instanceof EntityPlayerMP &&
             ev.getEntityPlayer() instanceof EntityPlayerMP) {
-            syncSlots(
-                (EntityPlayerMP) ev.getTarget(),
-                Collections.singletonList((EntityPlayerMP) ev.getEntityPlayer())
-            );
+            syncSlots((EntityPlayerMP) ev.getTarget(),
+                Collections.singletonList((EntityPlayerMP) ev.getEntityPlayer()));
         }
     }
 
     @SubscribeEvent
     public static void onJoin(net.minecraftforge.event.entity.EntityJoinWorldEvent ev) {
         if (ev.getEntity() instanceof EntityPlayerMP) {
-            syncSlots(
-                (EntityPlayerMP) ev.getEntity(),
-                Collections.singletonList((EntityPlayerMP) ev.getEntity())
-            );
+            syncSlots((EntityPlayerMP) ev.getEntity(),
+                Collections.singletonList((EntityPlayerMP) ev.getEntity()));
         }
     }
 
-    private static void syncSlots(EntityPlayerMP player,
-                                  Collection<EntityPlayerMP> receivers) {
+    private static void syncSlots(EntityPlayerMP player, Collection<EntityPlayerMP> receivers) {
         IBaublesItemHandler h = BaublesApi.getBaublesHandler(player);
         int originalSlots = h.getSlots();
-        List<BaubleType> types = MysticBaubleSlots.getForPlayer(player);
+        int count        = MysticBaubleSlots.getAllSlots(player).size();
 
-        for (int i = 0; i < types.size(); i++) {
+        for (int i = 0; i < count; i++) {
             int phys = originalSlots + i;
             PacketSync pkt = new PacketSync(player, phys, h.getStackInSlot(phys));
             for (EntityPlayerMP r : receivers) {
@@ -113,37 +106,30 @@ public class MysticEventHandler {
             }
         }
 
-        ItemStack[] arr = new ItemStack[types.size()];
-        for (int i = 0; i < arr.length; i++) {
+        ItemStack[] arr = new ItemStack[count];
+        for (int i = 0; i < count; i++) {
             arr[i] = h.getStackInSlot(originalSlots + i).copy();
         }
         mysticSync.put(player.getUniqueID(), arr);
     }
 
-    private static void syncChanged(EntityPlayerMP player,
-                                    IBaublesItemHandler handler,
-                                    int originalSlots,
-                                    List<BaubleType> types) {
+    private static void syncChanged(EntityPlayerMP player, IBaublesItemHandler handler, int originalSlots, int count) {
         UUID id = player.getUniqueID();
         ItemStack[] old = mysticSync.get(id);
-
-        if (old == null || old.length != types.size()) {
+        if (old == null || old.length != count) {
             syncSlots(player, Collections.singletonList(player));
             return;
         }
 
         WorldServer ws = (WorldServer) player.world;
-        List<EntityPlayerMP> receivers = new ArrayList<>(
-            ws.getEntityTracker()
-              .getTrackingPlayers(player)
-              .stream()
-              .filter(p -> p instanceof EntityPlayerMP)
-              .map(p -> (EntityPlayerMP)p)
-              .collect(Collectors.toList())
-        );
+        List<EntityPlayerMP> receivers = ws.getEntityTracker()
+            .getTrackingPlayers(player).stream()
+            .filter(p -> p instanceof EntityPlayerMP)
+            .map(p -> (EntityPlayerMP)p)
+            .collect(Collectors.toList());
         receivers.add(player);
 
-        for (int i = 0; i < types.size(); i++) {
+        for (int i = 0; i < count; i++) {
             int phys = originalSlots + i;
             ItemStack cur = handler.getStackInSlot(phys);
             if (!ItemStack.areItemStacksEqual(cur, old[i])) {
@@ -161,9 +147,9 @@ public class MysticEventHandler {
                                    Entity source) {
         IBaublesItemHandler h = BaublesApi.getBaublesHandler(player);
         int originalSlots = h.getSlots();
-        List<BaubleType> types = MysticBaubleSlots.getForPlayer(player);
+        int count        = MysticBaubleSlots.getAllSlots(player).size();
 
-        for (int i = 0; i < types.size(); i++) {
+        for (int i = 0; i < count; i++) {
             int phys = originalSlots + i;
             ItemStack stack = h.getStackInSlot(phys);
             if (!stack.isEmpty()) {

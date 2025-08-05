@@ -251,9 +251,8 @@ public class RecipeCrucible {
             "TENEBRAEALKIMIA",  
             new ItemStack(Items.NETHER_WART),
             new ItemStack(Items.WHEAT_SEEDS), 
-            new AspectList()
-                .add(Aspect.ALCHEMY, 3)
-                .add(Aspect.FLUX, 5) 
+            new AspectList(new ItemStack(Items.NETHER_WART))
+                
         );
         
         ThaumcraftApi.addCrucibleRecipe(netherWartRecipeKey, netherWartRecipe);
@@ -483,7 +482,7 @@ public class RecipeCrucible {
         ResourceLocation uranRecipeKey = new ResourceLocation("thaumicforever", "uran_recipes");
         CrucibleRecipe uranRecipe = new CrucibleRecipe(
             "IUALKIMIA", 
-            new ItemStack(Item.getByNameOrId("industrialupgradeclassiccore:uranium_ore"), 1, 3),
+            new ItemStack(Item.getByNameOrId("industrialupgrade:classicore"), 1, 3),
             new ItemStack(BlocksTC.oreCinnabar),
             new AspectList().add(Aspect.DEATH, 6).add(Aspect.ENERGY, 6)
         );
@@ -646,20 +645,6 @@ public class RecipeCrucible {
     );
     ThaumcraftApi.addCrucibleRecipe(magmaRecipeKey, magmaRecipe);
 
-    ResourceLocation woolRecipeKey = new ResourceLocation(MODID, "wool_recipe");
-    CrucibleRecipe woolRecipe = new CrucibleRecipe(
-        "ORDOOALKIMIA", 
-        new ItemStack(Blocks.WOOL),
-        new ItemStack(Items.STRING), 
-        new AspectList()
-            .add(Aspect.BEAST, 9)      
-            .add(Aspect.CRAFT, 3)       
- 
-    );
-    ThaumcraftApi.addCrucibleRecipe(woolRecipeKey, woolRecipe);
-
-
-
     ResourceLocation woolDRecipeKey = new ResourceLocation(MODID, "wool_d_recipe");
     CrucibleRecipe woolDRecipe = new CrucibleRecipe(
         "PERDITIOALKIMIA", 
@@ -719,6 +704,115 @@ public class RecipeCrucible {
  
     );
     ThaumcraftApi.addCrucibleRecipe(nethrbDRecipeKey, nethrbDRecipe);
+
+
+    ResourceLocation salisDRecipeKey = new ResourceLocation(MODID, "salis_d_recipe");
+    CrucibleRecipe salisDRecipe = new CrucibleRecipe(
+        "PRAECANTATIOALKIMIA", 
+        new ItemStack(ItemsTC.salisMundus), 
+        new ItemStack(Items.REDSTONE),
+        new AspectList()
+        .add(Aspect.MAGIC, 7)      
+        .add(Aspect.ORDER, 1)      
+ 
+    );
+    ThaumcraftApi.addCrucibleRecipe(salisDRecipeKey, salisDRecipe);
+
+    ResourceLocation salisRecipeKey = new ResourceLocation(MODID, "salis_recipe");
+    CrucibleRecipe salisRecipe = new CrucibleRecipe(
+        "PRAECANTATIOALKIMIA", 
+        new ItemStack(ItemsTC.salisMundus), 
+        new ItemStack(Items.GUNPOWDER),
+        new AspectList()
+        .add(Aspect.MAGIC, 10)      
+        .add(Aspect.ORDER, 4)      
+        .add(Aspect.EXCHANGE, 3)      
+        .add(Aspect.ENERGY, 5)      
+
+ 
+    );
+    ThaumcraftApi.addCrucibleRecipe(salisRecipeKey, salisRecipe);
+
+
+
+
+
+    ResourceLocation wollCRecipeKey = new ResourceLocation(MODID, "wool_c_recipe");
+    CrucibleRecipe wollCsRecipe = new CrucibleRecipe(
+        "ORDOOALKIMIA", 
+        new ItemStack(Blocks.WOOL), 
+        new ItemStack(Items.STRING),
+        new AspectList(new ItemStack(Blocks.WOOL))
+
+ 
+    );
+    ThaumcraftApi.addCrucibleRecipe(wollCRecipeKey, wollCsRecipe);
+
+
+    ResourceLocation nethrbCRecipeKey = new ResourceLocation(MODID, "netrhbv_c_recipe");
+    CrucibleRecipe nethrbCRecipe = new CrucibleRecipe(
+        "ORDOOALKIMIA", 
+        new ItemStack(Blocks.NETHER_WART_BLOCK), 
+        new ItemStack(Items.NETHER_WART),
+        new AspectList(new ItemStack(Blocks.NETHER_WART_BLOCK))
+
+        );
+    ThaumcraftApi.addCrucibleRecipe(nethrbCRecipeKey, nethrbCRecipe);
+
+
+
+
+
+
+
+
+
+    ResourceLocation natureRecipeKey = new ResourceLocation(MODID, "nature_core_recipe");
+    CrucibleRecipe natureRecipe = new CrucibleRecipe(
+        "HERBAALKIMIA", 
+        new ItemStack(ModItems.bigOakGrower), 
+        new ItemStack(Blocks.BONE_BLOCK),
+        new AspectList()
+        .add(Aspect.LIFE, 20)      
+        .add(Aspect.PLANT, 40)      
+        .add(Aspect.WATER, 10)      
+
+ 
+    );
+    ThaumcraftApi.addCrucibleRecipe(natureRecipeKey, natureRecipe);
+
+
+
+
+
+    ResourceLocation stellRecipeKey = new ResourceLocation("thaumicforever", "stell_recipes");
+
+    ItemStack steelIngot = ItemStack.EMPTY;
+    for (ItemStack stack : OreDictionary.getOres("ingotSteel")) {
+        if (!stack.isEmpty()) {
+            steelIngot = stack.copy();
+            break;
+        }
+    }
+    
+    if (!steelIngot.isEmpty()) {
+        CrucibleRecipe stellRecipe = new CrucibleRecipe(
+            "IMMERALKIMIA",
+            steelIngot, 
+            new ItemStack(Items.IRON_INGOT), 
+            new AspectList().add(Aspect.FIRE, 2).add(Aspect.ORDER, 5)
+        );
+        ThaumcraftApi.addCrucibleRecipe(stellRecipeKey, stellRecipe);
+    }
+    
+
+
+
+
+
+
+
+
 
     }
 }
