@@ -11,7 +11,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "5.9.1.1"
+version = "6.2.2"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
@@ -27,19 +27,19 @@ minecraft {
 
 
 repositories {
-    mavenCentral()  
+    mavenCentral()
     maven { url = "https://files.minecraftforge.net/maven" }
     maven { url = "https://modmaven.dev" }
     maven { url = "https://maven.thiakil.com" }
-  
+
 }
 
 dependencies {
     // compileOnly  "org.spongepowered:mixin:0.8.5"
     compile 'mezz.jei:jei_1.12.2:4.15.0.268'
     
-    // compileOnly files("libs/Baubles-1.12-1.5.3.jar")
-    compileOnly files("libs/Bubbles-2.2.jar")
+    compileOnly files("libs/Baubles-1.12-1.5.3.jar")
+    // compileOnly files("libs/Bubbles-2.2.jar")
 
     // deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2:deobf"
 

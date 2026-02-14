@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import com.koteuka404.thaumicforever.wand.block.BlockWandWorkbench;
 
 @Mod.EventBusSubscriber(modid = ThaumicForever.MODID)
 public class ModBlocks {
@@ -41,30 +42,31 @@ public class ModBlocks {
     public static final Block Duplicator = new BlockMatteryDuplicator().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block COMPRESSOR = new BlockCompressor().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
-    public static final Block RED_ROSE = new BlockRedRose();
+    public static final Block RED_ROSE = new BlockRedRose().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block BLUE_ROSE = new BlockBlueRose();
-    public static final Block BlockRepurposer = new BlockRepurposer();
-    public static final Block BlockTimeStone = new BlockTimeStone();
-    public static final Block BlockTimeSlow = new BlockTimeSlow();
+    public static final Block BlockRepurposer = new BlockRepurposer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block BlockTimeStone = new BlockTimeStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block BlockTimeSlow = new BlockTimeSlow().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     // public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
-    public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier();
-    public static final Block INVISIBLE_PART = new InvisiblePartBlock();
-    public static final Block PRIMALBLOCK = new PrimalBlock();
-    public static final Block EndOreBlock = new EndOreBlock();
-    public static final Block Port = new PortBlock();
-    public static final Block VisPlant = new VisPlantBlock();
+    public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block INVISIBLE_PART = new InvisiblePartBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block PRIMALBLOCK = new PrimalBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block EndOreBlock = new EndOreBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block Port = new PortBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block VisPlant = new VisPlantBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block BlockImmortalizer = Loader.isModLoaded("thaumadditions") ? new BlockImmortalizer() : null;
-    public static final Block RubyOre = new RubyOre();
-    public static final Block RubyBlock = new RubyBlock();
-    public static final Block OldPlank = new OldPlank();
-    public static final Block nodeStabilizer = new BlockNodeStabilizer();
-    public static final Block buffnodeStabilizer = new BlockBuffNodeStabilizer();
-    public static final Block JARRED_NODE = new BlockJarredNode().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block RubyOre = new RubyOre().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block RubyBlock = new RubyBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block OldPlank = new OldPlank().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block nodeStabilizer = new BlockNodeStabilizer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block buffnodeStabilizer = new BlockBuffNodeStabilizer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block JARRED_NODE = new BlockJarredNode().setCreativeTab(ThaumicForever.CREATIVE_TAB).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static ItemBlockJarredNode ITEMBLOCK_JARRED_NODE;
 
     public static final Block STRUCTURE_MARKER_HOLDER = new BlockStructureMarker();
-    public static final Block BlockNodeCharger = new BlockNodeCharger().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block BlockNodeCharger = new BlockNodeTransducer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block WAND_WORKBENCH = new BlockWandWorkbench().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -96,12 +98,13 @@ public class ModBlocks {
             VisPlant,
             RubyOre,
             RubyBlock,
-            OldPlank,
+            // OldPlank,
             nodeStabilizer,
             buffnodeStabilizer,
             JARRED_NODE,
             STRUCTURE_MARKER_HOLDER        ,
-            BlockNodeCharger
+            BlockNodeCharger,
+            WAND_WORKBENCH
         );
 
         if (BlockImmortalizer != null) {
@@ -141,11 +144,12 @@ public class ModBlocks {
             new ItemBlock(VisPlant).setRegistryName(VisPlant.getRegistryName()),
             new ItemBlock(RubyOre).setRegistryName(RubyOre.getRegistryName()),
             new ItemBlock(RubyBlock).setRegistryName(RubyBlock.getRegistryName()),
-            new ItemBlock(OldPlank).setRegistryName(OldPlank.getRegistryName()),
+            // new ItemBlock(OldPlank).setRegistryName(OldPlank.getRegistryName()),
             new ItemBlock(nodeStabilizer).setRegistryName(nodeStabilizer.getRegistryName()),
             new ItemBlock(buffnodeStabilizer).setRegistryName(buffnodeStabilizer.getRegistryName()),
             new ItemBlock(STRUCTURE_MARKER_HOLDER).setRegistryName(STRUCTURE_MARKER_HOLDER.getRegistryName()),
             new ItemBlock(BlockNodeCharger).setRegistryName(BlockNodeCharger.getRegistryName()),
+            new ItemBlock(WAND_WORKBENCH).setRegistryName(WAND_WORKBENCH.getRegistryName()),
 
             
 
@@ -192,9 +196,10 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VisPlant), 0, "thaumicforever:vis_plant");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyOre), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyBlock), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OldPlank), 0, "inventory");
+        // ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OldPlank), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(JARRED_NODE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(STRUCTURE_MARKER_HOLDER), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(WAND_WORKBENCH), 0, "inventory");
 
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BlockNodeCharger), 0, new ModelResourceLocation("thaumicforever:node_transducer", "inventory"));
 

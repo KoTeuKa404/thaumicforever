@@ -4,14 +4,14 @@ mouseSensitivity:0.5
 fov:0.25
 gamma:1.0
 saturation:0.0
-renderDistance:6
+renderDistance:9
 guiScale:0
 particles:0
 bobView:true
 anaglyph3d:false
 maxFps:260
 fboEnable:true
-difficulty:0
+difficulty:2
 fancyGraphics:true
 ao:0
 renderClouds:false
@@ -115,7 +115,7 @@ key_key.journeymap.zoom_in:13
 key_key.journeymap.zoom_out:12
 key_key.journeymap.minimap_type:26
 key_key.journeymap.minimap_preset:43
-key_key.journeymap.create_waypoint:0
+key_key.journeymap.create_waypoint:48
 key_key.journeymap.toggle_waypoints:44
 key_key.journeymap.fullscreen_create_waypoint:48
 key_key.journeymap.fullscreen_chat_position:46
@@ -127,8 +127,8 @@ key_key.journeymap.fullscreen.north:200
 key_key.journeymap.fullscreen.south:208
 key_key.journeymap.fullscreen.east:205
 key_key.journeymap.fullscreen.west:203
-soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_master:0.08278146
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

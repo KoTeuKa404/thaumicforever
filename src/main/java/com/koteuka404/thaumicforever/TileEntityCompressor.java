@@ -32,7 +32,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
 
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
-            return isValidInput(stack);
+            return isValidInput(stack) || isThauminite(stack);
         }
     };
 
@@ -44,7 +44,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
 
         @Override
         public boolean isItemValid(int slot, ItemStack stack) {
-            return false; 
+            return false;
         }
 
         @Override
@@ -54,43 +54,68 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
     };
 
     private int compressTime = 0;
-    private ItemStack selectedPlate = ItemStack.EMPTY;  
-    private ItemStack lastInput = ItemStack.EMPTY;  
-    private int mechanismEssentia = 0; 
-    private static final int MAX_MECHANISM_ESSENTIA = 100; 
-    private static final int ESSENTIA_COST_PER_PLATE = 10; 
+    private ItemStack selectedPlate = ItemStack.EMPTY;
+    private ItemStack lastInput = ItemStack.EMPTY;
+
+    private int mechanismEssentia = 0;
+    private static final int MAX_MECHANISM_ESSENTIA = 100;
+    private static final int ESSENTIA_COST_PER_PLATE = 10;
 
     @Override
     public void update() {
         if (!world.isRemote) {
-            fillWithEssentia(); 
+            fillWithEssentia();
 
-            ItemStack input = inputHandler.getStackInSlot(0);  
-            ItemStack output = outputHandler.getStackInSlot(0);  
+            ItemStack input  = inputHandler.getStackInSlot(0);
+            ItemStack output = outputHandler.getStackInSlot(0);
 
             if (!ItemStack.areItemsEqual(input, lastInput)) {
-                selectedPlate = ItemStack.EMPTY;
-                lastInput = input.copy();
+                lastInput = input.isEmpty() ? ItemStack.EMPTY : input.copy();
+
+                if (!input.isEmpty() && !selectedPlate.isEmpty()) {
+                    if (!isSelectedPlateCompatibleWithInput(input)) {
+                        selectedPlate = ItemStack.EMPTY;
+                    }
+                }
+
                 markDirty();
             }
 
-            if (!input.isEmpty() && (isValidInput(input) && !selectedPlate.isEmpty() || isThauminite(input))) {
-                if (!output.isEmpty() && !isSameMaterial(selectedPlate, output)) {
-                    return; 
-                }
-
-                int requiredTime = hasEnoughEssentia() ? 20 : 80; 
-                compressTime++;
-
-                if (compressTime >= requiredTime) {
-                    compressItem(input);
-                    compressTime = 0;
-                    if (hasEnoughEssentia()) {
-                        consumeEssentia(); 
-                    }
-                }
-            } else {
+            if (input.isEmpty()) {
                 compressTime = 0;
+                return;
+            }
+
+            boolean isThaumIngot  = isThauminite(input);
+            boolean isNormalIngot =
+                    isValidInput(input)
+                    && !selectedPlate.isEmpty()
+                    && isSelectedPlateCompatibleWithInput(input);
+
+            if (!(isNormalIngot || isThaumIngot)) {
+                compressTime = 0;
+                return;
+            }
+
+            if (!output.isEmpty()) {
+                ItemStack expected = isThaumIngot
+                        ? new ItemStack(Item.getByNameOrId("thaumicbases:thauminite_plate"))
+                        : selectedPlate;
+
+                if (!output.isItemEqual(expected)) {
+                    return;
+                }
+            }
+
+            int requiredTime = hasEnoughEssentia() ? 20 : 80;
+            compressTime++;
+
+            if (compressTime >= requiredTime) {
+                compressItem(input);
+                compressTime = 0;
+                if (hasEnoughEssentia()) {
+                    consumeEssentia();
+                }
             }
         }
     }
@@ -105,25 +130,24 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
             }
 
             if (!output.isEmpty() && output.isItemEqual(plateToCreate)) {
-                output.grow(1); 
-                outputHandler.setStackInSlot(0, output); 
+                output.grow(1);
+                outputHandler.setStackInSlot(0, output);
             } else if (output.isEmpty()) {
                 outputHandler.setStackInSlot(0, plateToCreate.copy());
             }
 
-            inputHandler.extractItem(0, 1, false); 
-            markDirty(); 
+            inputHandler.extractItem(0, 1, false);
+            markDirty();
             if (!world.isRemote) {
-            world.playSound(
-                null,                        
-                pos,                          
-                SoundEvents.BLOCK_ANVIL_USE, 
-                SoundCategory.BLOCKS,       
-                0.5F,                      
-                1.0F                         
-            );
-        }
-    
+                world.playSound(
+                        null,
+                        pos,
+                        SoundEvents.BLOCK_ANVIL_USE,
+                        SoundCategory.BLOCKS,
+                        0.5F,
+                        1.0F
+                );
+            }
         }
     }
 
@@ -143,7 +167,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
                         mechanismEssentia += taken;
                         if (mechanismEssentia >= MAX_MECHANISM_ESSENTIA) {
                             mechanismEssentia = MAX_MECHANISM_ESSENTIA;
-                            break; 
+                            break;
                         }
                     }
                 }
@@ -152,12 +176,13 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
         markDirty();
     }
 
-    private boolean isThauminite(ItemStack stack) {
+    private static boolean isThauminite(ItemStack stack) {
         if (stack == null || stack.isEmpty()) {
             return false;
         }
         String itemName = stack.getItem().getRegistryName().toString();
-        return itemName.equals("thaumicbases:thauminite_ingot") || itemName.equals("thaumicbases:thauminite_plate");
+        return itemName.equals("thaumicbases:thauminite_ingot")
+                || itemName.equals("thaumicbases:thauminite_plate");
     }
 
     @Override
@@ -166,59 +191,50 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
     }
 
     public static boolean isValidInput(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) return false;
         int[] oreIds = OreDictionary.getOreIDs(stack);
         for (int id : oreIds) {
             String oreName = OreDictionary.getOreName(id);
-            if (oreName.startsWith("ingot")) { 
+            if (oreName.startsWith("ingot")) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean isSameMaterial(ItemStack input, ItemStack output) {
-        if (input == null || output == null || input.isEmpty() || output.isEmpty()) {
-            return false;
-        }
-
-        if (isThauminite(input) && isThauminite(output)) {
-            return true; 
-        }
-
-        int[] inputOreIds = OreDictionary.getOreIDs(input);
-        int[] outputOreIds = OreDictionary.getOreIDs(output);
-
-        for (int inputId : inputOreIds) {
-            for (int outputId : outputOreIds) {
-                if (inputId == outputId) {
-                    return true; 
-                }
-            }
-        }
-        return false; 
-    }
-
-    public List<ItemStack> getPlateOptions() {
-        ItemStack input = inputHandler.getStackInSlot(0); 
+    private List<ItemStack> getPlateOptionsFor(ItemStack input) {
         List<ItemStack> plateOptions = new ArrayList<>();
-
         if (!input.isEmpty()) {
             int[] oreIds = OreDictionary.getOreIDs(input);
             for (int id : oreIds) {
                 String oreName = OreDictionary.getOreName(id);
                 if (oreName.startsWith("ingot")) {
                     String plateName = "plate" + oreName.substring(5);
-                    plateOptions.addAll(OreDictionary.getOres(plateName));  
+                    plateOptions.addAll(OreDictionary.getOres(plateName));
                 }
             }
         }
-
         return plateOptions;
     }
 
+    public List<ItemStack> getPlateOptions() {
+        return getPlateOptionsFor(inputHandler.getStackInSlot(0));
+    }
+
+    private boolean isSelectedPlateCompatibleWithInput(ItemStack input) {
+        if (selectedPlate.isEmpty() || input.isEmpty()) return false;
+
+        for (ItemStack opt : getPlateOptionsFor(input)) {
+            if (OreDictionary.itemMatches(opt, selectedPlate, false)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void setSelectedPlate(ItemStack plate) {
-        this.selectedPlate = plate;
-        markDirty(); 
+        this.selectedPlate = plate.copy();
+        markDirty();
     }
 
     public ItemStack getSelectedPlate() {
@@ -265,7 +281,7 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
 
     @Override
     public int takeEssentia(Aspect aspect, int amount, EnumFacing face) {
-        return 0; 
+        return 0;
     }
 
     @Override
@@ -331,15 +347,19 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
         if (compound.hasKey("SelectedPlate")) {
             NBTTagCompound selectedPlateTag = compound.getCompoundTag("SelectedPlate");
             selectedPlate = new ItemStack(selectedPlateTag);
+        } else {
+            selectedPlate = ItemStack.EMPTY;
         }
 
         if (compound.hasKey("LastInput")) {
             NBTTagCompound lastInputTag = compound.getCompoundTag("LastInput");
             lastInput = new ItemStack(lastInputTag);
+        } else {
+            lastInput = ItemStack.EMPTY;
         }
 
         this.mechanismEssentia = compound.getInteger("MechanismEssentia");
-        markDirty(); 
+        markDirty();
     }
 
     public ItemStackHandler getInventory() {
@@ -350,7 +370,11 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
         if (world.getTileEntity(pos) != this) {
             return false;
         } else {
-            return player.getDistanceSq((double) pos.getX() + 0.5D, (double) pos.getY() + 0.5D, (double) pos.getZ() + 0.5D) <= 64.0D;
+            return player.getDistanceSq(
+                    (double) pos.getX() + 0.5D,
+                    (double) pos.getY() + 0.5D,
+                    (double) pos.getZ() + 0.5D
+            ) <= 64.0D;
         }
     }
 
@@ -376,17 +400,17 @@ public class TileEntityCompressor extends TileEntity implements ITickable, IEsse
 
     private IItemHandler getSidedHandler(EnumFacing facing) {
         if (facing == EnumFacing.DOWN) {
-            return outputHandler; 
+            return outputHandler;
         } else {
-            return inputHandler; 
+            return inputHandler;
         }
     }
+
     public ItemStackHandler getInputHandler() {
         return inputHandler;
     }
-    
+
     public ItemStackHandler getOutputHandler() {
         return outputHandler;
     }
-    
 }

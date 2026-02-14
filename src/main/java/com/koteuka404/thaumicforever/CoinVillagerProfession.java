@@ -4,6 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
@@ -29,6 +30,15 @@ public class CoinVillagerProfession {
                 recipeList.add(new MerchantRecipe(
                     new ItemStack(ModItems.coin, 2),
                     new ItemStack(Items.GOLD_INGOT, 3)
+                ));
+            }
+        });
+        career.addTrade(1, new EntityVillager.ITradeList() {
+            @Override
+            public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
+                recipeList.add(new MerchantRecipe(
+                    new ItemStack(Blocks.GOLD_BLOCK, 2),
+                    new ItemStack(ModItems.coin, 2)
                 ));
             }
         });

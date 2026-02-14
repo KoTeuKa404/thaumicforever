@@ -1,10 +1,12 @@
 package com.koteuka404.thaumicforever;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.items.ItemsTC;
 
 public class AspectAdder {
     
@@ -20,7 +22,8 @@ public class AspectAdder {
     public void registerAspects() {
         // DOUBLE_TABLE: PLANT * 8
         AspectList doubleTableAspects = new AspectList();
-        doubleTableAspects.add(Aspect.PLANT, 8);
+        doubleTableAspects.add(Aspect.PLANT, 14);
+        doubleTableAspects.add(Aspect.LIFE, 6);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.DOUBLE_TABLE), doubleTableAspects);
 
         // AQUAREIA_ORE: CRYSTAL * 13, EARTH * 5
@@ -189,7 +192,7 @@ public class AspectAdder {
         AspectList banana = new AspectList();
         banana.add(need, 1);
         banana.add(victus, 5);
-        banana.add(herba, 5);
+        banana.add(herba, 2);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.banana), banana);
 
         Aspect metall = Aspect.METAL;
@@ -278,5 +281,38 @@ public class AspectAdder {
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.holywater), holywater);
 
 
+
+
+        ItemStack dstStack = new ItemStack(ModItems.MAGIC_DUST);
+        ItemStack slsFStack = new ItemStack(ItemsTC.salisMundus);
+        AspectList mgdstAspects = new AspectList(dstStack);
+        AspectList slsStack = new AspectList(slsFStack);
+        AspectList magicsstAspects = new AspectList();
+        magicsstAspects.add(mgdstAspects);
+        magicsstAspects.add(slsStack);
+        magicsstAspects.add(Aspect.MAGIC, 2);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.MAGIC_DUST), magicsstAspects);
+
+
+        ItemStack ironancStack = new ItemStack(Blocks.IRON_ORE);
+        AspectList ironancbStack = new AspectList(ironancStack);
+        AspectList ANCIENT_IRON = new AspectList();
+        ANCIENT_IRON.add(ironancbStack);
+        ANCIENT_IRON.add(ironancbStack);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModOreBlocks.ANCIENT_IRON), ANCIENT_IRON);
+
+        ItemStack goldancStack = new ItemStack(Blocks.GOLD_ORE);
+        AspectList goldancbStack = new AspectList(goldancStack);
+        AspectList ANCIENT_GOLD = new AspectList();
+        ANCIENT_GOLD.add(goldancbStack);
+        ANCIENT_GOLD.add(goldancbStack);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModOreBlocks.ANCIENT_GOLD), ANCIENT_GOLD);
+
+        ItemStack coalancStack = new ItemStack(Blocks.COAL_ORE);
+        AspectList coalancbStack = new AspectList(coalancStack);
+        AspectList ANCIENT_COAL = new AspectList();
+        ANCIENT_COAL.add(coalancbStack);
+        ANCIENT_COAL.add(coalancbStack);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModOreBlocks.ANCIENT_COAL), ANCIENT_COAL);
     }
 }

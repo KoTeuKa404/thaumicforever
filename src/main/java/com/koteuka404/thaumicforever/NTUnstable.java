@@ -21,8 +21,10 @@ public class NTUnstable extends NTNormal {
             Aspect[] aspects = node.getNodeAspects().getAspects();
             if (aspects.length > 0) {
                 Aspect aspect = aspects[node.world.rand.nextInt(aspects.length)];
+                int amt = node.getNodeAspects().getAmount(aspect);
 
-   
+                if (amt < 2) return;
+
                 if (!aspect.isPrimal()) {
                     Aspect[] comps = aspect.getComponents();
                     if (comps != null && comps.length > 0) {
@@ -34,10 +36,9 @@ public class NTUnstable extends NTNormal {
                 }
                 node.getNodeAspects().reduce(aspect, 1);
                 node.getOriginalAspects().reduce(aspect, 1);
-
-             
                 node.updateSyncAspects();
             }
+
         }
     }
 

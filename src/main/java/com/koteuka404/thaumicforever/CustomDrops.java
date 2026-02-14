@@ -34,7 +34,7 @@ public class CustomDrops {
         EntityPlayer player = event.getHarvester();
 
         if (world.isRemote || player == null) {
-            return; 
+            return;
         }
 
         if (event.getState().getBlock() == BlocksTC.stonePorous) {
@@ -45,13 +45,13 @@ public class CustomDrops {
         if (event.getState().getBlock() == Blocks.LEAVES) {
 
             if (event.getState().getValue(BlockOldLeaf.VARIANT) == BlockPlanks.EnumType.JUNGLE) {
-                if (RANDOM.nextFloat() < 0.15f) { 
+                if (RANDOM.nextFloat() < 0.15f) {
                     event.getDrops().add(new ItemStack(ModItems.banana, 1));
                 }
             }
         }
         if (event.getState().getBlock().getRegistryName() != null&& "thaumicbases:enderleaves".equals(event.getState().getBlock().getRegistryName().toString())) {
-            float dropChance = 0.1f; 
+            float dropChance = 0.15f;
             if (RANDOM.nextFloat() < dropChance) {
                 event.getDrops().add(new ItemStack(Items.ENDER_PEARL, 1));
             }
@@ -69,20 +69,30 @@ public class CustomDrops {
         }
 
         if (world.isRemote) {
-            return; 
+            return;
         }
 
         if (entity instanceof EntityThaumicSlime) {
             int size = ((EntityThaumicSlime) entity).getSlimeSize();
+    
+            event.getDrops().clear();
+    
             for (int i = 0; i < size; i++) {
-                EntityItem drop = new EntityItem(world, entity.posX, entity.posY, entity.posZ, new ItemStack(ModItems.taint_slime));
+                EntityItem drop = new EntityItem(
+                    entity.world,
+                    entity.posX,
+                    entity.posY,
+                    entity.posZ,
+                    new ItemStack(ModItems.taint_slime)
+                );
                 event.getDrops().add(drop);
             }
         }
+    
 
         if (entity instanceof EntityCultist || entity instanceof EntityCultistCleric || entity instanceof EntityCultistKnight) {
             float luck = (attacker != null) ? attacker.getLuck() : 0;
-            float dropChance = 0.1f + (luck * 0.04f); 
+            float dropChance = 0.22f + (luck * 0.04f);
             
             if (RANDOM.nextFloat() < dropChance) {
                 EntityItem drop = new EntityItem(world, entity.posX, entity.posY, entity.posZ, new ItemStack(ModItems.lootbag));

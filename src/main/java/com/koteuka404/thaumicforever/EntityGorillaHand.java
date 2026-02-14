@@ -22,7 +22,7 @@ public class EntityGorillaHand extends EntityThrowable {
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 6.0F);
         }
         if (!this.world.isRemote) {
-            this.setDead(); 
+            this.setDead();
         }
     }
 }

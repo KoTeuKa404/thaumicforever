@@ -1,6 +1,12 @@
 {
-    "parent": "thaumcraft:item/caster_gauntlet_focus",
-    "textures": {
-        "skin": "thaumicforever:entity/caster_advanced"
+  "parent": "thaumcraft:item/caster_gauntlet",
+  "textures": {
+    "skin": "thaumicforever:entity/caster_advanced"
+  },
+  "overrides": [
+    {
+      "predicate": { "thaumicforever:has_focus": 1 },
+      "model": "thaumicforever:item/caster_advanced_focus"
     }
+  ]
 }

@@ -47,6 +47,7 @@ public class TileNodeStabilizer extends TileThaumcraft implements ITickable {
                 an.stablized = !notFirst;
                 Vec3d v1 = new Vec3d(this.pos.getX() + 0.5, this.pos.getY() + 1.5, this.pos.getZ() + 0.5);
                 double d = v1.squareDistanceTo(v2 = new Vec3d(an.posX, an.posY, an.posZ));
+                
                 if (d > 0.001) {
                     v1 = v1.subtract(v2).normalize();
                     if (notFirst) {

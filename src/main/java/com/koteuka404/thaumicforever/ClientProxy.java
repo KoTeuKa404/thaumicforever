@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -18,6 +19,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.common.items.casters.ItemFocus;
+import thaumcraft.client.lib.events.TFHudHandler;
+
+import java.lang.reflect.Method;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -29,12 +34,12 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void preInit(FMLPreInitializationEvent event) {
-        super.preInit(event); 
+        super.preInit(event);
         OBJLoader.INSTANCE.addDomain(ThaumicForever.MODID);
 
         registerRenderers();
-               
-        MinecraftForge.EVENT_BUS.register(this); 
+
+        MinecraftForge.EVENT_BUS.register(this);
         if (ModItems.hand != null) {
             ModItems.hand.setTileEntityItemStackRenderer(new GorillaHandTileEntityItemStackRenderer());
         }
@@ -46,29 +51,32 @@ public class ClientProxy extends CommonProxy {
     }
 
     
+    
 
     @Override
     public void init(FMLInitializationEvent event) {
-        super.init(event); 
+        super.init(event);
+        TFHudHandler.install();
         KeyBindings.register();
-        MinecraftForge.EVENT_BUS.register(new KeyInputHandler()); 
+        MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
         if (ModItems.hand != null) {
             ModItems.hand.setTileEntityItemStackRenderer(new GorillaHandTileEntityItemStackRenderer());
-        }         
+        }
         MinecraftForge.EVENT_BUS.register(new GuiTabHandler());
         // MinecraftForge.EVENT_BUS.register(new CustomHelmetRenderHandler());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileNodeStabilizer.class, new TileNodeStabilizerRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileBuffNodeStabilizer.class, new TileBuffNodeStabilizerRenderer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileInvertedBuffNodeStabilizer.class, new TileInvertedBuffNodeStabilizerRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileNodeTransducer.class, new TileNodeTransducerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJarredNode.class, new RenderTileJarredNode());
         ClientRegistry.bindTileEntitySpecialRenderer(TilePort.class, new TilePortRenderer());
 
-// 
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityAuraNode.class, new RenderAuraNode(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNodeMagnet.class, new RenderNodeMagnet(Minecraft.getMinecraft().getRenderManager()));
         ModBlocks.ITEMBLOCK_JARRED_NODE.setTileEntityItemStackRenderer(new JarredNodeItemRenderer());
+        MinecraftForge.EVENT_BUS.register(new AquareiaGogglesRenderLayerHandler());
 
-       
+
     }
 
     private void registerRenderers() {
@@ -107,24 +115,24 @@ public class ClientProxy extends CommonProxy {
             }
             return -1;
         }, ModItems.FOCUS_COMPLEX);
+
+        itemColors.registerItemColorHandler((stack, tintIndex) -> {
+            if (tintIndex != 1) return -1;
+            if (!(stack.getItem() instanceof ItemCustomCaster)) return -1;
+
+            ItemCustomCaster caster = (ItemCustomCaster) stack.getItem();
+            ItemStack focusStack = caster.getFocusStack(stack);
+            if (focusStack.isEmpty() || !(focusStack.getItem() instanceof ItemFocus)) return -1;
+
+            ItemFocus focus = (ItemFocus) focusStack.getItem();
+            try {
+                Method m = ItemFocus.class.getMethod("getFocusColor", ItemStack.class);
+                return (int) m.invoke(focus, focusStack);
+            } catch (Exception e) {
+                return -1;
+            }
+        }, ModItems.CUSTOM_CASTER);
     }
-
-
-
-    // @SubscribeEvent
-    // @SideOnly(Side.CLIENT)
-    // public void onModelBakeEvent(ModelBakeEvent event) {
-    //     try {
-    //         IModel model = OBJLoader.INSTANCE.loadModel(new ResourceLocation("thaumicforever:models/item/monkey_paw.obj"));
-    //         event.getModelRegistry().putObject(
-    //             new ModelResourceLocation("thaumicforever:monkey_paw", "inventory"),
-    //             model.bake(model.getDefaultState(), DefaultVertexFormats.ITEM, location -> Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(location.toString()))
-    //         );
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -134,8 +142,6 @@ public class ClientProxy extends CommonProxy {
             ModBlocks.ITEMBLOCK_JARRED_NODE.setTileEntityItemStackRenderer(new JarredNodeItemRenderer());
         }
     }
-
-
 
 
 }

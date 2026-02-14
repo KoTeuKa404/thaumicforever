@@ -18,6 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class BlockCompressor extends Block {
 
@@ -44,7 +45,8 @@ public class BlockCompressor extends Block {
     }
 
     @Override
-    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing,
+                                           float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing());
     }
 
@@ -54,7 +56,9 @@ public class BlockCompressor extends Block {
     }
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state,
+                                    EntityPlayer player, EnumHand hand, EnumFacing facing,
+                                    float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
             TileEntity tileEntity = world.getTileEntity(pos);
             if (tileEntity instanceof TileEntityCompressor) {
@@ -86,19 +90,30 @@ public class BlockCompressor extends Block {
 
     @Override
     public void breakBlock(World world, BlockPos pos, IBlockState state) {
-        TileEntity tileEntity = world.getTileEntity(pos);
-        if (tileEntity instanceof TileEntityCompressor) {
-            TileEntityCompressor compressor = (TileEntityCompressor) tileEntity;
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof TileEntityCompressor) {
+            TileEntityCompressor compressor = (TileEntityCompressor) te;
 
-            for (int i = 0; i < compressor.getInventory().getSlots(); i++) {
-                ItemStack stack = compressor.getInventory().getStackInSlot(i);
-                if (!stack.isEmpty()) {
-                    InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-                }
-            }
+            // drop INPUT
+            dropHandler(world, pos, compressor.getInputHandler());
+
+            // drop OUTPUT
+            dropHandler(world, pos, compressor.getOutputHandler());
         }
 
         super.breakBlock(world, pos, state);
+    }
+
+    private static void dropHandler(World world, BlockPos pos, ItemStackHandler handler) {
+        if (handler == null) return;
+
+        for (int i = 0; i < handler.getSlots(); i++) {
+            ItemStack stack = handler.getStackInSlot(i);
+            if (!stack.isEmpty()) {
+                InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), stack.copy());
+                handler.setStackInSlot(i, ItemStack.EMPTY);
+            }
+        }
     }
 
     @Override

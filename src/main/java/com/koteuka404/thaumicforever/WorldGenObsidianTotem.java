@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever;
 
+import java.util.Collections;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -43,7 +44,7 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
     
     
     private void spawnSinisterNodeInTotemFromTemplate(World world, BlockPos origin, Template template) {
-        Block obsidianTotem = ModBlocks.OBSIDIAN_TOTEM; 
+        Block obsidianTotem = ModBlocks.OBSIDIAN_TOTEM;
         for (int x = 0; x < template.getSize().getX(); x++) {
             for (int y = 0; y < template.getSize().getY(); y++) {
                 for (int z = 0; z < template.getSize().getZ(); z++) {
@@ -60,15 +61,17 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
                         node.getNodeAspects().aspects.clear();
                         Aspect aspect = rand.nextBoolean() ? Aspect.DARKNESS : Aspect.UNDEAD;
                         node.getNodeAspects().add(aspect, size);
+                        node.setFixedAspectOrder(Collections.singletonList(aspect));
                         node.updateSyncAspects();
                         node.enforceAspectLimit();
                         if (!world.isRemote) world.spawnEntity(node);
-                        // return; 
+                        return; 
                     }
                 }
             }
         }
     }
+    
     
 
     private void buryChest(World world, BlockPos chestPos) {
@@ -208,11 +211,15 @@ public class WorldGenObsidianTotem implements IWorldGenerator {
 
     private boolean isSolidBlockBelow(World world, BlockPos pos) {
         Block blockBelow = world.getBlockState(pos).getBlock();
-        if (blockBelow == Blocks.LOG || blockBelow == Blocks.LOG2 || blockBelow == Blocks.LEAVES || blockBelow == Blocks.LEAVES2) {
+        if (
+            blockBelow == Blocks.LOG || blockBelow == Blocks.LOG2 ||
+            blockBelow == Blocks.LEAVES || blockBelow == Blocks.LEAVES2
+        ) {
             return false;
         }
         return blockBelow != Blocks.WATER && blockBelow != Blocks.FLOWING_WATER && blockBelow.getMaterial(world.getBlockState(pos)).isSolid();
     }
+    
     
 
     private boolean isAreaClear(World world, BlockPos pos, int width, int height) {

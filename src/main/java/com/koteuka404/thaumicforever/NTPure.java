@@ -56,3 +56,4 @@ public class NTPure extends NTNormal {
         // no-op
     }
 }
+

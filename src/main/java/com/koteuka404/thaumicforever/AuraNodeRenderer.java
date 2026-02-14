@@ -19,7 +19,7 @@ public class AuraNodeRenderer extends Render<AuraNodeEntity> {
         new ResourceLocation("thaumicforever", "textures/misc/aura_3.png")
     };
     private static final float CYCLE = 30.0f;
-    private static final float SCALE = 2.5f;  
+    private static final float SCALE = 2.5f;
 
     public AuraNodeRenderer(RenderManager renderManager) {
         super(renderManager);
@@ -27,7 +27,7 @@ public class AuraNodeRenderer extends Render<AuraNodeEntity> {
 
     @Override
     public void doRender(AuraNodeEntity entity, double x, double y, double z,
-                         float entityYaw, float partialTicks) {
+                        float entityYaw, float partialTicks) {
         EntityPlayer player = Minecraft.getMinecraft().player;
         if (!ItemAquareiaGoggles.shouldRenderHud(player)) {
             return;
@@ -51,7 +51,7 @@ public class AuraNodeRenderer extends Render<AuraNodeEntity> {
         for (int layer = 0; layer < 3; layer++) {
             float pulse = (float)(Math.sin(time/10.0 + layer) * 0.1);
             float baseSize = 0.5f + layer * 0.25f + pulse;
-            float size = baseSize * SCALE;  
+            float size = baseSize * SCALE;
             float alpha = 1.0f - Math.min(1.0f, entity.getDistance(player) / 30.0f);
             alpha *= (1.0f - layer * 0.3f);
 

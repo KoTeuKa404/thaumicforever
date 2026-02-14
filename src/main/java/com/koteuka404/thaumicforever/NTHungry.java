@@ -17,8 +17,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
@@ -26,25 +24,39 @@ import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.common.world.aura.AuraHandler;
 
 public class NTHungry extends NTNormal {
-    public NTHungry(int id) {
-        super(id);
-    }
-    private final Map<UUID, Integer> entityTicksInRange = new HashMap<>();
+    public NTHungry(int id) { super(id); }
 
     private int getHungryRange(EntityAuraNode node) {
         int base = 3;
         int modifier = Math.max(0, node.getNodeSize() / 10);
-        return Math.min(11, base + modifier);
+        return Math.min(MAX_PULL_RADIUS, base + modifier);
+    }
+
+    private static final int  DAMAGE_TICK_DELAY = 7;          
+    private static final float DAMAGE_SCALE     = 1.0f/1.5f;   
+
+    private static final double DESIRED_SPEED_BASE  = 0.22;    
+    private static final double DESIRED_SPEED_BONUS = 0.24;   
+    private static final double STEER_GAIN          = 0.35;    
+    private static final double MIN_VERTICAL_LIFT   = 0.10;    
+    private static final double MAX_SPEED           = 0.90;   
+    private static final int MAX_PULL_RADIUS = 8;
+
+    private final Map<UUID, Long> lastHitTickByEntity = new HashMap<>();
+
+    private static Vec3d nodeCenter(EntityAuraNode node) {
+        return new Vec3d(node.posX + 0.5, node.posY + 0.6, node.posZ + 0.5);
     }
 
     @Override
     void performTickEvent(EntityAuraNode node) {
         World world = node.world;
-        double cx = node.posX + 0.5;
-        double cy = node.posY + 0.5;
-        double cz = node.posZ + 0.5;
-        int pullRadius = getHungryRange(node);
+        if (world.isRemote) return;
 
+        Vec3d c = nodeCenter(node);
+        double cx = c.x, cy = c.y, cz = c.z;
+
+        int pullRadius = getHungryRange(node);
         AxisAlignedBB box = new AxisAlignedBB(
             cx - pullRadius, cy - pullRadius, cz - pullRadius,
             cx + pullRadius, cy + pullRadius, cz + pullRadius
@@ -53,106 +65,79 @@ public class NTHungry extends NTNormal {
         List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, box);
         for (EntityItem item : items) {
             Vec3d pos = new Vec3d(item.posX, item.posY, item.posZ);
-            Vec3d center = new Vec3d(cx, cy, cz);
-            double dist = pos.distanceTo(center);
+            double dist = pos.distanceTo(c);
             if (dist > 0.12) {
-                Vec3d diff = center.subtract(pos).normalize();
-                double factor = (1.0 - dist / pullRadius);
-                double baseStrength = 0.17;
-                double minStrength = 0.038;
-                double yBoost = 1.6;
-
-                double strength = Math.max(minStrength, baseStrength * factor);
-
-                item.motionX += diff.x * strength;
-                item.motionY += diff.y * strength * yBoost;
-                item.motionZ += diff.z * strength;
+                Vec3d dir = c.subtract(pos).normalize();
+                double factor = Math.max(0.0, 1.0 - Math.min(dist, pullRadius) / pullRadius);
+                double strength = Math.max(0.030, 0.13 * factor); 
+                item.motionX += dir.x * strength;
+                item.motionY += dir.y * strength * 1.45;        
+                item.motionZ += dir.z * strength;
                 item.velocityChanged = true;
             }
         }
 
-        final int DAMAGE_TICK_DELAY = 10;
         List<EntityLivingBase> living = world.getEntitiesWithinAABB(EntityLivingBase.class, box);
 
         float nodeCore = 0.8f + node.getNodeSize() * 0.08f;
-        float damageRadius = nodeCore * 2.0f;
-        damageRadius = Math.min(damageRadius, 2.0f);
-
+        float oldRadius = Math.min(2.0f, nodeCore * 2.0f);
+        float damageRadius = Math.max(0.25f, oldRadius - 1.0f);
         AxisAlignedBB damageBox = new AxisAlignedBB(
             cx - damageRadius, cy - damageRadius, cz - damageRadius,
             cx + damageRadius, cy + damageRadius, cz + damageRadius
         );
 
         for (EntityLivingBase ent : living) {
-            if (ent instanceof net.minecraft.entity.player.EntityPlayer && ((net.minecraft.entity.player.EntityPlayer)ent).isCreative()) continue;
+            if (ent instanceof net.minecraft.entity.player.EntityPlayer &&
+                ((net.minecraft.entity.player.EntityPlayer)ent).isCreative()) continue;
+
             Vec3d pos = new Vec3d(ent.posX, ent.posY, ent.posZ);
-            Vec3d center = new Vec3d(cx, cy, cz);
-            double dist = pos.distanceTo(center);
+            double dist = pos.distanceTo(c);
 
-            if (dist > nodeCore * 0.5) {
-                Vec3d diff = center.subtract(pos).normalize();
-                double factor = (1.0 - dist / pullRadius);
-                double baseStrength = 0.14;
-                double minStrength = 0.048;
-                double yBoost = 1.7;
+            if (dist > 0.1) {
+                Vec3d dir = c.subtract(pos).normalize();
+                double factor = Math.max(0.0, 1.0 - Math.min(dist, pullRadius) / pullRadius);
+                double desiredSpeed = DESIRED_SPEED_BASE + DESIRED_SPEED_BONUS * factor;
+                Vec3d desiredVel = new Vec3d(dir.x * desiredSpeed, dir.y * desiredSpeed, dir.z * desiredSpeed);
 
-                double strength = Math.max(minStrength, baseStrength * factor);
+                ent.motionX += (desiredVel.x - ent.motionX) * STEER_GAIN;
+                ent.motionY += (desiredVel.y - ent.motionY) * STEER_GAIN;
+                ent.motionZ += (desiredVel.z - ent.motionZ) * STEER_GAIN;
 
-                ent.motionX += diff.x * strength;
-                ent.motionY += diff.y * strength * yBoost;
-                ent.motionZ += diff.z * strength;
-                ent.fallDistance = 0f;
-                ent.onGround = false;
-                ent.velocityChanged = true;
-            }
-
-            if (damageBox.intersects(ent.getEntityBoundingBox()) && ent.ticksExisted % DAMAGE_TICK_DELAY == 0) {
-                ent.hurtResistantTime = 0;
-                float damage = (1.0F + node.getNodeSize() * 0.08f) / 2.0f;
-                ent.attackEntityFrom(DamageSource.MAGIC, damage);
-            }
-        }
-
-        entityTicksInRange.keySet().removeIf(uuid ->
-            living.stream().noneMatch(ent -> ent.getUniqueID().equals(uuid))
-        );
-
-        if (world.isRemote) {
-            spawnHungryNodeParticles(node, pullRadius);
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    private static void spawnHungryNodeParticles(EntityAuraNode node, int pullRadius) {
-        Random rand = net.minecraft.client.Minecraft.getMinecraft().world.rand;
-        for (int i = 0; i < 2 + node.getNodeSize() / 10; i++) {
-            double angle = Math.random() * Math.PI * 2;
-            double radius = 0.15 + Math.random() * pullRadius * 0.8;
-            double px = node.posX + 0.5 + Math.cos(angle) * radius;
-            double py = node.posY + 0.2 + Math.random() * 0.5;
-            double pz = node.posZ + 0.5 + Math.sin(angle) * radius;
-            net.minecraft.client.Minecraft.getMinecraft().effectRenderer.addEffect(
-                new net.minecraft.client.particle.Particle(
-                    net.minecraft.client.Minecraft.getMinecraft().world,
-                    px, py, pz,
-                    0, 0, 0
-                ) {
-                    {
-                        this.particleRed = 0.0f;
-                        this.particleGreen = 0.0f;
-                        this.particleBlue = 0.0f;
-                        this.particleAlpha = 0.20f + rand.nextFloat() * 0.17f;
-                        this.particleScale = 0.14f + rand.nextFloat() * 0.15f;
-                        this.particleMaxAge = 16 + rand.nextInt(10);
-                    }
-
-                    @Override
-                    public int getFXLayer() {
-                        return 1;
-                    }
+                if (ent.onGround || ent.collidedHorizontally) {
+                    ent.motionY = Math.max(ent.motionY, MIN_VERTICAL_LIFT + 0.10 * factor);
                 }
-            );
+
+                ent.isAirBorne = true;
+                ent.onGround = false;
+                ent.fallDistance = 0f;
+                ent.velocityChanged = true;
+
+                double v2 = ent.motionX*ent.motionX + ent.motionY*ent.motionY + ent.motionZ*ent.motionZ;
+                double maxV2 = MAX_SPEED*MAX_SPEED;
+                if (v2 > maxV2) {
+                    double k = Math.sqrt(maxV2 / v2);
+                    ent.motionX *= k; ent.motionY *= k; ent.motionZ *= k;
+                }
+            }
+
+            boolean inDamage = damageBox.intersects(ent.getEntityBoundingBox())
+                             || dist <= (double)damageRadius * 0.85;
+            if (inDamage) {
+                long now  = world.getTotalWorldTime();
+                long last = lastHitTickByEntity.getOrDefault(ent.getUniqueID(), -1000L);
+                if (now - last >= DAMAGE_TICK_DELAY) {
+                    float base = (1.0F + node.getNodeSize() * 0.08f) / 2.0f;
+                    float dmg  = Math.min(3.0F, Math.max(0.5F, base * DAMAGE_SCALE));
+                    ent.attackEntityFrom(DamageSource.MAGIC, dmg);
+                    lastHitTickByEntity.put(ent.getUniqueID(), now);
+                }
+            }
         }
+
+        lastHitTickByEntity.keySet().removeIf(uuid ->
+            living.stream().noneMatch(e -> e.getUniqueID().equals(uuid))
+        );
     }
 
     @Override
@@ -161,9 +146,8 @@ public class NTHungry extends NTNormal {
         if (world.isRemote) return;
         Random rand = world.rand;
 
-        double cx = node.posX + 0.5;
-        double cy = node.posY + 0.5;
-        double cz = node.posZ + 0.5;
+        Vec3d c = nodeCenter(node);
+        double cx = c.x, cy = c.y, cz = c.z;
 
         double absorbRadius = 1.1;
         AxisAlignedBB absorbBox = new AxisAlignedBB(
@@ -174,7 +158,7 @@ public class NTHungry extends NTNormal {
         for (EntityItem ei : absorbItems) {
             ItemStack stack = ei.getItem();
             absorbStackAspects(node, stack, "[HungryNode] Поглинуто", stack.toString());
-            if (!world.isRemote && world instanceof net.minecraft.world.WorldServer) {
+            if (world instanceof net.minecraft.world.WorldServer) {
                 double nx = cx, ny = cy, nz = cz;
                 double ex = ei.posX, ey = ei.posY, ez = ei.posZ;
                 for (int i = 0; i < 6; i++) {
@@ -182,8 +166,7 @@ public class NTHungry extends NTNormal {
                     double py = ey + (ny - ey) * world.rand.nextDouble();
                     double pz = ez + (nz - ez) * world.rand.nextDouble();
                     ((net.minecraft.world.WorldServer) world).spawnParticle(
-                        EnumParticleTypes.SMOKE_NORMAL,
-                        px, py, pz, 1, 0, 0, 0, 0.08
+                        EnumParticleTypes.SMOKE_NORMAL, px, py, pz, 1, 0, 0, 0, 0.08
                     );
                 }
             }
@@ -202,6 +185,7 @@ public class NTHungry extends NTNormal {
                 world.setBlockToAir(below);
             }
         }
+
         int blockRadius = getHungryRange(node);
         BlockPos center = node.getPosition();
         BlockPos closestBlock = null;
@@ -213,13 +197,11 @@ public class NTHungry extends NTNormal {
                     if (bp.equals(center) || world.isAirBlock(bp)) continue;
                     IBlockState state = world.getBlockState(bp);
                     if (state.getMaterial().isLiquid()) continue;
-                    if (!state.getBlock().isFullBlock(state) || state.getBlockHardness(world, bp) < 0f || state.getBlockHardness(world, bp) > 5f)
-                        continue;
-                    double dist = bp.distanceSq(center);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        closestBlock = bp;
-                    }
+                    if (!state.getBlock().isFullBlock(state)
+                        || state.getBlockHardness(world, bp) < 0f
+                        || state.getBlockHardness(world, bp) > 5f) continue;
+                    double d2 = bp.distanceSq(center);
+                    if (d2 < minDist) { minDist = d2; closestBlock = bp; }
                 }
             }
         }
@@ -238,16 +220,15 @@ public class NTHungry extends NTNormal {
                     double py = ey + (cy - ey) * world.rand.nextDouble();
                     double pz = ez + (cz - ez) * world.rand.nextDouble();
                     ((net.minecraft.world.WorldServer) world).spawnParticle(
-                        EnumParticleTypes.SMOKE_NORMAL,
-                        px, py, pz, 1, 0, 0, 0, 0.11
+                        EnumParticleTypes.SMOKE_NORMAL, px, py, pz, 1, 0, 0, 0, 0.11
                     );
                 }
             }
         }
 
         int drain = calculateStrength(node);
-        float frac = (float)AuraHelper.getVis(world, node.getPosition()) /
-                     AuraHelper.getAuraBase(world, node.getPosition());
+        float frac = (float) AuraHelper.getVis(world, node.getPosition()) /
+                     Math.max(1f, AuraHelper.getAuraBase(world, node.getPosition()));
         if (rand.nextFloat() < frac && rand.nextInt(1 + node.getNodeSize() * 2) == 0) {
             AuraHandler.drainVis(world, node.getPosition(), drain, false);
             node.setNodeSize(node.getNodeSize() + 1);

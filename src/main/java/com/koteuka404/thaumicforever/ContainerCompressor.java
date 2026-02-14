@@ -19,7 +19,7 @@ public class ContainerCompressor extends Container {
         this.addSlotToContainer(new SlotItemHandler(tileEntity.getOutputHandler(), 0, 111, 16) {
             @Override
             public boolean isItemValid(ItemStack stack) {
-                return false; 
+                return false;
             }
         });
     

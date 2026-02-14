@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @EventBusSubscriber
 public class VoidRepairHandler {
 
-    private static final int REPAIR_INTERVAL = 40; 
+    private static final int REPAIR_INTERVAL = 40;
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent(priority = EventPriority.NORMAL, receiveCanceled = true)
@@ -24,7 +24,7 @@ public class VoidRepairHandler {
         ItemStack itemStack = event.getItemStack();
         if (EnumInfusionEnchantment.getInfusionEnchantmentLevel(itemStack, EnumInfusionEnchantment.VOIDREPAIR) > 0) {
             List<String> tooltip = event.getToolTip();
-            tooltip.add(TextFormatting.DARK_PURPLE + "Void Repair"); 
+            tooltip.add(TextFormatting.DARK_PURPLE + "Void Repair");
         }
     }
 
@@ -44,10 +44,10 @@ public class VoidRepairHandler {
     }
 
     private void repairItem(ItemStack itemStack, EntityPlayer player) {
-        if (itemStack != null && itemStack.isItemDamaged() 
+        if (itemStack != null && itemStack.isItemDamaged()
             && EnumInfusionEnchantment.getInfusionEnchantmentLevel(itemStack, EnumInfusionEnchantment.VOIDREPAIR) > 0) {
             if (player.world.getTotalWorldTime() % REPAIR_INTERVAL == 0) {
-                itemStack.setItemDamage(itemStack.getItemDamage() - 1); 
+                itemStack.setItemDamage(itemStack.getItemDamage() - 1);
             }
         }
     }

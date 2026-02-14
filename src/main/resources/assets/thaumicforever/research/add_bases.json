@@ -1,44 +1,44 @@
 {
     "entries" :[
     {
-        "key": "KNOWLEDGETYPE",    
+        "key": "KNOWLEDGETYPE",
         "name": "research.KNOWLEDGETYPES.title",
         "icons": [ "thaumcraft:textures/research/knowledge_theory.png" ],
-        "category": "BASICS", "location": [ 3,-2 ], 
-        "meta": [ "ROUND" , "HIDDEN" ],        
+        "category": "BASICS", "location": [ 3,-2 ],
+        "meta": [ "ROUND" , "HIDDEN" ],
         "parents": [ "RESEARCH" ],
 
         "stages": [{"text": "research.KNOWLEDGETYPES.stage.1"}]
     },
     {
-        "key": "THEORYRESEARCHE",    
+        "key": "THEORYRESEARCHE",
         "name": "research.THEORYRESEARCH.title",
         "icons": [ "thaumcraft:textures/research/knowledge_theory.png" ],
-        "category": "BASICS", "location": [ 5,-2 ], 
+        "category": "BASICS", "location": [ 5,-2 ],
         "parents": [ "KNOWLEDGETYPE" ],
-        "meta": [ "ROUND" , "HIDDEN" ],        
+        "meta": [ "ROUND" , "HIDDEN" ],
         "stages": [
             {
-                "text": "research.THEORYRESEARCH.stage.1",                     
-                "required_craft":["thaumcraft:scribing_tools","thaumcraft:research_table"], 
+                "text": "research.THEORYRESEARCH.stage.1",
+                "required_craft":["thaumcraft:scribing_tools","thaumcraft:research_table"],
                 "recipes": ["thaumcraft:tablewood","thaumcraft:inkwell"]
             },
             {
-                "text": "research.THEORYRESEARCH.stage.2", 
+                "text": "research.THEORYRESEARCH.stage.2",
                 "recipes": ["thaumcraft:tablewood","thaumcraft:inkwell"]
             }
         ]
     },
     {
-        "key": "CELESTIALSCANNING",    
+        "key": "CELESTIALSCANNING",
         "name": "research.CELESTIALSCANNING.title",
         "icons": [ "thaumcraft:textures/research/r_celestial.png" ],
-        "category": "BASICS", "location": [ 5,2], 
+        "category": "BASICS", "location": [ 8,-2],
         "parents": [ "THEORYRESEARCH" ],
-        "meta": [ "ROUND"],        
+        "meta": [ "ROUND"],
         "stages": [
             {
-                "text": "research.CELESTIALSCANNING.stage.1",                     
+                "text": "research.CELESTIALSCANNING.stage.1",
                 "required_knowledge":["OBSERVATION;BASICS;1","OBSERVATION;ARTIFICE;1","OBSERVATION;AUROMANCY;1"]
             }
         ]

@@ -49,19 +49,47 @@ public class NTDark extends NTNormal {
         double baseChance = 1.0 / 2000.0;
         double actualChance = baseChance * (1 + eerieCount);
 
-        if (node.world.rand.nextDouble() < actualChance) {
-            EntityGiantBrainyZombie zombie = new EntityGiantBrainyZombie(node.world);
-            zombie.setPosition(node.posX, node.posY, node.posZ);
-            zombie.onInitialSpawn(node.world.getDifficultyForLocation(new BlockPos(node.posX, node.posY, node.posZ)),null);
-            node.world.spawnEntity(zombie);
+        if (!node.world.isRemote && node.world.rand.nextDouble() < actualChance) {
+            BlockPos nodePos = new BlockPos(node.posX, node.posY, node.posZ);
 
-            EntitySkeletonAngry skeleton = new EntitySkeletonAngry(node.world);
-            skeleton.setPosition(node.posX, node.posY, node.posZ);
-            skeleton.onInitialSpawn(node.world.getDifficultyForLocation(new BlockPos(node.posX, node.posY, node.posZ)),null);
-            node.world.spawnEntity(skeleton);
+            BlockPos ground = nodePos;
+            while (
+                ground.getY() > 1 && (
+                    node.world.isAirBlock(ground) ||
+                    node.world.getBlockState(ground).getMaterial().isLiquid() ||
+                    node.world.getBlockState(ground).getBlock().isReplaceable(node.world, ground)
+                )
+            ) {
+                ground = ground.down();
+            }
+            BlockPos spawnPos = ground.up();
+
+            boolean canSpawn = node.world.isAirBlock(spawnPos) && node.world.isAirBlock(spawnPos.up());
+            if (canSpawn) {
+                EntityGiantBrainyZombie zombie = new EntityGiantBrainyZombie(node.world);
+                zombie.setLocationAndAngles(
+                    spawnPos.getX() + 0.5,
+                    spawnPos.getY(),
+                    spawnPos.getZ() + 0.5,
+                    node.world.rand.nextFloat() * 360.0F, 
+                    0.0F
+                );
+                zombie.onInitialSpawn(node.world.getDifficultyForLocation(spawnPos), null);
+                node.world.spawnEntity(zombie);
+
+                EntitySkeletonAngry skeleton = new EntitySkeletonAngry(node.world);
+                skeleton.setLocationAndAngles(
+                    spawnPos.getX() + 0.5,
+                    spawnPos.getY(),
+                    spawnPos.getZ() + 0.5,
+                    node.world.rand.nextFloat() * 360.0F,
+                    0.0F
+                );
+                skeleton.onInitialSpawn(node.world.getDifficultyForLocation(spawnPos), null);
+                node.world.spawnEntity(skeleton);
+            }
         }
     }
-
 
     @Override
     int calculateStrength(EntityAuraNode node) {

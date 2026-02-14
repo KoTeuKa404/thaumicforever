@@ -50,7 +50,7 @@ public class BlockBlueRose extends BlockBush {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(TextFormatting.GOLD + "" + TextFormatting.ITALIC + "Rare Thing");
+        tooltip.add(TextFormatting.GOLD + "" + TextFormatting.BOLD + "Rare Bloom");
     }
     
 

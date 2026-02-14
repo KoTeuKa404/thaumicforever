@@ -12,12 +12,14 @@ public class CoreModPlugin implements IFMLLoadingPlugin {
     public String[] getASMTransformerClass() {
         return new String[] {
             "com.example.coremod.IUEventHandlerTransformer",
-            "com.example.coremod.ThaumicPeripheryTransformer",
+            // "com.example.coremod.ThaumicPeripheryTransformer",
             // "com.example.coremod.BaubleAttributeModifierHandlerPatcher",
             // "com.example.coremod.BaublesLogSuppressTransformer",
 
+            "com.example.coremod.BaublesClassSwapTransformer"
+            // "com.example.coremod.TransformerBaubles"
 
-
+            
 
 
             

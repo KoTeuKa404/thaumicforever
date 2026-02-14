@@ -21,6 +21,7 @@ public abstract class NodeType {
         NodeType.nodeTypes[3] = new NTPure(3);
         NodeType.nodeTypes[4] = new NTTaint(4);
         NodeType.nodeTypes[5] = new NTUnstable(5);
+        // NodeType.nodeTypes[5] = new NTEnergy(7);
         // NodeType.nodeTypes[6] = new NTPrimal(6);
     }
 }

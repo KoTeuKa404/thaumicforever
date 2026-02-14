@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever;
 
+import java.util.Collections;
 import java.util.Random;
 
 import net.minecraft.tileentity.TileEntity;
@@ -28,32 +29,35 @@ public class WorldGenHilltopStones implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { 
-            if (random.nextInt(ModConfig.hilltopStonesChance) == 0) {  
+        if (world.provider.getDimension() == 0) {
+            if (random.nextInt(ModConfig.hilltopStonesChance+60) == 0) {
                 int x = chunkX * 16 + random.nextInt(16);
                 int z = chunkZ * 16 + random.nextInt(16);
-                int y = world.getHeight(x, z);
+
+                BlockPos groundPos = world.getTopSolidOrLiquidBlock(new BlockPos(x, 0, z));
+                int y = groundPos.getY();
 
                 BlockPos pos = new BlockPos(x, y, z);
 
-                if (y >= 85 && isSkyOpen(world, pos) /*&& isValidGround(world, pos.down()) */ ) {
-                    if (canPlaceStructureHere(world, pos, 8, 8)) { 
+                if (world.getBlockState(groundPos.down()).getMaterial().isLiquid()) return;
+
+                if (y >= 85 && isSkyOpen(world, groundPos)) {
+                    if (canPlaceStructureHere(world, groundPos, 4, 2)) {
                         TemplateManager templateManager = world.getSaveHandler().getStructureTemplateManager();
                         Template template = templateManager.getTemplate(world.getMinecraftServer(), new ResourceLocation("thaumicforever", "hilltop_stones"));
 
                         if (template != null) {
-                            template.addBlocksToWorld(world, pos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
+                            template.addBlocksToWorld(world, groundPos, new PlacementSettings().setMirror(Mirror.NONE).setRotation(Rotation.NONE));
 
-                            generateLootInChests(world, pos);
-                            spawnSinisterNode(world, pos, template); 
-
-
-                         } 
-                    }  
-                }  
+                            generateLootInChests(world, groundPos);
+                            spawnSinisterNode(world, groundPos, template);
+                        }
+                    }
+                }
             }
         }
     }
+
     private void generateLootInChests(World world, BlockPos pos) {
         for (int x = -5; x < 5; x++) {  
             for (int y = 0; y < 5; y++) {
@@ -73,17 +77,10 @@ public class WorldGenHilltopStones implements IWorldGenerator {
         return world.canSeeSky(pos);
     }
 
-    private boolean isValidGround(World world, BlockPos pos) {
-        return world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.STONE
-            || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.DIRT
-            || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.GRASS
-            || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.SNOW
-            || world.getBlockState(pos).getBlock() == net.minecraft.init.Blocks.SNOW_LAYER;
-    }
     private void spawnSinisterNode(World world, BlockPos basePos, Template template) {
         int centerX = template.getSize().getX() / 2;
         int centerZ = template.getSize().getZ() / 2;
-        int centerY = 2; 
+        int centerY = 2;
     
         BlockPos nodePos = basePos.add(centerX, centerY, centerZ);
     
@@ -92,20 +89,20 @@ public class WorldGenHilltopStones implements IWorldGenerator {
         int size = 2 + base + rand.nextInt(2 + base);
     
         EntityAuraNode node = new EntityAuraNode(world);
-        node.setPosition(nodePos.getX() + 0.5, nodePos.getY() + 0.5, nodePos.getZ() + 0.5);
-        node.setNodeSize(size);
-        node.setNodeType(1); // Sinister/Dark
-    
+        node.setNodeSize(size); 
+        node.setNodeType(1);
         node.getNodeAspects().aspects.clear();
         thaumcraft.api.aspects.Aspect aspect = rand.nextBoolean()
             ? thaumcraft.api.aspects.Aspect.DARKNESS
             : thaumcraft.api.aspects.Aspect.UNDEAD;
         node.getNodeAspects().add(aspect, size);
-    
+        node.setFixedAspectOrder(Collections.singletonList(aspect));
         node.updateSyncAspects();
         node.enforceAspectLimit();
+    
+        node.setPosition(nodePos.getX() + 0.5, nodePos.getY() + 0.5, nodePos.getZ() + 0.5);
         if (!world.isRemote) world.spawnEntity(node);
-    }
+    }    
     
     private boolean canPlaceStructureHere(World world, BlockPos pos, int width, int depth) {
         for (int x = -width / 2; x < width / 2; x++) {

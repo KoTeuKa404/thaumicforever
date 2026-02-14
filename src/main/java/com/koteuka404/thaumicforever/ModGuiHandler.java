@@ -2,10 +2,16 @@ package com.koteuka404.thaumicforever;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.ContainerChest;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+import com.koteuka404.thaumicforever.wand.client.gui.GuiArcaneWorkbenchNew;
+import com.koteuka404.thaumicforever.wand.container.ContainerArcaneWorkbenchNew;
+import com.koteuka404.thaumicforever.wand.tile.TileArcaneWorkbenchNew;
+import net.minecraft.client.gui.inventory.GuiChest;
 
 public class ModGuiHandler implements IGuiHandler {
     public static final int DECONSTRUCTION_TABLE_GUI   = 0;
@@ -16,6 +22,8 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_ID_COMPRESSOR          = 5;
     public static final int GUI_ID_REPURPOSER          = 6;
     public static final int GUI_BAUBLES                = 7;
+    public static final int GUI_WAND_WORKBENCH         = 8;
+    public static final int GUI_POUCH                  = 9;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -24,7 +32,7 @@ public class ModGuiHandler implements IGuiHandler {
 
         if (id == DECONSTRUCTION_TABLE_GUI && te instanceof DeconstructionTableTileEntity) {
             return new DeconstructionTableContainer(inv, (DeconstructionTableTileEntity) te);
-        } 
+        }
         else if (id == CHEST_GUI_ID && te instanceof TileEntityAbandonedChest) {
             return new ContainerAbandonedChest(inv, (TileEntityAbandonedChest) te);
         }
@@ -43,6 +51,14 @@ public class ModGuiHandler implements IGuiHandler {
         else if (id == GUI_BAUBLES) {
             return new ContainerMysticTabExample(player.inventory);
         }
+        else if (id == GUI_WAND_WORKBENCH && te instanceof TileArcaneWorkbenchNew) {
+            return new ContainerArcaneWorkbenchNew(inv, (TileArcaneWorkbenchNew) te);
+        }
+        else if (id == GUI_POUCH) {
+            ItemStack stack = getPouchStack(player, x);
+            if (stack.isEmpty() || !(stack.getItem() instanceof ItemPouch)) return null;
+            return new ContainerPouch(inv, new InventoryPouch(stack), player);
+        }
         return null;
     }
 
@@ -52,7 +68,7 @@ public class ModGuiHandler implements IGuiHandler {
 
         if (id == DECONSTRUCTION_TABLE_GUI && te instanceof DeconstructionTableTileEntity) {
             return new DeconstructionTableGui(player.inventory, (DeconstructionTableTileEntity) te);
-        } 
+        }
         else if (id == CHEST_GUI_ID && te instanceof TileEntityAbandonedChest) {
             return new ChestGui(player.inventory, (TileEntityAbandonedChest) te);
         }
@@ -71,6 +87,18 @@ public class ModGuiHandler implements IGuiHandler {
         else if (id == GUI_BAUBLES) {
             return new GuiMysticTabExample(player.inventory);
         }
+        else if (id == GUI_WAND_WORKBENCH && te instanceof TileArcaneWorkbenchNew) {
+            return new GuiArcaneWorkbenchNew(player.inventory, (TileArcaneWorkbenchNew) te);
+        }
+        else if (id == GUI_POUCH) {
+            ItemStack stack = getPouchStack(player, x);
+            if (stack.isEmpty() || !(stack.getItem() instanceof ItemPouch)) return null;
+            return new GuiChest(player.inventory, new InventoryPouch(stack));
+        }
         return null;
+    }
+
+    private static ItemStack getPouchStack(EntityPlayer player, int handId) {
+        return handId == 1 ? player.getHeldItemOffhand() : player.getHeldItemMainhand();
     }
 }

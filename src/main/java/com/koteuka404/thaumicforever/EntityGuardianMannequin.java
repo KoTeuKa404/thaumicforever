@@ -2,6 +2,7 @@ package com.koteuka404.thaumicforever;
 
 import java.util.UUID;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -67,7 +68,7 @@ protected void initEntityAI() {
     this.tasks.addTask(0, new EntityAISwimming(this));
     this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, true));
     this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.6D));
-    this.targetTasks.taskEntries.clear(); 
+    this.targetTasks.taskEntries.clear();
 
     if (this.isHostile) {
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
@@ -166,6 +167,12 @@ public void setWasActivatedByPedestal(boolean b) { this.wasActivatedByPedestal =
         }
     }
 
+
+    @Override
+    public boolean canDespawn() {
+        return false;
+    }
+    
     private double getArmorValue(ItemStack stack) {
         if (stack.getItem() instanceof ItemArmor) {
             return ((ItemArmor) stack.getItem()).damageReduceAmount;
@@ -203,13 +210,13 @@ public void setWasActivatedByPedestal(boolean b) { this.wasActivatedByPedestal =
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount) {
         if (source.isFireDamage()) {
-            amount *= 2.0F; 
+            amount *= 2.0F;
         }
 
         if (source.getTrueSource() instanceof EntityPlayer) {
             EntityPlayer attacker = (EntityPlayer) source.getTrueSource();
             if (this.isOwner(attacker)) {
-                return super.attackEntityFrom(source, amount); 
+                return super.attackEntityFrom(source, amount);
             }
         }
 
@@ -291,7 +298,7 @@ public void setWasActivatedByPedestal(boolean b) { this.wasActivatedByPedestal =
         if (this.ownerUUID != null) {
             compound.setString("OwnerUUID", this.ownerUUID.toString());
         }
-        compound.setBoolean("IsHostile", this.isHostile); 
+        compound.setBoolean("IsHostile", this.isHostile);
         ItemStack mainHandItem = this.getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
         if (!mainHandItem.isEmpty()) {
             compound.setTag("MainHandItem", mainHandItem.writeToNBT(new NBTTagCompound()));
@@ -314,14 +321,35 @@ public void setWasActivatedByPedestal(boolean b) { this.wasActivatedByPedestal =
         } else {
             this.isHostile = false;
         }
-        this.initEntityAI(); 
-    }
-    @Override
-    protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-        if (isHostile) {
-            return;
-        }
-        super.dropFewItems(wasRecentlyHit, lootingModifier);
+        this.initEntityAI();
     }
 
+
+    @Override
+protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, @Nonnull DamageSource source) {
+    if (this.isHostile) {
+        return;
+    }
+    super.dropLoot(wasRecentlyHit, lootingModifier, source);
+}
+
+@Override
+protected void dropEquipment(boolean wasRecentlyHit, int lootingModifier) {
+    if (this.isHostile) {
+        return;
+    }
+    super.dropEquipment(wasRecentlyHit, lootingModifier);
+}
+
+@Override
+protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
+    if (this.isHostile) return;
+    super.dropFewItems(wasRecentlyHit, lootingModifier);
+}
+
+@Override
+protected int getExperiencePoints(EntityPlayer player) {
+    if (this.isHostile) return 0;
+    return super.getExperiencePoints(player);
+}
 }

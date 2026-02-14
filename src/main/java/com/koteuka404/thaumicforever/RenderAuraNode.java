@@ -22,6 +22,8 @@ import thaumcraft.common.lib.utils.EntityUtils;
 public class RenderAuraNode extends Render<EntityAuraNode> {
     public static final ResourceLocation texture = new ResourceLocation("thaumcraft", "textures/misc/auranodes.png");
 
+    private static final int MAX_VISUAL_VIS = 250;
+
     public RenderAuraNode(RenderManager rm) {
         super(rm);
         this.shadowSize = 0.0f;
@@ -48,7 +50,9 @@ public class RenderAuraNode extends Render<EntityAuraNode> {
         int color = 0x888888;
         int blend = 1;
         int type  = 1;
-        float size = 0.15f + entity.getNodeSize() / (100f * 1.5f);
+
+        int visualSum = Math.min(entity.getNodeSize(), MAX_VISUAL_VIS);
+        float size = 0.15f + visualSum / (100f * 1.5f);
 
         Aspect dom = entity.getMainAspect();
         if (dom != null) {
@@ -57,20 +61,65 @@ public class RenderAuraNode extends Render<EntityAuraNode> {
             type  = 1 + entity.getNodeType();
         }
 
-
         GlStateManager.pushMatrix();
         bindTexture(texture);
         GlStateManager.disableDepth();
-        UtilsFX.renderFacingQuad(entity.posX, entity.posY, entity.posZ,
-            32, 32, entity.ticksExisted % 32, size, color, 0.75f * alpha, blend, pticks);
+        
+        UtilsFX.renderFacingQuad(
+            entity.posX, entity.posY, entity.posZ,
+            32, 32,
+            entity.ticksExisted % 32,
+            size,
+            color,
+            0.75f * alpha,
+            blend,
+            pticks
+        );
+        
         float s = 1f - MathHelper.sin((entity.ticksExisted + pticks) / 8f) / 5f;
-        UtilsFX.renderFacingQuad(entity.posX, entity.posY, entity.posZ,
-            32, 32, 800 + entity.ticksExisted % 16, s * size * 0.7f, color, 0.9f * alpha, blend, pticks);
-        UtilsFX.renderFacingQuad(entity.posX, entity.posY, entity.posZ,
-            32, 32, 32 * type + entity.ticksExisted % 32, size / 3f, 0xFFFFFF,
-            alpha, type == 2 ? 771 : 1, pticks);
+        
+        UtilsFX.renderFacingQuad(
+            entity.posX, entity.posY, entity.posZ,
+            32, 32,
+            800 + (entity.ticksExisted % 16),
+            s * size * 0.7f,
+            color,
+            0.9f * alpha,
+            blend,
+            pticks
+        );
+        
+        UtilsFX.renderFacingQuad(
+            entity.posX, entity.posY, entity.posZ,
+            32, 32,
+            32 * type + (entity.ticksExisted % 32),
+            size / 3f,
+            0xFFFFFF,
+            alpha,
+            type == 2 ? 771 : 1,
+            pticks
+        );
+        
+        // ---------- TAINT OVERLAY ----------
+        if (entity.getNodeType() == 4) {
+            int taintFrame = 160 + (entity.ticksExisted % 32);
+
+            UtilsFX.renderFacingQuad(
+                entity.posX, entity.posY, entity.posZ,
+                32, 32,
+                taintFrame,
+                size * 0.42f,
+                0xFFFFFF,
+                alpha,
+                /* alpha blend */ 771,
+                pticks
+            );
+        }
+
+
         GlStateManager.enableDepth();
         GlStateManager.popMatrix();
+        
 
         if (d < 30.0) {
             float sc = 1f - (float)Math.min(1.0, d / 25.0);
@@ -80,17 +129,17 @@ public class RenderAuraNode extends Render<EntityAuraNode> {
             UtilsFX.rotateToPlayer();
             GL11.glRotatef(180f, 0f, 0f, 1f);
             GL11.glColor4f(1f, 1f, 1f, 1f);
-        
+
             Aspect main = entity.getMainAspect();
             int mainAmount = entity.getMainAspectAmount();
             List<Aspect> secondaries = entity.getSecondaryAspects();
-            
+
             int tagCount = 0;
             if (main != null) tagCount++;
             for (Aspect asp : secondaries)
                 if (asp != null && !asp.equals(main)) tagCount++;
 
-            int iconWidth = 16; 
+            int iconWidth = 16;
             int startX = -(tagCount * iconWidth) / 2 + (tagCount == 1 ? 0 : 0);
 
             int i = 0;
@@ -105,35 +154,32 @@ public class RenderAuraNode extends Render<EntityAuraNode> {
                 i++;
             }
 
-                GlStateManager.scale(0.5, 0.5, 0.5);
+            GlStateManager.scale(0.5, 0.5, 0.5);
 
-                String typeText = I18n.format("nodetype." + entity.getNodeType());
-                String suffix = "";
-                int regenType = entity.getRegenType();
+            String typeText = I18n.format("nodetype." + entity.getNodeType());
+            String suffix = "";
+            int regenType = entity.getRegenType();
 
-                if (regenType == 1) {
-                    suffix = I18n.format("node.regen.fast");
-                } else if (regenType == 2) {
-                    suffix = I18n.format("node.regen.slow");
-                }else if (regenType == 3) {
-                    suffix = I18n.format("node.regen.fading");
-                }
-
-                String fullText = typeText;
-                if (!suffix.isEmpty())
-                    fullText += ", " + suffix;
-
-                int sw = Minecraft.getMinecraft().fontRenderer.getStringWidth(fullText);
-                Minecraft.getMinecraft().fontRenderer.drawString(
-                    fullText, -sw / 2f, -72f, 0x888888, false
-                );
-
-                GlStateManager.popMatrix();
-
-                
+            if (regenType == 1) {
+                suffix = I18n.format("node.regen.fast");
+            } else if (regenType == 2) {
+                suffix = I18n.format("node.regen.slow");
+            } else if (regenType == 3) {
+                suffix = I18n.format("node.regen.fading");
             }
-                
-            }
+
+            String fullText = typeText;
+            if (!suffix.isEmpty())
+                fullText += ", " + suffix;
+
+            int sw = Minecraft.getMinecraft().fontRenderer.getStringWidth(fullText);
+            Minecraft.getMinecraft().fontRenderer.drawString(
+                fullText, -sw / 2f, -72f, 0x888888, false
+            );
+
+            GlStateManager.popMatrix();
+        }
+    }
 
     @Override
     protected ResourceLocation getEntityTexture(EntityAuraNode entity) {

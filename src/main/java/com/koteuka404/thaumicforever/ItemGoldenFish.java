@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemGoldenFish extends ItemFood {
 
     public ItemGoldenFish() {
-        super(4, 0.6F, false); 
+        super(4, 0.6F, false);
         setUnlocalizedName("golden_fish");
         setRegistryName("golden_fish");
         setCreativeTab(CreativeTabs.FOOD);
@@ -30,7 +30,7 @@ public class ItemGoldenFish extends ItemFood {
         super.onFoodEaten(stack, worldIn, player);
         
         if (!worldIn.isRemote) {
-            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1)); 
+            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1));
             player.addPotionEffect(new PotionEffect(MobEffects.WATER_BREATHING, 600, 0));
         }
     }
@@ -38,7 +38,7 @@ public class ItemGoldenFish extends ItemFood {
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         super.addInformation(stack, worldIn, tooltip, flagIn);
-        tooltip.add(TextFormatting.GOLD + "" + TextFormatting.ITALIC + "Rare Thing");
+        tooltip.add(TextFormatting.GOLD + "" + TextFormatting.BOLD + "Rare Catch");
     }
     
     

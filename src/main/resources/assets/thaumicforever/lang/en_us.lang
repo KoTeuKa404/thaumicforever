@@ -69,7 +69,7 @@ item.focus_4.name=Blank Max Focus
 item.focus_5.name=Blank Ultimate Focus
 item.iron_ring.name=Iron ring
 item.oldbone.name=Old Bone
-
+item.strong_bone.name=Strong Bone
 tile.invisible_part.name=Double Table
 
 item.thaumium_gear.name=Thaumium Gear
@@ -78,7 +78,7 @@ item.brass_gear.name=Brass Gear
 item.aquareia_goggles.name=Aquareia Goggles
 
 itemGroup.thaumicforever_tab=Thaumic Forever
-tile.abandoned_chest.name=Abandoned Chest   
+tile.abandoned_chest.name=Abandoned Chest
 tile.anti_flight_stone.name=Unflight Stone
 tile.blue_rose.name=Blue Rose
 tile.red_rose.name=Red Rose
@@ -202,7 +202,7 @@ research.IUALKIMIA.title=Industrial Alchemy
 research.ETERNALBLADE.title=Eternal Blade
 
 research.THAUMICFOREVER.stage.1=Your journey into Thaumic knowledge begins here. Start by crafting a Crucible.
-research.THAUMICFOREVER.stage.2=You are ready for more advanced research. <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<BR/><PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
+research.THAUMICFOREVER.stage.2=You are ready for more advanced research.<BR>Right-click the table with a wand to access the wand workbench.<BR/> <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
 
 research.NEWALKIMIA.stage.1=Delve into the mysteries of New Alchemy. Start with the basics.
 research.NEWALKIMIA.stage.2=Your understanding of Alchemy grows stronger.
@@ -337,6 +337,7 @@ item.orb_of_crimson.name=Orb of Crimson
 item.orb_of_dark.name=Orb of Darkness
 item.golden_fish.cod.cooked.name=Golden Fish
 item.golden_fish.name=Golden Fish
+item.caster_advanced.name=Advanced Caster's Gauntlet
 
 
 research.golem_core_fish.title=Control Seal: Fishing
@@ -411,7 +412,7 @@ item.thaumium_core.name=Thaumium Core
 item.scribing_tools_large.name=Large Scribe Tool
 item.primal_scribing_tools.name=Primal Scribing Tools
 
-item.thaumicforever.primal_scribe_tool.desc=Infused with raw primal essence, the ink within these tools is eternally restored, ensuring you are never left wanting for inspiration
+item.thaumicforever.primal_scribe_tool.desc=Infused with primal essence, never leaving you without inspiration
 
 
 
@@ -422,7 +423,7 @@ research.TFSCRIBINGTOOLS.stage.1=Many thaumaturges lament that ordinary inks run
 
 research.TFSCRIBINGTOOLS.stage.2=In response to this vexing shortage, the “Large Inks” were fashioned, their flasks holding far more ink. Thaumaturges wrote without pause, and the pages of their tomes multiplied without end, freeing them from the endless race for empty vials.
 
-research.TFSCRIBINGTOOLS.stage.3=Yet even the Large Inks would wane in time, until the Primal Tools emerged—boundless essences of writing that require no replenishment and never lose potency, becoming the crowning achievement of alchemical thought.    
+research.TFSCRIBINGTOOLS.stage.3=Yet even the Large Inks would wane in time, until the Primal Tools emerged—boundless essences of writing that require no replenishment and never lose potency, becoming the crowning achievement of alchemical thought.
 
 nodetype.0=Normal
 nodetype.1=Sinister
@@ -442,7 +443,7 @@ node.regen.fading=Fading
 #
 research.AURANODE.title=Aura Node
 research.AURANODE.stage.1=Throughout the world, §5Aura Nodes§0 serve as reservoirs of raw magical energy, hidden to all but the most observant thaumaturge.<BR>Scholars still debate their true origins: are they tears in reality, echoes of ancient power, or living entities in their own right?<BR>To study and interact with aura nodes safely, it is recommended to bring a §5Thaumometer§0 and be prepared for the unexpected.<LINE>Careful observation and the proper tools are essential for uncovering the secrets of these mysterious phenomena.
-research.AURANODE.stage.2=NORMAL NODE<DIV><BR>The most common form of aura node.<BR>Contains 1 – 3 random aspects.<BR>Slowly regenerates §eVis§0 over time.<BR>Can interact and merge with nearby nodes.<PAGE/><BR>PURE NODE<DIV><BR>A rare node glowing with pure energy.<BR>Contains only §cVis§0 or §dAura§0.<BR>Purifies nearby flux and stabilizes the environment.<BR>Regenerates §eVis§0 more quickly than others.<PAGE/><BR>SINISTER NODE<DIV><BR>A node shrouded in shadow and dark magic.<BR>Contains only §8Darkness§0 or §2Undead§0.<BR>Spreads negative effects to the area.<BR>May attract hostile creatures.Long-term presence of this node corrupts the land, creating an area steeped in malice and hatred.<PAGE/><BR>HUNGRY NODE<DIV><BR>A dangerous node driven by insatiable hunger.<BR>Contains only §8Void§0, often in great amounts.<BR>Devours nearby blocks and entities.<BR>Extremely difficult to control.<PAGE/><BR>TAINTED NODE<DIV><BR>A node corrupted by §5flux§0 and mutation.<BR>Contains only §5Flux§0.<BR>Spreads taint and mutates nearby life.<BR>Can corrupt other nodes.<BR>This is the most dangerous of all node types: it infects the surrounding aura with §5flux§0 and, over time, can contaminate the nearby land itself.<PAGE/><BR>UNSTABLE NODE<DIV><BR>A volatile node of shifting energies.<BR>Holds random aspects that change unpredictably.<BR>Gains or loses aspects at random.<BR>Approach with caution!
+research.AURANODE.stage.2=NORMAL NODE<DIV><BR>The most common form of aura node.<BR>Contains 1 – 3 random aspects.<BR>Slowly regenerates §eVis§0 over time.<BR>Can interact and merge with nearby nodes.<PAGE/><BR>PURE NODE<DIV><BR>A rare node glowing with pure energy.<BR>Contains only §eVis§0 or §dAura§0.<BR>Purifies nearby flux and stabilizes the environment.<BR>Regenerates §eVis§0 more quickly than others.<PAGE/><BR>SINISTER NODE<DIV><BR>A node shrouded in shadow and dark magic.<BR>Contains only §8Darkness§0 or §2Undead§0.<BR>Spreads negative effects to the area.<BR>May attract hostile creatures.Long-term presence of this node corrupts the land, creating an area steeped in malice and hatred.<PAGE/><BR>HUNGRY NODE<DIV><BR>A dangerous node driven by insatiable hunger.<BR>Contains only §8Void§0, often in great amounts.<BR>Devours nearby blocks and entities.<BR>Extremely difficult to control.<PAGE/><BR>TAINTED NODE<DIV><BR>A node corrupted by §5flux§0 and mutation.<BR>Spreads taint and mutates nearby life.<BR>Can corrupt other nodes.<BR>This is the most dangerous of all node types: it infects the surrounding aura with §5flux§0 and, over time, can contaminate the nearby land itself.<PAGE/><BR>UNSTABLE NODE<DIV><BR>A volatile node of shifting energies.<BR>Holds random aspects that change unpredictably.<BR>Gains or loses aspects at random.<BR>Approach with caution!
 #
 #
 research.NODEJAR.title=Node in a Jar
@@ -467,15 +468,16 @@ research.VISAURA.title=Aura and Nodes
 research.VISAURA.text=Magic is everywhere!
 research.VISAURA.stage.1=§5Aura§0 is a field of magical energy spread throughout the world. Its origin remains unclear. Some believe it to be the accumulated life force of living beings; others say it is a type of energy that has seeped in from another dimension. The latter theory seems more likely, as aura often clusters around nodes of concentrated mystical energy known as §5Aura Nodes§0.<BR>Each aura node contains a certain amount of energy, divided into aspects (from 1 and up). Usually, an aura node consists of §5Primal Aspects§0, but it is possible to find nodes containing §5Compound Aspects§0.
 research.VISAURA.stage.2=The aspects within an aura node can be drawn out by a thaumaturge for their own needs. The simplest way to do this is with a stabilizer.<BR><LINE>Aura nodes are difficult to spot with the naked eye, but their faint glow can sometimes reveal them. Using a §5Thaumometer§0 makes finding such nodes much easier, thanks to its magical prism.<BR>§4Important:§0 Be careful when extracting aspects from an aura node. If a certain aspect in a node is depleted to 0, there is a small chance that this could cause the entire aura node to vanish or become damaged.<BR>The node may also disappear completely if all its aspects are depleted to 0 and the stabilizer is destroyed.<LINE>Fortunately, most aura nodes slowly regenerate their aspects, and if you extract §eVis§0 properly, you can do so almost continuously.<BR>Aura nodes interact interestingly with each other. Larger nodes will try to "consume" and drain §eVis§0 from their smaller neighbors to increase their own size.
+research.VISAURA.stage.3=Beyond the visible §5Aura Nodes§0 lies a subtler current: a §5Primal Aura§0 that permeates each chunk of the world. It is composed of the six §5Primal Aspects§0, flowing and diffusing like a slow tide.<BR>When this primal field is disturbed, it gradually returns to its natural balance. Some nodes seem to "guide" this recovery—biasing the flow toward the aspects they contain. Even complex aspects can be traced back to their primal components, and their influence is felt as a stronger pull toward those roots.<BR><LINE>Thus, a node rich in §8Perditio§0 does not simply hoard entropy; it nudges the very fabric of the aura in its vicinity to replenish it faster. The aura, in turn, supports the node by sustaining its environment. A quiet cycle—rarely seen, yet always at work.
 #
-tc.research_name.PRIMNODE=Singular Aura Node
-tc.research_text.PRIMNODE=Just rub them together, and something will happen
-tc.research_page.PRIMNODE.1=You have developed a wild theory worth investigating. Why not try merging a singular pearl with an aura node?<BR>Seriously, combining two sources of raw magical energy could be catastrophic, but it’s also extremely exciting and interesting.<BR>You are certain this research will increase your chances of success. Just a little bit.
+research.PRIMALNODE.title=Singular Aura Node
+tc.research_text.PRIMALNODE=Just rub them together, and something will happen
+research.PRIMALNODE.stage.1=You have developed a wild theory worth investigating. Why not try merging a singular pearl with an aura node?<BR>Seriously, combining two sources of raw magical energy could be catastrophic, but it’s also extremely exciting and interesting.<BR>You are certain this research will increase your chances of success. Just a little bit.
 #
 tile.port.name=Port
 tile.buff_node_stabilizer.name=Advanced Node Stabilizer
 item.compass_maze.name=Maze Compass
-item.turret_magnet.name=Turret Magnet
+item.turret_magnet.name=Node Magnet
 tile.node_stabilizer.name=Node Stabilizer
 research.!aura_node_scan.text=Scan Aura Nodes
 tile.jarred_node.name=Jarred Node
@@ -486,5 +488,275 @@ research.NODEMAGNET.text=It works with magnets
 research.NODEMAGNET.stage.1=Manipulating the aura is one thing, but if you were able to move nodes around you could insure a steady supply of vis where and when you want it. To this end you have developed Node Magnets.<BR>The magnet focuses on the nearest node within 32 blocks and slowly draws it towards itself. It sounds simple, but in effect the node is being forcefully ripped through the aura. This not only requires large amounts of vis of all types, but causes considerable amounts of flux.<BR>The larger a node is, the slower the it moves.
 research.NODEMAGNET.stage.2=Manipulating the aura is one thing, but if you were able to move nodes around you could insure a steady supply of vis where and when you want it. To this end you have developed Node Magnets.<BR>The magnet focuses on the nearest node within 32 blocks and slowly draws it towards itself. It sounds simple, but in effect the node is being forcefully ripped through the aura. This not only requires large amounts of vis of all types, but causes considerable amounts of flux.<BR>The larger a node is, the slower the it moves.<BR>The Node Magnet itself is quite fragile and care must be taken not to damage or topple it. It can survive minor knocks, but anything more will shatter the delicate components.<BR>It can be picked up by right-clicking on it with a hand.<PAGE>§nWarning!§r<BR><BR>The moment you place down the node magnet you notice something strange: It seems to emit an almost inaudible humming noise that still manages to set your teeth on edge.<BR>Angry grunts and howls from the surrounding area seems to indicate you are not the only one disturbed by the noise.
 #
-thaumicforeverMazeTitleSeen=§7You hear a strange sound beneath your feet... Is that the rattle of bones?
-thaumicforever.title.labyrinth_found=§7You hear a strange sound beneath your feet... Is that the rattle of bones?
+thaumicforeverMazeTitleSeen=§5You hear a strange sound beneath your feet... Is that the rattle of bones?
+thaumicforever.title.labyrinth_found=§5You hear a strange sound beneath your feet... Is that the rattle of bones?
+
+research.TRANSDUCER.title=Node Transducer
+research.TRANSDUCER.text=From dormant to unstoppable
+research.TRANSDUCER.stage.1=Without §5Aura Nodes§0, thaumaturges would be powerless, but their limitations are well known: they deplete quickly and recover §eVis§0 far too slowly for large-scale work.<BR>You have discovered a dangerous method to bypass this limitation — by converting a normal node into an §6Energized Node§0.<BR>First, the node must be completely stabilized during the process. Place a §eNode Stabilizer§0 beneath the node to hold it steady.<BR>Then craft and install a §lNode Transducer§r above the stabilized node. Applying a redstone signal will begin the transformation, causing the node to rapidly lose its stored aspects.
+research.TRANSDUCER.stage.2=The transformation process is slow but irreversible once complete. The node will emerge as an §6Energized Node§0, no longer storing or regenerating §eVis§0, nor allowing wands to draw from it.<BR>Instead, it will emit a constant flow of §lCV§r (centi-vis) each tick, ready to be captured by nearby §eVis Relays§0. Relays can link together to carry CV to devices like the §cInfernal Furnace§0.<BR>You may 'tune' a relay with a vis shard or wand to restrict its connections.
+research.TRANSDUCER.stage.3=The CV output of an energized node is finite, so overloading it will cause power shortages. Too many devices on one source may slow or halt operations.<BR>Cutting the redstone signal will slowly revert the energized node to normal — but beware: it will return completely drained and vulnerable.<BR>Advanced thaumaturges have learned to combine transducers with Ports and stabilizers, enabling safe, long-range transfer of CV and aspects.<BR>§4Caution:§0 Any interruption during conversion may damage or destroy the node.
+
+research.CHAINLIGHTNING.title=Focus Effect: Chain Lightning
+research.CHAINLIGHTNING.stage.1=Vis is more than fire and frost. With the proper pattern I should be able to call forth a fork of raw energy that leaps between nearby creatures.<BR>By imprinting a conductive lattice around a core of §nAuram§0 and §nPraecantatio§0, the vis discharge should seek the closest targets and arc between them in rapid succession. My notes suggest keeping the stream brief to avoid instability.<BR>The effect does not break blocks, but living matter will not enjoy the experience.
+research.CHAINLIGHTNING.stage.2=This effect shines when linked to §nTouch§0 or §nBolt§0. The first struck target becomes the origin and the arc will then jump to other nearby creatures several times.<BR>Range between jumps and the number of jumps are limited by the lattice's stability. In my prototype that is roughly §n3 blocks§0 per jump and up to §n5 jumps§0. Power tuning increases the damage of each strike but does not extend range.<PAGE>§nNotes§0<BR>• The arc will avoid already struck targets in the same cast.<BR>• It will not jump through the void and ignores dead or invalid targets.<BR>• Each jump consumes a small extra amount of vis from the aura.<BR>• Works well with §nScatter§0 or seeking projectiles, but bolts remain the most reliable starter for the chain.
+
+research.f_chain.text=Examine lightning during a thunderstorm.
+thaumicforever.CHAINLIGHTNING.name=Chain Lightning
+thaumicforever.CHAINLIGHTNING.text=Launches a bolt of lightning that jumps between multiple enemies, dealing reduced damage with each jump.
+tile.vis_plant.name=Vis Plant
+item.nodessummoncreative.name=Creative Node Summoner
+item.gold_plate.name=Gold Plate
+research.EXPLOSIONCAST.stage.1=Through my study of the interaction between Fire and Entropy, I have discovered that the release of destructive energy does not need to be entirely chaotic. When properly shaped, a focused magical impulse can produce a localized explosion capable of harming foes while leaving the surrounding environment largely untouched.
+
+research.EXPLOSIONCAST.stage.2=Further experimentation revealed that increasing the power of this spell rapidly erodes its stability. At higher intensities, the explosive force begins to interact violently with matter itself, allowing the blast to tear apart blocks in a manner comparable to TNT or even the crystals of the End. Such power must be wielded with great caution.
+research.EXPLOSIONCAST.title=Focus Effect: Explosion
+
+thaumicforever.EXPLOSIONCAST.name=Explosion
+
+thaumicforever.EXPLOSIONCAST.text=Releases a concentrated burst of volatile energy at the point of impact. At low power the explosion is restrained and purely offensive, while higher intensities can tear apart the environment itself.
+item.purified_brain.name=Purified Brain
+
+# --- Thaumic Wands (ported) ---
+itemGroup.thaumicwands=Thaumic Wands
+tile.thaumicforever.wand_workbench.name=Wand Arcane Workbench
+# --- Blocks ---
+
+# --- Items ---
+
+
+#Wand Rods
+item_wand_rod_greatwood.name=Greatwood Rod
+item_wand_rod_reed.name=Reed Rod
+item_wand_rod_blaze.name=Blaze Rod
+item_wand_rod_ice.name=Ice Rod
+item_wand_rod_obsidian.name=Obsidian Rod
+item_wand_rod_quartz.name=Quartz Rod
+item_wand_rod_bone.name=Bone Rod
+item_wand_rod_silverwood.name=Silverwood Rod
+
+item_wand_rod_ta_adaminitewood.name=Adamintewood Rod
+
+#Staff Core
+item_staff_rod_greatwood.name=Greatwood Staff Core
+item_staff_rod_reed.name=Reed Staff Core
+item_staff_rod_blaze.name=Blaze Staff Core
+item_staff_rod_ice.name=Ice Staff Core
+item_staff_rod_obsidian.name=Obsidian Staff Core
+item_staff_rod_quartz.name=Quartz Staff Core
+item_staff_rod_bone.name=Bone Staff Core
+item_staff_rod_silverwood.name=Silverwood Staff Core
+item_staff_rod_primal.name=Staff Core of the Primal
+
+#Wand Caps
+item_wand_cap_iron.name=Iron Cap
+item_wand_cap_copper.name=Copper Cap
+item_wand_cap_gold.name=Gold Cap
+item_wand_cap_brass.name=Brass Cap
+item_wand_cap_silver_inert.name=Inert Silver Cap
+item_wand_cap_silver.name=Charged Silver Cap
+item_wand_cap_thaumium_inert.name=Inert Thaumium Cap
+item_wand_cap_thaumium.name=Charged Thaumium Cap
+item_wand_cap_void_inert.name=Inert Void Cap
+item_wand_cap_void.name=Charged Void Cap
+
+item_wand_cap_ta_mithrillium_inert.name=Inert Mithrillium Cap
+item_wand_cap_ta_mithrillium.name=Charged Mithrillium Cap
+item_wand_cap_ta_adaminite_inert.name=Inert Adaminite Cap
+item_wand_cap_ta_adaminite.name=Charged Adaminite Cap
+item_wand_cap_ta_mithminite_inert.name=Inert Mithminite Cap
+item_wand_cap_ta_mithminite.name=Charged Mithminite Cap
+
+item_wand_cap_tb_thauminite.name=Thauminite Cap
+
+item_wand_cap_pa_alkimium.name=Alkimium Cap
+item_wand_cap_pa_bismuth.name=Bismuth Cap
+
+# this is what is used to name the wand - the position of the variables can be altered so it makes more sense in other languages
+item.wand.name=%CAP %ROD %OBJ
+#
+item.wand.wand.obj=Wand
+item.wand.scepter.obj=Scepter
+item.wand.staff.obj=Staff
+
+item.wand.wood.rod=Wooden
+item.wand.greatwood.rod=Greatwood
+item.wand.silverwood.rod=Silverwood
+item.wand.obsidian.rod=Obsidian
+item.wand.blaze.rod=Blazing
+item.wand.ice.rod=Icy
+item.wand.bone.rod=Bone
+item.wand.reed.rod=Reed
+item.wand.quartz.rod=Quartz
+item.wand.primal.rod=Primal
+item.wand.adaminitewood.rod=Adamintewood
+
+item.wand.iron.cap=Iron Capped
+item.wand.gold.cap=Gold Bossed
+item.wand.brass.cap=Brass Banded
+item.wand.copper.cap=Copper Capped
+item.wand.silver.cap=Silver Bossed
+item.wand.thaumium.cap=Thaumium Bossed
+item.wand.void.cap=Void Aspected
+
+item.wand.mithrillium.cap=Mithrillium Attuned
+item.wand.adaminite.cap=Adaminite Adorned
+item.wand.mithminite.cap=Mithminite Ornamented
+
+item.wand.thauminite.cap=Thauminite Bossed
+
+item.wand.alkimium.cap=Alkimium Crowned
+item.wand.bismuth.cap=Bismuth Attuned
+
+
+#
+
+# --- Inventory ---
+tw.crystal.discount=Crystal Discount:
+#
+
+# --- Research ---
+tc.research_category.THAUMATURGY=Thaumaturgy
+
+# -- Cards --
+
+# Focussing
+card.focussing.name=Focussing
+card.focussing.text=You try to focus the aura around you into a single point. You gain a deeper understanding how to cast vis. Gain 20 Thaumaturgy.
+# Conductance
+card.conductance.name=Conductance
+card.conductance.text=You try to measure how vis behaves when moven though various metals, allowing you to gain a deeper understanding of wand caps. Gain 25 Thaumaturgy.
+
+
+
+# -- Stages --
+
+# Unlock Thaumaturgy
+research.UNLOCKTHAUMATURGY.title=Discovering Thaumaturgy
+research.UNLOCKTHAUMATURGY.stage.0=While creating a Thaumometer using the Arcane Workbench was relatively easy, it seems like crafting other devices requires, besides raw essentia crystals, vis aswell. However all my efforts to drain it from the aura directly were fruitless, maybe I need some kind of channeling device.
+research.UNLOCKTHAUMATURGY.stage.1=Even though I can not rely on using vis for creating my channeling device, I came up with quite elegant, to cast smaller quantities of vis. This rather crude wand is capable of storing 50 vis inside of it, now I just need to fill it with some vis.
+
+# Base Thaumaturgy
+research.BASETHAUMATURGY.title=Basic Thaumaturgy
+research.BASETHAUMATURGY.stage.0=Now that I have my Wand I can begin assembling arcane devices, but I doubt that this Wand will be enough maybe I should begin looking at other Materials.
+research.BASETHAUMATURGY.addendum.0=I realized that those foci I made do not only fit a top of the Casters Gaunlet, but also dircetly at the tip of my wand. Interstingly the foci started to drain the vis and not from the surrounding aura but from my wand, this might be come in handy.
+
+# Primal Charm
+
+# Gold Caps
+research.CAP_GOLD.title=Gold Wand Caps
+research.CAP_GOLD.stage.0=Gold is a far superior focusing agent than iron, maybe i can use it to create caps?
+research.CAP_GOLD.stage.1=Gold is a far superior focusing agent than iron, and wands capped with this material takes no penalty when used to channel vis.
+
+# Brass Caps
+research.CAP_BRASS.title=Brass Wand Caps
+research.CAP_BRASS.stage.0=This new metal I created seems to conduct vis better than regular iron, so what if I capped of my wand with some alchemical brass.
+research.CAP_BRASS.stage.1=Like gold, wands capped with this material takes no penalty when used to channel vis. More importantly however, is the fact that these caps can draw vis from the aura easier than normal, allowing the wands they are placed on to charge faster.
+#
+# Thaumium Caps
+research.CAP_THAUMIUM.title=Thaumium Wand Caps
+research.CAP_THAUMIUM.stage.0=How could I not think of this, thaumium is a incredibly magical metal, so making caps out of it is only logical, but I have a feeling that this will prove as a harder task than all the others.
+research.CAP_THAUMIUM.stage.1=I was able to constrcut quite nice wand caps out of thaumium. The base design was the same as always, but they did not work as well as I hoped, but after I infused these caps with some essentia and salis mundus, the caps had a much larger affinity for vis, making them better than brass. These caps give a 10 % on all crafts, which is quite decent.
+
+# Void Caps
+research.CAP_VOID.title=Void Wand Caps
+research.CAP_VOID.stage.0=I've seen things. This metal, it is strong, it is powerful, it is resisting any vis that flows through it, but there must be a way, there MUST...
+research.CAP_VOID.stage.1=It works, it actually works. By infusing these caps with dark types of essentia I was able to create caps than conduct vis like nothing I've ever seen before, resulting in a discount of 20 %, but at what cost ?
+
+# Greatwood Rod
+research.ROD_GREATWOOD.title=Greatwood Wand Rod
+research.ROD_GREATWOOD.stage.0=On my journeys I came across a tree that is somehow different, my Wand is already made of wood, but this wood feels more magical, I probably should try to craft a new wand rod out of it.
+research.ROD_GREATWOOD.stage.1=Greatwood is actually great, it took a little vis and some §8Perditio§r Crystals, but I was able to turn it into a new wand rod, that is a lot better than plain wood. It allowes one to store 200 vis, which allows whole new posiibilities, but I have seen some other trees lately.
+
+# Elemental Rod
+research.ROD_ELEMENTAL.title=Elemental Wand Cores
+research.ROD_ELEMENTAL.stage.0=By binding raw elemental shards to suitable cores I can coax the wand to attune itself to a single element. Such a rod is still a true wand core, but it responds more readily to its chosen aspect and subtly resists the others. The attunement feels stable, though it is clearly less flexible than a neutral core
+research.ROD_ELEMENTAL.stage.1=Each of these wand cores can hold 300 vis and can linked to a specific primal element which grants them additional abilities.<PAGE><LINE>§l§nReed Wand Core§r<BR>A wand core made from reeds has slightly greater storage potential than greatwood cores. What makes it superior to greatwood cores however is that if the level of vis stored inside it drops below 50% and player position higher than 100, its will slowly replenish without drawing from the aura.<PAGE>§l§nBlazing Wand Core§r<BR> I feel some weird resonace near to my furnace, I wonder what happens if it gets hot enough.<PAGE>§l§nObsidian Wand Core§r<BR> I feel some weird resonace near the ground, I wonder what happens if it get low enough.<PAGE>§l§nIcy Wand Core§r<BR>I feel some weird resonace near to snow, I wonder what happens if it gets cold enough.
+
+thaumicwands.todo.description=Quartz wands and Bone wands.
+
+
+#Silverwood Rod
+research.ROD_SILVERWOOD.title=Silverwood Wand Rod
+research.ROD_SILVERWOOD.stage.0=The Wood of this tree seems to hold a much higher magical potential than all other plants I have seen so far, perfect for a sizable wand core, my ambition is high, and so will be the effort I will put into it.
+research.ROD_SILVERWOOD.stage.1=I've done it, even though this wood had a lot of potential I was able to increase the amount of storable vis even further, it took quite a bit of essentia, but I am sure that 800 vis should be enough for now.
+
+# Staff
+research.STAFF.title=Magic Staves
+research.STAFF.stage.0=Wands are the stock and trade of the thaumaturge, but sometimes you want more bang for your buck, then you need to create a new type of wands.
+research.STAFF.stage.1=Magical staves are basically just bigger wands.<BR>A staff made from greatwood has 150% the vis storage potential of a greatwood wand, being able to store up to 375 vis of each type. They also grant an additional 10% vis discount to foci.<BR>Since they are physically larger and sturdier than a wand, they can actually be used as weapons in an emergency.<PAGE>Unfortunately this also makes it unsuitable for the intricate workmanship and fine control required by an arcane workbench or similar crafting.<BR>Note: You still need to add caps to a stave rod, just like you would for a wand.
+
+# Elemental Staff Core
+research.CORE_ELEMENTAL.title=Elemental Wand Cores
+research.CORE_ELEMENTAL.stage.0=Applying the same principle to staff cores produces a heavier, more resonant result. The larger mass seems to amplify the elemental bias, making the staff feel more decisive in its element but a little less forgiving outside it. These elemental staff cores should be ideal for a thaumaturge who favors a specific aspect in their work
+research.CORE_ELEMENTAL.stage.1=Like the elemental wand cores, these stave cores are linked to a specific primal element which grants them additional abilities and slowly replenish their vis stores if they get low enough. They can store 500 vis of each type.
+
+# Silverwood Staff Core
+research.CORE_SILVERWOOD.title=Silverwood Staff Core
+research.CORE_SILVERWOOD.stage.0=TODO: Silverwood Staff Core description.
+research.CORE_SILVERWOOD.stage.1=Staff cores crafted from silverwood can store up to 750 vis.
+
+# Primal Staff Core
+research.CORE_PRIMAL.title=Staff Core of the Primal
+research.CORE_PRIMAL.stage.0=TODO: Staff Core of the Primal description.
+research.CORE_PRIMAL.stage.1=This core pulses with latent energy.<BR>It combines all the features of the lesser stave cores - it has the vis storage capacity of the silverwood core and is able to replenish its vis stores like the various primal wand cores.<BR>This is truly a potent tool in any thaumaturge's arsenal.<BR>Note: You still need to add caps to this stave rod, just like you would for a wand.
+
+# Scepter
+research.SCEPTER.title=Crafting Scepters
+research.SCEPTER.stage.0=Wands are the stock and trade of the thaumaturge, but sometimes you want more vis stores, then you need to create a new type of wands.
+research.SCEPTER.stage.1=Crafting scepters are specialized wands made to be used to craft mystical objects and nothing else. Foci cannot be attached to them, but they have several features that still make them worthwhile using.<BR>Firstly, they have an additional 10% vis discount above and beyond what their caps would normally grant.<BR>Secondly they are able to hold 50% more vis than their cores would normally allow.<BR>Like other wands they can be crafted using most combinations of rods and caps - just a few examples are given on the next page.
+
+# Advanced Node Drain
+research.ADVANCED_NODE_DRAIN.title=Advanced Aura Tapping
+research.ADVANCED_NODE_DRAIN.stage.0=Usually the process of drawing vis from the aura with a wand is quite slow...
+research.ADVANCED_NODE_DRAIN.stage.1=Usually the process of drawing vis from the aura with a wand is quite slow... but not anymore.<BR>You have discovered a more efficient way of tapping into the aura, doubling the normal draw rate. In addition you no longer need to hold the wand in your hand to do this, merely having it on your hotbar is sufficient.
+
+# Master Node Drain
+research.MASTER_NODE_DRAIN.title=Master Aura Tapping
+research.MASTER_NODE_DRAIN.stage.0=You have added further refinements to the methods you use to tap the aura.
+research.MASTER_NODE_DRAIN.stage.1=You are now able to draw vis three times faster than normal.
+
+#
+# - Thaumic Additions Compat -
+
+#Mithrillium Caps
+research.CAP_MITHRILLIUM.title=Mithrillium Wand Caps
+research.CAP_MITHRILLIUM.stage.0=I never expected there to be a metal even more potent than void metal, but this is truely baffeling, maybe my thaumaturgy studies have ended to soon, maybe I should try forging myself a new pair of wand caps...
+research.CAP_MITHRILLIUM.stage.1=It took a lot of salis mundus to get these to work again, but the result was definitly worth it, these caps provide a 25% discount and even a 1 crystal discount on every aspect, but why does it always take so much salis mundus though ?
+
+#Adaminite Caps
+research.CAP_ADAMINITE.title=Adaminite Wand Caps
+research.CAP_ADAMINITE.stage.0=When Mithrillium is already great, then what about Adaminite it should be even better, it is only logical, but I have a feeling that not only the Warp will affect my sanity this time.
+research.CAP_ADAMINITE.stage.1=It turns out I was right, these caps truely are marvelous, they provide a 30% disount and even a doubled primal discount, maybe I should stop now, or maybe I should go even further.
+
+#Adamintewood Rod
+research.ROD_ADAMINITEWOOD.title=Adamintewood Wand Rod
+research.ROD_ADAMINITEWOOD.stage.0=I've got a problem, it looks like I can not proceed any further unless I find myself an alternative to this silverwood rod, I was a fool thinking 800 vis is enough, I should have started sooner to create a bigger vis storage, but now seems like a good time to start.
+research.ROD_ADAMINITEWOOD.stage.1=By infusing a mundane silverwood rod with a lot of adaminite, I was able to make a vessel strong enough to quadruple the vis capacity of the silverwood rod, I know I could have gone further, but I feel uncomfortable dirctly touching such a huge amount of vis with my bare hands, especialy when such a big part of it conducts vis like nothing else in the universe.
+
+#Mithminite Caps
+research.CAP_MITHMINITE.title=Mithminite Wand Caps
+research.CAP_MITHMINITE.stage.0=This has to be it, this metal, so full of primal energy, so strong of a vis conductor I can't even measure it, I don't care how but I want this for my wand caps, I never desired something more than this.
+research.CAP_MITHMINITE.stage.1=Who was I to think that this metal could simply be reactivated by some of this foolish salis mundus, it took some of the purest primal energy I could find, but it was worth it, a 40% vis discount, and a three crystal discount on all of the aspects, I doubt I could go further with this, this is the end.
+
+# - Thaumic Bases -
+
+#Thauminite Caps
+research.CAP_THAUMINITE.title=Thauminite Wand Caps
+research.CAP_THAUMINITE.stage.0=This metal seems to be quite similar to thaumium, but it is so crystalline and ordered, this should take next to none effort to turn it into a pair of working wand caps.
+research.CAP_THAUMINITE.stage.1=Well, that was easier than I expected, it didn't even took an infusion, just some plain salis mundus, while forging the caps, well good for me. A 15% discount and one §7ORDO§r crystal less, that is quite an amazing deal.
+
+# - Planar Artifice -
+
+#Alkimium Caps
+research.CAP_ALKIMIUM.title=Alkimium Wand Caps
+research.CAP_ALKIMIUM.stage.0=Ever since I discovered this Alkimium I replaced a lot of brass with it, so maybe it is on time that replace my brass caps with it aswell.
+research.CAP_ALKIMIUM.stage.1=I was not exacly hopeful, when I thought of this, since alkimium is just a brass derivative, but I did not exspect it to resonate it with so many aspects. <br> While a 5% reduction seems like not that much, alkimium offers a single crystal discount for §3AQUA§r,§2TERRA§r and §7ORDO§r, which is quite something.  
+
+#Bismuth Caps
+research.CAP_BISMUTH.title=Bismuth Wand Caps
+research.CAP_BISMUTH.stage.0=Bismuth shows a huge reactivity to aura, so turning it into a new pair of Wand Caps probably is not te worst idea, what is Thaumaturgy but a specialized from of Auromancy.
+research.CAP_BISMUTH.stage.1=As I exspected Bismuth is a marvelous conductor of vis, granting a 15% discount on all crafts performed with it, even though it is very colorful it does not react to any elemtals what so ever, but to §7ORDO§r and §8PERDITIO§r, which is probably a connection to the ordered vis and the entropic flux. I could have exspected that.
+
+
+item.pouch.name=Pouch

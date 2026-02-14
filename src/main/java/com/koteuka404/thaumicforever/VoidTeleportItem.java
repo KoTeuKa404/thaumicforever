@@ -29,8 +29,8 @@ public class VoidTeleportItem extends Item {
             if (isInVoidDimension(playerMP)) {
                 returnToSavedPosition(playerMP, stack);
             } else {
-                savePlayerPosition(playerMP, stack); 
-                teleportToVoid(playerMP, stack); 
+                savePlayerPosition(playerMP, stack);
+                teleportToVoid(playerMP, stack);
             }
         }
 

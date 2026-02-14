@@ -21,7 +21,7 @@ public class VoidWorldProvider extends WorldProvider {
 
     @Override
     public boolean canRespawnHere() {
-        return false; 
+        return false;
     }
 
     @Override

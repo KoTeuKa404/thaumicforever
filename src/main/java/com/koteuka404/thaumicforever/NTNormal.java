@@ -10,10 +10,14 @@ public class NTNormal extends NodeType {
 
     @Override
     void performTickEvent(EntityAuraNode node) {
+        if (node.stablized) return;
+
     }
 
     @Override
     void performPeriodicEvent(EntityAuraNode node) {
+        if (node.stablized) return;
+
         if (node.world.isRemote) {
             return;
         }

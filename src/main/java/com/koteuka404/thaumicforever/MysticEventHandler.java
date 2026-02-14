@@ -35,8 +35,7 @@ public class MysticEventHandler {
         IBaublesItemHandler oldH = BaublesApi.getBaublesHandler(ev.getOriginal());
         IBaublesItemHandler newH = BaublesApi.getBaublesHandler(ev.getEntityPlayer());
         if (oldH instanceof BaublesContainer && newH instanceof BaublesContainer) {
-            ((BaublesContainer)newH)
-              .deserializeNBT(((BaublesContainer)oldH).serializeNBT());
+        ((BaublesContainer)newH).deserializeNBT(((BaublesContainer)oldH).serializeNBT());
         }
     }
 
@@ -142,9 +141,7 @@ public class MysticEventHandler {
         }
     }
 
-    private static void dropMystic(EntityPlayerMP player,
-                                   List<EntityItem> drops,
-                                   Entity source) {
+    private static void dropMystic(EntityPlayerMP player,List<EntityItem> drops, Entity source) {
         IBaublesItemHandler h = BaublesApi.getBaublesHandler(player);
         int originalSlots = h.getSlots();
         int count        = MysticBaubleSlots.getAllSlots(player).size();

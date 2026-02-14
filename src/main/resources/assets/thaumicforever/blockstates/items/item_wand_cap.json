@@ -1,0 +1,48 @@
+{
+  "forge_marker": 1,
+  "variants": {
+
+  	"iron": {
+      	"model": "forge:item-layer", "transform": "forge:default-item",
+       	"textures": {
+          	"layer0": "thaumicforever:items/wand/wand_cap_iron"
+    	}
+      },
+   "gold": {
+         "model": "forge:item-layer", "transform": "forge:default-item",
+         "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_gold"
+        }
+      },
+   "brass": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_brass"
+        }
+      },
+   "thaumium_inert": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_thaumium_inert"
+        }
+      },
+   "thaumium": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_thaumium"
+        }
+      },
+   "void_inert": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_void_inert"
+        }
+      },
+   "void": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_void"
+        }
+      }
+     }
+    }

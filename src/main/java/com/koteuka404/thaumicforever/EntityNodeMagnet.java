@@ -178,7 +178,7 @@ public class EntityNodeMagnet extends EntityOwnedConstruct {
                         f.set(wisp, this);
                     } catch (Exception ex) {}
                 }
-                System.out.println("Wisp " + wisp.getEntityId() + " aggros " + (owner != null ? owner.getName() : "magnet"));
+                // System.out.println("Wisp " + wisp.getEntityId() + " aggros " + (owner != null ? owner.getName() : "magnet"));
             }
 
         }

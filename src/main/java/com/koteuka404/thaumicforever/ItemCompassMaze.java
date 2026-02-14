@@ -1,5 +1,7 @@
-// src/main/java/com/koteuka404/thaumicforever/ItemCompassMaze.java
 package com.koteuka404.thaumicforever;
+
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import javax.annotation.Nullable;
 
@@ -21,80 +23,76 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeTaiga;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCompassMaze extends Item {
-    private double rotation, rota;
-    private long lastUpdateTick;
-    private long lastSearchTick = -1;
+
+    private static final Map<Entity, Wobble> WOBBLES = new WeakHashMap<>();
+
+    private long lastSearchTick = -1L;
 
     public ItemCompassMaze() {
         setMaxStackSize(1);
 
-        addPropertyOverride(new ResourceLocation("angle"), new IItemPropertyGetter() {
-            @Override @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
-                if ((entity == null && !stack.isOnItemFrame())
-                  || stack.getSubCompound("MazeCompass") == null) {
-                    return 0F;
+        if (FMLCommonHandler.instance().getSide() == Side.CLIENT) {
+            addPropertyOverride(new ResourceLocation("angle"), new IItemPropertyGetter() {
+                @Override
+                public float apply(ItemStack stack, @Nullable World world, @Nullable EntityLivingBase entity) {
+                    if ((entity == null && !stack.isOnItemFrame())) return 0F;
+
+                    final Entity ref = (entity != null) ? entity : stack.getItemFrame();
+                    if (ref == null) return 0F;
+                    if (world == null) world = ref.world;
+
+                    NBTTagCompound root = stack.getTagCompound();
+                    if (root == null) return 0F;
+                    NBTTagCompound tag = root.getCompoundTag("MazeCompass");
+                    if (!tag.hasKey("TargetX")) return 0F;
+
+                    double tx = tag.getInteger("TargetX") + 0.5D;
+                    double tz = tag.getInteger("TargetZ") + 0.5D;
+
+                    double dx = tx - ref.posX;
+                    double dz = tz - ref.posZ;
+                    double theta = Math.atan2(dz, dx);
+                    double yawRad = Math.toRadians(ref.rotationYaw);
+
+                    double raw = (theta - yawRad - Math.PI / 2.0D) / (2.0D * Math.PI);
+                    raw = MathHelper.positiveModulo(raw, 1.0D);
+
+                    Wobble w = WOBBLES.computeIfAbsent(ref, r -> new Wobble());
+                    return (float) w.wobble(world.getTotalWorldTime(), raw);
                 }
-                Entity ref = entity != null ? entity : stack.getItemFrame();
-                if (ref == null) return 0F;
-                if (world == null) world = ref.world;
-
-                NBTTagCompound tag = stack.getSubCompound("MazeCompass");
-                if (!tag.hasKey("TargetX")) return 0F;
-
-                double tx = tag.getInteger("TargetX") + 0.5D;
-                double tz = tag.getInteger("TargetZ") + 0.5D;
-                double px = ref.posX;
-                double pz = ref.posZ;
-
-                double dx = tx - px;
-                double dz = tz - pz;
-                double theta = Math.atan2(dz, dx);
-                double yawRad = Math.toRadians(ref.rotationYaw);
-
-                double raw = (theta - yawRad - Math.PI / 2.0D) / (2.0D * Math.PI);
-                raw = MathHelper.positiveModulo(raw, 1.0D);
-
-                if (entity != null) {
-                    if (world.getTotalWorldTime() != lastUpdateTick) {
-                        lastUpdateTick = world.getTotalWorldTime();
-                        double delta = raw - rotation;
-                        delta = MathHelper.positiveModulo(delta + 0.5D, 1.0D) - 0.5D;
-                        rota = (rota + delta * 0.1D) * 0.8D;
-                        rotation = MathHelper.positiveModulo(rotation + rota, 1.0D);
-                    }
-                    raw = rotation;
-                }
-
-                return (float) raw;
-            }
-        });
+            });
+        }
     }
 
     @Override
     public void onUpdate(ItemStack stack, World world, Entity entity, int slot, boolean isSelected) {
         if (world.isRemote || !(entity instanceof EntityPlayer)) return;
+
         long t = world.getTotalWorldTime();
         if (t - lastSearchTick < 20) return;
         lastSearchTick = t;
 
+        NBTTagCompound root = stack.getTagCompound();
+        if (root == null) {
+            root = new NBTTagCompound();
+            stack.setTagCompound(root);
+        }
+        NBTTagCompound maze = root.getCompoundTag("MazeCompass");
+
         EntityPlayer player = (EntityPlayer) entity;
         MazeDungeonWrapper md = MazeDungeonWrapper.findClosest(world, player.getPosition());
         if (md != null) {
-            BlockPos center = md.getCenter(); 
-            NBTTagCompound tag = stack.getTagCompound();
-            if (tag == null) tag = new NBTTagCompound();
-            NBTTagCompound maze = tag.getCompoundTag("MazeCompass");
+            BlockPos center = md.getCenter();
             maze.setInteger("TargetX", center.getX());
             maze.setInteger("TargetY", center.getY());
             maze.setInteger("TargetZ", center.getZ());
             maze.setString("TargetName", md.getName());
-            tag.setTag("MazeCompass", maze);
-            stack.setTagCompound(tag);
+            root.setTag("MazeCompass", maze);
+            stack.setTagCompound(root);
             player.inventory.markDirty();
         }
     }
@@ -102,34 +100,31 @@ public class ItemCompassMaze extends Item {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-
         if (!world.isRemote) {
             Biome current = world.getBiome(player.getPosition());
-
             if (!(current instanceof BiomeTaiga)) {
                 player.sendMessage(new TextComponentString(
-                    TextFormatting.YELLOW + "Yoe need find a Taiga biome first."
+                    TextFormatting.YELLOW + "You need to find a Taiga biome first."
                 ));
-            } else {
-                NBTTagCompound tag = stack.getSubCompound("MazeCompass");
-                if (tag != null && tag.hasKey("TargetX")) {
-                    int x = tag.getInteger("TargetX");
-                    int y = tag.getInteger("TargetY");
-                    int z = tag.getInteger("TargetZ");
-                    String name = tag.getString("TargetName");
-                    // player.sendMessage(new TextComponentString(
-                    //     TextFormatting.GOLD + "[MazeCompass] " +
-                    //     TextFormatting.WHITE + name +
-                    //     TextFormatting.GRAY + " @ " +
-                    //     TextFormatting.AQUA + x + ", " + y + ", " + z
-                    // ));
-                } else {
-                    // player.sendMessage(new TextComponentString(
-                    //     TextFormatting.RED + "[MazeCompass] No maze found nearby yet."
-                    // ));
-                }
             }
         }
         return new ActionResult<>(EnumActionResult.SUCCESS, stack);
+    }
+
+    private static final class Wobble {
+        private double rotation = 0.0; // [0,1)
+        private double rota = 0.0;
+        private long lastTick = Long.MIN_VALUE;
+
+        double wobble(long tick, double raw) {
+            if (tick != lastTick) {
+                lastTick = tick;
+                double delta = MathHelper.positiveModulo(raw - rotation + 0.5D, 1.0D) - 0.5D;
+                rota += delta * 0.1D;
+                rota *= 0.8D;
+                rotation = MathHelper.positiveModulo(rotation + rota, 1.0D);
+            }
+            return rotation;
+        }
     }
 }

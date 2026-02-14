@@ -22,14 +22,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemBoneBlade extends ItemSword {
 
-    private static final float BASE_ATTACK_DAMAGE = 5.5F;
-    private static final float ATTACK_SPEED = 1.8F;
-    private static final float SKELETON_BONUS_DAMAGE = 5.5F;
+    private static final float BASE_ATTACK_DAMAGE = 2.5F;
+    private static final float ATTACK_SPEED = -1.8F;
+    private static final float SKELETON_BONUS_DAMAGE = 7.5F;
 
     private final Multimap<String, AttributeModifier> attributeModifiers;
 
     public ItemBoneBlade() {
-        super(ToolMaterial.IRON);
+        super(ToolMaterial.STONE);
         setRegistryName("bone_blade");
         setUnlocalizedName("bone_blade");
         setMaxStackSize(1);
@@ -42,12 +42,12 @@ public class ItemBoneBlade extends ItemSword {
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        String entityName = target.getName().toLowerCase(); 
-        if (entityName.contains("skelet")) { 
+        String entityName = target.getName().toLowerCase();
+        if (entityName.contains("skelet")) {
             float totalDamage = BASE_ATTACK_DAMAGE + SKELETON_BONUS_DAMAGE;
             target.attackEntityFrom(DamageSource.causeMobDamage(attacker), totalDamage);
         }
-        stack.damageItem(1, attacker); 
+        stack.damageItem(1, attacker);
         return true;
     }
 

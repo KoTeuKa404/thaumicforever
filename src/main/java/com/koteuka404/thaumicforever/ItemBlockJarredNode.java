@@ -50,23 +50,37 @@ public class ItemBlockJarredNode extends ItemBlock {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("nodeData")) {
             NBTTagCompound nodeNBT = stack.getTagCompound().getCompoundTag("nodeData");
-    
+
             byte type = nodeNBT.getByte("type");
             String locKey = "nodetype." + type;
             String locText = net.minecraft.client.resources.I18n.format(locKey);
-    
+
             tooltip.add("Node Type: " + locText);
             tooltip.add("Size: " + nodeNBT.getInteger("size"));
-    
-            Aspect mainAspect = getMainAspect(nodeNBT);
-            if (mainAspect != null) {
-                String hexColor = String.format("#%06X", mainAspect.getColor() & 0xFFFFFF);
-                tooltip.add("Main Aspect: " + mainAspect.getName() + " " + hexColor);
+
+            if (nodeNBT.hasKey("nodeAspects", 10)) {
+                NBTTagCompound aspectsNBT = nodeNBT.getCompoundTag("nodeAspects");
+                AspectList aspectList = new AspectList();
+                aspectList.readFromNBT(aspectsNBT);
+
+                Aspect mainAspect = getMainAspect(nodeNBT);
+                if (mainAspect != null) {
+                    String hexColor = String.format("#%06X", mainAspect.getColor() & 0xFFFFFF);
+                    tooltip.add("Main Aspect: " + mainAspect.getName() + " ");
+                } else {
+                    tooltip.add("Main Aspect: ?");
+                }
+
+                tooltip.add("Aspects:");
+                for (Aspect a : aspectList.getAspectsSortedByAmount()) {
+                    tooltip.add(" - " + a.getName() + ": " + aspectList.getAmount(a));
+                }
             } else {
-                tooltip.add("Main Aspect: ?");
+                tooltip.add("No Aspects");
             }
         }
     }
+
     
    public static Aspect getMainAspect(NBTTagCompound nodeNBT) {
     if (nodeNBT == null) return null;

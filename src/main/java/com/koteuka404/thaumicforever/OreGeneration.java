@@ -26,25 +26,25 @@ public class OreGeneration implements IWorldGenerator {
 
     @Override
     public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, net.minecraft.world.chunk.IChunkProvider chunkProvider) {
-        if (world.provider.getDimension() == 0) { 
+        if (world.provider.getDimension() == 0) {
 
             if (ModConfig.enableAquareiaOreGeneration) {
                 generateAquareiaOre(ModOreBlocks.AQUAREIA_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 28, 32, 2, 6, 8, Blocks.STONE.getDefaultState());
             }
 
             if (ModConfig.enableAncientOreGeneration) {
-                generateOre(ModOreBlocks.ANCIENT_AMBER.getDefaultState(), world, rand, chunkX, chunkZ, 4, 16, 4, 12, 2, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.ANCIENT_CINNABAR.getDefaultState(), world, rand, chunkX, chunkZ, 6, 24, 4, 12, 2, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.ANCIENT_COAL.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 12, 1, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.ANCIENT_GOLD.getDefaultState(), world, rand, chunkX, chunkZ, 8, 32, 4, 12, 1, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.ANCIENT_IRON.getDefaultState(), world, rand, chunkX, chunkZ, 8, 64, 4, 12, 1, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.ANCIENT_AMBER.getDefaultState(),   world, rand, chunkX, chunkZ, 4, 16, 4, 12, 1, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.ANCIENT_CINNABAR.getDefaultState(), world, rand, chunkX, chunkZ, 6, 24, 4, 12, 1, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.ANCIENT_COAL.getDefaultState(),     world, rand, chunkX, chunkZ, 8, 40, 4, 12, 1, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.ANCIENT_GOLD.getDefaultState(),     world, rand, chunkX, chunkZ, 8, 32, 4, 12, 1, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.ANCIENT_IRON.getDefaultState(),     world, rand, chunkX, chunkZ, 8, 64, 4, 12, 1, Blocks.STONE.getDefaultState());
             }
-
+            
             if (ModConfig.enableStandardOreGeneration) {
-                generateOre(ModOreBlocks.COPPER_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.TIN_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.LEAD_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());
-                generateOre(ModOreBlocks.SILVER_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 8, 40, 4, 10, 16, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.COPPER_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 6, 64, 4, 10, 8, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.TIN_ORE.getDefaultState(),    world, rand, chunkX, chunkZ, 6, 64, 4, 10, 8, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.LEAD_ORE.getDefaultState(),   world, rand, chunkX, chunkZ, 6, 64, 4, 10, 8, Blocks.STONE.getDefaultState());
+                generateOre(ModOreBlocks.SILVER_ORE.getDefaultState(), world, rand, chunkX, chunkZ, 6, 64, 4, 10, 8, Blocks.STONE.getDefaultState());
             }
         }
 

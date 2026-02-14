@@ -6,17 +6,16 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
 import baubles.api.BaubleType;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -38,13 +37,15 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.golems.GolemHelper;
 import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
+import com.koteuka404.thaumicforever.wand.main.ThaumicWands;
 
 @Mod(modid = ThaumicForever.MODID, name = ThaumicForever.NAME, version = ThaumicForever.VERSION,dependencies = "required-after:forge@[14.23.5.2820,);required-after:thaumcraft@[6.1.BETA26,);")
 // required-after:mixinbooter@[0.8,);
 public class ThaumicForever {
     public static final String MODID = "thaumicforever";
     public static final String NAME = "Thaumic Forever";
-    public static final String VERSION = "5.1.8";
+    public static final String VERSION = "6.0";
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     @SidedProxy(clientSide = "com.koteuka404.thaumicforever.ClientProxy", serverSide = "com.koteuka404.thaumicforever.ServerProxy")
     public static CommonProxy proxy;
@@ -53,6 +54,10 @@ public class ThaumicForever {
     public static ThaumicForever instance;
     public static final CreativeTabs CREATIVE_TAB = new ThaumicForeverCreativeTab();
     private static int id = 0;
+
+    public static int nextEntityId() {
+        return id++;
+    }
     public static SimpleNetworkWrapper network;
 
     @Mod.EventHandler
@@ -66,8 +71,7 @@ public class ThaumicForever {
         ResearchBaubleMapping.reloadFromConfig();
 
         MinecraftForge.EVENT_BUS.register(new MysticEventHandler());
-
-        MinecraftForge.EVENT_BUS.register(new MannequinUnfreezeHandler());
+        NodePearlClickHandler.register();
 
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         NetworkHandler.INSTANCE = network;
@@ -81,7 +85,7 @@ public class ThaumicForever {
             setupBubblesSlots();
         } catch (Throwable t) {
             System.err.println("[ThaumicForever] setupBubblesSlots() failed:");
-        }              
+        }
         
         // TConstructFix.fixModifierConflict();
         MinecraftForge.EVENT_BUS.register(new ModRecipes());
@@ -102,16 +106,16 @@ public class ThaumicForever {
         GameRegistry.registerTileEntity(TileNodeStabilizer.class,new ResourceLocation(ThaumicForever.MODID, "node_stabilizer"));
         GameRegistry.registerTileEntity(TilePort.class, new ResourceLocation(ThaumicForever.MODID, "tile_port"));
         GameRegistry.registerTileEntity(TileBuffNodeStabilizer.class, new ResourceLocation(ThaumicForever.MODID, "buff_node_stabilizer"));
-        GameRegistry.registerTileEntity(TileInvertedBuffNodeStabilizer.class,new ResourceLocation(ThaumicForever.MODID, "inverted_node_stabilizer"));
-        GameRegistry.registerTileEntity(TileEntityJarredNode.class, new ResourceLocation(ThaumicForever.MODID,"thaumicforever:jarred_node"));
-
+        GameRegistry.registerTileEntity(TileNodeTransducer.class,new ResourceLocation(ThaumicForever.MODID, "inverted_node_stabilizer"));
+        GameRegistry.registerTileEntity(TileEntityJarredNode.class, new ResourceLocation(ThaumicForever.MODID, "jarred_node"));
+        
         // MinecraftForge.EVENT_BUS.register(AirCurrentManager.class);
         // MinecraftForge.EVENT_BUS.register(AirCurrentHandler.class);
 
         proxy.preInit(event);
+        ThaumicWands.preInit(event);
 
 
-        // Реєстрація сутностей
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "guardian_mannequin"),EntityGuardianMannequin.class, "GuardianMannequin", id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "time_freeze_projectile"),EntityTimeFreezeProjectile.class, "TimeFreezeProjectile", id++, this, 64, 10, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "aura_node"), AuraNodeEntity.class, "AuraNode",id++, this, 64, 1, true);
@@ -142,22 +146,26 @@ public class ThaumicForever {
         GameRegistry.registerWorldGenerator(new AuraNodeWorldGen(), 0);
         GameRegistry.registerWorldGenerator(ANWorldGenerator.INSTANCE, 0);
 
-        IDustTrigger.registerDustTrigger(new DustTriggerMultiblock("NODEJAR", NodeJarMultiblockDef.SHAPE));
-        ThaumcraftApi.addMultiblockRecipeToCatalog(
-            new ResourceLocation("thaumicforever", "nodejar"),
-            new ThaumcraftApi.BluePrint("NODEJAR", NodeJarMultiblockDef.SHAPE)
-        );
-
+        MinecraftForge.EVENT_BUS.register(new TaintBottleImpactHandler());
         MinecraftForge.EVENT_BUS.register(RemoveRecipes.class);
         AspectRegistry.registerAspects();
         MinecraftForge.EVENT_BUS.register(new PlayerMazeEvents());
 
         network.registerMessage(PacketSelectPlate.Handler.class, PacketSelectPlate.class, 0, Side.SERVER);
         network.registerMessage(PacketClickLupa.Handler.class, PacketClickLupa.class, 1, Side.SERVER);
-        network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 2, Side.CLIENT);
         network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 3, Side.SERVER);
         network.registerMessage(PacketOpenMysticTab.Handler.class,PacketOpenMysticTab.class,4,Side.SERVER);
         network.registerMessage(PacketOpenNormalInventory.Handler.class,PacketOpenNormalInventory.class,5,Side.SERVER);
+        network.registerMessage(PacketPrimalAuraRequest.Handler.class, PacketPrimalAuraRequest.class, 8, Side.SERVER);
+
+        if (event.getSide().isClient()) {
+            network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 2, Side.CLIENT);
+            network.registerMessage(PacketLightningFX.Handler.class, PacketLightningFX.class, 6, Side.CLIENT);
+            network.registerMessage(TrailMsg.Handler.class, TrailMsg.class, 7, Side.CLIENT);
+            network.registerMessage(PacketExplosionFX.Handler.class, PacketExplosionFX.class, 10, Side.CLIENT);
+
+        }
+        network.registerMessage(PacketPrimalAuraSync.Handler.class, PacketPrimalAuraSync.class,9, Side.CLIENT);
 
         MinecraftForge.EVENT_BUS.register(new RainCauldronFiller());
         FlowerGenerator.register();
@@ -198,7 +206,6 @@ public class ThaumicForever {
         new ReviveRingHandler();
         new CasterCooldownReducer();
 
-     
         }
 
     @Mod.EventHandler
@@ -209,7 +216,9 @@ public class ThaumicForever {
         ResearchHandler.init();
         MinecraftForge.EVENT_BUS.register(new VoidRepairHandler());
         MinecraftForge.EVENT_BUS.register(new PoisonEnchantmentHandler());
-
+        MinecraftForge.EVENT_BUS.register(new ArmorStandToMannequinHandler());
+        MinecraftForge.EVENT_BUS.register(new MannequinInteractionHandler());
+        MinecraftForge.EVENT_BUS.register(new MannequinUnfreezeHandler());
 
         ModRecipes.init();
         FurnaceRecipes.init();
@@ -218,16 +227,12 @@ public class ThaumicForever {
         InfusionRecipes.init();
         OreDictionaryRegistration.registerOreDictionary();
 
-        MinecraftForge.EVENT_BUS.register(new ArmorStandToMannequinHandler());
-        MinecraftForge.EVENT_BUS.register(new MannequinInteractionHandler());
-
-
-
         registerRecipeOverride();
         IDustTrigger.registerDustTrigger(new SalisMundusTrigger());
         IDustTrigger.registerDustTrigger(new NodeJarDustTrigger());
         
         proxy.init(event);
+        ThaumicWands.init(event);
         registerCustomRecipes();
         new ScanObjects();
 
@@ -237,13 +242,19 @@ public class ThaumicForever {
         WatcherWorldGen.register();
 
         new RegenRingHandler();
-
+        ModEntitySpawns.registerSpawns();
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         RecipeCrucible.addCrucibleRecipes();
         proxy.postInit(event);
+        ThaumicWands.postInit(event);
+        IDustTrigger.registerDustTrigger(new DustTriggerMultiblock("NODEJAR", NodeJarMultiblockDef.SHAPE));
+        ThaumcraftApi.addMultiblockRecipeToCatalog(
+            new ResourceLocation("thaumicforever", "nodejar"),
+            new ThaumcraftApi.BluePrint("NODEJAR", NodeJarMultiblockDef.SHAPE)
+        );
 
         aspectAdder = new AspectAdder();
         aspectAdder.registerAspects();
@@ -264,27 +275,7 @@ public class ThaumicForever {
     private void registerCustomRecipes() {
         GameRegistry.findRegistry(IRecipe.class).register(new CustomSalisMundusRecipe());
     }
-
-    public static void registerEntitySpawns() {
-        for (Biome biome : Biome.REGISTRY) {
-            if (biome != null && biome.getSpawnableList(EnumCreatureType.MONSTER) != null) {
-        EntityRegistry.addSpawn(EntitySkeletonAngry.class, 8, 1, 3, EnumCreatureType.MONSTER, biome);
-            }
-        }
-        for (Biome biome : Biome.REGISTRY) {
-            if (biome != null && biome.getSpawnableList(EnumCreatureType.MONSTER) != null && biome.getSpawnableList(EnumCreatureType.MONSTER).size() > 0) {
-                EntityRegistry.addSpawn(EntityBVilager.class, 10, 1, 1, EnumCreatureType.MONSTER, biome);
-            }
-        }
-        for (Biome biome : Biome.REGISTRY) {
-            if (biome != null && BiomeDictionary.hasType(biome, Type.JUNGLE)) {
-                EntityRegistry.addSpawn(EntityGorilla.class, 2, 1, 2, EnumCreatureType.CREATURE, biome);
-            }
-        }
-
-    }
     
-
 
 private void setupBubblesSlots() {
     JsonArray slotsArray = new JsonArray();

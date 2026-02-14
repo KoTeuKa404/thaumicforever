@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModRecipeRegistry {
     @SubscribeEvent
     public static void onRegisterRecipes(final RegistryEvent.Register<IRecipe> event) {
-        if (Loader.isModLoaded("thaumicwands")) {
+        if (Loader.isModLoaded(ThaumicForever.MODID)) {
             event.getRegistry().register(new CustomSalisMundusRecipe());
         }
 

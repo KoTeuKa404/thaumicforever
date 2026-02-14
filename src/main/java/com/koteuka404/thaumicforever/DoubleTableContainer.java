@@ -35,7 +35,7 @@ public class DoubleTableContainer extends Container {
 
         int playerInventoryStartX = 43;
         int playerInventoryStartY = 160;
-        int slotSpacingX = 17; 
+        int slotSpacingX = 17;
         int slotSpacingY = 18;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -71,8 +71,21 @@ public class DoubleTableContainer extends Container {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if (!this.mergeItemStack(itemstack1, 0, containerSlotCount, false)) {
-                    return ItemStack.EMPTY;
+
+                if (isScrollO(itemstack1)) {
+                    if (!this.mergeItemStack(itemstack1, 5, 6, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (isPaper(itemstack1)) {
+                    if (!this.mergeItemStack(itemstack1, 6, 7, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else {
+                    if (!this.mergeItemStack(itemstack1, 0, containerSlotCount, false)) {
+                        return ItemStack.EMPTY;
+                    }
                 }
             }
 
@@ -85,4 +98,15 @@ public class DoubleTableContainer extends Container {
 
         return itemstack;
     }
+
+    private boolean isScrollO(ItemStack stack) {
+        if (stack.isEmpty() || stack.getItem().getRegistryName() == null) return false;
+        return "thaumicforever:scroll_o".equals(stack.getItem().getRegistryName().toString());
+    }
+
+    private boolean isPaper(ItemStack stack) {
+        if (stack.isEmpty() || stack.getItem().getRegistryName() == null) return false;
+        return "minecraft:paper".equals(stack.getItem().getRegistryName().toString());
+    }
+
 }

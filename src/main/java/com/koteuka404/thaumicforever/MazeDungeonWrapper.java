@@ -1,7 +1,5 @@
 package com.koteuka404.thaumicforever;
 
-import java.util.Set;
-
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -15,11 +13,7 @@ public class MazeDungeonWrapper {
     }
 
     public BlockPos getOrigin() {
-        return new BlockPos(
-            box.getMinX(),
-            box.getMinY(),
-            box.getMinZ()
-        );
+        return new BlockPos(box.getMinX(), box.getMinY(), box.getMinZ());
     }
 
     public BlockPos getCenter() {
@@ -33,23 +27,27 @@ public class MazeDungeonWrapper {
     public String getName() {
         return name;
     }
+
+    private static java.util.Set<BoundingBox> getAllBoxesMerged(World world) {
+        java.util.Set<BoundingBox> merged = new java.util.HashSet<>();
+        merged.addAll(WorldTickHandler.getInstance().getAllDungeonBounds());
+        DungeonBoundsData data = DungeonBoundsData.get(world);
+        if (data != null) merged.addAll(data.getBoxes());
+        return merged;
+    }
+
     public static boolean isInMaze(World world, BlockPos pos) {
-        Set<BoundingBox> bounds = WorldTickHandler.getInstance().getAllDungeonBounds();
-        for (BoundingBox box : bounds) {
-            if (box.isVecInside(pos)) {
-                return true;
-            }
+        for (BoundingBox box : getAllBoxesMerged(world)) {
+            if (box.isVecInside(pos)) return true;
         }
         return false;
     }
-    
- 
+
     public static MazeDungeonWrapper findClosest(World world, BlockPos from) {
-        Set<BoundingBox> bounds = WorldTickHandler.getInstance().getAllDungeonBounds();
         BoundingBox closest = null;
         double minDistSq = Double.MAX_VALUE;
 
-        for (BoundingBox b : bounds) {
+        for (BoundingBox b : getAllBoxesMerged(world)) {
             BlockPos origin = new BlockPos(b.getMinX(), b.getMinY(), b.getMinZ());
             double distSq = origin.distanceSq(from);
             if (distSq < minDistSq) {

@@ -15,11 +15,11 @@ public class CraftingRecipes {
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "greatwood_table"),
             null,
-            new ItemStack(ModBlocks.GREATWOOD_TABLE), 
+            new ItemStack(ModBlocks.GREATWOOD_TABLE),
             "PPP",
             " S ",
-            'P', Blocks.WOODEN_SLAB, 
-            'S', Blocks.PLANKS 
+            'P', Blocks.WOODEN_SLAB,
+            'S', Blocks.PLANKS
         );
 
         GameRegistry.addShapedRecipe(
@@ -68,6 +68,13 @@ public class CraftingRecipes {
             "III", "III", "III",
             'I', Ingredient.fromItems(ModItems.COPPER_INGOT)
         );
+        GameRegistry.addShapedRecipe(
+            new ResourceLocation("thaumicforever", "gold_plate"),
+            null,
+            new ItemStack(ModItems.GOLD_PLATE,3),
+            "III",
+            'I', Ingredient.fromItems(Items.GOLD_INGOT)
+        );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "lead_ingot_from_block"),
@@ -79,8 +86,8 @@ public class CraftingRecipes {
             new ResourceLocation("thaumicforever", "bowl_treatmeat"),
             null,
             new ItemStack(ModItems.BOWL_TREATMEAT),
-            Ingredient.fromItems(Items.BOWL), 
-            Ingredient.fromItems(ItemsTC.tripleMeatTreat), 
+            Ingredient.fromItems(Items.BOWL),
+            Ingredient.fromItems(ItemsTC.tripleMeatTreat),
             Ingredient.fromItems(ItemsTC.tripleMeatTreat),
             Ingredient.fromItems(ItemsTC.tripleMeatTreat)
         );
@@ -90,22 +97,22 @@ public class CraftingRecipes {
             null,
             new ItemStack(ModItems.BOWL_ZOMBIE),
             Ingredient.fromItems(Items.BOWL),
-            Ingredient.fromItems(ModItems.ItemZombieHeart), 
+            Ingredient.fromItems(ModItems.ItemZombieHeart),
             Ingredient.fromItems(Items.ROTTEN_FLESH)
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "dye_from_red"),
             null,
-            new ItemStack(Items.DYE, 1, 1), 
-            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.RED_ROSE)) 
+            new ItemStack(Items.DYE, 1, 1),
+            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.RED_ROSE))
         );
 
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "dye_from_blue"),
             null,
-            new ItemStack(Items.DYE, 1, 12), 
-            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.BLUE_ROSE)) 
+            new ItemStack(Items.DYE, 1, 12),
+            Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.BLUE_ROSE))
         );
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
         GameRegistry.addShapelessRecipe(
@@ -125,7 +132,7 @@ public class CraftingRecipes {
         GameRegistry.addShapelessRecipe(
             new ResourceLocation("thaumicforever", "copper_ingot_from_block"),
             null,
-            new ItemStack(ModItems.COPPER_INGOT, 9,1),
+            new ItemStack(ModItems.COPPER_INGOT, 9),
             Ingredient.fromItems(Item.getItemFromBlock(ModBlocks.COPPER_BLOCK))
         );
 

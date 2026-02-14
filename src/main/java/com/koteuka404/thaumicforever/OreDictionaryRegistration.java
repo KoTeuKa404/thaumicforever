@@ -17,7 +17,7 @@ public class OreDictionaryRegistration {
         OreDictionary.registerOre("oreAncientCoal", ModOreBlocks.ANCIENT_COAL);
         OreDictionary.registerOre("oreAncientCinnabar", ModOreBlocks.ANCIENT_CINNABAR);
         OreDictionary.registerOre("oreAquareia", ModOreBlocks.AQUAREIA_ORE);
-        OreDictionary.registerOre("oreAncientAmber", ModOreBlocks.ANCIENT_AMBER);        
+        OreDictionary.registerOre("oreAncientAmber", ModOreBlocks.ANCIENT_AMBER);
 
         OreDictionary.registerOre("ingotLead", ModItems.LEAD_INGOT);
         OreDictionary.registerOre("ingotSilver", ModItems.SILVER_INGOT);
@@ -37,6 +37,7 @@ public class OreDictionaryRegistration {
         OreDictionary.registerOre("oreRuby", ModBlocks.RubyOre);
         OreDictionary.registerOre("gemRuby", ModItems.ruby_gem);
         OreDictionary.registerOre("blockRuby", ModBlocks.RubyBlock);
+        OreDictionary.registerOre("plateGold", ModItems.GOLD_PLATE);
 
 
         OreDictionary.registerOre("nitor", new ItemStack(Item.getByNameOrId("thaumcraft:nitor_yellow")));

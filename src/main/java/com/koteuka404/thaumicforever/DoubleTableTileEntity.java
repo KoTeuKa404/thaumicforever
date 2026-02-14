@@ -82,17 +82,17 @@ public class DoubleTableTileEntity extends TileEntity implements IInventory {
         return storedAspects;
     }
 
-  
+
     public void updateAspectsFromInventory() {
         storedAspects = new AspectList();
-
+    
         ItemStack paperStack = inventory.get(6);
         if (paperStack.isEmpty() || paperStack.getCount() <= 0) {
             return;
         }
-
+    
         boolean[] isSlotUsed = new boolean[5];
-
+    
         for (int i = 0; i < 5; i++) {
             ItemStack stack = inventory.get(i);
             if (!stack.isEmpty()) {
@@ -104,11 +104,11 @@ public class DoubleTableTileEntity extends TileEntity implements IInventory {
                 }
             }
         }
-
+    
         boolean hasMatchedAspects = processScrollDecryption(isSlotUsed);
-
+    
         for (int i = 0; i < 5; i++) {
-            if (!isSlotUsed[i] && !hasMatchedAspects) { 
+            if (!isSlotUsed[i]) {
                 ItemStack stack = inventory.get(i);
                 if (!stack.isEmpty()) {
                     stack.shrink(1);
@@ -118,16 +118,17 @@ public class DoubleTableTileEntity extends TileEntity implements IInventory {
                 }
             }
         }
-
+    
         paperStack.shrink(1);
         if (paperStack.getCount() <= 0) {
             inventory.set(6, ItemStack.EMPTY);
         }
-
+    
         markDirty();
     }
 
- 
+
+
     public boolean processScrollDecryption(boolean[] isSlotUsed) {
         ItemStack scroll = inventory.get(5);
         if (!scroll.isEmpty() && scroll.getItem() instanceof ItemScroll && "_o".equals(((ItemScroll) scroll.getItem()).getType())) {

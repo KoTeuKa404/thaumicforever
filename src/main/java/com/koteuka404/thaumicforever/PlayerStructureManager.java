@@ -14,12 +14,12 @@ public class PlayerStructureManager {
     private static final String STRUCTURE_NAME = "thaumicforever:void";
 
     public static BlockPos getOrCreateStructureForPlayer(UUID playerID, World world) {
-        System.out.println("ThaumicForever DEBUG: getOrCreateStructureForPlayer " + playerID);
+        // System.out.println("ThaumicForever DEBUG: getOrCreateStructureForPlayer " + playerID);
 
         PlayerStructureData data = PlayerStructureData.get(world);
 
         if (data.hasPlayerStructure(playerID)) {
-            System.out.println("ThaumicForever DEBUG: Структура вже є для " + playerID);
+            // System.out.println("ThaumicForever DEBUG: Структура вже є для " + playerID);
             return data.getPlayerStructure(playerID);
         }
 
@@ -27,17 +27,23 @@ public class PlayerStructureManager {
 
         forceLoadChunks(world, genPos, 100);
 
-        BlockPos existing = findExistingStructure(world, genPos, 100);
-        if (existing != null) {
-            System.out.println("ThaumicForever DEBUG: Знайдено існуючу структуру (бар'єр) у " + existing + ". НЕ генеруємо!");
-            data.setPlayerStructure(playerID, existing);
-            return existing;
+        BlockPos existingOriginMarker = findExistingStructure(world, genPos, 100);
+        if (existingOriginMarker != null) {
+
+            BlockPos origin = new BlockPos(existingOriginMarker.getX(), genPos.getY(), existingOriginMarker.getZ());
+            BlockPos center = computeCenterFromOrigin(world, origin);
+
+            // System.out.println("ThaumicForever DEBUG: Знайдено існуючу структуру (бар'єр) у " + existingOriginMarker
+            //     + " => center " + center);
+
+            data.setPlayerStructure(playerID, center);
+            return center;
         }
 
         BlockPos centerPos = placeStructure(world, genPos);
         data.setPlayerStructure(playerID, centerPos);
 
-        System.out.println("ThaumicForever DEBUG: Згенерували нову структуру для " + playerID + " у " + centerPos);
+        // System.out.println("ThaumicForever DEBUG: Згенерували нову структуру для " + playerID + " у " + centerPos);
 
         return centerPos;
     }
@@ -59,7 +65,7 @@ public class PlayerStructureManager {
                 world.getChunkProvider().provideChunk(cx, cz);
             }
         }
-        System.out.println("ThaumicForever DEBUG: forceLoaded chunks for " + center + " r=" + radius);
+        // System.out.println("ThaumicForeve,r DEBUG: forceLoaded chunks for " + center + " r=" + radius);
     }
 
     private static BlockPos findExistingStructure(World world, BlockPos center, int radius) {
@@ -76,7 +82,7 @@ public class PlayerStructureManager {
                     BlockPos checkPos = new BlockPos(x, y, z);
                     if (world.isBlockLoaded(checkPos) &&
                         world.getBlockState(checkPos).getBlock() == Blocks.BARRIER) {
-                        System.out.println("ThaumicForever DEBUG: findExistingStructure: barrier found at " + checkPos);
+                        // System.out.println("ThaumicForever DEBUG: findExistingStructure: barrier found at " + checkPos);
                         return checkPos;
                     }
                 }
@@ -84,6 +90,22 @@ public class PlayerStructureManager {
         }
         return null;
     }
+
+    private static BlockPos computeCenterFromOrigin(World world, BlockPos origin) {
+        TemplateManager mgr = world.getSaveHandler().getStructureTemplateManager();
+        Template tmpl = mgr.getTemplate(world.getMinecraftServer(), new ResourceLocation(STRUCTURE_NAME));
+    
+        if (tmpl == null) {
+            // System.err.println("ThaumicForever: Failed to load structure template: " + STRUCTURE_NAME);
+            return origin;
+        }
+    
+        int cx = tmpl.getSize().getX() / 2;
+        int cz = tmpl.getSize().getZ() / 2;
+    
+        return origin.add(cx, 1, cz);
+    }
+    
 
     private static BlockPos placeStructure(World world, BlockPos pos) {
         TemplateManager mgr = world.getSaveHandler().getStructureTemplateManager();
@@ -99,10 +121,10 @@ public class PlayerStructureManager {
             }
 
             tmpl.addBlocksToWorld(world, pos, new PlacementSettings());
-            System.out.println("ThaumicForever DEBUG: placeStructure at " + pos);
+            // System.out.println("ThaumicForever DEBUG: placeStructure at " + pos);
             return center;
         } else {
-            System.err.println("ThaumicForever: Failed to load structure template: " + STRUCTURE_NAME);
+            // System.err.println("ThaumicForever: Failed to load structure template: " + STRUCTURE_NAME);
             return pos;
         }
     }

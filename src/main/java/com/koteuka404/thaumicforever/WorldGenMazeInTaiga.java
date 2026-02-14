@@ -36,7 +36,7 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
         new ResourceLocation("thaumicforever", "iron"),
         new ResourceLocation("thaumicforever", "gravel")
     };
-    private static final Block MOB_MARKER_BLOCK = Blocks.MAGENTA_GLAZED_TERRACOTTA; 
+    private static final Block MOB_MARKER_BLOCK = Blocks.MAGENTA_GLAZED_TERRACOTTA;
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
@@ -58,9 +58,14 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
                     if (template != null) {
                         BlockPos size = template.getSize();
                         BlockPos endPos = pos.add(size);
+                
+                        BoundingBox box = new BoundingBox(pos, endPos);
                         WorldTickHandler.getInstance().addDungeonBounds(pos, endPos);
+                        DungeonBoundsData data = DungeonBoundsData.get(world);
+                        if (data != null) data.addBox(box);
                     }
                 }
+                
             }
         }
     }
@@ -82,9 +87,18 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
                     for (int z = 0; z < size.getZ(); z++) {
                         BlockPos markerPos = pos.add(x, y, z);
                         if (world.getBlockState(markerPos).getBlock() == ModBlocks.STRUCTURE_MARKER_HOLDER) {
-                            ResourceLocation selected = SMALL_STRUCTURES[world.rand.nextInt(SMALL_STRUCTURES.length)];
+                            ResourceLocation selected;
+                            if (world.rand.nextInt(3) == 0) {
+                                do {
+                                    selected = SMALL_STRUCTURES[world.rand.nextInt(SMALL_STRUCTURES.length)];
+                                } while (selected.equals(SMALL_STRUCTURES[0])); // [0] = vase
+                            } else {
+                                selected = SMALL_STRUCTURES[world.rand.nextInt(SMALL_STRUCTURES.length)];
+                            }
+                        
                             spawnMiniStructure(world, markerPos, selected, world.rand);
                         }
+                        
                         if (world.getBlockState(markerPos).getBlock() == MOB_MARKER_BLOCK) {
                             spawnRandomMannequin(world, markerPos, world.rand);
                             world.setBlockToAir(markerPos);
@@ -102,7 +116,7 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
         EntityGuardianMannequin mannequin = new EntityGuardianMannequin(world);
         mannequin.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
         mannequin.setHostile(true);
-        mannequin.initEntityAI(); 
+        mannequin.initEntityAI();
 
         List<ItemStack> headArmor = new ArrayList<>();
         List<ItemStack> chestArmor = new ArrayList<>();
@@ -141,7 +155,7 @@ public class WorldGenMazeInTaiga implements IWorldGenerator {
         Template mini = templateManager.getTemplate(world.getMinecraftServer(), structure);
 
         if (mini != null) {
-            BlockPos adjustedPos = pos.add(-1, 0, -1); 
+            BlockPos adjustedPos = pos.add(-1, 0, -1);
             mini.addBlocksToWorld(world, adjustedPos, new PlacementSettings().setIgnoreEntities(false));
         }
         world.setBlockToAir(pos);

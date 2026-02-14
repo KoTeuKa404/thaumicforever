@@ -10,16 +10,31 @@ public class TileEntityJarredNode extends TileEntity {
 
     public void setNodeNBT(NBTTagCompound tag) {
         this.nodeNBT = tag == null ? null : tag.copy();
-
-        if (nodeNBT != null && (!nodeNBT.hasKey("nodeAspects", 10) || nodeNBT.getCompoundTag("nodeAspects").hasNoTags())) {
-            if (nodeNBT.hasKey("aspects", 10)) {
+    
+        if (nodeNBT != null) {
+            if (!nodeNBT.hasKey("nodeAspects", 10) && nodeNBT.hasKey("aspects", 10)) {
                 nodeNBT.setTag("nodeAspects", nodeNBT.getTag("aspects"));
-            } else {
-                NBTTagCompound testAspects = new NBTTagCompound();
-                testAspects.setInteger("aer", 42);
-                nodeNBT.setTag("nodeAspects", testAspects);
+            }
+    
+            if (world != null && !world.isRemote && !nodeNBT.getBoolean("tf_scaled75")) {
+                if (world.rand.nextFloat() < 0.55f) {
+                    NodeJarDustTrigger.scaleAspectCompound(nodeNBT, "nodeAspects", 2.0 / 3.0);
+                    NodeJarDustTrigger.scaleAspectCompound(nodeNBT, "originalAspects", 2.0 / 3.0);
+                }
+                nodeNBT.setBoolean("tf_scaled75", true);
+            }
+    
+            if (!nodeNBT.hasKey("nodeAspects", 10) || nodeNBT.getCompoundTag("nodeAspects").hasNoTags()) {
+                if (nodeNBT.hasKey("aspects", 10)) {
+                    nodeNBT.setTag("nodeAspects", nodeNBT.getTag("aspects"));
+                } else {
+                    NBTTagCompound testAspects = new NBTTagCompound();
+                    testAspects.setInteger("aer", 42);
+                    nodeNBT.setTag("nodeAspects", testAspects);
+                }
             }
         }
+    
         markDirty();
         if (world != null && !world.isRemote) {
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
@@ -79,4 +94,5 @@ public class TileEntityJarredNode extends TileEntity {
     public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         readFromNBT(pkt.getNbtCompound());
     }
+
 }

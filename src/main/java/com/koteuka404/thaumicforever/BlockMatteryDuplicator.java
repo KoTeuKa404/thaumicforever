@@ -23,9 +23,9 @@ public class BlockMatteryDuplicator extends Block {
     public BlockMatteryDuplicator() {
         super(Material.ROCK);
         setUnlocalizedName("duplicator");
-        setRegistryName("duplicator"); 
+        setRegistryName("duplicator");
         setHardness(2.0F);
-        setCreativeTab(ThaumicForever.CREATIVE_TAB);    
+        setCreativeTab(ThaumicForever.CREATIVE_TAB);
     }
 
 
@@ -86,7 +86,7 @@ public class BlockMatteryDuplicator extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public net.minecraft.util.BlockRenderLayer getRenderLayer() { 
+    public net.minecraft.util.BlockRenderLayer getRenderLayer() {
         return net.minecraft.util.BlockRenderLayer.CUTOUT;
     }
 

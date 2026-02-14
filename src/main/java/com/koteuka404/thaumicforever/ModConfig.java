@@ -84,7 +84,7 @@ public class ModConfig {
         immediateBaubles = config.getStringList(
             "Immediate Slots",
             "Mystic Slots",
-            new String[]{ "RING" },
+            new String[]{ "RING","RING" },
             "BaubleTypes unlocked immediately on first join"
         );
 
