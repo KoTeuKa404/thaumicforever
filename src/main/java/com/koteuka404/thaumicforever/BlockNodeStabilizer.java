@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class BlockNodeStabilizer extends BlockContainer{
@@ -38,5 +39,19 @@ public class BlockNodeStabilizer extends BlockContainer{
     @Override
     public TileEntity createNewTileEntity(World world, int i) {
         return null;
+    }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote) {
+            for (int dy = 1; dy <= 3; dy++) {
+                TileEntity te = world.getTileEntity(pos.up(dy));
+                if (te instanceof TileNodeTransducer) {
+                    ((TileNodeTransducer) te).onStabilizerBroken();
+                    break;
+                }
+            }
+        }
+        super.breakBlock(world, pos, state);
     }
 }

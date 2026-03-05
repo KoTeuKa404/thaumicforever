@@ -18,6 +18,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemShield;
@@ -26,6 +27,7 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntitySkeletonAngry extends EntityMob {
@@ -71,6 +73,7 @@ public class EntitySkeletonAngry extends EntityMob {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+        burnInSunlight();
 
         EntityPlayer player = this.world.getClosestPlayerToEntity(this, 15.0D);
         if (player != null) {
@@ -106,6 +109,31 @@ public class EntitySkeletonAngry extends EntityMob {
                 if (pathRecalculationTimer >= 40) {
                     this.getNavigator().tryMoveToEntityLiving(player, 1.2D);
                     pathRecalculationTimer = 0;
+                }
+            }
+        }
+    }
+
+    private void burnInSunlight() {
+        if (this.world.isDaytime() && !this.world.isRemote) {
+            float brightness = this.getBrightness();
+            if (brightness > 0.5F
+                    && this.world.canSeeSky(new BlockPos(this.posX, this.posY + this.getEyeHeight(), this.posZ))
+                    && this.rand.nextFloat() * 30.0F < (brightness - 0.4F) * 2.0F) {
+                boolean shouldBurn = true;
+                ItemStack helmet = this.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                if (!helmet.isEmpty()) {
+                    if (helmet.isItemStackDamageable()) {
+                        helmet.setItemDamage(helmet.getItemDamage() + this.rand.nextInt(2));
+                        if (helmet.getItemDamage() >= helmet.getMaxDamage()) {
+                            this.renderBrokenItemStack(helmet);
+                            this.setItemStackToSlot(EntityEquipmentSlot.HEAD, ItemStack.EMPTY);
+                        }
+                    }
+                    shouldBurn = false;
+                }
+                if (shouldBurn) {
+                    this.setFire(8);
                 }
             }
         }

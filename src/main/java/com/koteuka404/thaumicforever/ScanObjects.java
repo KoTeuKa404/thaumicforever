@@ -2,6 +2,7 @@ package com.koteuka404.thaumicforever;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -10,15 +11,17 @@ import thaumcraft.api.research.ScanningManager;
 
 public class ScanObjects implements IScanThing {
 
-    private final String researchKeyBlock = "!aquareia_ore_scan"; 
-    private final String researchKeyItem = "!aquareia_gem_scan";  
+    private final String researchKeyBlock = "!aquareia_ore_scan";
+    private final String researchKeyItem = "!aquareia_gem_scan";
     private final String researchKeyEntity = "!armor_stand_scan";
-    private final String researchKeySkeletonAngry = "!skeleton_angry_scan"; 
-    private final String researchKeySkeletonRevive = "!skeleton_revive_scan"; 
+    private final String researchKeySkeletonAngry = "!skeleton_angry_scan";
+    private final String researchKeySkeletonRevive = "!skeleton_revive_scan";
     private final String researchKeyTatteredScrolls = "!tattered_scrolls_scan";
-    private final String researchKeyEndOre = "!end_ore_scan"; 
-    private final String researchKeyTaintItem = "!orb_of_taint";  
+    private final String researchKeyMysteryScrolls = "!mysterious_scrolls_scan";
+    private final String researchKeyEndOre = "!end_ore_scan";
+    private final String researchKeyTaintItem = "!orb_of_taint";
     private final String researchKeyAuraNode = "!aura_node_scan";
+    private final String researchKeyWandBench = "!wand_workbench";
 
     public ScanObjects() {
         ScanningManager.addScannableThing(this);
@@ -30,12 +33,27 @@ public class ScanObjects implements IScanThing {
             if (player.world.getBlockState((BlockPos) obj).getBlock() == ModOreBlocks.AQUAREIA_ORE) {
                 return true;
             }
-            if (player.world.getBlockState((BlockPos) obj).getBlock() == ModBlocks.EndOreBlock) { 
+            if (player.world.getBlockState((BlockPos) obj).getBlock() == ModBlocks.EndOreBlock) {
+                return true;
+            }
+            if (player.world.getBlockState((BlockPos) obj).getBlock() == ModBlocks.WAND_WORKBENCH) {
                 return true;
             }
         }
         if (obj instanceof ItemStack) {
             ItemStack stack = (ItemStack) obj;
+            if (stack.getItem() == ModItems.SCROLL_P
+                    || stack.getItem() == ModItems.SCROLL_O
+                    || stack.getItem() == ModItems.SCROLL_C) {
+                return true;
+            }
+            if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                String registryName = stack.getItem().getRegistryName().toString();
+                int meta = stack.getMetadata();
+                if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                    return true;
+                }
+            }
             if (stack.getItem() == ModItems.AQUAREIA_GEM) {
                 return true;
             }
@@ -45,6 +63,27 @@ public class ScanObjects implements IScanThing {
         }
         if (obj instanceof Entity) {
             Entity entity = (Entity) obj;
+            if (entity instanceof EntityItem) {
+                ItemStack stack = ((EntityItem) entity).getItem();
+                if (stack.getItem() == ModItems.SCROLL_P
+                        || stack.getItem() == ModItems.SCROLL_O
+                        || stack.getItem() == ModItems.SCROLL_C) {
+                    return true;
+                }
+                if (stack.getItem() == ModItems.AQUAREIA_GEM) {
+                    return true;
+                }
+                if (stack.getItem() == ModItems.orb_of_taint) {
+                    return true;
+                }
+                if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                    String registryName = stack.getItem().getRegistryName().toString();
+                    int meta = stack.getMetadata();
+                    if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                        return true;
+                    }
+                }
+            }
             if (entity instanceof EntityArmorStand) {
                 return true;
             }
@@ -71,6 +110,9 @@ public class ScanObjects implements IScanThing {
             if (player.world.getBlockState(pos).getBlock() == ModBlocks.EndOreBlock) {
                 return researchKeyEndOre;
             }
+            if (player.world.getBlockState(pos).getBlock() == ModBlocks.WAND_WORKBENCH) {
+                return researchKeyWandBench;
+            }
         }
         if (object instanceof ItemStack) {
             ItemStack stack = (ItemStack) object;
@@ -81,6 +123,11 @@ public class ScanObjects implements IScanThing {
                     return researchKeyTatteredScrolls;
                 }
             }
+            if (stack.getItem() == ModItems.SCROLL_P
+                    || stack.getItem() == ModItems.SCROLL_O
+                    || stack.getItem() == ModItems.SCROLL_C) {
+                return researchKeyMysteryScrolls;
+            }
             if (stack.getItem() == ModItems.AQUAREIA_GEM) {
                 return researchKeyItem;
             }
@@ -89,6 +136,27 @@ public class ScanObjects implements IScanThing {
             }
         }
         if (object instanceof Entity) {
+            if (object instanceof EntityItem) {
+                ItemStack stack = ((EntityItem) object).getItem();
+                if (stack.getItem() == ModItems.SCROLL_P
+                        || stack.getItem() == ModItems.SCROLL_O
+                        || stack.getItem() == ModItems.SCROLL_C) {
+                    return researchKeyMysteryScrolls;
+                }
+                if (stack.getItem() == ModItems.AQUAREIA_GEM) {
+                    return researchKeyItem;
+                }
+                if (stack.getItem() == ModItems.orb_of_taint) {
+                    return researchKeyTaintItem;
+                }
+                if (stack.getItem() != null && stack.getItem().getRegistryName() != null) {
+                    String registryName = stack.getItem().getRegistryName().toString();
+                    int meta = stack.getMetadata();
+                    if ("thaumicaugmentation:research_notes".equals(registryName) && meta == 0) {
+                        return researchKeyTatteredScrolls;
+                    }
+                }
+            }
             if (object instanceof EntityArmorStand) {
                 return researchKeyEntity;
             }

@@ -317,19 +317,17 @@ public class RecipeCrucible {
         }
 
 
-        if (Loader.isModLoaded("oldresearch")) {
-            ResourceLocation curioRecipeKey = new ResourceLocation(MODID, "curio_recipe");
-            
-            CrucibleRecipe curioRecipe = new CrucibleRecipe(
-                "FIRSTSTEPS",  
-                new ItemStack(Item.getByNameOrId("thaumcraft:curio"), 1, 7),
-                new ItemStack(Items.BOOK),
-                new AspectList()
-                    .add(Aspect.MIND, 5) 
-            );
+        ResourceLocation curioRecipeKey = new ResourceLocation(ThaumicForever.MODID, "curio_recipe");
+        
+        CrucibleRecipe curioRecipe = new CrucibleRecipe(
+            "",
+            new ItemStack(Item.getByNameOrId("thaumcraft:curio"), 1, 7),
+            new ItemStack(Items.BOOK),
+            new AspectList()
+                .add(Aspect.MIND, 5)
+        );
 
-            ThaumcraftApi.addCrucibleRecipe(curioRecipeKey, curioRecipe);
-        }
+        ThaumcraftApi.addCrucibleRecipe(curioRecipeKey, curioRecipe);
 
 
 

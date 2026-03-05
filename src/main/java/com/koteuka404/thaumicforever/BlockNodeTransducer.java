@@ -66,4 +66,15 @@ public class BlockNodeTransducer extends BlockContainer {
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileNodeTransducer();
     }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote) {
+            TileEntity te = world.getTileEntity(pos);
+            if (te instanceof TileNodeTransducer) {
+                ((TileNodeTransducer) te).onTransducerBroken();
+            }
+        }
+        super.breakBlock(world, pos, state);
+    }
 }

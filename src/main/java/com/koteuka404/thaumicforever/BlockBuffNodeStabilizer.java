@@ -67,4 +67,18 @@ public class BlockBuffNodeStabilizer extends BlockContainer {
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileBuffNodeStabilizer();
     }
+
+    @Override
+    public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        if (!world.isRemote) {
+            for (int dy = 1; dy <= 3; dy++) {
+                TileEntity te = world.getTileEntity(pos.up(dy));
+                if (te instanceof TileNodeTransducer) {
+                    ((TileNodeTransducer) te).onStabilizerBroken();
+                    break;
+                }
+            }
+        }
+        super.breakBlock(world, pos, state);
+    }
 }

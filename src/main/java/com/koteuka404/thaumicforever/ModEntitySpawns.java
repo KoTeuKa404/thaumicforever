@@ -9,7 +9,7 @@ public class ModEntitySpawns {
     public static void registerSpawns() {
         EntityRegistry.addSpawn(
             EntitySkeletonAngry.class,
-            10,
+            14,
             1,
             2,
             EnumCreatureType.MONSTER,

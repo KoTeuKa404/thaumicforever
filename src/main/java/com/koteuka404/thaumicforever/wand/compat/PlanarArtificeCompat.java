@@ -34,10 +34,10 @@ public class PlanarArtificeCompat implements ICompat {
         if (OreDictionary.doesOreNameExist("nuggetAlkimium") && OreDictionary.doesOreNameExist("nuggetBismuth")) {
 
             crystals = new AspectList().add(Aspect.WATER, 4).add(Aspect.EARTH, 4).add(Aspect.ORDER, 4);
-            TW_Recipes.addShapedArcaneRecipe("CAP_ALKIMIUM.1", "CAP_ALKIMIUM", new ItemStack(itemWandCapPA), 25, crystals, "nnn", "n n", 'n', "nuggetAlkimium");
+            TW_Recipes.addShapedArcaneRecipe("CAP_ALKIMIUM.1", "CAP_VOID", new ItemStack(itemWandCapPA), 25, crystals, "nnn", "n n", 'n', "nuggetAlkimium");
 
             crystals = new AspectList().add(Aspect.AIR, 6).add(Aspect.FIRE, 6).add(Aspect.WATER, 6).add(Aspect.EARTH, 6).add(Aspect.ORDER, 6).add(Aspect.ENTROPY, 6);
-            TW_Recipes.addShapedArcaneRecipe("CAP_BISMUTH.1", "CAP_BISMUTH", new ItemStack(itemWandCapPA, 1, 1), 25, crystals, "nnn", "n n", 'n', "nuggetBismuth");
+            TW_Recipes.addShapedArcaneRecipe("CAP_BISMUTH.1", "CAP_VOID", new ItemStack(itemWandCapPA, 1, 1), 25, crystals, "nnn", "n n", 'n', "nuggetBismuth");
 
         } else {
             ThaumicWands.logger.log(Level.WARN, "Somebody is using an outdated version of Planar Artifice. Skipping Compat for it.");

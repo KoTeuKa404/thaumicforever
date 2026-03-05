@@ -13,6 +13,9 @@ See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more i
      Fesh0r, IngisKahn, bspkrs, LexManos         
 #################################################
 Found AccessTransformer: tc_at.cfg
+:clean UP-TO-DATE
+:extractMcpMappings SKIPPED
+:deobfCompileDeobfDepTask0 SKIPPED
 :deobfCompileDummyTask
 :getVersionJson
 :extractUserdev UP-TO-DATE
@@ -24,7 +27,6 @@ Found AccessTransformer: tc_at.cfg
 :deobfProvidedDummyTask
 :extractDependencyATs SKIPPED
 :extractMcpData SKIPPED
-:extractMcpMappings SKIPPED
 :genSrgs SKIPPED
 :deobfMcMCP SKIPPED
 :sourceApiJava
@@ -32,10 +34,20 @@ Found AccessTransformer: tc_at.cfg
 :processApiResources UP-TO-DATE
 :apiClasses UP-TO-DATE
 :sourceMainJava
-:compileJavaNote: Some input files use or override a deprecated API.
+:compileJavaNote: SpongePowered MIXIN Annotation Processor Version=0.8.7
+Note: Supported obfuscation types: ObfuscationServiceMCP supports [searge,notch]
+Note: Writing refmap to C:\jaba\build\resources\main\mixins.oldresearch.refmap.json
+C:\jaba\build\sources\main\java\com\wonginnovations\oldresearch\core\mixin\vanilla\GuiScreenAccessor.java:11: warning: Unable to locate obfuscation mapping for @Accessor target renderToolTip
+    @Invoker("renderToolTip")
+    ^
+Note: Writing refmap to C:\jaba\build\resources\main\mixins.oldresearch.refmap.json
+Note: Writing refmap to C:\jaba\build\resources\main\mixins.oldresearch.refmap.json
+Note: Writing refmap to C:\jaba\build\resources\main\mixins.oldresearch.refmap.json
+Note: Some input files use or override a deprecated API.
 Note: Recompile with -Xlint:deprecation for details.
 Note: Some input files use unchecked or unsafe operations.
 Note: Recompile with -Xlint:unchecked for details.
+1 warning
 
 :processResources
 :classes
@@ -58,4 +70,4 @@ remapping source...
 
 BUILD SUCCESSFUL
 
-Total time: 56.191 secs
+Total time: 51.3 secs

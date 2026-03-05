@@ -168,9 +168,15 @@ public class RenderAuraNode extends Render<EntityAuraNode> {
                 suffix = I18n.format("node.regen.fading");
             }
 
+            String energized = entity.isTfCharged() ? I18n.format("node.energized") : "";
+
             String fullText = typeText;
-            if (!suffix.isEmpty())
+            if (!suffix.isEmpty()) {
                 fullText += ", " + suffix;
+            }
+            if (!energized.isEmpty()) {
+                fullText += ", " + energized;
+            }
 
             int sw = Minecraft.getMinecraft().fontRenderer.getStringWidth(fullText);
             Minecraft.getMinecraft().fontRenderer.drawString(

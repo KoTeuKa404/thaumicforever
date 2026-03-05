@@ -2,6 +2,7 @@ package com.koteuka404.thaumicforever.wand.tile;
 
 import com.koteuka404.thaumicforever.Primal;
 import com.koteuka404.thaumicforever.PrimalAuraHandler;
+import com.koteuka404.thaumicforever.TilePort;
 import com.koteuka404.thaumicforever.wand.inventory.InventoryArcaneWorkbenchNew;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,8 @@ import thaumcraft.common.tiles.crafting.TileArcaneWorkbench;
 public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITickable {
 
     public int auraChunkX, auraChunkZ = -1;
+    private static final int VIS_RECHARGE_PER_TICK = 2;
+    private static final int PORT_BOOST_RANGE = 8;
 
     public TileArcaneWorkbenchNew() {
         inventoryCraft = new InventoryArcaneWorkbenchNew(this, new ContainerDummy());
@@ -60,9 +63,18 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
 
     public void rechargeWand() {
         BlockPos drainPos = getPos().add(auraChunkX * 16, 0, auraChunkZ * 16);
-        RechargeHelper.rechargeItem(getWorld(), getWand(), drainPos, null, 1);
+        RechargeHelper.rechargeItem(getWorld(), getWand(), drainPos, null, VIS_RECHARGE_PER_TICK);
         if (PrimalAuraHandler.consumeSet(getWorld(), drainPos, 1, false)) {
-            WandHelper.addPrimalChargeDistributed(getWand(), 1, null);
+            AspectList add = new AspectList();
+            AspectList boost = getPortBoostAspects();
+            for (Aspect a : getAllPrimalAspects()) {
+                int amt = 1;
+                if (boost != null && boost.size() > 0) {
+                    amt += boost.getAmount(a);
+                }
+                if (amt > 0) add.add(a, amt);
+            }
+            WandHelper.addPrimalCharge(getWand(), add, null);
         }
         auraChunkX++;
         if (auraChunkX > 1) {
@@ -71,6 +83,29 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
             if (auraChunkZ > 1)
                 auraChunkZ = auraChunkX;
         }
+    }
+
+    private AspectList getPortBoostAspects() {
+        if (world == null) return null;
+        BlockPos chargerPos = getPos().up();
+        int r = PORT_BOOST_RANGE;
+        BlockPos.MutableBlockPos scan = new BlockPos.MutableBlockPos();
+        for (int dx = -r; dx <= r; dx++) {
+            for (int dy = -r; dy <= r; dy++) {
+                for (int dz = -r; dz <= r; dz++) {
+                    scan.setPos(getPos().getX() + dx, getPos().getY() + dy, getPos().getZ() + dz);
+                    if (scan.equals(chargerPos)) continue;
+                    if (!(world.getTileEntity(scan) instanceof TilePort)) continue;
+                    TilePort port = (TilePort) world.getTileEntity(scan);
+                    if (port == null || port.isInvalid()) continue;
+                    if (chargerPos.equals(port.getChargerTarget())) {
+                        AspectList boost = port.getBoostAspects(0.35f, 1);
+                        if (boost != null && boost.size() > 0) return boost;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public boolean hasEnoughPrimalForCrystals(AspectList crystals) {

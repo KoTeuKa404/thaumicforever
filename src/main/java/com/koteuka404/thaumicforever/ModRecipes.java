@@ -366,7 +366,7 @@ public class ModRecipes {
             new ResourceLocation("thaumicforever", "prime_tool_tf"),
             "TFSCRIBINGTOOLS",
             50,
-            new AspectList().add(Aspect.AIR, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.EARTH, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5), 
+            new AspectList().add(Aspect.AIR, 5).add(Aspect.FIRE, 5).add(Aspect.WATER, 5).add(Aspect.EARTH, 5).add(Aspect.ORDER, 5).add(Aspect.ENTROPY, 5),
             new ItemStack(ModItems.ItemPrimalScribeTool),
             new Object[] {"feather", new ItemStack(ModItems.ItemScribeToolLarge),Ingredient.fromItem(ItemsTC.primordialPearl)}
         );
@@ -382,7 +382,7 @@ public class ModRecipes {
             " G ",
             "QPQ",
             "ANA",
-            'G', new ItemStack(Items.GOLD_INGOT),
+            'G', new ItemStack(ModItems.GOLD_PLATE),
             'Q', new ItemStack(Blocks.QUARTZ_BLOCK),
             'P', new ItemStack(Blocks.PISTON),
             'A', new ItemStack(BlocksTC.stoneArcane),
@@ -392,14 +392,14 @@ public class ModRecipes {
 
         ShapedArcaneRecipe bonecompass = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "bonecompass"),
-            "THAUMICFOREVER",
+            "!ANGRY_SKELET",
             15,
             new AspectList().add(Aspect.ORDER, 2).add(Aspect.EARTH, 2),
             ModItems.ItemCompassMaze,
             " B ",
             "BCB",
             " B ",
-            'B', new ItemStack(Items.BONE),
+            'B', new ItemStack(ModItems.Bone),
             'C', new ItemStack(Items.COMPASS)
         );
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "bonecompass"), bonecompass);
@@ -434,7 +434,7 @@ public class ModRecipes {
 
         ShapedArcaneRecipe caster_advanced = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "caster_advanced"),
-            "THAUMICFOREVER",
+            "FOCUSADVANCED",
             120,
             new AspectList().add(Aspect.ENTROPY, 2).add(Aspect.FIRE, 2).add(Aspect.AIR, 2).add(Aspect.WATER, 2).add(Aspect.EARTH, 2).add(Aspect.ORDER, 2),
             ModItems.CUSTOM_CASTER,
@@ -450,7 +450,7 @@ public class ModRecipes {
 
         ShapedArcaneRecipe pouch = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "pouch"),
-            "THAUMICFOREVER",
+            "FOCUSPOUCH",
             25,
             new AspectList().add(Aspect.ENTROPY, 2).add(Aspect.FIRE, 2).add(Aspect.AIR, 2).add(Aspect.WATER, 2).add(Aspect.EARTH, 2).add(Aspect.ORDER, 2),
             ModItems.POUCH,

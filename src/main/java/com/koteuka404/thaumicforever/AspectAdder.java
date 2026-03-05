@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
 
 public class AspectAdder {
@@ -314,5 +315,9 @@ public class AspectAdder {
         ANCIENT_COAL.add(coalancbStack);
         ANCIENT_COAL.add(coalancbStack);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModOreBlocks.ANCIENT_COAL), ANCIENT_COAL);
+
+        ItemStack wandbench = new ItemStack(BlocksTC.arcaneWorkbench);
+        AspectList WAND_WORKBENCH = new AspectList(wandbench);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.WAND_WORKBENCH), WAND_WORKBENCH);
     }
 }

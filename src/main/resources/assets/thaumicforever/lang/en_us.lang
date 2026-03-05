@@ -73,7 +73,7 @@ item.strong_bone.name=Strong Bone
 tile.invisible_part.name=Double Table
 
 item.thaumium_gear.name=Thaumium Gear
-item.void_gear.name=Viod Gear
+item.void_gear.name=Void Gear
 item.brass_gear.name=Brass Gear
 item.aquareia_goggles.name=Aquareia Goggles
 
@@ -87,7 +87,7 @@ item.empty_focus.name=Empty Focus
 item.eternal_blade.name=Eternal Blade
 item.raven_cloak_bauble.name=Shadow Cloak
 
-tc.aspect.weather=Weather, Nature
+tc.aspect.tempestas=Weather
 tc.aspect.matterya=Mattery
 item.bowl_treatmeat.name=Bowl of Treat Meat
 item.bowl_zombie.name=Zombie Bowl
@@ -201,8 +201,12 @@ research.IMMERALKIMIA.title=Immersive Alchemy
 research.IUALKIMIA.title=Industrial Alchemy
 research.ETERNALBLADE.title=Eternal Blade
 
-research.THAUMICFOREVER.stage.1=Your journey into Thaumic knowledge begins here. Start by crafting a Crucible.
-research.THAUMICFOREVER.stage.2=You are ready for more advanced research.<BR>Right-click the table with a wand to access the wand workbench.<BR/> <PAGE><IMG>thaumicforever:textures/misc/research1.png:0:0:255:255:0.5</IMG><BR>Connect two greatwood tables together and use salis mundus.<PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
+research.THAUMICFOREVER.stage.1=The first steps are always the hardest. The book insists that no wand can be born without proper fittings. I must combine a rod with a pair of caps at an Arcane Workbench to assemble my first wand.<BR>It also hints at another trick: a simple wooden table can be awakened to greater purpose. Touch it with a wand, and it will serve as a Wand Workbench.
+research.THAUMICFOREVER.stage.2=A wand is more than a tool; it is a vessel for Vis. The Wand Workbench draws upon this reserve to shape arcane crafts.<BR>It seems the wand itself can replace a pinch of Salis Mundus when awakening a table. For now I only know that it stores Vis and lends it to the workbench. Of its deeper nature, I know little yet.
+research.THAUMICFOREVER.stage.3=By joining two greatwood tables and applying salis mundus, I can obtain a research table. Yet its true nature remains unclear to me.<BR>I will keep this page open, for it seems destined to hold further notes as my studies advance.
+research.THAUMICFOREVER.addenda.1=A Revive Skeleton yielded a strange scroll, its text fractured and incomplete. Perhaps I should return to the research table and see if it responds to these hints.<PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
+research.THAUMICFOREVER.addenda.2=The advanced gauntlet has proven a worthy refinement. Replacing iron with brass improved its handling of Vis, and each further upgrade brings the focus closer to the ideal I seek.
+research.THAUMICFOREVER.addenda.3=The road is long for a thaumaturge, and gathering supplies soon becomes a burden. To ease this, I have devised a pouch that can carry the essentials of any journey.
 
 research.NEWALKIMIA.stage.1=Delve into the mysteries of New Alchemy. Start with the basics.
 research.NEWALKIMIA.stage.2=Your understanding of Alchemy grows stronger.
@@ -438,6 +442,7 @@ entity.NodeMagnet.name=Node Magnet
 node.regen.fast=Bright
 node.regen.slow=Pale
 node.regen.fading=Fading
+node.energized=Energized
 
 
 #
@@ -480,6 +485,8 @@ item.compass_maze.name=Maze Compass
 item.turret_magnet.name=Node Magnet
 tile.node_stabilizer.name=Node Stabilizer
 research.!aura_node_scan.text=Scan Aura Nodes
+research.!wand_workbench.text=Scan the Wand Workbench
+research.!mysterious_scrolls_scan.text=Scan a mysterious scroll
 tile.jarred_node.name=Jarred Node
 tile.node_transducer.name=Node Transducer
 #
@@ -638,7 +645,7 @@ research.UNLOCKTHAUMATURGY.stage.1=Even though I can not rely on using vis for c
 
 # Base Thaumaturgy
 research.BASETHAUMATURGY.title=Basic Thaumaturgy
-research.BASETHAUMATURGY.stage.0=Now that I have my Wand I can begin assembling arcane devices, but I doubt that this Wand will be enough maybe I should begin looking at other Materials.
+research.BASETHAUMATURGY.stage.0=Now that I have my wand, the Wand Workbench itself begins to make sense. It draws Vis directly from the wand instead of the aura, and even replaces crystals with the wand's stored primal aspects. A charger mounted above the bench hastens replenishment, while aura nodes can still feed a wand when I hold it to their glow.
 research.BASETHAUMATURGY.addendum.0=I realized that those foci I made do not only fit a top of the Casters Gaunlet, but also dircetly at the tip of my wand. Interstingly the foci started to drain the vis and not from the surrounding aura but from my wand, this might be come in handy.
 
 # Primal Charm
@@ -760,3 +767,107 @@ research.CAP_BISMUTH.stage.1=As I exspected Bismuth is a marvelous conductor of 
 
 
 item.pouch.name=Pouch
+
+item.researchnote.name=Research Note
+item.researchnote.unknown.1=Unknown Knowledge
+item.researchnote.unknown.2=<Right-click to reveal>
+item.discovery.name=Discovery
+researchnote.complete=Research note completed!
+researchnote.click=Click to research
+researchnote.missing.tools=You need scribing tools to copy a research note.
+researchnote.missing.paper=You need paper to copy a research note.
+tc.researchtheory=%s Theory
+item.knowledgefragment.name=Knowledge Fragment
+item.researchnote.name=Research Note
+item.researchnote.unknown.1=Unknown Knowledge
+item.researchnote.unknown.2=<Right click to reveal>
+item.discovery.name=§5Discovery
+item.curio.basic.name=Basic Curiosity
+item.curio.crimson.name=Crimson Rites
+#
+tc.research.copy=Cost to copy this research:
+tc.research.copy.failure=Insufficient %s to copy discovery.
+researchnote.complete=Research Note Completed!
+researchnote.click=§o§7Click to obtain.
+researchnote.missing.tools=Scribing tools required to create research notes.
+researchnote.missing.paper=Paper required to create research notes.
+tc.addaspectdiscovery=You have discovered %s!
+tc.addaspectpool=Gained %s research point(s) for %s
+tc.discoveryerror=To understand this you need to study %s.
+tc.unknownobject=Nothing can be learned from this.
+tc.researchtheory=%s Theory
+#
+tc.inventoryscan.scanning=Scanning
+tc.inventoryscan.tooltip=Inventory Scanning available
+tc.inventoryscan.tooltip.more=Hover over items with the\nThaumometer to scan.
+#
+tc.forbidden=§l§5Forbidden knowledge (%n)§0
+tc.forbidden.level.1=Mostly Harmless
+tc.forbidden.level.2=Minor
+tc.forbidden.level.3=Moderate
+tc.forbidden.level.4=Dangerous
+tc.forbidden.level.5=Taboo
+#
+tc.aspect.help.aer=air
+tc.aspect.help.terra=earth
+tc.aspect.help.ignis=fire
+tc.aspect.help.aqua=water
+tc.aspect.help.ordo=order
+tc.aspect.help.perditio=broken things
+tc.aspect.help.vacuos=empty things
+tc.aspect.help.praecantatio=magical things
+tc.aspect.help.auram=nodes
+tc.aspect.help.vitium=the corrupting influence of magic
+tc.aspect.help.lux=light
+tc.aspect.help.potentia=energy
+tc.aspect.help.motus=things that move
+tc.aspect.help.tempestas=weather
+tc.aspect.help.victus=the sources of life
+tc.aspect.help.mortuus=the nature of death
+tc.aspect.help.volatus=flight
+tc.aspect.help.tenebrae=darkness
+tc.aspect.help.limus=sticky things
+tc.aspect.help.herba=plants
+tc.aspect.help.arbor=trees
+tc.aspect.help.spiritus=spirits
+tc.aspect.help.humanus=man
+tc.aspect.help.bestia=beast
+tc.aspect.help.exanimis=the nature of undeath
+tc.aspect.help.cognitio=the mind
+tc.aspect.help.sensus=perception
+tc.aspect.help.messis=crops
+tc.aspect.help.meto=farming
+tc.aspect.help.metallum=metals
+tc.aspect.help.perfodio=mining
+tc.aspect.help.instrumentum=tools
+tc.aspect.help.aversio=weapons
+tc.aspect.help.gelum=cold things
+tc.aspect.help.vitreus=crystals
+tc.aspect.help.sano=curative objects
+tc.aspect.help.iter=travelling
+tc.aspect.help.venenum=poisonous things
+tc.aspect.help.alienis=strange things from other worlds
+tc.aspect.help.tutamen=protective things
+tc.aspect.help.fames=food
+tc.aspect.help.fabrico=crafting
+tc.aspect.help.lucrum=valuable things
+tc.aspect.help.pannus=cloth
+tc.aspect.help.machina=mechanical things
+tc.aspect.help.vinculum=things that entrap
+tc.aspect.help.permutatio=trading and bartering
+tc.aspect.help.corpus=flesh
+#
+research.RESEARCH.title=Research
+research.RESEARCH.stage.1=Before you can build most thaumaturgical items and blocks, you first need to study how to do so.<BR>There are several steps in this process, but before exploring them you'll first need a suitable area for arcane discovery.<BR>A wooden table and some scribing tools should do the trick!
+research.RESEARCH.stage.2=Before you can build most thaumaturgical items and blocks, you first need to study how to do so.<BR>There are several steps in this process:<BR>(1) Exploring the world and examining blocks, items and creatures with a §5Thaumometer§0<BR>(2) Taking the research points you gathered from the first step and expanding your aspect knowledge with the §5Research Table§0<BR>(3) Using the aspects you know and discovering practical knowledge and recipes with the §5Research Table§0.<BR>§l       §nExploration§r<BR>You cannot perform research without research points, and the best way to gain research points is by exploration and examining objects in the world.<BR>The first thing you will need to do is construct a §5Thaumometer§0 (see next page). By pointing the §5Thaumometer§0 at objects or creatures and holding the right mouse button you will start examining them. The process does not take long, but your movement speed is reduced while it is occurring.<BR>Once complete the §5Thaumometer§0 will display what aspects the object contains. In the bottom right of the screen you will also see a summary of the aspects and research points you discovered. You will initially not be able to examine all objects since you have not discovered their component aspects. For example, an object containing the Lux aspect<IMG>oldresearch:textures/misc/research1.png:0:0:255:208:.5</IMG>can only be examined if you have previously discovered the Lux aspect, or know the two aspects that combine to create it.<BR><BR><BR><BR><BR>The very first time you discover an aspect by examining something you gain two more research points than you would have normally.<BR>Objects and creatures can usually only ever be examined once.<BR>Occasionally examining something will reveal additional clues and insights into thaumaturgical research, unlocking subjects that you can research further.<BR>Research discovered in this fashion will have amber icons.<BR><BR>§l   §nCombining Aspects§r<BR>Once you have gathered some research points you can attempt to combine them into compound aspects within a research table.<BR>To craft a research table simply place a §5wood table§0 and click on it with a set of Scribing Tools. The recipe for tables is listed under the §5Artiface§0 research category.<BR><BR><BR>If you open the research tables inventory, you will see an interface as pictured on the right.<BR>The scribing tools you used to craft the table will be located in slot §l1§r. You should see all the primal aspects (and possibly some compound aspects) listed in the area marked §l3§r with varying amounts attached to them. When you enter a world for the first time, every player is assigned a small pool of primal aspects to get them started. If you had done some exploring with the thaumometer beforehand then you might have a<IMG>oldresearch:textures/misc/research2.png:0:0:128:83:1</IMG>significant number of primal and compound aspects listed here.<BR>You can now start combining aspects into more complex compound aspects but simply clicking on those you wish to combine or dragging it to the runic circles in area §l4§r. The selected aspects will appear in area §l4§r and when you have two selected pressing the purple button will attempt to combine them. If successful you should see what was gained in the bottom right and it should appear in area §l3§r.<BR>The component aspects are consumed even if the combination did not result in valid compound aspect.<BR>§l   §nPrimary Research§r<BR>You need to be carrying a set of scribing tools and paper for this step. If you open your Thaumonomicon you will see<IMG>oldresearch:textures/misc/research2.png:0:88:255:158:.5</IMG>all the knowledge have and also all the knowledge that you are now able to pursue.<BR>Flashing square or round icons represent primary researches. If you can read their title (instead of seeing strange runes) you are simply able to click on them. Paper and ink will be consumed from your inventory and you will gain a research note. You can now take this research note to the table to start researching it by placing it in slot §l2§r.<BR>Section §l5§r will now display a sheet of paper covered in hexagonal tiles with aspect icons around the outer edge. If you see question mark icons it means you do not know that aspect yet and you will need to learn it first. To complete your research you simply need to connect and activate all the aspects. You do this by dragging an aspect to a hex adjacent to it that is either composed of the target aspect, or can be combined with another aspect to form the target aspect. Placing an aspect consumes one research point. If you make a mistake you can click on the aspect to remove it, but you will not regain the research point. You continue doing this until you have formed a pattern connecting all the starting aspects. The outer aspects need not be connected to all the others, they simply need to form a connected whole.<BR>Once this is done the research will complete and the research note will turn into a discovery. NOTE: Placing and removing aspects from the hex grid consumes ink from your scribing tools. If it runs out you will not be able to proceed until you refill it.
+# Below is cut from research.RESEARCH.stage.2 not sure if it will be implemented.
+# <BR> §l§nSecondary Research§r<BR>Hexagonal icons indicate Secondary research. Much like primary research you just need to click on them. However instead of gaining a research note, you will simply learn the research directly. Secondary research does have an aspect cost you need to pay, but they do not require you to be carrying scribing tools or paper.
+research.RESEARCHEXPERTISE.title=Research Expertise
+research.RESEARCHEXPERTISE.stage.1=You have noticed certain patterns emerge during your arcane studies. With practice the art of discovery is becoming second nature as you commit to memory the various runes of this world.
+research.RESEARCHEXPERTISE.stage.2=You have become more efficient at performing research.<BR>Whenever you remove an aspect that you placed in a hex, there is a 25% chance that you will regain the research point.<BR>You are also able to see what aspects you need to combine to create an aspect you are hovering over.
+research.RESEARCHMASTERY.title=Research Mastery
+research.RESEARCHMASTERY.stage.1=You've reached an other-worldly level of arcane inspiration. It begins to feel as if you can pull aspects out of thin air, further pondering on this matter may prove fruitful.
+research.RESEARCHMASTERY.stage.2=You have become even more efficient at performing research.<BR>Whenever you remove an aspect that you placed in a hex, there is a 50% chance that you will regain the research point.<BR>Additionally there is a 10% chance that whenever you place an aspect that it will not cost any research points to do so.<BR>Lastly you are able to combine aspects in the research table by shift-clicking on the aspect you wish to create. If you have enough of the component aspects they will automatically combine to create the clicked aspect.
+research.RESEARCHDUPE.title=Research Duplication
+research.RESEARCHDUPE.stage.1=You've become proficient in arcane theory, in your spare time you begin transcribing your discoveries in a standardized format that other Thaumaturges can comprehend.
+research.RESEARCHDUPE.stage.2=You have discovered a way to copy completed research note.<BR>When you complete research or place a completed research note in the research table you will see a star icon. Clicking this will create a copy of this research as long as you are carrying paper and ink and have enough aspects available.<BR>The more copies are created of that research, the more expensive copying it will become.

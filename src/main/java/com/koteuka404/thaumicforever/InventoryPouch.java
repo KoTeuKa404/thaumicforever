@@ -29,7 +29,7 @@ public class InventoryPouch extends InventoryBasic {
 
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
-        return !(stack.getItem() instanceof ItemPouch);
+        return !isPouchStack(stack);
     }
 
     @Override
@@ -69,5 +69,9 @@ public class InventoryPouch extends InventoryBasic {
         }
         ItemStackHelper.saveAllItems(tag, items);
         pouchStack.setTagCompound(tag);
+    }
+
+    private static boolean isPouchStack(ItemStack stack) {
+        return !stack.isEmpty() && stack.getItem() instanceof ItemPouch;
     }
 }

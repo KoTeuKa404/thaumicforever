@@ -29,7 +29,7 @@ public class TileNodeTransducer extends TileThaumcraft implements ITickable {
     private static final int SEARCH_COOLDOWN = 20;
     private static final int CONVERT_TIME    = 200;
     private static final int PUSH_RANGE      = 8;
-    private static final float BOOM_STRENGTH = 2.0f;
+    private static final float BOOM_STRENGTH = 4.0f;
 
     private static final int BURST_PERIOD_TICKS = 400;
 
@@ -360,23 +360,36 @@ public class TileNodeTransducer extends TileThaumcraft implements ITickable {
     }
 
     public void onTransducerBroken() {
-        if (!world.isRemote && mode == Mode.ENERGIZED) {
-            world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, BOOM_STRENGTH, false);
-        int total = 0;
-            for (Aspect a : cvPerTickAspects.getAspects()) total += cvPerTickAspects.getAmount(a);
-            if (total <= 0) total = 25;
-            AuraHelper.polluteAura(world, pos, Math.max(25, total * 2), true);
-        }
+        triggerOverload();
+        dischargeNode();
     }
 
     public void onStabilizerBroken() {
-        if (!world.isRemote && mode == Mode.ENERGIZED) {
-            world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, BOOM_STRENGTH, false);
-            int total = 0;
-            for (Aspect a : cvPerTickAspects.getAspects()) total += cvPerTickAspects.getAmount(a);
-            if (total <= 0) total = 25;
-            AuraHelper.polluteAura(world, pos, Math.max(25, total * 2), true);
+        triggerOverload();
+        dischargeNode();
+    }
+
+    private void triggerOverload() {
+        if (world == null || world.isRemote || mode != Mode.ENERGIZED) return;
+        world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, BOOM_STRENGTH, false);
+        int total = 0;
+        for (Aspect a : cvPerTickAspects.getAspects()) total += cvPerTickAspects.getAmount(a);
+        if (total <= 0) total = 50;
+        AuraHelper.polluteAura(world, pos, Math.max(50, total * 4), true);
+    }
+
+    private void dischargeNode() {
+        EntityAuraNode node = cachedNode;
+        if (node == null || node.isDead) node = findNodeBelow();
+        if (node != null && !node.isDead) {
+            node.setTfCharged(false);
+            node.stablized = false;
+            node.canEatNodesWhileStabilized = false;
+            node.updateSyncAspects();
         }
+        cachedNode = null;
+        mode = Mode.IDLE;
+        convertStartedAt = -1;
     }
 
     private void tryPlayClick() {

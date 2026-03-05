@@ -68,3 +68,13 @@ Forge Mod Loader downloads components from the Minecraft Coder Pack
 Thaumic Staff (Thaumic Wands)
 
 Portions of this mod are derived from Thaumic Staff and are licensed under GNU GPL v3.
+Thanks to keletu66666 (Thaumic-Staff).
+Project source: https://github.com/KELETU66666/Thaumic-Staff
+
+=======================================================================
+
+TC4Research / Old Research
+
+Portions of this mod are derived from TC4Research / Old Research and are licensed under the MIT License.
+Project source: https://github.com/Wong-Innovations/TC4Research
+Thanks to SumTingWong886 (TC4Research).

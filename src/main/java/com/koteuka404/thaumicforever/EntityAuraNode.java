@@ -8,6 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
+import com.koteuka404.thaumicforever.wand.util.WandHelper;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,6 +18,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
@@ -25,8 +29,6 @@ import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.lib.utils.EntityUtils;
-import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
-import com.koteuka404.thaumicforever.wand.util.WandHelper;
 
 public class EntityAuraNode extends Entity {
     public static final List<Aspect> ALL_ASPECTS;
@@ -44,6 +46,9 @@ public class EntityAuraNode extends Entity {
     public static final double CHANCE_NORMAL   = 1.0 - (CHANCE_SINISTER + CHANCE_HUNGRY + CHANCE_UNSTABLE + CHANCE_PURE + CHANCE_TAINT);
 
     private int regenCooldown = 0;
+    private boolean deathExplosionTriggered = false;
+
+    private static final float ENERGIZED_BREAK_BOOM = 4.0f;
 
     private static final DataParameter<Integer> NODE_SIZE = EntityDataManager.createKey(EntityAuraNode.class, DataSerializers.VARINT);
     private static final DataParameter<String> ASPECT_TYPE = EntityDataManager.createKey(EntityAuraNode.class, DataSerializers.STRING);
@@ -483,6 +488,19 @@ public class EntityAuraNode extends Entity {
     @Override public void move(MoverType m,double x,double y,double z){ super.move(m,x,y,z); }
 
     @Override
+    public void setDead() {
+        if (!deathExplosionTriggered && world != null && !world.isRemote && isTfCharged()) {
+            deathExplosionTriggered = true;
+            world.createExplosion(null, posX, posY, posZ, ENERGIZED_BREAK_BOOM, false);
+            int total = Math.max(0, nodeAspects.visSize());
+            if (total <= 0) total = Math.max(0, originalAspects.visSize());
+            if (total <= 0) total = 50;
+            AuraHelper.polluteAura(world, new BlockPos(this), Math.max(50, total * 4), true);
+        }
+        super.setDead();
+    }
+
+    @Override
     protected void writeEntityToNBT(NBTTagCompound tag) {
         tag.setInteger("size", getNodeSize());
         tag.setByte("type", (byte) getNodeType());
@@ -543,7 +561,7 @@ public class EntityAuraNode extends Entity {
         final int LOW  = 7;
         final int HIGH = 20;
 
-        int cap = Math.min(HIGH, domAmount - 1);     
+        int cap = Math.min(HIGH, domAmount - 1);
         if (cap < LOW) return Math.max(1, domAmount - 1);
 
         return LOW + rand.nextInt(cap - LOW + 1);

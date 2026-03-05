@@ -11,11 +11,23 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "6.2.2"
+version = "6.2.4"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
 sourceCompatibility = targetCompatibility = '1.8'
+
+sourceSets {
+    main {
+        java {
+            exclude 'com/wonginnovations/oldresearch/integration/groovy/**'
+            exclude 'com/koteuka404/thaumicforever/oldresearch/**'
+        }
+    }
+}
+
+def mixinSrgFile = file("${buildDir}/mcp-srg.srg")
+def mixinRefMapFile = file("${buildDir}/resources/main/mixins.oldresearch.refmap.json")
 
 minecraft {
     version = "1.12.2-14.23.5.2820"
@@ -25,9 +37,21 @@ minecraft {
 
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += [
+            "-AoutRefMapFile=${mixinRefMapFile}",
+            "-AoutSrgFile=${mixinSrgFile}",
+            "-AdefaultObfuscationEnv=searge"
+    ]
+}
+
+compileJava.dependsOn "genSrgs"
+
 
 repositories {
+    mavenLocal()
     mavenCentral()
+    maven { url = uri("$rootDir/localrepo") }
     maven { url = "https://files.minecraftforge.net/maven" }
     maven { url = "https://modmaven.dev" }
     maven { url = "https://maven.thiakil.com" }
@@ -35,10 +59,13 @@ repositories {
 }
 
 dependencies {
-    // compileOnly  "org.spongepowered:mixin:0.8.5"
+    compileOnly "org.spongepowered:mixin:0.8.5"
     compile 'mezz.jei:jei_1.12.2:4.15.0.268'
     
+    compileOnly files("run/mods/!mixinbooter-10.5.jar")
     compileOnly files("libs/Baubles-1.12-1.5.3.jar")
+    deobfCompile "com.azanor:Thaumcraft:1.12.2-6.1.BETA26"
+    // deobfCompile "com.azanor:Thaumcraft:1.12.2-6.1.BETA26"
     // compileOnly files("libs/Bubbles-2.2.jar")
 
     // deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2:deobf"
@@ -47,13 +74,16 @@ dependencies {
 task deobfJar(type: Jar) {
     from sourceSets.main.output
     classifier = 'deobf'
+    exclude 'thaumcraft/api/**'
 }
 
 jar {
+    exclude 'thaumcraft/api/**'
     manifest {
         attributes(
             "FMLCorePlugin": "com.example.coremod.CoreModPlugin",
-            "FMLCorePluginContainsFMLMod": "true"
+            "FMLCorePluginContainsFMLMod": "true",
+            "MixinConfigs": "mixins.thaumicforever.json,mixins.oldresearch.json,mixins.oldresearch.vanilla.json"
 
         )
     }

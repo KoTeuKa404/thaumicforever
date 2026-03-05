@@ -11,6 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.koteuka404.thaumicforever.wand.main.ThaumicWands;
 
 import baubles.api.BaubleType;
 import net.minecraft.creativetab.CreativeTabs;
@@ -34,10 +35,13 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.golems.GolemHelper;
+import thaumcraft.api.research.ResearchCategories;
+import thaumcraft.api.research.ResearchEntry;
+import thaumcraft.api.research.ResearchStage;
 import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
-import com.koteuka404.thaumicforever.wand.main.ThaumicWands;
 
 @Mod(modid = ThaumicForever.MODID, name = ThaumicForever.NAME, version = ThaumicForever.VERSION,dependencies = "required-after:forge@[14.23.5.2820,);required-after:thaumcraft@[6.1.BETA26,);")
 // required-after:mixinbooter@[0.8,);
@@ -250,6 +254,8 @@ public class ThaumicForever {
         RecipeCrucible.addCrucibleRecipes();
         proxy.postInit(event);
         ThaumicWands.postInit(event);
+        fixBasicsResearchLocations();
+        removeFirstStepsObservation();
         IDustTrigger.registerDustTrigger(new DustTriggerMultiblock("NODEJAR", NodeJarMultiblockDef.SHAPE));
         ThaumcraftApi.addMultiblockRecipeToCatalog(
             new ResourceLocation("thaumicforever", "nodejar"),
@@ -259,6 +265,52 @@ public class ThaumicForever {
         aspectAdder = new AspectAdder();
         aspectAdder.registerAspects();
 
+    }
+
+    private void fixBasicsResearchLocations() {
+        fixResearchLocation("KNOWLEDGETYPES", 3, -2);
+        fixResearchLocation("THEORYRESEARCH", 5, -2);
+        fixResearchLocation("CELESTIALSCANNING", 7, -2);
+    }
+
+    private void fixResearchLocation(String key, int col, int row) {
+        ResearchEntry entry = ResearchCategories.getResearch(key);
+        if (entry != null) {
+            entry.setCategory("BASICS");
+            entry.setDisplayColumn(col);
+            entry.setDisplayRow(row);
+        }
+    }
+
+    private void removeFirstStepsObservation() {
+        ResearchEntry entry = ResearchCategories.getResearch("FIRSTSTEPS");
+        if (entry == null || entry.getStages() == null) {
+            return;
+        }
+        for (ResearchStage stage : entry.getStages()) {
+            if (stage == null || stage.getKnow() == null) {
+                continue;
+            }
+            ResearchStage.Knowledge[] know = stage.getKnow();
+            int count = 0;
+            for (ResearchStage.Knowledge k : know) {
+                if (k != null && k.type != IPlayerKnowledge.EnumKnowledgeType.OBSERVATION) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                stage.setKnow(null);
+                continue;
+            }
+            ResearchStage.Knowledge[] filtered = new ResearchStage.Knowledge[count];
+            int idx = 0;
+            for (ResearchStage.Knowledge k : know) {
+                if (k != null && k.type != IPlayerKnowledge.EnumKnowledgeType.OBSERVATION) {
+                    filtered[idx++] = k;
+                }
+            }
+            stage.setKnow(filtered);
+        }
     }
 
     @SubscribeEvent

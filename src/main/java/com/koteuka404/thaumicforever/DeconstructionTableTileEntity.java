@@ -57,7 +57,7 @@ public class DeconstructionTableTileEntity extends TileEntity implements ITickab
     private final Map<Item, Float> chances = new HashMap<>();
 
     public DeconstructionTableTileEntity() {
-        this.oldResearchLoaded = net.minecraftforge.fml.common.Loader.isModLoaded("oldresearch");
+        this.oldResearchLoaded = true;
 
         recipes.put(Item.getItemFromBlock(Blocks.CRAFTING_TABLE),
             new ItemStack[]{ new ItemStack(Item.REGISTRY.getObject(new ResourceLocation("thaumicbases", "knowledge_shard"))) } );

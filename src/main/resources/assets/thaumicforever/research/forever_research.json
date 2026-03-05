@@ -10,14 +10,35 @@
             "stages": [
                 {
                     "required_knowledge":["THEORY;BASICS;2"],
-                    "required_craft":["thaumcraft:crucible"],
                     "required_research":["FIRSTSTEPS"],
-                    "text": "research.THAUMICFOREVER.stage.1"
+                    "text": "research.THAUMICFOREVER.stage.1",
+                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","thaumcraft:tablewood"]
+
                 },
                 {
-                    "recipes": ["thaumicforever:greatwood_table","thaumicforever:bonecompass","thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","THAUMICFOREVER:caster_advanced","THAUMICFOREVER:pouch"],
-                    "text": "research.THAUMICFOREVER.stage.2",
-                    "reward_item": ["thaumicforever:compass_maze"]
+                    "required_research":["!wand_workbench"],
+                    "text": "research.THAUMICFOREVER.stage.2"
+                },
+                {
+                    "text": "research.THAUMICFOREVER.stage.3",
+                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","thaumcraft:tablewood"],
+                    "reward_knowledge": ["OBSERVATION;AUROMANCY;1"]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.THAUMICFOREVER.addenda.1",
+                    "required_research": ["!mysterious_scrolls_scan","!REVIVE_SKELET"]
+                },
+                {
+                    "text": "research.THAUMICFOREVER.addenda.2",
+                    "recipes": ["thaumicforever:caster_advanced"],
+                    "required_research": ["FOCUSADVANCED"]
+                },
+                {
+                    "text": "research.THAUMICFOREVER.addenda.3",
+                    "recipes": ["thaumicforever:pouch"],
+                    "required_research": ["FOCUSPOUCH"]
                 }
             ]
         },
@@ -130,7 +151,6 @@
                 }
             ]
         },
-
         {
             "key": "VICTUSALKIMIA",
             "name": "research.VICTUSALKIMIA.title",
@@ -149,7 +169,6 @@
                 }
             ]
         },
-
         {
             "key": "HERBAALKIMIA",
             "name": "research.HERBAALKIMIA.title",
@@ -168,7 +187,6 @@
                 }
             ]
         },
-
         {
             "key": "IGNISALKIMIA",
             "name": "research.IGNISALKIMIA.title",
@@ -593,7 +611,7 @@
             "stages": [
                 {
                     "text": "research.ANGRY_SKELET.stage.1",
-                    "recipes": ["thaumicforever:BoneBladeRecipe"]
+                    "recipes": ["thaumicforever:BoneBladeRecipe","thaumicforever:bonecompass"]
                 }
                 
             ]
@@ -608,8 +626,7 @@
             "meta": [ "HEX","HIDDEN" ],
             "stages": [
                 {
-                    "text": "research.REVIVE_SKELET.stage.1",
-                    "recipes": ["thaumicforever:BoneBladeRecipe"]
+                    "text": "research.REVIVE_SKELET.stage.1"
                 }
                 
             ]
@@ -815,7 +832,7 @@
             "icons": [ "thaumicforever:textures/misc/r_nodetap2.png" ],
             "category": "THAUMICFOREVER","location": [ 4,-4 ],
             "meta": ["SPIKY"],
-            "parents": [ "NEWARTIFICE","NEWAUROMANCY" ],
+            "parents": [ "~THAUMICFOREVER","BASEAUROMANCY"],
             "stages": [
                 {
                     "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"],
@@ -859,7 +876,8 @@
             "name": "research.STABILIZER.title",
             "icons": [ "thaumicforever:node_stabilizer" ],
             "category": "THAUMICFOREVER","location": [ 6,-4 ],
-            "parents": [ "BASEARTIFICE","VISAURA","~AURANODE" ],
+            "meta":["HIDDEN"],
+            "parents": ["VISAURA","~AURANODE","~NEWARTIFICE"],
             "stages": [
                 {
                     "required_knowledge":["THEORY;ARTIFICE;2"],
@@ -993,7 +1011,7 @@
             "icons": ["thaumicforever:textures/misc/r_thaumaturgy.png"],
             "meta": [ "HIDDEN","SPIKY" ],
             "category": "THAUMICFOREVER","location": [ 8,-6 ],
-            "parents": [ "AURANODE"],
+            "parents": [ "AURANODE","!wand_workbench"],
             "stages": [
                 {
                     "required_knowledge":["THEORY;ARTIFICE;2","THEORY;AUROMANCY;1"],

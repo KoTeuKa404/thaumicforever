@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "thaumicforever:items/researchnote",
+    "layer1": "thaumicforever:items/researchnoteoverlay"
+  }
+}

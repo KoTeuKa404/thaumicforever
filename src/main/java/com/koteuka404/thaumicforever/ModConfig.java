@@ -26,6 +26,7 @@ public class ModConfig {
     public static int focus4MaxComplexity;
     public static int focus5UltimateComplexity;
     public static int mazeChance;
+    public static boolean enableOldResearch;
 
     public static void loadConfig(FMLPreInitializationEvent event) {
         File configFile = new File(event.getModConfigurationDirectory(), "thaumicforever.cfg");
@@ -107,7 +108,12 @@ public class ModConfig {
             "Enable Silk Touch Fix", "General", false,
             "If true, Silk Touch will drop correct iron/gold ore when industrialupgrade breaks it."
         );
-    
+
+        enableOldResearch = config.getBoolean(
+            "Enable Old Research", "Integration", true,
+            "If false, disables the embedded Old Research mod."
+        );
+
         obsidianTotemChance = config.getInt(
             "Obsidian Totem Spawn Chance","WorldGen",300, 1,   Integer.MAX_VALUE,
             "Chance per chunk for a Obsidian Totem(default 300): 1 in N."

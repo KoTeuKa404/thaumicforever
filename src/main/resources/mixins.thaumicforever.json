@@ -1,9 +1,9 @@
 {
   "required": true,
   "package": "com.koteuka404.thaumicforever.mixin",
+  "refmap": "mixins.oldresearch.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinCasterManager"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,14 @@
+{
+  "package": "com.wonginnovations.oldresearch.core.mixin.vanilla",
+  "refmap": "mixins.oldresearch.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "EntityLivingBaseMixin"
+  ],
+  "client": [
+    "GuiScreenAccessor"
+  ],
+  "server": []
+}

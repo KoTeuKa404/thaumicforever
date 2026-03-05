@@ -1,6 +1,8 @@
 package com.koteuka404.thaumicforever;
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -16,6 +18,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
+import thaumcraft.api.blocks.BlocksTC;
+import com.koteuka404.thaumicforever.wand.tile.TileArcaneWorkbenchNew;
 
 public class TilePort extends TileEntity implements ITickable,
         IAspectContainer, IEssentiaTransport,
@@ -25,6 +29,7 @@ public class TilePort extends TileEntity implements ITickable,
     private int transferCooldown = 0;
 
     private static final int MAX_COLOR_DEPTH = 16;
+    private static final int CHARGER_LINGER_TICKS = 60;
 
     // CV: 100 CV = 1 
     private final Map<Aspect,Integer> cvBuffer = new HashMap<>();
@@ -40,8 +45,15 @@ public class TilePort extends TileEntity implements ITickable,
     private BlockPos targetPort = null;
     private BlockPos sourcePort = null;
     private int cachedColor = 0x6600E5;
+    private Aspect lastCvAspect = null;
 
     private long lastProcessedTick = -1;
+    private long lastCvAt = -1;
+
+    private static final int CHARGER_SCAN_COOLDOWN = 20;
+    private static final int CHARGER_SCAN_RANGE = 8;
+    private BlockPos cachedChargerPos = null;
+    private long lastChargerScan = -1;
 
     @Override
     public void update() {
@@ -57,6 +69,8 @@ public class TilePort extends TileEntity implements ITickable,
             markDirty();
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
         }
+
+        refreshChargerTarget(now);
 
         if (!cvBuffer.isEmpty() && !hasStabilizerAbove()) {
             flushCvDown();
@@ -158,6 +172,8 @@ public class TilePort extends TileEntity implements ITickable,
 
         cvBuffer.put(aspect, cur + accepted);
         cachedColor = aspect.getColor();
+        lastCvAspect = aspect;
+        lastCvAt = world.getTotalWorldTime();
         markDirty();
         if (!world.isRemote) {
             world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
@@ -239,6 +255,61 @@ public class TilePort extends TileEntity implements ITickable,
             if (cv <= 0) it.remove();
             else if (changed) e.setValue(cv);
         }
+    }
+
+    private void refreshChargerTarget(long now) {
+        if (world == null) return;
+
+        if (cachedChargerPos != null && !isChargerBlock(cachedChargerPos)) {
+            cachedChargerPos = null;
+            markDirty();
+            world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+        }
+
+        if (!isChargerActive(now)) return;
+
+        if (cachedChargerPos != null && (now - lastChargerScan) < CHARGER_SCAN_COOLDOWN) {
+            if (isChargerBlock(cachedChargerPos)) return;
+            cachedChargerPos = null;
+        }
+
+        if ((now - lastChargerScan) < CHARGER_SCAN_COOLDOWN) return;
+        lastChargerScan = now;
+
+        BlockPos found = null;
+        double best = Double.MAX_VALUE;
+
+        int r = CHARGER_SCAN_RANGE;
+        BlockPos.MutableBlockPos scan = new BlockPos.MutableBlockPos();
+        for (int dx = -r; dx <= r; dx++) {
+            for (int dy = -r; dy <= r; dy++) {
+                for (int dz = -r; dz <= r; dz++) {
+                    scan.setPos(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
+                    if (!isChargerBlock(scan)) continue;
+                    double d = pos.distanceSq(scan);
+                    if (d < best) {
+                        best = d;
+                        found = scan.toImmutable();
+                    }
+                }
+            }
+        }
+
+        if (found == null && cachedChargerPos == null) return;
+        if (found != null && found.equals(cachedChargerPos)) return;
+        if (found == null && cachedChargerPos == null) return;
+
+        cachedChargerPos = found;
+        markDirty();
+        world.notifyBlockUpdate(pos, world.getBlockState(pos), world.getBlockState(pos), 3);
+    }
+
+    private boolean isChargerBlock(BlockPos p) {
+        if (p == null || world == null) return false;
+        IBlockState state = world.getBlockState(p);
+        if (state == null || state.getBlock() != BlocksTC.arcaneWorkbenchCharger) return false;
+        TileEntity below = world.getTileEntity(p.down());
+        return below instanceof TileArcaneWorkbenchNew;
     }
 
 
@@ -413,8 +484,149 @@ public class TilePort extends TileEntity implements ITickable,
         }
     }
 
+    public BlockPos getChargerTarget() { return cachedChargerPos; }
+
+    public boolean hasCvCharge() {
+        if (cvBuffer.isEmpty()) return false;
+        for (int v : cvBuffer.values()) {
+            if (v > 0) return true;
+        }
+        return false;
+    }
+
+    public AspectList getBoostAspects(float percent, int minAmount) {
+        AspectList out = new AspectList();
+        if (percent <= 0f) return out;
+
+        boolean has = false;
+        for (Map.Entry<Aspect, Integer> e : cvBuffer.entrySet()) {
+            Aspect a = e.getKey();
+            int cv = e.getValue();
+            if (a == null || cv <= 0) continue;
+
+            int base = (int)Math.floor(cv / (float)CONVERT_CHUNK_CV);
+            if (base <= 0) base = 1;
+            int bonus = Math.max(minAmount, Math.round(base * percent));
+            if (bonus > 0) {
+                out.add(a, bonus);
+                has = true;
+            }
+        }
+
+        if (!has && lastCvAspect != null && lastCvAt >= 0 && world != null) {
+            long now = world.getTotalWorldTime();
+            if ((now - lastCvAt) <= CHARGER_LINGER_TICKS) {
+                out.add(lastCvAspect, Math.max(1, minAmount));
+            }
+        }
+
+        return out;
+    }
+
+    private boolean isChargerActive(long now) {
+        if (hasCvCharge()) return true;
+        return lastCvAt >= 0 && (now - lastCvAt) <= CHARGER_LINGER_TICKS;
+    }
+
+    private int getCvPrimaryColor() {
+        if (lastCvAspect != null) return lastCvAspect.getColor();
+        int best = 0;
+        int bestAmount = 0;
+        for (Map.Entry<Aspect, Integer> e : cvBuffer.entrySet()) {
+            int amt = e.getValue();
+            if (amt > bestAmount && e.getKey() != null) {
+                bestAmount = amt;
+                best = e.getKey().getColor();
+            }
+        }
+        return best;
+    }
+
+    public boolean isChargerBeamActive() {
+        if (world == null) return false;
+        return cachedChargerPos != null && isChargerActive(world.getTotalWorldTime());
+    }
+
+    public int getChargerBeamColor() {
+        int cvColor = getCvPrimaryColor();
+        return cvColor != 0 ? cvColor : cachedColor;
+    }
+
+    public BlockPos resolveChargerTargetRecursive(int depth) {
+        if (world == null) return null;
+        ArrayDeque<BlockPos> queue = new ArrayDeque<>();
+        HashSet<BlockPos> visited = new HashSet<>();
+
+        queue.add(getPos());
+        visited.add(getPos());
+
+        while (!queue.isEmpty()) {
+            BlockPos p = queue.removeFirst();
+            TileEntity te = world.getTileEntity(p);
+            if (!(te instanceof TilePort)) continue;
+            TilePort port = (TilePort) te;
+
+            if (port.isChargerBeamActive() && port.getChargerTarget() != null) {
+                return port.getChargerTarget();
+            }
+
+            BlockPos next = port.getTargetPort();
+            if (next != null && visited.add(next)) queue.addLast(next);
+            BlockPos prev = port.getSourcePort();
+            if (prev != null && visited.add(prev)) queue.addLast(prev);
+        }
+
+        return null;
+    }
+
+    public int resolveChargerColorRecursive(int depth) {
+        return resolveNodeBeamColorRecursive(depth);
+    }
+
+    public int resolveNodeBeamColorRecursive(int depth) {
+        if (world == null) return cachedColor;
+        ArrayDeque<BlockPos> queue = new ArrayDeque<>();
+        HashSet<BlockPos> visited = new HashSet<>();
+
+        queue.add(getPos());
+        visited.add(getPos());
+
+        while (!queue.isEmpty()) {
+            BlockPos p = queue.removeFirst();
+            TileEntity te = world.getTileEntity(p);
+            if (!(te instanceof TilePort)) continue;
+            TilePort port = (TilePort) te;
+
+            int nodeColor = port.getLocalNodeMainAspectColor();
+            if (nodeColor != 0) return nodeColor;
+
+            BlockPos next = port.getTargetPort();
+            if (next != null && visited.add(next)) queue.addLast(next);
+            BlockPos prev = port.getSourcePort();
+            if (prev != null && visited.add(prev)) queue.addLast(prev);
+        }
+
+        return cachedColor;
+    }
+
+    int getLocalNodeMainAspectColor() {
+        TileEntity teAbove = world.getTileEntity(pos.up());
+        if (teAbove instanceof TileBuffNodeStabilizer) {
+            EntityAuraNode node = ((TileBuffNodeStabilizer) teAbove).getFirstNode();
+            if (node != null && node.getMainAspect() != null) {
+                return node.getMainAspect().getColor();
+            }
+        }
+        return 0;
+    }
+
     private int computeBeamColorRecursive(int depth) {
         if (depth > MAX_COLOR_DEPTH) return 0x6600E5;
+        long now = world != null ? world.getTotalWorldTime() : 0;
+        if (hasCvCharge() || isChargerActive(now)) {
+            int cvColor = getCvPrimaryColor();
+            if (cvColor != 0) return cvColor;
+        }
 
         if (targetPort != null && !targetPort.equals(getPos())) {
             TileEntity te = world.getTileEntity(targetPort);
@@ -448,6 +660,15 @@ public class TilePort extends TileEntity implements ITickable,
             tag.setInteger("SourceY", sourcePort.getY());
             tag.setInteger("SourceZ", sourcePort.getZ());
         }
+        if (lastCvAspect != null) {
+            tag.setString("LastCvAspect", lastCvAspect.getTag());
+        }
+        tag.setLong("LastCvAt", lastCvAt);
+        if (cachedChargerPos != null) {
+            tag.setInteger("ChargerX", cachedChargerPos.getX());
+            tag.setInteger("ChargerY", cachedChargerPos.getY());
+            tag.setInteger("ChargerZ", cachedChargerPos.getZ());
+        }
         tag.setInteger("AspectColor", cachedColor);
         tag.setLong("lastProcessedTick", lastProcessedTick);
 
@@ -473,6 +694,17 @@ public class TilePort extends TileEntity implements ITickable,
         }
         if (tag.hasKey("SourceX")) {
             sourcePort = new BlockPos(tag.getInteger("SourceX"), tag.getInteger("SourceY"), tag.getInteger("SourceZ"));
+        }
+        if (tag.hasKey("LastCvAspect")) {
+            lastCvAspect = Aspect.getAspect(tag.getString("LastCvAspect"));
+        } else {
+            lastCvAspect = null;
+        }
+        lastCvAt = tag.getLong("LastCvAt");
+        if (tag.hasKey("ChargerX")) {
+            cachedChargerPos = new BlockPos(tag.getInteger("ChargerX"), tag.getInteger("ChargerY"), tag.getInteger("ChargerZ"));
+        } else {
+            cachedChargerPos = null;
         }
         cachedColor = tag.getInteger("AspectColor");
         lastProcessedTick = tag.getLong("lastProcessedTick");

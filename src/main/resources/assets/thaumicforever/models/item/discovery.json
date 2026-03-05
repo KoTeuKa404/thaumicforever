@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "thaumicforever:items/discovery",
+        "layer1": "thaumicforever:items/discoveryoverlay"
+    }
+}

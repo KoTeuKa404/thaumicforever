@@ -8,7 +8,7 @@ import thaumcraft.api.aspects.Aspect;
 
 public class AspectRegistry {
 
-    public static final Aspect WEATHER = new Aspect("weather", 0xFFFFFF, new Aspect[]{Aspect.AIR, Aspect.WATER}, new ResourceLocation("thaumicforever", "textures/misc/tempestas.png"), 1);
+    public static final Aspect WEATHER = new Aspect("tempestas", 0xFFFFFF, new Aspect[]{Aspect.AIR, Aspect.WATER}, new ResourceLocation("thaumicforever", "textures/misc/tempestas.png"), 1);
     public static final Aspect MATTERYA = new Aspect("matterya", 0x00FF00, new Aspect[]{Aspect.DESIRE, Aspect.CRAFT}, new ResourceLocation("thaumicforever", "textures/misc/mattery.png"), 1);
 
     public static void registerAspects() {

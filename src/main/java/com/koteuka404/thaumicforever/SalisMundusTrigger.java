@@ -46,8 +46,27 @@ public class SalisMundusTrigger implements IDustTrigger {
             for (BlockPos neighborPos : neighbors) {
                 IBlockState neighborState = world.getBlockState(neighborPos);
                 if (neighborState.getBlock() == ModBlocks.GREATWOOD_TABLE) {
-                    world.setBlockState(pos, ModBlocks.DOUBLE_TABLE.getDefaultState().withProperty(BlockHorizontal.FACING, state.getValue(BlockHorizontal.FACING)));
-                    world.setBlockToAir(neighborPos);
+                    EnumFacing neighborDir = EnumFacing.getFacingFromVector(
+                        neighborPos.getX() - pos.getX(),
+                        neighborPos.getY() - pos.getY(),
+                        neighborPos.getZ() - pos.getZ()
+                    );
+                    if (neighborDir == null || neighborDir.getAxis().isVertical()) {
+                        neighborDir = state.getValue(BlockHorizontal.FACING).rotateY();
+                    }
+
+                    EnumFacing facing = neighborDir.rotateYCCW();
+
+                    world.setBlockState(
+                        pos,
+                        ModBlocks.DOUBLE_TABLE.getDefaultState().withProperty(BlockHorizontal.FACING, facing),
+                        3
+                    );
+                    world.setBlockState(
+                        neighborPos,
+                        ModBlocks.INVISIBLE_PART.getDefaultState().withProperty(InvisiblePartBlock.FACING, facing),
+                        3
+                    );
 
                     ItemStack heldItem = player.getHeldItemMainhand();
                     if (!player.isCreative() && !heldItem.isEmpty() && heldItem.getItem() == ItemsTC.salisMundus) {

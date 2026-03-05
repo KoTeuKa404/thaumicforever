@@ -18,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ReviveSkeletonEntity extends EntityMob {
@@ -55,6 +56,7 @@ public class ReviveSkeletonEntity extends EntityMob {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+        burnInSunlight();
 
         if (attackCooldown > 0) {
             attackCooldown--;
@@ -76,6 +78,31 @@ public class ReviveSkeletonEntity extends EntityMob {
 
             if (distance <= 2.0D && attackCooldown == 0) {
                 performAttack(player);
+            }
+        }
+    }
+
+    private void burnInSunlight() {
+        if (this.world.isDaytime() && !this.world.isRemote) {
+            float brightness = this.getBrightness();
+            if (brightness > 0.5F
+                    && this.world.canSeeSky(new BlockPos(this.posX, this.posY + this.getEyeHeight(), this.posZ))
+                    && this.rand.nextFloat() * 30.0F < (brightness - 0.4F) * 2.0F) {
+                boolean shouldBurn = true;
+                ItemStack helmet = this.getItemStackFromSlot(EntityEquipmentSlot.HEAD);
+                if (!helmet.isEmpty()) {
+                    if (helmet.isItemStackDamageable()) {
+                        helmet.setItemDamage(helmet.getItemDamage() + this.rand.nextInt(2));
+                        if (helmet.getItemDamage() >= helmet.getMaxDamage()) {
+                            this.renderBrokenItemStack(helmet);
+                            this.setItemStackToSlot(EntityEquipmentSlot.HEAD, ItemStack.EMPTY);
+                        }
+                    }
+                    shouldBurn = false;
+                }
+                if (shouldBurn) {
+                    this.setFire(8);
+                }
             }
         }
     }
