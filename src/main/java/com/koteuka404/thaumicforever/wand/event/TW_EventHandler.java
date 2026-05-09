@@ -1,11 +1,13 @@
 package com.koteuka404.thaumicforever.wand.event;
 
+import com.koteuka404.thaumicforever.registry.ModGuiHandler;
+
+import com.koteuka404.thaumicforever.registry.ModBlocks;
+
 import com.koteuka404.thaumicforever.wand.api.item.wand.IStaff;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
 import com.koteuka404.thaumicforever.wand.entity.EntityVisOrb;
 import com.koteuka404.thaumicforever.ThaumicForever;
-import com.koteuka404.thaumicforever.ModBlocks;
-import com.koteuka404.thaumicforever.ModGuiHandler;
 import com.koteuka404.thaumicforever.wand.tile.TileArcaneWorkbenchNew;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import com.koteuka404.thaumicforever.wand.wand.TW_Wands;
@@ -26,6 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.crafting.IDustTrigger;
@@ -92,6 +95,9 @@ public class TW_EventHandler {
                     player.inventory.markDirty();
                     player.world.notifyBlockUpdate(e.getPos(), player.world.getBlockState(e.getPos()), player.world.getBlockState(e.getPos()), 3);
                     FMLCommonHandler.instance().firePlayerCraftingEvent(player, new ItemStack(BlocksTC.arcaneWorkbench), new InventoryFake(1));
+                    if (!player.world.isRemote) {
+                        ThaumcraftApi.internalMethods.completeResearch(player, "!wand_workbench");
+                    }
                 }
             }
         }
@@ -101,7 +107,7 @@ public class TW_EventHandler {
     public static void openWandWorkbenchFromCharger(PlayerInteractEvent.RightClickBlock e) {
         if (e.getWorld().isRemote) return;
         if (e.getHand() != EnumHand.MAIN_HAND) return;
-        if (e.getWorld().getBlockState(e.getPos()).getBlock() != BlocksTC.arcaneWorkbenchCharger) return;
+        if (e.getWorld().getBlockState(e.getPos()).getBlock() != ModBlocks.ARCANE_WORKBENCH_WAND_CHARGER) return;
 
         BlockPos benchPos = e.getPos().down();
         if (e.getWorld().getBlockState(benchPos).getBlock() != ModBlocks.WAND_WORKBENCH) return;

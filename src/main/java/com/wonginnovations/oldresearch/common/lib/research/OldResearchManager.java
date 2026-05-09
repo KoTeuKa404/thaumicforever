@@ -38,7 +38,7 @@ import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategory;
 import thaumcraft.api.research.ResearchEntry;
 import thaumcraft.api.research.ResearchStage;
-import thaumcraft.common.lib.utils.HexUtils;
+import com.wonginnovations.oldresearch.common.lib.utils.HexUtils;
 
 public abstract class OldResearchManager {
 
@@ -110,6 +110,7 @@ public abstract class OldResearchManager {
     }
 
     public static void patchResearch() {
+        boolean oldResearchOnly = com.koteuka404.thaumicforever.config.ModConfig.enableOldResearchOnly;
         for (ResearchCategory category : ResearchCategories.researchCategories.values()) {
             for (ResearchEntry entry : category.research.values()) {
                 int i = 0;
@@ -124,11 +125,34 @@ public abstract class OldResearchManager {
                             else stage.setResearchIcon(ArrayUtils.add(stage.getResearchIcon(), null));
                         }
                     }
-                    // Keep original Thaumcraft knowledge requirements so research needs both
-                    // the points and the oldresearch note.
+                    if (oldResearchOnly) {
+                        stage.setKnow(filterKnowledge(stage.getKnow()));
+                    }
                 }
             }
         }
+    }
+
+    private static ResearchStage.Knowledge[] filterKnowledge(ResearchStage.Knowledge[] know) {
+        int count = 0;
+        for (ResearchStage.Knowledge k : know) {
+            if (k == null) continue;
+            if (k.type == IPlayerKnowledge.EnumKnowledgeType.OBSERVATION) continue;
+            if (k.type == IPlayerKnowledge.EnumKnowledgeType.THEORY) continue;
+            count++;
+        }
+        if (count == 0) {
+            return null;
+        }
+        ResearchStage.Knowledge[] filtered = new ResearchStage.Knowledge[count];
+        int idx = 0;
+        for (ResearchStage.Knowledge k : know) {
+            if (k == null) continue;
+            if (k.type == IPlayerKnowledge.EnumKnowledgeType.OBSERVATION) continue;
+            if (k.type == IPlayerKnowledge.EnumKnowledgeType.THEORY) continue;
+            filtered[idx++] = k;
+        }
+        return filtered;
     }
 
     private static ItemStack createNote(String key) {
@@ -161,7 +185,8 @@ public abstract class OldResearchManager {
             AspectList aspects = (RESEARCH_ASPECTS.containsKey(key))
                                     ? RESEARCH_ASPECTS.get(key)
                                     : getRandomAspects(world.rand, complexity, complexity + 2);
-            aspects = limitAspects(aspects, world.rand, ModConfig.researchNoteAspectLimit);
+            int guiSafeLimit = Math.min(20, ModConfig.researchNoteAspectLimit <= 0 ? 20 : ModConfig.researchNoteAspectLimit);
+            aspects = limitAspects(aspects, world.rand, guiSafeLimit);
             data.generateHexes(world, player, aspects, complexity);
             updateData(note, data);
             if(!player.inventory.addItemStackToInventory(note)) {

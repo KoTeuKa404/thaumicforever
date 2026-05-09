@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.wand.block;
 
-import com.koteuka404.thaumicforever.ModGuiHandler;
+import com.koteuka404.thaumicforever.registry.ModGuiHandler;
+
 import com.koteuka404.thaumicforever.ThaumicForever;
 import com.koteuka404.thaumicforever.wand.tile.TileArcaneWorkbenchNew;
 import net.minecraft.block.Block;

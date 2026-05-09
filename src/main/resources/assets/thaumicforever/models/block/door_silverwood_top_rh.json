@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "thaumicforever:blocks/door_bottom_silverwood",
+    "top": "thaumicforever:blocks/door_top_silverwood"
+  }
+}

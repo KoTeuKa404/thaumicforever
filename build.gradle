@@ -11,7 +11,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "6.2.4"
+version = "6.2.11"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
@@ -30,6 +30,7 @@ def mixinSrgFile = file("${buildDir}/mcp-srg.srg")
 def mixinRefMapFile = file("${buildDir}/resources/main/mixins.oldresearch.refmap.json")
 
 minecraft {
+    // ForgeGradle 2.3 requires a userdev artifact; in this environment only 2820 is available.
     version = "1.12.2-14.23.5.2820"
     runDir = "run"
     mappings = "snapshot_20171003"
@@ -58,15 +59,24 @@ repositories {
 
 }
 
+def mixinBooterFile = file("run/mods/!mixinbooter-10.6.jar").exists()
+    ? file("run/mods/!mixinbooter-10.6.jar")
+    : file("run/mods/!mixinbooter-10.5.jar")
+
 dependencies {
     compileOnly "org.spongepowered:mixin:0.8.5"
     compile 'mezz.jei:jei_1.12.2:4.15.0.268'
-    
-    compileOnly files("run/mods/!mixinbooter-10.5.jar")
-    compileOnly files("libs/Baubles-1.12-1.5.3.jar")
+
+    // BaublesEX needs MixinBooter classes at runtime in dev (runClient), not only at compile time.
+    compileOnly files(mixinBooterFile)
+    runtime files(mixinBooterFile)
+    // compileOnly files("libs/Baubles-1.12-1.5.3.jar")
+    compileOnly files("libs/BaublesEX-1.12.2-2.3.4.jar")
+    // compileOnly files("libs/Bubbles-2.4.10.jar")
+
+
     deobfCompile "com.azanor:Thaumcraft:1.12.2-6.1.BETA26"
     // deobfCompile "com.azanor:Thaumcraft:1.12.2-6.1.BETA26"
-    // compileOnly files("libs/Bubbles-2.2.jar")
 
     // deobfCompile "com.azanor.baubles:Baubles:1.12-1.5.2:deobf"
 
@@ -78,17 +88,14 @@ task deobfJar(type: Jar) {
 }
 
 jar {
-    exclude 'thaumcraft/api/**'
     manifest {
         attributes(
             "FMLCorePlugin": "com.example.coremod.CoreModPlugin",
-            "FMLCorePluginContainsFMLMod": "true",
-            "MixinConfigs": "mixins.thaumicforever.json,mixins.oldresearch.json,mixins.oldresearch.vanilla.json"
+            "FMLCorePluginContainsFMLMod": "true"
 
         )
     }
 }
-
 processResources {
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version

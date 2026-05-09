@@ -70,6 +70,24 @@
           "text": "research.RESEARCHDUPE.stage.2"
         }
       ]
+    },
+    {
+      "key": "RESEARCHCLEANFT",
+      "name": "research.RESEARCHCLEANFT.title",
+      "icons": [ "thaumicforever:textures/items/clean_mind.png" ],
+      "category": "BASICS", "location": [ 6,1 ],
+      "parents": [ "RESEARCHMASTERY" ],
+      "meta": [ "ROUND" , "SPIKY", "HIDDEN" ],
+      "stages": [
+        {
+          "text": "research.RESEARCHCLEANFT.stage.1",
+          "required_knowledge":["THEORY;AUROMANCY;1"]
+        },
+        {
+          "text": "research.RESEARCHCLEANFT.stage.2",
+          "recipes": ["thaumicforever:clean_mind_recipe"]
+        }
+      ]
     }
   ]
 }

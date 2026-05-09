@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumicforever:block/flux_scraper",
+    "uvlock": true,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:flux_scraper" }],
+    "inventory": [{ "model": "thaumicforever:flux_scraper" }]
+  }
+}

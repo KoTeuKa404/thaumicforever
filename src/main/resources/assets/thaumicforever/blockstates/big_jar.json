@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "thaumicforever:jar_brain_item" },
+    "inventory": [{ "model": "thaumicforever:jar_brain_item"}]
+  }
+}

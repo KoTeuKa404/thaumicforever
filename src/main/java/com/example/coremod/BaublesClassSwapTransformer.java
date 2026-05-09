@@ -11,6 +11,8 @@ import net.minecraft.launchwrapper.IClassTransformer;
 public class BaublesClassSwapTransformer implements IClassTransformer {
 
     private static final Set<String> TARGETS = new HashSet<String>();
+    private static final String DISABLED_REASON = detectDisabledReason();
+    private static final String REPLACEMENTS_ROOT = "baubles/";
     static {
         TARGETS.add("baubles.api.cap.BaublesContainer");
         // TARGETS.add("baubles.api.inv.BaublesInventoryWrapper");
@@ -25,7 +27,10 @@ public class BaublesClassSwapTransformer implements IClassTransformer {
     @Override
     public byte[] transform(String name, String transformedName, byte[] basicClass) {
         if (transformedName == null || !TARGETS.contains(transformedName)) return basicClass;
-        String path = transformedName.replace('.', '/') + ".class"; 
+        if (DISABLED_REASON != null) {
+            return basicClass;
+        }
+        String path = REPLACEMENTS_ROOT + transformedName.replace('.', '/') + ".class";
         InputStream is = null;
         try {
             ClassLoader cl = BaublesClassSwapTransformer.class.getClassLoader();
@@ -53,5 +58,30 @@ public class BaublesClassSwapTransformer implements IClassTransformer {
             buffer.write(chunk, 0, n);
         }
         return buffer.toByteArray();
+    }
+
+    private static String detectDisabledReason() {
+        // BaublesEX fork marker
+        if (hasClassResource("baubles/api/BaubleTypeEx.class")) {
+            System.out.println("[BaublesClassSwap] BaublesEX detected - class swap disabled.");
+            return "BaublesEX";
+        }
+
+        // Bubbles fork markers (modid is also 'baubles').
+        // Use stricter detection to avoid false positives on classic Baubles.
+        if (hasClassResource("baubles/api/BaubleTypeImpl.class")) {
+            System.out.println("[BaublesClassSwap] Bubbles detected (BaubleTypeImpl) - class swap disabled.");
+            return "Bubbles";
+        }
+        // IMPORTANT: do not touch FML Loader here.
+        // Loading net.minecraftforge.fml.common.Loader during coremod bootstrap can
+        // break early mixin targets (seen as "Loader was loaded too early").
+        System.out.println("[BaublesClassSwap] Classic Baubles-like API detected - class swap enabled.");
+        return null;
+    }
+
+    private static boolean hasClassResource(String classResourcePath) {
+        ClassLoader cl = BaublesClassSwapTransformer.class.getClassLoader();
+        return cl != null && cl.getResource(classResourcePath) != null;
     }
 }

@@ -1,0 +1,114 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumicforever:katana.obj",
+    "textures": {
+      "#m_8f450355-cd8d-de54-bfe8-90e1389b334f": "thaumicforever:items/katana"
+    },
+    "custom": {
+      "flip-v": true
+    },
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "inventory": [
+      {
+        "transform": {
+          "firstperson": {
+            "translation": [-0.05, 0.28, 0.02],
+            "scale": 0.3,
+            "rotation": [
+              {
+                "x": -26
+              },
+              {
+                "y": -78
+              },
+              {
+                "z": -62
+              }
+            ]
+          },
+          "firstperson_lefthand": {
+            "translation": [0.05, 0.28, 0.02],
+            "scale": 0.3,
+            "rotation": [
+              {
+                "x": -26
+              },
+              {
+                "y": 78
+              },
+              {
+                "z": 62
+              }
+            ]
+          },
+          "thirdperson": {
+            "translation": [-0.16, 0.38, 0.12],
+            "scale": 0.38,
+            "rotation": [
+              {
+                "x": -8
+              },
+              {
+                "y": -90
+              },
+              {
+                "z": -90
+              }
+            ]
+          },
+          "thirdperson_lefthand": {
+            "translation": [0.16, 0.38, 0.12],
+            "scale": 0.38,
+            "rotation": [
+              {
+                "x": -8
+              },
+              {
+                "y": 90
+              },
+              {
+                "z": 90
+              }
+            ]
+          },
+          "gui": {
+            "translation": [0.05, -0.02, 0],
+            "scale": 0.33,
+            "rotation": [
+              {
+                "x": 78
+              },
+              {
+                "y": 40
+              },
+              {
+                "z": -20
+              }
+            ]
+          },
+          "ground": {
+            "translation": [0, 0.1, 0],
+            "scale": 0.2,
+            "rotation": [
+              {
+                "x": 90
+              }
+            ]
+          },
+          "fixed": {
+            "translation": [0, 0.04, 0],
+            "scale": 0.3,
+            "rotation": [
+              {
+                "x": 90
+              }
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

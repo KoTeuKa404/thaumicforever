@@ -16,7 +16,7 @@ public class TW_Items {
     public static final Item itemWand = new ItemWand("item_wand");
     public static final Item itemStaff = new ItemStaff("item_staff");
     public static final Item itemScepter = new ItemScepter("item_scepter");
-    public static final Item itemWandCap = new ItemBaseMeta("item_wand_cap", "iron", "gold", "brass", "thaumium_inert", "thaumium", "void_inert", "void");
+    public static final Item itemWandCap = new ItemBaseMeta("item_wand_cap", "iron", "gold", "brass", "thaumium_inert", "thaumium", "void_inert", "void", "silver_inert", "silver");
     public static final Item itemWandRod = new ItemBaseMeta("item_wand_rod", "greatwood", "reed", "blaze", "ice", "obsidian", "quartz", "bone", "silverwood");
     public static final Item itemStaffCore = new ItemBaseMeta("item_staff_rod", "greatwood", "reed", "blaze", "ice", "obsidian", "quartz", "bone", "silverwood", "primal");
 

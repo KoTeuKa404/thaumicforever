@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "base_house_loot",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "loot_table",
+          "name": "thaumicforever:chests/house",
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "name": "trap_bonus_items",
+      "rolls": 1,
+      "entries": [
+        {
+          "entryName": "thaumicforever:coin",
+          "type": "item",
+          "name": "thaumicforever:coin",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "entryName": "minecraft:web",
+          "type": "item",
+          "name": "minecraft:web",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

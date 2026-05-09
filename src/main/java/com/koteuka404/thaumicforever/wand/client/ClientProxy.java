@@ -2,6 +2,7 @@ package com.koteuka404.thaumicforever.wand.client;
 
 import com.koteuka404.thaumicforever.wand.client.render.entity.EntityVisOrbRenderer;
 import com.koteuka404.thaumicforever.wand.client.render.entity.ItemWandRenderer;
+import com.koteuka404.thaumicforever.wand.client.render.entity.WandHandChargeRenderer;
 import com.koteuka404.thaumicforever.wand.client.render.tile.TileArcaneWorktableRenderer;
 import com.koteuka404.thaumicforever.wand.entity.EntityVisOrb;
 import com.koteuka404.thaumicforever.wand.item.TW_Items;
@@ -15,6 +16,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.common.MinecraftForge;
 
 @EventBusSubscriber(modid = ThaumicForever.MODID, value = Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -26,6 +28,7 @@ public class ClientProxy extends CommonProxy {
         TW_Items.itemWand.setTileEntityItemStackRenderer(new ItemWandRenderer());
         TW_Items.itemStaff.setTileEntityItemStackRenderer(new ItemWandRenderer());
         TW_Items.itemScepter.setTileEntityItemStackRenderer(new ItemWandRenderer());
+        MinecraftForge.EVENT_BUS.register(new WandHandChargeRenderer());
     }
 
     @Override

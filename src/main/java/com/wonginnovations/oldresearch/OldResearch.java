@@ -2,6 +2,7 @@ package com.wonginnovations.oldresearch;
 
 import com.wonginnovations.oldresearch.api.registration.IModelRegister;
 import com.wonginnovations.oldresearch.client.ResearchNoteColorHandler;
+import com.wonginnovations.oldresearch.common.commands.CommandOldResearch;
 import com.wonginnovations.oldresearch.common.items.ModItems;
 import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import com.wonginnovations.oldresearch.proxy.Proxy;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -63,6 +65,14 @@ public class OldResearch {
             return;
         }
         proxy.postInit(event);
+    }
+
+    @Mod.EventHandler
+    public void serverStarting(FMLServerStartingEvent event) {
+        if (!OldResearchToggle.isEnabled()) {
+            return;
+        }
+        event.registerServerCommand(new CommandOldResearch());
     }
 
     @SubscribeEvent

@@ -1,0 +1,14 @@
+# Made in Blockbench 5.1.3
+newmtl m_a6fecfd9-2810-7e16-6a7f-6905c91fd94a
+map_Kd thaumicforever:blocks/recharge_pedestal_side
+newmtl m_81aabefc-4692-8542-d8f9-6fe1216159d6
+map_Kd thaumicforever:blocks/pedestal_top
+newmtl m_85a4b143-e0fa-0fdf-8ad3-e212afd8db28
+map_Kd thaumicforever:blocks/recharge_pedestal_gem
+newmtl m_c6765b80-75d7-b716-cbaf-0375da2c0017
+map_Kd thaumicforever:blocks/recharge_pedestal_top
+newmtl m_a3bd02b3-6fc0-3f74-1302-5551a2e95122
+map_Kd thaumicforever:blocks/quarz
+newmtl m_8e5cfcc6-e2cd-9db8-a626-3e94812f41b8
+map_Kd thaumicforever:blocks/arcane_stone_1
+newmtl none

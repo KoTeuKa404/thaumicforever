@@ -1,0 +1,5 @@
+{
+  "loader": "forge:obj",
+  "model": "thaumicforever:block/recharge_pedestal.obj",
+  "flip-v": true
+}

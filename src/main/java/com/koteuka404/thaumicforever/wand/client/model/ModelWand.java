@@ -207,7 +207,7 @@ public class ModelWand extends ModelBase {
 
     private void drawRune(double x, double y, double z, int rune, EntityPlayer player) {
         GlStateManager.pushMatrix();
-        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ThaumicWands.modID, "textures/misc/r_wand.png"));
+        Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation(ThaumicWands.modID, "textures/misc/script.png"));
 
         float r = MathHelper.sin((player.ticksExisted + rune * 5) / 5.0F) * 0.1F + 0.88F;
         float g = MathHelper.sin((player.ticksExisted + rune * 5) / 7.0F) * 0.1F + 0.63F;
@@ -220,7 +220,8 @@ public class ModelWand extends ModelBase {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder buffer = tessellator.getBuffer();
 
-        float minU = 0.0625F * rune;
+        int idx = Math.floorMod(rune, 16);
+        float minU = 0.0625F * idx;
         float maxU = minU + 0.0625F;
         float minV = 0.0F;
         float maxV = 1.0F;

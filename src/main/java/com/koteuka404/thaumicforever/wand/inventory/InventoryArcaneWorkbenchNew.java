@@ -11,6 +11,7 @@ import net.minecraft.util.NonNullList;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.ContainerDummy;
 import thaumcraft.common.blocks.world.ore.ShardType;
 import thaumcraft.common.container.InventoryArcaneWorkbench;
 
@@ -51,7 +52,7 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
     public ItemStack removeStackFromSlot(int index) {
         if (index >= 9 && index <= 14) return ItemStack.EMPTY;
         ItemStack stack = ItemStackHelper.getAndRemove(this.stackList, index);
-        this.eventHandler.onCraftMatrixChanged(this);
+        notifyCraftMatrixChanged();
         return stack;
     }
 
@@ -60,7 +61,7 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
         ItemStack itemstack = ItemStackHelper.getAndSplit(this.stackList, index, count);
 
         if (!itemstack.isEmpty())
-            this.eventHandler.onCraftMatrixChanged(this);
+            notifyCraftMatrixChanged();
 
         return itemstack;
     }
@@ -68,7 +69,7 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
     public void setInventorySlotContents(int index, ItemStack stack) {
         if (index >= 9 && index <= 14) return;
         this.stackList.set(index, stack);
-        this.eventHandler.onCraftMatrixChanged(this);
+        notifyCraftMatrixChanged();
     }
 
     public void clear() {
@@ -128,6 +129,11 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
         if (count > 64) count = 64;
 
         return ThaumcraftApiHelper.makeCrystal(aspect, count);
+    }
+
+    private void notifyCraftMatrixChanged() {
+        if (this.eventHandler == null || this.eventHandler instanceof ContainerDummy) return;
+        this.eventHandler.onCraftMatrixChanged(this);
     }
 
 }

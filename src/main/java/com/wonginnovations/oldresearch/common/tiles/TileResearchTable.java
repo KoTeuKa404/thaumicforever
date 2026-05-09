@@ -34,7 +34,7 @@ import thaumcraft.api.items.IScribeTools;
 import thaumcraft.common.blocks.essentia.BlockJar;
 import thaumcraft.common.blocks.world.ore.BlockCrystal;
 import thaumcraft.common.lib.SoundsTC;
-import thaumcraft.common.lib.utils.HexUtils;
+import com.wonginnovations.oldresearch.common.lib.utils.HexUtils;
 import thaumcraft.common.tiles.TileThaumcraftInventory;
 
 public class TileResearchTable extends TileThaumcraftInventory {

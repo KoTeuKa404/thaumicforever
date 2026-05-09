@@ -1,0 +1,9 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "livingwood_inert": { "model": "forge:item-layer", "transform": "forge:default-item", "textures": { "layer0": "thaumicforever:items/wand/wand_rod_livingwood_inert" } },
+    "livingwood": { "model": "forge:item-layer", "transform": "forge:default-item", "textures": { "layer0": "thaumicforever:items/wand/wand_rod_livingwood" } },
+    "dreamwood_inert": { "model": "forge:item-layer", "transform": "forge:default-item", "textures": { "layer0": "thaumicforever:items/wand/wand_rod_dreamwood_inert" } },
+    "dreamwood": { "model": "forge:item-layer", "transform": "forge:default-item", "textures": { "layer0": "thaumicforever:items/wand/wand_rod_dreamwood" } }
+  }
+}

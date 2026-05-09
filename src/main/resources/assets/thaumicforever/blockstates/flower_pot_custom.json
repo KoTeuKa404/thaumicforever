@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "thaumicforever:flower_pot_custom" },
+    "inventory": { "model": "thaumicforever:flower_pot_custom" }
+  }
+}

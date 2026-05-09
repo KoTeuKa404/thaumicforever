@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/trapdoor_open",
+  "textures": {
+    "particle": "thaumicforever:blocks/trapdoor_greatwood",
+    "texture": "thaumicforever:blocks/trapdoor_greatwood"
+  }
+}

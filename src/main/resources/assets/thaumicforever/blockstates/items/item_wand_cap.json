@@ -43,6 +43,18 @@
         "textures": {
           "layer0": "thaumicforever:items/wand/wand_cap_void"
         }
+      },
+   "silver_inert": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_silver_inert"
+        }
+      },
+   "silver": {
+        "model": "forge:item-layer", "transform": "forge:default-item",
+        "textures": {
+          "layer0": "thaumicforever:items/wand/wand_cap_silver"
+        }
       }
      }
     }

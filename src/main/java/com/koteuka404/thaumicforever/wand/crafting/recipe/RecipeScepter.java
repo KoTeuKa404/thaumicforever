@@ -1,12 +1,13 @@
 package com.koteuka404.thaumicforever.wand.crafting.recipe;
 
+import com.koteuka404.thaumicforever.registry.ModItems;
+
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandCap;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandRod;
 import com.koteuka404.thaumicforever.wand.api.recipe.IPlayerDependentArcaneRecipe;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import com.koteuka404.thaumicforever.wand.util.WandWrapper;
-import com.koteuka404.thaumicforever.ModItems;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryCrafting;

@@ -1,5 +1,7 @@
 package com.example.coremod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -10,21 +12,30 @@ public class CoreModPlugin implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        return new String[] {
-            "com.example.coremod.IUEventHandlerTransformer",
-            // "com.example.coremod.ThaumicPeripheryTransformer",
-            // "com.example.coremod.BaubleAttributeModifierHandlerPatcher",
-            // "com.example.coremod.BaublesLogSuppressTransformer",
+        List<String> transformers = new ArrayList<String>();
+        transformers.add("com.example.coremod.IUEventHandlerTransformer");
+        transformers.add("com.example.coremod.ThaumcraftLogisticsScrollTransformer");
+        transformers.add("com.example.coremod.ThaumcraftLogisticsSearchTransformer");
+        transformers.add("com.example.coremod.ThaumcraftLogisticsQueueTransformer");
+        transformers.add("com.example.coremod.ThaumcraftLogisticsRequestLifetimeTransformer");
+        transformers.add("com.example.coremod.ThaumcraftSealProvideTransformer");
+        transformers.add("com.example.coremod.GolemRangedKitingTransformer");
+        // transformers.add("com.example.coremod.ThaumicPeripheryTransformer");
+        // transformers.add("com.example.coremod.BaubleAttributeModifierHandlerPatcher");
+        // transformers.add("com.example.coremod.BaublesLogSuppressTransformer");
 
-            "com.example.coremod.BaublesClassSwapTransformer"
-            // "com.example.coremod.TransformerBaubles"
+        boolean isBaublesEx = isClassResourcePresent("baubles/api/BaubleTypeEx.class");
+        boolean isBubbles = isClassResourcePresent("baubles/api/BaubleTypeImpl.class");
+        if (isBaublesEx) {
+            System.out.println("[CoreModPlugin] BaublesEX detected - skipping Baubles transformers.");
+        } else if (isBubbles) {
+            System.out.println("[CoreModPlugin] Bubbles detected - skipping Baubles transformers.");
+        } else {
+            transformers.add("com.example.coremod.BaublesClassSwapTransformer");
+            transformers.add("com.example.coremod.TransformerBaubles");
+        }
 
-            
-
-
-            
-
-        };
+        return transformers.toArray(new String[0]);
     }
 
     @Override
@@ -45,5 +56,10 @@ public class CoreModPlugin implements IFMLLoadingPlugin {
     @Override
     public String getAccessTransformerClass() {
         return null;
+    }
+
+    private static boolean isClassResourcePresent(String classResourcePath) {
+        ClassLoader cl = CoreModPlugin.class.getClassLoader();
+        return cl != null && cl.getResource(classResourcePath) != null;
     }
 }

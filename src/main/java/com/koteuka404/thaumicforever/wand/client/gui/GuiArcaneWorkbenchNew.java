@@ -3,7 +3,6 @@ package com.koteuka404.thaumicforever.wand.client.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.koteuka404.thaumicforever.wand.container.ContainerArcaneWorkbenchNew;
-import com.koteuka404.thaumicforever.wand.crafting.ThaumicWandsCraftingManager;
 import com.koteuka404.thaumicforever.wand.main.ThaumicWands;
 import com.koteuka404.thaumicforever.wand.util.LocalizationHelper;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
@@ -31,11 +30,15 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
     private TileArcaneWorkbench tileEntity;
     private InventoryPlayer ip;
     ResourceLocation tex;
+    ResourceLocation selectionTex;
     private static final float PRIMAL_ICON_SCALE = 1.0f;
+    private GuiArrowButton prevRecipeButton;
+    private GuiArrowButton nextRecipeButton;
 
     public GuiArcaneWorkbenchNew(InventoryPlayer inventory, TileArcaneWorkbench e) {
         super(new ContainerArcaneWorkbenchNew(inventory, e));
         this.tex = new ResourceLocation(ThaumicWands.modID, "textures/gui/arcaneworkbench.png");
+        this.selectionTex = new ResourceLocation(ThaumicWands.modID, "textures/gui/world_selection.png");
         this.tileEntity = e;
         this.ip = inventory;
         this.ySize = 234;
@@ -44,8 +47,38 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawDefaultBackground();
+        ContainerArcaneWorkbenchNew c = (ContainerArcaneWorkbenchNew) this.inventorySlots;
+        boolean showSwitch = c.getMatchingRecipeCount() > 1;
+        if (prevRecipeButton != null) {
+            prevRecipeButton.visible = showSwitch;
+            prevRecipeButton.enabled = showSwitch;
+        }
+        if (nextRecipeButton != null) {
+            nextRecipeButton.visible = showSwitch;
+            nextRecipeButton.enabled = showSwitch;
+        }
         super.drawScreen(mouseX, mouseY, partialTicks);
         renderHoveredToolTip(mouseX, mouseY);
+    }
+
+    @Override
+    public void initGui() {
+        super.initGui();
+        int var5 = (this.width - this.xSize) / 2;
+        int var6 = (this.height - this.ySize) / 2;
+        this.buttonList.clear();
+        this.prevRecipeButton = new GuiArrowButton(0, var5 + 150, var6 + 92, true, this.selectionTex);
+        this.nextRecipeButton = new GuiArrowButton(1, var5 + 172, var6 + 92, false, this.selectionTex);
+        this.buttonList.add(this.prevRecipeButton);
+        this.buttonList.add(this.nextRecipeButton);
+    }
+
+    @Override
+    protected void actionPerformed(net.minecraft.client.gui.GuiButton button) {
+        if (button == null) return;
+        if (button.id == 0 || button.id == 1) {
+            this.mc.playerController.sendEnchantPacket(this.inventorySlots.windowId, button.id);
+        }
     }
 
     @Override
@@ -58,7 +91,8 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
         drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
         int cost = 0;
         int discount = 0;
-        IArcaneRecipe result = ThaumicWandsCraftingManager.findMatchingArcaneRecipe(this.tileEntity.inventoryCraft, this.ip.player);
+        ContainerArcaneWorkbenchNew c = (ContainerArcaneWorkbenchNew) this.inventorySlots;
+        IArcaneRecipe result = c.getSelectedArcaneRecipe(this.ip.player);
         if (result != null) {
             cost = result.getVis();
             cost = WandHelper.getActualVisCost(cost, getWand(), this.ip.player);
@@ -102,6 +136,8 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
             GlStateManager.scale(1F, 1F, 1F);
             GlStateManager.popMatrix();
         }
+
+        // recipe index text intentionally hidden; arrows only
     }
 
     private ItemStack getWand() {
@@ -179,6 +215,28 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
         GlStateManager.color(1, 1, 1, 1);
         GlStateManager.enableAlpha();
         GlStateManager.disableBlend();
+    }
+
+    private static class GuiArrowButton extends net.minecraft.client.gui.GuiButton {
+        private final boolean left;
+        private final ResourceLocation tex;
+
+        GuiArrowButton(int id, int x, int y, boolean left, ResourceLocation tex) {
+            super(id, x, y, 16, 18, "");
+            this.left = left;
+            this.tex = tex;
+        }
+
+        @Override
+        public void drawButton(net.minecraft.client.Minecraft mc, int mouseX, int mouseY, float partialTicks) {
+            if (!this.visible) return;
+            this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
+            mc.getTextureManager().bindTexture(this.tex);
+            GlStateManager.color(1f, 1f, 1f, 1f);
+            int u = this.left ? 0 : 16;
+            int v = this.hovered ? 18 : 0;
+            net.minecraft.client.gui.Gui.drawModalRectWithCustomSizedTexture(this.x, this.y, (float) u, (float) v, this.width, this.height, 32f, 48f);
+        }
     }
 
 }

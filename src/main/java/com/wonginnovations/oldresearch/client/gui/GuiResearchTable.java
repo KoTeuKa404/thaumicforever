@@ -36,7 +36,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.common.config.ModConfig;
 import thaumcraft.common.lib.SoundsTC;
-import thaumcraft.common.lib.utils.HexUtils;
+import com.wonginnovations.oldresearch.common.lib.utils.HexUtils;
 
 @SideOnly(Side.CLIENT)
 public class GuiResearchTable extends GuiContainer {

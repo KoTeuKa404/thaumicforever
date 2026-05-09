@@ -8,7 +8,7 @@
     "EntityLivingBaseMixin"
   ],
   "client": [
-    "GuiScreenAccessor"
+    
   ],
   "server": []
 }

@@ -16,12 +16,13 @@
 
                 },
                 {
-                    "required_research":["!wand_workbench"],
-                    "text": "research.THAUMICFOREVER.stage.2"
+                    "required_research":["!wand_workbench;thaumcraft:textures/blocks/table_wood_side.png"],
+                    "text": "research.THAUMICFOREVER.stage.2",
+                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","thaumcraft:tablewood"]
                 },
                 {
                     "text": "research.THAUMICFOREVER.stage.3",
-                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","thaumcraft:tablewood"],
+                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY","thaumcraft:tablewood","thaumicforever:greatwood_table"],
                     "reward_knowledge": ["OBSERVATION;AUROMANCY;1"]
                 }
             ],
@@ -63,56 +64,30 @@
             ]
         },
         {
-            "key": "PERDITIOALKIMIA",
-            "name": "research.PERDITIOALKIMIA.title",
-            "icons": [ "thaumcraft:textures/aspects/perditio.png" ],
+            "key": "PERMUTATIOALKIMIA",
+            "name": "research.PERMUTATIOALKIMIA.title",
+            "icons": [ "thaumcraft:textures/aspects/permutatio.png" ],
             "parents": [ "~NEWALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ -5,7 ],
+            "category": "THAUMICFOREVER", "location": [ 1,6 ],
             "stages": [
                 {
-                    "required_item":["thaumcraft:salis_mundus","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'perditio'}]}"],
-                    "text": "research.PERDITIOALKIMIA.stage.1",
+                    "required_item":["thaumcraft:salis_mundus","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'permutatio'}]}"],
+                    "text": "research.PERMUTATIOALKIMIA.stage.1",
                     "required_knowledge":["THEORY;ELDRITCH;2"]
                 },
                 {
-                    "text": "research.PERDITIOALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:wool_d_recipe","THAUMICFOREVER:nethb_d_recipe","THAUMICFOREVER:quarzb_d_recipe","THAUMICFOREVER:magma_d_recipe","THAUMICFOREVER:netrhbv_d_recipe"]
-                }
-            ]
-        },
-        {
-            "key": "ORDOOALKIMIA",
-            "name": "research.ORDOOALKIMIA.title",
-            "icons": [ "thaumcraft:textures/aspects/ordo.png" ],
-            "parents": [ "~NEWALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 5,7 ],
-            "stages": [
-                {
-                    "required_item":["thaumcraft:salis_mundus","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'ordo'}]}"],
-                    "text": "research.ORDOOALKIMIA.stage.1",
-                    "required_knowledge":["THEORY;ELDRITCH;2"]
-                },
-                {
-                    "text": "research.ORDOOALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:wool_c_recipe","THAUMICFOREVER:netrhbv_c_recipe"]
-                }
-            ]
-        },
-        {
-            "key": "TENEBRAEALKIMIA",
-            "name": "research.TENEBRAEALKIMIA.title",
-            "icons": [ "thaumcraft:textures/aspects/tenebrae.png" ],
-            "parents": [ "PERDITIOALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ -5,9 ],
-            "stages": [
-                {
-                    "required_item":["thaumcraft:salis_mundus","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'tenebrae'}]}"],
-                    "text": "research.TENEBRAEALKIMIA.stage.1",
-                    "required_knowledge":["THEORY;ELDRITCH;2"]
-                },
-                {
-                    "text": "research.TENEBRAEALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:ghast_tear_recipe","THAUMICFOREVER:nether_wart_recipe","THAUMICFOREVER:ender_pearl_recipe"]
+                    "text": "research.PERMUTATIOALKIMIA.stage.2",
+                    "recipes": [
+                        "THAUMICFOREVER:wool_d_recipe",
+                        "THAUMICFOREVER:nethb_d_recipe",
+                        "THAUMICFOREVER:quarzb_d_recipe",
+                        "THAUMICFOREVER:magma_d_recipe",
+                        "THAUMICFOREVER:netrhbv_d_recipe",
+                        "THAUMICFOREVER:wool_c_recipe",
+                        "THAUMICFOREVER:netrhbv_c_recipe",
+                        "THAUMICFOREVER:pufferfish_recipe",
+                        "THAUMICFOREVER:feather_recipe"
+                    ]
                 }
             ]
         },
@@ -164,8 +139,7 @@
                     "required_knowledge":["THEORY;ALCHEMY;2"]
                 },
                 {
-                    "text": "research.VICTUSALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:pufferfish_recipe","THAUMICFOREVER:feather_recipe"]
+                    "text": "research.VICTUSALKIMIA.stage.2"
                 }
             ]
         },
@@ -183,7 +157,25 @@
                 },
                 {
                     "text": "research.HERBAALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:slime_ball_recipe","THAUMICFOREVER:waterlily_recipe","THAUMICFOREVER:dye_green_recipe","THAUMICFOREVER:reeds_recipe","THAUMICFOREVER:beetroot_seeds_recipe","THAUMICFOREVER:nature_core_recipe"]
+                    "recipes": ["THAUMICFOREVER:slime_ball_recipe","THAUMICFOREVER:waterlily_recipe","THAUMICFOREVER:dye_green_recipe","THAUMICFOREVER:reeds_recipe","THAUMICFOREVER:beetroot_seeds_recipe","THAUMICFOREVER:nether_wart_recipe"]
+                }
+            ]
+        },
+        {
+            "key": "SEED",
+            "name": "research.SEED.title",
+            "icons": [ "thaumicforever:textures/items/core_nature.png" ],
+            "parents": [ "HERBAALKIMIA" ],
+            "category": "THAUMICFOREVER", "location": [ 0,10 ],
+            "stages": [
+                {
+                    "required_item":["minecraft:BONE_BLOCK","thaumcraft:phial;1;1;{Aspects:[{amount:10,key:'herba'}]}"],
+                    "text": "research.SEED.stage.1",
+                    "required_knowledge":["THEORY;ALCHEMY;2"]
+                },
+                {
+                    "text": "research.SEED.stage.2",
+                    "recipes": ["THAUMICFOREVER:nature_core_recipe"]
                 }
             ]
         },
@@ -219,7 +211,7 @@
                 },
                 {
                     "text": "research.PRAECANTATIOALKIMIA.stage.2",
-                    "recipes": ["THAUMICFOREVER:diamond_recipe","THAUMICFOREVER:emerald_recipe","THAUMICFOREVER:dragon_breath_recipe","THAUMICFOREVER:MAGIC_DUST","THAUMICFOREVER:salis_d_recipe","THAUMICFOREVER:salis_recipe"]
+                    "recipes": ["THAUMICFOREVER:diamond_recipe","THAUMICFOREVER:emerald_recipe","THAUMICFOREVER:dragon_breath_recipe","THAUMICFOREVER:MAGIC_DUST","THAUMICFOREVER:salis_d_recipe","THAUMICFOREVER:salis_recipe","THAUMICFOREVER:ghast_tear_recipe","THAUMICFOREVER:ender_pearl_recipe"]
                 }
             ]
         },
@@ -263,7 +255,7 @@
             "key": "golem_core_fish",
             "name": "research.golem_core_fish.title",
             "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_fish.png"],
-            "parents": [ "AQUAALKIMIA" ,"VICTUSALKIMIA"],
+            "parents": [ "AQUAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
             "meta": [ "ROUND"],
             "category": "THAUMICFOREVER", "location": [ 0,7 ],
             "stages": [
@@ -275,13 +267,20 @@
                     "text": "research.golem_core_fish.stage.2",
                     "recipes": ["THAUMICFOREVER:fishRecipeKey"]
                 }
+            ],
+            "addenda": [
+                {
+                    "text": "research.golem_core_fish.addenda.1",
+                    "required_research": ["golem_core_fish"],
+                    "recipes":["thaumicforever:golem_core_fish_advanced"]
+                }
             ]
         },
         {
             "key": "seal_golem_core_essentia",
             "name": "research.seal_golem_core_essentia.title",
             "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_essentia.png"],
-            "parents": [ "TERRAALKIMIA" ,"VICTUSALKIMIA"],
+            "parents": [ "TERRAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
             "meta": [ "ROUND"],
             "category": "THAUMICFOREVER", "location": [ -4,7 ],
             "stages": [
@@ -311,8 +310,15 @@
                 },
                 {
                     "text": "research.NEWAUROMANCY.stage.2",
-                    "recipes": ["THAUMICFOREVER:ItemFocus4","THAUMICFOREVER:FOCUS_COMPLEX"]
+                    "recipes": ["THAUMICFOREVER:ItemFocus4"]
                     
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.NEWAUROMANCY.addenda.1",
+                    "required_research": ["!empty_focus_scan"],
+                    "recipes": ["THAUMICFOREVER:FOCUS_COMPLEX"]
                 }
             ]
         },
@@ -321,7 +327,7 @@
             "name": "research.FOCUSCALM.title",
             "icons": [ "focus:thaumicforever.CALM" ],
             "parents": [ "NEWAUROMANCY" ],
-            "category": "THAUMICFOREVER","location": [ 2,-6],
+            "category": "THAUMICFOREVER","location": [ 2,-5],
             "stages": [
                 {
                     "text": "research.FOCUSCALM.stage.1",
@@ -338,7 +344,7 @@
             "name": "research.MINDCONTROL.title",
             "icons": [ "focus:thaumicforever.MINDCONTROL" ],
             "parents": [ "FOCUSCALM" ],
-            "category": "THAUMICFOREVER","location": [ 2,-8 ],
+            "category": "THAUMICFOREVER","location": [ 2,-7 ],
             "meta": [ "ROUND" , "HIDDEN" ],
             "stages": [
                 {
@@ -355,8 +361,8 @@
             "key": "FOCUSCLEANSE",
             "name": "research.FOCUSCLEANSE.title",
             "icons": [ "focus:thaumicforever.CLEANSE" ],
-            "parents": [ "NEWAUROMANCY" ],
-            "category": "THAUMICFOREVER","location": [ 0,-6 ],
+            "parents": [ "GREAT_ARO" ],
+            "category": "THAUMICFOREVER","location": [ 3,-8 ],
             "stages": [
                 {
                     "text": "research.FOCUSCLEANSE.stage.1",
@@ -369,28 +375,11 @@
             ]
         },
         {
-            "key": "CHAINFLIGHT",
-            "name": "research.CHAINFLIGHT.title",
-            "icons": [ "focus:thaumicforever.CHAINFLIGHT" ],
-            "parents": [ "NEWAUROMANCY" ],
-            "category": "THAUMICFOREVER","location": [ -2,-6 ],
-            "stages": [
-                {
-                    "text": "research.CHAINFLIGHT.stage.1",
-                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
-
-                },
-                {
-                    "text": "research.CHAINFLIGHT.stage.2"
-                }
-            ]
-        },
-        {
             "key": "EXPLOSIONCAST",
             "name": "research.EXPLOSIONCAST.title",
             "icons": [ "focus:thaumicforever.EXPLOSIONCAST" ],
             "parents": [ "NEWAUROMANCY" ],
-            "category": "THAUMICFOREVER","location": [ -6,-6 ],
+            "category": "THAUMICFOREVER","location": [ -4,-6 ],
             "stages": [
                 {
                     "text": "research.EXPLOSIONCAST.stage.1",
@@ -405,11 +394,28 @@
             ]
         },
         {
+            "key": "CHAINFLIGHT",
+            "name": "research.CHAINFLIGHT.title",
+            "icons": [ "focus:thaumicforever.CHAINFLIGHT" ],
+            "parents": [ "CHAINLIGHTNING" ],
+            "category": "THAUMICFOREVER","location": [ -3, -6 ],
+            "stages": [
+                {
+                    "text": "research.CHAINFLIGHT.stage.1",
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
+
+                },
+                {
+                    "text": "research.CHAINFLIGHT.stage.2"
+                }
+            ]
+        },
+        {
             "key": "FLIGHT",
             "name": "research.FLIGHT.title",
             "icons": [ "focus:thaumicforever.FLIGHT" ],
             "parents": [ "CHAINFLIGHT" ],
-            "category": "THAUMICFOREVER","location": [ -2,-8 ],
+            "category": "THAUMICFOREVER","location": [ -2,-7 ],
             "stages": [
                 {
                     "text": "research.FLIGHT.stage.1",
@@ -426,9 +432,9 @@
             "key": "CHAINLIGHTNING",
             "name": "research.CHAINLIGHTNING.title",
             "icons": [ "focus:thaumicforever.CHAINLIGHTNING" ],
-            "parents": [ "NEWAUROMANCY", "FOCUSBOLT" ],
+            "parents": ["NEWAUROMANCY" ],
             "category": "THAUMICFOREVER",
-            "location": [ -4, -6 ],
+            "location":[ -2,-5 ],
             "stages": [
                 {
                 "text": "research.CHAINLIGHTNING.stage.1",
@@ -436,6 +442,72 @@
                 },
                 {
                 "text": "research.CHAINLIGHTNING.stage.2"
+                }
+            ]
+        },
+        {
+            "key": "BLINK",
+            "name": "research.BLINK.title",
+            "icons": [ "focus:thaumicforever.BLINK" ],
+            "parents": [ "GREAT_ARO"],
+            "category": "THAUMICFOREVER","location": [ -2, -11 ],
+            "stages": [
+                {
+                    "text": "research.BLINK.stage.1",
+                    "required_knowledge": ["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
+                },
+                {
+                    "text": "research.BLINK.stage.2"
+                }
+            ]
+        },
+        {
+            "key": "TIMEBOMB",
+            "name": "research.TIMEBOMB.title",
+            "icons": [ "focus:thaumicforever.TIMEBOMB" ],
+            "parents": [ "GREAT_ARO","~NEWARTIFICE"],
+            "category": "THAUMICFOREVER","location": [ 2, -11 ],
+            "stages": [
+                {
+                    "text": "research.TIMEBOMB.stage.1",
+                    "required_knowledge": ["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
+                },
+                {
+                    "text": "research.TIMEBOMB.stage.2"
+                }
+            ]
+        },
+        {
+            "key": "FOCUSBEAM",
+            "name": "research.FOCUSBEAM.title",
+            "icons": [ "focus:thaumicforever.SKYBEAM" ],
+            "parents": [ "GREAT_ARO" ],
+            "category": "THAUMICFOREVER","location": [ -3, -8 ],
+            "stages": [
+                {
+                    "text": "research.FOCUSBEAM.stage.1",
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
+
+                },
+                {
+                    "text": "research.FOCUSBEAM.stage.2"
+                }
+            ]
+        },
+        {
+            "key": "GREAT_ARO",
+            "name": "research.GREAT_ARO.title",
+            "icons": [ "thaumicforever:textures/misc/r_gr_auromancu.png" ],
+            "parents": [ "NEWAUROMANCY" ],
+            "category": "THAUMICFOREVER","location": [ 0,-8 ],
+            "stages": [
+                {
+                    "text": "research.GREAT_ARO.stage.1",
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;BASICS;1"]
+
+                },
+                {
+                    "text": "research.GREAT_ARO.stage.2"
                 }
             ]
         },
@@ -453,7 +525,14 @@
                 },
                 {
                     "text": "research.NEWINFUSION.stage.2",
-                    "recipes": ["THAUMICFOREVER:void_repair_diamond_chestplate","THAUMICFOREVER:poison_sword","THAUMICFOREVER:ruby_protect_diamond_chestplate"]
+                    "recipes": ["THAUMICFOREVER:FAKE_VOIDREPAIR","THAUMICFOREVER:FAKE_POISON","THAUMICFOREVER:FAKE_RUBYPROTECT","THAUMICFOREVER:FAKE_BLEEDING"]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.NEWINFUSION.addenda.1",
+                    "required_research": ["RESEARCHPRIMAL"],
+                    "recipes": ["THAUMICFOREVER:FAKE_UNBREAKABLE"]
                 }
             ]
         },
@@ -507,7 +586,7 @@
 
                 },
                 {
-                    "recipes": ["THAUMICFOREVER:ItemBrassGear","THAUMICFOREVER:ItemThaumiumGear","THAUMICFOREVER:ItemVoidGear","THAUMICFOREVER:time_trap"],
+                    "recipes": ["THAUMICFOREVER:ItemBrassGear","THAUMICFOREVER:ItemThaumiumGear","THAUMICFOREVER:ItemVoidGear","thaumicforever:gold_plate","THAUMICFOREVER:time_trap"],
                     "text": "research.NEWARTIFICE.stage.2"
                 }
             ]
@@ -531,6 +610,23 @@
             ]
         },
         {
+            "key": "DeconstructionTable",
+            "name": "research.DeconstructionTable.title",
+            "icons": [ "thaumicforever:deconstruction_table" ],
+            "parents": [ "NEWARTIFICE" ],
+            "category": "THAUMICFOREVER","location": [ 5,2 ],
+            "stages": [
+                {
+                    "text": "research.DeconstructionTable.stage.1",
+                    "required_knowledge":["THEORY;BASICS;1","THEORY;ARTIFICE;2"]
+                },
+                {
+                    "text": "research.DeconstructionTable.stage.2",
+                    "recipes": ["THAUMICFOREVER:deconstruction_table"]
+                }
+            ]
+        },
+        {
             "key": "DUPLICATOR",
             "name": "research.DUPLICATOR.title",
             "parents": [ "NEWARTIFICE" ],
@@ -548,10 +644,27 @@
             ]
         },
         {
+            "key": "FLUXSCRUBBER",
+            "name": "research.FLUXSCRUBBER.title",
+            "parents": [ "NEWARTIFICE" ],
+            "icons": [ "thaumicforever:flux_scraper" ],
+            "category": "THAUMICFOREVER", "location": [ 5,-2 ],
+            "stages": [
+                {
+                    "text": "research.FLUXSCRUBBER.stage.1",
+                    "required_knowledge":["THEORY;ARTIFICE;1"]
+                },
+                {
+                    "text": "research.FLUXSCRUBBER.stage.2",
+                    "recipes": ["THAUMICFOREVER:FLUXSCRUBBER"]
+                }
+            ]
+        },
+        {
             "key": "UNSTONE",
             "name": "research.UNSTONE.title",
             "parents": [ "NEWARTIFICE" ],
-            "icons": [ "thaumicforever:anti_flight_stone" ],
+            "icons": [ "thaumicforever:anti_flight_stone","thaumicforever:flight_stone" ],
             "category": "THAUMICFOREVER", "location": [ 7,1],
             "stages": [
                 {
@@ -560,7 +673,7 @@
                 },
                 {
                     "text": "research.UNSTONE.stage.2",
-                    "recipes": ["THAUMICFOREVER:anti_flight"]
+                    "recipes": ["thaumicforever:anti_flight","thaumicforever:flight_stone"]
                 }
             ]
         },
@@ -581,7 +694,42 @@
                 }
             ]
         },
-        
+        {
+            "key": "NEWGOLEMANCY",
+            "name": "research.NEWGOLEMANCY.title",
+            "icons": [ "thaumcraft:textures/research/cat_golemancy.png" ],
+            "category": "THAUMICFOREVER","location": [ 4,4 ],
+            "parents": [ "BASEGOLEMANCY" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;GOLEMANCY;2"],
+                    "text": "research.NEWGOLEMANCY.stage.1",
+                    "required_research":["BASEGOLEMANCY","THAUMICFOREVER"]
+
+                },
+                {
+                    "text": "research.NEWGOLEMANCY.stage.2",
+                    "recipes": ["THAUMICFOREVER:BIGJAR"]
+                }
+            ]
+        },
+        {
+            "key": "GREATRESEARCHTABLE",
+            "name": "research.GREATRESEARCHTABLE.title",
+            "icons": [ "thaumicforever:great_research_table" ],
+            "category": "THAUMICFOREVER","location": [ 5,3 ],
+            "parents": [ "NEWGOLEMANCY" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;GOLEMANCY;2","OBSERVATION;ARTIFICE;1"],
+                    "text": "research.GREATRESEARCHTABLE.stage.1"
+                },
+                {
+                    "text": "research.GREATRESEARCHTABLE.stage.2",
+                    "recipes": ["THAUMICFOREVER:GREATRESEARCHTABLE"]
+                }
+            ]
+        },
         {
             "key": "!GUARD",
             "name": "research.GUARD.title",
@@ -632,6 +780,29 @@
             ]
         },
         {
+            "key": "!VAMPIRE_BAT",
+            "name": "research.VAMPIRE_BAT.title",
+            "icons": [ "thaumicforever:textures/misc/v_bat.png" ],
+            "category": "THAUMICFOREVER",
+            "location": [ 0, -2 ],
+            "parents": [ "!vampire_bat_scan" ],
+            "meta": [ "HEX","HIDDEN" ],
+            "stages": [
+                {
+                    "text": "research.VAMPIRE_BAT.stage.1",
+                    "recipes": ["thaumicforever:artifact_ruby_ring"]
+                }
+                
+            ],
+            "addenda": [
+                {
+                    "text": "research.VAMPIRE_BAT.addenda.1",
+                    "required_research": ["NEWINFUSION"],
+                    "recipes": ["thaumicforever:artifact_ruby_ring"]
+                }
+            ]
+        },
+        {
             "key": "RESEARCHPRIMAL",
             "name": "research.RESEARCHPRIMAL.title",
             "icons": [ "thaumicforever:textures/misc/r_outerrev.png" ],
@@ -641,7 +812,8 @@
             "meta": [ "ROUND","HIDDEN" ],
             "stages": [
                 {
-                "text": "research.RESEARCHPRIMAL.stage.1"
+                "text": "research.RESEARCHPRIMAL.stage.1",
+                "warp": 1
                 }
             ]
         },
@@ -718,7 +890,8 @@
                 },
                 {
                     "text": "research.DECORATION.stage.2",
-                    "recipes": ["THAUMICFOREVER:skuleRecipe","THAUMICFOREVER:skeleRecipe","THAUMICFOREVER:witrRecipe","THAUMICFOREVER:zombRecipe","THAUMICFOREVER:crepRecipe","THAUMICFOREVER:headRecipe"]
+                    "recipes": ["THAUMICFOREVER:skuleRecipe","THAUMICFOREVER:skeleRecipe","THAUMICFOREVER:witrRecipe","THAUMICFOREVER:zombRecipe","THAUMICFOREVER:crepRecipe","THAUMICFOREVER:headRecipe",
+                    "thaumicforever:greatwood_door","thaumicforever:greatwood_trapdoor","thaumicforever:silverwood_door","thaumicforever:silverwood_trapdoor","thaumicforever:arcane_door"]
                 }
             ]
         },
@@ -726,7 +899,7 @@
             "key": "ADDITIONALALKIMIA",
             "name": "research.ADDITIONALALKIMIA.title",
             "icons": [ "thaumcraft:textures/research/cat_alchemy.png" ],
-            "category": "THAUMICFOREVER", "location": [ 6,6],
+            "category": "THAUMICFOREVER", "location": [ 6,9] ,
             "parents": [ "~NEWALKIMIA" ],
             "stages": [
             {
@@ -739,25 +912,12 @@
                 }
             ]
         },
-            {
-            "key": "ORB",
-            "name": "research.ORB.title",
-            "icons": [ "thaumicforever:textures/items/orb_of_crimson.png","thaumicforever:textures/items/orb_of_taint.png","thaumicforever:textures/items/orb_of_dark.png","thaumicforever:textures/items/orb_of_soul.png" ],
-            "category": "THAUMICFOREVER", "location":[ 0,-1],
-            "parents": [ "~RESEARCHPRIMAL" ],
-            "meta": [ "ROUND","HIDDEN" ],
-            "stages": [{"text": "research.ORBNONE.stage.1"}],
-            "addenda": [
-                {"text": "research.ORBTAINT.amber","required_research":["!orb_of_taint"]},
-                {"text": "research.ORBCRIMS.amber","required_research":["!orb_of_crimson"]}
-                ]
-        },
         {
             "key": "BOTANIAALKIMIA",
             "name": "research.BOTANIAALKIMIA.title",
             "icons": [ "thaumcraft:textures/aspects/praecantatio.png" ],
             "parents": [ "ADDITIONALALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 8,7],
+            "category": "THAUMICFOREVER", "location": [ 8,10],
             "stages": [
                 {
                     "required_item":["thaumcraft:salis_mundus","botania:manabottle"],
@@ -776,7 +936,7 @@
             "name": "research.IMMERALKIMIA.title",
             "icons": [ "thaumcraft:textures/aspects/praecantatio.png" ],
             "parents": [ "ADDITIONALALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 7,8],
+            "category": "THAUMICFOREVER", "location": [ 7, 11 ],
             "stages": [
                 {
                     "required_item":["thaumcraft:salis_mundus","immersiveengineering:metal:8"],
@@ -795,7 +955,7 @@
             "name": "research.IUALKIMIA.title",
             "icons": [ "thaumcraft:textures/aspects/praecantatio.png" ],
             "parents": [ "ADDITIONALALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 7,4],
+            "category": "THAUMICFOREVER", "location": [ 7, 7],
             "stages": [
                 {
                     "required_item":["thaumcraft:salis_mundus"],
@@ -810,21 +970,17 @@
             ]
         },
         {
-            "key": "DeconstructionTable",
-            "name": "DeconstructionTable",
-            "icons": [ "thaumicforever:deconstruction_table" ],
-            "parents": [ "BASEARTIFICE" ],
-            "category": "ARTIFICE","location": [ 5,0 ],
-            "stages": [
-                {
-                    "text": "research.DeconstructionTable.stage.1",
-                    "required_knowledge":["THEORY;BASICS;1"]
-                },
-                {
-                    "text": "research.DeconstructionTable.stage.2",
-                    "recipes": ["THAUMICFOREVER:deconstruction_table"]
-                }
-            ]
+            "key": "ORB",
+            "name": "research.ORB.title",
+            "icons": [ "thaumicforever:textures/items/orb_of_crimson.png","thaumicforever:textures/items/orb_of_taint.png","thaumicforever:textures/items/orb_of_dark.png","thaumicforever:textures/items/orb_of_soul.png" ],
+            "category": "THAUMICFOREVER", "location":[ 0,-1],
+            "parents": [ "~RESEARCHPRIMAL" ],
+            "meta": [ "ROUND","HIDDEN" ],
+            "stages": [{"text": "research.ORBNONE.stage.1"}],
+            "addenda": [
+                {"text": "research.ORBTAINT.amber","required_research":["!orb_of_taint"]},
+                {"text": "research.ORBCRIMS.amber","required_research":["!orb_of_crimson"]}
+                ]
         },
         {
             "key": "VISAURA",
@@ -1016,7 +1172,12 @@
                 {
                     "required_knowledge":["THEORY;ARTIFICE;2","THEORY;AUROMANCY;1"],
                     "text": "research.BASETHAUMATURGY.stage.0",
-                    "recipes": ["thaumicforever:BASETHAUMATURGY.1","thaumicforever:BASETHAUMATURGY.2_DISPLAY"]
+                    "recipes": [
+                        "thaumicforever:BASETHAUMATURGY.1",
+                        "thaumicforever:BASETHAUMATURGY.2_DISPLAY",
+                        "thaumicforever:CAP_SILVER.1",
+                        "thaumicforever:CAP_SILVER.2"
+                    ]
 
                 }
             ]
@@ -1238,6 +1399,141 @@
                     "text": "research.CORE_PRIMAL.stage.1",
                     "recipes": ["thaumicforever:CORE_PRIMAL.1"],
                     "warp": 3
+                }
+            ]
+        },
+        {
+            "key": "CAP_MATERIAL_ALL",
+            "name": "research.CAP_MATERIAL_ALL.title",
+            "icons": ["thaumicforever:item_wand_cap_ichor;1;0","thaumicforever:item_wand_cap_ichor;1;1","thaumicforever:item_wand_cap_ta;1;0","thaumicforever:item_wand_cap_ta;1;1","thaumicforever:item_wand_cap_ta;1;2","thaumicforever:item_wand_cap_ta;1;3","thaumicforever:item_wand_cap_ta;1;4","thaumicforever:item_wand_cap_ta;1;5","thaumicforever:item_wand_cap_tb;1;0","thaumicforever:item_wand_cap_pa;1;0","thaumicforever:item_wand_cap_pa;1;1"],
+            "category": "THAUMICFOREVER","location": [ 6,-10 ],
+            "parents": [ "~CAP_VOID","~METALLURGY@2"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;ALCHEMY;1","THEORY;AUROMANCY;1"],
+                    "text": "research.CAP_MATERIAL_ALL.stage.0"
+                },
+                {
+                    "text": "research.CAP_MATERIAL_ALL.stage.1",
+                    "recipes": [
+                        "thaumicforever:CAP_ICHORIUM.1",
+                        "thaumicforever:CAP_ICHORIUM.2",
+                        "thaumicforever:CAP_MITHRILLIUM.1",
+                        "thaumicforever:CAP_MITHRILLIUM.2",
+                        "thaumicforever:CAP_ADAMINITE.1",
+                        "thaumicforever:CAP_ADAMINITE.2",
+                        "thaumicforever:CAP_MITHMINITE.1",
+                        "thaumicforever:CAP_MITHMINITE.2",
+                        "thaumicforever:CAP_THAUMINITE.1",
+                        "thaumicforever:CAP_ALKIMIUM.1",
+                        "thaumicforever:CAP_BISMUTH.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "CAP_MATERIAL_ADD",
+            "name": "research.CAP_MATERIAL_ADD.title",
+            "icons": [
+                "thaumicforever:item_wand_cap_botania;1;1",
+                "thaumicforever:item_wand_cap_botania;1;3",
+                "thaumicforever:item_wand_cap_botania;1;4",
+                "thaumicforever:item_wand_cap_bm;1;0",
+                "thaumicforever:item_wand_cap_embers;1;1"
+            ],
+            "category": "THAUMICFOREVER","location": [ 6,-12 ],
+            "parents": [ "~CAP_VOID","~METALLURGY@2"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;ALCHEMY;1","THEORY;AUROMANCY;1"],
+                    "text": "research.CAP_MATERIAL_ADD.stage.0"
+                },
+                {
+                    "text": "research.CAP_MATERIAL_ADD.stage.1",
+                    "recipes": [
+                        "thaumicforever:CAP_MANASTEEL.1",
+                        "thaumicforever:CAP_MANASTEEL.2",
+                        "thaumicforever:CAP_ELEMENTIUM.1",
+                        "thaumicforever:CAP_ELEMENTIUM.2",
+                        "thaumicforever:CAP_TERRASTEEL.1",
+                        "thaumicforever:CAP_ALCHEMICAL.1",
+                        "thaumicforever:CAP_DAWNSTONE.1",
+                        "thaumicforever:CAP_DAWNSTONE.2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "STAFF_ALL",
+            "name": "research.STAFF_ALL.title",
+            "icons": ["thaumicforever:item_wand_rod_ichor;1;0","thaumicforever:item_wand_rod_ta;1;0","thaumicforever:item_wand_rod_poly;1;0","thaumicforever:item_wand_rod_poly;1;1"],
+            "category": "THAUMICFOREVER","location": [ 14,-11 ],
+            "parents": [ "~STAFF"],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;INFUSION;1"],
+                    "text": "research.STAFF_ALL.stage.0"
+                },
+                {
+                    "text": "research.STAFF_ALL.stage.1",
+                    "recipes": [
+                        "thaumicforever:ROD_ICHORCLOTH.1",
+                        "thaumicforever:ROD_ADAMINITEWOOD.1",
+                        "thaumicforever:ROD_INFERNAL.1",
+                        "thaumicforever:ROD_CHORUS.1"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "STAFF_ADD",
+            "name": "research.STAFF_ADD.title",
+            "icons": [
+                "thaumicforever:item_wand_rod_botania;1;1",
+                "thaumicforever:item_wand_rod_botania;1;3",
+                "thaumicforever:item_wand_rod_bm;1;1",
+                "thaumicforever:item_wand_rod_embers;1;1"
+            ],
+            "category": "THAUMICFOREVER","location": [ 14,-13 ],
+            "parents": [ "~STAFF"],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;AUROMANCY;2","THEORY;INFUSION;1"],
+                    "text": "research.STAFF_ADD.stage.0"
+                },
+                {
+                    "text": "research.STAFF_ADD.stage.1",
+                    "recipes": [
+                        "thaumicforever:ROD_LIVINGWOOD.1",
+                        "thaumicforever:ROD_LIVINGWOOD.2",
+                        "thaumicforever:ROD_DREAMWOOD.1",
+                        "thaumicforever:ROD_DREAMWOOD.2",
+                        "thaumicforever:ROD_BLOOD.1",
+                        "thaumicforever:ROD_BLOOD.2",
+                        "thaumicforever:ROD_ARCHAIC.1",
+                        "thaumicforever:ROD_ARCHAIC.2"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "WANDCHARGE",
+            "name": "research.WANDCHARGE.title",
+            "icons": ["thaumicforever:arcane_workbench_wand_charger"],
+            "meta": [ "HIDDEN"],
+            "category": "THAUMICFOREVER","location": [ 12,-6 ],
+            "parents": [ "BASETHAUMATURGY","WORKBENCHCHARGER","TRANSDUCER"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;BASICS;1","OBSERVATION;AUROMANCY;1"],
+                    "text": "research.WANDCHARGE.stage.0",
+                    "required_item": ["thaumicforever:aquareia_gem","thaumcraft:vis_resonator"]
+
+                },
+                {
+                    "text": "research.WANDCHARGE.stage.1",
+                    "recipes": ["thaumicforever:arcane_workbench_wand_charger","thaumicforever:recharge_pedestal"]
+
                 }
             ]
         }

@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.wand.util;
 
-import com.koteuka404.thaumicforever.EntityAuraNode;
+import com.koteuka404.thaumicforever.entity.EntityAuraNode;
+import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
 import com.koteuka404.thaumicforever.wand.item.ItemScepter;
@@ -22,6 +23,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aura.AuraHelper;
+import thaumcraft.api.items.RechargeHelper;
 import thaumcraft.common.items.casters.CasterManager;
 
 public class WandHelper {
@@ -116,11 +119,28 @@ public class WandHelper {
 
     public static void setPrimalCharge(ItemStack wand, AspectList charge, @Nullable EntityLivingBase player) {
         if (wand == null || wand.isEmpty()) return;
-        AspectList clean = clampPrimals(filterPrimals(charge), getMaxPrimalCharge(wand, player));
+        int cap = getMaxPrimalCharge(wand, player);
+        AspectList clean = clampPrimals(filterPrimals(charge), cap);
         NBTTagCompound tag = getOrCreateTag(wand);
         NBTTagCompound data = new NBTTagCompound();
         clean.writeToNBT(data);
         tag.setTag(NBT_PRIMAL_CHARGE, data);
+
+        // Keep Thaumcraft vis charge in sync with primal storage so UI/crafting
+        // does not show 0 when primal charge is actually present.
+        int visCharge = 0;
+        if (cap > 0) {
+            int sum = 0;
+            int count = 0;
+            for (Aspect p : Aspect.getPrimalAspects()) {
+                sum += Math.max(0, clean.getAmount(p));
+                count++;
+            }
+            visCharge = (count > 0) ? Math.round(sum / (float) count) : 0;
+            if (visCharge < 0) visCharge = 0;
+            if (visCharge > cap) visCharge = cap;
+        }
+        tag.setInteger(RechargeHelper.NBT_TAG, visCharge);
     }
 
     public static boolean isWandFullyCharged(ItemStack wand, @Nullable EntityLivingBase player) {
@@ -259,13 +279,12 @@ public class WandHelper {
         if (player == null) return null;
         World world = player.world;
         Vec3d eye = player.getPositionEyes(1.0F);
-        RayTraceResult blockHit = player.rayTrace(reach, 1.0F);
+        Vec3d look = player.getLook(1.0F);
+        Vec3d end = eye.addVector(look.x * reach, look.y * reach, look.z * reach);
+        RayTraceResult blockHit = world.rayTraceBlocks(eye, end, false, true, false);
         double maxSq = (blockHit == null || blockHit.typeOfHit == RayTraceResult.Type.MISS)
                 ? reach * reach
                 : eye.squareDistanceTo(blockHit.hitVec);
-
-        Vec3d look = player.getLook(1.0F);
-        Vec3d end = eye.addVector(look.x * reach, look.y * reach, look.z * reach);
 
         AxisAlignedBB sweep = player.getEntityBoundingBox()
                 .expand(look.x * reach, look.y * reach, look.z * reach)
@@ -286,6 +305,103 @@ public class WandHelper {
                     pick = n;
                 }
             }
+        }
+        return pick;
+    }
+
+    @Nullable
+    public static EntityAuraNode findNodeInCone(EntityPlayer player, double reach, double minDot) {
+        if (player == null) return null;
+        World world = player.world;
+        Vec3d eye = player.getPositionEyes(1.0F);
+        Vec3d look = player.getLook(1.0F);
+        if (look.lengthSquared() < 1.0E-4) {
+            look = new Vec3d(0.0, 0.0, 1.0);
+        } else {
+            look = look.normalize();
+        }
+
+        AxisAlignedBB box = player.getEntityBoundingBox().grow(reach);
+        List<EntityAuraNode> candidates = world.getEntitiesWithinAABB(EntityAuraNode.class, box,
+                e -> e != null && !e.isDead);
+        EntityAuraNode pick = null;
+        double best = reach * reach;
+
+        for (EntityAuraNode n : candidates) {
+            Vec3d center = new Vec3d(n.posX, n.posY + n.height * 0.5, n.posZ);
+            Vec3d to = center.subtract(eye);
+            double distSq = to.lengthSquared();
+            if (distSq > best) continue;
+            double dot = to.normalize().dotProduct(look);
+            if (dot < minDot) continue;
+            best = distSq;
+            pick = n;
+        }
+        return pick;
+    }
+
+    @Nullable
+    public static AuraNodeEntity findAuraNodeEntityAlongLook(EntityPlayer player, double reach) {
+        if (player == null) return null;
+        World world = player.world;
+        Vec3d eye = player.getPositionEyes(1.0F);
+        Vec3d look = player.getLook(1.0F);
+        Vec3d end = eye.addVector(look.x * reach, look.y * reach, look.z * reach);
+        RayTraceResult blockHit = world.rayTraceBlocks(eye, end, false, true, false);
+        double maxSq = (blockHit == null || blockHit.typeOfHit == RayTraceResult.Type.MISS)
+                ? reach * reach
+                : eye.squareDistanceTo(blockHit.hitVec);
+
+        AxisAlignedBB sweep = player.getEntityBoundingBox()
+                .expand(look.x * reach, look.y * reach, look.z * reach)
+                .grow(1.0D);
+
+        List<AuraNodeEntity> candidates = world.getEntitiesWithinAABB(AuraNodeEntity.class, sweep,
+                e -> e != null && !e.isDead);
+        AuraNodeEntity pick = null;
+        double best = maxSq;
+
+        for (AuraNodeEntity n : candidates) {
+            AxisAlignedBB bb = n.getEntityBoundingBox().grow(0.2D);
+            RayTraceResult hit = bb.calculateIntercept(eye, end);
+            if (hit != null) {
+                double dist = eye.squareDistanceTo(hit.hitVec);
+                if (dist < best) {
+                    best = dist;
+                    pick = n;
+                }
+            }
+        }
+        return pick;
+    }
+
+    @Nullable
+    public static AuraNodeEntity findAuraNodeEntityInCone(EntityPlayer player, double reach, double minDot) {
+        if (player == null) return null;
+        World world = player.world;
+        Vec3d eye = player.getPositionEyes(1.0F);
+        Vec3d look = player.getLook(1.0F);
+        if (look.lengthSquared() < 1.0E-4) {
+            look = new Vec3d(0.0, 0.0, 1.0);
+        } else {
+            look = look.normalize();
+        }
+
+        AxisAlignedBB box = player.getEntityBoundingBox().grow(reach);
+        List<AuraNodeEntity> candidates = world.getEntitiesWithinAABB(AuraNodeEntity.class, box,
+                e -> e != null && !e.isDead);
+        AuraNodeEntity pick = null;
+        double best = reach * reach;
+
+        for (AuraNodeEntity n : candidates) {
+            Vec3d center = new Vec3d(n.posX, n.posY + n.height * 0.5, n.posZ);
+            Vec3d to = center.subtract(eye);
+            double distSq = to.lengthSquared();
+            if (distSq > best) continue;
+            double dot = to.normalize().dotProduct(look);
+            if (dot < minDot) continue;
+            best = distSq;
+            pick = n;
         }
         return pick;
     }
@@ -323,13 +439,25 @@ public class WandHelper {
                 current.add(p, primals.getAmount(p));
             }
             setPrimalCharge(wand, current, player);
-            if (player instanceof EntityPlayer) {
-                ((EntityPlayer) player).inventory.markDirty();
-            }
             node.updateSyncAspects();
             return true;
         }
         return false;
+    }
+
+    public static boolean chargeWandFromAuraNodeEntity(ItemStack wand, AuraNodeEntity node, @Nullable EntityLivingBase player) {
+        if (wand == null || wand.isEmpty() || node == null || node.isDead) return false;
+        int cap = getMaxPrimalCharge(wand, player);
+        if (cap <= 0) return false;
+        if (node.world == null) return false;
+
+        if (isWandFullyCharged(wand, player)) return false;
+
+        // Drain 1 vis from local aura and convert into 1 primal point (distributed).
+        float drained = AuraHelper.drainVis(node.world, node.getPosition(), 1.0f, true);
+        if (drained < 1.0f) return false;
+        AuraHelper.drainVis(node.world, node.getPosition(), 1.0f, false);
+        return addPrimalChargeDistributed(wand, 1, player) > 0;
     }
 
     public static ItemStack isWandInHotbarWithRoom(EntityPlayer player, int amount) {

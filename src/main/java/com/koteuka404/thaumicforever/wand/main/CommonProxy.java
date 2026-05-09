@@ -28,6 +28,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
+        TW_Compat.initRecipes();
         TW_Research.postInit();
         ThaumcraftApi.registerObjectTag(new ItemStack(TW_Items.itemWand), new AspectList());
         ThaumcraftApi.registerObjectTag(new ItemStack(TW_Items.itemScepter), new AspectList());

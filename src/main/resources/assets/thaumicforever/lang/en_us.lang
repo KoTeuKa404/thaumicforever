@@ -5,6 +5,13 @@ item.thaumicforever.deconstruction_table.name=Deconstruction Table
 
 tile.thaumicforever.greatwood_table.name=Greatwood Table
 tile.thaumicforever.double_table.name=Double Table
+tile.thaumicforever.great_research_table.name=Great Research Table
+item.thaumicforever.great_research_table.name=Great Research Table
+tile.thaumicforever.arcane_workbench_wand_charger.name=Arcane Workbench Wand Charger
+item.thaumicforever.arcane_workbench_wand_charger.name=Arcane Workbench Wand Charger
+tile.recharge_pedestal.name=Wand Recharge Pedestal
+tile.thaumicforever.recharge_pedestal.name=Wand Recharge Pedestal
+item.thaumicforever.recharge_pedestal.name=Wand Recharge Pedestal
 tile.thaumicforever.aquareia_ore.name=Aquareia Ore
 tile.thaumicforever.ancient_amber.name=Ancient Amber
 tile.thaumicforever.ancient_cinnabar.name=Ancient Cinnabar
@@ -15,6 +22,14 @@ tile.thaumicforever.silver_ore.name=Silver Ore
 tile.thaumicforever.ancient_coal.name=Ancient Coal
 tile.thaumicforever.ancient_gold.name=Ancient Gold
 tile.thaumicforever.ancient_iron.name=Ancient Iron
+tile.trapdoor_silverwood.name=Silverwood Trapdoor
+tile.trapdoor_greatwood.name=Greatwood Trapdoor
+tile.door_silverwood.name=Silverwood Door
+tile.door_greatwood.name=Greatwood Door
+tile.door_arcane.name=Arcane Door
+item.door_silverwood.name=Silverwood Door
+item.door_greatwood.name=Greatwood Door
+item.door_arcane.name=Arcane Door
 
 tile.duplicator.name=Mattery Duplicator
 tile.compressor.name=Compressor
@@ -80,18 +95,21 @@ item.aquareia_goggles.name=Aquareia Goggles
 itemGroup.thaumicforever_tab=Thaumic Forever
 tile.abandoned_chest.name=Abandoned Chest
 tile.anti_flight_stone.name=Unflight Stone
+tile.flight_stone.name=Flight Stone
+tile.flux_scraper.name=Flux Scraper
 tile.blue_rose.name=Blue Rose
 tile.red_rose.name=Red Rose
 
 item.empty_focus.name=Empty Focus
 item.eternal_blade.name=Eternal Blade
+item.katana.name=Katana
 item.raven_cloak_bauble.name=Shadow Cloak
 
 tc.aspect.tempestas=Weather
 tc.aspect.matterya=Mattery
 item.bowl_treatmeat.name=Bowl of Treat Meat
 item.bowl_zombie.name=Zombie Bowl
-research.NEWRUNICS.title=NEW RUNICS
+research.NEWRUNICS.title=New Runics
 
 research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the magic in a portable and versatile form.
 research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.<PAGE/><BR>§lRegeneration Ring§r<BR/>The Regeneration Ring draws upon the very essence of life, granting the wearer periodic surges of healing. Every 13 seconds it radiates a verdant glow, applying Regeneration I for 3 seconds. The effect stacks: each additional ring raises the regeneration level (Regeneration II, III, etc.), ensuring ever‑quicker recovery for those who don more than one.<PAGE/><BR>§lRevive Ring§r<BR/>When a fatal strike would drop its bearer, the Revive Ring intervenes, halting damage at 1 health. All negative effects are instantly cleansed, and the ring then enters a 5‑minute cooldown. This single‑use salvation offers a second chance to anyone caught in truly desperate circumstances.<PAGE/><BR>§lCooldown Ring§r<BR/>The Cooldown Ring is inscribed with ancient magic that steadily lighten the burden of spellcraft. For each ring worn, caster cooldowns are reduced.Effects stack multiplicatively: every extra ring further trims cooldown times, making this relic indispensable for prolonged confrontations.
@@ -101,34 +119,44 @@ research.REVIVE_SKELET.title=Revive Skeleton
 research.REVIVE_SKELET.stage.1=Revive Skeletons<DIV> are an enigma of magic and decay. Bound together by ancient spells, they roam not as mere undead but as fragments of lost rituals, pulsing with dark energy. Each bone whispers secrets of forbidden arts, a chilling reminder of the power that bends death to its will. I've noticed that some of these skeletons harbor mysterious scrolls within their chests. What secrets might they hold?
 
 research.TIMESTONE.title=The Temporal Catalyst
-research.TIMESTONE.stage.1=Unlock the ancient secrets of time manipulation, channeling its power to accelerate the flow of reality within its grasp. The radius of its influence and the depth of its acceleration depend on your understanding.
-research.TIMESTONE.stage.2=§lTime Stone§r<DIV><BR>With the power of the Time Stone, manipulate the very essence of progress. Beware, for reckless acceleration may lead to unforeseen chaos within the world.
+research.TIMESTONE.stage.1=I have begun unraveling temporal mechanics in earnest. By anchoring a stable focus point, I can accelerate local processes without tearing the field apart. The wider the area and the stronger the acceleration, the more precision this work demands.
+research.TIMESTONE.stage.2=§lTime Stone§r<DIV><BR>I found that this stone asks for no coal and no essentia as fuel; it seems to feed on the cadence of the moment itself. Within its sphere (7x7x7, radius 3), it accelerates local time for working mechanisms, forcing them to complete their operations faster than normal.<BR>Important: this effect applies to mechanisms and devices only; living entities are unaffected.<PAGE>Yet the art is temperamental: when two Time Stones share the same field, they smother one another and the acceleration falls silent. If I desire stable operation, I must place them apart.
 
 
 thaumicforever.enchantment.voidrepair=Void Repair
 research.FOCUSCALM.title=Focus Effect: Clouded Mind
-research.FOCUSCALM.stage.1=Learn the basics of calm magic, which allows you to temporarily strip creatures of their aggression and pacify their behavior. Focus on the aspect of Mind to awaken their inner tranquility.
-research.FOCUSCALM.stage.2=Mastering the magic of calm enables you to not only avoid aggressive attacks but also maintain peace in the world around you. Prepare your thoughts and meditate to better control your magic and extend the duration of your enchantments.
+research.FOCUSCALM.stage.1=Not every victory demands a strike. By threading the Aspect of Mind through a softened focus pattern, I can briefly mute hostile impulse in lesser creatures.
+research.FOCUSCALM.stage.2=With finer concentration, the hush lingers longer. The subject is not made loyal, only quieted, until pain or fresh provocation breaks the veil.
 
 research.CHAINFLIGHT.title=Focus Effect: Chains of Flight
-research.CHAINFLIGHT.stage.1=Unlock the ability to cast chains that temporarily disable the flight of those around you. With the Aspect of Trap, you can hold back the freedom of the skies and bring your enemies down to the ground.
-research.CHAINFLIGHT.stage.2=Master the chains of flight and enhance their duration and potency. Through deeper connection to the magic of entrapment, you will be able to chain fliers for longer periods, leaving them grounded.
+research.CHAINFLIGHT.stage.1=Airborne foes place too much faith in height. By weaving the Aspect of Trap into a weighted arcane chain, I can seize their lift and pull them down.
+research.CHAINFLIGHT.stage.2=The reinforced weave holds harder and longer. Wing, levitation, and spell-borne ascent are all suppressed while the chain endures.
+research.FOCUSBEAM.title=Focus Medium: Sky Beam
+research.FOCUSBEAM.stage.1=I shaped a sustained beam conduit instead of a single projectile release. Once cast, the medium anchors a luminous channel in the aimed direction and keeps the stream stable for several seconds.
+research.FOCUSBEAM.stage.2=The beam now propagates linked focus effects in pulses while the channel persists, repeatedly applying the next stage along the traced line. Precision in aim matters: the stream continually updates to the current hit point.
 
 research.NEWAUROMANCY.title=Mastery of the Auromancy
-research.NEWAUROMANCY.stage.1=Uncover the secrets of focus control, allowing you to infuse and control focus and unleash new magic
-research.NEWAUROMANCY.stage.2=Discover the hidden potential of Auramancy, where the power to reshape reality lies at your fingertips.
+research.NEWAUROMANCY.stage.1=I returned to first principles of focuscraft: pattern geometry, flow discipline, and resonance balance. Only then did I understand how to assemble more complex lenses without collapsing the matrix.
+research.NEWAUROMANCY.stage.2=I can now craft new composite lenses by binding multiple effects into a single focus, in the manner of greater focuswork. This is not brute amplification but technical mastery: complex combinations become steadier, more predictable, and less wasteful in vis.
+research.NEWAUROMANCY.addenda.1=An empty lens reveals itself not as unfinished glass, but as a stable foundation for deeper focus architecture. With proper layering, I can now craft improved composite foci suited for complex effect combinations.
+research.GREAT_ARO.title=Greater Auromancy
+research.GREAT_ARO.stage.1=What I mastered before was only a foundation. By refining focus geometry and stabilizing resonance, I can drive much denser vis flow without tearing the casting matrix apart.
+research.GREAT_ARO.stage.2=Greater Auromancy is not a different art, but a deeper one. Under heavy load, patterns stay steadier, channel more power, and waste less vis.
 
 research.FOCUSCLEANSE.title=Focus Effect: Cleansing the body
-research.FOCUSCLEANSE.stage.1=Learn the basics of purifying negative effects with the Aspect of Order, clearing harmful conditions from your target upon activation of this focus.
-research.FOCUSCLEANSE.stage.2=Improve your cleansing focus to provide extended protection. The effects will linger, continually removing any negative influences from the affected target for the duration of the spell.
+research.FOCUSCLEANSE.stage.1=Order is correction as much as structure. A simple Ordo-biased pattern lets me strip harmful arcane residue from a target on contact.
+research.FOCUSCLEANSE.stage.2=With refinement, the cleansing lattice persists briefly and continues removing fresh corruption before it can settle.
 
 research.MINDCONTROL.title=Focus Effect: Dominion over Minds
-research.MINDCONTROL.stage.1=Learn to dominate the minds of weaker beings, forcing hostile creatures to attack each other.
-research.MINDCONTROL.stage.2=Enhance your mastery of mind control, allowing for extended control over enemies of influence.
+research.MINDCONTROL.stage.1=A risky Mind-imprint allows me to seize weaker wills and redirect hostile intent toward nearer threats.
+research.MINDCONTROL.stage.2=My suppression now reaches deeper, allowing me to intercept hostile will and turn it inward. Why cut down every foe myself, when I can force their ranks to tear each other apart?
 
 research.NEWARTIFICE.title=New Artifice
-research.NEWARTIFICE.stage.1=Develop basic mechanisms that integrate magical energy into mechanical constructs.
-research.NEWARTIFICE.stage.2=Unlock the potential of hybrid machines, blending magic energy with mechanical precision to create unprecedented inventions.<PAGE>§lTime Trap§r<BR>The Time Trap is a unique and powerful device that manipulates the flow of time within a confined area. Utilizing magic energies, it is capable of creating a zone where time itself is distorted, slowing down everything inside.Upon activation, the device emits a powerful burst of magic, creating an area of effect that freezes any movement within its radius.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR> To use the Time Trap effectively, aim and release the projectile towards the desired target.<PAGE>
+research.NEWARTIFICE.stage.1=I have moved beyond simple arcane tools and started designing true hybrid mechanisms: devices where magical flow and mechanical logic support each other instead of competing.
+research.NEWARTIFICE.stage.2=My newer designs prove that careful engineering can make unstable arcane principles practical. Proper casings, calibrated channels, and staged discharge loops let these machines run consistently in field conditions.<PAGE>§lTime Trap§r<BR>The Time Trap is my first successful tactical prototype in this line. It condenses temporal distortion into a throw-capable frame and releases it on impact, slowing movement in the affected zone.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR>Accurate placement matters: a misplaced trap wastes charge, while a precise one can decide a fight before it begins.<PAGE>
+research.FLUXSCRUBBER.title=Flux Scrubber
+research.FLUXSCRUBBER.stage.1=I needed a cheap, practical answer to recurring Flux buildup, so I started developing a rough scrubber from common materials. It is not elegant and not precise, but it is affordable and useful for everyday containment.
+research.FLUXSCRUBBER.stage.2=§lFlux Scrubber§r<BR>This is a crude tool, not a surgical instrument. Every 20 seconds it emits one pulse in its current aura chunk: with a 50% chance it removes Flux, and with a 50% chance it removes Vis.<BR>In short: inexpensive, practical, and intentionally inaccurate.
 
 research.GUARD.title=Guardian Stand
 research.GUARD.stage.1=You've discovered a way to use magic to alive a simple wooden armor stand. Through the infusion of magic, this stand can be transformed into a loyal guardian.
@@ -136,14 +164,17 @@ research.GUARD.stage.2=With the proper application of magic dust, your newly awa
  
 research.NEWINFUSION.title=New Infusion Enchantment
 research.NEWINFUSION.stage.1=Through careful study of ancient magical techniques, you have unlocked the ability to perform infusion enchantments. This form of magic allows you to imbue your tools, weapons, and armor with powerful enchantments that exceed those of traditional means. By utilizing magical energy, you can infuse objects with aspects that will enhance their abilities and grant them additional properties.
-research.NEWINFUSION.stage.2=I have made progress in understanding advanced infusion enchantments, which allow powerful effects to be embedded directly into equipment. Each additional rank of the same enchantment will cost more essentia and increase the chance of instability. Different infusion enchantments applied together further raise these costs, and may also inflict the item with Warp.<BR>Not all enchantments are universal — each has specific item types they can be applied to, listed below.<BR>Infusion-enchanted tools can still be used with a standard enchanting table, and sneaking suppresses any active effect while in use.<PAGE>§oVoid Repair§r<DIV>This enchantment causes the item to slowly regenerate durability over time, repairing itself without any user action.<DIV>§oRanks§r: none<BR>§oTarget§r: armor, tool, weapon<PAGE>§oPoison§r<DIV>Applies a poison effect when striking a target. At higher ranks, the poison becomes withering. May destabilize the surrounding aura.<DIV>§oRanks§r: 1-7<BR>§oTarget§r: weapon<PAGE>§oRuby Protection§r<DIV>Deals damage to attackers when the wearer is hit. This retaliation increases with enchantment rank and manifests visually as a red glyph flash.<DIV>§oRanks§r: 1-15<BR>§oTarget§r: armor
+research.NEWINFUSION.stage.2=I have made progress in understanding advanced infusion enchantments, which allow powerful effects to be embedded directly into equipment. Each additional rank of the same enchantment will cost more essentia and increase the chance of instability. Different infusion enchantments applied together further raise these costs, and may also inflict the item with Warp.<BR>Not all enchantments are universal — each has specific item types they can be applied to, listed below.<BR>Infusion-enchanted tools can still be used with a standard enchanting table, and sneaking suppresses any active effect while in use.<PAGE>§oVoid Repair§r<DIV>This enchantment causes the item to slowly regenerate durability over time, repairing itself without any user action.<DIV>§oRanks§r: 1<BR>§oTarget§r: any<PAGE>§oPoison§r<DIV>Applies a poison effect when striking a target. At higher ranks, the poison becomes withering. May destabilize the surrounding aura.<DIV>§oRanks§r: 1-7<BR>§oTarget§r: weapon<PAGE>§oRuby Protection§r<DIV>Deals damage to attackers when the wearer is hit. This retaliation increases with enchantment rank and manifests visually as a red glyph flash. At total Ruby Protection level 10 or higher, attackers are also set on fire.<DIV>§oRanks§r: 1-15<BR>§oTarget§r: armor<PAGE>§oBleeding§r<DIV>On hit, the target starts bleeding and takes wither-like damage over time. Stronger ranks increase the bleed severity.<DIV>§oRanks§r: 1-5<BR>§oTarget§r: weapon
+research.NEWINFUSION.addenda.1=§oUnbreakable§r<DIV>When this seal awakens, steel remembers the first laws of creation. Edges do not dull, plates do not crack, and time itself fails to wear the artifact down.<DIV>§oRanks§r: 1<BR>§oTarget§r: any
 
 
 thaumicforever.BOOSTPOWER.name=Double Power
 thaumicforever.BOOSTPOWER.text=Double Power
+effect.flight=Flight
+effect.vampirism=Vampirism
 research.COMPRESSOR.title=Compressor
-research.COMPRESSOR.stage.1=Creating plates can often be a costly endeavor, especially if you do not work with them frequently. This Compressor is an indispensable tool for any thaumaturge, making the process far more efficient and accessible.
-research.COMPRESSOR.stage.2=§lCompressor§r<BR>The Compressor is a device that takes ingots and transforms them into plates using a mechanical pressing process.The device can be used with various types of metals, each producing a unique type of plate suitable for different magic applications. This includes specialized plates.<PAGE>
+research.COMPRESSOR.stage.1=I found plate production too wasteful for routine work, so I devised a compressor to make the process more reliable and efficient.
+research.COMPRESSOR.stage.2=§lCompressor§r<BR>This device presses ingots into plates through a mechanical process. Different metals yield different plate types, including specialized variants for arcane applications.<PAGE>
 
 research.CLOAK.title=Shadowed Cloak
 research.CLOAK.stage.1=The veil of shadows whispers secrets of concealment. Its essence lies in blending with the darkness, evading prying eyes.
@@ -151,33 +182,46 @@ research.CLOAK.stage.2=The Shadowed Cloak has become an extension of your will. 
 
 
 research.UNSTONE.title=Anti-Flight Stone
-research.UNSTONE.stage.1=In your studies of anti-magical properties, you've discovered a peculiar stone that disrupts flight enchantments. The Anti-Flight Stone, when placed, creates a zone where any form of magical flight is forcibly disabled. This stone is an ideal tool for defending areas where aerial access must be restricted.
-research.UNSTONE.stage.2=§lAnti-Flight Stone§r<BR>The Anti-Flight Stone affects an area within a 3x3 chunk radius (equivalent to 48 blocks in each direction). Any thaumaturge or creature attempting to fly within its range will find their enchantments or flight abilities suddenly nullified.The stone is tough and requires proper tools to break, making it a reliable defense against unwanted intruders. Use it wisely to protect sensitive locations.<PAGE>
+research.UNSTONE.stage.1=In my anti-magic studies, I discovered a peculiar stone that disrupts flight enchantments. When placed, the Anti-Flight Stone creates a field that forcibly suppresses magical flight.
+research.UNSTONE.stage.2=§lAnti-Flight Stone§r<BR>The Anti-Flight Stone projects over a 3x3 chunk radius (48 blocks in each direction). Any thaumaturge or creature attempting flight inside this field will lose that capability.<PAGE>It is durable, difficult to remove without proper tools, and ideal for protecting restricted areas from airborne intrusion.
 
 research.DUPLICATOR.title=Mattery Duplicator
-research.DUPLICATOR.stage.1=When the limitations of the Pattern Crafter became evident, a new concept emerged — a mechanism capable of harnessing the essence of Mattery to replicate objects. Thus, the Mattery Duplicator was conceived, a device that captures the very essence of matter and transforms it into tangible forms, meeting the diverse needs of thaumaturges
-research.DUPLICATOR.stage.2=§lMattery Duplicator§r<BR>The Mattery Duplicator utilizes the unique properties of the Mattery essence to perform its duplication process. By absorbing Mattery essence from nearby containers, the machine gathers the energy necessary to replicate items placed in the crafting grid.To complete the duplication, a significant amount of Mattery essence is required, and the machine will only proceed if sufficient mattery is available. Carefully monitor the amount of essence to ensure successful duplications.<PAGE>
+research.DUPLICATOR.stage.1=When the Pattern Crafter block reached its limits, I drafted a new machine: one that harnesses Mattery essence to replicate matter directly.
+research.DUPLICATOR.stage.2=§lMattery Duplicator§r<BR>The Duplicator absorbs Mattery essence from nearby containers and uses it to replicate items placed in the grid. The process only begins when enough essence is available, so I must monitor reserves carefully.<PAGE>
 
 research.OREAQUA.title=Ores
-research.OREAQUA.stage.1=§oAquareia Ore§r<IMG>thaumicforever:textures/misc/aqa.png:0:0:256:256:0.5</IMG>Aquareia Ore is a rare and magical mineral that can only be found deep within the mysterious *Magical Forest* biome. This ore is known for its unique properties and affinity with magic energies. The deposits of Aquareia can be discovered between Y-levels 28 and 32, making them accessible only to those who delve into the depths of these enchanted forests.<BR><BR>It appears in small veins, usually ranging from 2 to 6 blocks, and can only be found where the natural magic of the forest is strongest.
+research.OREAQUA.stage.1=§oAquareia Ore§r<IMG>thaumicforever:textures/misc/aqa.png:0:0:256:256:0.5</IMG>I have confirmed that Aquareia Ore is a rare magical mineral found deep in the *Magical Forest*. Most veins appear between Y 28 and Y 32, usually in clusters of 2 to 6 blocks, where the forest's natural magic is strongest.
 
 entity.ItemFrame.name=Item Frame
 
 research.FOOD.title=Special Food
-research.FOOD.stage.1=You've discovered that food can offer more than simple nourishment. Begin experimenting with ingredients that may unlock unique effects.
-research.FOOD.stage.2=Your studies reveal that certain meals can grant extraordinary abilities.Experiment with mystical ingredients to create powerful meals.
+research.FOOD.stage.1=I have discovered that food can offer far more than simple nourishment. Certain ingredient combinations awaken unusual effects.
+research.FOOD.stage.2=My tests confirm that some meals grant extraordinary abilities. With proper ingredients, I can craft food fit for arcane fieldwork.
 
 
 research.ANGRY_SKELET.title=Angry Skeleton
 research.ANGRY_SKELET.stage.1=During my explorations, I stumbled upon a strange variation of a skeleton. Unlike the common undead warriors, this one displayed unusual aggression and speed, as if fueled by an unquenchable rage. It seems to possess higher durability and intelligence, dodging attacks with unexpected precision. Could it be a result of some dark magic, or is it simply an evolved form of an ordinary skeleton? Further study is required to unravel the mystery behind its origin.<BR>Upon examining its remains, I noticed something peculiar about its bones. They are significantly denser and stronger than those of regular skeletons. This discovery leads me to wonder—could these bones be used to forge a weapon, perhaps one infused with the same unrelenting rage that fueled this creature?
+research.VAMPIRE_BAT.title=Vampire Bat
+research.VAMPIRE_BAT.stage.1=In the Erie's pale daylight, I observed a bat that should not exist in such open hours. It hunts not in blind panic, but with intent, striking in short bursts and leaving wounds that continue to bleed after the bite.<BR>The creature carries a tainted resonance of life and death at once: unmistakably undead, yet restless and predatory. If this strain spreads, it could become a serious threat to any thaumaturge who relies on attrition and prolonged fights.
+research.VAMPIRE_BAT.addenda.1=I translated the bat's hemorrhagic behavior into infusion geometry. By stabilizing life-and-death resonance inside a ruby matrix, I forged a ring that sustains vampirism while worn.
+research.RESEARCHCLEANFT.title=Lucid Mind Distillation
+research.RESEARCHCLEANFT.stage.1=Aura phials hold cognitive patterns with unusual stability. By binding Mind and Order in a controlled crucible cycle, I can distill a reagent that dampens mental static and restores disciplined thought.
+research.RESEARCHCLEANFT.stage.2=I can now distill §lLucidity Elixir§r in the crucible using an aura phial as the catalyst. The compound clears arcane haze, settles intrusive resonance, and returns focus after heavy thaumaturgic strain.
 
 research.DeconstructionTable.title=Deconstruction Table
-research.DeconstructionTable.stage.1=The Deconstruction Table is a unique device that allows thaumaturges to break down common items into their base components. By carefully deconstructing these items, one can gain valuable insights into the magical properties hidden within. The table's ability to extract curios makes it an indispensable tool for those who wish to study the magic secrets embedded in mundane materials.
-research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>To use the Deconstruction Table, place an item into the input slot. The table will attempt to extract any magical properties the item possesses over a short period.<BR><BR>The table is configured with specific recipes that yield unique rewards. For example, a **Crafting Table** has a chance to reveal shards of magic knowledge, while **Ender Pearls** can uncover mysterious trinkets imbued with magic. More complex items, such as **Ghast Tears**, may even provide relics of immense power.<PAGE>§lRecipes§r<BR>Some items have higher chances of yielding valuable results. These include:<BR>- **Crafting Table**: A 35% chance to produce knowledge shards.<BR>- **Ender Pearls**: A 45% chance to produce magical curiosities.<BR>- **Ghast Tears**: A 95% chance to produce powerful trinkets.<BR>- **Condensed Crystal Clusters**: A 50% chance to yield rare dimensional curiosities.<BR>- **Bookshelves**: A 60-85% chance to extract mystical inscriptions or aspect shards.<BR><BR><PAGE>With the **oldresearch** mod installed, Bookshelves will yield Aspect Shards with a higher chance.
+research.DeconstructionTable.stage.1=I constructed a Deconstruction Table to break common items into base components and study the hidden arcane traits within. Its ability to extract curios makes it indispensable when mundane matter must be analyzed.
+research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>Matter remembers. With careful pressure and a little controlled ruin, this table peels those memories from an item and presses them into a Knowledge Fragment.<BR><BR>Any object bearing registered aspects may be sacrificed. The richer its nature, the richer the fragment. Right-click the fragment to reclaim the aspects.
 
 item.ring_ender.name=Ender Ring 
+item.artifact_ruby_ring.name=Ruby Ring of Vampirism
 item.time_freeze_item.name=Time Trap 
 item.magic_dust.name=Magic Dust
+item.potion_gun.name=Potion Gun
+container.potion_gun=Potion Gun
+tooltip.potion_gun.tank=Potion Tank: %s / %s mB
+tooltip.potion_gun.empty=Potion: Empty
+tooltip.potion_gun.potion=Potion: %s
+tooltip.potion_gun.mode=Mode: Hold RMB for continuous spray
 thaumicforever.MINDCONTROL.name=Mind Control 
 thaumicforever.MINDCONTROL.text=Exert your powerful will to turn enemies against each other, making them fight among themselves
 entity.SkeletonAngry.name=Angry Skeleton
@@ -188,7 +232,7 @@ tc.research_category.THAUMICFOREVER=Thaumic Forever
 research.THAUMICFOREVER.title=Thaumic Forever
 
 research.NEWALKIMIA.title=New Alchemy
-research.TENEBRAEALKIMIA.title=Tenebrae Alchemy
+research.PERMUTATIOALKIMIA.title=Permutatio Alchemy
 research.HERBAALKIMIA.title=Herba Alchemy
 research.VICTUSALKIMIA.title=Victus Alchemy
 research.TERRAALKIMIA.title=Terra Alchemy
@@ -201,48 +245,51 @@ research.IMMERALKIMIA.title=Immersive Alchemy
 research.IUALKIMIA.title=Industrial Alchemy
 research.ETERNALBLADE.title=Eternal Blade
 
-research.THAUMICFOREVER.stage.1=The first steps are always the hardest. The book insists that no wand can be born without proper fittings. I must combine a rod with a pair of caps at an Arcane Workbench to assemble my first wand.<BR>It also hints at another trick: a simple wooden table can be awakened to greater purpose. Touch it with a wand, and it will serve as a Wand Workbench.
+research.THAUMICFOREVER.stage.1=The first steps are always the hardest. The book insists that no wand can be born without proper fittings. I must combine a rod with a pair of caps at an Arcane Workbench to assemble my first wand.<BR>It also hints at another trick: a simple Wood Table can be awakened to greater purpose. Right-click the Wood Table with a wand, and it will transform into a Wand Workbench.
 research.THAUMICFOREVER.stage.2=A wand is more than a tool; it is a vessel for Vis. The Wand Workbench draws upon this reserve to shape arcane crafts.<BR>It seems the wand itself can replace a pinch of Salis Mundus when awakening a table. For now I only know that it stores Vis and lends it to the workbench. Of its deeper nature, I know little yet.
 research.THAUMICFOREVER.stage.3=By joining two greatwood tables and applying salis mundus, I can obtain a research table. Yet its true nature remains unclear to me.<BR>I will keep this page open, for it seems destined to hold further notes as my studies advance.
 research.THAUMICFOREVER.addenda.1=A Revive Skeleton yielded a strange scroll, its text fractured and incomplete. Perhaps I should return to the research table and see if it responds to these hints.<PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
 research.THAUMICFOREVER.addenda.2=The advanced gauntlet has proven a worthy refinement. Replacing iron with brass improved its handling of Vis, and each further upgrade brings the focus closer to the ideal I seek.
 research.THAUMICFOREVER.addenda.3=The road is long for a thaumaturge, and gathering supplies soon becomes a burden. To ease this, I have devised a pouch that can carry the essentials of any journey.
 
-research.NEWALKIMIA.stage.1=Delve into the mysteries of New Alchemy. Start with the basics.
-research.NEWALKIMIA.stage.2=Your understanding of Alchemy grows stronger.
+research.NEWALKIMIA.stage.1=I have begun charting the foundations of this new branch of alchemy.
+research.NEWALKIMIA.stage.2=My command of this alchemical discipline has grown noticeably stronger.
 
-research.TENEBRAEALKIMIA.stage.1=Unlock the secrets of Tenebrae Alchemy. Begin with gathering the right materials.
-research.TENEBRAEALKIMIA.stage.2=The darkness of Tenebrae is within your grasp.
+research.PERMUTATIOALKIMIA.stage.1=By attuning salis mundus to Permutatio, I can unify entropy, order and life transmutations into one mutable school.
+research.PERMUTATIOALKIMIA.stage.2=Permutatio now governs decomposition and restructuring alike; the merged crucible formulae answer this single doctrine.
 
-research.HERBAALKIMIA.stage.1=Explore the natural essence with Herba Alchemy. Collect the necessary items.
-research.HERBAALKIMIA.stage.2=Herba Alchemy now holds no secrets from you.
+research.HERBAALKIMIA.stage.1=I am mapping Herba Alchemy through the living essences of plants and growth.
+research.HERBAALKIMIA.stage.2=The inner workings of Herba Alchemy now stand clear before me.
+research.SEED.title=Nature Seed
+research.SEED.stage.1=After mastering Herba Alchemy, I can move from simple plant transmutation to engineered growth. By stabilizing life-aspects inside a dense seed core, I should create a true super-fertilizer for trees.
+research.SEED.stage.2=The Nature Seed is complete. It greatly amplifies tree growth speed and can force oak saplings to develop into the same towering forms found in the Magical Forest.
 
-research.VICTUSALKIMIA.stage.1=Victus Alchemy focuses on the essence of life. Gather the components to begin.
-research.VICTUSALKIMIA.stage.2=Victus Alchemy is now within your control.
+research.VICTUSALKIMIA.stage.1=I have returned to Victus-aligned alchemy, where vital resonance binds growth, flesh and restorative transmutation into one coherent branch.
+research.VICTUSALKIMIA.stage.2=Victus now serves as the stable life junction of my alchemical progression.
 
-research.TERRAALKIMIA.stage.1=Terra Alchemy is grounded in the essence of earth. Start your research by obtaining the required items.
-research.TERRAALKIMIA.stage.2=You have mastered the basics of Terra Alchemy. A new recipe is unlocked.
+research.TERRAALKIMIA.stage.1=I have entered Terra Alchemy through the patient study of earth-aligned materials.
+research.TERRAALKIMIA.stage.2=I have mastered Terra's fundamentals and unlocked a new crucible path.
 
-research.AQUAALKIMIA.stage.1=Aqua Alchemy taps into the essence of water. Collect what you need to begin.
-research.AQUAALKIMIA.stage.2=Aqua Alchemy now flows through your veins.
+research.AQUAALKIMIA.stage.1=I began Aqua Alchemy by gathering reagents resonant with flowing essence.
+research.AQUAALKIMIA.stage.2=Its principles now move naturally through my practice.
 
-research.PRAECANTATIOALKIMIA.stage.1=Praecantatio Alchemy is the magic of the vis. Prepare yourself with the right ingredients.
-research.PRAECANTATIOALKIMIA.stage.2=You now wield the power of Praecantatio Alchemy.
+research.PRAECANTATIOALKIMIA.stage.1=I have initiated Praecantatio Alchemy, where Vis itself becomes reagent and catalyst.
+research.PRAECANTATIOALKIMIA.stage.2=I can now wield Praecantatio methods with stable control.
 
-research.ADDITIONALALKIMIA.stage.1=Additional Alchemy adds new layers to your knowledge. Study the required theories.
-research.ADDITIONALALKIMIA.stage.2=You have expanded your alchemical knowledge.
+research.ADDITIONALALKIMIA.stage.1=I have opened supplementary branches of alchemy and begun integrating their theory.
+research.ADDITIONALALKIMIA.stage.2=My alchemical framework now includes these extended methods.
 
-research.APPLIDALKIMIA.stage.1=Applied Alchemy combines ancient magic with modern technology. Start by gathering the components.
-research.APPLIDALKIMIA.stage.2=You have successfully integrated magic and technology.
+research.APPLIDALKIMIA.stage.1=I have started Applied Alchemy, where arcane process meets modern machinery.
+research.APPLIDALKIMIA.stage.2=I can now integrate magic and technology into one working system.
 
-research.BOTANIAALKIMIA.stage.1=Botania Alchemy merges nature's power with magic knowledge. Collect the necessary items.
-research.BOTANIAALKIMIA.stage.2=Botania Alchemy now blooms under your command.
+research.BOTANIAALKIMIA.stage.1=I have begun Botania Alchemy by fusing natural resonance with arcane method.
+research.BOTANIAALKIMIA.stage.2=These floral formulae now answer to my hand.
 
-research.IMMERALKIMIA.stage.1=Immersive Alchemy brings the power of the forge into the magic. Gather what you need to proceed.
-research.IMMERALKIMIA.stage.2=You have mastered Immersive Alchemy.
+research.IMMERALKIMIA.stage.1=I have entered Immersive Alchemy, binding furnace craft and arcane transmutation.
+research.IMMERALKIMIA.stage.2=Its forge-bound principles are now fully under my control.
 
-research.IUALKIMIA.stage.1=Industrial Alchemy applies the principles of automation to the magic. Start your research by gathering the essentials.
-research.IUALKIMIA.stage.2=You have unlocked the secrets of Industrial Alchemy.
+research.IUALKIMIA.stage.1=I have begun Industrial Alchemy, applying automation logic to magical process.
+research.IUALKIMIA.stage.2=I have unlocked the core principles of industrial-scale alchemy.
 
 
 
@@ -269,7 +316,9 @@ item.scroll_p_3.name=Scroll Package
 tc.research_category.PRIMAL=Primal
 
 research.PRIMAL.title=Primal
-research.PRIMAL.stage.1=This category holds the most powerful artifacts, forged from the essence of ancient primal forces. They are the key to unfathomable magical might, bending time and space to their will. But beware: such power submits only to the most worthy.
+research.PRIMAL.stage.1=These entries concern artifacts forged from primal force itself. Their potential reaches beyond ordinary thaumaturgy, bending space and time where lesser tools fail. I must proceed carefully, for such power yields only to the worthy.
+research.POTION_GUN.title=Potion Sprayer
+research.POTION_GUN.stage.1=§bPotion Sprayer§r<BR>I have reworked the standard potion-spraying mechanism into a portable channel fed directly by vis from the tool itself. Instead of a single burst, it can sustain a controlled alchemical stream along my line of sight.<PAGE>The assembly is temperamental: without a stable vis reserve, pressure drops and the mixture collapses into useless mist. Yet once calibrated, it applies combat and utility effects quickly, without relying on thrown flasks.
 
 research.ETERNAL_BLADE.title=Eternal Blade
 research.ETERNAL_BLADE.stage.1=§EEternal Blade§r<BR><IMG>thaumicforever:textures/items/eternal_blade.png:0:0:256:256:0.13</IMG><BR> This blade, infused with malevolent magic, burns with hatred toward all that exists and all that does not. Its edge delivers death and destruction, while its wielder bears the weight of eternal wrath, offering no peace even in moments of triumph.
@@ -277,17 +326,19 @@ research.ETERNAL_BLADE.stage.1=§EEternal Blade§r<BR><IMG>thaumicforever:textur
 item.void_teleport_item.name=Crystal World
 item.purifying_bottle.name=Bottle of Purifying Fluid
 item.vis_bottle.name=Bottle of Vis
+item.clean_mind.name=Lucidity Elixir
 item.auraphial.name=Phial of Aura
 item.primalingot.name=Primal Ingot
+item.primal_pickaxe.name=Primal Pickaxe
 
 research.STUFF.title=Stuff
 research.STUFF.title=Stuff
-research.STUFF.stage.1=The §bStuff§r category includes magic tools and artifacts. Each item holds unique powers, such as:<PAGE> §lPrimal Charm§r<BR>which protects body and mind.<IMG>thaumicforever:textures/misc/charm_amin.png:0:0:256:256:0.13</IMG><BR><PAGE>§lCleansing Bottle§r<BR>when used, it pours purifying water.<IMG>thaumicforever:textures/items/bottle_clean.png:0:0:256:256:0.13</IMG><BR><PAGE>  §lVis Infusion Bottle§r<BR>which boosts aura energy.<IMG>thaumicforever:textures/items/bottle_vis.png:0:0:256:256:0.13</IMG><BR><BR> Explore to reveal their full potential!
+research.STUFF.stage.1=§bStuff§r<BR>Here I have gathered practical artifacts from my sealed PRIMAL notes.<PAGE>§lPrimal Charm§r<BR>A compact warding relic for body and mind.<IMG>thaumicforever:textures/misc/charm_amin.png:0:0:256:256:0.13</IMG><BR><PAGE>§lCleansing Bottle§r<BR>A field-use vial that releases purifying fluid on demand.<IMG>thaumicforever:textures/items/bottle_clean.png:0:0:256:256:0.13</IMG><BR><PAGE>§lVis Infusion Bottle§r<BR>A reserve charge that reinforces local aura flow when used correctly.<IMG>thaumicforever:textures/items/bottle_vis.png:0:0:256:256:0.13</IMG><BR><BR>More entries will be added as additional primal devices are decoded.
 
 entity.AuraNode.name= 
 
 research.TELEPORT.title=Crystal World
-research.TELEPORT.stage.1=§bCrystal World§r<BR><IMG>thaumicforever:textures/items/crystalworld.png:0:0:256:256:0.13</IMG><BR> is a mysterious, empty dimension, accessible to only one individual at a time. This isolated realm serves as a personal sanctuary, untouched by external forces. Within its shimmering crystalline expanse, time feels still, and the whispers of the void echo faintly. Who knows what secrets lie hidden in its infinite quiet?
+research.TELEPORT.stage.1=§bCrystal World§r<BR><IMG>thaumicforever:textures/items/crystalworld.png:0:0:256:256:0.13</IMG><BR>I have uncovered a silent, empty dimension that accepts only one traveler at a time. This isolated crystalline expanse is untouched by outside interference, and time itself feels unnaturally still there.<BR>It is an ideal personal refuge for risky experiments, hidden storage, and recovery between expeditions.<BR>What else lies dormant in that endless quiet, I cannot yet say.
 
 tile.immortalizer.name=Primordial Guardian
 tile.primal_block.name=Primal Block
@@ -303,21 +354,21 @@ item.end_dust.name=End Dust
 item.taint_slime.name=Taint Slime
 item.cluster.amber.name=Cluster Amber
 item.eldritch_eye_amulet.name=Eldritch Eye Amulet
-research.ELDRITCHAMULET.stage.1=This amulet, crafted with eldritch materials, exudes an unsettling aura that bends reality around the wearer. Initial observations suggest that it mimics the aura of the Eldritch Warden, drawing the attention of nearby entities.
-research.ELDRITCHAMULET.stage.2=When worn, the amulet alters the environment, veiling the area in eldritch fog. It is said to echo the presence of the Warden itself, potentially granting insight into its mysterious powers. Further study could reveal the full extent of its abilities.
+research.ELDRITCHAMULET.stage.1=I crafted this amulet from eldritch materials, and it radiates an unsettling field that bends perception around the wearer. My first observations suggest it mimics the presence of an Eldritch Warden.
+research.ELDRITCHAMULET.stage.2=When I wear it, the surroundings shift beneath an eldritch haze. The effect feels like an echo of Warden presence; further trials may reveal its full utility.
 research.OREEND.amber=§oEnd Ore§r<IMG>thaumicforever:textures/misc/end.png:0:0:256:256:0.5</IMG>This mysterious ore is found exclusively in the End and resonates with a peculiar arcane energy. When mined, it drops fine particles of essence-rich dust that thaumaturges can use in advanced magical constructs.<BR>Strangely, its presence appears to be influenced by the otherworldly energies of the End dimension. The ore glimmers faintly, almost as if alive with purpose.<BR>End Ore could be the key to unlocking deeper secrets of the Void, or perhaps it is best left untouched by mortal hands.
 research.ELDRITCHAMULET.title=Eldritch Eye Amulet
 
 research.ELDRITCHALKIMIA.title=Eldritch Alchemy
-research.ELDRITCHALKIMIA.stage.1=Eldritch Alchemy is the art of combining forbidden knowledge with arcane practices. By utilizing the essence of the alienis, you can transmute mundane materials into something far more potent. This ancient knowledge hints at the power to reshape reality itself.
-research.ELDRITCHALKIMIA.stage.2=Further study reveals that Eldritch Alchemy requires precision and control. Harnessing its power may allow you to infuse items with otherworldly properties, but one wrong step could invite chaos. Experimentation is key to uncovering its true potential.
+research.ELDRITCHALKIMIA.stage.1=I have entered Eldritch Alchemy, where forbidden doctrine meets practical transmutation. By shaping Alienis essence, I can push mundane matter beyond natural limits.
+research.ELDRITCHALKIMIA.stage.2=This discipline demands precision. If I maintain strict control, I can bind otherworldly traits into objects; if I fail, I invite chaos.
 
 research.DECORATION.title=Decorations
-research.DECORATION.stage.1=Through careful study and experimentation, you have devised a way to mimic the essence of various creatures, capturing their forms in hauntingly detailed replicas. These creations resonate with a faint magical aura, hinting at their hidden potential beyond mere decoration.
-research.DECORATION.stage.2=While their decorative value is undeniable, these creations serve a greater purpose. When placed around a Runic Matrix, they emit stabilizing energies, aiding in complex infusions. Their dual role as ornaments and ritual components makes them a valuable addition to your arsenal.
+research.DECORATION.stage.1=Through repeated trials, I learned to imitate the essence signatures of various creatures and capture them in detailed replicas. These forms hum with faint arcane resonance.
+research.DECORATION.stage.2=They are not merely decorative. Around a Runic Matrix, these constructs emit stabilizing fields that assist complex infusions.<PAGE>Besides stabilization-oriented pieces, I also crafted purely decorative sets from §lGreatwood§r and §lSilverwood§r: doors, trapdoors, and matching workshop trims. These parts provide no infusion stabilization bonus; they exist purely for architecture and atmosphere.<BR>By framing a §lGreatwood Door§r with thaumium, I can create an arcane door that behaves like iron: it opens only with redstone power.
 
 research.PrimordialGuardian.title=Primordial Guardian
-research.PrimordialGuardian.stage.1=Primordial Guardian<BR><IMG>thaumicforever:textures/misc/pgrsh.png:0:0:256:256:0.2</IMG><BR>The Primordial Guardian is a powerful arcane device that grants temporary immortality using Primordial Pearls, but requires a steady supply of essentia and carries risks of destabilizing the aura if misused.
+research.PrimordialGuardian.stage.1=Primordial Guardian<BR><IMG>thaumicforever:textures/misc/pgrsh.png:0:0:256:256:0.2</IMG><BR>I have assembled a Primordial Guardian: a severe but powerful apparatus that grants temporary death denial through Primordial Pearls. It demands constant essentia and can destabilize nearby aura if misused.
 
 item.banana.name=Banana
 item.ring_master.name=Master's Ring
@@ -347,17 +398,18 @@ item.caster_advanced.name=Advanced Caster's Gauntlet
 research.golem_core_fish.title=Control Seal: Fishing
 research.golem_core_fish.stage.1=This seal allows golems to engage in fishing by reacting to movement within nearby bodies of water, much like a simple predator. At first, their behavior is crude—they lash out at anything that stirs the surface.<BR>However, I have found that by fine-tuning the core's configuration, the golem can be taught to focus on specific targets, even distinguishing between different types of fish.
 research.golem_core_fish.stage.2=I have refined the seal further by synchronizing it with the natural flow of water. As a result, golems now react more precisely and efficiently when fish are nearby.<BR>More intriguingly, it appears possible to apply a minor enchantment to the core, enhancing the likelihood of capturing rare aquatic specimens. With additional adjustments, this seal could become a reliable method of gathering valuable resources from the depths.
+research.golem_core_fish.addenda.1=I can now craft an advanced version of this seal. It supports category control for catches (fish, junk, treasure), optional redstone signaling, and item filtering via white/black list.<PAGE>With finer logic matrices, this advanced seal can be tuned for very specific fishing workflows. It also requires a smarter golem core to operate at full efficiency.
 
 research.ORB.title=Orb
-research.ORBNONE.stage.1=Throughout the arcane world, various concentrations of raw magical energy can take form, solidifying into what scholars call "orb." These enigmatic objects serve as focal points of power, embodying different essences and influences. Each core resonates with a unique force, shaping the way it interacts with the environment and those who study it. Whether formed naturally or through deliberate alchemical processes, these orb hold untapped potential, waiting to be understood.
-research.ORBTAINT.amber=This orb holds the essence of corruption. Its energy is unstable, and a dark substance occasionally seeps from its surface, spreading around and infecting everything it touches. Studying this artifact may reveal new ways to control and contain the spread of Taint.
-research.ORBCRIMS.amber=This orb radiates a deep crimson light, its very essence infused with an unsettling and ancient power. It hums with the echoes of forgotten knowledge, drawing those who seek the secrets of Blood Magic. In its presence, the atmosphere thickens, whispers linger in the air, and the darkness itself seems to watch and wait.
+research.ORBNONE.stage.1=I keep finding condensed masses of raw magic that solidify into what scholars call an "orb." Each one resonates with a distinct force and changes how nearby aura behaves. Whether natural or crafted, these orbs still hide untapped potential.
+research.ORBTAINT.amber=This orb carries concentrated corruption. Its output is unstable, and dark residue occasionally leaks from the shell, infecting nearby matter. Careful study may reveal safer containment methods.
+research.ORBCRIMS.amber=This orb emits a deep crimson radiance bound to ancient blood-tinged power. In its presence the air grows heavy and the silence feels watchful, as if the artifact itself listens.
 
 research.TAINT_AMULET.title=Amulet of Taint
-research.TAINT_AMULET.stage.1=§bTaint Amulet§r<BR><IMG>thaumicforever:textures/items/taint_amulet.png:0:0:256:256:0.13</IMG><BR>This curious artifact is imbued with stabilizing essence, shielding its wearer from the effects of Taint poisoning. More intriguingly, it appears to render the user unseen by Tainted entities, as if cloaked in the corruption itself.<BR>And yet... the amulet's true nature remains uncertain. Does it truly repel the Taint, or is it merely masking the wearer while gradually binding them to the very essence it claims to ward against?
+research.TAINT_AMULET.stage.1=§bTaint Amulet§r<BR><IMG>thaumicforever:textures/items/taint_amulet.png:0:0:256:256:0.13</IMG><BR>This artifact carries a stabilizing charge that shields me from Taint poisoning. More strangely, tainted creatures seem to ignore the wearer, as if the amulet cloaks them in familiar corruption.<BR>Its true cost remains unclear: does it ward the Taint, or merely hide me while binding me to it?
 
 research.seal_golem_core_essentia.title=Control Seal: Crystal Refill
-research.seal_golem_core_essentia.stage.1=This seal allows golems to automatically replenish essentia crystals in designated containers. When the supply of crystals runs low, the golem is instructed to locate the required ones and refill the workbench.<BR>The seal remains active even if the container is removed, allowing it to function in unstable environments or with mobile storage.
+research.seal_golem_core_essentia.stage.1=Manual crystal refilling has become a constant bottleneck in my workbench routines.<BR>A simple funnel cannot solve it: crystals must be placed into the correct slots, in the correct form, and at the correct moment.<BR>I therefore began designing a control seal that can detect shortages and direct a golem to perform proper slot-aware replenishment.
 research.seal_golem_core_essentia.stage.2=I have refined the seal's logic, granting it the ability to monitor the quantity of crystals present. If suitable crystals are nearby, the golem will immediately begin the refill process, minimizing any interruption in arcane operations.<BR>This seal is especially effective when used with automated systems, where maintaining a constant flow of crystals is essential without the thaumaturge’s direct involvement.
 
 item.ruby_gem.name=Ruby Gem
@@ -373,8 +425,8 @@ item.orb_of_soul.name=Orb of Soul
 thaumicforever.FLIGHT.name=Essence of Flight
 
 research.FLIGHT.title=Focus Effect: Flight
-research.FLIGHT.stage.1=The idea of manipulating gravitational forces has long fascinated those who study the arcane. Through rigorous experimentation, I have stabilized a focus effect capable of altering the vertical momentum of living beings. The higher the power level, the stronger and more persistent the elevation effect.
-research.FLIGHT.stage.2=With the proper configuration, I can now create a focus effect that lifts targets off the ground. Lower power levels result in brief levitation, while higher ones allow extended suspension in midair. This could be used tactically to displace enemies or explore hard-to-reach locations.
+research.FLIGHT.stage.1=I stabilized a lift pattern that alters vertical momentum rather than true gravity in living targets.
+research.FLIGHT.stage.2=At low power it yields brief levitation; at higher tuning it sustains meaningful suspension. Properly used, it serves both battlefield control and traversal.
 thaumicforever.FLIGHT.text=Manipulates vertical momentum of living targets. Higher power levels allow extended levitation or temporary flight.
 item.monkey_paw.name=Monkey Paw
 jei.thaumicforever.deconstruction=Deconstruction Table
@@ -438,6 +490,10 @@ nodetype.5=Unstable
 nodetype.6=Primal
 
 entity.NodeMagnet.name=Node Magnet
+entity.vampire_bat.name=Vampire Bat
+entity.VampireBat.name=Vampire Bat
+entity.thaumicforever.vampire_bat.name=Vampire Bat
+entity.thaumicforever.VampireBat.name=Vampire Bat
 
 node.regen.fast=Bright
 node.regen.slow=Pale
@@ -485,8 +541,9 @@ item.compass_maze.name=Maze Compass
 item.turret_magnet.name=Node Magnet
 tile.node_stabilizer.name=Node Stabilizer
 research.!aura_node_scan.text=Scan Aura Nodes
-research.!wand_workbench.text=Scan the Wand Workbench
+research.!wand_workbench.text=Right-click a Wood Table with a wand
 research.!mysterious_scrolls_scan.text=Scan a mysterious scroll
+research.!empty_focus_scan.text=Scan an Empty Focus
 tile.jarred_node.name=Jarred Node
 tile.node_transducer.name=Node Transducer
 #
@@ -513,6 +570,7 @@ thaumicforever.CHAINLIGHTNING.name=Chain Lightning
 thaumicforever.CHAINLIGHTNING.text=Launches a bolt of lightning that jumps between multiple enemies, dealing reduced damage with each jump.
 tile.vis_plant.name=Vis Plant
 item.nodessummoncreative.name=Creative Node Summoner
+item.creative_item_aspect.name=Creative Aspect Item
 item.gold_plate.name=Gold Plate
 research.EXPLOSIONCAST.stage.1=Through my study of the interaction between Fire and Entropy, I have discovered that the release of destructive energy does not need to be entirely chaotic. When properly shaped, a focused magical impulse can produce a localized explosion capable of harming foes while leaving the surrounding environment largely untouched.
 
@@ -527,6 +585,37 @@ item.purified_brain.name=Purified Brain
 # --- Thaumic Wands (ported) ---
 itemGroup.thaumicwands=Thaumic Wands
 tile.thaumicforever.wand_workbench.name=Wand Arcane Workbench
+thaumicforever.BLINK.name=Blink
+thaumicforever.BLINK.text=Teleports the caster to the impact point. If multiple projectiles are spawned from one cast, Blink triggers only once.
+thaumicforever.SKYBEAM.name=Beam
+thaumicforever.SKYBEAM.text=Projects a straight vis beam that locks onto the first hit target and passes trajectory to the next focus stage.
+research.BLINK.title=Focus Effect: Blink
+research.BLINK.stage.1=By bending Motion through a short, stable fold, I can shift my body directly to a marked point in space instead of traversing it.
+research.BLINK.stage.2=The fold collapses after the first successful jump in a cast, preventing unstable chain relocation when the spell splits into multiple projectiles.
+thaumicforever.PRIMAL.name=Chaos
+thaumicforever.PRIMAL.text=Each cast stores a random chain of focus medium/effect and fires it on the next cast.
+thaumicforever.PRIMAL_ELEMENT.name=Primal Element Chain
+thaumicforever.PRIMAL_ELEMENT.text=If Thaumic Augmentation is present, unleashes Water first, then chains Fire, Frost, and Earth.
+thaumicforever.TIMEBOMB.name=Time Cooldown
+thaumicforever.TIMEBOMB.text=Delays the next focus stage before it is executed.
+focus.thaumicforever.timecooldown.delay=Delay
+focus.thaumicforever.timecooldown.delay.2=2 sec
+focus.thaumicforever.timecooldown.delay.4=4 sec
+focus.thaumicforever.timecooldown.delay.6=6 sec
+focus.thaumicforever.timecooldown.delay.8=8 sec
+focus.common.range=Range
+research.TIMEBOMB.title=Focus Modifier: Time Cooldown
+research.TIMEBOMB.stage.1=By anchoring a cast to local temporal inertia, I can force the focus to wait before releasing the next stage. The structure remains stable only in discrete intervals.
+research.TIMEBOMB.stage.2=I can now insert a timed delay modifier before an effect and choose a fixed release window of 2, 4, 6, or 8 seconds.
+research.PRIMALFOCUS.title=Focus Effect: Chaos
+research.PRIMALFOCUS.stage.1=I scrapped stable primal lattices and replaced them with a chaotic selector that binds arbitrary focus mediums and effects at cast time.
+research.PRIMALFOCUS.stage.2=Each trigger now prepares the next chain in advance. The following cast releases that prepared combination with randomized internal settings.
+research.PRIMAL_FOCI.title=Focus Effect: Chaos
+research.PRIMAL_FOCI.stage.1=I scrapped stable primal lattices and replaced them with a chaotic selector that binds arbitrary focus mediums and effects at cast time.
+research.PRIMAL_FOCI.stage.2=Each trigger now prepares the next chain in advance. The following cast releases that prepared combination with randomized internal settings.
+research.FOCUSPRIMAL_ELEMENT.title=Focus Effect: Primal Element Chain
+research.FOCUSPRIMAL_ELEMENT.stage.1=I shaped a deterministic elemental sequence instead of chaotic selection. If Thaumic Augmentation is present, the chain begins with a light water strike, then transitions into the core Thaumcraft elements.
+research.FOCUSPRIMAL_ELEMENT.stage.2=The sequence now stabilizes as: Water (tier 1, TA if available), then Fire, Frost, and Earth. Its complexity is tuned to roughly 70%% of the combined Thaumcraft triad load.
 # --- Blocks ---
 
 # --- Items ---
@@ -614,6 +703,14 @@ item.wand.thauminite.cap=Thauminite Bossed
 
 item.wand.alkimium.cap=Alkimium Crowned
 item.wand.bismuth.cap=Bismuth Attuned
+item.wand.ichorium.cap=Ichorium Bound
+item.wand.ichorcloth.rod=Ichorcloth
+item.item_wand_cap_ichor_ichorium_inert.name=Inert Ichorium Wand Caps
+item.item_wand_cap_ichor_ichorium.name=Ichorium Wand Caps
+item.item_wand_rod_ichor_ichorcloth.name=Ichorcloth Wand Rod
+item_wand_cap_ichor_ichorium_inert.name=Inert Ichorium Wand Caps
+item_wand_cap_ichor_ichorium.name=Ichorium Wand Caps
+item_wand_rod_ichor_ichorcloth.name=Ichorcloth Wand Rod
 
 
 #
@@ -871,3 +968,84 @@ research.RESEARCHMASTERY.stage.2=You have become even more efficient at performi
 research.RESEARCHDUPE.title=Research Duplication
 research.RESEARCHDUPE.stage.1=You've become proficient in arcane theory, in your spare time you begin transcribing your discoveries in a standardized format that other Thaumaturges can comprehend.
 research.RESEARCHDUPE.stage.2=You have discovered a way to copy completed research note.<BR>When you complete research or place a completed research note in the research table you will see a star icon. Clicking this will create a copy of this research as long as you are carrying paper and ink and have enough aspects available.<BR>The more copies are created of that research, the more expensive copying it will become.
+
+# Restored from test/src
+item.big_jar.name=Big Jar
+tile.big_jar.name=Big Jar
+tile.flower_pot_custom.name=Flower Pot
+item.seal.golem_core_fish_advanced.name=Control Seal: Advanced Fishing
+research.HERBAALKIMIA.stage.3=The Nature Core acts like a super fertilizer. It can instantly grow saplings, including the magical-forest oak variant.
+research.WANDCHARGE.title=Wand Charging Array
+research.WANDCHARGE.stage.0=The standard charger is useful, but it does not account for the unstable pulse that appears when a wand is fed from dense aura pockets. I can stabilize this process by forcing vis through a tuned crystal focus and a resonant support frame.<PAGE>By shaping the flow before it reaches the wand cap, I should be able to keep charging continuous and controlled. If the calibration is correct, recharge speed will improve and vis loss from turbulence will be reduced.
+research.WANDCHARGE.stage.1=The assembled charging array performs as intended: the wand now receives vis through a constrained channel rather than a raw surge. This keeps transfer steady even when nearby nodes fluctuate.<BR>The device works best when mounted near my wand workbench. With proper materials and an aquareia catalyst, the array becomes a reliable way to refill high-capacity wands between crafting sessions.<PAGE>§lWand Recharge Pedestal§r<BR>I have also completed a dedicated pedestal variant for direct wand charging. It accepts a wand directly, keeps charging stable, and is ideal for restoring large vis reserves between long crafting cycles.
+item_wand_cap_botania_manasteel_inert.name=Inert Manasteel Cap
+item_wand_cap_botania_manasteel.name=Manasteel Cap
+item_wand_cap_botania_elementium_inert.name=Inert Elementium Cap
+item_wand_cap_botania_elementium.name=Elementium Cap
+item_wand_cap_botania_terrasteel.name=Terrasteel Cap
+item_wand_rod_botania_livingwood_inert.name=Dormant Livingwood Rod
+item_wand_rod_botania_livingwood.name=Livingwood Rod
+item_wand_rod_botania_dreamwood_inert.name=Silent Dreamwood Rod
+item_wand_rod_botania_dreamwood.name=Dreamwood Rod
+item_wand_rod_poly_infernal.name=Infernal Rod
+item_wand_rod_poly_chorus.name=Chorus Rod
+item_wand_cap_bm_alchemical.name=Alchemical Cap
+item_wand_rod_bm_blood_inert.name=Bloodthirsty Blood Rod
+item_wand_rod_bm_blood.name=Blood Rod
+item_wand_cap_embers_dawnstone_inert.name=Inert Dawnstone Cap
+item_wand_cap_embers_dawnstone.name=Dawnstone Cap
+item_wand_rod_embers_archaic_inert.name=Extinct Archaic Rod
+item_wand_rod_embers_archaic.name=Archaic Rod
+item.wand.livingwood.rod=Livingwood
+item.wand.dreamwood.rod=Dreamwood
+item.wand.infernal.rod=Infernal
+item.wand.chorus.rod=Chorus
+item.wand.archaic.rod=Archaic
+item.wand.blood.rod=Blood
+item.wand.manasteel.cap=Manasteel Entwined
+item.wand.elementium.cap=Elementium Kissed
+item.wand.terrasteel.cap=Terrasteel Bound
+item.wand.alchemical.cap=Alchemically Crowned
+item.wand.dawnstone.cap=Dawnstone Banded
+key.categories.thaumicforever=Thaumic Forever
+key.open_pouch=Open Pouch
+key.thaumicforever.open_pouch=Open Pouch
+research.CAP_MATERIAL_ALL.title=Exotic Wand Materials
+research.CAP_MATERIAL_ALL.stage.0=I should survey foreign magical alloys and fabrics. If a material exists in ore dictionary, it can be adapted into wand parts.
+research.CAP_MATERIAL_ALL.stage.1=These are the core exotic caps of my main thaumic line.<BR>§lIchorium§r: strongest vis efficiency (65%) and broad crystal support (all six primals +2).<BR>§lMithrillium§r: balanced efficiency (75%), all primals +1.<BR>§lAdaminite§r: better efficiency (70%), all primals +2.<BR>§lMithminite§r: extreme efficiency (60%), all primals +3.<BR>§lThauminite§r: ordered channeling (85%), Ordo crystal discount +1.<BR>§lAlkimium§r: stable crafting flow (95%), Aqua/Terra/Ordo crystal discount +1.<BR>§lBismuth§r: split order-entropy behavior (85%), Ordo/Perditio crystal discount +1.<PAGE>In practice: lower percent means lower vis cost. For universal efficiency
+item.item_wand_cap_botania_manasteel_inert.name=Inert Manasteel Cap
+item.item_wand_cap_botania_manasteel.name=Manasteel Cap
+item.item_wand_cap_botania_elementium_inert.name=Inert Elementium Cap
+item.item_wand_cap_botania_elementium.name=Elementium Cap
+item.item_wand_cap_botania_terrasteel.name=Terrasteel Cap
+item.item_wand_rod_botania_livingwood_inert.name=Dormant Livingwood Rod
+item.item_wand_rod_botania_livingwood.name=Livingwood Rod
+item.item_wand_rod_botania_dreamwood_inert.name=Silent Dreamwood Rod
+item.item_wand_rod_botania_dreamwood.name=Dreamwood Rod
+item.item_wand_rod_poly_infernal.name=Infernal Rod
+item.item_wand_rod_poly_chorus.name=Chorus Rod
+item.item_wand_cap_bm_alchemical.name=Alchemical Cap
+item.item_wand_rod_bm_blood_inert.name=Bloodthirsty Blood Rod
+item.item_wand_rod_bm_blood.name=Blood Rod
+item.item_wand_cap_embers_dawnstone_inert.name=Inert Dawnstone Cap
+item.item_wand_cap_embers_dawnstone.name=Dawnstone Cap
+item.item_wand_rod_embers_archaic_inert.name=Extinct Archaic Rod
+item.item_wand_rod_embers_archaic.name=Archaic Rod
+research.STAFF_ALL.title=Additional Rods
+research.STAFF_ALL.stage.0=The classic woods no longer cover all of my needs. By studying foreign schools and rare materials, I can adapt them into rods with distinct arcane behavior.
+research.STAFF_ALL.stage.1=I have stabilized four advanced rod patterns for extreme use-cases.<BR>§lIchorcloth Rod§r: capacity 900; self-recharges every second, stronger at night, in the Nether, and in the End.<BR>§lAdaminitewood Rod§r: capacity 3200; no passive trick, but unmatched raw reserve for long casting chains.<BR>§lInfernal Rod§r: capacity 1200; recharges faster in the Nether, extinguishes fire, and removes Wither from the bearer.<BR>§lChorus Rod§r: capacity 1200; recharges faster in the End and removes Levitation.
+research.CAP_MATERIAL_ADD.title=Additional Wand Caps
+research.CAP_MATERIAL_ADD.stage.0=I have compiled notes on foreign cap materials, from Botania alloys to blood-bound and ember-forged components. Their behavior is irregular, but proper infusion can stabilize them.
+research.CAP_MATERIAL_ADD.stage.1=This branch focuses on cross-school caps and their practical roles.<BR>§lManasteel§r: 90% vis cost, stable all-purpose cap with Praecantatio/Auram crystal discount +1.<BR>§lElementium§r: 82% vis cost, stronger elemental alignment with Aer/Ignis/Aqua/Terra crystal discount +1.<BR>§lTerrasteel§r: 75% vis cost, high-tier mana alloy tuned for heavy casting; Praecantatio/Auram +2 and Herba +1.<BR>§lAlchemical§r: 90% vis cost, blood-attuned cap with Aqua/Victus crystal discount +1.<BR>§lDawnstone§r: 95% vis cost, ember-forged control cap with Aer/Ignis crystal discount +1.
+research.STAFF_ADD.title=Exotic Rods
+research.STAFF_ADD.stage.0=After mastering the classic woods, I moved on to foreign vis conduits: livingwood, dreamwood, blood, archaic matter, and other rare substrates.
+research.STAFF_ADD.stage.1=These exotic rods are tuned for situational sustain and combat rhythm.<BR>§lLivingwood Rod§r: capacity 500; regenerates charge passively, stronger on natural ground (grass/dirt/leaves).<BR>§lDreamwood Rod§r: capacity 800; passive recharge every second, stronger at night and in the End.<BR>§lBlood Rod§r: capacity 850; converts a small amount of your health into wand charge (only while healthy enough).<BR>§lArchaic Rod§r: capacity 700; passive recharge, stronger in HOT/NETHER biomes.
+research.NEWGOLEMANCY.title=Advanced Golemancy
+research.NEWGOLEMANCY.stage.1=The first seals taught obedience, but not persistence. If golems are to serve more complex systems, I need storage and support structures that can hold intent, memory, and directed thought without collapsing into simple automation.
+research.NEWGOLEMANCY.stage.2=The Big Jar is a large vessel for preserved intellect. Its reinforced glass can hold several brains at once, allowing them to remain stable enough to assist nearby devices instead of merely floating as curiosities.
+research.GREATRESEARCHTABLE.title=Great Research Table
+research.GREATRESEARCHTABLE.stage.1=An ordinary research table is limited by the mind working at it. By combining an old research table with a greatwood table and treating the structure with Salis Mundus, I can create a broader instrument for assisted research.
+research.GREATRESEARCHTABLE.stage.2=§lCreation§r<BR>Place an old Research Table next to a Greatwood Table, then use Salis Mundus on the structure. The paired tables will transform into a Great Research Table with its support half placed automatically.<PAGE>§lUse§r<BR>The Great Research Table accepts scribing tools and an unfinished research note. When placed before a Big Jar, the brains inside work through the note over time. One brain solves a note in about ten minutes; more brains increase efficiency, while notes with more aspects slow the process. Ink is consumed as progress advances.
+item.knowledge_fragment.name=Knowledge Fragment
+tooltip.knowledge_fragment.empty=No stored aspects
+tooltip.knowledge_fragment.aspects=Stored aspects:

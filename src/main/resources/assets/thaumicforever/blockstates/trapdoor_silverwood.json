@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north,half=bottom,open=false": { "model": "thaumicforever:trapdoor_silverwood_bottom" },
+    "facing=south,half=bottom,open=false": { "model": "thaumicforever:trapdoor_silverwood_bottom", "y": 180 },
+    "facing=west,half=bottom,open=false": { "model": "thaumicforever:trapdoor_silverwood_bottom", "y": 270 },
+    "facing=east,half=bottom,open=false": { "model": "thaumicforever:trapdoor_silverwood_bottom", "y": 90 },
+    "facing=north,half=top,open=false": { "model": "thaumicforever:trapdoor_silverwood_top" },
+    "facing=south,half=top,open=false": { "model": "thaumicforever:trapdoor_silverwood_top", "y": 180 },
+    "facing=west,half=top,open=false": { "model": "thaumicforever:trapdoor_silverwood_top", "y": 270 },
+    "facing=east,half=top,open=false": { "model": "thaumicforever:trapdoor_silverwood_top", "y": 90 },
+
+    "facing=north,half=bottom,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_bottom", "x": 180, "y": 180 },
+    "facing=south,half=bottom,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_bottom", "x": 180 },
+    "facing=west,half=bottom,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_bottom", "x": 180, "y": 90 },
+    "facing=east,half=bottom,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_bottom", "x": 180, "y": 270 },
+    "facing=north,half=top,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_top", "x": 180, "y": 180 },
+    "facing=south,half=top,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_top", "x": 180 },
+    "facing=west,half=top,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_top", "x": 180, "y": 90 },
+    "facing=east,half=top,open=true": { "model": "thaumicforever:trapdoor_silverwood_open_top", "x": 180, "y": 270 },
+
+    "inventory": { "model": "thaumicforever:trapdoor_silverwood_bottom" }
+  }
+}

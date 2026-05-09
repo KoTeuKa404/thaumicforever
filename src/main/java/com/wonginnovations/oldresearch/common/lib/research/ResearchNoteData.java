@@ -10,7 +10,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.lib.utils.HexUtils;
+import com.wonginnovations.oldresearch.common.lib.utils.HexUtils;
 
 public class ResearchNoteData {
     

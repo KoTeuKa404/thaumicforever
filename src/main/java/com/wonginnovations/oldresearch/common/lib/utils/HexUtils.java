@@ -55,13 +55,20 @@ public class HexUtils {
     public static ArrayList<HexUtils.Hex> distributeRingRandomly(int radius, int entries, Random random) {
         ArrayList<HexUtils.Hex> ring = getRing(radius);
         ArrayList<HexUtils.Hex> results = new ArrayList();
-        float spacing = (float)ring.size() / (float)entries;
-        random.nextInt(ring.size());
-        float pos = 0.0F;
+        if (ring.isEmpty() || entries <= 0) {
+            return results;
+        }
+        if (entries >= ring.size()) {
+            results.addAll(ring);
+            return results;
+        }
 
-        for(int i = 0; i < entries; ++i) {
-            results.add(ring.get(Math.round(pos)));
-            pos += spacing;
+        double spacing = (double) ring.size() / (double) entries;
+        double start = random.nextDouble() * spacing;
+
+        for (int i = 0; i < entries; ++i) {
+            int idx = (int) Math.floor(start + i * spacing) % ring.size();
+            results.add(ring.get(idx));
         }
 
         return results;

@@ -1,5 +1,6 @@
 package thaumcraft.client.lib.events;
 
+import com.koteuka404.thaumicforever.item.ItemCustomCaster;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,12 @@ public class TFHudHandler extends HudHandler {
             // Custom wand HUD renders elsewhere; skip default vis capsule.
             return;
         }
-        super.renderCastingWandHud(mc, pt, player, time, stack, shift);
+        // Force-refresh HUD state for custom caster to avoid stale cached values
+        // after switching held items.
+        ItemStack renderStack = stack;
+        if (stack != null && !stack.isEmpty() && stack.getItem() instanceof ItemCustomCaster) {
+            renderStack = stack.copy();
+        }
+        super.renderCastingWandHud(mc, pt, player, time, renderStack, shift);
     }
 }

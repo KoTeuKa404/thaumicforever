@@ -29,6 +29,7 @@ import thaumcraft.common.lib.utils.InventoryUtils;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.Locale;
 
 @Mixin(value = GuiResearchPage.class, remap = false)
 public abstract class GuiResearchPageMixin extends GuiScreen {
@@ -101,6 +102,59 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
         }
     }
 
+    @Unique
+    private String oldresearch$localizeResearchTitle(String key) {
+        if (key == null || key.isEmpty()) {
+            return "";
+        }
+
+        String stripped = OldResearchManager.getStrippedKey(key);
+        if (stripped == null || stripped.isEmpty()) {
+            return key;
+        }
+
+        // 1) direct key used by most JSON entries
+        String[] candidates = new String[] {
+                "research." + stripped + ".title",
+                stripped.startsWith("PA_") ? "research." + stripped.substring(3) + ".title" : "",
+                stripped.startsWith("TF_") ? "research." + stripped.substring(3) + ".title" : "",
+                stripped
+        };
+
+        for (String candidate : candidates) {
+            if (candidate == null || candidate.isEmpty()) {
+                continue;
+            }
+            String translated = I18n.format(candidate);
+            if (!translated.equals(candidate)) {
+                return translated;
+            }
+        }
+
+        // 2) try research registry localized name
+        ResearchEntry re = ResearchCategories.getResearch(stripped);
+        if (re != null) {
+            String localized = re.getLocalizedName();
+            if (localized != null
+                    && !localized.isEmpty()
+                    && !localized.startsWith("research.")
+                    && !localized.endsWith(".title")) {
+                return localized;
+            }
+        }
+
+        // 3) human-readable fallback instead of raw localization key
+        String human = stripped
+                .replace("PA_", "")
+                .replace("TF_", "")
+                .replace('_', ' ')
+                .toLowerCase(Locale.ROOT);
+        if (human.isEmpty()) {
+            return stripped;
+        }
+        return Character.toUpperCase(human.charAt(0)) + human.substring(1);
+    }
+
     @Inject(method = "drawRequirements", at = @At("RETURN"), remap = false)
     public void drawRequirementsPost(int x, int mx, int my, ResearchStage stage, CallbackInfo ci) {
         oldresearch$renderedNotes.clear();
@@ -147,7 +201,7 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
                     GlStateManager.enableDepth();
                 }
 
-                String title = I18n.format("research." + OldResearchManager.getStrippedKey(key) + ".title");
+                String title = oldresearch$localizeResearchTitle(key);
                 String noteText = I18n.format("tc.researchtheory", title);
                 this.oldresearch$drawPopupAt(x - 15 + shift, y, mx, my, noteText, "researchnote.click");
             }
@@ -162,10 +216,16 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
         remap = false
     )
     public ResearchStage.Knowledge[] parsePagesGetKnow(ResearchStage instance) {
-        if (instance.getCraft() == null && instance.getObtain() == null && instance.getResearch() == null) {
+        boolean hasCraft = instance.getCraft() != null && instance.getCraft().length > 0;
+        boolean hasObtain = instance.getObtain() != null && instance.getObtain().length > 0;
+        boolean hasResearch = instance.getResearch() != null && instance.getResearch().length > 0;
+        ResearchStage.Knowledge[] know = instance.getKnow();
+        boolean hasKnowledge = know != null && know.length > 0;
+
+        if (!hasCraft && !hasObtain && !hasResearch && !hasKnowledge) {
             return new ResearchStage.Knowledge[0];
         }
-        return null;
+        return know;
     }
 
     @Unique

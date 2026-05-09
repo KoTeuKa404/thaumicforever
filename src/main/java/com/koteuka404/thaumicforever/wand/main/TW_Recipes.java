@@ -1,8 +1,9 @@
 package com.koteuka404.thaumicforever.wand.main;
 
+import com.koteuka404.thaumicforever.registry.ModItems;
+
 import java.util.HashMap;
 
-import com.koteuka404.thaumicforever.ModItems;
 import com.koteuka404.thaumicforever.wand.compat.TW_Compat;
 import com.koteuka404.thaumicforever.wand.crafting.recipe.RecipeScepter;
 import com.koteuka404.thaumicforever.wand.crafting.recipe.RecipeStaff;
@@ -43,8 +44,6 @@ public class TW_Recipes {
         addCrucibleRecipes();
         addInfusionRecipes();
 
-        TW_Compat.initRecipes();
-
         RegistryManager.ACTIVE.getRegistry(GameData.RECIPES).remove(new ResourceLocation("thaumcraft:thaumometer"));
     }
 
@@ -80,8 +79,8 @@ public class TW_Recipes {
         crystals = new AspectList().add(Aspect.AIR, 3).add(Aspect.FIRE, 3).add(Aspect.ORDER, 3);
         addShapedArcaneRecipe("CAP_BRASS.1", "CAP_BRASS@1", new ItemStack(TW_Items.itemWandCap, 1, 2), 15, crystals, "NNN", "N N", 'N', "nuggetBrass");
 
-        //crystals = new AspectList().add(Aspect.AIR,4).add(Aspect.FIRE,4).add(Aspect.ORDER,4);
-        //addShapedArcaneRecipe("CAP_SILVER.1","CAP_SILVER@1", new ItemStack(TW_Items.itemWandCap, 1, 3), 10, crystals, "NNN","N N",'N',"nuggetSilver");
+        crystals = new AspectList().add(Aspect.AIR, 4).add(Aspect.FIRE, 4).add(Aspect.ORDER, 4);
+        addShapedArcaneRecipe("CAP_SILVER.1", "BASETHAUMATURGY", new ItemStack(TW_Items.itemWandCap, 1, 7), 10, crystals, "NNN", "N N", 'N', "nuggetSilver");
 
         crystals = new AspectList().add(Aspect.AIR, 5).add(Aspect.FIRE, 5).add(Aspect.ORDER, 5);
         addShapedArcaneRecipe("CAP_THAUMIUM.1", "CAP_THAUMIUM@1", new ItemStack(TW_Items.itemWandCap, 1, 3), 10, crystals, "NNN", "N N", 'N', "nuggetThaumium");
@@ -133,8 +132,8 @@ public class TW_Recipes {
     private static void addInfusionRecipes() {
         AspectList aspects;
 
-        //aspects = new AspectList().add(Aspect.ENERGY, 30).add(Aspect.AURA, 15).add(Aspect.MAGIC, 15);
-        //addInfusionRecipe("CAP_SILVER.2","CAP_SILVER@1", new ItemStack(TW_Items.itemWandCap,1,4), 3, new ItemStack(TW_Items.itemWandCap,1,3), aspects, new ItemStack(ItemsTC.salisMundus), new ItemStack(ItemsTC.salisMundus));
+        aspects = new AspectList().add(Aspect.ENERGY, 30).add(Aspect.AURA, 15).add(Aspect.MAGIC, 15);
+        addInfusionRecipe("CAP_SILVER.2", "BASETHAUMATURGY", new ItemStack(TW_Items.itemWandCap, 1, 8), 3, new ItemStack(TW_Items.itemWandCap, 1, 7), aspects, new ItemStack(ItemsTC.salisMundus), new ItemStack(ItemsTC.salisMundus));
 
         aspects = new AspectList().add(Aspect.ENERGY, 50).add(Aspect.AURA, 25).add(Aspect.MAGIC, 25);
         addInfusionRecipe("CAP_THAUMIUM.2", "CAP_THAUMIUM@1", new ItemStack(TW_Items.itemWandCap, 1, 4), 3, new ItemStack(TW_Items.itemWandCap, 1, 3), aspects, new ItemStack(ItemsTC.salisMundus), new ItemStack(ItemsTC.salisMundus), new ItemStack(ItemsTC.salisMundus));

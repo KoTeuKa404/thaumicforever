@@ -1,5 +1,13 @@
 package com.koteuka404.thaumicforever.wand.item;
 
+import java.lang.reflect.Method;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandBasic;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandCap;
@@ -7,10 +15,10 @@ import com.koteuka404.thaumicforever.wand.api.item.wand.IWandRod;
 import com.koteuka404.thaumicforever.wand.util.LocalizationHelper;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import com.koteuka404.thaumicforever.wand.wand.TW_Wands;
-import com.koteuka404.thaumicforever.EntityAuraNode;
+
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,7 +28,13 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -28,15 +42,17 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.casters.*;
+import thaumcraft.api.casters.CasterTriggerRegistry;
+import thaumcraft.api.casters.FocusEngine;
+import thaumcraft.api.casters.FocusNode;
+import thaumcraft.api.casters.FocusPackage;
+import thaumcraft.api.casters.IFocusBlockPicker;
+import thaumcraft.api.casters.IFocusElement;
+import thaumcraft.api.casters.IInteractWithCaster;
 import thaumcraft.api.crafting.IDustTrigger;
 import thaumcraft.api.items.IArchitect;
 import thaumcraft.client.fx.FXDispatcher;
@@ -45,14 +61,6 @@ import thaumcraft.common.items.casters.ItemFocus;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.utils.BlockUtils;
 import thaumcraft.common.lib.utils.EntityUtils;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.lang.reflect.Method;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ItemWand extends ItemBase implements IWandBasic {
 
@@ -107,8 +115,9 @@ public class ItemWand extends ItemBase implements IWandBasic {
                     getRod(stack).getUpdate().onUpdate(stack, (EntityPlayer) entity);
         if (world.isRemote && entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            if (player.getHeldItemMainhand() == stack || player.getHeldItemOffhand() == stack) {
-                spawnChargeFX(stack, player);
+            if ((!player.getHeldItemMainhand().isEmpty() && player.getHeldItemMainhand().getItem() == this)
+                    || (!player.getHeldItemOffhand().isEmpty() && player.getHeldItemOffhand().getItem() == this)) {
+                spawnChargeFX(player);
             }
         }
     }
@@ -173,7 +182,18 @@ public class ItemWand extends ItemBase implements IWandBasic {
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack caster = player.getHeldItem(hand);
         if (!WandHelper.isWandFullyCharged(caster, player)) {
-            if (WandHelper.findNodeAlongLook(player, WandHelper.getNodeReach(player)) != null) {
+            double reach = WandHelper.getNodeReach(player);
+            boolean hasNode;
+            if (world.isRemote) {
+                hasNode = WandHelper.findNodeAlongLook(player, reach) != null
+                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null;
+            } else {
+                hasNode = WandHelper.findNodeAlongLook(player, reach) != null
+                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null
+                        || WandHelper.findNodeInCone(player, reach, 0.35D) != null
+                        || WandHelper.findAuraNodeEntityInCone(player, reach, 0.35D) != null;
+            }
+            if (hasNode) {
                 player.setActiveHand(hand);
                 return new ActionResult<>(EnumActionResult.SUCCESS, caster);
             }
@@ -208,57 +228,40 @@ public class ItemWand extends ItemBase implements IWandBasic {
         if (!(living instanceof EntityPlayer)) return;
         EntityPlayer player = (EntityPlayer) living;
         if (player.world.isRemote) {
-            spawnChargeFX(stack, player);
+            spawnChargeFX(player);
             return;
         }
         if (player.ticksExisted % 5 != 0) return;
 
         EntityAuraNode node = WandHelper.findNodeAlongLook(player, WandHelper.getNodeReach(player));
-        if (node == null) return;
-        if (WandHelper.isWandFullyCharged(stack, player)) {
+        AuraNodeEntity auraNode = null;
+        if (node == null) {
+            auraNode = WandHelper.findAuraNodeEntityAlongLook(player, WandHelper.getNodeReach(player));
+            if (auraNode == null) {
+                node = WandHelper.findNodeInCone(player, WandHelper.getNodeReach(player), 0.35D);
+                if (node == null) {
+                    auraNode = WandHelper.findAuraNodeEntityInCone(player, WandHelper.getNodeReach(player), 0.35D);
+                    if (auraNode == null) return;
+                }
+            }
+        }
+        EnumHand activeHand = player.getActiveHand();
+        ItemStack held = activeHand == null ? stack : player.getHeldItem(activeHand);
+        if (held.isEmpty() || held.getItem() != this) {
+            held = stack;
+        }
+        if (WandHelper.isWandFullyCharged(held, player)) {
             return;
         }
-        WandHelper.chargeWandFromNode(stack, node, player);
+        if (node != null) {
+            WandHelper.chargeWandFromNode(held, node, player);
+        } else {
+            WandHelper.chargeWandFromAuraNodeEntity(held, auraNode, player);
+        }
     }
 
-    private void spawnChargeFX(ItemStack stack, EntityPlayer player) {
-        Minecraft mc = Minecraft.getMinecraft();
-        if (mc == null || mc.gameSettings == null) return;
-        if (mc.gameSettings.particleSetting > 1) return;
-        if (!mc.gameSettings.keyBindUseItem.isKeyDown()) return;
-        if (player.ticksExisted % (mc.gameSettings.particleSetting == 1 ? 4 : 2) != 0) return;
-
-        EntityAuraNode node = WandHelper.findNodeAlongLook(player, WandHelper.getNodeReach(player));
-        if (node == null) return;
-
-        AspectList aspects = node.getNodeAspects();
-        Aspect[] aspectArray = (aspects != null && aspects.size() > 0) ? aspects.getAspects() : null;
-        Aspect fallback = node.getAspect();
-
-        EnumHand hand = player.getHeldItemOffhand() == stack ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
-        Vec3d start = new Vec3d(node.posX, node.posY + node.height * 0.5, node.posZ);
-        Vec3d end = EntityUtils.posToHand(player, hand);
-        Vec3d delta = end.subtract(start);
-
-        int count = 2 + player.world.rand.nextInt(2);
-        for (int i = 0; i < count; i++) {
-            Aspect asp = (aspectArray != null && aspectArray.length > 0)
-                    ? aspectArray[player.world.rand.nextInt(aspectArray.length)]
-                    : fallback;
-            if (asp == null) continue;
-
-            int color = asp.getColor();
-            float r = ((color >> 16) & 0xFF) / 255.0f;
-            float g = ((color >> 8) & 0xFF) / 255.0f;
-            float b = (color & 0xFF) / 255.0f;
-
-            double t = player.world.rand.nextDouble();
-            Vec3d p = start.add(delta.scale(t));
-            double vx = delta.x * 0.08 + player.world.rand.nextGaussian() * 0.01;
-            double vy = delta.y * 0.08 + player.world.rand.nextGaussian() * 0.01;
-            double vz = delta.z * 0.08 + player.world.rand.nextGaussian() * 0.01;
-            FXDispatcher.INSTANCE.drawSimpleSparkle(player.world.rand, p.x, p.y, p.z, vx, vy, vz, 0.35f, r, g, b, player.world.rand.nextInt(5), 0.25f, 0.4f, 16);
-        }
+    private void spawnChargeFX(EntityPlayer player) {
+        // Disabled here: handled by WandHandChargeRenderer (wispy stream only).
     }
 
     public void storePickedBlock(ItemStack stack, ItemStack stackout) {
@@ -271,7 +274,12 @@ public class ItemWand extends ItemBase implements IWandBasic {
     }
 
     public EnumAction getItemUseAction(ItemStack stack1) {
-        return EnumAction.BOW;
+        return EnumAction.NONE;
+    }
+
+    @Override
+    public void onPlayerStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft) {
+        super.onPlayerStoppedUsing(stack, worldIn, entityLiving, timeLeft);
     }
 
     @Override
@@ -282,6 +290,21 @@ public class ItemWand extends ItemBase implements IWandBasic {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        AspectList primalCharge = WandHelper.getPrimalCharge(stack);
+        int maxPerAspect = getMaxCharge(stack, null);
+        tooltip.add(TextFormatting.YELLOW + "Vis Capacity: " + maxPerAspect);
+        Aspect[] ordered = new Aspect[]{Aspect.AIR, Aspect.FIRE, Aspect.WATER, Aspect.EARTH, Aspect.ORDER, Aspect.ENTROPY};
+        StringBuilder chargeLine = new StringBuilder();
+        for (int i = 0; i < ordered.length; i++) {
+            Aspect primal = ordered[i];
+            int amount = primalCharge.getAmount(primal);
+            chargeLine.append(LocalizationHelper.getTextColorFromAspect(primal)).append(amount);
+            if (i < ordered.length - 1) {
+                chargeLine.append(TextFormatting.GRAY).append(" | ");
+            }
+        }
+        tooltip.add(chargeLine.toString());
+
         if (stack.hasTagCompound()) {
             String text = "";
 
@@ -343,7 +366,9 @@ public class ItemWand extends ItemBase implements IWandBasic {
         }
 
         if (aspects.size() > 0) {
-            return WandHelper.consumePrimalCharge(stack, aspects, player, sim);
+            AspectList primalCost = WandHelper.decomposeToPrimals(aspects);
+            AspectList discountedAspects = WandHelper.getActualCrystals(primalCost, stack);
+            return WandHelper.consumePrimalCharge(stack, discountedAspects != null ? discountedAspects : primalCost, player, sim);
         }
         int rounded = (amount <= 0f) ? 0 : (int) Math.ceil(amount);
         if (rounded <= 0) return true;

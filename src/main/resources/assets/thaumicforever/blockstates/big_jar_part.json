@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "builtin/entity" },
+    "inventory": { "model": "builtin/entity" }
+  }
+}

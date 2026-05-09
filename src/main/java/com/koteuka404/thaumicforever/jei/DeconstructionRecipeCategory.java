@@ -8,6 +8,7 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import com.koteuka404.thaumicforever.ThaumicForever;
 
 public class DeconstructionRecipeCategory implements IRecipeCategory<DeconstructionRecipeWrapper> {
     public static final String UID = "thaumicforever.deconstruction";

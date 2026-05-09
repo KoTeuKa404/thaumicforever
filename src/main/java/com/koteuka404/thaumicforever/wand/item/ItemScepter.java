@@ -1,5 +1,7 @@
 package com.koteuka404.thaumicforever.wand.item;
 
+import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IScepter;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandCap;
@@ -21,6 +23,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
@@ -28,6 +31,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.CasterTriggerRegistry;
 import thaumcraft.api.casters.IInteractWithCaster;
 
@@ -96,6 +100,67 @@ public class ItemScepter extends ItemBase implements IScepter {
     }
 
     @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+        ItemStack scepter = player.getHeldItem(hand);
+        if (!WandHelper.isWandFullyCharged(scepter, player)) {
+            double reach = WandHelper.getNodeReach(player);
+            boolean hasNode;
+            if (world.isRemote) {
+                hasNode = WandHelper.findNodeAlongLook(player, reach) != null
+                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null;
+            } else {
+                hasNode = WandHelper.findNodeAlongLook(player, reach) != null
+                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null
+                        || WandHelper.findNodeInCone(player, reach, 0.35D) != null
+                        || WandHelper.findAuraNodeEntityInCone(player, reach, 0.35D) != null;
+            }
+            if (hasNode) {
+                player.setActiveHand(hand);
+                return new ActionResult<>(EnumActionResult.SUCCESS, scepter);
+            }
+        }
+        return super.onItemRightClick(world, player, hand);
+    }
+
+    @Override
+    public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
+        if (!(living instanceof EntityPlayer)) return;
+        EntityPlayer player = (EntityPlayer) living;
+        if (player.world.isRemote) {
+            return;
+        }
+        if (player.ticksExisted % 5 != 0) return;
+
+        EntityAuraNode node = WandHelper.findNodeAlongLook(player, WandHelper.getNodeReach(player));
+        AuraNodeEntity auraNode = null;
+        if (node == null) {
+            auraNode = WandHelper.findAuraNodeEntityAlongLook(player, WandHelper.getNodeReach(player));
+            if (auraNode == null) {
+                node = WandHelper.findNodeInCone(player, WandHelper.getNodeReach(player), 0.35D);
+                if (node == null) {
+                    auraNode = WandHelper.findAuraNodeEntityInCone(player, WandHelper.getNodeReach(player), 0.35D);
+                    if (auraNode == null) return;
+                }
+            }
+        }
+
+        EnumHand activeHand = player.getActiveHand();
+        ItemStack held = activeHand == null ? stack : player.getHeldItem(activeHand);
+        if (held.isEmpty() || held.getItem() != this) {
+            held = stack;
+        }
+        if (WandHelper.isWandFullyCharged(held, player)) {
+            return;
+        }
+
+        if (node != null) {
+            WandHelper.chargeWandFromNode(held, node, player);
+        } else {
+            WandHelper.chargeWandFromAuraNodeEntity(held, auraNode, player);
+        }
+    }
+
+    @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         if (slotChanged) return true;
         return oldStack.getItem() != newStack.getItem();
@@ -103,6 +168,21 @@ public class ItemScepter extends ItemBase implements IScepter {
 
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        AspectList primalCharge = WandHelper.getPrimalCharge(stack);
+        int maxPerAspect = getMaxCharge(stack, null);
+        tooltip.add(TextFormatting.YELLOW + "Vis Capacity: " + maxPerAspect);
+        Aspect[] ordered = new Aspect[]{Aspect.AIR, Aspect.FIRE, Aspect.WATER, Aspect.EARTH, Aspect.ORDER, Aspect.ENTROPY};
+        StringBuilder chargeLine = new StringBuilder();
+        for (int i = 0; i < ordered.length; i++) {
+            Aspect primal = ordered[i];
+            int amount = primalCharge.getAmount(primal);
+            chargeLine.append(LocalizationHelper.getTextColorFromAspect(primal)).append(amount);
+            if (i < ordered.length - 1) {
+                chargeLine.append(TextFormatting.GRAY).append(" | ");
+            }
+        }
+        tooltip.add(chargeLine.toString());
+
         if (stack.hasTagCompound()) {
             String text = "";
 
