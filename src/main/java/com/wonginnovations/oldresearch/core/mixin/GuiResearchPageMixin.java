@@ -4,6 +4,7 @@ import com.wonginnovations.oldresearch.OldResearch;
 import com.wonginnovations.oldresearch.common.lib.network.PacketHandler;
 import com.wonginnovations.oldresearch.common.lib.network.PacketGivePlayerNoteToServer;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
@@ -81,6 +82,10 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
     abstract void drawStackAt(ItemStack itemstack, int x, int y, int mx, int my, boolean clickthrough);
     @Shadow(remap = false)
     public abstract void drawTexturedModalRectScaled(int par1, int par2, int par3, int par4, int par5, int par6, float scale);
+    @Shadow(remap = false)
+    private int findRecipePage(ResourceLocation recipe, ItemStack stack, int page) {
+        throw new AssertionError();
+    }
 
     @Shadow(remap = false)
     boolean isComplete;
@@ -91,6 +96,9 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
     List tipText;
     @Unique
     private final Map<Point, ItemStack> oldresearch$renderedNotes = new HashMap<>();
+    @Unique
+    private static final ThreadLocal<Set<ResourceLocation>> oldresearch$recipeLookupStack =
+            ThreadLocal.withInitial(HashSet::new);
 
     @Unique
     private void oldresearch$drawPopupAt(int x, int y, int mx, int my, String... text) {
@@ -100,6 +108,45 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
                 s.add(I18n.format(t));
             this.tipText = s;
         }
+    }
+
+    @Unique
+    private int oldresearch$findRecipePageGuarded(ResourceLocation recipe, ItemStack stack, int page) {
+        if (recipe == null) {
+            return -1;
+        }
+
+        Set<ResourceLocation> active = oldresearch$recipeLookupStack.get();
+        if (!active.add(recipe)) {
+            return -1;
+        }
+
+        try {
+            return this.findRecipePage(recipe, stack, page);
+        } finally {
+            active.remove(recipe);
+            if (active.isEmpty()) {
+                oldresearch$recipeLookupStack.remove();
+            }
+        }
+    }
+
+    @Redirect(
+        method = "findRecipePage",
+        at = @At(value = "INVOKE", target = "Lthaumcraft/client/gui/GuiResearchPage;findRecipePage(Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/item/ItemStack;I)I"),
+        remap = false
+    )
+    private int oldresearch$redirectNestedFindRecipePage(GuiResearchPage self, ResourceLocation recipe, ItemStack stack, int page) {
+        return oldresearch$findRecipePageGuarded(recipe, stack, page);
+    }
+
+    @Redirect(
+        method = "getCraftingRecipeKey",
+        at = @At(value = "INVOKE", target = "Lthaumcraft/client/gui/GuiResearchPage;findRecipePage(Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/item/ItemStack;I)I"),
+        remap = false
+    )
+    private int oldresearch$redirectRootFindRecipePage(GuiResearchPage self, ResourceLocation recipe, ItemStack stack, int page) {
+        return oldresearch$findRecipePageGuarded(recipe, stack, page);
     }
 
     @Unique
@@ -155,9 +202,74 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
         return Character.toUpperCase(human.charAt(0)) + human.substring(1);
     }
 
+    @Unique
+    private String[] oldresearch$filterRuntimeResearch(String[] research) {
+        if (OldResearchToggle.isEnabled() || research == null || research.length == 0) {
+            return research;
+        }
+
+        ArrayList<String> filtered = new ArrayList<>(research.length);
+        for (String key : research) {
+            if (key == null || !key.startsWith("rn_")) {
+                filtered.add(key);
+            }
+        }
+
+        if (filtered.size() == research.length) {
+            return research;
+        }
+        return filtered.isEmpty() ? null : filtered.toArray(new String[0]);
+    }
+
+    @Unique
+    private String[] oldresearch$filterRuntimeResearchIcons(ResearchStage stage) {
+        String[] icons = stage.getResearchIcon();
+        String[] research = stage.getResearch();
+        if (OldResearchToggle.isEnabled() || icons == null || icons.length == 0 || research == null || research.length == 0) {
+            return icons;
+        }
+
+        ArrayList<String> filtered = new ArrayList<>(icons.length);
+        boolean changed = false;
+        for (int i = 0; i < icons.length; i++) {
+            String key = i < research.length ? research[i] : null;
+            if (key != null && key.startsWith("rn_")) {
+                changed = true;
+                continue;
+            }
+            filtered.add(icons[i]);
+        }
+
+        if (!changed) {
+            return icons;
+        }
+        return filtered.isEmpty() ? null : filtered.toArray(new String[0]);
+    }
+
+    @Redirect(
+        method = "drawRequirements",
+        at = @At(value = "INVOKE", target = "Lthaumcraft/api/research/ResearchStage;getResearch()[Ljava/lang/String;"),
+        remap = false
+    )
+    public String[] drawRequirementsGetResearch(ResearchStage instance) {
+        return oldresearch$filterRuntimeResearch(instance.getResearch());
+    }
+
+    @Redirect(
+        method = "drawRequirements",
+        at = @At(value = "INVOKE", target = "Lthaumcraft/api/research/ResearchStage;getResearchIcon()[Ljava/lang/String;"),
+        remap = false
+    )
+    public String[] drawRequirementsGetResearchIcon(ResearchStage instance) {
+        return oldresearch$filterRuntimeResearchIcons(instance);
+    }
+
     @Inject(method = "drawRequirements", at = @At("RETURN"), remap = false)
     public void drawRequirementsPost(int x, int mx, int my, ResearchStage stage, CallbackInfo ci) {
         oldresearch$renderedNotes.clear();
+        if (!OldResearchToggle.isEnabled()) {
+            return;
+        }
         if (stage.getResearch() == null || stage.getResearch().length == 0) {
             return;
         }
@@ -212,10 +324,22 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
 
     @Redirect(
         method = "parsePages",
+        at = @At(value = "INVOKE", target = "Lthaumcraft/api/research/ResearchStage;getResearch()[Ljava/lang/String;"),
+        remap = false
+    )
+    public String[] parsePagesGetResearch(ResearchStage instance) {
+        return oldresearch$filterRuntimeResearch(instance.getResearch());
+    }
+
+    @Redirect(
+        method = "parsePages",
         at = @At(value = "INVOKE", target = "Lthaumcraft/api/research/ResearchStage;getKnow()[Lthaumcraft/api/research/ResearchStage$Knowledge;"),
         remap = false
     )
     public ResearchStage.Knowledge[] parsePagesGetKnow(ResearchStage instance) {
+        if (!OldResearchToggle.isEnabled()) {
+            return instance.getKnow();
+        }
         boolean hasCraft = instance.getCraft() != null && instance.getCraft().length > 0;
         boolean hasObtain = instance.getObtain() != null && instance.getObtain().length > 0;
         boolean hasResearch = instance.getResearch() != null && instance.getResearch().length > 0;
@@ -230,6 +354,9 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
 
     @Unique
     private boolean oldresearch$handleNoteClick(int mx, int my) {
+        if (!OldResearchToggle.isEnabled()) {
+            return false;
+        }
         for (Point p : oldresearch$renderedNotes.keySet()) {
             if ((mx >= p.x && mx <= p.x + 16) && (my >= p.y && my <= p.y + 16)) {
                 ItemStack note = oldresearch$renderedNotes.get(p);
@@ -262,6 +389,11 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     public void ctorInjection(ResearchEntry research, ResourceLocation recipe, double x, double y, CallbackInfo ci) {
+        if (!OldResearchToggle.isEnabled()) {
+            this.knownPlayerAspects = new AspectList();
+            this.maxAspectPages = 0;
+            return;
+        }
         this.knownPlayerAspects = new AspectList();
 
         for (Aspect a : OldResearch.proxy.getPlayerKnowledge().getAspectsDiscovered(this.mc.player.getGameProfile().getName()).getAspects()) {
@@ -273,6 +405,9 @@ public abstract class GuiResearchPageMixin extends GuiScreen {
 
     @Inject(method = "drawAspectPage", at = @At("HEAD"), cancellable = true, remap = false)
     public void drawAspectPageInjection(int x, int y, int mx, int my, CallbackInfo ci) {
+        if (!OldResearchToggle.isEnabled()) {
+            return;
+        }
         if (this.knownPlayerAspects != null && this.knownPlayerAspects.size() > 0) {
             GlStateManager.pushMatrix();
             int count = -1;

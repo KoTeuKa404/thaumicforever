@@ -37,6 +37,9 @@ public class TileEntityFlightStone extends TileEntity implements ITickable {
         if (tickCounter % CHECK_INTERVAL == 0) {
             List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, detectionBox);
             for (EntityPlayer player : players) {
+                if (player == null || player.capabilities.isCreativeMode || player.isSpectator()) {
+                    continue;
+                }
                 player.addPotionEffect(new PotionEffect(PotionFlight.INSTANCE, EFFECT_DURATION_TICKS, 0, true, true));
                 player.getEntityData().setBoolean(TAG_FLIGHT_FROM_STONE, true);
             }

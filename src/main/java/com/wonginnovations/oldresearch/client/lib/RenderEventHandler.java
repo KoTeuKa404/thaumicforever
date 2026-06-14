@@ -3,6 +3,7 @@ package com.wonginnovations.oldresearch.client.lib;
 import com.wonginnovations.oldresearch.OldResearch;
 import com.wonginnovations.oldresearch.Tags;
 import com.wonginnovations.oldresearch.common.lib.research.ScanManager;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -53,6 +54,7 @@ public abstract class RenderEventHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void renderOverlay(RenderGameOverlayEvent.Text event) {
+        if (!OldResearchToggle.isEnabled()) return;
         Minecraft mc = Minecraft.getMinecraft();
         long time = System.nanoTime() / 1000000L;
 
@@ -62,6 +64,7 @@ public abstract class RenderEventHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void blockHighlight(DrawBlockHighlightEvent event) {
+        if (!OldResearchToggle.isEnabled()) return;
         RayTraceResult target = event.getTarget();
         if(target != null && target.typeOfHit == RayTraceResult.Type.BLOCK
                 && (event.getPlayer().getHeldItemMainhand().getItem() == ItemsTC.thaumometer
@@ -82,6 +85,7 @@ public abstract class RenderEventHandler {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void renderLast(RenderWorldLastEvent event) {
+        if (!OldResearchToggle.isEnabled()) return;
         if(tagscale > 0.0F) {
             tagscale -= 0.005F;
         }

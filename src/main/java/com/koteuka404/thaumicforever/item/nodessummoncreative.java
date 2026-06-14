@@ -34,6 +34,7 @@ public class nodessummoncreative extends Item {
             if (!world.isRemote) {
                 EntityAuraNode node = new EntityAuraNode(world);
                 node.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+                node.randomizeNode();
                 world.spawnEntity(node);
             }
 

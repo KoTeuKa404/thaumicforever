@@ -9,11 +9,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -55,7 +57,25 @@ public class BlockBigJar extends BlockContainer {
         }
         TileEntity te = worldIn.getTileEntity(pos);
         if (te instanceof TileBigJar) {
-            ((TileBigJar) te).setOrigin(pos);
+            TileBigJar jar = (TileBigJar) te;
+            jar.setOrigin(pos);
+            if (stack.hasTagCompound()) {
+                NBTTagCompound tag = stack.getTagCompound();
+                if (tag.hasKey("BrainCount")) {
+                    int brains = Math.max(1, Math.min(TileBigJar.MAX_BRAINS, tag.getInteger("BrainCount")));
+                    while (jar.getBrainCount() < brains) {
+                        jar.addBrain();
+                    }
+                }
+                if (tag.hasKey("MindEssentia")) {
+                    jar.setAspects(new thaumcraft.api.aspects.AspectList().add(thaumcraft.api.aspects.Aspect.MIND, tag.getInteger("MindEssentia")));
+                }
+                if (tag.hasKey("XP")) {
+                    jar.addExperience(tag.getInteger("XP"));
+                } else if (tag.hasKey("xp")) {
+                    jar.addExperience(tag.getInteger("xp"));
+                }
+            }
         }
         placeParts(worldIn, pos);
     }
@@ -73,6 +93,11 @@ public class BlockBigJar extends BlockContainer {
     @Override
     public boolean hasTileEntity(IBlockState state) {
         return true;
+    }
+
+    @Override
+    public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
+        // The 2x2x2 structure drops exactly once from removeStructure(), preserving jar NBT.
     }
 
     @Override
@@ -115,6 +140,17 @@ public class BlockBigJar extends BlockContainer {
         if (removing) {
             return;
         }
+        ItemStack dropStack = new ItemStack(ModBlocks.BIG_JAR);
+        TileEntity master = worldIn.getTileEntity(origin);
+        if (master instanceof TileBigJar) {
+            TileBigJar jar = (TileBigJar) master;
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setInteger("BrainCount", jar.getBrainCount());
+            tag.setInteger("MindEssentia", jar.getMindEssentia());
+            tag.setInteger("XP", jar.getXp());
+            tag.setInteger("xp", jar.getXp());
+            dropStack.setTagCompound(tag);
+        }
         removing = true;
         for (int dx = 0; dx < 2; dx++) {
             for (int dy = 0; dy < 2; dy++) {
@@ -128,7 +164,7 @@ public class BlockBigJar extends BlockContainer {
             }
         }
         if (drop && !worldIn.isRemote) {
-            spawnAsEntity(worldIn, origin, new ItemStack(ModBlocks.BIG_JAR));
+            spawnAsEntity(worldIn, origin, dropStack);
         }
         removing = false;
     }
@@ -200,6 +236,14 @@ public class BlockBigJar extends BlockContainer {
         if (!worldIn.isRemote) {
             if (!jar.addBrain()) {
                 return true;
+            }
+            if (held.hasTagCompound()) {
+                NBTTagCompound tag = held.getTagCompound();
+                if (tag.hasKey("XP")) {
+                    jar.addExperience(tag.getInteger("XP"));
+                } else if (tag.hasKey("xp")) {
+                    jar.addExperience(tag.getInteger("xp"));
+                }
             }
             if (!player.capabilities.isCreativeMode) {
                 ItemStack normalJar = new ItemStack(BlocksTC.jarNormal);

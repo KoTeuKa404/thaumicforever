@@ -16,10 +16,19 @@ public class CoreModPlugin implements IFMLLoadingPlugin {
         transformers.add("com.example.coremod.IUEventHandlerTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsScrollTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsSearchTransformer");
+        transformers.add("com.example.coremod.ThaumcraftLogisticsSearchLimitTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsQueueTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsRequestLifetimeTransformer");
         transformers.add("com.example.coremod.ThaumcraftSealProvideTransformer");
+        if (CoremodPatchConfig.isSealStockPatchEnabled()) {
+            transformers.add("com.example.coremod.ThaumcraftSealStockTransformer");
+        } else {
+            System.out.println("[CoreModPlugin] SealStock in-transit patch disabled by config.");
+        }
+        transformers.add("com.example.coremod.GolemTaskPriorityTransformer");
         transformers.add("com.example.coremod.GolemRangedKitingTransformer");
+        transformers.add("com.example.coremod.GolemRenderScaleTransformer");
+        transformers.add("com.example.coremod.GolemHeldItemRenderTransformer");
         // transformers.add("com.example.coremod.ThaumicPeripheryTransformer");
         // transformers.add("com.example.coremod.BaubleAttributeModifierHandlerPatcher");
         // transformers.add("com.example.coremod.BaublesLogSuppressTransformer");

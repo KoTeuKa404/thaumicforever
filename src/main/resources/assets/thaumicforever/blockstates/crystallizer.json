@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "model": "thaumicforever:crystalizer.obj",
+    "textures": {
+      "#texture": "thaumicforever:blocks/crystallizer",
+      "texture": "thaumicforever:blocks/crystallizer",
+      "#m_08b7313e-c2b9-7f19-5fef-f1760f56fceb": "thaumicforever:blocks/crystallizer",
+      "m_08b7313e-c2b9-7f19-5fef-f1760f56fceb": "thaumicforever:blocks/crystallizer",
+      "particle": "thaumicforever:blocks/crystallizer"
+    }
+  },
+  "variants": {
+    "inventory": [{}],
+    "facing=north": [{}],
+    "facing=south": [{ "y": 180 }],
+    "facing=west": [{ "y": 270 }],
+    "facing=east": [{ "y": 90 }]
+  }
+}

@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever.aura;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aura.AuraHelper;
+import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.item.Primal;
 import com.koteuka404.thaumicforever.ThaumicForever;
@@ -56,8 +58,13 @@ public final class PrimalAuraHandler {
     private static final float SET_TO_TC_VIS = 1.0f;
 
     private static final float MAX_TC_VIS_PER_CHUNK_STEP = 2.5f;
+    private static final float TC_CONVERSION_MIN_PRIMAL_RATIO = 0.40f;
 
     private static final float TC_ROOM_EPS = 0.0001f;
+    private static final float NODE_BOUND_TC_MIN_RATIO = 0.10f;
+    private static final float NODE_BOUND_TC_MAX_STEP = 2.5f;
+    private static final float NODE_BOUND_TC_FLUX_CLEAN_STEP = 0.25f;
+    private static final float NODE_BOUND_TC_HOSTILE_FLUX_CHANCE = 0.015f;
 
     private PrimalAuraHandler() {}
 
@@ -161,6 +168,9 @@ public final class PrimalAuraHandler {
 
         PrimalAuraWorldData data = PrimalAuraWorldData.get(ws);
         Map<Long, float[]> nodeBias = buildNodeBias(ws);
+        Map<Long, NodeTcAuraPressure> nodeTcAura = ModConfig.enableNodeBoundThaumcraftAura
+            ? buildNodeTcAuraPressure(ws)
+            : Collections.emptyMap();
 
         int players = ws.playerEntities.size();
         int perPlayer = Math.max(1, CHUNKS_PER_TICK / players);
@@ -204,7 +214,11 @@ public final class PrimalAuraHandler {
                 changed |= diffusePair(ws, data, cx, cz, cx + 1, cz);
                 changed |= diffusePair(ws, data, cx, cz, cx, cz + 1);
 
-                if (tryConvertPrimalIntoTcVis(ws, cx, cz, c)) {
+                if (ModConfig.enableNodeBoundThaumcraftAura) {
+                    if (tryApplyNodeBoundTcAura(ws, cx, cz, nodeTcAura.get(chunkKey(cx, cz)))) {
+                        changed = true;
+                    }
+                } else if (tryConvertPrimalIntoTcVis(ws, cx, cz, c)) {
                     changed = true;
                 }
 
@@ -240,6 +254,161 @@ public final class PrimalAuraHandler {
         return map;
     }
 
+    private static Map<Long, NodeTcAuraPressure> buildNodeTcAuraPressure(WorldServer ws) {
+        Map<Long, NodeTcAuraPressure> map = new HashMap<>();
+        int maxRadius = Math.max(1, ModConfig.nodeBoundThaumcraftAuraRadiusChunks);
+
+        for (EntityAuraNode node : ws.getEntities(EntityAuraNode.class, e -> e != null && !e.isDead)) {
+            BlockPos pos = node.getPosition();
+            int cx = pos.getX() >> 4;
+            int cz = pos.getZ() >> 4;
+
+            int size = Math.max(1, node.getNodeSize());
+            float strength = (float) Math.sqrt(size / 3.0f);
+            if (node.stablized) {
+                strength *= 0.75f;
+            }
+
+            byte type = (byte) node.getNodeType();
+            float supportMult = getNodeTcSupportMultiplier(type);
+            float hostileMult = getNodeTcHostileMultiplier(type);
+            if (supportMult <= 0f && hostileMult <= 0f) {
+                continue;
+            }
+
+            int naturalRadius = 1 + (int) Math.ceil(Math.sqrt(size) / 4.0);
+            int radius = Math.max(1, Math.min(maxRadius, naturalRadius));
+
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    float dist = (float) Math.sqrt(dx * dx + dz * dz);
+                    if (dist > radius) {
+                        continue;
+                    }
+
+                    float falloff = 1.0f - (dist / (radius + 1.0f));
+                    if (falloff <= 0f) {
+                        continue;
+                    }
+
+                    long key = chunkKey(cx + dx, cz + dz);
+                    NodeTcAuraPressure pressure = map.get(key);
+                    if (pressure == null) {
+                        pressure = new NodeTcAuraPressure();
+                        map.put(key, pressure);
+                    }
+
+                    float support = strength * supportMult * falloff;
+                    float hostile = strength * hostileMult * falloff;
+                    pressure.strength += support;
+                    pressure.hostile += hostile;
+                    if (type == 3) {
+                        pressure.pure += support;
+                    }
+                }
+            }
+        }
+
+        return map;
+    }
+
+    private static float getNodeTcSupportMultiplier(byte type) {
+        switch (type) {
+            case 1: return 0.70f; // Sinister: usable, but unstable.
+            case 2: return 0.25f; // Hungry: drains more than it helps.
+            case 3: return 1.20f; // Pure.
+            case 4: return 0.45f; // Taint.
+            case 5: return 0.80f; // Unstable.
+            case 0:
+            default: return 1.0f;
+        }
+    }
+
+    private static float getNodeTcHostileMultiplier(byte type) {
+        switch (type) {
+            case 1: return 0.60f;
+            case 2: return 1.25f;
+            case 4: return 1.50f;
+            case 5: return 0.85f;
+            default: return 0.0f;
+        }
+    }
+
+    private static boolean tryApplyNodeBoundTcAura(WorldServer ws, int cx, int cz, NodeTcAuraPressure pressure) {
+        if (ws == null) {
+            return false;
+        }
+
+        BlockPos pos = new BlockPos((cx << 4) + 8, 64, (cz << 4) + 8);
+
+        float tcBase;
+        float tcVis;
+        try {
+            tcBase = (float) AuraHelper.getAuraBase(ws, pos);
+            tcVis = AuraHelper.getVis(ws, pos);
+        } catch (Throwable t) {
+            return false;
+        }
+
+        if (tcBase <= 0f) {
+            return false;
+        }
+
+        float minVis = tcBase * NODE_BOUND_TC_MIN_RATIO;
+        boolean changed = false;
+
+        if (pressure == null || pressure.strength <= EPS) {
+            float drain = Math.min(Math.max(0f, tcVis - minVis), ModConfig.nodeBoundThaumcraftAuraNoNodeDrain);
+            if (drain > TC_ROOM_EPS) {
+                try {
+                    changed = AuraHelper.drainVis(ws, pos, drain, false) > TC_ROOM_EPS;
+                } catch (Throwable ignored) {
+                    return false;
+                }
+            }
+            return changed;
+        }
+
+        float target = minVis + pressure.strength * Math.max(1.0f, ModConfig.nodeBoundThaumcraftAuraVisPerStrength);
+        target = clampFloat(target, minVis, tcBase);
+
+        if (tcVis < target - TC_ROOM_EPS) {
+            float add = Math.min(target - tcVis, NODE_BOUND_TC_MAX_STEP);
+            try {
+                AuraHelper.addVis(ws, pos, add);
+                changed = true;
+            } catch (Throwable ignored) {
+                return false;
+            }
+        } else if (tcVis > target + TC_ROOM_EPS) {
+            float drain = Math.min(tcVis - target, ModConfig.nodeBoundThaumcraftAuraNoNodeDrain);
+            if (drain > TC_ROOM_EPS) {
+                try {
+                    changed |= AuraHelper.drainVis(ws, pos, drain, false) > TC_ROOM_EPS;
+                } catch (Throwable ignored) {
+                    return changed;
+                }
+            }
+        }
+
+        if (pressure.pure > EPS) {
+            try {
+                changed |= AuraHelper.drainFlux(ws, pos, NODE_BOUND_TC_FLUX_CLEAN_STEP * pressure.pure, false) > TC_ROOM_EPS;
+            } catch (Throwable ignored) {
+            }
+        }
+
+        if (pressure.hostile > EPS && ws.rand.nextFloat() < Math.min(0.08f, NODE_BOUND_TC_HOSTILE_FLUX_CHANCE * pressure.hostile)) {
+            try {
+                AuraHelper.polluteAura(ws, pos, Math.max(0.1f, pressure.hostile * 0.05f), false);
+                changed = true;
+            } catch (Throwable ignored) {
+            }
+        }
+
+        return changed;
+    }
+
     private static long chunkKey(int cx, int cz) {
         return (((long) cx) << 32) ^ (cz & 0xffffffffL);
     }
@@ -249,6 +418,18 @@ public final class PrimalAuraHandler {
         float sum = 0f;
         for (int i = 0; i < bias.length; i++) sum += Math.max(0f, bias[i]);
         return sum;
+    }
+
+    private static float clampFloat(float value, float min, float max) {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
+
+    private static final class NodeTcAuraPressure {
+        private float strength;
+        private float pure;
+        private float hostile;
     }
 
     private static void addAspectToPrimals(Aspect a, float amount, float[] out, int depth) {
@@ -316,6 +497,7 @@ public final class PrimalAuraHandler {
 
     private static boolean tryConvertPrimalIntoTcVis(WorldServer ws, int cx, int cz, PrimalAuraChunk primalChunk) {
         if (ws == null || primalChunk == null) return false;
+        if (!ModConfig.enablePrimalAuraToVisConversion) return false;
 
         BlockPos pos = new BlockPos((cx << 4) + 8, 64, (cz << 4) + 8);
 
@@ -331,19 +513,20 @@ public final class PrimalAuraHandler {
         float room = tcBase - tcVis;
         if (room <= TC_ROOM_EPS) return false; // already at/above base, do nothing
 
-        float minPrimal = Float.MAX_VALUE;
+        float minSpendablePrimal = Float.MAX_VALUE;
         for (int i = 0; i < Primal.COUNT; i++) {
-            float v = primalChunk.vis[i];
-            if (v < minPrimal) minPrimal = v;
+            float minAllowed = primalChunk.base[i] * TC_CONVERSION_MIN_PRIMAL_RATIO;
+            float spendable = primalChunk.vis[i] - minAllowed;
+            if (spendable < minSpendablePrimal) minSpendablePrimal = spendable;
         }
-        if (minPrimal <= 0.0001f) return false;
+        if (minSpendablePrimal <= 0.0001f) return false;
 
         float wantTc = Math.min(room, MAX_TC_VIS_PER_CHUNK_STEP);
 
         float setsNeeded = (SET_TO_TC_VIS <= 0f) ? 0f : (wantTc / SET_TO_TC_VIS);
         if (setsNeeded <= 0.0001f) return false;
 
-        float setsTake = Math.min(setsNeeded, minPrimal);
+        float setsTake = Math.min(setsNeeded, minSpendablePrimal);
         if (setsTake <= 0.0001f) return false;
 
         float tcGive = setsTake * SET_TO_TC_VIS;

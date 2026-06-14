@@ -6,6 +6,7 @@ import com.wonginnovations.oldresearch.Tags;
 import com.wonginnovations.oldresearch.common.lib.network.PacketHandler;
 import com.wonginnovations.oldresearch.common.lib.network.PacketSyncAspects;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -23,6 +24,7 @@ public abstract class EntityEvents {
 
     @SubscribeEvent
     public static void playerLoad(PlayerEvent.LoadFromFile event) {
+        if (!OldResearchToggle.isEnabled()) return;
         EntityPlayer p = event.getEntityPlayer();
         OldResearch.proxy.getPlayerKnowledge().wipePlayerKnowledge(p.getGameProfile().getName());
         File file1 = getPlayerFile("thaum", event.getPlayerDirectory(), p.getGameProfile().getName());
@@ -79,12 +81,14 @@ public abstract class EntityEvents {
 
     @SubscribeEvent
     public static void playerSave(PlayerEvent.SaveToFile event) {
+        if (!OldResearchToggle.isEnabled()) return;
         EntityPlayer p = event.getEntityPlayer();
         OldResearchManager.savePlayerData(p, getPlayerFile("thaum", event.getPlayerDirectory(), p.getGameProfile().getName()), getPlayerFile("thaumback", event.getPlayerDirectory(), p.getGameProfile().getName()));
     }
 
     @SubscribeEvent
     public static void onPlayerJoin(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
+        if (!OldResearchToggle.isEnabled()) return;
         if (event.player instanceof EntityPlayerMP) {
             PacketHandler.INSTANCE.sendTo(new PacketSyncAspects(event.player), (EntityPlayerMP) event.player);
         }

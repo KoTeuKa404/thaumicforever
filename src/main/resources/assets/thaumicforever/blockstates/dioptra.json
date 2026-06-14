@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "enabled=false":    { "model": "thaumicforever:dioptra_off"},
+        "enabled=true":    { "model": "thaumicforever:dioptra_on"}
+    }
+}

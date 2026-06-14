@@ -104,17 +104,22 @@ public class ContainerArcaneWorkbenchNew extends Container {
 
     @Override
     public void onCraftMatrixChanged(IInventory par1IInventory) {
-        this.cachedMatches = getMatchingRecipes(this.ip.player);
-        this.matchingRecipeCount = this.cachedMatches.size();
-        if (this.matchingRecipeCount <= 0) {
-            this.selectedRecipeIndex = 0;
-        } else if (this.selectedRecipeIndex >= this.matchingRecipeCount) {
-            this.selectedRecipeIndex = 0;
-        } else if (this.selectedRecipeIndex < 0) {
-            this.selectedRecipeIndex = this.matchingRecipeCount - 1;
+        IRecipe selectedRecipe = getSelectedFromMatches(this.cachedMatches);
+        if (selectedRecipe == null || !recipeMatches(selectedRecipe, this.ip.player)) {
+            this.cachedMatches = getMatchingRecipes(this.ip.player);
+            this.matchingRecipeCount = this.cachedMatches.size();
+            if (this.matchingRecipeCount <= 0) {
+                this.selectedRecipeIndex = 0;
+            } else if (this.selectedRecipeIndex >= this.matchingRecipeCount) {
+                this.selectedRecipeIndex = 0;
+            } else if (this.selectedRecipeIndex < 0) {
+                this.selectedRecipeIndex = this.matchingRecipeCount - 1;
+            }
+            selectedRecipe = getSelectedFromMatches(this.cachedMatches);
+        } else {
+            this.matchingRecipeCount = this.cachedMatches.size();
         }
 
-        IRecipe selectedRecipe = getSelectedFromMatches(this.cachedMatches);
         if (selectedRecipe != null && !canCraftRecipe(selectedRecipe)) {
             for (int i = 0; i < this.cachedMatches.size(); i++) {
                 IRecipe candidate = this.cachedMatches.get(i);
@@ -318,6 +323,22 @@ public class ContainerArcaneWorkbenchNew extends Container {
             }
         }
         return out;
+    }
+
+    private boolean recipeMatches(IRecipe recipe, EntityPlayer player) {
+        if (recipe == null) return false;
+        if (recipe instanceof IPlayerDependentArcaneRecipe) {
+            return ((IPlayerDependentArcaneRecipe) recipe).matches(this.tileEntity.inventoryCraft, player.world, player);
+        }
+        if (recipe instanceof IArcaneRecipe) {
+            return recipe.matches(this.tileEntity.inventoryCraft, player.world);
+        }
+
+        InventoryCrafting craftView = new InventoryCrafting(new ContainerDummy(), 3, 3);
+        for (int i = 0; i < 9; i++) {
+            craftView.setInventorySlotContents(i, this.tileEntity.inventoryCraft.getStackInSlot(i));
+        }
+        return recipe.matches(craftView, player.world);
     }
 
     private boolean canCraftRecipe(IRecipe selectedRecipe) {

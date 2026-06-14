@@ -11,7 +11,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "6.2.11"
+version = "7.1.5"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
@@ -34,6 +34,7 @@ minecraft {
     version = "1.12.2-14.23.5.2820"
     runDir = "run"
     mappings = "snapshot_20171003"
+    clientRunArgs = ["--username", "KoTeuKa404"]
     // makeObfSourceJar = false
 
 }

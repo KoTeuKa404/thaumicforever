@@ -2,6 +2,7 @@ package com.koteuka404.thaumicforever.wand.container.slot;
 
 import com.koteuka404.thaumicforever.wand.api.recipe.IPlayerDependentArcaneRecipe;
 import com.koteuka404.thaumicforever.wand.container.ContainerArcaneWorkbenchNew;
+import com.koteuka404.thaumicforever.wand.inventory.InventoryArcaneWorkbenchNew;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -66,27 +67,46 @@ public class SlotArcaneWorkbenchNew extends SlotCraftingArcaneWorkbench {
                 RechargeHelper.consumeCharge(this.craftMatrix.getStackInSlot(15), thePlayer, vis);
         }
 
-        for (int i = 0; i < Math.min(9, nonnulllist.size()); i++) {
-            ItemStack itemstack = ic.getStackInSlot(i);
-            ItemStack itemstack1 = nonnulllist.get(i);
-            if (!itemstack.isEmpty()) {
-                this.craftMatrix.decrStackSize(i, 1);
-                // Use the live crafting matrix state after decrement, not the snapshot copy.
-                itemstack = this.craftMatrix.getStackInSlot(i);
-            }
-            if (!itemstack1.isEmpty())
-                if (itemstack.isEmpty())
-                    this.craftMatrix.setInventorySlotContents(i, itemstack1);
-                else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1)) {
-                    itemstack1.grow(itemstack.getCount());
-                    this.craftMatrix.setInventorySlotContents(i, itemstack1);
-                } else if (!this.player.inventory.addItemStackToInventory(itemstack1))
-                    this.player.dropItem(itemstack1, false);
-
+        InventoryArcaneWorkbenchNew batchedInventory = this.craftMatrix instanceof InventoryArcaneWorkbenchNew
+                ? (InventoryArcaneWorkbenchNew) this.craftMatrix
+                : null;
+        if (batchedInventory != null) {
+            batchedInventory.beginBulkUpdate();
         }
-        if (crystals != null)
-            WandHelper.consumePrimalCharge(this.craftMatrix.getStackInSlot(15), crystals, thePlayer, false);
-        this.container.onCraftMatrixChanged(this.craftMatrix);
+        try {
+            for (int i = 0; i < Math.min(9, nonnulllist.size()); i++) {
+                ItemStack itemstack = ic.getStackInSlot(i);
+                ItemStack itemstack1 = nonnulllist.get(i);
+                if (!itemstack.isEmpty()) {
+                    this.craftMatrix.decrStackSize(i, 1);
+                    // Use the live crafting matrix state after decrement, not the snapshot copy.
+                    itemstack = this.craftMatrix.getStackInSlot(i);
+                }
+                if (!itemstack1.isEmpty()) {
+                    if (itemstack.isEmpty()) {
+                        this.craftMatrix.setInventorySlotContents(i, itemstack1);
+                    } else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1)) {
+                        itemstack1.grow(itemstack.getCount());
+                        this.craftMatrix.setInventorySlotContents(i, itemstack1);
+                    } else if (!this.player.inventory.addItemStackToInventory(itemstack1)) {
+                        this.player.dropItem(itemstack1, false);
+                    }
+                }
+            }
+            if (crystals != null) {
+                WandHelper.consumePrimalCharge(this.craftMatrix.getStackInSlot(15), crystals, thePlayer, false);
+            }
+        } finally {
+            if (batchedInventory != null) {
+                batchedInventory.endBulkUpdate(true);
+            }
+        }
+        if (batchedInventory == null) {
+            if (crystals != null) {
+                WandHelper.consumePrimalCharge(this.craftMatrix.getStackInSlot(15), crystals, thePlayer, false);
+            }
+            this.container.onCraftMatrixChanged(this.craftMatrix);
+        }
         this.container.detectAndSendChanges();
         return stack;
     }

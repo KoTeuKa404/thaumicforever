@@ -213,6 +213,7 @@ public abstract class RenderEventHandlerMixin {
 
     @Unique
     private static boolean oldresearch$shouldRenderAspects(GuiScreen gui, EntityPlayer player, ItemStack stack) {
+        if (!com.wonginnovations.oldresearch.core.OldResearchToggle.isEnabled()) return false;
         if (!(gui instanceof GuiContainer)) return false;
         if ((GuiScreen.isShiftKeyDown() != ModConfig.CONFIG_GRAPHICS.showTags && !Mouse.isGrabbed())
                 || (com.wonginnovations.oldresearch.config.ModConfig.inventoryScanning && ProxyInventoryScanning.isHoldingThaumometer())

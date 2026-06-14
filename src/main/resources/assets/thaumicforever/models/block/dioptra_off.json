@@ -1,0 +1,9 @@
+{
+    "parent": "thaumicforever:block/dioptra_on",
+    "textures": {
+        "particle": "thaumicforever:blocks/dioptra_side_on",
+        "top": "thaumicforever:blocks/dioptra_top",
+        "side": "thaumicforever:blocks/dioptra_side_off",
+        "bottom": "thaumcraft:blocks/arcane_stone_1"
+    }
+}

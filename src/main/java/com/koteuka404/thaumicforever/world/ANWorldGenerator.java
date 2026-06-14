@@ -82,21 +82,20 @@ public class ANWorldGenerator implements IWorldGenerator {
                 0.0f,
                 0.0f
         );
-        world.spawnEntity(e);
-
         boolean taintBiome = isTaintBiome(world, bp);
 
         if (type >= 0) {
-            e.setNodeType(type);
+            e.randomizeForNodeType(type);
         } else {
             e.randomizeNode();
         }
 
         if (taintBiome) {
-            e.setNodeType(4); // NTTaint
+            e.randomizeForNodeType(4); // NTTaint
         }
 
         e.setNodeSize((int)(e.getNodeSize() * sizemod));
+        world.spawnEntity(e);
 
         if (e.getNodeType() == 4) {
             AuraHelper.polluteAura(world, bp, 100, false);

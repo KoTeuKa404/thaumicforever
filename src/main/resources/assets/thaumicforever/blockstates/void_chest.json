@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumicforever:block/void_chest",
+    "uvlock": false,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:void_chest_item" }],
+    "inventory": [{ "model": "thaumicforever:void_chest_item" }],
+    "facing=north": { "model": "thaumicforever:void_chest" },
+    "facing=south": { "model": "thaumicforever:void_chest", "y": 180 },
+    "facing=west": { "model": "thaumicforever:void_chest", "y": 270 },
+    "facing=east": { "model": "thaumicforever:void_chest", "y": 90 }
+  }
+}

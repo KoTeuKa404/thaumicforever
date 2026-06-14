@@ -38,6 +38,11 @@ public class ModConfig {
     public static boolean enableOldResearchOnly;
     public static boolean debugCrucible;
     public static boolean debugAspectDump;
+    public static boolean enablePrimalAuraToVisConversion;
+    public static boolean enableNodeBoundThaumcraftAura;
+    public static int nodeBoundThaumcraftAuraRadiusChunks;
+    public static float nodeBoundThaumcraftAuraVisPerStrength;
+    public static float nodeBoundThaumcraftAuraNoNodeDrain;
     public static boolean sinisterNodeSpreadsEerieBiome;
     public static boolean enableEerieDayMobSpawns;
     public static String aspectDumpFile;
@@ -151,6 +156,31 @@ public class ModConfig {
         debugAspectDump = config.getBoolean(
             "Enable Aspect Dump", "Debug", false,
             "If true, writes a list of all item stacks and their aspects to a file at load complete."
+        );
+
+        enablePrimalAuraToVisConversion = config.getBoolean(
+            "Enable Primal Aura To Vis Conversion", "Aura", true,
+            "If true, primal aura can refill ordinary Thaumcraft vis. Conversion stops when any primal aspect is below 40% of its base."
+        );
+
+        enableNodeBoundThaumcraftAura = config.getBoolean(
+            "Enable Node Bound Thaumcraft Aura", "Aura", false,
+            "Experimental. If true, ordinary Thaumcraft vis is controlled by nearby Thaumic Forever aura nodes instead of being freely refilled by primal aura."
+        );
+
+        nodeBoundThaumcraftAuraRadiusChunks = config.getInt(
+            "Node Bound Thaumcraft Aura Radius Chunks", "Aura", 4, 1, 16,
+            "How many chunks from each aura node can receive ordinary Thaumcraft vis in node-bound aura mode."
+        );
+
+        nodeBoundThaumcraftAuraVisPerStrength = config.getFloat(
+            "Node Bound Thaumcraft Aura Vis Per Strength", "Aura", 18.0F, 1.0F, 100.0F,
+            "Target ordinary Thaumcraft vis added per node strength point in node-bound aura mode."
+        );
+
+        nodeBoundThaumcraftAuraNoNodeDrain = config.getFloat(
+            "Node Bound Thaumcraft Aura No Node Drain", "Aura", 0.5F, 0.0F, 20.0F,
+            "Maximum ordinary Thaumcraft vis drained per processed chunk when no aura node supports that chunk."
         );
 
         sinisterNodeSpreadsEerieBiome = config.getBoolean(

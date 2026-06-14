@@ -1,7 +1,7 @@
 package com.koteuka404.thaumicforever.recipe;
 
+import com.koteuka404.thaumicforever.ThaumicForever;
 import com.koteuka404.thaumicforever.registry.ModItems;
-
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -22,10 +22,6 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.golems.GolemHelper;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.item.OldBone;
-import com.koteuka404.thaumicforever.item.ItemBottleClean;
-import com.koteuka404.thaumicforever.item.ItemBottleVis;
-import com.koteuka404.thaumicforever.ThaumicForever;
 
 public class RecipeCrucible {
     public static final String MODID = "thaumicforever";
@@ -218,7 +214,7 @@ public class RecipeCrucible {
 
         ResourceLocation featherRecipeKey = new ResourceLocation(ThaumicForever.MODID, "feather_recipe");
         CrucibleRecipe featherRecipe = new CrucibleRecipe(
-            "VICTUSALKIMIA",
+            "PERMUTATIOALKIMIA",
             new ItemStack(Items.FEATHER),
             new ItemStack(Items.STRING),
             new AspectList()
@@ -230,7 +226,7 @@ public class RecipeCrucible {
 
         ResourceLocation pufferfishRecipeKey = new ResourceLocation(ThaumicForever.MODID, "pufferfish_recipe");
         CrucibleRecipe pufferfishRecipe = new CrucibleRecipe(
-            "VICTUSALKIMIA",
+            "PERMUTATIOALKIMIA",
             new ItemStack(Items.FISH, 1, 3),
             new ItemStack(Items.FISH),
             new AspectList()
@@ -579,6 +575,41 @@ public class RecipeCrucible {
 
         ThaumcraftApi.addCrucibleRecipe(fishAdvRecipeKey, fishAdvRecipe);
 
+        ResourceLocation useAdvancedRecipeKey = new ResourceLocation(MODID, "seal_use_advanced");
+        CrucibleRecipe useAdvancedRecipe = new CrucibleRecipe(
+            "SEALUSE",
+            GolemHelper.getSealStack("thaumicforever:use_advanced"),
+            GolemHelper.getSealStack("thaumcraft:use"),
+            new AspectList()
+            .add(Aspect.MIND, 10)
+            .add(Aspect.SENSES, 10));
+
+        ThaumcraftApi.addCrucibleRecipe(useAdvancedRecipeKey, useAdvancedRecipe);
+
+        ResourceLocation tradeSealRecipeKey = new ResourceLocation(MODID, "seal_trade");
+        CrucibleRecipe tradeSealRecipe = new CrucibleRecipe(
+            "SEALTRADE",
+            GolemHelper.getSealStack("thaumicforever:trade"),
+            GolemHelper.getSealStack("thaumcraft:provider"),
+            new AspectList()
+            .add(Aspect.DESIRE, 15)
+            .add(Aspect.EXCHANGE, 15)
+            .add(Aspect.MIND, 10));
+
+        ThaumcraftApi.addCrucibleRecipe(tradeSealRecipeKey, tradeSealRecipe);
+
+        ResourceLocation arcaneCasterSealRecipeKey = new ResourceLocation(MODID, "seal_arcane_caster");
+        CrucibleRecipe arcaneCasterSealRecipe = new CrucibleRecipe(
+            "SEALARCANECASTER",
+            GolemHelper.getSealStack("thaumicforever:arcane_caster"),
+            GolemHelper.getSealStack("thaumcraft:guard"),
+            new AspectList()
+            .add(Aspect.MAGIC, 20)
+            .add(Aspect.MIND, 15)
+            .add(Aspect.AVERSION, 10));
+
+        ThaumcraftApi.addCrucibleRecipe(arcaneCasterSealRecipeKey, arcaneCasterSealRecipe);
+
 
         ResourceLocation crystalRecipeKey = new ResourceLocation(MODID, "crystalhRecipe");
         CrucibleRecipe crystalhRecipe = new CrucibleRecipe(
@@ -668,7 +699,7 @@ public class RecipeCrucible {
 
     ResourceLocation woolDRecipeKey = new ResourceLocation(MODID, "wool_d_recipe");
     CrucibleRecipe woolDRecipe = new CrucibleRecipe(
-        "PERDITIOALKIMIA",
+        "PERMUTATIOALKIMIA",
         new ItemStack(Items.STRING,4),
         new ItemStack(Blocks.WOOL),
         new AspectList()
@@ -682,7 +713,7 @@ public class RecipeCrucible {
 
     ResourceLocation nethbDRecipeKey = new ResourceLocation(MODID, "nethb_d_recipe");
     CrucibleRecipe nethbDRecipe = new CrucibleRecipe(
-        "PERDITIOALKIMIA",
+        "PERMUTATIOALKIMIA",
         new ItemStack(Items.NETHERBRICK,4),
         new ItemStack(Blocks.NETHER_BRICK),
         new AspectList()
@@ -694,7 +725,7 @@ public class RecipeCrucible {
 
     ResourceLocation quarzbDRecipeKey = new ResourceLocation(MODID, "quarzb_d_recipe");
     CrucibleRecipe quaezbDRecipe = new CrucibleRecipe(
-        "PERDITIOALKIMIA",
+        "PERMUTATIOALKIMIA",
         new ItemStack(Items.QUARTZ,4),
         new ItemStack(Blocks.QUARTZ_BLOCK),
         new AspectList()
@@ -706,7 +737,7 @@ public class RecipeCrucible {
 
     ResourceLocation magmabDRecipeKey = new ResourceLocation(MODID, "magma_d_recipe");
     CrucibleRecipe magmazbDRecipe = new CrucibleRecipe(
-        "PERDITIOALKIMIA",
+        "PERMUTATIOALKIMIA",
         new ItemStack(Items.MAGMA_CREAM,4),
         new ItemStack(Blocks.MAGMA),
         new AspectList()
@@ -717,7 +748,7 @@ public class RecipeCrucible {
 
     ResourceLocation nethrbDRecipeKey = new ResourceLocation(MODID, "netrhbv_d_recipe");
     CrucibleRecipe nethrbDRecipe = new CrucibleRecipe(
-        "PERDITIOALKIMIA",
+        "PERMUTATIOALKIMIA",
         new ItemStack(Items.NETHER_WART,9),
         new ItemStack(Blocks.NETHER_WART_BLOCK),
         new AspectList()

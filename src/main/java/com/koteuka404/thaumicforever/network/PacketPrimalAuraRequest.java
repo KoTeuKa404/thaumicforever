@@ -7,9 +7,9 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import com.koteuka404.thaumicforever.ThaumicForever;
 import com.koteuka404.thaumicforever.aura.PrimalAuraHandler;
 import com.koteuka404.thaumicforever.item.Primal;
-import com.koteuka404.thaumicforever.ThaumicForever;
 
 public final class PacketPrimalAuraRequest implements IMessage {
 
@@ -57,13 +57,6 @@ public final class PacketPrimalAuraRequest implements IMessage {
                 for (Primal p : Primal.values()) {
                     vis[p.id] = PrimalAuraHandler.get(ws, pos, p);
                 }
-
-                // SERVER DEBUG
-                ThaumicForever.LOGGER.info("[AuraReq] dim={} cx={} cz={} send vis={},{},{},{},{},{}",
-                    msg.dim, msg.cx, msg.cz,
-                    (int) vis[0], (int) vis[1], (int) vis[2],
-                    (int) vis[3], (int) vis[4], (int) vis[5]
-                );
 
                 ThaumicForever.network.sendTo(new PacketPrimalAuraSync(msg.dim, msg.cx, msg.cz, vis), pl);
             });

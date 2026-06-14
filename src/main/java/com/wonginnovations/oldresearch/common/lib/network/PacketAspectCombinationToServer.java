@@ -4,6 +4,7 @@ import com.wonginnovations.oldresearch.OldResearch;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
 import com.wonginnovations.oldresearch.common.lib.research.ScanManager;
 import com.wonginnovations.oldresearch.common.tiles.TileResearchTable;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -71,6 +72,9 @@ public class PacketAspectCombinationToServer implements IMessage, IMessageHandle
 
     @Override
     public IMessage onMessage(final PacketAspectCombinationToServer message, MessageContext ctx) {
+        if (!OldResearchToggle.isEnabled()) {
+            return null;
+        }
         IThreadListener mainThread = ctx.getServerHandler().player.getServerWorld();
         mainThread.addScheduledTask(new Runnable() {
             public void run() {

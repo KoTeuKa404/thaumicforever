@@ -92,6 +92,7 @@ key_keybind.hammercorerenderstack:77
 key_key.tg.open_gui:19
 key_key.tg.armor_ability:46
 key_key.tg.lense_gui:33
+key_key.toggle_pontifex:46
 key_key.jei.toggleOverlay:24:CONTROL
 key_key.jei.focusSearch:33:CONTROL
 key_key.jei.toggleCheatMode:0
@@ -109,9 +110,13 @@ key_waila.keybind.liquid:80
 key_waila.keybind.recipe:81
 key_waila.keybind.usage:75
 key_key.swap_chameleon.crimsonrevelations:47
-key_key.carpet_forward:17
-key_key.carpet_backward:31
+key_key.carpet_forward:0
+key_key.carpet_backward:0
 key_key.planarartifice.openThaumonomicon:25
+key_Change Goggles Lens:36
+key_Activate Morphic Fingers:50
+key_Toggle Spider Climb:0
+key_Toggle Chameleon Skin:0
 key_key.journeymap.zoom_in:13
 key_key.journeymap.zoom_out:12
 key_key.journeymap.minimap_type:26

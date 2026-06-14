@@ -50,6 +50,8 @@ public abstract class OldResearchManager {
 
     private static final Map<String, ItemStack> NOTES = new HashMap<>();
     public static final Map<Aspect, Integer> ASPECT_COMPLEXITY = new HashMap<>();
+    private static final Map<ResearchStage, StageSnapshot> ORIGINAL_STAGES = new IdentityHashMap<>();
+    private static boolean researchPatched = false;
 
     public static ResearchComplexityGenerator RESEARCH_COMPLEXITY_FUNCTION = new DefaultResearchComplexity();
     public static Map<String, AspectList> RESEARCH_ASPECTS = new HashMap<>(); // to be populated by external libs like GrS or CT
@@ -110,6 +112,16 @@ public abstract class OldResearchManager {
     }
 
     public static void patchResearch() {
+        if (!com.koteuka404.thaumicforever.config.ModConfig.enableOldResearch) {
+            restorePatchedResearch();
+            return;
+        }
+
+        if (researchPatched) {
+            restorePatchedResearch();
+        }
+
+        captureOriginalResearchState();
         boolean oldResearchOnly = com.koteuka404.thaumicforever.config.ModConfig.enableOldResearchOnly;
         for (ResearchCategory category : ResearchCategories.researchCategories.values()) {
             for (ResearchEntry entry : category.research.values()) {
@@ -130,6 +142,71 @@ public abstract class OldResearchManager {
                     }
                 }
             }
+        }
+        researchPatched = true;
+    }
+
+    public static void captureOriginalResearchState() {
+        for (ResearchCategory category : ResearchCategories.researchCategories.values()) {
+            for (ResearchEntry entry : category.research.values()) {
+                if (entry == null || entry.getStages() == null) {
+                    continue;
+                }
+                for (ResearchStage stage : entry.getStages()) {
+                    if (stage != null) {
+                        ORIGINAL_STAGES.putIfAbsent(stage, new StageSnapshot(stage));
+                    }
+                }
+            }
+        }
+    }
+
+    public static void restorePatchedResearch() {
+        if (ORIGINAL_STAGES.isEmpty()) {
+            researchPatched = false;
+            NOTES.clear();
+            return;
+        }
+
+        for (Map.Entry<ResearchStage, StageSnapshot> entry : ORIGINAL_STAGES.entrySet()) {
+            entry.getValue().restore(entry.getKey());
+        }
+        researchPatched = false;
+        NOTES.clear();
+    }
+
+    public static void applyServerResearchConfig(boolean enableOldResearch, boolean enableOldResearchOnly) {
+        com.koteuka404.thaumicforever.config.ModConfig.enableOldResearch = enableOldResearch;
+        com.koteuka404.thaumicforever.config.ModConfig.enableOldResearchOnly = enableOldResearchOnly;
+        restorePatchedResearch();
+        if (enableOldResearch) {
+            patchResearch();
+        }
+    }
+
+    private static final class StageSnapshot {
+        private final ResearchStage.Knowledge[] know;
+        private final String[] research;
+        private final String[] researchIcon;
+
+        private StageSnapshot(ResearchStage stage) {
+            this.know = copy(stage.getKnow());
+            this.research = copy(stage.getResearch());
+            this.researchIcon = copy(stage.getResearchIcon());
+        }
+
+        private void restore(ResearchStage stage) {
+            stage.setKnow(copy(this.know));
+            stage.setResearch(copy(this.research));
+            stage.setResearchIcon(copy(this.researchIcon));
+        }
+
+        private static ResearchStage.Knowledge[] copy(ResearchStage.Knowledge[] source) {
+            return source == null ? null : Arrays.copyOf(source, source.length);
+        }
+
+        private static String[] copy(String[] source) {
+            return source == null ? null : Arrays.copyOf(source, source.length);
         }
     }
 

@@ -5,6 +5,7 @@ import com.wonginnovations.oldresearch.common.lib.network.PacketHandler;
 import com.wonginnovations.oldresearch.common.lib.network.PacketScanSelfToServer;
 import com.wonginnovations.oldresearch.common.lib.network.PacketScanSlotToServer;
 import com.wonginnovations.oldresearch.config.ModConfig;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -63,6 +64,9 @@ public class ProxyInventoryScanning {
     private static Method renderToolTipMethod;
 
     public static boolean isHoldingThaumometer() {
+        if (!OldResearchToggle.isEnabled()) {
+            return false;
+        }
         Minecraft mc = Minecraft.getMinecraft();
         if (mc.player == null) {
             return false;
@@ -74,6 +78,7 @@ public class ProxyInventoryScanning {
 
     @SubscribeEvent
     public static void clientTick(TickEvent.ClientTickEvent event) {
+        if (!OldResearchToggle.isEnabled()) return;
         if (!ModConfig.inventoryScanning) return;
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayer entityPlayer = mc.player;
@@ -141,6 +146,7 @@ public class ProxyInventoryScanning {
 
     @SubscribeEvent
     public static void onTooltip(ItemTooltipEvent event) {
+        if (!OldResearchToggle.isEnabled()) return;
         if (event.getItemStack().getItem() == ItemsTC.thaumometer && ModConfig.inventoryScanning) {
             event.getToolTip().add(TextFormatting.GOLD + I18n.format("tc.inventoryscan.tooltip"));
             if (GuiScreen.isShiftKeyDown()) {
@@ -167,6 +173,7 @@ public class ProxyInventoryScanning {
 
     @SubscribeEvent
     public static void onDrawScreen(GuiScreenEvent.DrawScreenEvent.Post event) {
+        if (!OldResearchToggle.isEnabled()) return;
         if (!ModConfig.inventoryScanning) return;
         if (event.getGui() instanceof GuiContainer && !(event.getGui() instanceof GuiContainerCreative)) {
             Minecraft mc = Minecraft.getMinecraft();

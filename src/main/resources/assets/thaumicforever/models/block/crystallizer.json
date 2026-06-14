@@ -1,0 +1,10 @@
+{
+  "loader": "forge:obj",
+  "model": "thaumicforever:models/block/crystalizer.obj",
+  "flip-v": true,
+  "textures": {
+    "texture": "thaumicforever:blocks/crystallizer",
+    "m_08b7313e-c2b9-7f19-5fef-f1760f56fceb": "thaumicforever:blocks/crystallizer",
+    "particle": "thaumicforever:blocks/crystallizer"
+  }
+}

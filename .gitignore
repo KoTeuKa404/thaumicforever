@@ -21,3 +21,5 @@ en_us.lang
 bin/
 Thaumcraft-6-Source-Code-master-main/
 run/
+.gradle
+refer/

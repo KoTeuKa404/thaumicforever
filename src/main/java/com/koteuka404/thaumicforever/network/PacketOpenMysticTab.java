@@ -25,6 +25,7 @@ public class PacketOpenMysticTab implements IMessage {
             EntityPlayerMP player = ctx.getServerHandler().player;
             player.getServerWorld().addScheduledTask(() -> {
                 if (!ModConfig.enableMysticGuiButton) return;
+                ThaumicForever.network.sendTo(PacketServerConfigSync.fromServerConfig(), player);
                 player.openGui(
                     ThaumicForever.instance,
                     ModGuiHandler.GUI_BAUBLES,

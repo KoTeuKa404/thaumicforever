@@ -12,10 +12,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
 import com.koteuka404.thaumicforever.block.BlockImmortalizer;
 import com.koteuka404.thaumicforever.block.BlockTimeStone;
@@ -674,6 +676,8 @@ public class InfusionRecipes {
                 }
             ));
 
+            registerAuraTotemRecipes();
+
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:FLUXSCRUBBER"), new InfusionRecipe(
                 "FLUXSCRUBBER",
                 new ItemStack(ModBlocks.FLUX_SCRAPER),
@@ -725,5 +729,135 @@ public class InfusionRecipes {
 
                 }
             ));
+    }
+
+    private static void registerAuraTotemRecipes() {
+        ResourceLocation poleInner = new ResourceLocation("thaumicforever:PoleInner");
+        ThaumcraftApi.addArcaneCraftingRecipe(poleInner, new ShapedArcaneRecipe(
+            poleInner,
+            "AURATOTEMS",
+            50,
+            new AspectList().add(Aspect.AIR, 1).add(Aspect.EARTH, 2).add(Aspect.ORDER, 1),
+            auraTotem(3),
+            "WGW",
+            "WNW",
+            "WGW",
+            'N', ThaumcraftApiHelper.makeCrystal(Aspect.EARTH),
+            'W', new ItemStack(BlocksTC.plankSilverwood),
+            'G', new ItemStack(BlocksTC.plankGreatwood)
+        ));
+
+        ResourceLocation poleOuter = new ResourceLocation("thaumicforever:PoleOuter");
+        ThaumcraftApi.addArcaneCraftingRecipe(poleOuter, new ShapedArcaneRecipe(
+            poleOuter,
+            "AURATOTEMS",
+            50,
+            new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 1).add(Aspect.ORDER, 2),
+            auraTotem(2),
+            "WGW",
+            "WNW",
+            "WGW",
+            'N', ThaumcraftApiHelper.makeCrystal(Aspect.AIR),
+            'W', new ItemStack(BlocksTC.plankSilverwood),
+            'G', new ItemStack(BlocksTC.plankGreatwood)
+        ));
+
+        ResourceLocation poleStable = new ResourceLocation("thaumicforever:PoleStable");
+        ThaumcraftApi.addArcaneCraftingRecipe(poleStable, new ShapedArcaneRecipe(
+            poleStable,
+            "AURATOTEMS",
+            75,
+            new AspectList().add(Aspect.AIR, 2).add(Aspect.EARTH, 2).add(Aspect.ORDER, 3),
+            auraTotem(4),
+            "WGW",
+            "WNW",
+            "WGW",
+            'N', new ItemStack(ItemsTC.visResonator),
+            'W', new ItemStack(BlocksTC.plankSilverwood),
+            'G', new ItemStack(BlocksTC.plankGreatwood)
+        ));
+
+        ResourceLocation crystallizer = new ResourceLocation("thaumicforever:Crystallizer");
+        ThaumcraftApi.addArcaneCraftingRecipe(crystallizer, new ShapedArcaneRecipe(
+            crystallizer,
+            "ESSENTIACRYSTALCONVERTER",
+            75,
+            new AspectList().add(Aspect.ORDER, 2).add(Aspect.EARTH, 2).add(Aspect.CRYSTAL, 3),
+            new ItemStack(ModBlocks.CRYSTALLIZER),
+            "SQS",
+            "GCG",
+            "SRS",
+            'S', new ItemStack(BlocksTC.stoneArcane),
+            'Q', new ItemStack(Items.QUARTZ),
+            'G', new ItemStack(Blocks.GLASS),
+            'C', new ItemStack(BlocksTC.crystalOrder),
+            'R', new ItemStack(ItemsTC.visResonator)
+        ));
+
+        ResourceLocation voidChest = new ResourceLocation("thaumicforever:void_chest");
+        ThaumcraftApi.addArcaneCraftingRecipe(voidChest, new ShapedArcaneRecipe(
+            voidChest,
+            "VOIDCHEST",
+            100,
+            new AspectList().add(Aspect.ENTROPY, 3).add(Aspect.ORDER, 2).add(Aspect.AIR, 1),
+            new ItemStack(ModBlocks.VOID_CHEST),
+            "VEV",
+            "NCN",
+            "VRV",
+            'V', "ingotVoid",
+            'E', new ItemStack(Items.ENDER_PEARL),
+            'N', new ItemStack(Items.NAME_TAG),
+            'C', new ItemStack(Blocks.ENDER_CHEST),
+            'R', new ItemStack(ItemsTC.visResonator)
+        ));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:TotemPush"), new InfusionRecipe(
+            "AURATOTEMS",
+            auraTotem(0),
+            5,
+            new AspectList()
+                .add(Aspect.ENERGY, 25)
+                .add(Aspect.AURA, 25)
+                .add(Aspect.MOTION, 25)
+                .add(Aspect.AVERSION, 25),
+            new ItemStack(BlocksTC.plankSilverwood),
+            new Object[] {
+                new ItemStack(BlocksTC.plankGreatwood),
+                new ItemStack(Blocks.CHEST),
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.salisMundus),
+                new ItemStack(ItemsTC.quicksilver),
+                new ItemStack(Blocks.PISTON),
+                new ItemStack(ItemsTC.visResonator)
+            }
+        ));
+
+        ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:TotemPull"), new InfusionRecipe(
+            "AURATOTEMS",
+            auraTotem(1),
+            5,
+            new AspectList()
+                .add(Aspect.ENERGY, 25)
+                .add(Aspect.AURA, 25)
+                .add(Aspect.MOTION, 25)
+                .add(Aspect.DESIRE, 25),
+            new ItemStack(BlocksTC.plankSilverwood),
+            new Object[] {
+                new ItemStack(BlocksTC.plankGreatwood),
+                new ItemStack(Blocks.CHEST),
+                new ItemStack(ItemsTC.visResonator),
+                new ItemStack(ItemsTC.salisMundus),
+                new ItemStack(ItemsTC.amber),
+                new ItemStack(Items.COMPASS),
+                new ItemStack(ItemsTC.visResonator)
+            }
+        ));
+    }
+
+    private static ItemStack auraTotem(int meta) {
+        if (meta == 2) return new ItemStack(ModBlocks.AURA_TOTEM_POLE, 1, 0);
+        if (meta == 3) return new ItemStack(ModBlocks.AURA_TOTEM_POLE, 1, 1);
+        if (meta == 4) return new ItemStack(ModBlocks.AURA_TOTEM_POLE, 1, 2);
+        return new ItemStack(ModBlocks.AURA_TOTEM, 1, meta);
     }
 }

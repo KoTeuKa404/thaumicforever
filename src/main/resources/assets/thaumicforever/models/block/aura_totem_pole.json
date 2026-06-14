@@ -1,0 +1,21 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "thaumicforever:blocks/aura_totem_pole_inner",
+    "side": "thaumicforever:blocks/aura_totem_pole_inner"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 2],
+      "to": [14, 16, 14],
+      "faces": {
+        "up": { "texture": "#side", "cullface": "up" },
+        "down": { "texture": "#side", "cullface": "down" },
+        "west": { "texture": "#side" },
+        "east": { "texture": "#side" },
+        "north": { "texture": "#side" },
+        "south": { "texture": "#side" }
+      }
+    }
+  ]
+}

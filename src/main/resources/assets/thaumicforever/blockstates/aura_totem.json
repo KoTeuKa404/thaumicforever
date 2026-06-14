@@ -1,0 +1,16 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "type=push": { "model": "thaumicforever:aura_totem" },
+    "type=pull": {
+      "model": "thaumicforever:aura_totem",
+      "textures": {
+        "particle": "thaumicforever:blocks/aura_totem_pull",
+        "side": "thaumicforever:blocks/aura_totem_pull"
+      }
+    }
+  }
+}

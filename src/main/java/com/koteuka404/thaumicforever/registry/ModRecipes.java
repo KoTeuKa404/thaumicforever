@@ -1,7 +1,5 @@
 package com.koteuka404.thaumicforever.registry;
 
-import com.koteuka404.thaumicforever.ThaumicForever;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -15,13 +13,6 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.item.ItemBoneBlade;
-import com.koteuka404.thaumicforever.item.ItemBrassGear;
-import com.koteuka404.thaumicforever.item.ItemCompassMaze;
-import com.koteuka404.thaumicforever.item.ItemPrimalScribeTool;
-import com.koteuka404.thaumicforever.item.ItemScribeToolLarge;
-import com.koteuka404.thaumicforever.item.ItemThaumiumGear;
-import com.koteuka404.thaumicforever.item.ItemVoidGear;
 
 public class ModRecipes {
 
@@ -525,5 +516,100 @@ public class ModRecipes {
             'G', new ItemStack(ModItems.GOLD_PLATE)
         );
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "pouch"), pouch);
+
+        ShapelessArcaneRecipe golemCoreGoliath = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "golem_core_goliath"),
+            "GOLEMSCORE",
+            50,
+            new AspectList().add(Aspect.EARTH, 10).add(Aspect.ORDER, 10),
+            new ItemStack(ModItems.GOLEM_CORE_GOLIATH),
+            new Object[] {
+                new ItemStack(ItemsTC.morphicResonator),
+                new ItemStack(ItemsTC.seals, 1, 0),
+                new ItemStack(Items.DYE, 1, 5),
+                new ItemStack(Blocks.ANVIL)
+            }
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "golem_core_goliath"), golemCoreGoliath);
+
+        ShapelessArcaneRecipe golemCoreIronSkin = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "golem_core_ironskin"),
+            "GOLEMSCORE",
+            35,
+            new AspectList().add(Aspect.EARTH, 10).add(Aspect.ORDER, 5),
+            new ItemStack(ModItems.GOLEM_CORE_IRONSKIN),
+            new Object[] {
+                new ItemStack(ItemsTC.morphicResonator),
+                new ItemStack(ItemsTC.seals, 1, 0),
+                new ItemStack(Items.DYE, 1, 5),
+                new ItemStack(Blocks.IRON_BLOCK)
+            }
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "golem_core_ironskin"), golemCoreIronSkin);
+
+        ShapelessArcaneRecipe golemCoreArcane = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "golem_core_arcane"),
+            "GOLEMSCORE",
+            150,
+            new AspectList().add(Aspect.AIR, 5).add(Aspect.ORDER, 5).add(Aspect.FIRE, 10),
+            new ItemStack(ModItems.GOLEM_CORE_ARCANE),
+            new Object[] {
+                new ItemStack(ItemsTC.morphicResonator),
+                new ItemStack(ItemsTC.seals, 1, 0),
+                new ItemStack(Items.DYE, 1, 5),
+                new ItemStack(ItemsTC.visResonator)
+            }
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "golem_core_arcane"), golemCoreArcane);
+
+        ShapelessArcaneRecipe golemCoreSwift = new ShapelessArcaneRecipe(
+            new ResourceLocation("thaumicforever", "golem_core_swift"),
+            "GOLEMSCORE",
+            40,
+            new AspectList().add(Aspect.AIR, 10).add(Aspect.ORDER, 5),
+            new ItemStack(ModItems.GOLEM_CORE_SWIFT),
+            new Object[] {
+                new ItemStack(ItemsTC.morphicResonator),
+                new ItemStack(ItemsTC.seals, 1, 0),
+                new ItemStack(Items.DYE, 1, 5),
+                new ItemStack(Items.FEATHER)
+            }
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "golem_core_swift"), golemCoreSwift);
+
+        ShapedArcaneRecipe decoyMannequin = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "decoy_mannequin"),
+            "DECOYMANNEQUIN",
+            75,
+            new AspectList().add(Aspect.WATER, 10).add(Aspect.EARTH, 10).add(Aspect.AIR, 5),
+            new ItemStack(ModItems.DECOY_MANNEQUIN),
+            "WHW",
+            "UFU",
+            "WAW",
+            'H', new ItemStack(Blocks.HAY_BLOCK),
+            'W', new ItemStack(BlocksTC.plankGreatwood),
+            'U', new ItemStack(Items.WHEAT),
+            'F', new ItemStack(BlocksTC.fleshBlock),
+            'A', new ItemStack(Items.ARMOR_STAND)
+
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "decoy_mannequin"), decoyMannequin);
+
+        ShapedArcaneRecipe redstoneTicker = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "redstone_ticker"),
+            "REDSTONEGENETATOR",
+            80,
+            new AspectList().add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15).add(Aspect.FIRE, 10),
+            new ItemStack(ModBlocks.REDSTONE_TICKER),
+            "RCR",
+            "QMQ",
+            "RSR",
+            'R', new ItemStack(Items.REDSTONE),
+            'C', new ItemStack(Items.COMPARATOR),
+            'Q', new ItemStack(Items.QUARTZ),
+            'M', new ItemStack(ItemsTC.mechanismSimple),
+            'S', new ItemStack(BlocksTC.stoneArcane)
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "redstone_ticker"), redstoneTicker);
     }
 }

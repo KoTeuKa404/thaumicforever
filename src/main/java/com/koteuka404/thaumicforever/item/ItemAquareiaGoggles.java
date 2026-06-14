@@ -5,17 +5,12 @@ import com.koteuka404.thaumicforever.registry.ModItems;
 
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
 import baubles.api.BaubleType;
 import baubles.api.BaublesApi;
 import baubles.api.IBauble;
 import baubles.api.render.IRenderBauble;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -73,7 +68,12 @@ public class ItemAquareiaGoggles extends ItemArmor
     @SideOnly(Side.CLIENT)
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
-        return "thaumicforever:textures/items/aquareia_goggles_e.png";
+        long time = 0L;
+        if (entity != null && entity.world != null) {
+            time = entity.world.getTotalWorldTime();
+        }
+        int frame = (int) ((time / 5L) % 8L);
+        return "thaumicforever:textures/items/aquareia_goggles/aquareia_goggles_e_" + frame + ".png";
     }
 
     // =========================
@@ -82,39 +82,13 @@ public class ItemAquareiaGoggles extends ItemArmor
     @SideOnly(Side.CLIENT)
     public static void renderOnHeadCommon(EntityPlayer player) {
         Minecraft mc = Minecraft.getMinecraft();
+        long time = mc.world != null ? mc.world.getTotalWorldTime() : 0L;
+        int frame = (int) ((time / 5L) % 8L);
 
-        // ---- base layer ----
-        mc.renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles_b.png"));
+        mc.renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles/aquareia_goggles_b_" + frame + ".png"));
         GlStateManager.rotate(180F, 0F, 1F, 0F);
         GlStateManager.translate(-0.5D, -0.5D, 0.12D);
         UtilsFX.renderTextureIn3D(0F, 0F, 1F, 1F, 16, 26, 0.1F);
-
-        // ---- animated overlay ----
-        mc.renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles.png"));
-
-        int frameCount = 8;
-        int frameHeight = 16;
-        int textureHeight = 128;
-
-        long time = mc.world.getTotalWorldTime();
-        int currentFrame = (int) (time / 5 % frameCount);
-        float minV = (currentFrame * frameHeight) / (float) textureHeight;
-        float maxV = ((currentFrame + 1) * frameHeight) / (float) textureHeight;
-
-        GlStateManager.pushMatrix();
-        GlStateManager.translate(0.5F, 1.0F, 0.02F);
-        GlStateManager.rotate(180F, 1F, 0F, 0F);
-
-        Tessellator tess = Tessellator.getInstance();
-        BufferBuilder buf = tess.getBuffer();
-        buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-        buf.pos(-0.5D, 0.0D, 0.0D).tex(0.0F, minV).endVertex();
-        buf.pos( 0.5D, 0.0D, 0.0D).tex(1.0F, minV).endVertex();
-        buf.pos( 0.5D, 1.0D, 0.0D).tex(1.0F, maxV).endVertex();
-        buf.pos(-0.5D, 1.0D, 0.0D).tex(0.0F, maxV).endVertex();
-        tess.draw();
-
-        GlStateManager.popMatrix();
     }
 
     // =========================
@@ -147,31 +121,4 @@ public class ItemAquareiaGoggles extends ItemArmor
         if (!head.isEmpty() && head.getItem() instanceof ItemAquareiaGoggles) return true;
         return BaublesApi.isBaubleEquipped(player, ModItems.ItemAquareiaGoggles) != -1;
     }
-    @SideOnly(Side.CLIENT)
-    public static void renderLensOnly(EntityPlayer player) {
-        Minecraft mc = Minecraft.getMinecraft();
-
-        mc.renderEngine.bindTexture(new ResourceLocation("thaumicforever", "textures/items/aquareia_goggles.png"));
-
-        int frameCount = 8;
-        int frameHeight = 16;
-        int textureHeight = 128;
-
-        long time = mc.world.getTotalWorldTime();
-        int currentFrame = (int) (time / 5 % frameCount);
-
-        float minV = (currentFrame * frameHeight) / (float) textureHeight;
-        float maxV = ((currentFrame + 1) * frameHeight) / (float) textureHeight;
-
-        Tessellator tess = Tessellator.getInstance();
-        BufferBuilder buf = tess.getBuffer();
-
-        buf.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-        buf.pos(-0.5D, 0.0D, 0.0D).tex(0.0F, minV).endVertex();
-        buf.pos( 0.5D, 0.0D, 0.0D).tex(1.0F, minV).endVertex();
-        buf.pos( 0.5D, 1.0D, 0.0D).tex(1.0F, maxV).endVertex();
-        buf.pos(-0.5D, 1.0D, 0.0D).tex(0.0F, maxV).endVertex();
-        tess.draw();
-    }
-
 }

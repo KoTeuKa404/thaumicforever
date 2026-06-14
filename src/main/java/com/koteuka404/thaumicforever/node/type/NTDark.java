@@ -1,10 +1,8 @@
 package com.koteuka404.thaumicforever.node.type;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.biome.Biome;
 import thaumcraft.common.entities.monster.EntityGiantBrainyZombie;
-import thaumcraft.common.lib.utils.Utils;
 import thaumcraft.common.world.biomes.BiomeHandler;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.entity.EntitySkeletonAngry;
@@ -25,25 +23,8 @@ public class NTDark extends NTNormal {
             if (eerieId < 0) {
                 return;
             }
-            int deg = node.world.rand.nextInt(360);
-            Vec3d origin = new Vec3d(node.posX, node.posY, node.posZ);
             int radius = (int)(9.0 + Math.sqrt(node.getNodeSize()));
-            for (int q = 0; q < radius; q++) {
-                Vec3d offset = new Vec3d(q, 0.0, 0.0).rotateYaw((float)Math.toRadians(deg));
-                BlockPos targetPos = new BlockPos(
-                    origin.x + offset.x,
-                    origin.y + offset.y,
-                    origin.z + offset.z
-                );
-                if (!node.world.isBlockLoaded(targetPos)) {
-                    continue;
-                }
-                Biome b = node.world.getBiome(targetPos);
-                if (b != BiomeHandler.EERIE) {
-                    Utils.setBiomeAt(node.world, targetPos, BiomeHandler.EERIE);
-                    break;
-                }
-            }
+            spreadBiome(node, BiomeHandler.EERIE, radius);
         }
 
         int checkRadius = 7;
@@ -54,7 +35,7 @@ public class NTDark extends NTNormal {
                 if (Math.abs(dx) + Math.abs(dz) > checkRadius) continue; 
                 BlockPos checkPos = center.add(dx, 0, dz);
                 Biome b = node.world.getBiome(checkPos);
-                if (b == BiomeHandler.EERIE) eerieCount++;
+                if (isTargetBiome(b, BiomeHandler.EERIE)) eerieCount++;
             }
         }
         eerieCount = Math.min(eerieCount, 15);

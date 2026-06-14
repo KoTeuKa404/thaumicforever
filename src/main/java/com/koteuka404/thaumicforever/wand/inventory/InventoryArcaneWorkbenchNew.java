@@ -21,6 +21,8 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
     private int inventoryHeight = 3;
     private int inventoryWidth = 5;
     public Container eventHandler;
+    private int bulkUpdateDepth = 0;
+    private boolean pendingCraftMatrixChange = false;
 
     public InventoryArcaneWorkbenchNew(TileEntity tileEntity, Container container) {
         super(tileEntity, container);
@@ -105,6 +107,27 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
         }
     }
 
+    public void beginBulkUpdate() {
+        bulkUpdateDepth++;
+    }
+
+    public void endBulkUpdate() {
+        endBulkUpdate(false);
+    }
+
+    public void endBulkUpdate(boolean forceNotify) {
+        if (bulkUpdateDepth > 0) {
+            bulkUpdateDepth--;
+        }
+        if (forceNotify) {
+            pendingCraftMatrixChange = true;
+        }
+        if (bulkUpdateDepth == 0 && pendingCraftMatrixChange) {
+            pendingCraftMatrixChange = false;
+            notifyCraftMatrixChanged();
+        }
+    }
+
     private ItemStack getVirtualCrystal(int index) {
         ItemStack wand = getRealStackInSlot(15);
         if (wand.isEmpty()) return ItemStack.EMPTY;
@@ -133,6 +156,10 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
 
     private void notifyCraftMatrixChanged() {
         if (this.eventHandler == null || this.eventHandler instanceof ContainerDummy) return;
+        if (bulkUpdateDepth > 0) {
+            pendingCraftMatrixChange = true;
+            return;
+        }
         this.eventHandler.onCraftMatrixChanged(this);
     }
 

@@ -95,10 +95,23 @@ public class EntityAuraNode extends Entity {
 
     @Override
     public void onUpdate() {
-        if (spawned && getNodeSize() == 0) {
+        if (!world.isRemote && spawned) {
             spawned = false;
-            randomizeNode();
-            return;
+            if (getNodeType() == 0) {
+                if (getNodeSize() == 0) {
+                    randomizeNode();
+                    return;
+                }
+            } else {
+                if (getNodeSize() == 0) {
+                    randomizeForNodeType(getNodeType());
+                    return;
+                }
+                if (hasInvalidRestrictedSpecialAspects()) {
+                    enforceAspectLimit();
+                    return;
+                }
+            }
         }
 
         if (tickCounter < 0) tickCounter = rand.nextInt(200);
@@ -526,6 +539,13 @@ public class EntityAuraNode extends Entity {
 
     @Override
     protected void readEntityFromNBT(NBTTagCompound tag) {
+        boolean hasSavedAspects = tag.hasKey("nodeAspects", 10)
+            || tag.hasKey("originalAspects", 10)
+            || tag.hasKey("eatenAspects", 10);
+        if (hasSavedAspects) {
+            this.spawned = false;
+        }
+
         setNodeSize(tag.getInteger("size"));
         setNodeType(tag.getByte("type"));
 
@@ -674,6 +694,7 @@ public class EntityAuraNode extends Entity {
     }
 
     public void randomizeNode() {
+        spawned = false;
         double r = rand.nextDouble();
         int type;
         if      (r < CHANCE_SINISTER)  type = 1; // Dark
@@ -704,6 +725,37 @@ public class EntityAuraNode extends Entity {
     
         enforceAspectLimit();
         updateSyncAspects();
+    }
+
+    public void randomizeForNodeType(int type) {
+        spawned = false;
+        int clamped = MathHelper.clamp(type, 0, NodeType.nodeTypes.length - 1);
+        dataManager.set(NODE_TYPE, (byte)clamped);
+        if (clamped >= 1 && clamped <= 5) {
+            randomizeSpecialNode(clamped);
+        } else {
+            randomizeNormalNode();
+        }
+        updateSyncAspects();
+        originalAspects = nodeAspects.copy();
+        enforceAspectLimit();
+        updateSyncAspects();
+    }
+
+    private boolean hasInvalidRestrictedSpecialAspects() {
+        int t = getNodeType();
+        if (t != 1 && t != 2 && t != 3) return false;
+
+        Aspect[] aspects = nodeAspects.getAspects();
+        if (aspects == null || aspects.length == 0) return true;
+
+        for (Aspect aspect : aspects) {
+            if (aspect == null || nodeAspects.getAmount(aspect) <= 0) continue;
+            if (t == 1 && aspect != Aspect.UNDEAD && aspect != Aspect.DARKNESS) return true;
+            if (t == 2 && aspect != Aspect.VOID) return true;
+            if (t == 3 && aspect != Aspect.LIFE && aspect != Aspect.AURA) return true;
+        }
+        return false;
     }
     
 
@@ -858,7 +910,6 @@ public class EntityAuraNode extends Entity {
         world.createExplosion(null, posX, posY, posZ, power, false);
         spawnFluxAroundNode(33, 5, source);
     
-        enforceAspectLimit();
         updateSyncAspects();
     }
     

@@ -4,6 +4,10 @@ import com.koteuka404.thaumicforever.ThaumicForever;
 
 import com.koteuka404.thaumicforever.block.*;
 import com.koteuka404.thaumicforever.item.ItemBlockJarredNode;
+import com.koteuka404.thaumicforever.item.ItemBlockBigJar;
+import com.koteuka404.thaumicforever.item.ItemBlockAuraTotem;
+import com.koteuka404.thaumicforever.item.ItemBlockAuraTotemPole;
+import com.koteuka404.thaumicforever.item.ItemBlockPort;
 import com.koteuka404.thaumicforever.wand.block.BlockArcaneWorkbenchWandCharger;
 import com.koteuka404.thaumicforever.wand.block.BlockWandWorkbench;
 
@@ -43,15 +47,21 @@ public class ModBlocks {
     public static final Block COPPER_BLOCK = new BlockBase(Material.IRON, "copper_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block OBSIDIAN_TOTEM = new BlockBase(Material.IRON, "obsidian_totem").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block AURA_TOTEM = new BlockAuraTotem().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block AURA_TOTEM_POLE = new BlockAuraTotemPole().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block TIME_STOP = new BlockTimeStop().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block ABANDONED_CHEST = new BlockAbandonedChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block VOID_CHEST = new BlockVoidChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block ANTI_FLIGHT_STONE = new BlockAntiFlightStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block FLIGHT_STONE = new BlockFlightStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block FLUX_SCRAPER = new BlockFluxScraper().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block Duplicator = new BlockMatteryDuplicator().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block COMPRESSOR = new BlockCompressor().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block CRYSTALLIZER = new BlockCrystallizer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block PRIMAL_AURA_CONVERTER = new BlockPrimalAuraConverter().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block REDSTONE_TICKER = new BlockRedstoneTicker().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block RED_ROSE = new BlockRedRose().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block BLUE_ROSE = new BlockBlueRose();
@@ -107,13 +117,19 @@ public class ModBlocks {
             TIN_BLOCK,
             COPPER_BLOCK,
             OBSIDIAN_TOTEM,
+            AURA_TOTEM,
+            AURA_TOTEM_POLE,
             ABANDONED_CHEST,
+            VOID_CHEST,
             ANTI_FLIGHT_STONE,
             FLIGHT_STONE,
             FLUX_SCRAPER,
             TIME_STOP,
             Duplicator,
             COMPRESSOR,
+            CRYSTALLIZER,
+            PRIMAL_AURA_CONVERTER,
+            REDSTONE_TICKER,
             RED_ROSE,
             BLUE_ROSE,
             BlockRepurposer,
@@ -167,7 +183,10 @@ public class ModBlocks {
             new ItemBlock(TIN_BLOCK).setRegistryName(TIN_BLOCK.getRegistryName()),
             new ItemBlock(COPPER_BLOCK).setRegistryName(COPPER_BLOCK.getRegistryName()),
             new ItemBlock(OBSIDIAN_TOTEM).setRegistryName(OBSIDIAN_TOTEM.getRegistryName()),
+            new ItemBlockAuraTotem(AURA_TOTEM).setRegistryName(AURA_TOTEM.getRegistryName()),
+            new ItemBlockAuraTotemPole(AURA_TOTEM_POLE).setRegistryName(AURA_TOTEM_POLE.getRegistryName()),
             new ItemBlock(ABANDONED_CHEST).setRegistryName(ABANDONED_CHEST.getRegistryName()),
+            new ItemBlock(VOID_CHEST).setRegistryName(VOID_CHEST.getRegistryName()),
             new ItemBlock(ANTI_FLIGHT_STONE).setRegistryName(ANTI_FLIGHT_STONE.getRegistryName()),
             new ItemBlock(FLIGHT_STONE).setRegistryName(FLIGHT_STONE.getRegistryName()),
             new ItemBlock(FLUX_SCRAPER).setRegistryName(FLUX_SCRAPER.getRegistryName()),
@@ -176,11 +195,14 @@ public class ModBlocks {
             new ItemBlock(RED_ROSE).setRegistryName(RED_ROSE.getRegistryName()),
             new ItemBlock(BLUE_ROSE).setRegistryName(BLUE_ROSE.getRegistryName()),
             new ItemBlock(COMPRESSOR).setRegistryName(COMPRESSOR.getRegistryName()),
+            new ItemBlock(CRYSTALLIZER).setRegistryName(CRYSTALLIZER.getRegistryName()),
+            new ItemBlock(PRIMAL_AURA_CONVERTER).setRegistryName(PRIMAL_AURA_CONVERTER.getRegistryName()),
+            new ItemBlock(REDSTONE_TICKER).setRegistryName(REDSTONE_TICKER.getRegistryName()),
             new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName()),
             new ItemBlock(BlockTimeStone).setRegistryName(BlockTimeStone.getRegistryName()),
             new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName()),
             new ItemBlock(BlockMechanismAmplifier).setRegistryName(BlockMechanismAmplifier.getRegistryName()),
-            new ItemBlock(Port).setRegistryName(Port.getRegistryName()),
+            new ItemBlockPort(Port).setRegistryName(Port.getRegistryName()),
             new ItemBlock(PRIMALBLOCK).setRegistryName(PRIMALBLOCK.getRegistryName()),
             new ItemBlock(EndOreBlock).setRegistryName(EndOreBlock.getRegistryName()),
             new ItemBlock(VisPlant).setRegistryName(VisPlant.getRegistryName()),
@@ -204,7 +226,7 @@ public class ModBlocks {
         );
 
         if (BIG_JAR_ITEM == null) {
-            BIG_JAR_ITEM = new ItemBlock(BIG_JAR);
+            BIG_JAR_ITEM = new ItemBlockBigJar(BIG_JAR);
             BIG_JAR_ITEM.setRegistryName(BIG_JAR.getRegistryName());
             registry.register(BIG_JAR_ITEM);
         }
@@ -254,13 +276,22 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIN_BLOCK), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COPPER_BLOCK), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OBSIDIAN_TOTEM), 0, "inventory");
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM), 0, new ModelResourceLocation("thaumicforever:aura_totem", "type=push"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM), 1, new ModelResourceLocation("thaumicforever:aura_totem", "type=pull"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM_POLE), 0, new ModelResourceLocation("thaumicforever:aura_totem_pole", "type=pole_outer"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM_POLE), 1, new ModelResourceLocation("thaumicforever:aura_totem_pole", "type=pole_inner"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM_POLE), 2, new ModelResourceLocation("thaumicforever:aura_totem_pole", "type=pole_pure"));
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ABANDONED_CHEST), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VOID_CHEST), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANTI_FLIGHT_STONE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(FLIGHT_STONE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(FLUX_SCRAPER), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIME_STOP), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(Duplicator), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COMPRESSOR), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(CRYSTALLIZER), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(PRIMAL_AURA_CONVERTER), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(REDSTONE_TICKER), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RED_ROSE), 0, "thaumicforever:red_rose");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BLUE_ROSE), 0, "thaumicforever:blue_rose");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockRepurposer), 0, "inventory");

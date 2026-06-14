@@ -17,7 +17,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -33,7 +32,6 @@ public class TileGreatResearchTable extends TileEntity implements IInventory, IT
     private static final int RESOURCE_STEP_COUNT = 20;
     private static final int XP_COST_PER_STEP = 1;
     private static final int ESSENTIA_COST_PER_STEP = 1;
-    private static final int PLAYER_XP_RANGE = 8;
     private static final int MIND_ESSENTIA_RANGE = 8;
     public static final int BASE_SOLVE_TICKS = 20 * 60 * 10;
 
@@ -62,6 +60,11 @@ public class TileGreatResearchTable extends TileEntity implements IInventory, IT
         int brains = Math.min(TileBigJar.MAX_BRAINS, jar.getBrainCount());
         if (brains <= 0) {
             resetProgress();
+            return;
+        }
+
+        if (jar.getXp() < XP_COST_PER_STEP) {
+            if (world.getTotalWorldTime() % 20 == 0) sync();
             return;
         }
 
@@ -133,11 +136,10 @@ public class TileGreatResearchTable extends TileEntity implements IInventory, IT
     }
 
     private boolean consumeStepResources(TileBigJar jar) {
-        EntityPlayer player = findNearestPlayerWithExperience();
-        if (player == null) return false;
+        if (jar == null || jar.getXp() < XP_COST_PER_STEP) return false;
         if (!drainMindEssentiaFromJar(jar) && !drainMindEssentiaNearby()) return false;
 
-        consumePlayerExperience(player, XP_COST_PER_STEP);
+        if (!jar.consumeExperience(XP_COST_PER_STEP)) return false;
         consumeInk();
         nextInkProgress += BASE_SOLVE_TICKS / RESOURCE_STEP_COUNT;
         markDirty();
@@ -146,30 +148,6 @@ public class TileGreatResearchTable extends TileEntity implements IInventory, IT
 
     private boolean drainMindEssentiaFromJar(TileBigJar jar) {
         return jar != null && jar.takeEssentia(Aspect.MIND, ESSENTIA_COST_PER_STEP, EnumFacing.UP) >= ESSENTIA_COST_PER_STEP;
-    }
-
-    private EntityPlayer findNearestPlayerWithExperience() {
-        AxisAlignedBB range = new AxisAlignedBB(pos).grow(PLAYER_XP_RANGE);
-        EntityPlayer best = null;
-        double bestDistance = Double.MAX_VALUE;
-
-        for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, range)) {
-            if (player == null || player.isSpectator()) continue;
-            if (!player.capabilities.isCreativeMode && player.experienceTotal < XP_COST_PER_STEP) continue;
-
-            double distance = player.getDistanceSq(pos);
-            if (distance < bestDistance) {
-                best = player;
-                bestDistance = distance;
-            }
-        }
-
-        return best;
-    }
-
-    private void consumePlayerExperience(EntityPlayer player, int amount) {
-        if (player == null || player.capabilities.isCreativeMode || amount <= 0) return;
-        player.addExperience(-amount);
     }
 
     private boolean drainMindEssentiaNearby() {

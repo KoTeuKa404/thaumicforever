@@ -25,6 +25,7 @@ import com.koteuka404.thaumicforever.client.gui.GuiMatteryDuplicator;
 import com.koteuka404.thaumicforever.client.gui.GuiMysticTabExample;
 import com.koteuka404.thaumicforever.client.gui.GuiPotionGun;
 import com.koteuka404.thaumicforever.client.gui.GuiRepurposer;
+import com.koteuka404.thaumicforever.client.gui.GuiVoidChest;
 import com.koteuka404.thaumicforever.container.ContainerAbandonedChest;
 import com.koteuka404.thaumicforever.container.ContainerCompressor;
 import com.koteuka404.thaumicforever.container.ContainerMatteryDuplicator;
@@ -32,6 +33,8 @@ import com.koteuka404.thaumicforever.container.ContainerMysticTabExample;
 import com.koteuka404.thaumicforever.container.ContainerPotionGun;
 import com.koteuka404.thaumicforever.container.ContainerPouch;
 import com.koteuka404.thaumicforever.container.ContainerRepurposer;
+import com.koteuka404.thaumicforever.container.ContainerVoidChest;
+import com.koteuka404.thaumicforever.inventory.InventoryVoidChest;
 import com.koteuka404.thaumicforever.inventory.InventoryPotionGun;
 import com.koteuka404.thaumicforever.inventory.InventoryPouch;
 import com.koteuka404.thaumicforever.item.ItemPotionGun;
@@ -42,6 +45,7 @@ import com.koteuka404.thaumicforever.tile.TileEntityAbandonedChest;
 import com.koteuka404.thaumicforever.tile.TileEntityCompressor;
 import com.koteuka404.thaumicforever.tile.TileEntityMatteryDuplicator;
 import com.koteuka404.thaumicforever.tile.TileEntityRepurposer;
+import com.koteuka404.thaumicforever.tile.TileVoidChest;
 import com.koteuka404.thaumicforever.container.DeconstructionTableContainer;
 import com.koteuka404.thaumicforever.container.DoubleTableContainer;
 import com.koteuka404.thaumicforever.container.GreatResearchTableContainer;
@@ -61,6 +65,7 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int GUI_POUCH                  = 9;
     public static final int GUI_POTION_GUN             = 10;
     public static final int GREAT_RESEARCH_TABLE_GUI   = 11;
+    public static final int VOID_CHEST_GUI_ID          = 12;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -72,6 +77,9 @@ public class ModGuiHandler implements IGuiHandler {
         }
         else if (id == CHEST_GUI_ID && te instanceof TileEntityAbandonedChest) {
             return new ContainerAbandonedChest(inv, (TileEntityAbandonedChest) te);
+        }
+        else if (id == VOID_CHEST_GUI_ID && te instanceof TileVoidChest) {
+            return new ContainerVoidChest(inv, new InventoryVoidChest((TileVoidChest) te));
         }
         else if (id == DOUBLE_TABLE_GUI && te instanceof DoubleTableTileEntity) {
             return new DoubleTableContainer(inv, (DoubleTableTileEntity) te);
@@ -116,6 +124,9 @@ public class ModGuiHandler implements IGuiHandler {
         }
         else if (id == CHEST_GUI_ID && te instanceof TileEntityAbandonedChest) {
             return new ChestGui(player.inventory, (TileEntityAbandonedChest) te);
+        }
+        else if (id == VOID_CHEST_GUI_ID && te instanceof TileVoidChest) {
+            return new GuiVoidChest(player.inventory, new InventoryVoidChest((TileVoidChest) te));
         }
         else if (id == DOUBLE_TABLE_GUI && te instanceof DoubleTableTileEntity) {
             return new DoubleTableGui(player.inventory, (DoubleTableTileEntity) te);

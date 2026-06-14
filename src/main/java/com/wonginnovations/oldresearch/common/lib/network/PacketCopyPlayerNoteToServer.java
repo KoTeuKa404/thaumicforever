@@ -6,6 +6,7 @@ import com.wonginnovations.oldresearch.common.items.ModItems;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
 import com.wonginnovations.oldresearch.common.lib.research.ResearchNoteData;
 import com.wonginnovations.oldresearch.common.tiles.TileResearchTable;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -51,6 +52,9 @@ public class PacketCopyPlayerNoteToServer implements IMessage, IMessageHandler<P
     }
 
     public IMessage onMessage(PacketCopyPlayerNoteToServer message, MessageContext ctx) {
+        if (!OldResearchToggle.isEnabled()) {
+            return null;
+        }
         IThreadListener mainThread = ctx.getServerHandler().player.getServerWorld();
         mainThread.addScheduledTask(new Runnable() {
             public void run() {

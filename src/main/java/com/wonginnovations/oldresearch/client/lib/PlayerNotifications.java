@@ -1,6 +1,7 @@
 package com.wonginnovations.oldresearch.client.lib;
 
 import com.wonginnovations.oldresearch.config.ModConfig;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.aspects.Aspect;
@@ -16,6 +17,7 @@ public class PlayerNotifications {
     }
 
     public static void addAspectNotification(Aspect aspect) {
+        if (!OldResearchToggle.isEnabled()) return;
         long time = System.nanoTime() / 1000000L + (long) Minecraft.getMinecraft().world.rand.nextInt(1000);
         float x = 0.4F + Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F;
         float y = 0.4F + Minecraft.getMinecraft().world.rand.nextFloat() * 0.2F;
@@ -31,12 +33,17 @@ public class PlayerNotifications {
     }
 
     public static void addNotification(String text, ResourceLocation image, int color) {
+        if (!OldResearchToggle.isEnabled()) return;
         long time = System.nanoTime() / 1000000L;
         long timeBonus = notificationList.size() == 0?(long)(ModConfig.notificationDelay / 2):0L;
         notificationList.add(new Notification(text, image, time + (long)ModConfig.notificationDelay + timeBonus, time + (long)(ModConfig.notificationDelay / 4), color));
     }
 
     public static ArrayList<PlayerNotifications.Notification> getListAndUpdate(long time) {
+        if (!OldResearchToggle.isEnabled()) {
+            notificationList.clear();
+            return notificationList;
+        }
         ArrayList<PlayerNotifications.Notification> temp = new ArrayList<>();
         boolean first = true;
 
@@ -57,6 +64,10 @@ public class PlayerNotifications {
     }
 
     public static ArrayList<PlayerNotifications.AspectNotification> getAspectListAndUpdate(long time) {
+        if (!OldResearchToggle.isEnabled()) {
+            aspectList.clear();
+            return aspectList;
+        }
         ArrayList<PlayerNotifications.AspectNotification> temp = new ArrayList<>();
 
         for(PlayerNotifications.AspectNotification li : aspectList) {

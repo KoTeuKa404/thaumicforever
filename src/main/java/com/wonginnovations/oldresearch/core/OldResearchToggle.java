@@ -6,10 +6,14 @@ import net.minecraftforge.common.config.Configuration;
 
 public final class OldResearchToggle {
     private static Boolean enabled;
+    private static Boolean serverOverride;
 
     private OldResearchToggle() {}
 
     public static boolean isEnabled() {
+        if (serverOverride != null) {
+            return serverOverride.booleanValue();
+        }
         if (enabled != null) {
             return enabled.booleanValue();
         }
@@ -31,6 +35,14 @@ public final class OldResearchToggle {
             enabled = Boolean.TRUE;
         }
         return enabled.booleanValue();
+    }
+
+    public static void setServerOverride(boolean enabled) {
+        serverOverride = Boolean.valueOf(enabled);
+    }
+
+    public static void clearServerOverride() {
+        serverOverride = null;
     }
 
     private static File resolveConfigFile() {

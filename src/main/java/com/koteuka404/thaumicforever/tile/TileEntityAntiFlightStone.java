@@ -32,7 +32,7 @@ public class TileEntityAntiFlightStone extends TileEntity implements ITickable {
         if (tickCounter % CHECK_INTERVAL == 0) {
             List<EntityPlayer> players = world.playerEntities;
             for (EntityPlayer player : players) {
-                if (player == null || player.isCreative()) {
+                if (player == null || player.capabilities.isCreativeMode || player.isSpectator()) {
                     continue;
                 }
 

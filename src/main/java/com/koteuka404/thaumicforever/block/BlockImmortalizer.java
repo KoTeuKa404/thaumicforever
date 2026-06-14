@@ -75,16 +75,6 @@ public class BlockImmortalizer extends Block implements ITileEntityProvider {
                 }
 
                 if (heldItem.isEmpty()) {
-                    String aspectTag = TileEntityImmortalizer.REQUIRED_ASPECT != null
-                            ? TileEntityImmortalizer.REQUIRED_ASPECT.getTag()
-                            : "null";
-                    if (!automatedActivator) {
-                        player.sendStatusMessage(
-                                new net.minecraft.util.text.TextComponentString(
-                                        "Essentia: " + immortalizer.getStoredEssentia() + "/1000 (" + aspectTag + ")"),
-                                true
-                        );
-                    }
                     if (automatedActivator) {
                         return false;
                     }

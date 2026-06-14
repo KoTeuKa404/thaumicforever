@@ -101,6 +101,22 @@ public class RenderTileBigJar extends TileEntitySpecialRenderer<TileBigJar> {
         double cx = te.getPos().getX() + 1.0D;
         double cz = te.getPos().getZ() + 1.0D;
         double originY = te.getPos().getY() + jarScaleY;
+        boolean hasTrackTarget = false;
+        double trackX = 0.0D;
+        double trackY = 0.0D;
+        double trackZ = 0.0D;
+        boolean incitingGolem = te != null && te.hasInciteTarget();
+        if (incitingGolem) {
+            hasTrackTarget = true;
+            trackX = te.getInciteTargetX();
+            trackY = te.getInciteTargetY();
+            trackZ = te.getInciteTargetZ();
+        } else if (player != null) {
+            hasTrackTarget = true;
+            trackX = player.posX;
+            trackY = player.posY + player.getEyeHeight();
+            trackZ = player.posZ;
+        }
 
         for (int i = 0; i < BRAIN_COUNT; i++) {
             float cxOff = te != null ? te.getBrainOffsetX(i) : 0.0F;
@@ -122,9 +138,9 @@ public class RenderTileBigJar extends TileEntitySpecialRenderer<TileBigJar> {
             targetZ[i] = czOff;
         }
 
-        if (player != null && te != null && te.getWorld() != null) {
-            double dxCenter = player.posX - cx;
-            double dzCenter = player.posZ - cz;
+        if (hasTrackTarget && te != null && te.getWorld() != null) {
+            double dxCenter = trackX - cx;
+            double dzCenter = trackZ - cz;
             double distXZ = MathHelper.sqrt(dxCenter * dxCenter + dzCenter * dzCenter);
             if (distXZ <= BRAIN_TRACK_RANGE && distXZ > 1.0E-4D) {
                 float t = (float) ((BRAIN_TRACK_RANGE - distXZ) / BRAIN_TRACK_RANGE);
@@ -133,8 +149,8 @@ public class RenderTileBigJar extends TileEntitySpecialRenderer<TileBigJar> {
                 double nz = dzCenter / distXZ;
                 double sideX = -nz;
                 double sideZ = nx;
-                float push = 0.05F * t;
-                float sidePush = 0.06F * t;
+                float push = (incitingGolem ? 0.14F : 0.05F) * t;
+                float sidePush = (incitingGolem ? 0.03F : 0.06F) * t;
                 float[] sideLane = { -1.75F, -1.25F, -0.75F, -0.25F, 0.25F, 0.75F, 1.25F, 1.75F };
 
                 float yPush = 0.0F;
@@ -200,12 +216,12 @@ public class RenderTileBigJar extends TileEntitySpecialRenderer<TileBigJar> {
             }
         }
 
-        boolean shouldTrackPlayer = false;
-        if (player != null && te != null) {
-            double dxTrack = player.posX - cx;
-            double dzTrack = player.posZ - cz;
+        boolean shouldTrackTarget = false;
+        if (hasTrackTarget && te != null) {
+            double dxTrack = trackX - cx;
+            double dzTrack = trackZ - cz;
             double distXZTrack = MathHelper.sqrt(dxTrack * dxTrack + dzTrack * dzTrack);
-            shouldTrackPlayer = distXZTrack <= BRAIN_TRACK_RANGE;
+            shouldTrackTarget = distXZTrack <= BRAIN_TRACK_RANGE;
         }
 
         for (int i = 0; i < activeBrains; i++) {
@@ -213,13 +229,13 @@ public class RenderTileBigJar extends TileEntitySpecialRenderer<TileBigJar> {
             GlStateManager.translate(x + moveX[i], y + moveY[i], z + moveZ[i]);
             GlStateManager.scale(scale / jarScaleX, scale / jarScaleY, scale / jarScaleZ);
 
-            if (shouldTrackPlayer && te != null && te.getWorld() != null) {
+            if (shouldTrackTarget && te != null && te.getWorld() != null) {
                 double bx = cx + moveX[i] * jarScaleX;
                 double by = originY - (y + moveY[i]) * jarScaleY;
                 double bz = cz - moveZ[i] * jarScaleZ;
-                double dx = player.posX - bx;
-                double dy = player.posY + player.getEyeHeight() - by;
-                double dz = player.posZ - bz;
+                double dx = trackX - bx;
+                double dy = trackY - by;
+                double dz = trackZ - bz;
                 float yaw = (float)(MathHelper.atan2(dz, dx) * (180D / Math.PI)) - 90.0F;
                 float pitch = (float)(-MathHelper.atan2(dy, MathHelper.sqrt(dx * dx + dz * dz)) * (180D / Math.PI));
                 pitch = MathHelper.clamp(pitch, -25.0F, 15.0F);

@@ -16,6 +16,7 @@ public class GreatResearchTableGui extends DoubleTableGui {
     private static final int WRITING_TOOL_U = 240;
     private static final int WRITING_TOOL_V = 26;
     private static final int WRITING_TOOL_SIZE = 16;
+    private static final float WRITING_TOOL_SCALE = 1.15F;
     private final IInventory greatTableInventory;
 
     public GreatResearchTableGui(InventoryPlayer playerInventory, IInventory tileEntity) {
@@ -64,7 +65,8 @@ public class GreatResearchTableGui extends DoubleTableGui {
 
         GL11.glPushMatrix();
         GL11.glTranslatef(x + 8.0F, y + 8.0F, 80.0F);
-        GL11.glRotatef((float)Math.sin(t * Math.PI * 2.0D) * 18.0F - 25.0F, 0.0F, 0.0F, 1.0F);
+        GL11.glRotatef((float)Math.sin(t * Math.PI * 2.0D) * 8.0F - 8.0F, 0.0F, 0.0F, 1.0F);
+        GL11.glScalef(WRITING_TOOL_SCALE, WRITING_TOOL_SCALE, 1.0F);
         GL11.glTranslatef(-8.0F, -8.0F, 0.0F);
         this.mc.getTextureManager().bindTexture(TEXTURE);
         drawModalRectWithCustomSizedTexture(
@@ -78,14 +80,6 @@ public class GreatResearchTableGui extends DoubleTableGui {
             256
         );
         GL11.glPopMatrix();
-
-        int seed = progress / 7;
-        for (int i = 0; i < 5; i++) {
-            int dotX = paperX + 18 + Math.abs(seed * 17 + i * 29) % (paperW - 36);
-            int dotY = paperY + 22 + Math.abs(seed * 11 + i * 19) % (paperH - 34);
-            int alpha = 35 + (int)(Math.sin((time + i * 13L) / 8.0D) * 18.0D);
-            drawRect(dotX, dotY, dotX + 1, dotY + 1, (alpha << 24) | 0x2B1B10);
-        }
     }
 
     private static class MinecraftTime {

@@ -75,6 +75,10 @@ public class EntitySkeletonAngry extends EntityMob {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+        if (this.world.isRemote) {
+            return;
+        }
+
         burnInSunlight();
 
         EntityPlayer player = this.world.getClosestPlayerToEntity(this, 15.0D);

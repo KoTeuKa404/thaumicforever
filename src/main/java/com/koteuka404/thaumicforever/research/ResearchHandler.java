@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.research;
 
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -24,6 +25,9 @@ public class ResearchHandler {
             new ResourceLocation("thaumicforever", "textures/gui/test.png"),
             new ResourceLocation("thaumicforever", "textures/gui/test.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(ThaumicForever.MODID, "research/primal_research"));
+        if (Loader.isModLoaded("thaumadditions")) {
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(ThaumicForever.MODID, "research/primal_thaumadditions_research"));
+        }
         
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(ThaumicForever.MODID, "research/add_bases"));
     }

@@ -290,6 +290,7 @@ public class CraftingRecipes {
             'D', new ItemStack(ModBlocks.DOOR_GREATWOOD_ITEM)
 
         );
+
         GameRegistry.addShapedRecipe(
             new ResourceLocation("thaumicforever", "greatwood_trapdoor"),
             null,

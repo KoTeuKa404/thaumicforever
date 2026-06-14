@@ -112,7 +112,7 @@ item.bowl_zombie.name=Zombie Bowl
 research.NEWRUNICS.title=New Runics
 
 research.NEWRUNICS.stage.1=I have begun researching the art of imbuing magical properties into wearable baubles. By infusion onto simple baubles, I can create enchanted items that provide their wearer with unique abilities. These runic charms will be a new way to harness the power of the magic in a portable and versatile form.
-research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.<PAGE/><BR>§lRegeneration Ring§r<BR/>The Regeneration Ring draws upon the very essence of life, granting the wearer periodic surges of healing. Every 13 seconds it radiates a verdant glow, applying Regeneration I for 3 seconds. The effect stacks: each additional ring raises the regeneration level (Regeneration II, III, etc.), ensuring ever‑quicker recovery for those who don more than one.<PAGE/><BR>§lRevive Ring§r<BR/>When a fatal strike would drop its bearer, the Revive Ring intervenes, halting damage at 1 health. All negative effects are instantly cleansed, and the ring then enters a 5‑minute cooldown. This single‑use salvation offers a second chance to anyone caught in truly desperate circumstances.<PAGE/><BR>§lCooldown Ring§r<BR/>The Cooldown Ring is inscribed with ancient magic that steadily lighten the burden of spellcraft. For each ring worn, caster cooldowns are reduced.Effects stack multiplicatively: every extra ring further trims cooldown times, making this relic indispensable for prolonged confrontations.
+research.NEWRUNICS.stage.2=The process of crafting runic baubles is more intricate than I first imagined. Each piece requires careful infusion elements. With this knowledge, I can now create baubles that offer powerful protections and enhancements to those who wear them.<PAGE/><BR>§lVerdant Ring§r<BR/>The Verdant Ring is imbued with the power of nature, cleansing its wearer from all negative effects. The ring automatically purifies any harmful potion effects afflicting the wearer; however, it comes with a cooldown of 40 seconds. This ability is invaluable for those who find themselves frequently facing curses or debuffs, offering consistent protection in the face of danger. The ring is quiet, subtle, and a vital defense for those venturing into dangerous realms where malevolent magics lurk.<PAGE/><BR>§lRunic Charge Ring§r<BR/>The Runic Charge Ring holds within it the raw energy of ancient runes. Once worn, the ring grants the bearer both physical might and the resilience of fire immunity. Its runic power increases the wearer's strength, allowing them to deal more damage in combat. Simultaneously, it shields them from fiery environments, making them immune to flames and lava. The combination of strength and fire resistance makes the Runic Charge Ring a powerful tool for adventurers venturing into fiery dungeons or battling fearsome, flame-wielding foes.<PAGE/><BR>§lEnder Ring§r<BR/>The Ender Ring is attuned to the chaotic energies of the End dimension. When the wearer is harmed and their health drops below a critical level, the ring activates its protective magic, teleporting them to a random location, similar to the chorus fruit's unpredictable effect. This emergency teleportation provides a swift escape from dangerous situations. However, it comes with a cooldown of 80 seconds, meaning the wearer must use it wisely and strategically. The Ender Ring offers a lifeline for those who frequently face overwhelming threats but are resourceful enough to rely on its chaotic magic.<PAGE/><BR>§lZombie Heart Amulet§r<BR/>The Zombie Heart Amulet is a unique artifact that houses the soul of a Furious Zombie. Should the wearer fall into dire straits, with their health critically low, the amulet shatters, releasing the enraged zombie to protect its master. The summoned Furious Zombie aggressively attacks nearby enemies, offering a final line of defense when the wearer is most vulnerable. The amulet can also be activated manually, allowing the wearer to call upon the Furious Zombie at will to aid them in combat. However, once broken, the amulet is destroyed, and a new one must be crafted to house another zombie soul.<PAGE/><BR>§lRegeneration Ring§r<BR/>The Regeneration Ring draws upon the very essence of life, granting the wearer periodic surges of healing. Every 13 seconds it radiates a verdant glow, applying Regeneration I for 3 seconds. The effect stacks: each additional ring raises the regeneration level (Regeneration II, III, etc.), ensuring ever‑quicker recovery for those who don more than one.<PAGE/><BR>§lRevive Ring§r<BR/>When a fatal strike would drop its bearer, the Revive Ring intervenes, halting damage at 1 health. All negative effects are instantly cleansed, and the ring then enters a 5‑minute cooldown. This single‑use salvation offers a second chance to anyone caught in truly desperate circumstances.<PAGE/><BR>§lHaste Ring§r<BR/>The Haste Ring is inscribed with ancient magic that lightens the burden of spellcraft. For each ring worn, caster cooldowns are reduced. Effects stack multiplicatively: every extra ring further trims cooldown times, making this relic indispensable for prolonged confrontations.
 
 
 research.REVIVE_SKELET.title=Revive Skeleton
@@ -154,6 +154,9 @@ research.MINDCONTROL.stage.2=My suppression now reaches deeper, allowing me to i
 research.NEWARTIFICE.title=New Artifice
 research.NEWARTIFICE.stage.1=I have moved beyond simple arcane tools and started designing true hybrid mechanisms: devices where magical flow and mechanical logic support each other instead of competing.
 research.NEWARTIFICE.stage.2=My newer designs prove that careful engineering can make unstable arcane principles practical. Proper casings, calibrated channels, and staged discharge loops let these machines run consistently in field conditions.<PAGE>§lTime Trap§r<BR>The Time Trap is my first successful tactical prototype in this line. It condenses temporal distortion into a throw-capable frame and releases it on impact, slowing movement in the affected zone.<IMG>thaumicforever:textures/misc/time_trap.png:0:0:255:255:0.5</IMG><BR>Accurate placement matters: a misplaced trap wastes charge, while a precise one can decide a fight before it begins.<PAGE>
+research.ADVARTIFICE.title=Advanced Artifice
+research.ADVARTIFICE.stage.1=The first machines taught me that brass is sufficient for motion, thaumium for obedience, and void metal for endurance. By comparing their gears under stress, I can begin designing mechanisms that do not merely contain magic, but regulate it with intent.
+research.ADVARTIFICE.stage.2=Advanced Artifice is the discipline of making arcane machinery think in small, reliable steps. Layered gear trains, warded housings, and void-sunk tolerances allow a device to hold power longer, discharge it cleaner, and survive mistakes that would tear simpler work apart.
 research.FLUXSCRUBBER.title=Flux Scrubber
 research.FLUXSCRUBBER.stage.1=I needed a cheap, practical answer to recurring Flux buildup, so I started developing a rough scrubber from common materials. It is not elegant and not precise, but it is affordable and useful for everyday containment.
 research.FLUXSCRUBBER.stage.2=§lFlux Scrubber§r<BR>This is a crude tool, not a surgical instrument. Every 20 seconds it emits one pulse in its current aura chunk: with a 50% chance it removes Flux, and with a 50% chance it removes Vis.<BR>In short: inexpensive, practical, and intentionally inaccurate.
@@ -183,7 +186,7 @@ research.CLOAK.stage.2=The Shadowed Cloak has become an extension of your will. 
 
 research.UNSTONE.title=Anti-Flight Stone
 research.UNSTONE.stage.1=In my anti-magic studies, I discovered a peculiar stone that disrupts flight enchantments. When placed, the Anti-Flight Stone creates a field that forcibly suppresses magical flight.
-research.UNSTONE.stage.2=§lAnti-Flight Stone§r<BR>The Anti-Flight Stone projects over a 3x3 chunk radius (48 blocks in each direction). Any thaumaturge or creature attempting flight inside this field will lose that capability.<PAGE>It is durable, difficult to remove without proper tools, and ideal for protecting restricted areas from airborne intrusion.
+research.UNSTONE.stage.2=§lAnti-Flight Stone§r<BR>This warded stone anchors the air around it, projecting a 3x3 chunk field that suppresses magical flight. Wings, levitation, and other airborne tricks fail inside its reach, making it a stubborn guardian for restricted places.<PAGE>§lFlight Stone§r<BR>By reversing the same pattern, the Flight Stone lends lift instead of stealing it. It is built from the anti-flight form and turns that grounded force into controlled ascent.
 
 research.DUPLICATOR.title=Mattery Duplicator
 research.DUPLICATOR.stage.1=When the Pattern Crafter block reached its limits, I drafted a new machine: one that harnesses Mattery essence to replicate matter directly.
@@ -210,7 +213,7 @@ research.RESEARCHCLEANFT.stage.2=I can now distill §lLucidity Elixir§r in the 
 
 research.DeconstructionTable.title=Deconstruction Table
 research.DeconstructionTable.stage.1=I constructed a Deconstruction Table to break common items into base components and study the hidden arcane traits within. Its ability to extract curios makes it indispensable when mundane matter must be analyzed.
-research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>Matter remembers. With careful pressure and a little controlled ruin, this table peels those memories from an item and presses them into a Knowledge Fragment.<BR><BR>Any object bearing registered aspects may be sacrificed. The richer its nature, the richer the fragment. Right-click the fragment to reclaim the aspects.
+research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>Matter remembers. With careful pressure and a little controlled ruin, this table peels those memories from an item and presses them into a Knowledge Fragment.<BR>Any object bearing registered aspects may be sacrificed. The richer its nature, the richer the fragment. Right-click the fragment to reclaim the aspects.
 
 item.ring_ender.name=Ender Ring 
 item.artifact_ruby_ring.name=Ruby Ring of Vampirism
@@ -380,8 +383,14 @@ entity.Villager.wizard=Wizard
 entity.Villager.coin_trader=Coin Trader
 entity.bvilager.name=Zombie Villager
 entity.gorilla.name=Gorilla
-item.seal.golem_core_fish.name=Control Seal: Fishing
-item.seal.golem_core_essentia.name=Control Seal: Crystal Refill
+item.seal.golem_core_fish.name=Advanced Control Seal: Fishing
+item.seal.golem_core_essentia.name=Advanced Control Seal: Crystal Refill
+item.seal.use_advanced.name=Advanced Control Seal: Use
+thaumicforever.golem.prop.repeat_use=Repeat task
+thaumicforever.golem.prop.require_redstone=Requires redstone
+item.seal.trade.name=Advanced Control Seal: Trade
+thaumicforever.golem.prop.repeat_trade=Repeat trades
+thaumicforever.golem.prop.match_nbt=Match NBT
 
 item.holywater.name=Holy Water
 item.taint_tendril.name=Tainted Tendril
@@ -536,6 +545,8 @@ tc.research_text.PRIMALNODE=Just rub them together, and something will happen
 research.PRIMALNODE.stage.1=You have developed a wild theory worth investigating. Why not try merging a singular pearl with an aura node?<BR>Seriously, combining two sources of raw magical energy could be catastrophic, but it’s also extremely exciting and interesting.<BR>You are certain this research will increase your chances of success. Just a little bit.
 #
 tile.port.name=Port
+tooltip.thaumicforever.port.cv=Conducts CV between compatible thaumic devices.
+tooltip.thaumicforever.port.link=Link Ports to move centi-vis across distance.
 tile.buff_node_stabilizer.name=Advanced Node Stabilizer
 item.compass_maze.name=Maze Compass
 item.turret_magnet.name=Node Magnet
@@ -867,12 +878,12 @@ item.pouch.name=Pouch
 
 item.researchnote.name=Research Note
 item.researchnote.unknown.1=Unknown Knowledge
-item.researchnote.unknown.2=<Right-click to reveal>
-item.discovery.name=Discovery
-researchnote.complete=Research note completed!
-researchnote.click=Click to research
-researchnote.missing.tools=You need scribing tools to copy a research note.
-researchnote.missing.paper=You need paper to copy a research note.
+item.researchnote.unknown.2=<Right click to reveal>
+item.discovery.name=§5Discovery
+researchnote.complete=Research Note Completed!
+researchnote.click=§o§7Click to obtain.
+researchnote.missing.tools=Scribing tools required to create research notes.
+researchnote.missing.paper=Paper required to create research notes.
 tc.researchtheory=%s Theory
 item.knowledgefragment.name=Knowledge Fragment
 item.researchnote.name=Research Note
@@ -973,11 +984,11 @@ research.RESEARCHDUPE.stage.2=You have discovered a way to copy completed resear
 item.big_jar.name=Big Jar
 tile.big_jar.name=Big Jar
 tile.flower_pot_custom.name=Flower Pot
-item.seal.golem_core_fish_advanced.name=Control Seal: Advanced Fishing
+item.seal.golem_core_fish_advanced.name=Advanced Control Seal: Fishing
 research.HERBAALKIMIA.stage.3=The Nature Core acts like a super fertilizer. It can instantly grow saplings, including the magical-forest oak variant.
 research.WANDCHARGE.title=Wand Charging Array
 research.WANDCHARGE.stage.0=The standard charger is useful, but it does not account for the unstable pulse that appears when a wand is fed from dense aura pockets. I can stabilize this process by forcing vis through a tuned crystal focus and a resonant support frame.<PAGE>By shaping the flow before it reaches the wand cap, I should be able to keep charging continuous and controlled. If the calibration is correct, recharge speed will improve and vis loss from turbulence will be reduced.
-research.WANDCHARGE.stage.1=The assembled charging array performs as intended: the wand now receives vis through a constrained channel rather than a raw surge. This keeps transfer steady even when nearby nodes fluctuate.<BR>The device works best when mounted near my wand workbench. With proper materials and an aquareia catalyst, the array becomes a reliable way to refill high-capacity wands between crafting sessions.<PAGE>§lWand Recharge Pedestal§r<BR>I have also completed a dedicated pedestal variant for direct wand charging. It accepts a wand directly, keeps charging stable, and is ideal for restoring large vis reserves between long crafting cycles.
+research.WANDCHARGE.stage.1=The assembled charging array performs as intended: the wand now receives vis through a constrained channel rather than a raw surge. This keeps transfer steady even when nearby nodes fluctuate.<BR>The device works best when mounted near my wand workbench. With proper materials and an aquareia catalyst, the array becomes a reliable way to refill high-capacity wands between crafting sessions.<PAGE>§lCV Connection§r<BR>The charger can also accept §lCV§r from a nearby Port. A Port acts as a centi-vis conductor: it can receive CV from compatible thaumic devices and pass it into the charging array instead of relying only on local node conditions.<BR><BR>For stable setups, link Ports between the CV source and the charger, then place the final Port close enough for the charger to draw from it.<PAGE>§lWand Recharge Pedestal§r<BR>I have also completed a dedicated pedestal variant for direct wand charging. It accepts a wand directly, keeps charging stable, and is ideal for restoring large vis reserves between long crafting cycles. Like the larger array, it can benefit from a proper CV feed through Ports.
 item_wand_cap_botania_manasteel_inert.name=Inert Manasteel Cap
 item_wand_cap_botania_manasteel.name=Manasteel Cap
 item_wand_cap_botania_elementium_inert.name=Inert Elementium Cap
@@ -1043,9 +1054,79 @@ research.STAFF_ADD.stage.1=These exotic rods are tuned for situational sustain a
 research.NEWGOLEMANCY.title=Advanced Golemancy
 research.NEWGOLEMANCY.stage.1=The first seals taught obedience, but not persistence. If golems are to serve more complex systems, I need storage and support structures that can hold intent, memory, and directed thought without collapsing into simple automation.
 research.NEWGOLEMANCY.stage.2=The Big Jar is a large vessel for preserved intellect. Its reinforced glass can hold several brains at once, allowing them to remain stable enough to assist nearby devices instead of merely floating as curiosities.
+research.NEWGOLEMANCY.addenda.1=Further use has revealed that the Big Jar is not powered by brains alone. Additional jarred brains increase the number of minds available, but those minds must be sustained by Mind essentia kept nearby. The jar also hungers for experience; loose experience orbs are drawn in and stored as the memories needed for longer work.<BR>When placed before a Great Research Table, the jar lends these stored thoughts to unfinished research notes. More brains and more experience make the work steadier, while a dry jar soon falls silent. I should not take my eyes off them for too long, however. Preserved minds are still minds, and some of them may yet harbour malice.
 research.GREATRESEARCHTABLE.title=Great Research Table
-research.GREATRESEARCHTABLE.stage.1=An ordinary research table is limited by the mind working at it. By combining an old research table with a greatwood table and treating the structure with Salis Mundus, I can create a broader instrument for assisted research.
-research.GREATRESEARCHTABLE.stage.2=§lCreation§r<BR>Place an old Research Table next to a Greatwood Table, then use Salis Mundus on the structure. The paired tables will transform into a Great Research Table with its support half placed automatically.<PAGE>§lUse§r<BR>The Great Research Table accepts scribing tools and an unfinished research note. When placed before a Big Jar, the brains inside work through the note over time. One brain solves a note in about ten minutes; more brains increase efficiency, while notes with more aspects slow the process. Ink is consumed as progress advances.
+research.GREATRESEARCHTABLE.stage.1=The workings of a research table are not limited by parchment, ink, or tools, but by the speed of thought itself. I have found that preserved brains still retain enough pattern and instinct to follow the shape of a problem, though they require a proper focus if they are to do so safely.
+research.GREATRESEARCHTABLE.stage.2=By joining an old Research Table to a Greatwood Table and touching the seam with Salis Mundus, the two can be persuaded to become a larger instrument. The result is a table broad enough to hold both the work and the borrowed attention required to finish it.<BR>If scribing tools and an unfinished research note are placed within it, and a Big Jar is set before the table, the brains suspended inside the jar will slowly work through the note. More brains improve the pace, while more complex notes take longer to solve. Ink is still consumed as normal: thought without ink remains only thought.
 item.knowledge_fragment.name=Knowledge Fragment
 tooltip.knowledge_fragment.empty=No stored aspects
 tooltip.knowledge_fragment.aspects=Stored aspects:
+item.mask.name=Mask
+tile.aura_totem.push.name=Aura Totem: Push
+tile.aura_totem.pull.name=Aura Totem: Pull
+tile.aura_totem.pole_outer.name=Aura Totem: Outer Pole
+tile.aura_totem.pole_inner.name=Aura Totem: Inner Pole
+tile.aura_totem.pole_pure.name=Aura Totem: Pure Pole
+research.AURATOTEMS.title=Aura Totems
+research.AURATOTEMS.stage.0=The §5Primal Aura§0 is a slow, heavy current below ordinary vis. Aura Totems do not charge items directly; they reshape this current between chunks so a working site can be drained, fed, or stabilized.<PAGE>Use them when a place has too much primal aura pressure, too little support for nearby thaumaturgy, or too much risk of flux during aura work. The totems are crude machines: useful, but never completely safe.
+research.AURATOTEMS.stage.1=Each aura totem works with two zones: an inner zone and an outer zone. By default the inner zone is the chunk containing the totem, while the outer zone is the ring of chunks around it.<PAGE>Totem poles placed under the main block reshape these zones. Up to five poles may support one totem. The main block decides the direction of flow; the poles decide how wide and stable that flow becomes.
+research.AURATOTEMS.stage.2=§lUsing Aura Totems§r<BR>An aura totem is built as a vertical structure. The main push or pull totem sits on top, while up to five pole blocks below it shape the working field. The totem does not run for free: right-click it with a vis crystal to charge it. One crystal gives 500 pulses, and the aspect inside that crystal decides which primal aura is moved.<PAGE><BR><IMG>thaumicforever:textures/research/research3.png:155:0:100:80:0.4</IMG><BR><PAGE>§lAura Totem: Push§r<BR>The push totem, or dispersal totem, drains one pulse of primal aura from the inner zone and sends it into a random chunk in the outer zone. Use it to thin a saturated work area or push pressure away from fragile thaumaturgy.<PAGE>§lAura Totem: Pull§r<BR>The pull totem reverses that motion. It drains one pulse from the outer zone and concentrates it into a random chunk in the inner zone. Use it to feed a local work site, node area, or stabilizer with a chosen primal aspect.<PAGE>§lInner Pole§r<BR>Inner poles expand the inner zone. With more inner poles, the center area becomes wider, so push totems draw from a broader center and pull totems fill a broader center.<PAGE>§lOuter Pole§r<BR>Outer poles expand the outer zone. With more outer poles, the totem reaches farther rings of chunks and pulses more often, because the flow has more paths to move through.<PAGE>§lPure Pole§r<BR>Pure poles do not expand the radius. They stabilize the current and reduce the chance that a pulse becomes flux. They are most useful when a fast or wide totem has several inner or outer poles.
+tile.thaumicforever.void_chest.name=Void Chest
+container.thaumicforever.void_chest=Void Chest
+research.VOIDCHEST.title=Void Chest
+research.VOIDCHEST.stage.0=Ender chests bind storage to the traveller, but that is the wrong shape for a workshop. I need a chest whose absence is the lock: a container network tied to the blocks themselves, not to the owner who opened them.
+research.VOIDCHEST.stage.1=§lVoid Chest§r<BR>A Void Chest stores its contents in a shared void network. A newly placed chest creates its own network, but several chests can be joined together with an ordinary name tag.<PAGE>Right-click the first Void Chest with a name tag to copy its network data. The tag will rename itself to the chest coordinates. Right-click another Void Chest with that marked tag and it will join the same virtual inventory. The network is block-bound, so any player opening a linked chest sees the same contents.
+container.thaumicforever.aura_totem=Aura Totem
+
+tile.crystallizer.name=Crystallizer
+research.ESSENTIACRYSTALCONVERTER.title=Essentia Crystallization
+research.ESSENTIACRYSTALCONVERTER.stage.0=I have nearly mastered the art of drawing liquid essentia out of matter, so reversing that process is the next useful step. Instead of storing essentia only in jars and pipes, I can force it back into a stable crystalline form.
+research.ESSENTIACRYSTALCONVERTER.stage.1=§lCrystallizer§r<BR>The Crystallizer no longer needs a quartz seed. If a port feeds it CV from below, it condenses that aspect directly into a vis crystal at a high cost: 200 CV for one crystal, twice the cost of pushing the same CV into essentia storage.<BR>If no CV is supplied, it falls back to nearby surplus primal aura and forms crystals matching the strongest local primal aspect. It is not an aura totem: it consumes local pressure instead of moving it between chunks.
+
+tile.primal_aura_converter.name=Primal Aura Converter
+
+thaumicforever.golem.prop.only_empty_target=Only empty target
+item.seal.arcane_caster.name=Control Seal: Arcane Caster
+thaumicforever.golem.prop.arcane_targets_enemies=Cast at enemies
+thaumicforever.golem.prop.arcane_targets_friends=Cast at friends
+thaumicforever.golem.prop.arcane_targets_animals=Cast at animals
+thaumicforever.golem.prop.arcane_targets_players=Cast at players
+research.SEALUSE.addenda.thaumicforever.advanced_use=Further golemancy work has revealed a more flexible version of the Use seal. With better logic patterns, the golem can repeat use tasks and avoid wasting actions on occupied targets.
+
+research.SEALTRADE.title=Control Seal: Trade
+research.SEALTRADE.stage.1=Merchant interaction requires more than a simple use command. A golem must identify valid traders, request only trades it can pay for, and ignore exchanges forbidden by its filter.
+research.SEALTRADE.stage.2=This control seal lets a golem perform trades using items supplied by nearby provider seals. It can filter wanted or unwanted results and continue past blocked trades instead of stopping at the first failed offer.
+
+research.SEALARCANECASTER.title=Control Seal: Arcane Caster
+research.SEALARCANECASTER.stage.1=A golem can follow hostile targets, but ranged thaumaturgy needs more precise behavior. The construct must keep distance, choose valid targets, and channel a caster tool without a thaumaturge's hands.
+research.SEALARCANECASTER.stage.2=This control seal lets a golem use caster gauntlets and wands. Its filters can limit casting to enemies, friends, animals, or players depending on the task.
+
+thaumicforever.golem_core.invalid=This golem core is not registered.
+thaumicforever.golem_core.already_installed=This golem already has a core. Sneak-right-click to replace it.
+thaumicforever.golem_core.installed=Golem core installed.
+
+item.golem_core_goliath.name=Golem Core: Goliath
+item.golem_core_goliath.desc=Increases golem size by 50%, health by 30%, and armor by 15%. Only one core can be installed per golem.
+item.golem_core_ironskin.name=Golem Core: Iron Skin
+item.golem_core_ironskin.desc=Increases golem armor by 60%. Only one core can be installed per golem.
+item.golem_core_arcane.name=Golem Core: Arcane
+item.golem_core_arcane.desc=Allows this golem to use arcane seals and other arcane automation. Only one core can be installed per golem.
+item.golem_core_swift.name=Golem Core: Swift
+item.golem_core_swift.desc=Increases golem movement speed by 50%. Only one core can be installed per golem.
+item.tuning_fork_rifle.name=Tuning Fork Rifle
+research.GOLEMSCORE.title=Golem Cores
+research.GOLEMSCORE.stage.1=Seals command a golem, but they do not change what the construct fundamentally is. A morphic resonator can reshape that deeper pattern into a removable core: a single specialization installed directly into the golem body.
+research.GOLEMSCORE.stage.2=Each golem can hold only one core at a time. Goliath makes the construct larger and tougher, Iron Skin reinforces its body against damage, Swift improves movement speed, and Arcane opens the way for arcane seals and caster automation.
+
+tile.redstone_ticker.name=Redstone Ticker
+tile.thaumicforever.redstone_ticker.name=Redstone Ticker
+research.REDSTONEGENETATOR.title=Redstone Ticker
+research.REDSTONEGENETATOR.stage.0=Ordinary redstone circuits are predictable, but some mechanisms benefit from unstable timing. By binding redstone dust to a simple thaumic mechanism, I can create a block that emits irregular pulses instead of a fixed signal.
+research.REDSTONEGENETATOR.stage.1=§lRedstone Ticker§r<BR>The Redstone Ticker randomly changes its output strength over time. Sometimes it gives no signal at all; sometimes it emits a weak or strong pulse. It is useful for chaotic machinery, timed traps, randomizers, and devices that should not repeat with perfect rhythm.
+
+item.decoy_mannequin.name=Decoy Mannequin
+entity.DecoyMannequin.name=Decoy Mannequin
+research.DECOYMANNEQUIN.title=Decoy Mannequin
+research.DECOYMANNEQUIN.stage.0=Some experiments require a living presence, but using an actual thaumaturge as bait is inefficient and usually fatal. A reinforced mannequin can be made convincing enough for hostile creatures and nearby mechanisms to treat it as a target.
+research.DECOYMANNEQUIN.stage.1=§lDecoy Mannequin§r<BR>The Decoy Mannequin is placed like an armor stand. It acts as a lure for nearby hostile mobs and maintains its area so spawners and other presence-sensitive systems continue to function around it. It is not a true person, but it is close enough to draw attention away from one.
+effect.resonance_disruption=Resonance Disruption

@@ -252,49 +252,6 @@
             ]
         },
         {
-            "key": "golem_core_fish",
-            "name": "research.golem_core_fish.title",
-            "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_fish.png"],
-            "parents": [ "AQUAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
-            "meta": [ "ROUND"],
-            "category": "THAUMICFOREVER", "location": [ 0,7 ],
-            "stages": [
-                {
-                    "text": "research.golem_core_fish.stage.1",
-                    "required_knowledge":["THEORY;BASICS;2"]
-                },
-                {
-                    "text": "research.golem_core_fish.stage.2",
-                    "recipes": ["THAUMICFOREVER:fishRecipeKey"]
-                }
-            ],
-            "addenda": [
-                {
-                    "text": "research.golem_core_fish.addenda.1",
-                    "required_research": ["golem_core_fish"],
-                    "recipes":["thaumicforever:golem_core_fish_advanced"]
-                }
-            ]
-        },
-        {
-            "key": "seal_golem_core_essentia",
-            "name": "research.seal_golem_core_essentia.title",
-            "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_essentia.png"],
-            "parents": [ "TERRAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
-            "meta": [ "ROUND"],
-            "category": "THAUMICFOREVER", "location": [ -4,7 ],
-            "stages": [
-                {
-                    "text": "research.seal_golem_core_essentia.stage.1",
-                    "required_knowledge":["THEORY;BASICS;2"]
-                },
-                {
-                    "text": "research.seal_golem_core_essentia.stage.2",
-                    "recipes": ["THAUMICFOREVER:crystalhRecipe"]
-                }
-            ]
-        },
-        {
             "key": "NEWAUROMANCY",
             "name": "research.NEWAUROMANCY.title",
             "icons": [ "thaumicforever:textures/misc/r_aurapreserve.png" ],
@@ -592,6 +549,25 @@
             ]
         },
         {
+            "key": "ADVARTIFICE",
+            "name": "research.ADVARTIFICE.title",
+            "icons": [ "thaumicforever:textures/misc/adv_arft.png" ],
+            "category": "THAUMICFOREVER","location": [ 9,0 ],
+            "parents": [ "NEWARTIFICE" ],
+            "stages": [
+                {
+                    "required_knowledge":["THEORY;ARTIFICE;2"],
+                    "text": "research.ADVARTIFICE.stage.1",
+                    "required_item" :["thaumicforever:brass_gear","thaumicforever:thaumium_gear","thaumicforever:void_gear"]
+
+                },
+                {
+                    "text": "research.ADVARTIFICE.stage.2",
+                    "reward_knowledge": ["OBSERVATION;BASICS;1"]
+                }
+            ]
+        },
+        {
             "key": "COMPRESSOR",
             "name": "research.COMPRESSOR.title",
             "parents": [ "NEWARTIFICE" ],
@@ -695,6 +671,62 @@
             ]
         },
         {
+            "key": "VOIDCHEST",
+            "name": "research.VOIDCHEST.title",
+            "icons": [ "thaumicforever:void_chest" ],
+            "category": "THAUMICFOREVER","location": [ 8,2 ],
+            "parents": [ "ADVARTIFICE", "~BASEELDRITCH@2" ],
+            "meta": [ "HIDDEN" ],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;ARTIFICE;1","OBSERVATION;ELDRITCH;1"],
+                    "text": "research.VOIDCHEST.stage.0",
+                    "required_item": ["minecraft:name_tag","thaumcraft:ingot;1"]
+                },
+                {
+                    "text": "research.VOIDCHEST.stage.1",
+                    "recipes": ["thaumicforever:void_chest"]
+                }
+            ]
+        },
+        {
+            "key": "REDSTONEGENETATOR",
+            "name": "research.REDSTONEGENETATOR.title",
+            "icons": [ "thaumicforever:redstone_ticker" ],
+            "category": "THAUMICFOREVER","location": [ 8,-2 ],
+            "parents": [ "ADVARTIFICE", "REDSTONERELAY" ],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;ARTIFICE;1","THEORY;ARTIFICE;1"],
+                    "text": "research.REDSTONEGENETATOR.stage.0",
+                    "required_item": ["minecraft:redstone_block","thaumcraft:ingot;1"]
+                },
+                {
+                    "text": "research.REDSTONEGENETATOR.stage.1",
+                    "recipes": ["thaumicforever:redstone_ticker"]
+                }
+            ]
+        },
+        {
+            "key": "DECOYMANNEQUIN",
+            "name": "research.DECOYMANNEQUIN.title",
+            "icons": [ "thaumicforever:decoy_mannequin" ],
+            "category": "THAUMICFOREVER","location": [ 9,-2 ],
+            "parents": [ "ADVARTIFICE"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;ARTIFICE;1","THEORY;ARTIFICE;1"],
+                    "text": "research.DECOYMANNEQUIN.stage.0",
+                    "required_item": ["minecraft:hay_block"],
+                    "required_craft": ["minecraft:armor_stand"]
+                },
+                {
+                    "text": "research.DECOYMANNEQUIN.stage.1",
+                    "recipes": ["thaumicforever:decoy_mannequin"]
+                }
+            ]
+        },
+        {
             "key": "NEWGOLEMANCY",
             "name": "research.NEWGOLEMANCY.title",
             "icons": [ "thaumcraft:textures/research/cat_golemancy.png" ],
@@ -709,7 +741,109 @@
                 },
                 {
                     "text": "research.NEWGOLEMANCY.stage.2",
-                    "recipes": ["THAUMICFOREVER:BIGJAR"]
+                    "recipes": ["THAUMICFOREVER:BIGJAR", "thaumicforever:decoy_mannequin"]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.NEWGOLEMANCY.addenda.1",
+                    "required_research": ["GREATRESEARCHTABLE"]
+                }
+            ]
+        },
+        {
+            "key": "SEALTRADE",
+            "name": "research.SEALTRADE.title",
+            "icons": [ "thaumicforever:textures/items/seals/seal_trade.png" ],
+            "parents": [ "NEWGOLEMANCY" ],
+            "category": "THAUMICFOREVER", "location": [ 6,4 ],
+            "stages": [
+                {
+                    "text": "research.SEALTRADE.stage.1",
+                    "required_knowledge":["THEORY;GOLEMANCY;2","THEORY;ALCHEMY;1"],
+                    "required_research":["PERMUTATIOALKIMIA"]
+                },
+                {
+                    "text": "research.SEALTRADE.stage.2",
+                    "recipes": ["thaumicforever:seal_trade"]
+                }
+            ]
+        },
+        {
+            "key": "SEALARCANECASTER",
+            "name": "research.SEALARCANECASTER.title",
+            "icons": [ "thaumicforever:textures/items/seals/seal_magical.png" ],
+            "parents": [ "NEWGOLEMANCY","PRAECANTATIOALKIMIA","~GOLEMSCORE" ],
+            "category": "THAUMICFOREVER", "location": [ 4,6 ],
+            "stages": [
+                {
+                    "text": "research.SEALARCANECASTER.stage.1",
+                    "required_knowledge":["THEORY;GOLEMANCY;2","THEORY;AUROMANCY;1"]
+                },
+                {
+                    "text": "research.SEALARCANECASTER.stage.2",
+                    "recipes": ["thaumicforever:seal_arcane_caster"]
+                }
+            ]
+        },
+        {
+            "key": "GOLEMSCORE",
+            "name": "research.GOLEMSCORE.title",
+            "icons": [ "thaumicforever:textures/items/golem_core_arcane.png","thaumicforever:textures/items/golem_core_ironskin.png","thaumicforever:textures/items/golem_core_goliath.png","thaumicforever:textures/items/golem_core_swift.png" ],
+            "parents": [ "NEWGOLEMANCY" ],
+            "category": "THAUMICFOREVER", "location": [ 6,6 ],
+            "stages": [
+                {
+                    "text": "research.GOLEMSCORE.stage.1",
+                    "required_knowledge":["THEORY;GOLEMANCY;2","THEORY;AUROMANCY;1"],
+                    "required_item": ["thaumcraft:morphic_resonator"]
+                },
+                {
+                    "text": "research.GOLEMSCORE.stage.2",
+                    "recipes": ["thaumicforever:golem_core_goliath","thaumicforever:golem_core_ironskin","thaumicforever:golem_core_arcane","thaumicforever:golem_core_swift"]
+                }
+            ]
+        },
+        {
+            "key": "golem_core_fish",
+            "name": "research.golem_core_fish.title",
+            "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_fish.png"],
+            "parents": [ "AQUAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
+            "meta": [ "ROUND"],
+            "category": "THAUMICFOREVER", "location": [ 0,7 ],
+            "stages": [
+                {
+                    "text": "research.golem_core_fish.stage.1",
+                    "required_knowledge":["THEORY;BASICS;2"]
+                },
+                {
+                    "text": "research.golem_core_fish.stage.2",
+                    "recipes": ["THAUMICFOREVER:fishRecipeKey"]
+                }
+            ],
+            "addenda": [
+                {
+                    "text": "research.golem_core_fish.addenda.1",
+                    "required_research": ["golem_core_fish"],
+                    "recipes":["thaumicforever:golem_core_fish_advanced"]
+                }
+            ]
+        },
+        {
+            "key": "seal_golem_core_essentia",
+            "name": "research.seal_golem_core_essentia.title",
+            "icons": [ "thaumicforever:textures/items/seals/seal_golem_core_essentia.png"],
+            "parents": [ "TERRAALKIMIA" ,"VICTUSALKIMIA","~NEWGOLEMANCY"],
+            "meta": [ "ROUND"],
+            "category": "THAUMICFOREVER", "location": [ -4,7 ],
+            "stages": [
+                {
+                    "text": "research.seal_golem_core_essentia.stage.1",
+                    "required_knowledge":["THEORY;BASICS;2"]
+                },
+                {
+                    "text": "research.seal_golem_core_essentia.stage.2",
+                    "recipes": ["THAUMICFOREVER:crystalhRecipe"]
                 }
             ]
         },
@@ -899,7 +1033,7 @@
             "key": "ADDITIONALALKIMIA",
             "name": "research.ADDITIONALALKIMIA.title",
             "icons": [ "thaumcraft:textures/research/cat_alchemy.png" ],
-            "category": "THAUMICFOREVER", "location": [ 6,9] ,
+            "category": "THAUMICFOREVER", "location": [ 6,10] ,
             "parents": [ "~NEWALKIMIA" ],
             "stages": [
             {
@@ -917,7 +1051,7 @@
             "name": "research.BOTANIAALKIMIA.title",
             "icons": [ "thaumcraft:textures/aspects/praecantatio.png" ],
             "parents": [ "ADDITIONALALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 8,10],
+            "category": "THAUMICFOREVER", "location": [ 8,11],
             "stages": [
                 {
                     "required_item":["thaumcraft:salis_mundus","botania:manabottle"],
@@ -955,7 +1089,7 @@
             "name": "research.IUALKIMIA.title",
             "icons": [ "thaumcraft:textures/aspects/praecantatio.png" ],
             "parents": [ "ADDITIONALALKIMIA" ],
-            "category": "THAUMICFOREVER", "location": [ 7, 7],
+            "category": "THAUMICFOREVER", "location": [ 7, 9],
             "stages": [
                 {
                     "required_item":["thaumcraft:salis_mundus"],
@@ -998,8 +1132,8 @@
                 },
                 {
                     "text": "research.VISAURA.stage.2",
-                    "reward_knowledge": ["OBSERVATION;AUROMANCY;1"],
-                    "required_research":["AURANODE"]
+                    "required_knowledge": ["OBSERVATION;AUROMANCY;1"],
+                    "required_item": ["thaumcraft:vis_resonator"]
                 },
                 {
                     "text": "research.VISAURA.stage.3",
@@ -1536,7 +1670,51 @@
 
                 }
             ]
+        },
+        {
+            "key": "AURATOTEMS",
+            "name": "research.AURATOTEMS.title",
+            "icons": ["thaumicforever:aura_totem;1;0","thaumicforever:aura_totem;1;1","thaumicforever:aura_totem_pole;1;2"],
+            "meta": [ "HIDDEN"],
+            "category": "THAUMICFOREVER","location": [ 12,-4 ],
+            "parents": [ "~VISAURA"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;BASICS;1","OBSERVATION;AUROMANCY;1"],
+                    "text": "research.AURATOTEMS.stage.0",
+                    "required_item": ["thaumicforever:aquareia_gem"],
+                    "required_craft": ["thaumcraft:vis_battery"]
+
+                },
+                {
+                    "text": "research.AURATOTEMS.stage.1",
+                    "required_knowledge":["THEORY;BASICS;1","THEORY;AUROMANCY;2"],
+                    "required_item": ["thaumcraft:vis_battery"]
+                },
+                {
+                    "text": "research.AURATOTEMS.stage.2",
+                    "recipes": ["thaumicforever:TotemPush","thaumicforever:TotemPull","thaumicforever:PoleInner","thaumicforever:PoleOuter","thaumicforever:PoleStable"]
+                }
+            ]
+        },
+        {
+            "key": "ESSENTIACRYSTALCONVERTER",
+            "name": "research.ESSENTIACRYSTALCONVERTER.title",
+            "icons": ["thaumicforever:crystallizer"],
+            "meta": [ "HIDDEN"],
+            "category": "THAUMICFOREVER","location": [ 14,-4 ],
+            "parents": [ "~VISAURA"],
+            "stages": [
+                {
+                    "required_knowledge":["OBSERVATION;BASICS;1","OBSERVATION;AUROMANCY;1","THEORY;ARTIFICE;1"],
+                    "text": "research.ESSENTIACRYSTALCONVERTER.stage.0"
+
+                },
+                {
+                    "text": "research.ESSENTIACRYSTALCONVERTER.stage.1",
+                    "recipes": ["thaumicforever:Crystallizer"]
+                }
+            ]
         }
     ]
 }
-

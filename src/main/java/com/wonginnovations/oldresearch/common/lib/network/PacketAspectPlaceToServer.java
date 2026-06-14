@@ -1,6 +1,7 @@
 package com.wonginnovations.oldresearch.common.lib.network;
 
 import com.wonginnovations.oldresearch.common.tiles.TileResearchTable;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -62,6 +63,9 @@ public class PacketAspectPlaceToServer implements IMessage, IMessageHandler<Pack
     }
 
     public IMessage onMessage(PacketAspectPlaceToServer message, MessageContext ctx) {
+        if (!OldResearchToggle.isEnabled()) {
+            return null;
+        }
         IThreadListener mainThread = ctx.getServerHandler().player.getServerWorld();
         mainThread.addScheduledTask(new Runnable() {
             public void run() {
@@ -78,4 +82,3 @@ public class PacketAspectPlaceToServer implements IMessage, IMessageHandler<Pack
         return null;
     }
 }
-

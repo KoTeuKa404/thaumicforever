@@ -5,11 +5,14 @@ import com.koteuka404.thaumicforever.registry.ModGuiHandler;
 import com.koteuka404.thaumicforever.registry.ModBlocks;
 
 import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.item.ItemWand;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -46,6 +49,14 @@ public class BlockArcaneWorkbenchWandCharger extends Block {
                                     EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         BlockPos benchPos = pos.down();
         if (worldIn.getBlockState(benchPos).getBlock() != ModBlocks.WAND_WORKBENCH) return false;
+
+        ItemStack held = playerIn.getHeldItem(hand);
+        if (!held.isEmpty() && held.getItem() instanceof ItemWand) {
+            if (worldIn.isRemote) return true;
+            EnumActionResult result = ((ItemWand) held.getItem()).handleBlockIntercept(playerIn, worldIn, pos, hand);
+            return result != EnumActionResult.PASS;
+        }
+
         if (worldIn.isRemote) return true;
         playerIn.openGui(ThaumicForever.instance, ModGuiHandler.GUI_WAND_WORKBENCH, worldIn,
                 benchPos.getX(), benchPos.getY(), benchPos.getZ());

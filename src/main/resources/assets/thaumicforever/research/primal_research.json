@@ -67,19 +67,6 @@
             ]
         },
         {
-        "key": "PrimordialGuardian",
-        "name": "research.PrimordialGuardian.title",
-        "icons": [ "thaumicforever:immortalizer"],
-        "category": "PRIMAL", "location": [ 2,-2 ],
-        "meta": ["SPIKY","HIDDEN" ],
-        "stages": [
-                {
-                    "text": "research.PrimordialGuardian.stage.1",
-                    "recipes": ["THAUMICFOREVER:PrimordialGuardian"]
-                }
-            ]
-        },
-        {
         "key": "TAINT_AMULET",
         "name": "research.TAINT_AMULET.title",
         "icons": [ "thaumicforever:taint_amulet"],

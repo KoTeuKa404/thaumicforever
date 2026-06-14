@@ -9,6 +9,7 @@ import com.wonginnovations.oldresearch.common.lib.network.PacketHandler;
 import com.wonginnovations.oldresearch.common.lib.network.PacketSyncResearchTableAspects;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
 import com.wonginnovations.oldresearch.common.lib.research.ResearchNoteData;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -102,6 +103,9 @@ public class TileResearchTable extends TileThaumcraftInventory {
     @Override
     public void update() {
         super.update();
+        if (!OldResearchToggle.isEnabled()) {
+            return;
+        }
         if(!this.world.isRemote && this.nextRecalc++ > 600) {
             this.nextRecalc = 0;
             this.recalculateBonus();

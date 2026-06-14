@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "thaumicforever:items/enchanted_placeholder"
+    "layer0": "thaumicforever:items/a_goggles_items"
   }
 }

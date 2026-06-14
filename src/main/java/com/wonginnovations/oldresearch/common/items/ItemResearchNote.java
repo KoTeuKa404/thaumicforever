@@ -6,6 +6,7 @@ import com.wonginnovations.oldresearch.api.registration.IModelRegister;
 import com.wonginnovations.oldresearch.client.gui.ResearchNoteToast;
 import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
 import com.wonginnovations.oldresearch.common.lib.research.ResearchNoteData;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
@@ -45,6 +46,9 @@ public class ItemResearchNote extends Item implements IModelRegister {
     @Override
     public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
+        if (!OldResearchToggle.isEnabled()) {
+            return new ActionResult<>(EnumActionResult.PASS, stack);
+        }
 
         ResearchNoteData data = OldResearchManager.getData(stack);
         if (data != null && data.isComplete() && !ThaumcraftCapabilities.getKnowledge(player).isResearchComplete(data.key)) {

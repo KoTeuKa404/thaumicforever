@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever.tile;
 
+import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -17,7 +18,6 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.aspects.AspectSourceHelper;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import com.koteuka404.thaumicforever.block.BlockImmortalizer;
@@ -34,6 +34,8 @@ public class TileEntityImmortalizer extends TileEntity implements ITickable, IAs
     public static final int ESSENTIA_COST = 500;
     private static final int MAX_ESSENTIA = 1000;
     private int storedEssentia = 0;
+    private static Method drainEssentiaMethod;
+    private static boolean drainEssentiaMethodUnavailable;
 
     static {
         Aspect temp = null;
@@ -212,14 +214,40 @@ public class TileEntityImmortalizer extends TileEntity implements ITickable, IAs
             }
         }
 
-        // 2) Fallback to Thaumcraft network search.
+        // 2) Fallback to Thaumcraft network search. Do not use AspectSourceHelper here:
+        // its legacy 4-arg reflection signature is wrong for TC6 and spams FML warnings.
         for (EnumFacing direction : EnumFacing.values()) {
-            if (AspectSourceHelper.drainEssentia(this, REQUIRED_ASPECT, direction, 8)) {
+            if (drainEssentiaNetworkSilent(direction)) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    private boolean drainEssentiaNetworkSilent(EnumFacing direction) {
+        if (drainEssentiaMethodUnavailable || REQUIRED_ASPECT == null) {
+            return false;
+        }
+
+        try {
+            if (drainEssentiaMethod == null) {
+                Class<?> handler = Class.forName("thaumcraft.common.lib.events.EssentiaHandler");
+                drainEssentiaMethod = handler.getMethod(
+                        "drainEssentia",
+                        TileEntity.class,
+                        Aspect.class,
+                        EnumFacing.class,
+                        int.class,
+                        int.class
+                );
+            }
+            Object result = drainEssentiaMethod.invoke(null, this, REQUIRED_ASPECT, direction, 8, 0);
+            return result instanceof Boolean && (Boolean) result;
+        } catch (Throwable ignored) {
+            drainEssentiaMethodUnavailable = true;
+            return false;
+        }
     }
 
     @Override

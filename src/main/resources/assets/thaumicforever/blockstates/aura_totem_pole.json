@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "type=pole_outer": {
+      "model": "thaumicforever:aura_totem_pole",
+      "textures": {
+        "particle": "thaumicforever:blocks/aura_totem_pole_outer",
+        "side": "thaumicforever:blocks/aura_totem_pole_outer"
+      }
+    },
+    "type=pole_inner": { "model": "thaumicforever:aura_totem_pole" },
+    "type=pole_pure": {
+      "model": "thaumicforever:aura_totem_pole",
+      "textures": {
+        "particle": "thaumicforever:blocks/aura_totem_pole_pure",
+        "side": "thaumicforever:blocks/aura_totem_pole_pure"
+      }
+    }
+  }
+}

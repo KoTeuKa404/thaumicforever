@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.minecraftforge.fml.common.Loader;
+
 public class ResearchList {
 
     private static final List<String> HARD_CODED_RESEARCHES = Arrays.asList(
         "ETERNAL_BLADE",
         "TELEPORT",
         "STUFF",
-        "PrimordialGuardian",
         "TAINT_AMULET",
         "POTION_GUN",
         "PRIMAL_FOCI"
@@ -27,6 +28,9 @@ public class ResearchList {
             if (!RESEARCHES.contains(research)) {
                 RESEARCHES.add(research);
             }
+        }
+        if (Loader.isModLoaded("thaumadditions") && !RESEARCHES.contains("PrimordialGuardian")) {
+            RESEARCHES.add("PrimordialGuardian");
         }
 
         System.out.println("init research: " + RESEARCHES);

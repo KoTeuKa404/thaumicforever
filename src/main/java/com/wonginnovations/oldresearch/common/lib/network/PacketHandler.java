@@ -8,8 +8,14 @@ import net.minecraftforge.fml.relauncher.Side;
 public class PacketHandler {
 
     public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Tags.MODID.toLowerCase());
+    private static boolean registered;
 
     public static void preInit() {
+        if (registered) {
+            return;
+        }
+        registered = true;
+
         int discriminator = 0;
         INSTANCE.registerMessage(PacketAspectCombinationToServer.class, PacketAspectCombinationToServer.class, discriminator++, Side.SERVER);
         INSTANCE.registerMessage(PacketAspectDiscovery.class, PacketAspectDiscovery.class, discriminator++, Side.CLIENT);

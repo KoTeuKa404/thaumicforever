@@ -25,10 +25,14 @@ import com.koteuka404.thaumicforever.registry.ModItems;
 import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.debug.DebugCrucible;
 import com.koteuka404.thaumicforever.event.ArmorStandToMannequinHandler;
+import com.koteuka404.thaumicforever.event.BiomeSpreadPersistenceHandler;
 import com.koteuka404.thaumicforever.event.BleedingEnchantmentHandler;
 import com.koteuka404.thaumicforever.event.CasterCooldownReducer;
+import com.koteuka404.thaumicforever.event.CrystalAuraGrowthHandler;
 import com.koteuka404.thaumicforever.event.CustomDrops;
 import com.koteuka404.thaumicforever.event.CustomEventHandler;
+import com.koteuka404.thaumicforever.event.DecoyMannequinChunkLoader;
+import com.koteuka404.thaumicforever.event.DecoyMannequinHandler;
 import com.koteuka404.thaumicforever.event.EerieBiomeMobHandler;
 import com.koteuka404.thaumicforever.event.InfusionEnchantTooltipHandler;
 import com.koteuka404.thaumicforever.event.MannequinInteractionHandler;
@@ -45,11 +49,16 @@ import com.koteuka404.thaumicforever.event.ThaumicEventHandler;
 import com.koteuka404.thaumicforever.event.UnbreakableEnchantmentHandler;
 import com.koteuka404.thaumicforever.event.VoidRepairHandler;
 import com.koteuka404.thaumicforever.event.WorldTickHandler;
+import com.koteuka404.thaumicforever.golemcore.GolemCores;
+import com.koteuka404.thaumicforever.golemcore.GolemCoreEventHandler;
 import com.koteuka404.thaumicforever.proxy.CommonProxy;
+import com.koteuka404.thaumicforever.seal.SealArcaneCaster;
 import com.koteuka404.thaumicforever.seal.SealGolemCoreFish;
 import com.koteuka404.thaumicforever.seal.SealGolemCoreFishAdvanced;
 import com.koteuka404.thaumicforever.seal.SealProviderAdvanced;
 import com.koteuka404.thaumicforever.seal.SealRefill;
+import com.koteuka404.thaumicforever.seal.SealTrade;
+import com.koteuka404.thaumicforever.seal.SealUseAdvanced;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -63,7 +72,9 @@ import com.koteuka404.thaumicforever.wand.main.ThaumicWands;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -75,6 +86,9 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -91,6 +105,10 @@ import thaumcraft.api.research.IScanThing;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.api.research.ResearchStage;
 import thaumcraft.common.lib.crafting.DustTriggerMultiblock;
+import com.wonginnovations.oldresearch.common.lib.network.PacketHandler;
+import com.wonginnovations.oldresearch.common.lib.research.OldResearchManager;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
+import com.wonginnovations.oldresearch.common.tiles.TileResearchTable;
 import com.koteuka404.thaumicforever.aspect.AspectAdder;
 import com.koteuka404.thaumicforever.aspect.AspectDump;
 import com.koteuka404.thaumicforever.compat.FlowerPotCompat;
@@ -101,10 +119,12 @@ import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.entity.EntityBVilager;
 import com.koteuka404.thaumicforever.entity.EntityBottleClean;
 import com.koteuka404.thaumicforever.entity.EntityBottleVis;
+import com.koteuka404.thaumicforever.entity.EntityDecoyMannequin;
 import com.koteuka404.thaumicforever.entity.EntityGorilla;
 import com.koteuka404.thaumicforever.entity.EntityGorillaHand;
 import com.koteuka404.thaumicforever.entity.EntityGuardianMannequin;
 import com.koteuka404.thaumicforever.entity.EntityNodeMagnet;
+import com.koteuka404.thaumicforever.entity.EntityResonanceBolt;
 import com.koteuka404.thaumicforever.entity.EntitySkeletonAngry;
 import com.koteuka404.thaumicforever.entity.EntityTimeFreezeProjectile;
 import com.koteuka404.thaumicforever.entity.EntityVampireBat;
@@ -119,6 +139,7 @@ import com.koteuka404.thaumicforever.item.WindCharge;
 import com.koteuka404.thaumicforever.network.NetworkHandler;
 import com.koteuka404.thaumicforever.network.PacketBleedingFX;
 import com.koteuka404.thaumicforever.network.PacketCancelLogisticsRequest;
+import com.koteuka404.thaumicforever.network.PacketBiomeUpdate;
 import com.koteuka404.thaumicforever.network.PacketClickLupa;
 import com.koteuka404.thaumicforever.network.PacketExplosionFX;
 import com.koteuka404.thaumicforever.network.PacketKatanaSlashFX;
@@ -127,9 +148,11 @@ import com.koteuka404.thaumicforever.network.PacketOpenMysticTab;
 import com.koteuka404.thaumicforever.network.PacketOpenNormalInventory;
 import com.koteuka404.thaumicforever.network.PacketOpenPouch;
 import com.koteuka404.thaumicforever.network.PacketPrimalAuraRequest;
+import com.koteuka404.thaumicforever.network.PacketPrimalAuraConverterFX;
 import com.koteuka404.thaumicforever.network.PacketPrimalAuraSync;
 import com.koteuka404.thaumicforever.network.PacketRubyProtectFX;
 import com.koteuka404.thaumicforever.network.PacketSelectPlate;
+import com.koteuka404.thaumicforever.network.PacketServerConfigSync;
 import com.koteuka404.thaumicforever.network.PacketSkyBeamFX;
 import com.koteuka404.thaumicforever.network.PacketSyncAspects;
 import com.koteuka404.thaumicforever.network.TrailMsg;
@@ -137,6 +160,7 @@ import com.koteuka404.thaumicforever.node.NodeJarDustTrigger;
 import com.koteuka404.thaumicforever.node.NodeJarMultiblockDef;
 import com.koteuka404.thaumicforever.node.NodePearlClickHandler;
 import com.koteuka404.thaumicforever.potion.PotionFlightHandler;
+import com.koteuka404.thaumicforever.potion.ResonanceDisruptionHandler;
 import com.koteuka404.thaumicforever.potion.VampirismEffectHandler;
 import com.koteuka404.thaumicforever.recipe.CraftingRecipes;
 import com.koteuka404.thaumicforever.recipe.CustomSalisMundusRecipe;
@@ -147,6 +171,7 @@ import com.koteuka404.thaumicforever.recipe.RecipeCrucible;
 import com.koteuka404.thaumicforever.recipe.RecipeOverride;
 import com.koteuka404.thaumicforever.recipe.RemoveRecipes;
 import com.koteuka404.thaumicforever.research.OldResearchOnlyAutoSkipHandler;
+import com.koteuka404.thaumicforever.research.ResearchAddendumHandler;
 import com.koteuka404.thaumicforever.research.ResearchHandler;
 import com.koteuka404.thaumicforever.research.SafeScanSky;
 import com.koteuka404.thaumicforever.research.ScanObjects;
@@ -154,8 +179,10 @@ import com.koteuka404.thaumicforever.tile.DeconstructionTableTileEntity;
 import com.koteuka404.thaumicforever.tile.DoubleTableTileEntity;
 import com.koteuka404.thaumicforever.tile.TileBigJar;
 import com.koteuka404.thaumicforever.tile.TileBigJarPart;
+import com.koteuka404.thaumicforever.tile.TileAuraTotem;
 import com.koteuka404.thaumicforever.tile.TileBuffNodeStabilizer;
 import com.koteuka404.thaumicforever.tile.TileCustomFlowerPot;
+import com.koteuka404.thaumicforever.tile.TileCrystallizer;
 import com.koteuka404.thaumicforever.tile.TileEntityAbandonedChest;
 import com.koteuka404.thaumicforever.tile.TileEntityAntiFlightStone;
 import com.koteuka404.thaumicforever.tile.TileEntityCompressor;
@@ -172,7 +199,9 @@ import com.koteuka404.thaumicforever.tile.TileMechanismAmplifier;
 import com.koteuka404.thaumicforever.tile.TileNodeStabilizer;
 import com.koteuka404.thaumicforever.tile.TileNodeTransducer;
 import com.koteuka404.thaumicforever.tile.TilePort;
+import com.koteuka404.thaumicforever.tile.TilePrimalAuraConverter;
 import com.koteuka404.thaumicforever.tile.TileRechargePedestal;
+import com.koteuka404.thaumicforever.tile.TileVoidChest;
 import com.koteuka404.thaumicforever.world.ANWorldGenerator;
 import com.koteuka404.thaumicforever.world.AuraNodeWorldGen;
 import com.koteuka404.thaumicforever.world.FlowerGenerator;
@@ -191,7 +220,7 @@ import com.koteuka404.thaumicforever.world.WorldGenUnderloot;
 public class ThaumicForever {
     public static final String MODID = "thaumicforever";
     public static final String NAME = "Thaumic Forever";
-    public static final String VERSION = "6.0";
+    public static final String VERSION = "7.0";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     @SidedProxy(clientSide = "com.koteuka404.thaumicforever.proxy.ClientProxy", serverSide = "com.koteuka404.thaumicforever.proxy.ServerProxy")
@@ -211,6 +240,7 @@ public class ThaumicForever {
     public void preInit(FMLPreInitializationEvent event) {
         instance = this;
         ModConfig.loadConfig(event);
+        ForgeChunkManager.setForcedChunkLoadingCallback(this, new DecoyMannequinChunkLoader());
 
         ResearchList.initializeFromConfig();
         ModDimensions.init(event);
@@ -224,6 +254,7 @@ public class ThaumicForever {
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         NetworkHandler.INSTANCE = network;
         NetworkHandler.registerPackets();
+        PacketHandler.preInit();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, proxy);
 
@@ -237,6 +268,10 @@ public class ThaumicForever {
 
         GameRegistry.registerTileEntity(DeconstructionTableTileEntity.class,new ResourceLocation(ThaumicForever.MODID, ":deconstruction_table"));
         GameRegistry.registerTileEntity(TileEntityAbandonedChest.class,new ResourceLocation(ThaumicForever.MODID, ":abandoned_chest"));
+        GameRegistry.registerTileEntity(TileVoidChest.class,new ResourceLocation(ThaumicForever.MODID, "void_chest"));
+        GameRegistry.registerTileEntity(TileAuraTotem.class,new ResourceLocation(ThaumicForever.MODID, "aura_totem"));
+        GameRegistry.registerTileEntity(TileCrystallizer.class,new ResourceLocation(ThaumicForever.MODID, "crystallizer"));
+        GameRegistry.registerTileEntity(TilePrimalAuraConverter.class,new ResourceLocation(ThaumicForever.MODID, "primal_aura_converter"));
         GameRegistry.registerTileEntity(TileEntityMatteryDuplicator.class,new ResourceLocation(ThaumicForever.MODID, ":mattery_duplicator"));
         GameRegistry.registerTileEntity(TileEntityRepurposer.class,new ResourceLocation(ThaumicForever.MODID, ":repurposer"));
         GameRegistry.registerTileEntity(TileEntityCompressor.class,new ResourceLocation(ThaumicForever.MODID, "compressor"));
@@ -258,6 +293,7 @@ public class ThaumicForever {
         GameRegistry.registerTileEntity(TileBigJarPart.class, new ResourceLocation(ThaumicForever.MODID, "big_jar_part"));
         GameRegistry.registerTileEntity(TileCustomFlowerPot.class, new ResourceLocation(ThaumicForever.MODID, "flower_pot_custom"));
         GameRegistry.registerTileEntity(TileRechargePedestal.class, new ResourceLocation(ThaumicForever.MODID, "recharge_pedestal"));
+        registerOldResearchTileFallback();
         
         // MinecraftForge.EVENT_BUS.register(AirCurrentManager.class);
         // MinecraftForge.EVENT_BUS.register(AirCurrentHandler.class);
@@ -267,6 +303,7 @@ public class ThaumicForever {
 
 
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "guardian_mannequin"),EntityGuardianMannequin.class, "GuardianMannequin", id++, this, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "decoy_mannequin"), EntityDecoyMannequin.class, "DecoyMannequin", id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "time_freeze_projectile"),EntityTimeFreezeProjectile.class, "TimeFreezeProjectile", id++, this, 64, 10, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "aura_node"), AuraNodeEntity.class, "AuraNodeEntity",id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "revive_skeleton"), ReviveSkeletonEntity.class,"ReviveSkeleton", id++, this, 64, 1, true);
@@ -281,6 +318,7 @@ public class ThaumicForever {
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "vampire_bat"), EntityVampireBat.class, "vampire_bat", id++, this, 64, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "WindCharge"), EntityWindCharge.class,"WindCharge", id++, this, 64, 1, true);
         EntityRegistry.registerModEntity(new ResourceLocation(MODID, "gorilla_hand"),EntityGorillaHand.class, "gorilla_hand", id++, this, 64, 1, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(MODID, "resonance_bolt"), EntityResonanceBolt.class, "ResonanceBolt", id++, this, 64, 10, true);
         // EntityRegistry.registerModEntity(new ResourceLocation("thaumicforever","air_current"), EntityAirCurrent.class, "air_current", id++, ThaumicForever.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "AuraNode"), EntityAuraNode.class, "AuraNode", id++, ThaumicForever.instance, 160, 20, true);
 		EntityRegistry.registerModEntity(new ResourceLocation(MODID, "NodeMagnet"), EntityNodeMagnet.class, "NodeMagnet", id++, ThaumicForever.instance, 64, 3, true);
@@ -311,20 +349,12 @@ public class ThaumicForever {
         network.registerMessage(PacketOpenPouch.Handler.class, PacketOpenPouch.class, 13, Side.SERVER);
         network.registerMessage(PacketCancelLogisticsRequest.Handler.class, PacketCancelLogisticsRequest.class, 15, Side.SERVER);
 
-        if (event.getSide().isClient()) {
-            network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 2, Side.CLIENT);
-            network.registerMessage(PacketLightningFX.Handler.class, PacketLightningFX.class, 6, Side.CLIENT);
-            network.registerMessage(TrailMsg.Handler.class, TrailMsg.class, 7, Side.CLIENT);
-            network.registerMessage(PacketSkyBeamFX.Handler.class, PacketSkyBeamFX.class, 14, Side.CLIENT);
-            network.registerMessage(PacketExplosionFX.Handler.class, PacketExplosionFX.class, 10, Side.CLIENT);
-            network.registerMessage(PacketKatanaSlashFX.Handler.class, PacketKatanaSlashFX.class, 11, Side.CLIENT);
-            network.registerMessage(PacketBleedingFX.Handler.class, PacketBleedingFX.class, 12, Side.CLIENT);
-            network.registerMessage(PacketRubyProtectFX.Handler.class, PacketRubyProtectFX.class, 16, Side.CLIENT);
-
-        }
-        network.registerMessage(PacketPrimalAuraSync.Handler.class, PacketPrimalAuraSync.class,9, Side.CLIENT);
+        registerClientBoundPackets(event);
 
         MinecraftForge.EVENT_BUS.register(new RainCauldronFiller());
+        MinecraftForge.EVENT_BUS.register(new CrystalAuraGrowthHandler());
+        MinecraftForge.EVENT_BUS.register(new GolemCoreEventHandler());
+        GolemCores.registerDefaults();
         FlowerGenerator.register();
         ResearchList.initializeFromConfig();
         MinecraftForge.EVENT_BUS.register(WorldTickHandler.getInstance());
@@ -359,6 +389,9 @@ public class ThaumicForever {
         GolemHelper.registerSeal(new SealGolemCoreFishAdvanced());
         // MinecraftForge.EVENT_BUS.register(new SealUseUpdater());
         GolemHelper.registerSeal(new SealRefill());
+        GolemHelper.registerSeal(new SealUseAdvanced());
+        GolemHelper.registerSeal(new SealTrade());
+        GolemHelper.registerSeal(new SealArcaneCaster());
         // GolemHelper.registerSeal(new SealProviderAdvanced());
         // MinecraftForge.EVENT_BUS.register(MysticEntityEventHandler.class);
 
@@ -366,6 +399,19 @@ public class ThaumicForever {
         new CasterCooldownReducer();
 
         }
+
+    private static void registerOldResearchTileFallback() {
+        if (OldResearchToggle.isEnabled()) {
+            return;
+        }
+
+        if (TileEntity.getKey(TileResearchTable.class) != null) {
+            return;
+        }
+
+        GameRegistry.registerTileEntity(TileResearchTable.class, new ResourceLocation("oldresearch", "TileResearchTable"));
+        LOGGER.info("Registered oldresearch:TileResearchTable fallback tile mapping");
+    }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -383,10 +429,13 @@ public class ThaumicForever {
         MinecraftForge.EVENT_BUS.register(new BleedingEnchantmentHandler());
         MinecraftForge.EVENT_BUS.register(new UnbreakableEnchantmentHandler());
         MinecraftForge.EVENT_BUS.register(new VampirismEffectHandler());
+        MinecraftForge.EVENT_BUS.register(new ResonanceDisruptionHandler());
         MinecraftForge.EVENT_BUS.register(new EerieBiomeMobHandler());
         MinecraftForge.EVENT_BUS.register(new ArmorStandToMannequinHandler());
         MinecraftForge.EVENT_BUS.register(new MannequinInteractionHandler());
         MinecraftForge.EVENT_BUS.register(new MannequinUnfreezeHandler());
+        MinecraftForge.EVENT_BUS.register(new DecoyMannequinHandler());
+        MinecraftForge.EVENT_BUS.register(new BiomeSpreadPersistenceHandler());
 
         ModRecipes.init();
         FurnaceRecipes.init();
@@ -418,6 +467,7 @@ public class ThaumicForever {
         RecipeCrucible.addCrucibleRecipes();
         proxy.postInit(event);
         ThaumicWands.postInit(event);
+        ResearchAddendumHandler.postInit();
         replaceProblematicSkyScan();
         fixBasicsResearchLocations();
         removeFirstStepsObservation();
@@ -526,6 +576,7 @@ public class ThaumicForever {
     }
 
     private void removeKnowledgeRequirementsGlobally() {
+        OldResearchManager.captureOriginalResearchState();
         for (ResearchCategory category : ResearchCategories.researchCategories.values()) {
             if (category == null || category.research == null) {
                 continue;
@@ -579,7 +630,49 @@ public class ThaumicForever {
     private void registerCustomRecipes() {
         GameRegistry.findRegistry(IRecipe.class).register(new CustomSalisMundusRecipe());
     }
-    
+
+    private static void registerClientBoundPackets(FMLPreInitializationEvent event) {
+        if (event.getSide().isClient()) {
+            network.registerMessage(PacketSyncAspects.Handler.class, PacketSyncAspects.class, 2, Side.CLIENT);
+            network.registerMessage(PacketLightningFX.Handler.class, PacketLightningFX.class, 6, Side.CLIENT);
+            network.registerMessage(TrailMsg.Handler.class, TrailMsg.class, 7, Side.CLIENT);
+            network.registerMessage(PacketSkyBeamFX.Handler.class, PacketSkyBeamFX.class, 14, Side.CLIENT);
+            network.registerMessage(PacketExplosionFX.Handler.class, PacketExplosionFX.class, 10, Side.CLIENT);
+            network.registerMessage(PacketKatanaSlashFX.Handler.class, PacketKatanaSlashFX.class, 11, Side.CLIENT);
+            network.registerMessage(PacketBleedingFX.Handler.class, PacketBleedingFX.class, 12, Side.CLIENT);
+            network.registerMessage(PacketRubyProtectFX.Handler.class, PacketRubyProtectFX.class, 16, Side.CLIENT);
+            network.registerMessage(PacketPrimalAuraConverterFX.Handler.class, PacketPrimalAuraConverterFX.class, 17, Side.CLIENT);
+            network.registerMessage(PacketBiomeUpdate.Handler.class, PacketBiomeUpdate.class, 18, Side.CLIENT);
+            network.registerMessage(PacketServerConfigSync.Handler.class, PacketServerConfigSync.class, 19, Side.CLIENT);
+            network.registerMessage(PacketPrimalAuraSync.Handler.class, PacketPrimalAuraSync.class, 9, Side.CLIENT);
+            return;
+        }
+
+        registerClientBoundPacketOnServer(PacketSyncAspects.class, 2);
+        registerClientBoundPacketOnServer(PacketLightningFX.class, 6);
+        registerClientBoundPacketOnServer(TrailMsg.class, 7);
+        registerClientBoundPacketOnServer(PacketSkyBeamFX.class, 14);
+        registerClientBoundPacketOnServer(PacketExplosionFX.class, 10);
+        registerClientBoundPacketOnServer(PacketKatanaSlashFX.class, 11);
+        registerClientBoundPacketOnServer(PacketBleedingFX.class, 12);
+        registerClientBoundPacketOnServer(PacketRubyProtectFX.class, 16);
+        registerClientBoundPacketOnServer(PacketPrimalAuraConverterFX.class, 17);
+        registerClientBoundPacketOnServer(PacketBiomeUpdate.class, 18);
+        registerClientBoundPacketOnServer(PacketServerConfigSync.class, 19);
+        registerClientBoundPacketOnServer(PacketPrimalAuraSync.class, 9);
+    }
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    private static <T extends IMessage> void registerClientBoundPacketOnServer(Class<T> messageClass, int discriminator) {
+        network.registerMessage((Class) ServerClientPacketSink.class, messageClass, discriminator, Side.CLIENT);
+    }
+
+    public static class ServerClientPacketSink implements IMessageHandler<IMessage, IMessage> {
+        @Override
+        public IMessage onMessage(IMessage message, MessageContext ctx) {
+            return null;
+        }
+    }
 
 
 }

@@ -3,6 +3,7 @@ package com.wonginnovations.oldresearch.common.lib.network;
 
 import com.wonginnovations.oldresearch.common.lib.research.ScanManager;
 import com.wonginnovations.oldresearch.config.ModConfig;
+import com.wonginnovations.oldresearch.core.OldResearchToggle;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IThreadListener;
@@ -20,6 +21,9 @@ public class PacketScanSelfToServer implements IMessage, IMessageHandler<PacketS
     }
 
     public IMessage onMessage(PacketScanSelfToServer message, MessageContext ctx) {
+        if (!OldResearchToggle.isEnabled()) {
+            return null;
+        }
         IThreadListener mainThread = ctx.getServerHandler().player.getServerWorld();
         mainThread.addScheduledTask(new Runnable() {
             public void run() {

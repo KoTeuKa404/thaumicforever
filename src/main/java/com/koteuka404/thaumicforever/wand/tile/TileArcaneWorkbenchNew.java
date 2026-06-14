@@ -1,16 +1,21 @@
 package com.koteuka404.thaumicforever.wand.tile;
 
-import com.koteuka404.thaumicforever.registry.ModBlocks;
-
-import com.koteuka404.thaumicforever.item.Primal;
-import com.koteuka404.thaumicforever.tile.TilePort;
-import com.koteuka404.thaumicforever.wand.inventory.InventoryArcaneWorkbenchNew;
-import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
-import com.koteuka404.thaumicforever.wand.util.WandHelper;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import com.koteuka404.thaumicforever.aura.PrimalAuraHandler;
+import com.koteuka404.thaumicforever.item.Primal;
+import com.koteuka404.thaumicforever.registry.ModBlocks;
+import com.koteuka404.thaumicforever.tile.TilePort;
+import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
+import com.koteuka404.thaumicforever.wand.inventory.InventoryArcaneWorkbenchNew;
+import com.koteuka404.thaumicforever.wand.util.WandHelper;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import thaumcraft.api.aspects.Aspect;
@@ -18,9 +23,6 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.ContainerDummy;
 import thaumcraft.api.items.RechargeHelper;
 import thaumcraft.common.tiles.crafting.TileArcaneWorkbench;
-import com.koteuka404.thaumicforever.aura.PrimalAuraHandler;
-import com.koteuka404.thaumicforever.entity.EntityAuraNode;
-import com.koteuka404.thaumicforever.tile.TileBuffNodeStabilizer;
 
 public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITickable {
 
@@ -28,9 +30,14 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
     private static final int VIS_RECHARGE_MIN_PER_TICK = 1;
     private static final int VIS_RECHARGE_MAX_PER_TICK = 8;
     private static final int PORT_BOOST_RANGE = 8;
+    private static final int CHARGER_PORT_SCAN_RANGE = 4;
+    private static final int CV_PER_PRIMAL_POINT = 10;
+    private static final int DIRECT_CV_BUFFER_CAP = CV_PER_PRIMAL_POINT * 2;
+    private static final int AURA_PRIMAL_RECHARGE_DIVISOR = 6;
     // With port CV buffer cap (20 units), 1 + round(20 * 1.15) = 24 max aspect boost.
     private static final float PORT_BOOST_PERCENT = 1.15f;
     private NBTTagCompound lastSentWandNbt;
+    private final Map<Aspect, Integer> directCvBuffer = new HashMap<>();
 
     public TileArcaneWorkbenchNew() {
         inventoryCraft = new InventoryArcaneWorkbenchNew(this, new ContainerDummy());
@@ -55,6 +62,57 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
 
     private ItemStack getWand() {
         return inventoryCraft.getStackInSlot(15);
+    }
+
+    public int acceptPrimalCentivis(Aspect aspect, int amountCv) {
+        if (world == null || world.isRemote || aspect == null || amountCv <= 0) return 0;
+        if (!hasCharger() || getWand().isEmpty()) return 0;
+
+        int acceptedCv = bufferDirectCentivis(aspect, amountCv);
+        if (acceptedCv <= 0) return 0;
+
+        int availableCv = directCvBuffer.getOrDefault(aspect, 0);
+        int spendCv = (availableCv / CV_PER_PRIMAL_POINT) * CV_PER_PRIMAL_POINT;
+        if (spendCv <= 0) return acceptedCv;
+
+        int freeRoom = getFreePrimalRoom(getWand());
+        if (freeRoom <= 0) return acceptedCv;
+
+        AspectList weights = WandHelper.decomposeToPrimals(new AspectList().add(aspect, spendCv));
+        if (weights == null || weights.size() <= 0) return acceptedCv;
+
+        int totalPoints = Math.min(sumAspectAmounts(weights) / CV_PER_PRIMAL_POINT, freeRoom);
+        while (totalPoints > 0) {
+            AspectList add = distributeWeightedPoints(getWand(), weights, totalPoints);
+            if (add != null && add.size() > 0) {
+                WandHelper.addPrimalCharge(getWand(), add, null);
+                drainDirectCentivis(aspect, totalPoints * CV_PER_PRIMAL_POINT);
+                syncWand();
+                return acceptedCv;
+            }
+            totalPoints /= 2;
+        }
+        return acceptedCv;
+    }
+
+    private int bufferDirectCentivis(Aspect aspect, int amountCv) {
+        int current = directCvBuffer.getOrDefault(aspect, 0);
+        int room = Math.max(0, DIRECT_CV_BUFFER_CAP - current);
+        int accepted = Math.min(amountCv, room);
+        if (accepted > 0) {
+            directCvBuffer.put(aspect, current + accepted);
+        }
+        return accepted;
+    }
+
+    private void drainDirectCentivis(Aspect aspect, int amountCv) {
+        int current = directCvBuffer.getOrDefault(aspect, 0);
+        int remaining = current - amountCv;
+        if (remaining > 0) {
+            directCvBuffer.put(aspect, remaining);
+        } else {
+            directCvBuffer.remove(aspect);
+        }
     }
 
     private void syncWand() {
@@ -93,30 +151,53 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
 
     public void rechargeWand() {
         BlockPos drainPos = getPos().add(auraChunkX * 16, 0, auraChunkZ * 16);
-        AspectList boost = getPortBoostAspects();
-        AspectList weights = collectNearbyNodePrimalWeights();
-        if (weights == null || weights.size() <= 0) {
-            weights = buildRechargeWeights(drainPos, boost);
-        } else if (boost != null && boost.size() > 0) {
-            // Preserve node ratio as primary source, but let active port boost bias it slightly.
-            for (Aspect a : getAllPrimalAspects()) {
-                int b = Math.max(0, boost.getAmount(a));
-                if (b > 0) {
-                    weights.add(a, b);
-                }
-            }
+        TilePort cvPort = findConnectedCvPort();
+
+        if (cvPort != null) {
+            rechargeWandFromCvPort(cvPort);
+        } else {
+            rechargeWandFromPrimalAura(drainPos);
         }
+
+        advanceAuraScanChunk();
+    }
+
+    private void rechargeWandFromCvPort(TilePort cvPort) {
+        AspectList weights = cvPort.getPrimalCvWeights();
+        if (weights == null || weights.size() <= 0) return;
+
+        int availablePoints = cvPort.getAvailablePrimalCvPoints(CV_PER_PRIMAL_POINT);
+        if (availablePoints <= 0) return;
+
+        int totalPoints = Math.min(availablePoints, getFreePrimalRoom(getWand()));
+        while (totalPoints > 0) {
+            AspectList add = distributeWeightedPoints(getWand(), weights, totalPoints);
+            if (add != null && add.size() > 0 && cvPort.drainPrimalCvForRecharge(add, CV_PER_PRIMAL_POINT)) {
+                WandHelper.addPrimalCharge(getWand(), add, null);
+                return;
+            }
+            totalPoints /= 2;
+        }
+    }
+
+    private void rechargeWandFromPrimalAura(BlockPos drainPos) {
+        AspectList weights = buildRechargeWeights(drainPos, null);
 
         int visPerTick = computeDynamicVisPerTick(weights);
         RechargeHelper.rechargeItem(getWorld(), getWand(), drainPos, null, visPerTick);
 
-        if (PrimalAuraHandler.consumeSet(getWorld(), drainPos, 1, false)) {
-            int totalPoints = 6 + getTotalPrimalBoost(boost);
+        int totalPoints = Math.min(getAvailablePrimalAuraPoints(drainPos) / AURA_PRIMAL_RECHARGE_DIVISOR, getFreePrimalRoom(getWand()));
+        while (totalPoints > 0) {
             AspectList add = distributeWeightedPoints(getWand(), weights, totalPoints);
-            if (add != null && add.size() > 0) {
+            if (add != null && add.size() > 0 && drainPrimalForRecharge(drainPos, add)) {
                 WandHelper.addPrimalCharge(getWand(), add, null);
+                return;
             }
+            totalPoints /= 2;
         }
+    }
+
+    private void advanceAuraScanChunk() {
         auraChunkX++;
         if (auraChunkX > 1) {
             auraChunkX = -1;
@@ -124,6 +205,36 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
             if (auraChunkZ > 1)
                 auraChunkZ = auraChunkX;
         }
+    }
+
+    private TilePort findConnectedCvPort() {
+        if (world == null) return null;
+        BlockPos chargerPos = getPos().up();
+
+        TilePort best = null;
+        double bestDistance = Double.MAX_VALUE;
+        int r = CHARGER_PORT_SCAN_RANGE;
+        BlockPos.MutableBlockPos scan = new BlockPos.MutableBlockPos();
+        for (int dx = -r; dx <= r; dx++) {
+            for (int dy = -r; dy <= r; dy++) {
+                for (int dz = -r; dz <= r; dz++) {
+                    scan.setPos(chargerPos.getX() + dx, chargerPos.getY() + dy, chargerPos.getZ() + dz);
+                    TileEntity te = world.getTileEntity(scan);
+                    if (!(te instanceof TilePort) || te.isInvalid()) continue;
+
+                    TilePort port = (TilePort) te;
+                    if (port.isLocalPedestalEndpoint()) continue;
+
+                    double distance = chargerPos.distanceSq(scan);
+                    if (best == null || distance < bestDistance) {
+                        best = port;
+                        bestDistance = distance;
+                    }
+                }
+            }
+        }
+
+        return best;
     }
 
     private AspectList getPortBoostAspects() {
@@ -275,7 +386,9 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
                 int w = Math.max(1, (weights != null) ? weights.getAmount(a) : 1);
                 int have = current.getAmount(a) + delta.getAmount(a);
                 if (have >= cap) continue;
-                double score = (have + 1.0D) / (double) w;
+                double fullness = (have + 1.0D) / (double) cap;
+                double auraBias = Math.min(w, 256) * 0.0005D;
+                double score = fullness - auraBias;
                 if (score < bestScore) {
                     bestScore = score;
                     best = a;
@@ -286,6 +399,69 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
         }
 
         return delta;
+    }
+
+    private int getFreePrimalRoom(ItemStack wand) {
+        if (wand == null || wand.isEmpty()) return 0;
+        if (!(wand.getItem() instanceof IWand)) return 0;
+
+        int cap = ((IWand) wand.getItem()).getMaxCharge(wand, null);
+        if (cap <= 0) return 0;
+
+        AspectList current = WandHelper.getPrimalCharge(wand);
+        int room = 0;
+        for (Aspect a : getAllPrimalAspects()) {
+            room += Math.max(0, cap - current.getAmount(a));
+        }
+        return room;
+    }
+
+    private int sumAspectAmounts(AspectList aspects) {
+        if (aspects == null || aspects.size() <= 0) return 0;
+        int total = 0;
+        for (Aspect aspect : aspects.getAspects()) {
+            total += Math.max(0, aspects.getAmount(aspect));
+        }
+        return total;
+    }
+
+    private int getAvailablePrimalAuraPoints(BlockPos drainPos) {
+        if (world == null || drainPos == null) return 0;
+
+        int available = 0;
+        for (Aspect a : getAllPrimalAspects()) {
+            Primal p = primalFromAspect(a);
+            if (p == null) continue;
+            available += Math.max(0, (int) Math.floor(PrimalAuraHandler.get(world, drainPos, p)));
+        }
+        return available;
+    }
+
+    private boolean drainPrimalForRecharge(BlockPos drainPos, AspectList delta) {
+        if (world == null || delta == null || delta.size() <= 0) return false;
+
+        for (Aspect a : getAllPrimalAspects()) {
+            int need = delta.getAmount(a);
+            if (need <= 0) continue;
+
+            Primal p = primalFromAspect(a);
+            if (p == null) return false;
+
+            float simulated = PrimalAuraHandler.drain(world, drainPos, p, (float) need, true);
+            if (simulated + 0.0001F < (float) need) return false;
+        }
+
+        for (Aspect a : getAllPrimalAspects()) {
+            int need = delta.getAmount(a);
+            if (need <= 0) continue;
+
+            Primal p = primalFromAspect(a);
+            if (p != null) {
+                PrimalAuraHandler.drain(world, drainPos, p, (float) need, false);
+            }
+        }
+
+        return true;
     }
 
     public boolean hasEnoughPrimalForCrystals(AspectList crystals) {

@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
@@ -33,8 +36,10 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.api.damagesource.DamageSourceThaumcraft;
+import thaumcraft.api.entities.ITaintedMob;
 import thaumcraft.api.items.IRechargable;
 import thaumcraft.api.items.RechargeHelper;
 import thaumcraft.api.potions.PotionFluxTaint;
@@ -54,6 +59,8 @@ public class ItemPotionGun extends Item implements IRechargable {
     private static final String NBT_FLUID = "PotionGunFluid";
     private static final String NBT_TEMPLATE = "PotionGunTemplate";
     private static final float SPECIAL_AURA_PER_SEC = 8.0F;
+    private static final float PURIFYING_TAINT_DAMAGE = 16.0F;
+    private static final int PURIFYING_BLOCKS_PER_PULSE = 12;
 
     private enum AmmoKind {
         POTION,
@@ -492,6 +499,8 @@ public class ItemPotionGun extends Item implements IRechargable {
             case PURIFYING:
                 AuraHelper.drainFlux(world, pos, SPECIAL_AURA_PER_SEC, false);
                 applyPotionDirect(targets, PotionWarpWard.instance, 120, 0);
+                damageTaintedTargets(targets);
+                cleanseTaintedBlocks(player);
                 if (PotionWarpWard.instance != null) {
                     player.addPotionEffect(new PotionEffect(PotionWarpWard.instance, 120, 0, true, true));
                 }
@@ -524,6 +533,87 @@ public class ItemPotionGun extends Item implements IRechargable {
             default:
                 break;
         }
+    }
+
+    private static void damageTaintedTargets(List<EntityLivingBase> targets) {
+        if (targets == null || targets.isEmpty()) {
+            return;
+        }
+
+        for (EntityLivingBase target : targets) {
+            if (target instanceof ITaintedMob && target.isEntityAlive()) {
+                target.attackEntityFrom(DamageSourceThaumcraft.dissolve, PURIFYING_TAINT_DAMAGE);
+            }
+        }
+    }
+
+    private static void cleanseTaintedBlocks(EntityPlayer player) {
+        World world = player.world;
+        Vec3d eye = player.getPositionEyes(1.0F);
+        Vec3d look = player.getLookVec().normalize();
+        double tanHalf = Math.tan(Math.toRadians(SPRAY_HALF_ANGLE_DEG));
+        int cleaned = 0;
+        int radius = (int) Math.ceil(SPRAY_RANGE);
+        BlockPos origin = player.getPosition();
+
+        for (int x = -radius; x <= radius && cleaned < PURIFYING_BLOCKS_PER_PULSE; x++) {
+            for (int y = -radius; y <= radius && cleaned < PURIFYING_BLOCKS_PER_PULSE; y++) {
+                for (int z = -radius; z <= radius && cleaned < PURIFYING_BLOCKS_PER_PULSE; z++) {
+                    BlockPos targetPos = origin.add(x, y, z);
+                    Vec3d to = new Vec3d(
+                            targetPos.getX() + 0.5D - eye.x,
+                            targetPos.getY() + 0.5D - eye.y,
+                            targetPos.getZ() + 0.5D - eye.z
+                    );
+                    double proj = to.dotProduct(look);
+                    if (proj <= 0.0D || proj > SPRAY_RANGE) {
+                        continue;
+                    }
+
+                    double radialSq = to.lengthSquared() - proj * proj;
+                    double coneRadius = proj * tanHalf;
+                    if (radialSq > coneRadius * coneRadius) {
+                        continue;
+                    }
+
+                    if (cleanseTaintedBlock(world, targetPos)) {
+                        cleaned++;
+                    }
+                }
+            }
+        }
+    }
+
+    private static boolean cleanseTaintedBlock(World world, BlockPos pos) {
+        if (!world.isBlockLoaded(pos)) {
+            return false;
+        }
+
+        IBlockState state = world.getBlockState(pos);
+        Block block = state.getBlock();
+        IBlockState cleanState = getCleanStateForTaint(block);
+        if (cleanState == null) {
+            return false;
+        }
+
+        world.setBlockState(pos, cleanState, 3);
+        return true;
+    }
+
+    private static IBlockState getCleanStateForTaint(Block block) {
+        if (block == BlocksTC.taintFibre || block == BlocksTC.taintDust || block == BlocksTC.taintFeature || block == BlocksTC.taintGeyser) {
+            return Blocks.AIR.getDefaultState();
+        }
+        if (block == BlocksTC.taintCrust || block == BlocksTC.taintSoil) {
+            return Blocks.DIRT.getDefaultState();
+        }
+        if (block == BlocksTC.taintRock) {
+            return Blocks.STONE.getDefaultState();
+        }
+        if (block == BlocksTC.taintLog) {
+            return Blocks.LOG.getDefaultState();
+        }
+        return null;
     }
 
     private static boolean isLiquidDeathContainer(ItemStack stack) {
