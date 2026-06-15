@@ -507,7 +507,7 @@
                 },
                 {
                     "text": "research.NEWRUNICS.stage.2",
-                    "recipes": ["THAUMICFOREVER:ring_verdant","THAUMICFOREVER:ring_runic_charge","THAUMICFOREVER:ring_ender","THAUMICFOREVER:zombie_heart_amulet","thaumicforever:ring_regeneration","THAUMICFOREVER:ring_revive","THAUMICFOREVER:ring_cooldown"]
+                    "recipes": ["THAUMICFOREVER:ring_verdant","THAUMICFOREVER:ring_runic_charge","THAUMICFOREVER:ring_ender","THAUMICFOREVER:zombie_heart_amulet","thaumicforever:ring_regeneration","THAUMICFOREVER:ring_revive","THAUMICFOREVER:ring_cooldown","THAUMICFOREVER:ring_vis"]
                 }
             ]
         },

@@ -136,6 +136,7 @@ public class ModItems {
     public static final Item RegenRing = new ItemRingRegeneration().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ReviveRing = new ItemRingRevive().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item CdRing = new ItemRingCooldown().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item VIS_RING = new ItemVisRing().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemHand = new ItemHand().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item bigOakGrower = new ItemBigOakGrower().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
@@ -202,6 +203,7 @@ public class ModItems {
             RegenRing,
             ReviveRing,
             CdRing,
+            VIS_RING,
 
 
             ItemVoidGear,
@@ -393,6 +395,7 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.RegenRing, 0, new ModelResourceLocation(ModItems.RegenRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ReviveRing, 0, new ModelResourceLocation(ModItems.ReviveRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.CdRing, 0, new ModelResourceLocation(ModItems.CdRing.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.VIS_RING, 0, new ModelResourceLocation(ModItems.VIS_RING.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemHand, 0, new ModelResourceLocation(ModItems.ItemHand.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.bigOakGrower, 0, new ModelResourceLocation(ModItems.bigOakGrower.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.thaumium_core, 0, new ModelResourceLocation(ModItems.thaumium_core.getRegistryName(), "inventory"));

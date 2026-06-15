@@ -21,7 +21,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aura.AuraHelper;
-import thaumcraft.common.world.aura.AuraHandler;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 
 public class NTHungry extends NTNormal {
@@ -227,13 +226,28 @@ public class NTHungry extends NTNormal {
             }
         }
 
+        float vis = AuraHelper.getVis(world, node.getPosition());
+        float base = Math.max(1f, AuraHelper.getAuraBase(world, node.getPosition()));
+        float frac = vis / base;
+
         int drain = calculateStrength(node);
-        float frac = (float) AuraHelper.getVis(world, node.getPosition()) /
-                     Math.max(1f, AuraHelper.getAuraBase(world, node.getPosition()));
+        drainAuraVis(world, node.getPosition(), drain);
+
         if (rand.nextFloat() < frac && rand.nextInt(1 + node.getNodeSize() * 2) == 0) {
-            AuraHandler.drainVis(world, node.getPosition(), drain, false);
+            drainAuraVis(world, node.getPosition(), drain);
             node.setNodeSize(node.getNodeSize() + 1);
         }
+    }
+
+    private float drainAuraVis(World world, BlockPos pos, float amount) {
+        if (world == null || pos == null || amount <= 0.0f) {
+            return 0.0f;
+        }
+        float available = AuraHelper.getVis(world, pos);
+        if (available <= 0.0f) {
+            return 0.0f;
+        }
+        return AuraHelper.drainVis(world, pos, Math.min(amount, available), false);
     }
 
     private void decomposeAllToPrimals(AspectList al, EntityAuraNode node) {

@@ -25,4 +25,5 @@ run/
 refer/*
 refer/
 .gradle/
-run/*
+*run/*
+.gradle/gradle.log

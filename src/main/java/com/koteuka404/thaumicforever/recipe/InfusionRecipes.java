@@ -577,6 +577,30 @@ public class InfusionRecipes {
                     new ItemStack(ItemsTC.nuggets,1,10)
                 }
             ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ring_vis"), new InfusionRecipe(
+                "NEWRUNICS",
+                new ItemStack(ModItems.VIS_RING),
+                5,
+                new AspectList()
+                    .add(Aspect.AURA, 55)
+                    .add(Aspect.MAGIC, 45)
+                    .add(Aspect.ENERGY, 35)
+                    .add(Aspect.ORDER, 25)
+                    .add(Aspect.EXCHANGE, 25),
+
+                new ItemStack(ModItems.IRONRING),
+                new Object[] {
+                    new ItemStack(ItemsTC.visResonator),
+                    new ItemStack(BlocksTC.visBattery),
+                    new ItemStack(ModItems.AQUAREIA_GEM),
+                    new ItemStack(ItemsTC.salisMundus),
+                    new ItemStack(ItemsTC.quicksilver),
+                    new ItemStack(ItemsTC.amber),
+                    new ItemStack(ModItems.AuraPhial),
+                    new ItemStack(ItemsTC.salisMundus)
+                }
+            ));
 // // // / // / / / // / // /// // / //// / / / / // / / // / //
 
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:thaumium_core"), new InfusionRecipe(

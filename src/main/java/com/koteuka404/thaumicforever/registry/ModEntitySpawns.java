@@ -27,7 +27,7 @@ public class ModEntitySpawns {
             EnumCreatureType.MONSTER,
             Biomes.PLAINS, Biomes.FOREST, Biomes.DESERT,
             Biomes.SWAMPLAND, Biomes.ICE_PLAINS, Biomes.TAIGA,
-            Biomes.HELL, Biomes.SAVANNA, Biomes.MESA
+            Biomes.SAVANNA, Biomes.MESA
         );
 
         EntityRegistry.addSpawn(

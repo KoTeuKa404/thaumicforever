@@ -6,7 +6,6 @@ import java.util.Locale;
 import baubles.api.BaubleType;
 import baubles.api.IBauble;
 import com.koteuka404.thaumicforever.ThaumicForever;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumRarity;
@@ -15,19 +14,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aura.AuraHelper;
 
-@Mod.EventBusSubscriber(modid = ThaumicForever.MODID)
 public class ItemVisRing extends Item implements IBauble {
-
-    public static final ItemVisRing INSTANCE = new ItemVisRing();
 
     private static final String NBT_STORED_VIS = "StoredVis";
     private static final float MAX_STORED_VIS = 35.0f;
@@ -160,28 +149,8 @@ public class ItemVisRing extends Item implements IBauble {
         return EnumRarity.RARE;
     }
 
-    @Override
-    public String getItemStackDisplayName(ItemStack stack) {
-        return "Vis Ring";
-    }
-
     @Override public void onEquipped(ItemStack stack, EntityLivingBase player) { }
     @Override public void onUnequipped(ItemStack stack, EntityLivingBase player) { }
     @Override public boolean canEquip(ItemStack stack, EntityLivingBase player) { return true; }
     @Override public boolean canUnequip(ItemStack stack, EntityLivingBase player) { return true; }
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(INSTANCE);
-    }
-
-    @SideOnly(Side.CLIENT)
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(
-            INSTANCE,
-            0,
-            new ModelResourceLocation(INSTANCE.getRegistryName(), "inventory")
-        );
-    }
 }

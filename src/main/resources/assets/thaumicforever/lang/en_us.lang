@@ -448,6 +448,7 @@ research.IGNISALKIMIA.stage.1=I must imbue a §esalis mundus§0 with at least te
 research.IGNISALKIMIA.stage.2=My experiments have unlocked new crucible recipes with ignis
 
 item.ring_cooldown.name=Ring of Haste
+item.ring_vis.name=Vis Ring
 item.ring_revive.name=Ring of Lesser Resurrection
 item.ring_regeneration.name=Ring of Regeneration
 
