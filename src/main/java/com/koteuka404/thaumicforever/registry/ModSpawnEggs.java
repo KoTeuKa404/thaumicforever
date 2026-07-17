@@ -23,6 +23,7 @@ public class ModSpawnEggs {
         registerEgg("gorilla", 0x4B4B4B, 0xFFFFFF); 
         registerEgg("watcher_guard", 0xbcc6c1, 0x64B496);
         registerEgg("vampire_bat", 0x2A0F2F, 0xD63B3B);
+        registerEgg("void_traider", 0x3A2B22, 0x7B1F1F);
     }
 
     private static void registerEgg(String entityName, int primaryColor, int secondaryColor) {

@@ -14,6 +14,7 @@ public class CoreModPlugin implements IFMLLoadingPlugin {
     public String[] getASMTransformerClass() {
         List<String> transformers = new ArrayList<String>();
         transformers.add("com.example.coremod.IUEventHandlerTransformer");
+        transformers.add("com.example.coremod.IngredientInvalidateAllTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsScrollTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsSearchTransformer");
         transformers.add("com.example.coremod.ThaumcraftLogisticsSearchLimitTransformer");

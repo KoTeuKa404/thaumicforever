@@ -1,7 +1,7 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "thaumicforever:node_model2test",
+    "model": "thaumicforever:primal_aura_converter",
     "transform": "forge:default-block"
   },
   "variants": {

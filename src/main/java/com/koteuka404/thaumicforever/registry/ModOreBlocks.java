@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.registry;
 
 import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.config.ModConfig;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,15 +38,20 @@ public class ModOreBlocks {
             AQUAREIA_ORE,
             ANCIENT_AMBER,
             ANCIENT_CINNABAR,
-            COPPER_ORE,
-            TIN_ORE,
-            LEAD_ORE,
-            SILVER_ORE,
             ANCIENT_COAL,
             ANCIENT_GOLD,
             ANCIENT_IRON,
             SMOOTH_STONE
         );
+
+        if (ModConfig.enableStandardOreGeneration) {
+            registry.registerAll(
+                COPPER_ORE,
+                TIN_ORE,
+                LEAD_ORE,
+                SILVER_ORE
+            );
+        }
     }
 
     @SubscribeEvent
@@ -55,16 +61,21 @@ public class ModOreBlocks {
             new ItemBlock(AQUAREIA_ORE).setRegistryName(AQUAREIA_ORE.getRegistryName()),
             new ItemBlock(ANCIENT_AMBER).setRegistryName(ANCIENT_AMBER.getRegistryName()),
             new ItemBlock(ANCIENT_CINNABAR).setRegistryName(ANCIENT_CINNABAR.getRegistryName()),
-            new ItemBlock(COPPER_ORE).setRegistryName(COPPER_ORE.getRegistryName()),
-            new ItemBlock(TIN_ORE).setRegistryName(TIN_ORE.getRegistryName()),
-            new ItemBlock(LEAD_ORE).setRegistryName(LEAD_ORE.getRegistryName()),
-            new ItemBlock(SILVER_ORE).setRegistryName(SILVER_ORE.getRegistryName()),
             new ItemBlock(ANCIENT_COAL).setRegistryName(ANCIENT_COAL.getRegistryName()),
             new ItemBlock(ANCIENT_GOLD).setRegistryName(ANCIENT_GOLD.getRegistryName()),
             new ItemBlock(ANCIENT_IRON).setRegistryName(ANCIENT_IRON.getRegistryName()),
             new ItemBlock(SMOOTH_STONE).setRegistryName(SMOOTH_STONE.getRegistryName())
 
         );
+
+        if (ModConfig.enableStandardOreGeneration) {
+            registry.registerAll(
+                new ItemBlock(COPPER_ORE).setRegistryName(COPPER_ORE.getRegistryName()),
+                new ItemBlock(TIN_ORE).setRegistryName(TIN_ORE.getRegistryName()),
+                new ItemBlock(LEAD_ORE).setRegistryName(LEAD_ORE.getRegistryName()),
+                new ItemBlock(SILVER_ORE).setRegistryName(SILVER_ORE.getRegistryName())
+            );
+        }
     }
 
     @SideOnly(Side.CLIENT)
@@ -73,10 +84,12 @@ public class ModOreBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(AQUAREIA_ORE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANCIENT_AMBER), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANCIENT_CINNABAR), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COPPER_ORE), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIN_ORE), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(LEAD_ORE), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(SILVER_ORE), 0, "inventory");
+        if (ModConfig.enableStandardOreGeneration) {
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COPPER_ORE), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIN_ORE), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(LEAD_ORE), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(SILVER_ORE), 0, "inventory");
+        }
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANCIENT_COAL), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANCIENT_GOLD), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANCIENT_IRON), 0, "inventory");

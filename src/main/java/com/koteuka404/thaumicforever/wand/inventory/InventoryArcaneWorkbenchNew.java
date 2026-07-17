@@ -145,7 +145,8 @@ public class InventoryArcaneWorkbenchNew extends InventoryArcaneWorkbench {
         AspectList charge = WandHelper.getPrimalCharge(wand);
         int count = charge.getAmount(aspect);
         if (wand.getItem() instanceof IWand) {
-            AspectList discount = ((IWand) wand.getItem()).getCap(wand).getAspectDiscount();
+            AspectList discount = WandHelper.decomposeToPrimals(
+                    ((IWand) wand.getItem()).getCap(wand).getAspectDiscount());
             if (discount != null) count += discount.getAmount(aspect);
         }
         if (count <= 0) return ItemStack.EMPTY;

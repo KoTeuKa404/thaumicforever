@@ -156,7 +156,7 @@ public class TilePort extends TileEntity implements ITickable,
             return toAcceptedInput(amount, accepted);
         }
         if (!(up instanceof TileBuffNodeStabilizer)) {
-            return 0;
+            return acceptCentivisLocal(aspect, amount);
         }
         return relayCentivis(aspect, amount, 0);
     }
@@ -208,6 +208,9 @@ public class TilePort extends TileEntity implements ITickable,
         int charged = tryPassCentivisToCharger(aspect, effectiveAmount);
         if (charged > 0) return toAcceptedInput(amount, charged);
 
+        int adjacentAccepted = tryPassCentivisToAdjacentAcceptors(aspect, effectiveAmount);
+        if (adjacentAccepted > 0) return toAcceptedInput(amount, adjacentAccepted);
+
         if (!hasStabilizerAbove()) {
             int outputBelow = tryOutputCvToBelow(aspect, effectiveAmount);
             if (outputBelow > 0) return toAcceptedInput(amount, outputBelow);
@@ -227,6 +230,22 @@ public class TilePort extends TileEntity implements ITickable,
     private int toAcceptedInput(int originalAmount, int acceptedEffectiveAmount) {
         if (originalAmount <= 0 || acceptedEffectiveAmount <= 0) return 0;
         return Math.min(originalAmount, acceptedEffectiveAmount * CV_STRENGTH_DIVISOR);
+    }
+
+    private int tryPassCentivisToAdjacentAcceptors(Aspect aspect, int amount) {
+        if (aspect == null || amount <= 0 || world == null) return 0;
+
+        for (EnumFacing facing : EnumFacing.HORIZONTALS) {
+            TileEntity te = world.getTileEntity(pos.offset(facing));
+            if (!(te instanceof TileNodeTransducer.ICentivisAcceptorAspect)) continue;
+            if (te instanceof TilePort || te instanceof TileBuffNodeStabilizer || te.isInvalid()) continue;
+            if (te instanceof TileCrystallizer && !((TileCrystallizer) te).canAcceptCentivisFrom(facing.getOpposite())) continue;
+
+            int accepted = ((TileNodeTransducer.ICentivisAcceptorAspect) te).acceptCentivis(aspect, amount, null);
+            if (accepted > 0) return accepted;
+        }
+
+        return 0;
     }
 
     private int tryPassCentivisToCharger(Aspect aspect, int amount) {

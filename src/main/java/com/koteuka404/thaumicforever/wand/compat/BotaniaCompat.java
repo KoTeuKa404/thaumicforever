@@ -41,43 +41,31 @@ public class BotaniaCompat implements ICompat {
 
     @Override
     public void init() {
-        String manasteel = resolveMetalOre(ORE_MANASTEEL_NUGGET, ORE_MANASTEEL_INGOT, "manasteel");
-        String elementium = resolveMetalOre(ORE_ELEMENTIUM_NUGGET, ORE_ELEMENTIUM_INGOT, "elementium");
-        String terrasteel = resolveMetalOre(ORE_TERRASTEEL_NUGGET, ORE_TERRASTEEL_INGOT, "terrasteel");
-        String livingwood = resolveAnyOre(ORE_LIVINGWOOD, "livingwood");
-        String dreamwood = resolveAnyOre(ORE_DREAMWOOD, "dreamwood");
-
-        if (manasteel != null) {
-            if (!hasCapTag("manasteel")) {
-                new WandCap("manasteel", 0.90F,
-                        new AspectList().add(Aspect.MAGIC, 1).add(Aspect.AURA, 1),
-                        new ItemStack(itemWandCapBotania, 1, 1), 20, "CAP_MATERIAL_ALL");
-            }
+        if (!hasCapTag("manasteel")) {
+            new WandCap("manasteel", 0.90F,
+                    new AspectList().add(Aspect.MAGIC, 1).add(Aspect.AURA, 1),
+                    new ItemStack(itemWandCapBotania, 1, 1), 20, "CAP_MATERIAL_ALL");
         }
-        if (elementium != null) {
-            if (!hasCapTag("elementium")) {
-                new WandCap("elementium", 0.82F,
-                        new AspectList().add(Aspect.AIR, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.EARTH, 1),
-                        new ItemStack(itemWandCapBotania, 1, 3), 28, "CAP_MATERIAL_ALL");
-            }
+        if (!hasCapTag("elementium")) {
+            new WandCap("elementium", 0.82F,
+                    new AspectList().add(Aspect.AIR, 1).add(Aspect.FIRE, 1).add(Aspect.WATER, 1).add(Aspect.EARTH, 1),
+                    new ItemStack(itemWandCapBotania, 1, 3), 28, "CAP_MATERIAL_ALL");
         }
-        if (terrasteel != null) {
-            if (!hasCapTag("terrasteel")) {
-                new WandCap("terrasteel", 0.75F,
-                        new AspectList().add(Aspect.MAGIC, 2).add(Aspect.AURA, 2).add(Aspect.PLANT, 1),
-                        new ItemStack(itemWandCapBotania, 1, 4), 38, "CAP_MATERIAL_ALL");
-            }
+        if (!hasCapTag("terrasteel")) {
+            new WandCap("terrasteel", 0.80F,
+                    new AspectList()
+                            .add(Aspect.AIR, 3)
+                            .add(Aspect.WATER, 1)
+                            .add(Aspect.ORDER, 2)
+                            .add(Aspect.EARTH, 4),
+                    new ItemStack(itemWandCapBotania, 1, 4), 38, "CAP_MATERIAL_ALL");
         }
 
-        if (livingwood != null) {
-            if (!hasRodTag("livingwood")) {
-                new WandRod("livingwood", 500, new ItemStack(itemWandRodBotania, 1, 1), 18, new UpdateLivingwood(), "ROD_GREATWOOD");
-            }
+        if (!hasRodTag("livingwood")) {
+            new WandRod("livingwood", 500, new ItemStack(itemWandRodBotania, 1, 1), 18, new UpdateLivingwood(), "ROD_GREATWOOD");
         }
-        if (dreamwood != null) {
-            if (!hasRodTag("dreamwood")) {
-                new WandRod("dreamwood", 800, new ItemStack(itemWandRodBotania, 1, 3), 30, new UpdateDreamwood(), "ROD_SILVERWOOD");
-            }
+        if (!hasRodTag("dreamwood")) {
+            new WandRod("dreamwood", 800, new ItemStack(itemWandRodBotania, 1, 3), 30, new UpdateDreamwood(), "ROD_SILVERWOOD");
         }
     }
 

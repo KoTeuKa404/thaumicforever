@@ -1,6 +1,8 @@
 package com.koteuka404.thaumicforever.recipe;
 
 import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.registry.AspectRegistry;
+import com.koteuka404.thaumicforever.registry.ModBlocks;
 import com.koteuka404.thaumicforever.registry.ModItems;
 
 import net.minecraft.init.Blocks;
@@ -484,7 +486,7 @@ public class RecipeCrucible {
 
         ResourceLocation aquamarinRecipeKey = new ResourceLocation("thaumicforever", "aquamarin");
         CrucibleRecipe aquamarinRecipe = new CrucibleRecipe(
-            "AQUAALKIMIA",
+            "ASTRALALKIIA",
             new ItemStack(Item.getByNameOrId("astralsorcery:itemcraftingcomponent"), 1, 0),
             new ItemStack(Item.getByNameOrId("minecraft:dye"), 1, 4),
             new AspectList().add(Aspect.CRYSTAL, 4).add(Aspect.WATER, 4)
@@ -492,14 +494,57 @@ public class RecipeCrucible {
         ThaumcraftApi.addCrucibleRecipe(aquamarinRecipeKey, aquamarinRecipe);
         
 
-        ResourceLocation gorRecipeKey = new ResourceLocation("thaumicforever", "gor_recipes");
-        CrucibleRecipe gorRecipe = new CrucibleRecipe(
-            "AQUAALKIMIA",
-            new ItemStack(Item.getByNameOrId("astralsorcery:blockcustomore"), 1, 0),
-            new ItemStack(Blocks.QUARTZ_BLOCK),
-            new AspectList().add(Aspect.DEATH, 6).add(Aspect.ENERGY, 6)
+        ResourceLocation starmetalOreRecipeKey = new ResourceLocation("thaumicforever", "astral_starmetal_ore");
+        CrucibleRecipe starmetalOreRecipe = new CrucibleRecipe(
+            "ASTRALALKIIA",
+            new ItemStack(Item.getByNameOrId("astralsorcery:blockcustomore"), 1, 1),
+            new ItemStack(Blocks.IRON_ORE),
+            new AspectList()
+                .add(Aspect.CRYSTAL, 12)
+                .add(Aspect.ENERGY, 10)
+                .add(Aspect.MAGIC, 8)
         );
-        ThaumcraftApi.addCrucibleRecipe(gorRecipeKey, gorRecipe);
+        ThaumcraftApi.addCrucibleRecipe(starmetalOreRecipeKey, starmetalOreRecipe);
+
+        ResourceLocation marbleRecipeKey = new ResourceLocation("thaumicforever", "astral_marble");
+        CrucibleRecipe marbleRecipe = new CrucibleRecipe(
+            "ASTRALALKIIA",
+            new ItemStack(Item.getByNameOrId("astralsorcery:blockmarble"), 1, 0),
+            new ItemStack(Blocks.QUARTZ_BLOCK),
+            new AspectList()
+                .add(Aspect.EARTH, 8)
+                .add(Aspect.CRYSTAL, 4)
+                .add(Aspect.MAGIC, 3)
+        );
+        ThaumcraftApi.addCrucibleRecipe(marbleRecipeKey, marbleRecipe);
+
+        if (Loader.isModLoaded("aetherworks")) {
+            ResourceLocation aetherOreRecipeKey = new ResourceLocation(MODID, "embers_aether_ore");
+            CrucibleRecipe aetherOreRecipe = new CrucibleRecipe(
+                "EMBERSALKIMIA",
+                new ItemStack(Item.getByNameOrId("aetherworks:aether_ore"), 1, 0),
+                new ItemStack(Blocks.STONE),
+                new AspectList()
+                    .add(Aspect.AIR, 8)
+                    .add(Aspect.MAGIC, 8)
+                    .add(Aspect.CRYSTAL, 5)
+            );
+            ThaumcraftApi.addCrucibleRecipe(aetherOreRecipeKey, aetherOreRecipe);
+        }
+
+        if (Loader.isModLoaded("soot")) {
+            ResourceLocation sulfurOreRecipeKey = new ResourceLocation(MODID, "embers_sulfur_ore");
+            CrucibleRecipe sulfurOreRecipe = new CrucibleRecipe(
+                "EMBERSALKIMIA",
+                new ItemStack(Item.getByNameOrId("soot:sulfur_ore"), 1, 0),
+                new ItemStack(Blocks.NETHERRACK),
+                new AspectList()
+                    .add(Aspect.FIRE, 10)
+                    .add(Aspect.EARTH, 8)
+                    .add(Aspect.DEATH, 3)
+            );
+            ThaumcraftApi.addCrucibleRecipe(sulfurOreRecipeKey, sulfurOreRecipe);
+        }
 
         ResourceLocation CleanRecipeKey = new ResourceLocation(MODID, "Clean_recipe");
         CrucibleRecipe CleanRecipe = new CrucibleRecipe(
@@ -554,7 +599,7 @@ public class RecipeCrucible {
 
         ResourceLocation fishRecipeKey = new ResourceLocation(MODID, "fishRecipeKey");
         CrucibleRecipe gishRecipe = new CrucibleRecipe(
-            "golem_core_fish",
+            "GOLEM_CORE_FISH",
             GolemHelper.getSealStack("thaumicforever:golem_core_fish"),
             new ItemStack(ItemsTC.seals),
             new AspectList()
@@ -566,7 +611,7 @@ public class RecipeCrucible {
 
         ResourceLocation fishAdvRecipeKey = new ResourceLocation(MODID, "golem_core_fish_advanced");
         CrucibleRecipe fishAdvRecipe = new CrucibleRecipe(
-            "golem_core_fish",
+            "GOLEM_CORE_FISH",
             GolemHelper.getSealStack("thaumicforever:golem_core_fish_advanced"),
             GolemHelper.getSealStack("thaumicforever:golem_core_fish"),
             new AspectList()
@@ -613,7 +658,7 @@ public class RecipeCrucible {
 
         ResourceLocation crystalRecipeKey = new ResourceLocation(MODID, "crystalhRecipe");
         CrucibleRecipe crystalhRecipe = new CrucibleRecipe(
-            "seal_golem_core_essentia",
+            "SEAL_GOLEM_CORE_ESSENTIA",
             GolemHelper.getSealStack("thaumicforever:golem_core_essentia"),
             new ItemStack(ItemsTC.seals),
             new AspectList()
@@ -845,9 +890,18 @@ public class RecipeCrucible {
     
 
 
-
-
-
+    ResourceLocation matterya_blockRecipeKey = new ResourceLocation(MODID, "matterya_block");
+    CrucibleRecipe matterya_blockRecipe = new CrucibleRecipe(
+        "RESEARCHPRIMAL",
+        new ItemStack(ModBlocks.MATTERYA_BLOCK),
+        new ItemStack(BlocksTC.metalBlockVoid),
+        new AspectList()
+        .add(AspectRegistry.MATTERYA, 250)
+        .add(Aspect.CRAFT, 180)
+        .add(Aspect.METAL, 120)
+        .add(Aspect.VOID, 100)
+        );
+    ThaumcraftApi.addCrucibleRecipe(matterya_blockRecipeKey, matterya_blockRecipe);
 
 
 

@@ -14,6 +14,7 @@ import com.koteuka404.thaumicforever.focus.FocusEffectFlight;
 import com.koteuka404.thaumicforever.focus.FocusEffectMindControl;
 import com.koteuka404.thaumicforever.focus.FocusEffectPrimal;
 import com.koteuka404.thaumicforever.focus.FocusEffectPrimalElement;
+import com.koteuka404.thaumicforever.focus.FocusEffectPrimalRupture;
 import com.koteuka404.thaumicforever.focus.FocusMediumOrbitSphere;
 import com.koteuka404.thaumicforever.focus.FocusMediumSkyBeam;
 import com.koteuka404.thaumicforever.focus.FocusModBoostPower;
@@ -34,7 +35,8 @@ public class ModFocuses {
         FocusEngine.registerElement(FocusEffectExplosion.class, new ResourceLocation("thaumcraft", "textures/foci/burst.png"), 0xFF8A00);
         FocusEngine.registerElement(FocusEffectBlink.class, new ResourceLocation("thaumicforever", "textures/foci/blink.png"), 0x7C4DFF);
         FocusEngine.registerElement(FocusEffectPrimal.class, new ResourceLocation("thaumicforever", "textures/foci/primal.png"), 0x9C27B0);
-        // FocusEngine.registerElement(FocusEffectPrimalElement.class, new ResourceLocation("thaumicforever", "textures/foci/pr_el.png"), 0x4FC3F7);
+        FocusEngine.registerElement(FocusEffectPrimalElement.class, new ResourceLocation("thaumicforever", "textures/foci/pr_el.png"), 0x4FC3F7);
+        FocusEngine.registerElement(FocusEffectPrimalRupture.class, new ResourceLocation("thaumicforever", "textures/foci/disintegrate.png"), 0xF2D7FF);
         FocusEngine.registerElement(FocusModTimeCooldown.class, new ResourceLocation("thaumicforever", "textures/foci/time_coldown.png"), 0x66CCFF);
 
     }

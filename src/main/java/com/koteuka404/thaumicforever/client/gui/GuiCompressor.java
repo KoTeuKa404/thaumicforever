@@ -3,15 +3,16 @@ package com.koteuka404.thaumicforever.client.gui;
 import java.io.IOException;
 import java.util.List;
 
+import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.container.ContainerCompressor;
+import com.koteuka404.thaumicforever.network.PacketSelectPlate;
+import com.koteuka404.thaumicforever.tile.TileEntityCompressor;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import com.koteuka404.thaumicforever.container.ContainerCompressor;
-import com.koteuka404.thaumicforever.network.PacketSelectPlate;
-import com.koteuka404.thaumicforever.tile.TileEntityCompressor;
-import com.koteuka404.thaumicforever.ThaumicForever;
 
 public class GuiCompressor extends GuiContainer {
 
@@ -44,6 +45,7 @@ public class GuiCompressor extends GuiContainer {
         Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURES);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
     }
+    
 
     @Override
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {

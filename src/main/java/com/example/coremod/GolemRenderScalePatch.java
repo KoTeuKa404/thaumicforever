@@ -48,7 +48,7 @@ public final class GolemRenderScalePatch {
         GlStateManager.disableCull();
         GlStateManager.enablePolygonOffset();
         GlStateManager.doPolygonOffset(-2.0F, -2.0F);
-        applyColor(core.getPlugColor());
+        applyColor(core.getPlugColor(golem));
         GlStateManager.translate(0.0F, 0.61F, -0.127F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 

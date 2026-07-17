@@ -20,31 +20,34 @@ import com.koteuka404.thaumicforever.client.gui.ChestGui;
 import com.koteuka404.thaumicforever.client.gui.DeconstructionTableGui;
 import com.koteuka404.thaumicforever.client.gui.DoubleTableGui;
 import com.koteuka404.thaumicforever.client.gui.GreatResearchTableGui;
+import com.koteuka404.thaumicforever.client.gui.GuiArcaneTurret;
+import com.koteuka404.thaumicforever.client.gui.GuiVoidTraider;
 import com.koteuka404.thaumicforever.client.gui.GuiCompressor;
 import com.koteuka404.thaumicforever.client.gui.GuiMatteryDuplicator;
 import com.koteuka404.thaumicforever.client.gui.GuiMysticTabExample;
 import com.koteuka404.thaumicforever.client.gui.GuiPotionGun;
-import com.koteuka404.thaumicforever.client.gui.GuiRepurposer;
 import com.koteuka404.thaumicforever.client.gui.GuiVoidChest;
 import com.koteuka404.thaumicforever.container.ContainerAbandonedChest;
+import com.koteuka404.thaumicforever.container.ContainerArcaneTurret;
+import com.koteuka404.thaumicforever.container.ContainerVoidTraider;
 import com.koteuka404.thaumicforever.container.ContainerCompressor;
 import com.koteuka404.thaumicforever.container.ContainerMatteryDuplicator;
 import com.koteuka404.thaumicforever.container.ContainerMysticTabExample;
 import com.koteuka404.thaumicforever.container.ContainerPotionGun;
 import com.koteuka404.thaumicforever.container.ContainerPouch;
-import com.koteuka404.thaumicforever.container.ContainerRepurposer;
 import com.koteuka404.thaumicforever.container.ContainerVoidChest;
 import com.koteuka404.thaumicforever.inventory.InventoryVoidChest;
 import com.koteuka404.thaumicforever.inventory.InventoryPotionGun;
 import com.koteuka404.thaumicforever.inventory.InventoryPouch;
 import com.koteuka404.thaumicforever.item.ItemPotionGun;
 import com.koteuka404.thaumicforever.item.ItemPouch;
+import com.koteuka404.thaumicforever.entity.EntityArcaneTurret;
+import com.koteuka404.thaumicforever.entity.EntityVoidTraider;
 import com.koteuka404.thaumicforever.tile.DeconstructionTableTileEntity;
 import com.koteuka404.thaumicforever.tile.DoubleTableTileEntity;
 import com.koteuka404.thaumicforever.tile.TileEntityAbandonedChest;
 import com.koteuka404.thaumicforever.tile.TileEntityCompressor;
 import com.koteuka404.thaumicforever.tile.TileEntityMatteryDuplicator;
-import com.koteuka404.thaumicforever.tile.TileEntityRepurposer;
 import com.koteuka404.thaumicforever.tile.TileVoidChest;
 import com.koteuka404.thaumicforever.container.DeconstructionTableContainer;
 import com.koteuka404.thaumicforever.container.DoubleTableContainer;
@@ -59,13 +62,14 @@ public class ModGuiHandler implements IGuiHandler {
     public static final int CRIMSON_BOOK_GUI           = 3;
     public static final int GUI_ID_MATTERY_DUPLICATOR  = 4;
     public static final int GUI_ID_COMPRESSOR          = 5;
-    public static final int GUI_ID_REPURPOSER          = 6;
     public static final int GUI_BAUBLES                = 7;
     public static final int GUI_WAND_WORKBENCH         = 8;
     public static final int GUI_POUCH                  = 9;
     public static final int GUI_POTION_GUN             = 10;
     public static final int GREAT_RESEARCH_TABLE_GUI   = 11;
     public static final int VOID_CHEST_GUI_ID          = 12;
+    public static final int GUI_ARCANE_TURRET          = 13;
+    public static final int GUI_VOID_TRAIDER              = 14;
 
     @Override
     public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) {
@@ -93,9 +97,6 @@ public class ModGuiHandler implements IGuiHandler {
         else if (id == GUI_ID_COMPRESSOR && te instanceof TileEntityCompressor) {
             return new ContainerCompressor(inv, (TileEntityCompressor) te);
         }
-        else if (id == GUI_ID_REPURPOSER && te instanceof TileEntityRepurposer) {
-            return new ContainerRepurposer(inv, (TileEntityRepurposer) te);
-        }
         else if (id == GUI_BAUBLES) {
             return new ContainerMysticTabExample(player.inventory);
         }
@@ -111,6 +112,12 @@ public class ModGuiHandler implements IGuiHandler {
             ItemStack stack = getPlayerStackByGuiArg(player, x);
             if (stack.isEmpty() || !(stack.getItem() instanceof ItemPotionGun)) return null;
             return new ContainerPotionGun(inv, new InventoryPotionGun(stack, player, x), player);
+        }
+        else if (id == GUI_ARCANE_TURRET && world.getEntityByID(x) instanceof EntityArcaneTurret) {
+            return new ContainerArcaneTurret(player, (EntityArcaneTurret) world.getEntityByID(x));
+        }
+        else if (id == GUI_VOID_TRAIDER && world.getEntityByID(x) instanceof EntityVoidTraider) {
+            return new ContainerVoidTraider(inv, (EntityVoidTraider) world.getEntityByID(x));
         }
         return null;
     }
@@ -140,9 +147,6 @@ public class ModGuiHandler implements IGuiHandler {
         else if (id == GUI_ID_COMPRESSOR && te instanceof TileEntityCompressor) {
             return new GuiCompressor(player.inventory, (TileEntityCompressor) te);
         }
-        else if (id == GUI_ID_REPURPOSER && te instanceof TileEntityRepurposer) {
-            return new GuiRepurposer(player.inventory, (TileEntityRepurposer) te);
-        }
         else if (id == GUI_BAUBLES) {
             return new GuiMysticTabExample(player.inventory);
         }
@@ -158,6 +162,12 @@ public class ModGuiHandler implements IGuiHandler {
             ItemStack stack = getPlayerStackByGuiArg(player, x);
             if (stack.isEmpty() || !(stack.getItem() instanceof ItemPotionGun)) return null;
             return new GuiPotionGun(player.inventory, new InventoryPotionGun(stack, player, x));
+        }
+        else if (id == GUI_ARCANE_TURRET && world.getEntityByID(x) instanceof EntityArcaneTurret) {
+            return new GuiArcaneTurret(player, (EntityArcaneTurret) world.getEntityByID(x));
+        }
+        else if (id == GUI_VOID_TRAIDER && world.getEntityByID(x) instanceof EntityVoidTraider) {
+            return new GuiVoidTraider(player.inventory, (EntityVoidTraider) world.getEntityByID(x));
         }
         return null;
     }

@@ -8,7 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.AuraCloudEntity;
 
 public class Auraevent {
     private static final float MAX_AURA = 300.0f; 
@@ -16,8 +16,8 @@ public class Auraevent {
     @SubscribeEvent
     public void onPlayerInteract(PlayerInteractEvent.EntityInteract event) {
         if (!event.getWorld().isRemote) { 
-            if (event.getTarget() instanceof AuraNodeEntity) {
-                System.out.println("Interacted with AuraNodeEntity");
+            if (event.getTarget() instanceof AuraCloudEntity) {
+                System.out.println("Interacted with AuraCloudEntity");
 
                 EntityPlayer player = event.getEntityPlayer();
                 ItemStack heldItem = player.getHeldItem(event.getHand());
@@ -36,8 +36,8 @@ public class Auraevent {
                     player.setHeldItem(event.getHand(), auraPhial);
 
                    
-                    if (event.getTarget() instanceof AuraNodeEntity) {
-                        ((AuraNodeEntity) event.getTarget()).setDead();
+                    if (event.getTarget() instanceof AuraCloudEntity) {
+                        ((AuraCloudEntity) event.getTarget()).setDead();
                     }
 
                     event.setCanceled(true); 

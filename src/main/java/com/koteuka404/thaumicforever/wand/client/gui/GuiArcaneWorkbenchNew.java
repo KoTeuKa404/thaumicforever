@@ -96,7 +96,8 @@ public class GuiArcaneWorkbenchNew extends GuiContainer {
         if (result != null) {
             cost = result.getVis();
             cost = WandHelper.getActualVisCost(cost, getWand(), this.ip.player);
-            discount = (int) (WandHelper.getTotalDiscount(getWand(), this.ip.player) * 100F);
+            float costMultiplier = WandHelper.getTotalDiscount(getWand(), this.ip.player);
+            discount = Math.max(0, Math.min(100, Math.round((1.0F - costMultiplier) * 100.0F)));
         }
         drawPrimalAspects(var5, var6);
         GlStateManager.disableBlend();

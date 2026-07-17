@@ -346,6 +346,30 @@ public class FXDispatcher
         fb.setRotationSpeed(getWorld().rand.nextFloat(), getWorld().rand.nextBoolean() ? -0.25f : 0.25f);
         ParticleEngine.addEffect(getWorld(), fb);
     }
+
+    public void drawVoidFogParticle(double x, double y, double z, double mx, double my, double mz) {
+        FXGeneric fb = new FXGeneric(getWorld(), x, y, z, mx, my, mz);
+        fb.setMaxAge(50 + getWorld().rand.nextInt(20));
+        fb.setRBGColorF(0.015f, 0.015f, 0.02f);
+        fb.setAlphaF(0.0f, 0.10f, 0.0f);
+        fb.setGridSize(16);
+        fb.setParticles(57 + getWorld().rand.nextInt(3), 1, 1);
+        fb.setScale(27.0f + getWorld().rand.nextFloat() * 6.0f,
+                39.0f + getWorld().rand.nextFloat() * 9.0f);
+        fb.setLayer(1);
+        fb.setSlowDown(0.975);
+        fb.setWind(0.001);
+        fb.setRotationSpeed(getWorld().rand.nextFloat(),
+                getWorld().rand.nextBoolean() ? -0.5f : 0.5f);
+        ParticleEngine.addEffect(getWorld(), fb);
+    }
+
+    public void drawVoidEyeGlowParticle(double x, double y, double z) {
+        FXFireMote glow = new FXFireMote(getWorld(), x, y, z, 0.0D, 0.0D, 0.0D,
+                0.7f, 0.95f, 1.0f, 0.85f, 1);
+        glow.setAlphaF(1.0f);
+        ParticleEngine.addEffect(getWorld(), glow);
+    }
     
     public void drawWispyMotesOnBlock(BlockPos pp, int age, float grav) {
         drawWispyMotes(pp.getX() + getWorld().rand.nextFloat(), pp.getY(), pp.getZ() + getWorld().rand.nextFloat(), 0.0, 0.0, 0.0, age, 0.4f + getWorld().rand.nextFloat() * 0.6f, 0.6f + getWorld().rand.nextFloat() * 0.4f, 0.6f + getWorld().rand.nextFloat() * 0.4f, grav);

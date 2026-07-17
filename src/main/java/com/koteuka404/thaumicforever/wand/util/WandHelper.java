@@ -1,7 +1,7 @@
 package com.koteuka404.thaumicforever.wand.util;
 
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
-import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.AuraCloudEntity;
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
 import com.koteuka404.thaumicforever.wand.item.ItemScepter;
@@ -53,7 +53,7 @@ public class WandHelper {
             return null;
 
         AspectList l = new AspectList();
-        AspectList subtract = ((IWand) wand.getItem()).getCap(wand).getAspectDiscount();
+        AspectList subtract = decomposeToPrimals(((IWand) wand.getItem()).getCap(wand).getAspectDiscount());
         for (Aspect a : list.getAspects()) {
             if (list.getAmount(a) - subtract.getAmount(a) > 0)
                 l.add(a, list.getAmount(a) - subtract.getAmount(a));
@@ -341,7 +341,7 @@ public class WandHelper {
     }
 
     @Nullable
-    public static AuraNodeEntity findAuraNodeEntityAlongLook(EntityPlayer player, double reach) {
+    public static AuraCloudEntity findAuraCloudEntityAlongLook(EntityPlayer player, double reach) {
         if (player == null) return null;
         World world = player.world;
         Vec3d eye = player.getPositionEyes(1.0F);
@@ -356,12 +356,12 @@ public class WandHelper {
                 .expand(look.x * reach, look.y * reach, look.z * reach)
                 .grow(1.0D);
 
-        List<AuraNodeEntity> candidates = world.getEntitiesWithinAABB(AuraNodeEntity.class, sweep,
+        List<AuraCloudEntity> candidates = world.getEntitiesWithinAABB(AuraCloudEntity.class, sweep,
                 e -> e != null && !e.isDead);
-        AuraNodeEntity pick = null;
+        AuraCloudEntity pick = null;
         double best = maxSq;
 
-        for (AuraNodeEntity n : candidates) {
+        for (AuraCloudEntity n : candidates) {
             AxisAlignedBB bb = n.getEntityBoundingBox().grow(0.2D);
             RayTraceResult hit = bb.calculateIntercept(eye, end);
             if (hit != null) {
@@ -376,7 +376,7 @@ public class WandHelper {
     }
 
     @Nullable
-    public static AuraNodeEntity findAuraNodeEntityInCone(EntityPlayer player, double reach, double minDot) {
+    public static AuraCloudEntity findAuraCloudEntityInCone(EntityPlayer player, double reach, double minDot) {
         if (player == null) return null;
         World world = player.world;
         Vec3d eye = player.getPositionEyes(1.0F);
@@ -388,12 +388,12 @@ public class WandHelper {
         }
 
         AxisAlignedBB box = player.getEntityBoundingBox().grow(reach);
-        List<AuraNodeEntity> candidates = world.getEntitiesWithinAABB(AuraNodeEntity.class, box,
+        List<AuraCloudEntity> candidates = world.getEntitiesWithinAABB(AuraCloudEntity.class, box,
                 e -> e != null && !e.isDead);
-        AuraNodeEntity pick = null;
+        AuraCloudEntity pick = null;
         double best = reach * reach;
 
-        for (AuraNodeEntity n : candidates) {
+        for (AuraCloudEntity n : candidates) {
             Vec3d center = new Vec3d(n.posX, n.posY + n.height * 0.5, n.posZ);
             Vec3d to = center.subtract(eye);
             double distSq = to.lengthSquared();
@@ -445,7 +445,7 @@ public class WandHelper {
         return false;
     }
 
-    public static boolean chargeWandFromAuraNodeEntity(ItemStack wand, AuraNodeEntity node, @Nullable EntityLivingBase player) {
+    public static boolean chargeWandFromAuraCloudEntity(ItemStack wand, AuraCloudEntity node, @Nullable EntityLivingBase player) {
         if (wand == null || wand.isEmpty() || node == null || node.isDead) return false;
         int cap = getMaxPrimalCharge(wand, player);
         if (cap <= 0) return false;

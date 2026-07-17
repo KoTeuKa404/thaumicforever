@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.registry;
 
 import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.config.ModConfig;
 
 import com.koteuka404.thaumicforever.block.*;
 import com.koteuka404.thaumicforever.item.ItemBlockJarredNode;
@@ -53,6 +54,7 @@ public class ModBlocks {
     public static final Block TIME_STOP = new BlockTimeStop().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block ABANDONED_CHEST = new BlockAbandonedChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block VOID_CHEST = new BlockVoidChest().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block VOID_BEACON = new BlockVoidBeacon().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Block ANTI_FLIGHT_STONE = new BlockAntiFlightStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block FLIGHT_STONE = new BlockFlightStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -65,13 +67,14 @@ public class ModBlocks {
 
     public static final Block RED_ROSE = new BlockRedRose().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block BLUE_ROSE = new BlockBlueRose();
-    public static final Block BlockRepurposer = new BlockRepurposer().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block BlockTimeStone = new BlockTimeStone().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    public static final Block BlockTimeSlow = new BlockTimeSlow().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block TEMPORAL_ACCELERATOR = new BlockTemporalAccelerator().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block VOID_SINGULARITY = new BlockVoidSingularity().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     // public static final Block INVISIBLE_BLOCK = new InvisibleBlock();
-    public static final Block BlockMechanismAmplifier = new BlockMechanismAmplifier().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block INVISIBLE_PART = new InvisiblePartBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block PRIMALBLOCK = new PrimalBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block NETHER_STAR_BLOCK = new BlockBase(Material.IRON, "nether_star_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block MATTERYA_BLOCK = new BlockBase(Material.IRON, "matterya_block").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block EndOreBlock = new EndOreBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block Port = new PortBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block VisPlant = new VisPlantBlock().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -102,6 +105,7 @@ public class ModBlocks {
     public static final Block WAND_WORKBENCH = new BlockWandWorkbench().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block ARCANE_WORKBENCH_WAND_CHARGER = new BlockArcaneWorkbenchWandCharger().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Block RECHARGE_PEDESTAL = new BlockRechargePedestal().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Block CV_DEFENDER = new BlockCvDefender().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -112,15 +116,12 @@ public class ModBlocks {
             DOUBLE_TABLE,
             GREAT_RESEARCH_TABLE,
             GREAT_RESEARCH_TABLE_SIDE,
-            LEAD_BLOCK,
-            SILVER_BLOCK,
-            TIN_BLOCK,
-            COPPER_BLOCK,
             OBSIDIAN_TOTEM,
             AURA_TOTEM,
             AURA_TOTEM_POLE,
             ABANDONED_CHEST,
             VOID_CHEST,
+            VOID_BEACON,
             ANTI_FLIGHT_STONE,
             FLIGHT_STONE,
             FLUX_SCRAPER,
@@ -132,12 +133,13 @@ public class ModBlocks {
             REDSTONE_TICKER,
             RED_ROSE,
             BLUE_ROSE,
-            BlockRepurposer,
             BlockTimeStone,
-            BlockTimeSlow,
-            BlockMechanismAmplifier,
+            TEMPORAL_ACCELERATOR,
+            VOID_SINGULARITY,
             INVISIBLE_PART,
             PRIMALBLOCK,
+            NETHER_STAR_BLOCK,
+            MATTERYA_BLOCK,
             EndOreBlock,
             Port,
             VisPlant,
@@ -159,8 +161,18 @@ public class ModBlocks {
             BlockNodeCharger,
             WAND_WORKBENCH,
             ARCANE_WORKBENCH_WAND_CHARGER,
-            RECHARGE_PEDESTAL
+            RECHARGE_PEDESTAL,
+            CV_DEFENDER
         );
+
+        if (ModConfig.enableStandardOreGeneration) {
+            registry.registerAll(
+                LEAD_BLOCK,
+                SILVER_BLOCK,
+                TIN_BLOCK,
+                COPPER_BLOCK
+            );
+        }
 
         if (BlockImmortalizer != null) {
             registry.register(BlockImmortalizer);
@@ -178,15 +190,12 @@ public class ModBlocks {
             new ItemBlock(GREATWOOD_TABLE).setRegistryName(GREATWOOD_TABLE.getRegistryName()),
             new ItemBlock(DOUBLE_TABLE).setRegistryName(DOUBLE_TABLE.getRegistryName()),
             new ItemBlock(GREAT_RESEARCH_TABLE).setRegistryName(GREAT_RESEARCH_TABLE.getRegistryName()),
-            new ItemBlock(LEAD_BLOCK).setRegistryName(LEAD_BLOCK.getRegistryName()),
-            new ItemBlock(SILVER_BLOCK).setRegistryName(SILVER_BLOCK.getRegistryName()),
-            new ItemBlock(TIN_BLOCK).setRegistryName(TIN_BLOCK.getRegistryName()),
-            new ItemBlock(COPPER_BLOCK).setRegistryName(COPPER_BLOCK.getRegistryName()),
             new ItemBlock(OBSIDIAN_TOTEM).setRegistryName(OBSIDIAN_TOTEM.getRegistryName()),
             new ItemBlockAuraTotem(AURA_TOTEM).setRegistryName(AURA_TOTEM.getRegistryName()),
             new ItemBlockAuraTotemPole(AURA_TOTEM_POLE).setRegistryName(AURA_TOTEM_POLE.getRegistryName()),
             new ItemBlock(ABANDONED_CHEST).setRegistryName(ABANDONED_CHEST.getRegistryName()),
             new ItemBlock(VOID_CHEST).setRegistryName(VOID_CHEST.getRegistryName()),
+            new ItemBlock(VOID_BEACON).setRegistryName(VOID_BEACON.getRegistryName()),
             new ItemBlock(ANTI_FLIGHT_STONE).setRegistryName(ANTI_FLIGHT_STONE.getRegistryName()),
             new ItemBlock(FLIGHT_STONE).setRegistryName(FLIGHT_STONE.getRegistryName()),
             new ItemBlock(FLUX_SCRAPER).setRegistryName(FLUX_SCRAPER.getRegistryName()),
@@ -198,12 +207,13 @@ public class ModBlocks {
             new ItemBlock(CRYSTALLIZER).setRegistryName(CRYSTALLIZER.getRegistryName()),
             new ItemBlock(PRIMAL_AURA_CONVERTER).setRegistryName(PRIMAL_AURA_CONVERTER.getRegistryName()),
             new ItemBlock(REDSTONE_TICKER).setRegistryName(REDSTONE_TICKER.getRegistryName()),
-            new ItemBlock(BlockRepurposer).setRegistryName(BlockRepurposer.getRegistryName()),
             new ItemBlock(BlockTimeStone).setRegistryName(BlockTimeStone.getRegistryName()),
-            new ItemBlock(BlockTimeSlow).setRegistryName(BlockTimeSlow.getRegistryName()),
-            new ItemBlock(BlockMechanismAmplifier).setRegistryName(BlockMechanismAmplifier.getRegistryName()),
+            new ItemBlock(TEMPORAL_ACCELERATOR).setRegistryName(TEMPORAL_ACCELERATOR.getRegistryName()),
+            new ItemBlock(VOID_SINGULARITY).setRegistryName(VOID_SINGULARITY.getRegistryName()),
             new ItemBlockPort(Port).setRegistryName(Port.getRegistryName()),
             new ItemBlock(PRIMALBLOCK).setRegistryName(PRIMALBLOCK.getRegistryName()),
+            new ItemBlock(NETHER_STAR_BLOCK).setRegistryName(NETHER_STAR_BLOCK.getRegistryName()),
+            new ItemBlock(MATTERYA_BLOCK).setRegistryName(MATTERYA_BLOCK.getRegistryName()),
             new ItemBlock(EndOreBlock).setRegistryName(EndOreBlock.getRegistryName()),
             new ItemBlock(VisPlant).setRegistryName(VisPlant.getRegistryName()),
             new ItemBlock(RubyOre).setRegistryName(RubyOre.getRegistryName()),
@@ -219,11 +229,21 @@ public class ModBlocks {
             new ItemBlock(WAND_WORKBENCH).setRegistryName(WAND_WORKBENCH.getRegistryName()),
             new ItemBlock(ARCANE_WORKBENCH_WAND_CHARGER).setRegistryName(ARCANE_WORKBENCH_WAND_CHARGER.getRegistryName()),
             new ItemBlock(RECHARGE_PEDESTAL).setRegistryName(RECHARGE_PEDESTAL.getRegistryName()),
+            new ItemBlock(CV_DEFENDER).setRegistryName(CV_DEFENDER.getRegistryName()),
 
             
 
             new ItemBlock(INVISIBLE_PART).setRegistryName(INVISIBLE_PART.getRegistryName())
         );
+
+        if (ModConfig.enableStandardOreGeneration) {
+            registry.registerAll(
+                new ItemBlock(LEAD_BLOCK).setRegistryName(LEAD_BLOCK.getRegistryName()),
+                new ItemBlock(SILVER_BLOCK).setRegistryName(SILVER_BLOCK.getRegistryName()),
+                new ItemBlock(TIN_BLOCK).setRegistryName(TIN_BLOCK.getRegistryName()),
+                new ItemBlock(COPPER_BLOCK).setRegistryName(COPPER_BLOCK.getRegistryName())
+            );
+        }
 
         if (BIG_JAR_ITEM == null) {
             BIG_JAR_ITEM = new ItemBlockBigJar(BIG_JAR);
@@ -271,10 +291,12 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(GREATWOOD_TABLE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(DOUBLE_TABLE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(GREAT_RESEARCH_TABLE), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(LEAD_BLOCK), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(SILVER_BLOCK), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIN_BLOCK), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COPPER_BLOCK), 0, "inventory");
+        if (ModConfig.enableStandardOreGeneration) {
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(LEAD_BLOCK), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(SILVER_BLOCK), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TIN_BLOCK), 0, "inventory");
+            ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(COPPER_BLOCK), 0, "inventory");
+        }
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(OBSIDIAN_TOTEM), 0, "inventory");
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM), 0, new ModelResourceLocation("thaumicforever:aura_totem", "type=push"));
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM), 1, new ModelResourceLocation("thaumicforever:aura_totem", "type=pull"));
@@ -283,6 +305,7 @@ public class ModBlocks {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(AURA_TOTEM_POLE), 2, new ModelResourceLocation("thaumicforever:aura_totem_pole", "type=pole_pure"));
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ABANDONED_CHEST), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VOID_CHEST), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VOID_BEACON), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ANTI_FLIGHT_STONE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(FLIGHT_STONE), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(FLUX_SCRAPER), 0, "inventory");
@@ -294,12 +317,13 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(REDSTONE_TICKER), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RED_ROSE), 0, "thaumicforever:red_rose");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BLUE_ROSE), 0, "thaumicforever:blue_rose");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockRepurposer), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeStone), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockTimeSlow), 0, "inventory");
-        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(BlockMechanismAmplifier), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(TEMPORAL_ACCELERATOR), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VOID_SINGULARITY), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(INVISIBLE_PART), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(PRIMALBLOCK), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(NETHER_STAR_BLOCK), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(MATTERYA_BLOCK), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(EndOreBlock), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(VisPlant), 0, "thaumicforever:vis_plant");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RubyOre), 0, "inventory");
@@ -325,6 +349,7 @@ public class ModBlocks {
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(WAND_WORKBENCH), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(ARCANE_WORKBENCH_WAND_CHARGER), 0, "inventory");
         ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(RECHARGE_PEDESTAL), 0, "inventory");
+        ThaumicForever.proxy.registerItemRenderer(Item.getItemFromBlock(CV_DEFENDER), 0, "inventory");
 
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(BlockNodeCharger), 0, new ModelResourceLocation("thaumicforever:node_transducer", "inventory"));
 

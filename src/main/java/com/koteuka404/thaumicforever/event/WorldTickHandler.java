@@ -37,6 +37,7 @@ import com.koteuka404.thaumicforever.entity.EntitySkeletonAngry;
 import com.koteuka404.thaumicforever.entity.ReviveSkeletonEntity;
 import com.koteuka404.thaumicforever.world.dungeon.BoundingBox;
 import com.koteuka404.thaumicforever.world.dungeon.DungeonBoundsData;
+import com.koteuka404.thaumicforever.world.structure.PlayerStructureManager;
 
 public class WorldTickHandler {
 
@@ -85,6 +86,8 @@ public class WorldTickHandler {
         if (event.phase != TickEvent.Phase.END) return;
         World world = event.world;
         if (world.isRemote) return;
+
+        PlayerStructureManager.tickVoidTraider(world);
 
         Set<BoundingBox> boxes = getAllDungeonBoundsMerged(world);
         if (boxes.isEmpty()) return;

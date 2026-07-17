@@ -1,17 +1,91 @@
 package com.koteuka404.thaumicforever.proxy;
 
-import com.koteuka404.thaumicforever.registry.ModBlocks;
-
-import com.koteuka404.thaumicforever.registry.ModItems;
+import java.lang.reflect.Method;
 
 import com.koteuka404.thaumicforever.ThaumicForever;
-
-import java.lang.reflect.Method;
+import com.koteuka404.thaumicforever.client.gui.AddendumToastHandler;
+import com.koteuka404.thaumicforever.client.gui.GuiTabHandler;
+import com.koteuka404.thaumicforever.client.input.KeyBindings;
+import com.koteuka404.thaumicforever.client.input.KeyInputHandler;
+import com.koteuka404.thaumicforever.client.render.AuraCloudRenderer;
+import com.koteuka404.thaumicforever.client.render.BrokenFutureLensRenderHandler;
+import com.koteuka404.thaumicforever.client.render.RenderArcaneTurret;
+import com.koteuka404.thaumicforever.client.render.RenderAuraNode;
+import com.koteuka404.thaumicforever.client.render.RenderBVilager;
+import com.koteuka404.thaumicforever.client.render.RenderCoinVillager;
+import com.koteuka404.thaumicforever.client.render.RenderDecoyMannequin;
+import com.koteuka404.thaumicforever.client.render.RenderGorilla;
+import com.koteuka404.thaumicforever.client.render.RenderGorillaHand;
+import com.koteuka404.thaumicforever.client.render.RenderGuardianMannequin;
+import com.koteuka404.thaumicforever.client.render.RenderInvisibleSnowball;
+import com.koteuka404.thaumicforever.client.render.RenderVoidTraider;
+import com.koteuka404.thaumicforever.client.render.RenderNodeMagnet;
+import com.koteuka404.thaumicforever.client.render.RenderResonanceBolt;
+import com.koteuka404.thaumicforever.client.render.RenderSkeletonAngry;
+import com.koteuka404.thaumicforever.client.render.RenderTileBigJar;
+import com.koteuka404.thaumicforever.client.render.RenderTileCustomFlowerPot;
+import com.koteuka404.thaumicforever.client.render.RenderTileJarredNode;
+import com.koteuka404.thaumicforever.client.render.RenderTileVoidBeacon;
+import com.koteuka404.thaumicforever.client.render.RenderTileVoidChest;
+import com.koteuka404.thaumicforever.client.render.RenderVampireBat;
+import com.koteuka404.thaumicforever.client.render.RenderVanillaFlowerPotExtras;
+import com.koteuka404.thaumicforever.client.render.RenderWindCharge;
+import com.koteuka404.thaumicforever.client.render.RenderWizardVillager;
+import com.koteuka404.thaumicforever.client.render.ReviveSkeletonRenderer;
+import com.koteuka404.thaumicforever.client.render.CvDefenderDomeRenderer;
+import com.koteuka404.thaumicforever.client.render.SkyBeamClientRenderer;
+import com.koteuka404.thaumicforever.client.render.TileBuffNodeStabilizerRenderer;
+import com.koteuka404.thaumicforever.client.render.TileNodeStabilizerRenderer;
+import com.koteuka404.thaumicforever.client.render.TileNodeTransducerRenderer;
+import com.koteuka404.thaumicforever.client.render.TilePortRenderer;
+import com.koteuka404.thaumicforever.client.render.TileRechargePedestalRenderer;
+import com.koteuka404.thaumicforever.client.render.WatcherRenderer;
+import com.koteuka404.thaumicforever.client.render.item.BigJarItemRenderer;
+import com.koteuka404.thaumicforever.client.render.item.GorillaHandTileEntityItemStackRenderer;
+import com.koteuka404.thaumicforever.client.render.item.JarredNodeItemRenderer;
+import com.koteuka404.thaumicforever.entity.AuraCloudEntity;
+import com.koteuka404.thaumicforever.entity.CoinVillager;
+import com.koteuka404.thaumicforever.entity.EntityArcaneTurret;
+import com.koteuka404.thaumicforever.entity.EntityAuraNode;
+import com.koteuka404.thaumicforever.entity.EntityBVilager;
+import com.koteuka404.thaumicforever.entity.EntityBottleClean;
+import com.koteuka404.thaumicforever.entity.EntityBottleVis;
+import com.koteuka404.thaumicforever.entity.EntityDecoyMannequin;
+import com.koteuka404.thaumicforever.entity.EntityGorilla;
+import com.koteuka404.thaumicforever.entity.EntityGorillaHand;
+import com.koteuka404.thaumicforever.entity.EntityGuardianMannequin;
+import com.koteuka404.thaumicforever.entity.EntityVoidTraider;
+import com.koteuka404.thaumicforever.entity.EntityVoidSingularityMinecart;
+import com.koteuka404.thaumicforever.entity.EntityNodeMagnet;
+import com.koteuka404.thaumicforever.entity.EntityResonanceBolt;
+import com.koteuka404.thaumicforever.entity.EntitySkeletonAngry;
+import com.koteuka404.thaumicforever.entity.EntityTimeFreezeProjectile;
+import com.koteuka404.thaumicforever.entity.EntityVampireBat;
+import com.koteuka404.thaumicforever.entity.EntityWindCharge;
+import com.koteuka404.thaumicforever.entity.ReviveSkeletonEntity;
+import com.koteuka404.thaumicforever.entity.WatcherEntity;
+import com.koteuka404.thaumicforever.entity.WizardVillager;
+import com.koteuka404.thaumicforever.item.ItemCustomCaster;
+import com.koteuka404.thaumicforever.item.ItemFocus4;
+import com.koteuka404.thaumicforever.item.ItemFocusComplex;
+import com.koteuka404.thaumicforever.registry.ModBlocks;
+import com.koteuka404.thaumicforever.registry.ModItems;
+import com.koteuka404.thaumicforever.tile.TileBigJar;
+import com.koteuka404.thaumicforever.tile.TileBuffNodeStabilizer;
+import com.koteuka404.thaumicforever.tile.TileCustomFlowerPot;
+import com.koteuka404.thaumicforever.tile.TileEntityJarredNode;
+import com.koteuka404.thaumicforever.tile.TileNodeStabilizer;
+import com.koteuka404.thaumicforever.tile.TileNodeTransducer;
+import com.koteuka404.thaumicforever.tile.TilePort;
+import com.koteuka404.thaumicforever.tile.TileRechargePedestal;
+import com.koteuka404.thaumicforever.tile.TileVoidBeacon;
+import com.koteuka404.thaumicforever.tile.TileVoidChest;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.client.renderer.entity.RenderMinecart;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,74 +104,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.client.lib.events.TFHudHandler;
 import thaumcraft.common.items.casters.ItemFocus;
-import com.koteuka404.thaumicforever.client.gui.AddendumToastHandler;
-import com.koteuka404.thaumicforever.client.gui.GuiTabHandler;
-import com.koteuka404.thaumicforever.client.input.KeyBindings;
-import com.koteuka404.thaumicforever.client.input.KeyInputHandler;
-import com.koteuka404.thaumicforever.client.render.AuraNodeRenderer;
-import com.koteuka404.thaumicforever.client.render.RenderAuraNode;
-import com.koteuka404.thaumicforever.client.render.RenderBVilager;
-import com.koteuka404.thaumicforever.client.render.RenderCoinVillager;
-import com.koteuka404.thaumicforever.client.render.RenderDecoyMannequin;
-import com.koteuka404.thaumicforever.client.render.RenderGorilla;
-import com.koteuka404.thaumicforever.client.render.RenderGorillaHand;
-import com.koteuka404.thaumicforever.client.render.RenderGuardianMannequin;
-import com.koteuka404.thaumicforever.client.render.RenderInvisibleSnowball;
-import com.koteuka404.thaumicforever.client.render.RenderNodeMagnet;
-import com.koteuka404.thaumicforever.client.render.RenderResonanceBolt;
-import com.koteuka404.thaumicforever.client.render.RenderSkeletonAngry;
-import com.koteuka404.thaumicforever.client.render.RenderTileBigJar;
-import com.koteuka404.thaumicforever.client.render.RenderTileCustomFlowerPot;
-import com.koteuka404.thaumicforever.client.render.RenderTileJarredNode;
-import com.koteuka404.thaumicforever.client.render.RenderVampireBat;
-import com.koteuka404.thaumicforever.client.render.RenderVanillaFlowerPotExtras;
-import com.koteuka404.thaumicforever.client.render.RenderTileVoidChest;
-import com.koteuka404.thaumicforever.client.render.RenderWindCharge;
-import com.koteuka404.thaumicforever.client.render.RenderWizardVillager;
-import com.koteuka404.thaumicforever.client.render.ReviveSkeletonRenderer;
-import com.koteuka404.thaumicforever.client.render.SkyBeamClientRenderer;
-import com.koteuka404.thaumicforever.client.render.TileBuffNodeStabilizerRenderer;
-import com.koteuka404.thaumicforever.client.render.TileNodeStabilizerRenderer;
-import com.koteuka404.thaumicforever.client.render.TileNodeTransducerRenderer;
-import com.koteuka404.thaumicforever.client.render.TilePortRenderer;
-import com.koteuka404.thaumicforever.client.render.TileRechargePedestalRenderer;
-import com.koteuka404.thaumicforever.client.render.WatcherRenderer;
-import com.koteuka404.thaumicforever.client.render.item.BigJarItemRenderer;
-import com.koteuka404.thaumicforever.client.render.item.GorillaHandTileEntityItemStackRenderer;
-import com.koteuka404.thaumicforever.client.render.item.JarredNodeItemRenderer;
-import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
-import com.koteuka404.thaumicforever.entity.CoinVillager;
-import com.koteuka404.thaumicforever.entity.EntityAuraNode;
-import com.koteuka404.thaumicforever.entity.EntityBVilager;
-import com.koteuka404.thaumicforever.entity.EntityBottleClean;
-import com.koteuka404.thaumicforever.entity.EntityBottleVis;
-import com.koteuka404.thaumicforever.entity.EntityDecoyMannequin;
-import com.koteuka404.thaumicforever.entity.EntityGorilla;
-import com.koteuka404.thaumicforever.entity.EntityGorillaHand;
-import com.koteuka404.thaumicforever.entity.EntityGuardianMannequin;
-import com.koteuka404.thaumicforever.entity.EntityNodeMagnet;
-import com.koteuka404.thaumicforever.entity.EntityResonanceBolt;
-import com.koteuka404.thaumicforever.entity.EntitySkeletonAngry;
-import com.koteuka404.thaumicforever.entity.EntityTimeFreezeProjectile;
-import com.koteuka404.thaumicforever.entity.EntityVampireBat;
-import com.koteuka404.thaumicforever.entity.EntityWindCharge;
-import com.koteuka404.thaumicforever.entity.ReviveSkeletonEntity;
-import com.koteuka404.thaumicforever.entity.WatcherEntity;
-import com.koteuka404.thaumicforever.entity.WizardVillager;
-import com.koteuka404.thaumicforever.item.ItemBottleClean;
-import com.koteuka404.thaumicforever.item.ItemBottleVis;
-import com.koteuka404.thaumicforever.item.ItemCustomCaster;
-import com.koteuka404.thaumicforever.item.ItemFocus4;
-import com.koteuka404.thaumicforever.item.ItemFocusComplex;
-import com.koteuka404.thaumicforever.tile.TileBigJar;
-import com.koteuka404.thaumicforever.tile.TileBuffNodeStabilizer;
-import com.koteuka404.thaumicforever.tile.TileCustomFlowerPot;
-import com.koteuka404.thaumicforever.tile.TileEntityJarredNode;
-import com.koteuka404.thaumicforever.tile.TileNodeStabilizer;
-import com.koteuka404.thaumicforever.tile.TileNodeTransducer;
-import com.koteuka404.thaumicforever.tile.TilePort;
-import com.koteuka404.thaumicforever.tile.TileRechargePedestal;
-import com.koteuka404.thaumicforever.tile.TileVoidChest;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -139,7 +145,10 @@ public class ClientProxy extends CommonProxy {
         }
         MinecraftForge.EVENT_BUS.register(new GuiTabHandler());
         MinecraftForge.EVENT_BUS.register(new AddendumToastHandler());
+        MinecraftForge.EVENT_BUS.register(CvDefenderDomeRenderer.class);
         MinecraftForge.EVENT_BUS.register(new SkyBeamClientRenderer());
+        MinecraftForge.EVENT_BUS.register(new BrokenFutureLensRenderHandler());
+        // MinecraftForge.EVENT_BUS.register(new KatanaHandRenderHandler());
         // MinecraftForge.EVENT_BUS.register(new CustomHelmetRenderHandler());
         ClientRegistry.bindTileEntitySpecialRenderer(TileNodeStabilizer.class, new TileNodeStabilizerRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileBuffNodeStabilizer.class, new TileBuffNodeStabilizerRenderer());
@@ -151,17 +160,19 @@ public class ClientProxy extends CommonProxy {
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlowerPot.class, new RenderVanillaFlowerPotExtras());
         ClientRegistry.bindTileEntitySpecialRenderer(TileRechargePedestal.class, new TileRechargePedestalRenderer());
         ClientRegistry.bindTileEntitySpecialRenderer(TileVoidChest.class, new RenderTileVoidChest());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileVoidBeacon.class, new RenderTileVoidBeacon());
 
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityAuraNode.class, new RenderAuraNode(Minecraft.getMinecraft().getRenderManager()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityNodeMagnet.class, new RenderNodeMagnet(Minecraft.getMinecraft().getRenderManager()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityArcaneTurret.class, new RenderArcaneTurret(Minecraft.getMinecraft().getRenderManager()));
         ModBlocks.ITEMBLOCK_JARRED_NODE.setTileEntityItemStackRenderer(new JarredNodeItemRenderer());
     }
 
     private void registerRenderers() {
         RenderingRegistry.registerEntityRenderingHandler(EntityGuardianMannequin.class, manager -> new RenderGuardianMannequin(manager));
         RenderingRegistry.registerEntityRenderingHandler(EntityDecoyMannequin.class, manager -> new RenderDecoyMannequin(manager));
-        RenderingRegistry.registerEntityRenderingHandler(AuraNodeEntity.class, AuraNodeRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(AuraCloudEntity.class, AuraCloudRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBottleClean.class, manager -> new RenderSnowball<>(manager, ModItems.ItemBottleClean, Minecraft.getMinecraft().getRenderItem()));
         RenderingRegistry.registerEntityRenderingHandler(EntityBottleVis.class, manager -> new RenderSnowball<>(manager, ModItems.ItemBottleVis, Minecraft.getMinecraft().getRenderItem()));
         RenderingRegistry.registerEntityRenderingHandler(EntityTimeFreezeProjectile.class, manager -> new RenderInvisibleSnowball(manager, Items.SNOWBALL, Minecraft.getMinecraft().getRenderItem()));
@@ -176,6 +187,9 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityWindCharge.class, RenderWindCharge::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityGorillaHand.class, RenderGorillaHand::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityResonanceBolt.class, RenderResonanceBolt::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityVoidTraider.class, RenderVoidTraider::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityVoidSingularityMinecart.class,
+                manager -> new RenderMinecart<EntityVoidSingularityMinecart>(manager));
 
     }
 

@@ -20,6 +20,10 @@ public interface IGolemCore {
         return 0xFFFFFFFF;
     }
 
+    default int getPlugColor(EntityLivingBase golem) {
+        return getPlugColor();
+    }
+
     default float getPlugScale() {
         return 1.0F;
     }

@@ -2,13 +2,14 @@ package com.koteuka404.thaumicforever.client.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.container.GreatResearchTableContainer;
+import com.koteuka404.thaumicforever.tile.TileGreatResearchTable;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import com.koteuka404.thaumicforever.tile.TileGreatResearchTable;
-import com.koteuka404.thaumicforever.container.GreatResearchTableContainer;
-import com.koteuka404.thaumicforever.ThaumicForever;
 
 public class GreatResearchTableGui extends DoubleTableGui {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ThaumicForever.MODID, "textures/gui/gui_great.png");
@@ -40,7 +41,7 @@ public class GreatResearchTableGui extends DoubleTableGui {
         int progress = Math.max(0, this.greatTableInventory.getField(0));
         int progressPercent = Math.min(100, progress * 100 / TileGreatResearchTable.BASE_SOLVE_TICKS);
         int efficiencyPercent = Math.max(0, this.greatTableInventory.getField(1));
-        String text = progressPercent + "% / " + efficiencyPercent + "%";
+        String text = progressPercent + "% | " + efficiencyPercent + "%";
         this.fontRenderer.drawString(text, 120 - this.fontRenderer.getStringWidth(text) / 2, 124, 0xD8C49A);
         drawWritingEffects(progress, efficiencyPercent);
     }

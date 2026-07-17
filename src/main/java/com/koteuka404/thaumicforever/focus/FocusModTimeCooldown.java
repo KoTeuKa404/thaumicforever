@@ -128,7 +128,6 @@ public class FocusModTimeCooldown extends FocusMod {
 
         PENDING.add(pc);
 
-        // Stop current package progression; delayed part will run later.
         suppressImmediate = true;
         return true;
     }

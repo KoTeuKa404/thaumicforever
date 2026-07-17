@@ -23,7 +23,7 @@ public class TW_Wands {
     //public static final IWandCap capCopper = new WandCap("copper", 1F, new AspectList().add(Aspect.ORDER,1).add(Aspect.ENTROPY,1),new ItemStack(TW_Items.itemWandCap, 1, 1), 5);
     public static final IWandCap capGold = new WandCap("gold", 1.0F, new ItemStack(TW_Items.itemWandCap, 1, 1), 10);
     public static final IWandCap capBrass = new WandCap("brass", 1.0F, new ItemStack(TW_Items.itemWandCap, 1, 2), 15);
-    public static final IWandCap capSilver = new WandCap("silver", 0.95F, new AspectList().add(Aspect.AIR,1).add(Aspect.FIRE,1).add(Aspect.WATER,1).add(Aspect.EARTH,1),new ItemStack(TW_Items.itemWandCap, 1, 8), 15);
+    public static final IWandCap capSilver = new WandCap("silver", 0.95F, new AspectList().add(Aspect.ORDER, 1), new ItemStack(TW_Items.itemWandCap, 1, 8), 15);
     public static final IWandCap capThaumium = new WandCap("thaumium", 0.9F, new ItemStack(TW_Items.itemWandCap, 1, 4), 20);
     public static final IWandCap capVoid = new WandCap("void", 0.8F, new ItemStack(TW_Items.itemWandCap, 1, 6), 25);
 

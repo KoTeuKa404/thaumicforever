@@ -61,7 +61,9 @@ public class TileEntityTimeStone extends TileEntity implements ITickable {
                 .forEach(targetPos -> {
                     TileEntity tile = world.getTileEntity(targetPos);
 
-                    if (tile instanceof ITickable && tile != this && !(tile instanceof TileEntityTimeStone)) {
+                    if (tile instanceof ITickable && tile != this
+                            && !(tile instanceof TileEntityTimeStone)
+                            && !(tile instanceof TileEntityTemporalAccelerator)) {
                         synchronized (processedTiles) {
                             if (processedTiles.add(tile)) {
                                 for (int i = 0; i < bonusTicks; i++) {

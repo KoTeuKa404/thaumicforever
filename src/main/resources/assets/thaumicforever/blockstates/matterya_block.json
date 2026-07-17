@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "thaumicforever:matterya_block" },
+    "inventory": { "model": "thaumicforever:matterya_block" }
+  }
+}

@@ -1,19 +1,95 @@
 package com.koteuka404.thaumicforever.registry;
 
-import com.koteuka404.thaumicforever.item.nodessummoncreative;
-
-import com.koteuka404.thaumicforever.item.EldritchEyeAmulet;
-
 import com.koteuka404.thaumicforever.ThaumicForever;
-
-
-
 import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.golemcore.ArcaneGolemCore;
 import com.koteuka404.thaumicforever.golemcore.GoliathGolemCore;
 import com.koteuka404.thaumicforever.golemcore.IronSkinGolemCore;
+import com.koteuka404.thaumicforever.golemcore.PrimalGolemCore;
 import com.koteuka404.thaumicforever.golemcore.SwiftGolemCore;
-import com.koteuka404.thaumicforever.item.*;
+import com.koteuka404.thaumicforever.item.BowlTreatMeat;
+import com.koteuka404.thaumicforever.item.BowlZombie;
+import com.koteuka404.thaumicforever.item.EldritchEyeAmulet;
+import com.koteuka404.thaumicforever.item.GorillaHand;
+import com.koteuka404.thaumicforever.item.IronRing;
+import com.koteuka404.thaumicforever.item.ItemAmuletDeath;
+import com.koteuka404.thaumicforever.item.ItemAquareiaGoggles;
+import com.koteuka404.thaumicforever.item.ItemArcaneTurret;
+import com.koteuka404.thaumicforever.item.ItemArtifactRubyRing;
+import com.koteuka404.thaumicforever.item.ItemAuraPhial;
+import com.koteuka404.thaumicforever.item.ItemBigOakGrower;
+import com.koteuka404.thaumicforever.item.ItemBoneBlade;
+import com.koteuka404.thaumicforever.item.ItemBottleClean;
+import com.koteuka404.thaumicforever.item.ItemBottleVis;
+import com.koteuka404.thaumicforever.item.ItemBrassGear;
+import com.koteuka404.thaumicforever.item.ItemBrokenAmulet;
+import com.koteuka404.thaumicforever.item.ItemBrokenFutureLens;
+import com.koteuka404.thaumicforever.item.ItemCelestialNotes;
+import com.koteuka404.thaumicforever.item.ItemCleanMind;
+import com.koteuka404.thaumicforever.item.ItemCluster;
+import com.koteuka404.thaumicforever.item.ItemCompassMaze;
+import com.koteuka404.thaumicforever.item.ItemCrimsonBook;
+import com.koteuka404.thaumicforever.item.ItemCustomCaster;
+import com.koteuka404.thaumicforever.item.ItemDebugStick;
+import com.koteuka404.thaumicforever.item.ItemDecoyMannequin;
+import com.koteuka404.thaumicforever.item.ItemEternalBlade;
+import com.koteuka404.thaumicforever.item.ItemFocus4;
+import com.koteuka404.thaumicforever.item.ItemFocusComplex;
+import com.koteuka404.thaumicforever.item.ItemFluxLamp;
+import com.koteuka404.thaumicforever.item.ItemGoldPlate;
+import com.koteuka404.thaumicforever.item.ItemGoldenFish;
+import com.koteuka404.thaumicforever.item.ItemGolemCore;
+import com.koteuka404.thaumicforever.item.ItemGreedyRing;
+import com.koteuka404.thaumicforever.item.ItemHand;
+import com.koteuka404.thaumicforever.item.ItemKatana;
+import com.koteuka404.thaumicforever.item.ItemKnowledgeEpiphany;
+import com.koteuka404.thaumicforever.item.ItemKnowledgeFragment;
+import com.koteuka404.thaumicforever.item.ItemMask;
+import com.koteuka404.thaumicforever.item.ItemNodeMagnet;
+import com.koteuka404.thaumicforever.item.ItemPotionGun;
+import com.koteuka404.thaumicforever.item.ItemReTrade;
+import com.koteuka404.thaumicforever.item.ItemPouch;
+import com.koteuka404.thaumicforever.item.ItemPrimalAxe;
+import com.koteuka404.thaumicforever.item.ItemPrimalBlade;
+import com.koteuka404.thaumicforever.item.ItemPrimalCharm;
+import com.koteuka404.thaumicforever.item.ItemPrimalPickaxe;
+import com.koteuka404.thaumicforever.item.ItemPrimalScribeTool;
+import com.koteuka404.thaumicforever.item.ItemPrimalShovel;
+import com.koteuka404.thaumicforever.item.ItemRingCooldown;
+import com.koteuka404.thaumicforever.item.ItemRingEnder;
+import com.koteuka404.thaumicforever.item.ItemRingRegeneration;
+import com.koteuka404.thaumicforever.item.ItemRingRevive;
+import com.koteuka404.thaumicforever.item.ItemRingRunicCharge;
+import com.koteuka404.thaumicforever.item.ItemRingVerdant;
+import com.koteuka404.thaumicforever.item.ItemRubyGem;
+import com.koteuka404.thaumicforever.item.ItemScribeToolLarge;
+import com.koteuka404.thaumicforever.item.ItemScroll;
+import com.koteuka404.thaumicforever.item.ItemStructureSaver;
+import com.koteuka404.thaumicforever.item.ItemStructureSpawner;
+import com.koteuka404.thaumicforever.item.ItemTaintAmulet;
+import com.koteuka404.thaumicforever.item.ItemThaumiumGear;
+import com.koteuka404.thaumicforever.item.ItemTimeFreeze;
+import com.koteuka404.thaumicforever.item.ItemTuningForkRifle;
+import com.koteuka404.thaumicforever.item.ItemVisModule;
+import com.koteuka404.thaumicforever.item.ItemVisRing;
+import com.koteuka404.thaumicforever.item.ItemVoidEraser;
+import com.koteuka404.thaumicforever.item.ItemVoidGear;
+import com.koteuka404.thaumicforever.item.ItemVoidSingularityMinecart;
+import com.koteuka404.thaumicforever.item.ItemWand;
+import com.koteuka404.thaumicforever.item.ItemWarpBlade;
+import com.koteuka404.thaumicforever.item.ItemWindCharge;
+import com.koteuka404.thaumicforever.item.ItemZombieHeart;
+import com.koteuka404.thaumicforever.item.ItemZombieHeartAmulet;
+import com.koteuka404.thaumicforever.item.Itembanana;
+import com.koteuka404.thaumicforever.item.LootBag;
+import com.koteuka404.thaumicforever.item.MagicDust;
+import com.koteuka404.thaumicforever.item.OldBone;
+import com.koteuka404.thaumicforever.item.DarkCloakItem;
+import com.koteuka404.thaumicforever.item.DarkCloakItemH;
+import com.koteuka404.thaumicforever.item.RingIron;
+import com.koteuka404.thaumicforever.item.RingMaster;
+import com.koteuka404.thaumicforever.item.VoidTeleportItem;
+import com.koteuka404.thaumicforever.item.nodessummoncreative;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -62,7 +138,7 @@ public class ModItems {
     public static final Item BROKEN_AMULET = new ItemBrokenAmulet().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
     public static final Item AMULET_DEATH = new ItemAmuletDeath().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    public static final Item mechanism_improved = new Item().setUnlocalizedName("mechanism_improved").setRegistryName("mechanism_improved").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item mechanism_improved = new Item().setUnlocalizedName("mechanism_improved").setRegistryName("mechanism_improved");
     public static final Item MAGIC_DUST = new MagicDust().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Item ItemTimeFreeze  = new ItemTimeFreeze().setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -83,7 +159,7 @@ public class ModItems {
     public static final Item ELDTRITCH_EYE_AMULET = new EldritchEyeAmulet().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemStructureSaver = new ItemStructureSaver();
     public static final Item ItemStructureSpawner = new ItemStructureSpawner();
-    public static final Item RavenCloakBauble = new RavenCloakItem().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item DarkCloakBauble = new DarkCloakItem().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemBoneBlade = new ItemBoneBlade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item KATANA = new ItemKatana().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item SCROLL_P = new ItemScroll("_p").setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -98,11 +174,16 @@ public class ModItems {
 
     public static final Item primalingot = new Item().setUnlocalizedName("primalingot").setRegistryName("primalingot").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item PRIMAL_PICKAXE = new ItemPrimalPickaxe().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item PRIMAL_BLADE = new ItemPrimalBlade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item PRIMAL_AXE = new ItemPrimalAxe().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item PRIMAL_SHOVEL = new ItemPrimalShovel().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item CONDENSED_PRIMAL_PEARL = new Item().setUnlocalizedName("condensed_primal_pearl").setRegistryName("condensed_primal_pearl").setMaxStackSize(1).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item POTION_GUN = new ItemPotionGun().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item taint_slime = new Item().setUnlocalizedName("taint_slime").setRegistryName("taint_slime").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item skull = new Item().setUnlocalizedName("skull").setRegistryName("skull").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item end_dust = new Item().setUnlocalizedName("end_dust").setRegistryName("end_dust").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item lootbag = new LootBag().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item RE_TRADE = new ItemReTrade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item soul = new Item().setUnlocalizedName("soul").setRegistryName("soul").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item coin = new Item().setUnlocalizedName("coin").setRegistryName("coin").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item stone = new Item().setUnlocalizedName("stone").setRegistryName("stone").setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -115,6 +196,7 @@ public class ModItems {
     public static final Item taint_tendril = new Item().setUnlocalizedName("taint_tendril").setRegistryName("taint_tendril").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemTaintAmulet = new ItemTaintAmulet().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item MASK = new ItemMask().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item FLUX_LAMP = new ItemFluxLamp().setCreativeTab(ThaumicForever.CREATIVE_TAB);
 
     public static final Item orb_of_taint = new Item().setUnlocalizedName("orb_of_taint").setRegistryName("orb_of_taint").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item orb_of_crimson = new Item().setUnlocalizedName("orb_of_crimson").setRegistryName("orb_of_crimson").setCreativeTab(ThaumicForever.CREATIVE_TAB);
@@ -125,8 +207,8 @@ public class ModItems {
 
     public static final Item orb_of_soul = new Item().setUnlocalizedName("orb_of_soul").setRegistryName("orb_of_soul").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item WIND_CHARGE = new ItemWindCharge();
-    public static final Item RavenCloakItemH = new RavenCloakItemH().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    public static final Item ItemVisModule = new ItemVisModule().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item DarkCloakItemH = new DarkCloakItemH().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item ItemVisModule = new ItemVisModule();
     public static final Item CUSTOM_CASTER = new ItemCustomCaster("caster_advanced", 1).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemCompassMaze = new ItemCompassMaze().setUnlocalizedName("compass_maze").setRegistryName("compass_maze").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item bicon = new Item().setUnlocalizedName("bicon").setRegistryName("bicon");
@@ -137,6 +219,8 @@ public class ModItems {
     public static final Item ReviveRing = new ItemRingRevive().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item CdRing = new ItemRingCooldown().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item VIS_RING = new ItemVisRing().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item RING_GREEDY = new ItemGreedyRing().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item BROKEN_FUTURE_LENS = new ItemBrokenFutureLens().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemHand = new ItemHand().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item bigOakGrower = new ItemBigOakGrower().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     
@@ -145,32 +229,35 @@ public class ModItems {
     public static final Item ItemPrimalScribeTool = new ItemPrimalScribeTool().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item ItemScribeToolLarge = new ItemScribeToolLarge().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item itemNodeMagnet = new ItemNodeMagnet().setUnlocalizedName("turret_magnet").setRegistryName("turret_magnet").setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item itemArcaneTurret = new ItemArcaneTurret().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item debstick = new ItemDebugStick().setUnlocalizedName("debstick").setRegistryName("debstick");
     public static final Item ItembugStick = new ItemVoidEraser().setUnlocalizedName("void_stick").setRegistryName("void_stick");
 
     public static final Item nodessummoncreative = new nodessummoncreative().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-    public static final Item CREATIVE_ITEM_ASPECT = new Item().setUnlocalizedName("creative_item_aspect").setRegistryName("creative_item_aspect").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item KNOWLEDGE_FRAGMENT = new ItemKnowledgeFragment().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item KNOWLEDGE_EPIPHANY = new ItemKnowledgeEpiphany().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item brain = new Item().setUnlocalizedName("purified_brain").setRegistryName("purified_brain").setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item GOLD_PLATE = new ItemGoldPlate().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item GOLEM_CORE_GOLIATH = new ItemGolemCore("golem_core_goliath", GoliathGolemCore.ID).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item GOLEM_CORE_IRONSKIN = new ItemGolemCore("golem_core_ironskin", IronSkinGolemCore.ID).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item GOLEM_CORE_ARCANE = new ItemGolemCore("golem_core_arcane", ArcaneGolemCore.ID).setCreativeTab(ThaumicForever.CREATIVE_TAB);
     public static final Item GOLEM_CORE_SWIFT = new ItemGolemCore("golem_core_swift", SwiftGolemCore.ID).setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item GOLEM_CORE_PRIMAL = new ItemGolemCore("golem_core_primal", PrimalGolemCore.ID).setCreativeTab(ThaumicForever.CREATIVE_TAB);
+
     public static final Item TUNING_FORK_RIFLE = new ItemTuningForkRifle();
     public static final Item DECOY_MANNEQUIN = new ItemDecoyMannequin().setCreativeTab(ThaumicForever.CREATIVE_TAB);
-
-    
+    public static final Item WARP_BLADE = new ItemWarpBlade().setCreativeTab(ThaumicForever.CREATIVE_TAB);
+    public static final Item VOID_SINGULARITY_MINECART = new ItemVoidSingularityMinecart().setCreativeTab(ThaumicForever.CREATIVE_TAB);
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
         registry.registerAll(
-            LEAD_INGOT,
-            SILVER_INGOT,
-            TIN_INGOT,
-            COPPER_INGOT,
             primalingot,
             PRIMAL_PICKAXE,
+            PRIMAL_BLADE,
+            PRIMAL_AXE,
+            PRIMAL_SHOVEL,
+            CONDENSED_PRIMAL_PEARL,
             POTION_GUN,
             CLUSTER,
             AQUAREIA_GEM,
@@ -194,17 +281,19 @@ public class ModItems {
             RING_ENDER,
             ItemAquareiaGoggles,
             ELDTRITCH_EYE_AMULET,
-            RavenCloakBauble,
-            RavenCloakItemH,
+            DarkCloakBauble,
+            DarkCloakItemH,
             ItemTaintAmulet,
             MASK,
+            FLUX_LAMP,
             ring_master,
             RingIron,
             RegenRing,
             ReviveRing,
             CdRing,
             VIS_RING,
-
+            RING_GREEDY,
+            BROKEN_FUTURE_LENS,
 
             ItemVoidGear,
             ItemThaumiumGear,
@@ -212,7 +301,7 @@ public class ModItems {
             mechanism_improved,
             void_core,
             thaumium_core,
-
+            GOLEM_CORE_PRIMAL,
 
             skull,
             soul,
@@ -248,6 +337,7 @@ public class ModItems {
             taint_tendril,
             coin,
             lootbag,
+            RE_TRADE,
 
 
             ETERNAL_BLADE,
@@ -262,6 +352,7 @@ public class ModItems {
             ItemHand,
             VOID_TELEPORT_ITEM,
             itemNodeMagnet,
+            itemArcaneTurret,
             ItemPrimalScribeTool,
             ItemScribeToolLarge,
 
@@ -279,17 +370,27 @@ public class ModItems {
             bicon,
             ItembugStick,
             nodessummoncreative,
-            CREATIVE_ITEM_ASPECT,
             KNOWLEDGE_FRAGMENT,
+            KNOWLEDGE_EPIPHANY,
             debstick,
             GOLEM_CORE_GOLIATH,
             GOLEM_CORE_IRONSKIN,
             GOLEM_CORE_ARCANE,
             GOLEM_CORE_SWIFT,
             TUNING_FORK_RIFLE,
-            DECOY_MANNEQUIN
+            DECOY_MANNEQUIN,
+            WARP_BLADE,
+            VOID_SINGULARITY_MINECART
 
         );
+        if (ModConfig.enableStandardOreGeneration) {
+            registry.registerAll(
+                LEAD_INGOT,
+                SILVER_INGOT,
+                TIN_INGOT,
+                COPPER_INGOT
+            );
+        }
         if (hand != null) {
             registry.register(hand);
         }
@@ -298,15 +399,18 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(ModItems.LEAD_INGOT, 0, new ModelResourceLocation(ModItems.LEAD_INGOT.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.SILVER_INGOT, 0, new ModelResourceLocation(ModItems.SILVER_INGOT.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.TIN_INGOT, 0, new ModelResourceLocation(ModItems.TIN_INGOT.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.COPPER_INGOT, 0, new ModelResourceLocation(ModItems.COPPER_INGOT.getRegistryName(), "inventory"));
+        if (ModConfig.enableStandardOreGeneration) {
+            ModelLoader.setCustomModelResourceLocation(ModItems.LEAD_INGOT, 0, new ModelResourceLocation(ModItems.LEAD_INGOT.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(ModItems.SILVER_INGOT, 0, new ModelResourceLocation(ModItems.SILVER_INGOT.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(ModItems.TIN_INGOT, 0, new ModelResourceLocation(ModItems.TIN_INGOT.getRegistryName(), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(ModItems.COPPER_INGOT, 0, new ModelResourceLocation(ModItems.COPPER_INGOT.getRegistryName(), "inventory"));
+        }
         // ModelLoader.setCustomModelResourceLocation(ModItems.LEAD_NUGGET, 0, new ModelResourceLocation(ModItems.LEAD_NUGGET.getRegistryName(), "inventory"));
         // ModelLoader.setCustomModelResourceLocation(ModItems.SILVER_NUGGET, 0, new ModelResourceLocation(ModItems.SILVER_NUGGET.getRegistryName(), "inventory"));
         // ModelLoader.setCustomModelResourceLocation(ModItems.TIN_NUGGET, 0, new ModelResourceLocation(ModItems.TIN_NUGGET.getRegistryName(), "inventory"));
         // ModelLoader.setCustomModelResourceLocation(ModItems.COPPER_NUGGET, 0, new ModelResourceLocation(ModItems.COPPER_NUGGET.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.AQUAREIA_GEM, 0, new ModelResourceLocation(ModItems.AQUAREIA_GEM.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.RE_TRADE, 0, new ModelResourceLocation(ModItems.RE_TRADE.getRegistryName(), "inventory"));
         for (int i = 0; i < ItemCluster.CLUSTER_TYPES.length; i++) {
             ModelLoader.setCustomModelResourceLocation(ModItems.CLUSTER, i,
                 new ModelResourceLocation(ModItems.CLUSTER.getRegistryName() + "_" + ItemCluster.CLUSTER_TYPES[i], "inventory"));
@@ -341,7 +445,7 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.ELDTRITCH_EYE_AMULET, 0, new ModelResourceLocation(ModItems.ELDTRITCH_EYE_AMULET.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemStructureSaver, 0, new ModelResourceLocation(ModItems.ItemStructureSaver.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemStructureSpawner, 0, new ModelResourceLocation(ModItems.ItemStructureSpawner.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.RavenCloakBauble, 0, new ModelResourceLocation(ModItems.RavenCloakBauble.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.DarkCloakBauble, 0, new ModelResourceLocation(ModItems.DarkCloakBauble.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemBoneBlade, 0, new ModelResourceLocation(ModItems.ItemBoneBlade.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.KATANA, 0, new ModelResourceLocation(ModItems.KATANA.getRegistryName(), "inventory"));
         for (int meta = 0; meta <= 3; meta++) {
@@ -356,6 +460,10 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.AuraPhial, 0, new ModelResourceLocation(ModItems.AuraPhial.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.primalingot, 0, new ModelResourceLocation(ModItems.primalingot.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.PRIMAL_PICKAXE, 0, new ModelResourceLocation(ModItems.PRIMAL_PICKAXE.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.PRIMAL_BLADE, 0, new ModelResourceLocation(ModItems.PRIMAL_BLADE.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.PRIMAL_AXE, 0, new ModelResourceLocation(ModItems.PRIMAL_AXE.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.PRIMAL_SHOVEL, 0, new ModelResourceLocation(ModItems.PRIMAL_SHOVEL.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.CONDENSED_PRIMAL_PEARL, 0, new ModelResourceLocation(ModItems.CONDENSED_PRIMAL_PEARL.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.POTION_GUN, 0, new ModelResourceLocation(ModItems.POTION_GUN.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.taint_slime, 0, new ModelResourceLocation(ModItems.taint_slime.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.skull, 0, new ModelResourceLocation(ModItems.skull.getRegistryName(), "inventory"));
@@ -371,6 +479,7 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.taint_tendril, 0, new ModelResourceLocation(ModItems.taint_tendril.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemTaintAmulet, 0, new ModelResourceLocation(ModItems.ItemTaintAmulet.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.MASK, 0, new ModelResourceLocation(ModItems.MASK.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.FLUX_LAMP, 0, new ModelResourceLocation(ModItems.FLUX_LAMP.getRegistryName(), "inventory"));
         if (hand != null) {
             ModelLoader.setCustomModelResourceLocation(hand, 0, new ModelResourceLocation(hand.getRegistryName(), "inventory"));
         }
@@ -385,7 +494,7 @@ public class ModItems {
             ModelLoader.setCustomModelResourceLocation(ModItems.ruby_gem, 0, new ModelResourceLocation(ModItems.ruby_gem.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.orb_of_soul, 0, new ModelResourceLocation(ModItems.orb_of_soul.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.WIND_CHARGE, 0, new ModelResourceLocation(ModItems.WIND_CHARGE.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.RavenCloakItemH, 0, new ModelResourceLocation(ModItems.RavenCloakItemH.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.DarkCloakItemH, 0, new ModelResourceLocation(ModItems.DarkCloakItemH.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemVisModule, 0, new ModelResourceLocation(ModItems.ItemVisModule.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(CUSTOM_CASTER, 0, new ModelResourceLocation(CUSTOM_CASTER.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ItemCompassMaze, 0,new ModelResourceLocation("thaumicforever:compass_maze", "inventory"));
@@ -396,6 +505,8 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.ReviveRing, 0, new ModelResourceLocation(ModItems.ReviveRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.CdRing, 0, new ModelResourceLocation(ModItems.CdRing.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.VIS_RING, 0, new ModelResourceLocation(ModItems.VIS_RING.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.RING_GREEDY, 0, new ModelResourceLocation(ModItems.RING_GREEDY.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.BROKEN_FUTURE_LENS, 0, new ModelResourceLocation(ModItems.BROKEN_FUTURE_LENS.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemHand, 0, new ModelResourceLocation(ModItems.ItemHand.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.bigOakGrower, 0, new ModelResourceLocation(ModItems.bigOakGrower.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.thaumium_core, 0, new ModelResourceLocation(ModItems.thaumium_core.getRegistryName(), "inventory"));
@@ -403,11 +514,12 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemPrimalScribeTool, 0, new ModelResourceLocation(ModItems.ItemPrimalScribeTool.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItemScribeToolLarge, 0, new ModelResourceLocation(ModItems.ItemScribeToolLarge.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.itemNodeMagnet, 0, new ModelResourceLocation(ModItems.itemNodeMagnet.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.itemArcaneTurret, 0, new ModelResourceLocation(ModItems.itemArcaneTurret.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.debstick, 0, new ModelResourceLocation(ModItems.debstick.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.ItembugStick, 0, new ModelResourceLocation(ModItems.ItembugStick.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.nodessummoncreative, 0, new ModelResourceLocation(ModItems.nodessummoncreative.getRegistryName(), "inventory"));
-        ModelLoader.setCustomModelResourceLocation(ModItems.CREATIVE_ITEM_ASPECT, 0, new ModelResourceLocation(ModItems.CREATIVE_ITEM_ASPECT.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.KNOWLEDGE_FRAGMENT, 0, new ModelResourceLocation(ModItems.KNOWLEDGE_FRAGMENT.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.KNOWLEDGE_EPIPHANY, 0, new ModelResourceLocation(ModItems.KNOWLEDGE_EPIPHANY.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.brain, 0, new ModelResourceLocation(ModItems.brain.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.GOLD_PLATE, 0, new ModelResourceLocation(ModItems.GOLD_PLATE.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.GOLEM_CORE_GOLIATH, 0, new ModelResourceLocation(ModItems.GOLEM_CORE_GOLIATH.getRegistryName(), "inventory"));
@@ -416,6 +528,9 @@ public class ModItems {
         ModelLoader.setCustomModelResourceLocation(ModItems.GOLEM_CORE_SWIFT, 0, new ModelResourceLocation(ModItems.GOLEM_CORE_SWIFT.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.TUNING_FORK_RIFLE, 0, new ModelResourceLocation(ModItems.TUNING_FORK_RIFLE.getRegistryName(), "inventory"));
         ModelLoader.setCustomModelResourceLocation(ModItems.DECOY_MANNEQUIN, 0, new ModelResourceLocation(ModItems.DECOY_MANNEQUIN.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.WARP_BLADE, 0, new ModelResourceLocation(ModItems.WARP_BLADE.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.VOID_SINGULARITY_MINECART, 0, new ModelResourceLocation(ModItems.VOID_SINGULARITY_MINECART.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(ModItems.GOLEM_CORE_PRIMAL, 0, new ModelResourceLocation(ModItems.GOLEM_CORE_PRIMAL.getRegistryName(), "inventory"));
     }
     
 }

@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWand;
 import com.koteuka404.thaumicforever.wand.util.WandHelper;
 
@@ -694,15 +695,12 @@ public class EntityAuraNode extends Entity {
     }
 
     public void randomizeNode() {
+        randomizeNode(1.0F);
+    }
+
+    public void randomizeNode(float pureWeightMultiplier) {
         spawned = false;
-        double r = rand.nextDouble();
-        int type;
-        if      (r < CHANCE_SINISTER)  type = 1; // Dark
-        else if (r < CHANCE_SINISTER + CHANCE_HUNGRY)                       type = 2; // Hungry
-        else if (r < CHANCE_SINISTER + CHANCE_HUNGRY + CHANCE_UNSTABLE)     type = 5; // Unstable
-        else if (r < CHANCE_SINISTER + CHANCE_HUNGRY + CHANCE_UNSTABLE + CHANCE_PURE) type = 3; // Pure
-        else if (r < CHANCE_SINISTER + CHANCE_HUNGRY + CHANCE_UNSTABLE + CHANCE_PURE + CHANCE_TAINT) type = 4; // Taint
-        else type = 0; // Normal
+        int type = pickWeightedNodeType(Math.max(0.0F, pureWeightMultiplier));
     
         dataManager.set(NODE_TYPE, (byte)type);
         if (type >= 1 && type <= 5) {
@@ -725,6 +723,28 @@ public class EntityAuraNode extends Entity {
     
         enforceAspectLimit();
         updateSyncAspects();
+    }
+
+    private int pickWeightedNodeType(float pureWeightMultiplier) {
+        float normal = Math.max(0.0F, ModConfig.normalNodeWeight);
+        float sinister = Math.max(0.0F, ModConfig.sinisterNodeWeight);
+        float hungry = Math.max(0.0F, ModConfig.hungryNodeWeight);
+        float unstable = Math.max(0.0F, ModConfig.unstableNodeWeight);
+        float pure = Math.max(0.0F, ModConfig.pureNodeWeight) * pureWeightMultiplier;
+        float taint = Math.max(0.0F, ModConfig.taintNodeWeight);
+        float total = normal + sinister + hungry + unstable + pure + taint;
+
+        if (total <= 0.0F) {
+            return 0;
+        }
+
+        float r = rand.nextFloat() * total;
+        if ((r -= sinister) < 0.0F) return 1; // Sinister/Dark
+        if ((r -= hungry) < 0.0F) return 2;   // Hungry
+        if ((r -= unstable) < 0.0F) return 5; // Unstable
+        if ((r -= pure) < 0.0F) return 3;     // Pure
+        if ((r -= taint) < 0.0F) return 4;    // Taint
+        return 0;                             // Normal
     }
 
     public void randomizeForNodeType(int type) {

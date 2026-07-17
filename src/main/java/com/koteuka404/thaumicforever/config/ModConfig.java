@@ -1,7 +1,5 @@
 package com.koteuka404.thaumicforever.config;
 
-import com.koteuka404.thaumicforever.event.ThaumicEventHandler;
-
 import java.io.File;
 
 import net.minecraft.block.Block;
@@ -44,11 +42,23 @@ public class ModConfig {
     public static float nodeBoundThaumcraftAuraVisPerStrength;
     public static float nodeBoundThaumcraftAuraNoNodeDrain;
     public static boolean sinisterNodeSpreadsEerieBiome;
+    public static int auraNodeRarity;
+    public static float normalNodeWeight;
+    public static float sinisterNodeWeight;
+    public static float hungryNodeWeight;
+    public static float unstableNodeWeight;
+    public static float pureNodeWeight;
+    public static float taintNodeWeight;
+    public static float magicalForestPureNodeWeightMultiplier;
     public static boolean enableEerieDayMobSpawns;
     public static String aspectDumpFile;
     public static String[] vanillaPotAllowedPlants;
     public static String ichorNuggetItem;
     public static String ichorClothItem;
+    public static String[] voidTraiderTradeItems;
+    public static int voidTraiderMinSpawnDays;
+    public static int voidTraiderMaxSpawnDays;
+    public static boolean notifyVoidTraiderSpawn;
 
     public static void loadConfig(FMLPreInitializationEvent event) {
         File configFile = new File(event.getModConfigurationDirectory(), "thaumicforever.cfg");
@@ -74,7 +84,7 @@ public class ModConfig {
 
         enableStandardOreGeneration = config.getBoolean(
             "Enable Standard Ore Generation", "General", true,
-            "If true, standard ores like Copper, Tin, Lead, etc. will be generated."
+            "If false, Thaumic Forever will not register Copper, Tin, Lead and Silver ores, ingots, storage blocks, item forms, ore dictionary entries, smelting recipes, crafting recipes or world generation. Disable this only before creating/loading worlds that should not contain these blocks/items."
         );
 
         enableThaumicEventHandler = config.getBoolean(
@@ -90,6 +100,38 @@ public class ModConfig {
         researchList = config.getStringList(
             "Research List", "General", new String[]{},
             "List of researches that can be added dynamically."
+        );
+
+        voidTraiderTradeItems = config.getStringList(
+            "Trade Items",
+            "Void Trader",
+            new String[] {},
+            "Additional items Void Traider may offer alongside his fixed trade list. Format: modid:item, modid:item@meta, modid:item@meta*count or thaumicforever:knowledge_epiphany{RESEARCH_KEY}."
+        );
+
+        voidTraiderMinSpawnDays = config.getInt(
+            "Minimum Spawn Days",
+            "Void Trader",
+            20,
+            1,
+            Integer.MAX_VALUE,
+            "Minimum number of Overworld days before the Void Trader can spawn again."
+        );
+
+        voidTraiderMaxSpawnDays = config.getInt(
+            "Maximum Spawn Days",
+            "Void Trader",
+            90,
+            1,
+            Integer.MAX_VALUE,
+            "Maximum number of Overworld days before the Void Trader can spawn again."
+        );
+
+        notifyVoidTraiderSpawn = config.getBoolean(
+            "Notify Void Trader Spawn",
+            "Void Trader",
+            true,
+            "If true, announce in chat when a new Void Trader appears."
         );
 
     
@@ -188,6 +230,46 @@ public class ModConfig {
             "If true, sinister nodes convert nearby biome to Eerie over time."
         );
 
+        auraNodeRarity = config.getInt(
+            "Aura Node Rarity", "Nodes", 33, 1, Integer.MAX_VALUE,
+            "Natural aura node generation chance per chunk: 1 in N. Thaumcraft 5 default was 33."
+        );
+
+        normalNodeWeight = config.getFloat(
+            "Normal Node Weight", "Nodes", 85.7F, 0.0F, 10000.0F,
+            "Weighted chance for normal aura nodes. Weights are relative to the other node type weights."
+        );
+
+        sinisterNodeWeight = config.getFloat(
+            "Sinister Node Weight", "Nodes", 3.94F, 0.0F, 10000.0F,
+            "Weighted chance for sinister aura nodes."
+        );
+
+        hungryNodeWeight = config.getFloat(
+            "Hungry Node Weight", "Nodes", 1.12F, 0.0F, 10000.0F,
+            "Weighted chance for hungry aura nodes."
+        );
+
+        unstableNodeWeight = config.getFloat(
+            "Unstable Node Weight", "Nodes", 3.34F, 0.0F, 10000.0F,
+            "Weighted chance for unstable aura nodes."
+        );
+
+        pureNodeWeight = config.getFloat(
+            "Pure Node Weight", "Nodes", 4.34F, 0.0F, 10000.0F,
+            "Weighted chance for pure aura nodes."
+        );
+
+        taintNodeWeight = config.getFloat(
+            "Taint Node Weight", "Nodes", 1.56F, 0.0F, 10000.0F,
+            "Weighted chance for taint aura nodes outside tainted biomes. Tainted biomes still force taint nodes."
+        );
+
+        magicalForestPureNodeWeightMultiplier = config.getFloat(
+            "Magical Forest Pure Node Weight Multiplier", "Nodes", 4.0F, 0.0F, 10000.0F,
+            "Multiplier applied to Pure Node Weight when a natural aura node generates in thaumcraft:magical_forest."
+        );
+
         enableEerieDayMobSpawns = config.getBoolean(
             "Enable Eerie Day Mob Spawns", "World",
             true,
@@ -217,7 +299,7 @@ public class ModConfig {
         ichorNuggetItem = config.getString(
             "Ichor Nugget Item",
             "Wand Compat",
-            "thaumictinkerer:kamiresource@3",
+            "thaumictinkerer:kamiresource@5",
             "Preferred ichor nugget item for Ichor cap recipes. Format: modid:item@meta (meta optional)."
         );
 

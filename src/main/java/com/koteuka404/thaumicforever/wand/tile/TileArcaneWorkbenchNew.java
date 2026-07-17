@@ -31,10 +31,10 @@ public class TileArcaneWorkbenchNew extends TileArcaneWorkbench implements ITick
     private static final int VIS_RECHARGE_MAX_PER_TICK = 8;
     private static final int PORT_BOOST_RANGE = 8;
     private static final int CHARGER_PORT_SCAN_RANGE = 4;
-    private static final int CV_PER_PRIMAL_POINT = 10;
+    private static final int CV_PER_PRIMAL_POINT = 100;
     private static final int DIRECT_CV_BUFFER_CAP = CV_PER_PRIMAL_POINT * 2;
     private static final int AURA_PRIMAL_RECHARGE_DIVISOR = 6;
-    // With port CV buffer cap (20 units), 1 + round(20 * 1.15) = 24 max aspect boost.
+    // TC4/TC5 convention: 100 centivis equals one wand/primal charge point.
     private static final float PORT_BOOST_PERCENT = 1.15f;
     private NBTTagCompound lastSentWandNbt;
     private final Map<Aspect, Integer> directCvBuffer = new HashMap<>();

@@ -1,9 +1,9 @@
 package com.koteuka404.thaumicforever.item;
 
 import com.wonginnovations.oldresearch.OldResearch;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +11,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import thaumcraft.api.items.ItemsTC;
 
 public class ItemCleanMind extends Item {
 
@@ -36,9 +37,9 @@ public class ItemCleanMind extends Item {
         if (!player.capabilities.isCreativeMode) {
             stack.shrink(1);
             if (stack.isEmpty()) {
-                return new ItemStack(Items.GLASS_BOTTLE);
+                return new ItemStack(ItemsTC.phial);
             }
-            ItemStack emptyBottle = new ItemStack(Items.GLASS_BOTTLE);
+            ItemStack emptyBottle = new ItemStack(ItemsTC.phial);
             if (!player.inventory.addItemStackToInventory(emptyBottle)) {
                 player.dropItem(emptyBottle, false);
             }

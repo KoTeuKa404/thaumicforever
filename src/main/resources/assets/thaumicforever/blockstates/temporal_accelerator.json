@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "thaumicforever:block/temporal_accelerator",
+    "uvlock": true,
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{ "model": "thaumicforever:temporal_accelerator" }],
+    "inventory": [{ "model": "thaumicforever:temporal_accelerator" }]
+  }
+}

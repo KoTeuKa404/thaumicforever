@@ -41,6 +41,18 @@
             ]
         },
         {
+        "key": "VOID_BEACON",
+        "name": "research.VOID_BEACON.title",
+        "icons": [ "thaumicforever:void_beacon" ],
+        "category": "PRIMAL", "location": [ 4,-2 ],
+        "meta": ["SPIKY","HIDDEN" ],
+        "stages": [
+                {
+                    "text": "research.VOID_BEACON.stage.1"
+                }
+            ]
+        },
+        {
         "key": "TELEPORT",
         "name": "research.TELEPORT.title",
         "icons": [ "thaumicforever:textures/items/crystalworld.png" ],
@@ -67,12 +79,51 @@
             ]
         },
         {
-        "key": "TAINT_AMULET",
-        "name": "research.TAINT_AMULET.title",
-        "icons": [ "thaumicforever:taint_amulet"],
-        "category": "PRIMAL", "location": [ 4,-4 ],
+        "key": "PRIMALTIMESTONE",
+        "name": "research.PRIMALTIMESTONE.title",
+        "icons": [ "thaumicforever:temporal_accelerator"],
+        "category": "PRIMAL", "location": [ 4,0 ],
         "meta": ["SPIKY","HIDDEN" ],
         "stages": [
+                {
+                    "text": "research.PRIMALTIMESTONE.stage.1",
+                    "recipes": ["THAUMICFOREVER:temporal_accelerator"]
+                }
+            ]
+        },
+        {
+        "key": "VOID_SINGULARITY",
+        "name": "research.VOID_SINGULARITY.title",
+        "icons": [ "thaumicforever:void_singularity" ],
+        "category": "PRIMAL", "location": [ -2,4 ],
+        "meta": ["SPIKY","HIDDEN" ],
+        "stages": [
+                {
+                    "text": "research.VOID_SINGULARITY.stage.1",
+                    "recipes": ["THAUMICFOREVER:void_singularity"]
+                }
+            ]
+        },
+        {
+        "key": "PRIMALTOOLS",
+        "name": "research.PRIMALTOOLS.title",
+        "icons": [ "thaumicforever:primal_pickaxe","thaumicforever:primal_blade","thaumicforever:primal_axe","thaumicforever:primal_shovel"],
+        "category": "PRIMAL", "location": [ 2,2 ],
+        "meta": ["SPIKY","HIDDEN" ],
+        "stages": [
+                {
+                    "text": "research.PRIMALTOOLS.stage.1",
+                    "recipes": ["thaumicforever:primal_pickaxe","thaumicforever:primal_blade","thaumicforever:primal_axe","thaumicforever:primal_shovel"]
+                }
+            ]
+        },
+        {
+            "key": "TAINT_AMULET",
+            "name": "research.TAINT_AMULET.title",
+            "icons": [ "thaumicforever:taint_amulet"],
+            "category": "PRIMAL", "location": [ 4,-4 ],
+            "meta": ["SPIKY","HIDDEN" ],
+            "stages": [
                 {
                     "text": "research.TAINT_AMULET.stage.1",
                     "recipes": ["thaumicforever:TAINT_AMULET"]
@@ -86,12 +137,34 @@
             "category": "PRIMAL", "location": [ -2,0 ],
             "meta": ["SPIKY","HIDDEN" ],
             "stages": [
-                    {
-                        "text": "research.PRIMAL_FOCI.stage.1"
-                    }
-                ]
-            }
-
+                {
+                    "text": "research.PRIMAL_FOCI.stage.1"
+                }
+            ]
+        },
+        {
+            "key": "PRIMAL_ELEMENT",
+            "name": "research.PRIMAL_ELEMENT.title",
+            "icons": [ "focus:thaumicforever.PRIMAL_ELEMENT" ],
+            "meta": ["SPIKY","HIDDEN" ],
+            "category": "PRIMAL", "location": [ -4,0 ],
+            "stages": [
+                {
+                    "text": "research.PRIMAL_ELEMENT.stage.0"
+                }
+            ]
+        },
+        {
+            "key": "PRIMAL_RUPTURE",
+            "name": "research.PRIMAL_RUPTURE.title",
+            "icons": [ "focus:thaumicforever.PRIMAL_RUPTURE" ],
+            "meta": ["SPIKY","HIDDEN" ],
+            "category": "PRIMAL", "location": [ -4, 2 ],
+            "stages": [
+                {
+                    "text": "research.PRIMAL_RUPTURE.stage.0"
+                }
+            ]
+        }
     ]
 }
-

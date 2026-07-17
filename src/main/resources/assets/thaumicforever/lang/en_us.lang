@@ -7,8 +7,8 @@ tile.thaumicforever.greatwood_table.name=Greatwood Table
 tile.thaumicforever.double_table.name=Double Table
 tile.thaumicforever.great_research_table.name=Great Research Table
 item.thaumicforever.great_research_table.name=Great Research Table
-tile.thaumicforever.arcane_workbench_wand_charger.name=Arcane Workbench Wand Charger
-item.thaumicforever.arcane_workbench_wand_charger.name=Arcane Workbench Wand Charger
+tile.thaumicforever.arcane_workbench_wand_charger.name=Arcane Wand Workbench Charger
+item.thaumicforever.arcane_workbench_wand_charger.name=Arcane Wand Workbench Charger
 tile.recharge_pedestal.name=Wand Recharge Pedestal
 tile.thaumicforever.recharge_pedestal.name=Wand Recharge Pedestal
 item.thaumicforever.recharge_pedestal.name=Wand Recharge Pedestal
@@ -79,6 +79,7 @@ thaumicforever.CALM.text=Clouds the mind of all entities
 tile.thaumicforever.smooth_stone.name=Smooth Stone
 tile.obsidian_totem.name=Obsidian Totem
 tile.time_stone.name=Time Stone
+tile.temporal_accelerator.name=Temporal Accelerator
 
 item.focus_4.name=Blank Max Focus
 item.focus_5.name=Blank Ultimate Focus
@@ -103,7 +104,7 @@ tile.red_rose.name=Red Rose
 item.empty_focus.name=Empty Focus
 item.eternal_blade.name=Eternal Blade
 item.katana.name=Katana
-item.raven_cloak_bauble.name=Shadow Cloak
+item.dark_cloak_bauble.name=Dark Cloak
 
 tc.aspect.tempestas=Weather
 tc.aspect.matterya=Mattery
@@ -211,9 +212,9 @@ research.RESEARCHCLEANFT.title=Lucid Mind Distillation
 research.RESEARCHCLEANFT.stage.1=Aura phials hold cognitive patterns with unusual stability. By binding Mind and Order in a controlled crucible cycle, I can distill a reagent that dampens mental static and restores disciplined thought.
 research.RESEARCHCLEANFT.stage.2=I can now distill §lLucidity Elixir§r in the crucible using an aura phial as the catalyst. The compound clears arcane haze, settles intrusive resonance, and returns focus after heavy thaumaturgic strain.
 
-research.DeconstructionTable.title=Deconstruction Table
-research.DeconstructionTable.stage.1=I constructed a Deconstruction Table to break common items into base components and study the hidden arcane traits within. Its ability to extract curios makes it indispensable when mundane matter must be analyzed.
-research.DeconstructionTable.stage.2=§lDeconstruction Table§r<BR>Matter remembers. With careful pressure and a little controlled ruin, this table peels those memories from an item and presses them into a Knowledge Fragment.<BR>Any object bearing registered aspects may be sacrificed. The richer its nature, the richer the fragment. Right-click the fragment to reclaim the aspects.
+research.DECONSTRUCTIONTABLE.title=Deconstruction Table
+research.DECONSTRUCTIONTABLE.stage.1=I constructed a Deconstruction Table to break common items into base components and study the hidden arcane traits within. Its ability to extract curios makes it indispensable when mundane matter must be analyzed.
+research.DECONSTRUCTIONTABLE.stage.2=§lDeconstruction Table§r<BR>Matter remembers. With careful pressure and a little controlled ruin, this table peels those memories from an item and presses them into a Knowledge Fragment.<BR>Any object bearing registered aspects may be sacrificed. The richer its nature, the richer the fragment. Right-click the fragment to reclaim the aspects.
 
 item.ring_ender.name=Ender Ring 
 item.artifact_ruby_ring.name=Ruby Ring of Vampirism
@@ -248,8 +249,8 @@ research.IMMERALKIMIA.title=Immersive Alchemy
 research.IUALKIMIA.title=Industrial Alchemy
 research.ETERNALBLADE.title=Eternal Blade
 
-research.THAUMICFOREVER.stage.1=The first steps are always the hardest. The book insists that no wand can be born without proper fittings. I must combine a rod with a pair of caps at an Arcane Workbench to assemble my first wand.<BR>It also hints at another trick: a simple Wood Table can be awakened to greater purpose. Right-click the Wood Table with a wand, and it will transform into a Wand Workbench.
-research.THAUMICFOREVER.stage.2=A wand is more than a tool; it is a vessel for Vis. The Wand Workbench draws upon this reserve to shape arcane crafts.<BR>It seems the wand itself can replace a pinch of Salis Mundus when awakening a table. For now I only know that it stores Vis and lends it to the workbench. Of its deeper nature, I know little yet.
+research.THAUMICFOREVER.stage.1=The first steps are always the hardest. The book insists that no wand can be born without proper fittings. I must combine a rod with a pair of caps at an Arcane Workbench to assemble my first wand.<BR>It also hints at another trick: a simple Wood Table can be awakened to greater purpose. Right-click the Wood Table with a wand, and it will transform into an Arcane Wand Workbench.
+research.THAUMICFOREVER.stage.2=A wand is more than a tool; it is a vessel for Vis. The Arcane Wand Workbench draws upon this reserve to shape arcane crafts.<BR>It seems the wand itself can replace a pinch of Salis Mundus when awakening a table. For now I only know that it stores Vis and lends it to the workbench. Of its deeper nature, I know little yet.
 research.THAUMICFOREVER.stage.3=By joining two greatwood tables and applying salis mundus, I can obtain a research table. Yet its true nature remains unclear to me.<BR>I will keep this page open, for it seems destined to hold further notes as my studies advance.
 research.THAUMICFOREVER.addenda.1=A Revive Skeleton yielded a strange scroll, its text fractured and incomplete. Perhaps I should return to the research table and see if it responds to these hints.<PAGE><IMG>thaumicforever:textures/misc/table1.png:0:0:255:255:0.5</IMG><BR>Understanding the functionality of the DoubleTable is crucial for advancing in thaumic studies. The table is split into several key functional zones:<BR><IMG>thaumicforever:textures/misc/table2.png:0:0:255:255:0.5</IMG><BR>*Green Slot:* Items placed here will have their aspects extracted. This slot handles the extraction process when interacting with the system.<BR>*Red Slot:* This area holds extracted aspects.The system processes these aspects for research or further synthesis.<BR>*Yellow Circle:* The visualization area displays the current aspects stored in the system. Use this area to plan further research efficiently.<PAGE><BR><IMG>thaumicforever:textures/misc/table3.png:0:0:255:255:0.5</IMG>To progress, ensure your table setup is correct, and provide the necessary components to extract aspects.
 research.THAUMICFOREVER.addenda.2=The advanced gauntlet has proven a worthy refinement. Replacing iron with brass improved its handling of Vis, and each further upgrade brings the focus closer to the ideal I seek.
@@ -281,6 +282,12 @@ research.PRAECANTATIOALKIMIA.stage.2=I can now wield Praecantatio methods with s
 
 research.ADDITIONALALKIMIA.stage.1=I have opened supplementary branches of alchemy and begun integrating their theory.
 research.ADDITIONALALKIMIA.stage.2=My alchemical framework now includes these extended methods.
+research.EMBERSALKIMIA.title=Embers Alchemy
+research.EMBERSALKIMIA.stage.1=I have begun adapting the heat, ash and metalworking principles of Embers and its extensions.
+research.EMBERSALKIMIA.stage.2=I can now reproduce Aetherworks and Soot ores through controlled crucible alchemy.
+research.ASTRALALKIIA.title=Astral Alchemy
+research.ASTRALALKIIA.stage.1=I have begun studying the star-bound materials and celestial techniques of Astral Sorcery.
+research.ASTRALALKIIA.stage.2=I can now reproduce several astral materials and use celestial crystals in advanced alchemical and infusion work.
 
 research.APPLIDALKIMIA.stage.1=I have started Applied Alchemy, where arcane process meets modern machinery.
 research.APPLIDALKIMIA.stage.2=I can now integrate magic and technology into one working system.
@@ -333,6 +340,9 @@ item.clean_mind.name=Lucidity Elixir
 item.auraphial.name=Phial of Aura
 item.primalingot.name=Primal Ingot
 item.primal_pickaxe.name=Primal Pickaxe
+item.primal_blade.name=Primal Blade
+item.primal_axe.name=Primal Axe
+item.primal_shovel.name=Primal Shovel
 
 research.STUFF.title=Stuff
 research.STUFF.title=Stuff
@@ -395,6 +405,7 @@ thaumicforever.golem.prop.match_nbt=Match NBT
 item.holywater.name=Holy Water
 item.taint_tendril.name=Tainted Tendril
 item.taint_amulet.name=Amulet of Taint
+item.flux_lamp.name=Flux Lamp
 
 item.orb_of_taint.name=Orb of Taint
 item.orb_of_crimson.name=Orb of Crimson
@@ -404,10 +415,10 @@ item.golden_fish.name=Golden Fish
 item.caster_advanced.name=Advanced Caster's Gauntlet
 
 
-research.golem_core_fish.title=Control Seal: Fishing
-research.golem_core_fish.stage.1=This seal allows golems to engage in fishing by reacting to movement within nearby bodies of water, much like a simple predator. At first, their behavior is crude—they lash out at anything that stirs the surface.<BR>However, I have found that by fine-tuning the core's configuration, the golem can be taught to focus on specific targets, even distinguishing between different types of fish.
-research.golem_core_fish.stage.2=I have refined the seal further by synchronizing it with the natural flow of water. As a result, golems now react more precisely and efficiently when fish are nearby.<BR>More intriguingly, it appears possible to apply a minor enchantment to the core, enhancing the likelihood of capturing rare aquatic specimens. With additional adjustments, this seal could become a reliable method of gathering valuable resources from the depths.
-research.golem_core_fish.addenda.1=I can now craft an advanced version of this seal. It supports category control for catches (fish, junk, treasure), optional redstone signaling, and item filtering via white/black list.<PAGE>With finer logic matrices, this advanced seal can be tuned for very specific fishing workflows. It also requires a smarter golem core to operate at full efficiency.
+research.GOLEM_CORE_FISH.title=Control Seal: Fishing
+research.GOLEM_CORE_FISH.stage.1=This seal allows golems to engage in fishing by reacting to movement within nearby bodies of water, much like a simple predator. At first, their behavior is crude—they lash out at anything that stirs the surface.<BR>However, I have found that by fine-tuning the core's configuration, the golem can be taught to focus on specific targets, even distinguishing between different types of fish.
+research.GOLEM_CORE_FISH.stage.2=I have refined the seal further by synchronizing it with the natural flow of water. As a result, golems now react more precisely and efficiently when fish are nearby.<BR>More intriguingly, it appears possible to apply a minor enchantment to the core, enhancing the likelihood of capturing rare aquatic specimens. With additional adjustments, this seal could become a reliable method of gathering valuable resources from the depths.
+research.GOLEM_CORE_FISH.addenda.1=I can now craft an advanced version of this seal. It supports category control for catches (fish, junk, treasure), optional redstone signaling, and item filtering via white/black list.<PAGE>With finer logic matrices, this advanced seal can be tuned for very specific fishing workflows. It also requires a smarter golem core to operate at full efficiency.
 
 research.ORB.title=Orb
 research.ORBNONE.stage.1=I keep finding condensed masses of raw magic that solidify into what scholars call an "orb." Each one resonates with a distinct force and changes how nearby aura behaves. Whether natural or crafted, these orbs still hide untapped potential.
@@ -417,9 +428,9 @@ research.ORBCRIMS.amber=This orb emits a deep crimson radiance bound to ancient 
 research.TAINT_AMULET.title=Amulet of Taint
 research.TAINT_AMULET.stage.1=§bTaint Amulet§r<BR><IMG>thaumicforever:textures/items/taint_amulet.png:0:0:256:256:0.13</IMG><BR>This artifact carries a stabilizing charge that shields me from Taint poisoning. More strangely, tainted creatures seem to ignore the wearer, as if the amulet cloaks them in familiar corruption.<BR>Its true cost remains unclear: does it ward the Taint, or merely hide me while binding me to it?
 
-research.seal_golem_core_essentia.title=Control Seal: Crystal Refill
-research.seal_golem_core_essentia.stage.1=Manual crystal refilling has become a constant bottleneck in my workbench routines.<BR>A simple funnel cannot solve it: crystals must be placed into the correct slots, in the correct form, and at the correct moment.<BR>I therefore began designing a control seal that can detect shortages and direct a golem to perform proper slot-aware replenishment.
-research.seal_golem_core_essentia.stage.2=I have refined the seal's logic, granting it the ability to monitor the quantity of crystals present. If suitable crystals are nearby, the golem will immediately begin the refill process, minimizing any interruption in arcane operations.<BR>This seal is especially effective when used with automated systems, where maintaining a constant flow of crystals is essential without the thaumaturge’s direct involvement.
+research.SEAL_GOLEM_CORE_ESSENTIA.title=Control Seal: Crystal Refill
+research.SEAL_GOLEM_CORE_ESSENTIA.stage.1=Manual crystal refilling has become a constant bottleneck in my workbench routines.<BR>A simple funnel cannot solve it: crystals must be placed into the correct slots, in the correct form, and at the correct moment.<BR>I therefore began designing a control seal that can detect shortages and direct a golem to perform proper slot-aware replenishment.
+research.SEAL_GOLEM_CORE_ESSENTIA.stage.2=I have refined the seal's logic, granting it the ability to monitor the quantity of crystals present. If suitable crystals are nearby, the golem will immediately begin the refill process, minimizing any interruption in arcane operations.<BR>This seal is especially effective when used with automated systems, where maintaining a constant flow of crystals is essential without the thaumaturge’s direct involvement.
 
 item.ruby_gem.name=Ruby Gem
 tile.ruby_block.name=Ruby Block
@@ -429,7 +440,7 @@ item.celestial_notes.blood_moon.name=Celestial Notes
 tile.old_plank.name=Old Plank
 entity.watcher_guard.name=Watcher
 item.wind_charge.name=Wind Charge
-item.raven_cloak_bauble_head.name=Shadow Cloak
+item.dark_cloak_bauble_head.name=Dark Cloak
 item.orb_of_soul.name=Orb of Soul
 thaumicforever.FLIGHT.name=Essence of Flight
 
@@ -449,6 +460,7 @@ research.IGNISALKIMIA.stage.2=My experiments have unlocked new crucible recipes 
 
 item.ring_cooldown.name=Ring of Haste
 item.ring_vis.name=Vis Ring
+item.ring_greedy.name=Greedy Ring
 item.ring_revive.name=Ring of Lesser Resurrection
 item.ring_regeneration.name=Ring of Regeneration
 
@@ -596,7 +608,7 @@ item.purified_brain.name=Purified Brain
 
 # --- Thaumic Wands (ported) ---
 itemGroup.thaumicwands=Thaumic Wands
-tile.thaumicforever.wand_workbench.name=Wand Arcane Workbench
+tile.thaumicforever.wand_workbench.name=Arcane Wand Workbench
 thaumicforever.BLINK.name=Blink
 thaumicforever.BLINK.text=Teleports the caster to the impact point. If multiple projectiles are spawned from one cast, Blink triggers only once.
 thaumicforever.SKYBEAM.name=Beam
@@ -607,7 +619,11 @@ research.BLINK.stage.2=The fold collapses after the first successful jump in a c
 thaumicforever.PRIMAL.name=Chaos
 thaumicforever.PRIMAL.text=Each cast stores a random chain of focus medium/effect and fires it on the next cast.
 thaumicforever.PRIMAL_ELEMENT.name=Primal Element Chain
-thaumicforever.PRIMAL_ELEMENT.text=If Thaumic Augmentation is present, unleashes Water first, then chains Fire, Frost, and Earth.
+thaumicforever.PRIMAL_ELEMENT.text=Strikes with Air, Earth, Fire, and Frost in sequence. If Thaumic Augmentation is present, Water joins the chain.
+thaumicforever.PRIMAL_RUPTURE.name=Primal Rupture
+thaumicforever.PRIMAL_RUPTURE.text=Ruptures the target with direct primal damage, bypassing armor, absorption, energy shields, and canceled damage events.
+thaumicforever.PRIMAL_PIERCE.name=Primal Rupture
+thaumicforever.PRIMAL_PIERCE.text=Ruptures the target with direct primal damage, bypassing armor, absorption, energy shields, and canceled damage events.
 thaumicforever.TIMEBOMB.name=Time Cooldown
 thaumicforever.TIMEBOMB.text=Delays the next focus stage before it is executed.
 focus.thaumicforever.timecooldown.delay=Delay
@@ -620,14 +636,24 @@ research.TIMEBOMB.title=Focus Modifier: Time Cooldown
 research.TIMEBOMB.stage.1=By anchoring a cast to local temporal inertia, I can force the focus to wait before releasing the next stage. The structure remains stable only in discrete intervals.
 research.TIMEBOMB.stage.2=I can now insert a timed delay modifier before an effect and choose a fixed release window of 2, 4, 6, or 8 seconds.
 research.PRIMALFOCUS.title=Focus Effect: Chaos
-research.PRIMALFOCUS.stage.1=I scrapped stable primal lattices and replaced them with a chaotic selector that binds arbitrary focus mediums and effects at cast time.
-research.PRIMALFOCUS.stage.2=Each trigger now prepares the next chain in advance. The following cast releases that prepared combination with randomized internal settings.
+research.PRIMALFOCUS.stage.1=§lChaos§r<BR>Primal power does not need to be shaped into a single predictable spell. This focus searches the patterns I have learned and assembles a random chain of compatible mediums and effects.<BR>The first cast prepares and stores the unstable pattern. The next cast releases it, then immediately begins forming another. Its settings and trajectory may change every time, making the result powerful but impossible to predict completely.
+research.PRIMALFOCUS.stage.2=Each activation alternates between preparing an unstable focus chain and releasing the chain prepared by the previous cast.
 research.PRIMAL_FOCI.title=Focus Effect: Chaos
-research.PRIMAL_FOCI.stage.1=I scrapped stable primal lattices and replaced them with a chaotic selector that binds arbitrary focus mediums and effects at cast time.
-research.PRIMAL_FOCI.stage.2=Each trigger now prepares the next chain in advance. The following cast releases that prepared combination with randomized internal settings.
+research.PRIMAL_FOCI.stage.1=§lChaos§r<BR>Primal power does not need to be shaped into a single predictable spell. This focus searches the patterns I have learned and assembles a random chain of compatible mediums and effects.<BR>The first cast prepares and stores the unstable pattern. The next cast releases it, then immediately begins forming another. Its settings and trajectory may change every time, making the result powerful but impossible to predict completely.
+research.PRIMAL_FOCI.stage.2=Each activation alternates between preparing an unstable focus chain and releasing the chain prepared by the previous cast.
+research.PRIMALTIMESTONE.title=Temporal Accelerator
+research.PRIMALTIMESTONE.stage.1=§lTemporal Accelerator§r<BR>By forcing concentrated primal energy through a temporal lattice, I can make nearby mechanisms experience far more time than the world around them.<BR>The accelerator grants 300 additional updates to ticking devices within five blocks in every direction. Nearby accelerators cannot amplify one another or stack their effects. Such violent acceleration can place an extreme load on complex machinery and should be used with restraint.
+research.PRIMALTOOLS.title=Primal Tools
+research.PRIMALTOOLS.stage.1=§lPrimal Tools§r<BR>Ordinary metals eventually bend, dull, and fail. A tool shaped from condensed primal matter instead restores its pattern as quickly as it is damaged, making its durability effectively inexhaustible.<BR>Its dense elemental edge cuts through exceptionally resistant materials with tremendous speed and force. Few mundane substances can withstand it.
+research.VOID_SINGULARITY.title=Void Singularity
+research.VOID_SINGULARITY.stage.1=§lVoid Singularity§r<BR>A compressed void core can be forced into a temporary collapse. The result is a devastating explosion that tears through living targets while leaving the surrounding blocks intact.<BR>Even contained, this weapon is dangerously unstable. Keep a safe distance when activating it.
+research.PRIMAL_ELEMENT.title=Focus Effect: Primal Elements
+research.PRIMAL_ELEMENT.stage.0=§lPrimal Elements§r<BR>Instead of allowing primal energy to collapse into chaos, I have learned to separate it into a stable sequence of elemental forces. A single cast can now strike its target with Air, Earth, Fire, and Frost in succession, combining the properties of every element without requiring a separate focus for each one.<BR>If Thaumic Augmentation is present, Water can also be woven into the sequence, completing the elemental chain.
+research.PRIMAL_RUPTURE.title=Focus Effect: Primal Rupture
+research.PRIMAL_RUPTURE.stage.0=§lPrimal Rupture§r<BR>Most defenses are built to stop force, heat, poison, or magic. This focus does not strike any of those paths directly. It tears at the living pattern itself, forcing a clean loss of vitality even through armor, absorption, and unstable protective fields.<BR>The effect is expensive and blunt, but it finally gives primal magic a way to answer armor that refuses to behave like armor.
 research.FOCUSPRIMAL_ELEMENT.title=Focus Effect: Primal Element Chain
-research.FOCUSPRIMAL_ELEMENT.stage.1=I shaped a deterministic elemental sequence instead of chaotic selection. If Thaumic Augmentation is present, the chain begins with a light water strike, then transitions into the core Thaumcraft elements.
-research.FOCUSPRIMAL_ELEMENT.stage.2=The sequence now stabilizes as: Water (tier 1, TA if available), then Fire, Frost, and Earth. Its complexity is tuned to roughly 70%% of the combined Thaumcraft triad load.
+research.FOCUSPRIMAL_ELEMENT.stage.1=I shaped a deterministic elemental sequence instead of chaotic selection. Air, Earth, Fire, and Frost now strike the same target, while Thaumic Augmentation can add Water to the chain.
+research.FOCUSPRIMAL_ELEMENT.stage.2=By collapsing the same primal lattice into a single point, I can also inflict a direct wound that conventional armor and energy shields cannot intercept.
 # --- Blocks ---
 
 # --- Items ---
@@ -754,7 +780,7 @@ research.UNLOCKTHAUMATURGY.stage.1=Even though I can not rely on using vis for c
 
 # Base Thaumaturgy
 research.BASETHAUMATURGY.title=Basic Thaumaturgy
-research.BASETHAUMATURGY.stage.0=Now that I have my wand, the Wand Workbench itself begins to make sense. It draws Vis directly from the wand instead of the aura, and even replaces crystals with the wand's stored primal aspects. A charger mounted above the bench hastens replenishment, while aura nodes can still feed a wand when I hold it to their glow.
+research.BASETHAUMATURGY.stage.0=Now that I have my wand, the Arcane Wand Workbench itself begins to make sense. It draws Vis directly from the wand instead of the aura, and even replaces crystals with the wand's stored primal aspects. A charger mounted above the bench hastens replenishment, while aura nodes can still feed a wand when I hold it to their glow.
 research.BASETHAUMATURGY.addendum.0=I realized that those foci I made do not only fit a top of the Casters Gaunlet, but also dircetly at the tip of my wand. Interstingly the foci started to drain the vis and not from the surrounding aura but from my wand, this might be come in handy.
 
 # Primal Charm
@@ -989,7 +1015,7 @@ item.seal.golem_core_fish_advanced.name=Advanced Control Seal: Fishing
 research.HERBAALKIMIA.stage.3=The Nature Core acts like a super fertilizer. It can instantly grow saplings, including the magical-forest oak variant.
 research.WANDCHARGE.title=Wand Charging Array
 research.WANDCHARGE.stage.0=The standard charger is useful, but it does not account for the unstable pulse that appears when a wand is fed from dense aura pockets. I can stabilize this process by forcing vis through a tuned crystal focus and a resonant support frame.<PAGE>By shaping the flow before it reaches the wand cap, I should be able to keep charging continuous and controlled. If the calibration is correct, recharge speed will improve and vis loss from turbulence will be reduced.
-research.WANDCHARGE.stage.1=The assembled charging array performs as intended: the wand now receives vis through a constrained channel rather than a raw surge. This keeps transfer steady even when nearby nodes fluctuate.<BR>The device works best when mounted near my wand workbench. With proper materials and an aquareia catalyst, the array becomes a reliable way to refill high-capacity wands between crafting sessions.<PAGE>§lCV Connection§r<BR>The charger can also accept §lCV§r from a nearby Port. A Port acts as a centi-vis conductor: it can receive CV from compatible thaumic devices and pass it into the charging array instead of relying only on local node conditions.<BR><BR>For stable setups, link Ports between the CV source and the charger, then place the final Port close enough for the charger to draw from it.<PAGE>§lWand Recharge Pedestal§r<BR>I have also completed a dedicated pedestal variant for direct wand charging. It accepts a wand directly, keeps charging stable, and is ideal for restoring large vis reserves between long crafting cycles. Like the larger array, it can benefit from a proper CV feed through Ports.
+research.WANDCHARGE.stage.1=The assembled charging array performs as intended: the wand now receives vis through a constrained channel rather than a raw surge. This keeps transfer steady even when nearby nodes fluctuate.<BR>The device works best when mounted above my Arcane Wand Workbench. With proper materials and an aquareia catalyst, the array becomes a reliable way to refill high-capacity wands between crafting sessions.<PAGE>§lCV Connection§r<BR>The charger can also accept §lCV§r from a nearby Port. A Port acts as a centi-vis conductor: it can receive CV from compatible thaumic devices and pass it into the charging array instead of relying only on local node conditions.<BR><BR>For stable setups, link Ports between the CV source and the charger, then place the final Port close enough for the charger to draw from it.<PAGE>§lWand Recharge Pedestal§r<BR>I have also completed a dedicated pedestal variant for direct wand charging. It accepts a wand directly, keeps charging stable, and is ideal for restoring large vis reserves between long crafting cycles. Like the larger array, it can benefit from a proper CV feed through Ports.
 item_wand_cap_botania_manasteel_inert.name=Inert Manasteel Cap
 item_wand_cap_botania_manasteel.name=Manasteel Cap
 item_wand_cap_botania_elementium_inert.name=Inert Elementium Cap
@@ -1024,7 +1050,7 @@ key.open_pouch=Open Pouch
 key.thaumicforever.open_pouch=Open Pouch
 research.CAP_MATERIAL_ALL.title=Exotic Wand Materials
 research.CAP_MATERIAL_ALL.stage.0=I should survey foreign magical alloys and fabrics. If a material exists in ore dictionary, it can be adapted into wand parts.
-research.CAP_MATERIAL_ALL.stage.1=These are the core exotic caps of my main thaumic line.<BR>§lIchorium§r: strongest vis efficiency (65%) and broad crystal support (all six primals +2).<BR>§lMithrillium§r: balanced efficiency (75%), all primals +1.<BR>§lAdaminite§r: better efficiency (70%), all primals +2.<BR>§lMithminite§r: extreme efficiency (60%), all primals +3.<BR>§lThauminite§r: ordered channeling (85%), Ordo crystal discount +1.<BR>§lAlkimium§r: stable crafting flow (95%), Aqua/Terra/Ordo crystal discount +1.<BR>§lBismuth§r: split order-entropy behavior (85%), Ordo/Perditio crystal discount +1.<PAGE>In practice: lower percent means lower vis cost. For universal efficiency
+research.CAP_MATERIAL_ALL.stage.1=These are the core exotic caps of my main thaumic line.<BR>§lIchorium§r: 35% vis discount and broad crystal support (all six primals +2).<BR>§lMithrillium§r: 25% vis discount, all primals +1.<BR>§lAdaminite§r: 30% vis discount, all primals +2.<BR>§lMithminite§r: 40% vis discount, all primals +3.<BR>§lThauminite§r: 15% vis discount, Ordo crystal discount +1.<BR>§lAlkimium§r: 5% vis discount, Aqua/Terra/Ordo crystal discount +1.<BR>§lBismuth§r: 15% vis discount, Ordo/Perditio crystal discount +1.<PAGE>The listed percentage is the amount removed from the base vis cost. Crystal discounts are fixed reductions applied separately.
 item.item_wand_cap_botania_manasteel_inert.name=Inert Manasteel Cap
 item.item_wand_cap_botania_manasteel.name=Manasteel Cap
 item.item_wand_cap_botania_elementium_inert.name=Inert Elementium Cap
@@ -1048,7 +1074,7 @@ research.STAFF_ALL.stage.0=The classic woods no longer cover all of my needs. By
 research.STAFF_ALL.stage.1=I have stabilized four advanced rod patterns for extreme use-cases.<BR>§lIchorcloth Rod§r: capacity 900; self-recharges every second, stronger at night, in the Nether, and in the End.<BR>§lAdaminitewood Rod§r: capacity 3200; no passive trick, but unmatched raw reserve for long casting chains.<BR>§lInfernal Rod§r: capacity 1200; recharges faster in the Nether, extinguishes fire, and removes Wither from the bearer.<BR>§lChorus Rod§r: capacity 1200; recharges faster in the End and removes Levitation.
 research.CAP_MATERIAL_ADD.title=Additional Wand Caps
 research.CAP_MATERIAL_ADD.stage.0=I have compiled notes on foreign cap materials, from Botania alloys to blood-bound and ember-forged components. Their behavior is irregular, but proper infusion can stabilize them.
-research.CAP_MATERIAL_ADD.stage.1=This branch focuses on cross-school caps and their practical roles.<BR>§lManasteel§r: 90% vis cost, stable all-purpose cap with Praecantatio/Auram crystal discount +1.<BR>§lElementium§r: 82% vis cost, stronger elemental alignment with Aer/Ignis/Aqua/Terra crystal discount +1.<BR>§lTerrasteel§r: 75% vis cost, high-tier mana alloy tuned for heavy casting; Praecantatio/Auram +2 and Herba +1.<BR>§lAlchemical§r: 90% vis cost, blood-attuned cap with Aqua/Victus crystal discount +1.<BR>§lDawnstone§r: 95% vis cost, ember-forged control cap with Aer/Ignis crystal discount +1.
+research.CAP_MATERIAL_ADD.stage.1=This branch focuses on cross-school caps and their practical roles.<BR>§lManasteel§r: 10% vis discount, stable all-purpose cap with Praecantatio/Auram crystal discount +1.<BR>§lElementium§r: 18% vis discount, stronger elemental alignment with Aer/Ignis/Aqua/Terra crystal discount +1.<BR>§lTerrasteel§r: 20% vis discount, high-tier mana alloy tuned for heavy casting; Aer +3, Aqua +1, Ordo +2 and Terra +4 crystal discount.<BR>§lAlchemical§r: 10% vis discount, blood-attuned cap with Aqua/Victus crystal discount +1.<BR>§lDawnstone§r: 5% vis discount, ember-forged control cap with Aer/Ignis crystal discount +1.
 research.STAFF_ADD.title=Exotic Rods
 research.STAFF_ADD.stage.0=After mastering the classic woods, I moved on to foreign vis conduits: livingwood, dreamwood, blood, archaic matter, and other rare substrates.
 research.STAFF_ADD.stage.1=These exotic rods are tuned for situational sustain and combat rhythm.<BR>§lLivingwood Rod§r: capacity 500; regenerates charge passively, stronger on natural ground (grass/dirt/leaves).<BR>§lDreamwood Rod§r: capacity 800; passive recharge every second, stronger at night and in the End.<BR>§lBlood Rod§r: capacity 850; converts a small amount of your health into wand charge (only while healthy enough).<BR>§lArchaic Rod§r: capacity 700; passive recharge, stronger in HOT/NETHER biomes.
@@ -1073,6 +1099,11 @@ research.AURATOTEMS.stage.0=The §5Primal Aura§0 is a slow, heavy current below
 research.AURATOTEMS.stage.1=Each aura totem works with two zones: an inner zone and an outer zone. By default the inner zone is the chunk containing the totem, while the outer zone is the ring of chunks around it.<PAGE>Totem poles placed under the main block reshape these zones. Up to five poles may support one totem. The main block decides the direction of flow; the poles decide how wide and stable that flow becomes.
 research.AURATOTEMS.stage.2=§lUsing Aura Totems§r<BR>An aura totem is built as a vertical structure. The main push or pull totem sits on top, while up to five pole blocks below it shape the working field. The totem does not run for free: right-click it with a vis crystal to charge it. One crystal gives 500 pulses, and the aspect inside that crystal decides which primal aura is moved.<PAGE><BR><IMG>thaumicforever:textures/research/research3.png:155:0:100:80:0.4</IMG><BR><PAGE>§lAura Totem: Push§r<BR>The push totem, or dispersal totem, drains one pulse of primal aura from the inner zone and sends it into a random chunk in the outer zone. Use it to thin a saturated work area or push pressure away from fragile thaumaturgy.<PAGE>§lAura Totem: Pull§r<BR>The pull totem reverses that motion. It drains one pulse from the outer zone and concentrates it into a random chunk in the inner zone. Use it to feed a local work site, node area, or stabilizer with a chosen primal aspect.<PAGE>§lInner Pole§r<BR>Inner poles expand the inner zone. With more inner poles, the center area becomes wider, so push totems draw from a broader center and pull totems fill a broader center.<PAGE>§lOuter Pole§r<BR>Outer poles expand the outer zone. With more outer poles, the totem reaches farther rings of chunks and pulses more often, because the flow has more paths to move through.<PAGE>§lPure Pole§r<BR>Pure poles do not expand the radius. They stabilize the current and reduce the chance that a pulse becomes flux. They are most useful when a fast or wide totem has several inner or outer poles.
 tile.thaumicforever.void_chest.name=Void Chest
+tile.void_beacon.name=Void Beacon
+tile.thaumicforever.void_beacon.name=Void Beacon
+chat.thaumicforever.void_trader_spawned=The Void Trader has appeared.
+research.VOID_BEACON.title=Void Beacon
+research.VOID_BEACON.stage.1=§lVoid Beacon§r<BR>This beacon turns the pressure of nearby flux rifts into useful matter. It must see the sky and stand on a complete platform of Void Metal; each completed level improves its efficiency.<PAGE>Feed it essentia through a compatible pipe. The beacon drains visible flux rifts within range, converts their energy into a configured output pool, and sends finished items into an inventory attached to one of its sides. Sneak-right-click the beacon with an empty hand to clear its stored essentia.
 container.thaumicforever.void_chest=Void Chest
 research.VOIDCHEST.title=Void Chest
 research.VOIDCHEST.stage.0=Ender chests bind storage to the traveller, but that is the wrong shape for a workshop. I need a chest whose absence is the lock: a container network tied to the blocks themselves, not to the owner who opened them.
@@ -1085,6 +1116,10 @@ research.ESSENTIACRYSTALCONVERTER.stage.0=I have nearly mastered the art of draw
 research.ESSENTIACRYSTALCONVERTER.stage.1=§lCrystallizer§r<BR>The Crystallizer no longer needs a quartz seed. If a port feeds it CV from below, it condenses that aspect directly into a vis crystal at a high cost: 200 CV for one crystal, twice the cost of pushing the same CV into essentia storage.<BR>If no CV is supplied, it falls back to nearby surplus primal aura and forms crystals matching the strongest local primal aspect. It is not an aura totem: it consumes local pressure instead of moving it between chunks.
 
 tile.primal_aura_converter.name=Primal Aura Converter
+tile.thaumicforever.primal_aura_converter.name=Primal Aura Converter
+research.PRIMALAURACONVERTER.title=Primal Aura Converter
+research.PRIMALAURACONVERTER.stage.0=Aura Totems can move primal aura between chunks, but they cannot replenish its reserves. Even the most efficient redistribution system will eventually run dry if other mechanisms continuously consume the primal aura.<PAGE>I need a way to convert an available flow of CV into primal aura. Such a mechanism could maintain its reserves and ensure the stable operation of devices that consume it.
+research.PRIMALAURACONVERTER.stage.1=§lPrimal Aura Converter§r<BR>The Primal Aura Converter accepts CV through a Port placed directly beneath it and converts it into the corresponding primal aura for the current chunk.<BR>CV of the required primal aspect must be supplied for it to operate. The converter gradually replenishes that aspect within the chunk, allowing other mechanisms to continue working without exhausting the local primal aura.
 
 thaumicforever.golem.prop.only_empty_target=Only empty target
 item.seal.arcane_caster.name=Control Seal: Arcane Caster
@@ -1115,19 +1150,56 @@ item.golem_core_arcane.desc=Allows this golem to use arcane seals and other arca
 item.golem_core_swift.name=Golem Core: Swift
 item.golem_core_swift.desc=Increases golem movement speed by 50%. Only one core can be installed per golem.
 item.tuning_fork_rifle.name=Tuning Fork Rifle
+item.turret_arcane.name=Arcane Turret
+entity.ArcaneTurret.name=Arcane Turret
+entity.Jef.name=Jef
+gui.thaumicforever.arcane_turret.title=Arcane Turret
+gui.thaumicforever.arcane_turret.status=Status: idle
+gui.thaumicforever.arcane_turret.id=Entity ID: %s
+gui.thaumicforever.arcane_turret.placeholder=Configuration will be added here.
+gui.thaumicforever.arcane_turret.lens=Lens
+gui.thaumicforever.arcane_turret.targets=Targets
+gui.thaumicforever.arcane_turret.animals=Animals
+gui.thaumicforever.arcane_turret.mobs=Mobs
+gui.thaumicforever.arcane_turret.players=Players
+gui.thaumicforever.arcane_turret.friendly=Friendly
+gui.thaumicforever.arcane_turret.on=ON
+gui.thaumicforever.arcane_turret.off=OFF
 research.GOLEMSCORE.title=Golem Cores
 research.GOLEMSCORE.stage.1=Seals command a golem, but they do not change what the construct fundamentally is. A morphic resonator can reshape that deeper pattern into a removable core: a single specialization installed directly into the golem body.
 research.GOLEMSCORE.stage.2=Each golem can hold only one core at a time. Goliath makes the construct larger and tougher, Iron Skin reinforces its body against damage, Swift improves movement speed, and Arcane opens the way for arcane seals and caster automation.
 
 tile.redstone_ticker.name=Redstone Ticker
 tile.thaumicforever.redstone_ticker.name=Redstone Ticker
+item.condensed_primal_pearl.name=Condensed Primal Pearl
+tile.nether_star_block.name=Nether Star Block
+tile.matterya_block.name=Matterya Block
 research.REDSTONEGENETATOR.title=Redstone Ticker
 research.REDSTONEGENETATOR.stage.0=Ordinary redstone circuits are predictable, but some mechanisms benefit from unstable timing. By binding redstone dust to a simple thaumic mechanism, I can create a block that emits irregular pulses instead of a fixed signal.
 research.REDSTONEGENETATOR.stage.1=§lRedstone Ticker§r<BR>The Redstone Ticker randomly changes its output strength over time. Sometimes it gives no signal at all; sometimes it emits a weak or strong pulse. It is useful for chaotic machinery, timed traps, randomizers, and devices that should not repeat with perfect rhythm.
 
 item.decoy_mannequin.name=Decoy Mannequin
 entity.DecoyMannequin.name=Decoy Mannequin
+entity.VoidTraider.name=Void Trader
 research.DECOYMANNEQUIN.title=Decoy Mannequin
 research.DECOYMANNEQUIN.stage.0=Some experiments require a living presence, but using an actual thaumaturge as bait is inefficient and usually fatal. A reinforced mannequin can be made convincing enough for hostile creatures and nearby mechanisms to treat it as a target.
 research.DECOYMANNEQUIN.stage.1=§lDecoy Mannequin§r<BR>The Decoy Mannequin is placed like an armor stand. It acts as a lure for nearby hostile mobs and maintains its area so spawners and other presence-sensitive systems continue to function around it. It is not a true person, but it is close enough to draw attention away from one.
 effect.resonance_disruption=Resonance Disruption
+research.ARCANETURRET.title=Arcane Turret
+research.ARCANETURRET.stage.0=A focus contains everything needed to shape a spell, yet it still depends on a thaumaturge to aim and activate it. By combining advanced artifice with the principles of focus manipulation, I could create a mechanism capable of performing these actions on its own.<PAGE>Such a construct would watch its surroundings, identify permitted targets, and channel an installed focus without requiring constant supervision.
+
+research.ARCANETURRET.stage.1=§lArcane Turret§r<BR>The Arcane Turret is an autonomous defensive construct that casts spells through an installed focus lens. It independently detects suitable targets and consumes vis from the aura whenever it casts a spell.<PAGE>Its targeting matrix distinguishes between several types of creatures, allowing me to determine in advance which beings the construct should consider valid targets. The nature of the spell it casts depends entirely on the installed focus.
+gui.thaumicforever.arcane_turret.forward_fire=Fire forward
+item.warp_blade.name=Warp Blade
+item.broken_future_lens.name=Broken Future Lens
+item.knowledge_epiphany.name=Knowledge Epiphany
+tooltip.knowledge_epiphany.empty=No research is stored
+tooltip.thaumicforever.wand.vis_discount=Vis discount: %s%%
+tooltip.thaumicforever.wand.aspect_discount=Aspect discount: %s
+tooltip.thaumicforever.wand.capacity=Vis capacity: %s
+item.golem_core_primal.name=Golem Core: Primal
+item.golem_core_primal.desc=Adaptive primal core. Switches between Terra, Ignis, Aqua, Aer, Perditio and Ordo to completely suppress matching threats. Ordo blocks projectiles.
+tile.void_singularity.name=Void Singularity
+tile.cv_defender.name=CV Defender
+item.void_singularity_minecart.name=Void Singularity Minecart
+item.re_trade.name=Trade Reroll

@@ -1,5 +1,6 @@
 package com.koteuka404.thaumicforever.recipe;
 
+import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.registry.ModOreBlocks;
 
 import com.koteuka404.thaumicforever.registry.ModItems;
@@ -24,10 +25,12 @@ public class FurnaceRecipes {
         GameRegistry.addSmelting(ModOreBlocks.ANCIENT_CINNABAR, new ItemStack(ItemsTC.quicksilver, 3), 1.0F);
         GameRegistry.addSmelting(ModOreBlocks.ANCIENT_AMBER, new ItemStack(ItemsTC.amber, 3), 1.0F);
 
-        GameRegistry.addSmelting(ModOreBlocks.LEAD_ORE, new ItemStack(ModItems.LEAD_INGOT), 0.7F);
-        GameRegistry.addSmelting(ModOreBlocks.SILVER_ORE, new ItemStack(ModItems.SILVER_INGOT), 0.7F);
-        GameRegistry.addSmelting(ModOreBlocks.TIN_ORE, new ItemStack(ModItems.TIN_INGOT), 0.7F);
-        GameRegistry.addSmelting(ModOreBlocks.COPPER_ORE, new ItemStack(ModItems.COPPER_INGOT), 0.7F);
+        if (ModConfig.enableStandardOreGeneration) {
+            GameRegistry.addSmelting(ModOreBlocks.LEAD_ORE, new ItemStack(ModItems.LEAD_INGOT), 0.7F);
+            GameRegistry.addSmelting(ModOreBlocks.SILVER_ORE, new ItemStack(ModItems.SILVER_INGOT), 0.7F);
+            GameRegistry.addSmelting(ModOreBlocks.TIN_ORE, new ItemStack(ModItems.TIN_INGOT), 0.7F);
+            GameRegistry.addSmelting(ModOreBlocks.COPPER_ORE, new ItemStack(ModItems.COPPER_INGOT), 0.7F);
+        }
 
         GameRegistry.addSmelting(ModOreBlocks.ANCIENT_IRON, new ItemStack(Items.IRON_INGOT, 3), 0.7F);
         GameRegistry.addSmelting(ModOreBlocks.ANCIENT_GOLD, new ItemStack(Items.GOLD_INGOT, 3), 1.0F);
@@ -53,4 +56,3 @@ public class FurnaceRecipes {
 
     }
 }            
-

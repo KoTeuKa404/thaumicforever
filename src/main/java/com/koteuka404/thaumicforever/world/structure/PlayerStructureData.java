@@ -15,9 +15,15 @@ import com.koteuka404.thaumicforever.ThaumicForever;
 public class PlayerStructureData extends WorldSavedData {
     private static final String SAVE_DATA_NAME = "ThaumicForever_Structures";
     private final Map<UUID, BlockPos> playerStructures = new HashMap<>();
+    private final Map<UUID, TraderState> traderStates = new HashMap<>();
 
     public PlayerStructureData() {
         super(SAVE_DATA_NAME);
+    }
+
+    // MapStorage creates WorldSavedData through a String-argument constructor.
+    public PlayerStructureData(String name) {
+        super(name);
     }
 
     public static PlayerStructureData get(World world) {
@@ -27,34 +33,43 @@ public class PlayerStructureData extends WorldSavedData {
         if (data == null) {
             data = new PlayerStructureData();
             storage.setData(SAVE_DATA_NAME, data);
-            System.out.println("ThaumicForever DEBUG: Створюємо новий файл WorldSavedData");
-        } else {
-            System.out.println("ThaumicForever DEBUG: Завантажуємо існуючий WorldSavedData");
         }
         return data;
     }
 
     public void setPlayerStructure(UUID playerID, BlockPos pos) {
         playerStructures.put(playerID, pos);
-        System.out.println("ThaumicForever DEBUG: Додаємо/оновлюємо структуру для " + playerID + " (" + pos + ")");
         markDirty();
     }
 
     public boolean hasPlayerStructure(UUID playerID) {
         boolean result = playerStructures.containsKey(playerID);
-        System.out.println("ThaumicForever DEBUG: hasPlayerStructure(" + playerID + ") = " + result);
         return result;
     }
 
     public BlockPos getPlayerStructure(UUID playerID) {
         BlockPos pos = playerStructures.get(playerID);
-        System.out.println("ThaumicForever DEBUG: getPlayerStructure(" + playerID + ") = " + pos);
         return pos;
+    }
+
+    public Map<UUID, BlockPos> getPlayerStructures() {
+        return new HashMap<>(playerStructures);
+    }
+
+    public TraderState getTraderState(UUID playerID) {
+        TraderState state = traderStates.get(playerID);
+        if (state == null) {
+            state = new TraderState();
+            traderStates.put(playerID, state);
+            markDirty();
+        }
+        return state;
     }
 
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         playerStructures.clear();
+        traderStates.clear();
         NBTTagList list = nbt.getTagList("player_structures", 10);
         for (int i = 0; i < list.tagCount(); i++) {
             NBTTagCompound entry = list.getCompoundTagAt(i);
@@ -65,9 +80,10 @@ public class PlayerStructureData extends WorldSavedData {
                 entry.getInteger("z")
             );
             playerStructures.put(id, p);
-            System.out.println("ThaumicForever DEBUG: readFromNBT: " + id + " -> " + p);
+            if (entry.hasKey("trader", 10)) {
+                traderStates.put(id, TraderState.read(entry.getCompoundTag("trader")));
+            }
         }
-        System.out.println("ThaumicForever DEBUG: readFromNBT COMPLETE, entries: " + playerStructures.size());
     }
 
     @Override
@@ -79,10 +95,53 @@ public class PlayerStructureData extends WorldSavedData {
             tag.setInteger("x", e.getValue().getX());
             tag.setInteger("y", e.getValue().getY());
             tag.setInteger("z", e.getValue().getZ());
+            TraderState state = traderStates.get(e.getKey());
+            if (state != null) {
+                tag.setTag("trader", state.write());
+            }
             list.appendTag(tag);
-            System.out.println("ThaumicForever DEBUG: writeToNBT: " + e.getKey() + " -> " + e.getValue());
         }
         compound.setTag("player_structures", list);
         return compound;
+    }
+
+    public static final class TraderState {
+        public long nextSpawnTime = -1L;
+        public long despawnTime = -1L;
+        public boolean active;
+        public BlockPos areaStart;
+        public int areaX;
+        public int areaY;
+        public int areaZ;
+
+        public NBTTagCompound write() {
+            NBTTagCompound tag = new NBTTagCompound();
+            tag.setLong("nextSpawn", nextSpawnTime);
+            tag.setLong("despawn", despawnTime);
+            tag.setBoolean("active", active);
+            if (areaStart != null) {
+                tag.setInteger("x", areaStart.getX());
+                tag.setInteger("y", areaStart.getY());
+                tag.setInteger("z", areaStart.getZ());
+                tag.setInteger("sizeX", areaX);
+                tag.setInteger("sizeY", areaY);
+                tag.setInteger("sizeZ", areaZ);
+            }
+            return tag;
+        }
+
+        private static TraderState read(NBTTagCompound tag) {
+            TraderState state = new TraderState();
+            state.nextSpawnTime = tag.getLong("nextSpawn");
+            state.despawnTime = tag.getLong("despawn");
+            state.active = tag.getBoolean("active");
+            if (tag.hasKey("x") && tag.hasKey("sizeX")) {
+                state.areaStart = new BlockPos(tag.getInteger("x"), tag.getInteger("y"), tag.getInteger("z"));
+                state.areaX = tag.getInteger("sizeX");
+                state.areaY = tag.getInteger("sizeY");
+                state.areaZ = tag.getInteger("sizeZ");
+            }
+            return state;
+        }
     }
 }

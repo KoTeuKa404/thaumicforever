@@ -1,18 +1,17 @@
 package com.koteuka404.thaumicforever.focus;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.casters.FocusEffect;
 import thaumcraft.api.casters.FocusEngine;
-import thaumcraft.api.casters.FocusNode;
 import thaumcraft.api.casters.IFocusElement;
 import thaumcraft.api.casters.NodeSetting;
 import thaumcraft.api.casters.Trajectory;
@@ -20,10 +19,17 @@ import thaumcraft.client.fx.FXDispatcher;
 
 public class FocusEffectPrimalElement extends FocusEffect {
     private static final String MOD_TA = "thaumicaugmentation";
+    private static final String TA_WATER = "focus.thaumicaugmentation.water";
+    private static final String[] BASE_EFFECTS = {
+            "thaumcraft.AIR",
+            "thaumcraft.EARTH",
+            "thaumcraft.FIRE",
+            "thaumcraft.FROST"
+    };
 
     @Override
     public String getResearch() {
-        return "FOCUSPRIMAL_ELEMENT";
+        return "PRIMAL_ELEMENT";
     }
 
     @Override
@@ -38,122 +44,80 @@ public class FocusEffectPrimalElement extends FocusEffect {
 
     @Override
     public int getComplexity() {
-        int fire = getEffectComplexity(resolveThaumcraftEffect("fire", "ignis"), 4);
-        int frost = getEffectComplexity(resolveThaumcraftEffect("frost", "ice", "cold", "gelum"), 4);
-        int earth = getEffectComplexity(resolveThaumcraftEffect("earth", "terra"), 4);
-        int sum = fire + frost + earth;
-        return Math.max(1, Math.round(sum * 0.7f));
+        return 16 + getSettingValue("power") * 6;
+    }
+
+    @Override
+    public NodeSetting[] createSettings() {
+        return new NodeSetting[] {
+                new NodeSetting("power", "focus.common.power", new NodeSetting.NodeSettingIntRange(1, 5))
+        };
     }
 
     @Override
     public float getDamageForDisplay(float finalPower) {
-        return 3.0f * finalPower;
+        int power = getSettingValue("power");
+        int count = BASE_EFFECTS.length + (hasWaterEffect() ? 1 : 0);
+        return count * (1.5F + power) * finalPower;
     }
 
     @Override
     public boolean execute(RayTraceResult target, Trajectory trajectory, float finalPower, int num) {
-        if (target == null || target.entityHit == null) return false;
+        if (target == null || getPackage() == null || getPackage().getCaster() == null) return false;
 
-        String tcFire = resolveThaumcraftEffect("fire", "ignis");
-        String tcFrost = resolveThaumcraftEffect("frost", "ice", "cold", "gelum");
-        String tcEarth = resolveThaumcraftEffect("earth", "terra");
-        String taWater = null;
-        if (Loader.isModLoaded(MOD_TA)) {
-            taWater = resolveTAWaterEffect();
-            if (taWater == null) {
-                taWater = resolveThaumcraftEffect("water", "aqua", "hydro");
-            }
-        }
+        boolean executed = false;
+        for (String key : getEffectKeys()) {
+            IFocusElement element = FocusEngine.getElement(key);
+            if (!(element instanceof FocusEffect)) continue;
 
-        boolean didAny = false;
-        if (taWater != null) {
-            didAny |= executeChildEffect(taWater, target, trajectory, finalPower, num, true);
+            FocusEffect effect = (FocusEffect) element;
+            effect.initialize();
+            copySetting(effect, "power", getSettingValue("power"));
+            copySetting(effect, "duration", 1);
+            effect.setPackage(getPackage());
+            effect.onCast(getPackage().getCaster());
+            executed |= effect.execute(target, trajectory, finalPower, num);
         }
-        didAny |= executeChildEffect(tcFire, target, trajectory, finalPower, num, false);
-        didAny |= executeChildEffect(tcFrost, target, trajectory, finalPower, num, false);
-        didAny |= executeChildEffect(tcEarth, target, trajectory, finalPower, num, false);
-        return didAny;
+        return executed;
     }
 
-    private boolean executeChildEffect(String key, RayTraceResult target, Trajectory trajectory, float finalPower, int num, boolean forcePowerOne) {
-        if (key == null || key.equalsIgnoreCase(getKey())) return false;
-        IFocusElement el = FocusEngine.getElement(key);
-        if (!(el instanceof FocusEffect)) return false;
-
-        FocusEffect effect = (FocusEffect) el;
-        effect.setPackage(getPackage());
-
-        if (forcePowerOne && effect instanceof FocusNode) {
-            NodeSetting power = ((FocusNode) effect).getSetting("power");
-            if (power != null) {
-                power.setValue(1);
-            }
-        }
-
-        EntityLivingBase caster = getPackage() != null ? getPackage().getCaster() : null;
-        if (caster != null) {
-            effect.onCast(caster);
-        }
-
-        return effect.execute(target, trajectory, finalPower, num);
+    private List<String> getEffectKeys() {
+        List<String> keys = new ArrayList<>();
+        if (hasWaterEffect()) keys.add(TA_WATER);
+        for (String key : BASE_EFFECTS) keys.add(key);
+        return keys;
     }
 
-    private int getEffectComplexity(String key, int fallback) {
-        if (key == null) return fallback;
-        IFocusElement el = FocusEngine.getElement(key);
-        if (el instanceof FocusNode) {
-            return Math.max(1, ((FocusNode) el).getComplexity());
-        }
-        return fallback;
+    private boolean hasWaterEffect() {
+        return Loader.isModLoaded(MOD_TA) && FocusEngine.elements.containsKey(TA_WATER);
     }
 
-    private String resolveTAWaterEffect() {
-        return resolveEffectByTokens(MOD_TA, new String[] {"water", "aqua", "hydro"}, new String[] {"cloud", "ward", "heal"});
-    }
-
-    private String resolveThaumcraftEffect(String... tokens) {
-        return resolveEffectByTokens("thaumcraft", tokens, new String[] {"cloud", "ward", "heal"});
-    }
-
-    private String resolveEffectByTokens(String namespace, String[] includeTokens, String[] excludeTokens) {
-        List<String> keys = new ArrayList<>(FocusEngine.elements.keySet());
-        Collections.sort(keys);
-        for (String key : keys) {
-            if (key == null) continue;
-            String lk = key.toLowerCase(Locale.ROOT);
-            if (!lk.startsWith(namespace.toLowerCase(Locale.ROOT) + ".")) continue;
-
-            boolean hasInclude = false;
-            for (String t : includeTokens) {
-                if (lk.contains(t.toLowerCase(Locale.ROOT))) {
-                    hasInclude = true;
-                    break;
-                }
-            }
-            if (!hasInclude) continue;
-
-            boolean hasExclude = false;
-            if (excludeTokens != null) {
-                for (String t : excludeTokens) {
-                    if (lk.contains(t.toLowerCase(Locale.ROOT))) {
-                        hasExclude = true;
-                        break;
-                    }
-                }
-            }
-            if (hasExclude) continue;
-
-            IFocusElement el = FocusEngine.getElement(key);
-            if (el instanceof FocusEffect && !key.equalsIgnoreCase(getKey())) {
-                return key;
-            }
-        }
-        return null;
+    private static void copySetting(FocusEffect effect, String key, int value) {
+        NodeSetting setting = effect.getSetting(key);
+        if (setting != null) setting.setValue(value);
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void renderParticleFX(World world, double x, double y, double z, double vx, double vy, double vz) {
         if (world == null) return;
-        FXDispatcher.INSTANCE.drawWispyMotes(x, y, z, vx, vy, vz, 16, 0.55f, 0.85f, 1.0f, 0.7f);
+        int[] colors = {0x70D6FF, 0x9B7653, 0xFF5A36, 0xBDEBFF, 0x406CFF};
+        int color = colors[world.rand.nextInt(hasWaterEffect() ? colors.length : colors.length - 1)];
+        FXDispatcher.GenPart particle = new FXDispatcher.GenPart();
+        particle.age = 12 + world.rand.nextInt(8);
+        particle.alpha = new float[] {0.8F, 0.0F};
+        particle.grid = 64;
+        particle.partStart = 264;
+        particle.partInc = 1;
+        particle.partNum = 4;
+        particle.scale = new float[] {0.7F, 1.0F};
+        particle.redStart = particle.redEnd = ((color >> 16) & 255) / 255.0F;
+        particle.greenStart = particle.greenEnd = ((color >> 8) & 255) / 255.0F;
+        particle.blueStart = particle.blueEnd = (color & 255) / 255.0F;
+        FXDispatcher.INSTANCE.drawGenericParticles(x, y, z, vx, vy, vz, particle);
+    }
+
+    @Override
+    public void onCast(Entity caster) {
     }
 }

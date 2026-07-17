@@ -1,10 +1,10 @@
 package com.koteuka404.thaumicforever.research;
 
-import com.koteuka404.thaumicforever.config.ModConfig;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.koteuka404.thaumicforever.config.ModConfig;
 
 import net.minecraftforge.fml.common.Loader;
 
@@ -16,7 +16,9 @@ public class ResearchList {
         "STUFF",
         "TAINT_AMULET",
         "POTION_GUN",
-        "PRIMAL_FOCI"
+        "PRIMAL_FOCI",
+        "PRIMAL_ELEMENT"
+        
     );
 
     private static List<String> RESEARCHES = new ArrayList<>();

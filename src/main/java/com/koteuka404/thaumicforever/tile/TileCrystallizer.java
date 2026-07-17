@@ -159,6 +159,10 @@ public class TileCrystallizer extends TileEntity implements ITickable, TileNodeT
         }
     }
 
+    public boolean canAcceptCentivisFrom(EnumFacing side) {
+        return side != null && side == getFacing().getOpposite();
+    }
+
     @Override
     public int acceptCentivis(Aspect aspect, int amount, TileNodeTransducer source) {
         if (aspect == null || amount <= 0) return 0;

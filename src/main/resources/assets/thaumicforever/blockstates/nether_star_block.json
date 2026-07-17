@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "normal": { "model": "thaumicforever:nether_star_block" },
+    "inventory": { "model": "thaumicforever:nether_star_block" }
+  }
+}

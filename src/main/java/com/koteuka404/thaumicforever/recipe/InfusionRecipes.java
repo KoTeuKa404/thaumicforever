@@ -1,7 +1,7 @@
 package com.koteuka404.thaumicforever.recipe;
 
+import com.koteuka404.thaumicforever.registry.AspectRegistry;
 import com.koteuka404.thaumicforever.registry.ModBlocks;
-
 import com.koteuka404.thaumicforever.registry.ModItems;
 
 import net.minecraft.init.Blocks;
@@ -19,17 +19,6 @@ import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.block.BlockImmortalizer;
-import com.koteuka404.thaumicforever.block.BlockTimeStone;
-import com.koteuka404.thaumicforever.item.ItemFocus4;
-import com.koteuka404.thaumicforever.item.ItemTaintAmulet;
-import com.koteuka404.thaumicforever.item.ItemThaumiumGear;
-import com.koteuka404.thaumicforever.item.ItemTimeFreeze;
-import com.koteuka404.thaumicforever.item.ItemVoidGear;
-import com.koteuka404.thaumicforever.item.ItemZombieHeart;
-import com.koteuka404.thaumicforever.item.RavenCloakItemH;
-import com.koteuka404.thaumicforever.item.RingIron;
-import com.koteuka404.thaumicforever.registry.AspectRegistry;
 
 public class InfusionRecipes {
     private static Aspect CAELES;
@@ -108,7 +97,7 @@ public class InfusionRecipes {
                 new ItemStack(Items.FERMENTED_SPIDER_EYE)
             }
         ));
-        if (Loader.isModLoaded("forbiddenmagicre") && Loader.isModLoaded("avaritia")) {
+        if (Loader.isModLoaded("avaritia")) {
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ItemFocus4"), new InfusionRecipe(
                 "NEWAUROMANCY",
                 new ItemStack(ModItems.FOCUS_4),
@@ -122,32 +111,11 @@ public class InfusionRecipes {
                 new Object[] {
                     new ItemStack(ItemsTC.focus2),
                     new ItemStack(ItemsTC.focus2),
-                    new ItemStack(Item.getByNameOrId("forbiddenmagicre:netherstar_block")),
-                    new ItemStack(Item.getByNameOrId("avaritia:extremely_primordial_pearl"))
+                    new ItemStack(ModBlocks.NETHER_STAR_BLOCK),
+                    new ItemStack(ModItems.CONDENSED_PRIMAL_PEARL)
                 }
             ));
-        } else {
-            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:ItemFocus4"), new InfusionRecipe(
-                "NEWAUROMANCY",
-                new ItemStack(ModItems.FOCUS_4),
-                12,
-                new AspectList()
-                    .add(Aspect.ORDER, 140)
-                    .add(Aspect.MAGIC, 160)
-                    .add(Aspect.AURA, 120)
-                    .add(Aspect.VOID, 80),
-                new ItemStack(ItemsTC.focus3),
-                    new ItemStack(ItemsTC.focus2),
-                    Ingredient.fromItem(ItemsTC.primordialPearl),
-                    Ingredient.fromItem(ItemsTC.primordialPearl),
-                    Ingredient.fromItem(ItemsTC.primordialPearl),
-
-                    new ItemStack(ItemsTC.focus2),
-                    new ItemStack(Items.NETHER_STAR),
-                    new ItemStack(Items.NETHER_STAR),
-                    new ItemStack(Items.NETHER_STAR)
-
-                ));}
+        }
 
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:FOCUS_COMPLEX"), new InfusionRecipe(
             "NEWAUROMANCY",
@@ -261,7 +229,7 @@ public class InfusionRecipes {
             ));
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:CLOAK"), new InfusionRecipe(
                 "CLOAK",
-                new ItemStack(ModItems.RavenCloakBauble),
+                new ItemStack(ModItems.DarkCloakBauble),
                 3,
                 new AspectList()
                     .add(Aspect.MOTION, 100)
@@ -283,7 +251,7 @@ public class InfusionRecipes {
             ));
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:CLOAK1"), new InfusionRecipe(
                 "CLOAK",
-                new ItemStack(ModItems.RavenCloakItemH),
+                new ItemStack(ModItems.DarkCloakItemH),
                 3,
                 new AspectList()
                     .add(Aspect.MOTION, 100)
@@ -311,6 +279,7 @@ public class InfusionRecipes {
                     .add(Aspect.ORDER, 80)
                     .add(Aspect.ENTROPY, 60)
                     .add(Aspect.VOID, 60)
+                    .add(TIME, 250)
                     .add(Aspect.ENERGY, 80)
                     .add(Aspect.SENSES, 60)
                     .add(Aspect.DESIRE, 60)
@@ -329,7 +298,7 @@ public class InfusionRecipes {
             ));
 
             ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:flying_crystal"), new InfusionRecipe(
-                "AQUAALKIMIA",
+                "ASTRALALKIIA",
                 new ItemStack(Item.getByNameOrId("astralsorcery:blockcollectorcrystal"), 1, 0),
                 5,
                 new AspectList()
@@ -589,7 +558,7 @@ public class InfusionRecipes {
                     .add(Aspect.ORDER, 25)
                     .add(Aspect.EXCHANGE, 25),
 
-                new ItemStack(ModItems.IRONRING),
+                new ItemStack(ItemsTC.baubles,1,1),
                 new Object[] {
                     new ItemStack(ItemsTC.visResonator),
                     new ItemStack(BlocksTC.visBattery),
@@ -753,6 +722,180 @@ public class InfusionRecipes {
 
                 }
             ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:temporal_accelerator"), new InfusionRecipe(
+                "PRIMALTIMESTONE",
+                new ItemStack(ModBlocks.TEMPORAL_ACCELERATOR),
+                30,
+                new AspectList()
+                    .add(Aspect.DESIRE, 400)
+                    .add(Aspect.MOTION, 500)
+                    .add(Aspect.ENERGY, 400)
+                    .add(TIME, 600)
+                    .add(Aspect.MECHANISM, 350)
+                    .add(Aspect.MAGIC, 300)
+                    .add(AspectRegistry.MATTERYA, 500)
+                    .add(Aspect.ELDRITCH, 400),
+                new ItemStack(ModBlocks.PRIMALBLOCK),
+                new Object[] {
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.ItemVoidGear),
+                    new ItemStack(BlocksTC.visBattery),
+                    new ItemStack(BlocksTC.metalBlockVoid),
+                    new ItemStack(BlocksTC.metalAlchemicalAdvanced),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.ItemVoidGear),
+                    new ItemStack(BlocksTC.visBattery),
+                    new ItemStack(BlocksTC.metalBlockVoid),
+                    new ItemStack(BlocksTC.metalAlchemicalAdvanced),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR)
+                }
+            ));
+
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:condensed_primal_pearl"), new InfusionRecipe(
+                "RESEARCHPRIMAL",
+                new ItemStack(ModItems.CONDENSED_PRIMAL_PEARL),
+                18,
+                new AspectList()
+                    .add(Aspect.DESIRE, 300)
+                    .add(Aspect.MAGIC, 250)
+                    .add(Aspect.VOID, 250)
+                    .add(Aspect.ELDRITCH, 180)
+                    .add(AspectRegistry.MATTERYA, 150),
+                new ItemStack(ModBlocks.NETHER_STAR_BLOCK),
+                new Object[] {
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    Ingredient.fromItem(ItemsTC.primordialPearl)
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:void_singularity"), new InfusionRecipe(
+                "VOID_SINGULARITY",
+                new ItemStack(ModBlocks.VOID_SINGULARITY),
+                20,
+                new AspectList()
+                    .add(Aspect.VOID, 300)
+                    .add(Aspect.ELDRITCH, 250)
+                    .add(Aspect.ENTROPY, 220)
+                    .add(Aspect.ENERGY, 180)
+                    .add(AspectRegistry.MATTERYA, 200),
+                new ItemStack(ModItems.CONDENSED_PRIMAL_PEARL),
+                new Object[] {
+                    new ItemStack(ModBlocks.NETHER_STAR_BLOCK),
+                    new ItemStack(ModItems.ItemVoidGear),
+                    new ItemStack(BlocksTC.metalBlockVoid),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.ItemVoidGear),
+                    new ItemStack(ItemsTC.voidSeed),
+                    Ingredient.fromItem(ItemsTC.primordialPearl)
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:primal_pickaxe"), new InfusionRecipe(
+                "PRIMALTOOLS",
+                new ItemStack(ModItems.PRIMAL_PICKAXE),
+                8,
+                new AspectList()
+                    .add(Aspect.ELDRITCH, 75)
+                    .add(Aspect.VOID, 25)
+                    .add(Aspect.TOOL, 50)
+                    .add(Aspect.DESIRE, 90)
+                    .add(Aspect.DARKNESS, 18),
+                new ItemStack(ItemsTC.voidPick),
+                new Object[] {
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(ItemsTC.salisMundus)
+
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:primal_blade"), new InfusionRecipe(
+                "PRIMALTOOLS",
+                new ItemStack(ModItems.PRIMAL_BLADE),
+                8,
+                new AspectList()
+                    .add(Aspect.AVERSION, 160)
+                    .add(Aspect.MAGIC, 120)
+                    .add(Aspect.TOOL, 100)
+                    .add(Aspect.ORDER, 80)
+                    .add(Aspect.ENERGY, 80),
+                new ItemStack(ItemsTC.voidSword),
+                new Object[] {
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(ItemsTC.salisMundus)
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:primal_axe"), new InfusionRecipe(
+                "PRIMALTOOLS",
+                new ItemStack(ModItems.PRIMAL_AXE),
+                8,
+                new AspectList()
+                    .add(Aspect.AVERSION, 120)
+                    .add(Aspect.TOOL, 100)
+                    .add(Aspect.PLANT, 80)
+                    .add(Aspect.EARTH, 80)
+                    .add(Aspect.ENERGY, 60),
+                new ItemStack(ItemsTC.voidAxe),
+                new Object[] {
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(ItemsTC.salisMundus)
+                }
+            ));
+
+            ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:primal_shovel"), new InfusionRecipe(
+                "PRIMALTOOLS",
+                new ItemStack(ModItems.PRIMAL_SHOVEL),
+                8,
+                new AspectList()
+                    .add(Aspect.TOOL, 90)
+                    .add(Aspect.EARTH, 120)
+                    .add(Aspect.VOID, 40)
+                    .add(Aspect.ORDER, 60)
+                    .add(Aspect.ENERGY, 50),
+                new ItemStack(ItemsTC.voidShovel),
+                new Object[] {
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(Items.NETHER_STAR),
+                    new ItemStack(ModItems.primalingot),
+                    Ingredient.fromItem(ItemsTC.primordialPearl),
+                    new ItemStack(ModItems.primalingot),
+                    new ItemStack(ItemsTC.salisMundus)
+                }
+            ));
     }
 
     private static void registerAuraTotemRecipes() {
@@ -835,6 +978,36 @@ public class InfusionRecipes {
             'R', new ItemStack(ItemsTC.visResonator)
         ));
 
+
+        ThaumcraftApi.addInfusionCraftingRecipe(
+            new ResourceLocation("thaumicforever", "turret_arcane"),
+            new InfusionRecipe(
+                "ARCANETURRET",
+                new ItemStack(ModItems.itemArcaneTurret),
+                6,
+                new AspectList()
+                    .add(Aspect.MAGIC, 50)
+                    .add(Aspect.ORDER, 100)
+                    .add(Aspect.MECHANISM, 80)
+                    .add(Aspect.METAL, 140)
+                    .add(Aspect.ENERGY, 120)
+                    .add(Aspect.MIND, 40),
+                new ItemStack(ItemsTC.turretPlacer, 1, 2),
+                new Object[] {
+                    new ItemStack(ItemsTC.focus1),
+                    new ItemStack(ItemsTC.morphicResonator),
+                    new ItemStack(ModItems.GOLD_PLATE),
+                    new ItemStack(ModItems.ItemThaumiumGear),
+                    new ItemStack(ItemsTC.mind,1,1),
+                    new ItemStack(ItemsTC.mechanismComplex),
+                    new ItemStack(ModItems.GOLD_PLATE),
+                    new ItemStack(ItemsTC.visResonator)
+
+
+                }
+            )
+        );
+        
         ThaumcraftApi.addInfusionCraftingRecipe(new ResourceLocation("thaumicforever:TotemPush"), new InfusionRecipe(
             "AURATOTEMS",
             auraTotem(0),

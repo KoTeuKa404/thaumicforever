@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.network.play.server.SPacketSetSlot;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
@@ -45,6 +46,8 @@ public class ContainerArcaneWorkbenchNew extends Container {
     private int lastSentSelectedRecipeIndex = -1;
     private int lastSentMatchingRecipeCount = -1;
     private List<IRecipe> cachedMatches = new ArrayList<>();
+    private final NonNullList<ItemStack> cachedCraftingGrid = NonNullList.withSize(9, ItemStack.EMPTY);
+    private boolean recipeCacheInitialized;
 
     public ContainerArcaneWorkbenchNew(InventoryPlayer inv, TileArcaneWorkbench e) {
         this.tileEntity = e;
@@ -105,8 +108,9 @@ public class ContainerArcaneWorkbenchNew extends Container {
     @Override
     public void onCraftMatrixChanged(IInventory par1IInventory) {
         IRecipe selectedRecipe = getSelectedFromMatches(this.cachedMatches);
-        if (selectedRecipe == null || !recipeMatches(selectedRecipe, this.ip.player)) {
+        if (hasCraftingGridChanged()) {
             this.cachedMatches = getMatchingRecipes(this.ip.player);
+            cacheCraftingGrid();
             this.matchingRecipeCount = this.cachedMatches.size();
             if (this.matchingRecipeCount <= 0) {
                 this.selectedRecipeIndex = 0;
@@ -248,9 +252,10 @@ public class ContainerArcaneWorkbenchNew extends Container {
 
     public IRecipe getSelectedRecipe(EntityPlayer player) {
         List<IRecipe> matches = this.cachedMatches;
-        if (matches == null || matches.isEmpty()) {
+        if (!this.recipeCacheInitialized || hasCraftingGridChanged()) {
             matches = getMatchingRecipes(player);
             this.cachedMatches = matches;
+            cacheCraftingGrid();
             this.matchingRecipeCount = matches.size();
         }
         if (matches.isEmpty()) return null;
@@ -297,6 +302,26 @@ public class ContainerArcaneWorkbenchNew extends Container {
         int idx = this.selectedRecipeIndex;
         if (idx < 0 || idx >= matches.size()) idx = 0;
         return matches.get(idx);
+    }
+
+    private boolean hasCraftingGridChanged() {
+        if (!this.recipeCacheInitialized) return true;
+        for (int i = 0; i < 9; i++) {
+            if (!ItemStack.areItemStacksEqual(
+                    this.cachedCraftingGrid.get(i),
+                    this.tileEntity.inventoryCraft.getStackInSlot(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void cacheCraftingGrid() {
+        for (int i = 0; i < 9; i++) {
+            ItemStack stack = this.tileEntity.inventoryCraft.getStackInSlot(i);
+            this.cachedCraftingGrid.set(i, stack.isEmpty() ? ItemStack.EMPTY : stack.copy());
+        }
+        this.recipeCacheInitialized = true;
     }
 
     private List<IRecipe> getMatchingRecipes(EntityPlayer player) {

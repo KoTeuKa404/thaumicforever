@@ -3,6 +3,7 @@ package com.koteuka404.thaumicforever.item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ItemPrimalPickaxe extends ItemPickaxe {
@@ -21,5 +22,10 @@ public class ItemPrimalPickaxe extends ItemPickaxe {
     @Override
     public void setDamage(ItemStack stack, int damage) {
         super.setDamage(stack, 0);
+    }
+
+    @Override
+    public String getItemStackDisplayName(ItemStack stack) {
+        return TextFormatting.LIGHT_PURPLE + super.getItemStackDisplayName(stack);
     }
 }

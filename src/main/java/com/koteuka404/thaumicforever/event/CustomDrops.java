@@ -1,6 +1,7 @@
 package com.koteuka404.thaumicforever.event;
 
 import com.koteuka404.thaumicforever.registry.ModItems;
+import com.koteuka404.thaumicforever.item.LootBag;
 
 
 import java.util.Random;
@@ -99,7 +100,8 @@ public class CustomDrops {
             float dropChance = 0.22f + (luck * 0.04f);
             
             if (RANDOM.nextFloat() < dropChance) {
-                EntityItem drop = new EntityItem(world, entity.posX, entity.posY, entity.posZ, new ItemStack(ModItems.lootbag));
+                EntityItem drop = new EntityItem(world, entity.posX, entity.posY, entity.posZ,
+                    LootBag.createStack(LootBag.rollDropAmount()));
                 event.getDrops().add(drop);
             }
         }

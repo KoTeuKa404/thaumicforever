@@ -2,7 +2,6 @@ package com.koteuka404.thaumicforever.client.fx;
 
 import org.lwjgl.opengl.GL11;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -69,16 +68,75 @@ public class FXLightningBolt extends Particle {
         if (len < 1e-4) return;
         dx /= len; dy /= len; dz /= len;
 
-        double cx = Minecraft.getMinecraft().getRenderManager().viewerPosX - (sx + ex) * 0.5;
-        double cy = Minecraft.getMinecraft().getRenderManager().viewerPosY - (sy + ey) * 0.5;
-        double cz = Minecraft.getMinecraft().getRenderManager().viewerPosZ - (sz + ez) * 0.5;
+        /*
+         * sx/ex are already in camera-relative render coordinates because
+         * Particle.interpPosX/Y/Z were subtracted above. The camera therefore
+         * sits at (0, 0, 0) in this coordinate system.
+         *
+         * The previous code subtracted this relative midpoint from the
+         * world-space viewerPos values. That mixed two coordinate spaces and
+         * made the lightning ribbon keep an incorrect orientation. From some
+         * viewing angles it was seen almost edge-on as a one-pixel line.
+         */
+        double midX = (sx + ex) * 0.5D;
+        double midY = (sy + ey) * 0.5D;
+        double midZ = (sz + ez) * 0.5D;
 
-        double sideX = dy * cz - dz * cy;
-        double sideY = dz * cx - dx * cz;
-        double sideZ = dx * cy - dy * cx;
-        double sLen  = Math.sqrt(sideX*sideX + sideY*sideY + sideZ*sideZ);
-        if (sLen < 1e-6) return;
-        sideX /= sLen; sideY /= sLen; sideZ /= sLen;
+        double viewX = -midX;
+        double viewY = -midY;
+        double viewZ = -midZ;
+
+        /*
+         * Width direction = beam direction cross direction to the camera.
+         * Recalculating this every rendered frame makes the ribbon rotate
+         * toward the current player camera.
+         */
+        double sideX = dy * viewZ - dz * viewY;
+        double sideY = dz * viewX - dx * viewZ;
+        double sideZ = dx * viewY - dy * viewX;
+        double sLen = Math.sqrt(
+                sideX * sideX
+                        + sideY * sideY
+                        + sideZ * sideZ
+        );
+
+        /*
+         * When looking almost exactly along the beam, the cross product is
+         * close to zero. Use a stable perpendicular axis instead of skipping
+         * rendering and making the beam disappear.
+         */
+        if (sLen < 1.0E-6D) {
+            double referenceX;
+            double referenceY;
+            double referenceZ;
+
+            if (Math.abs(dy) < 0.90D) {
+                referenceX = 0.0D;
+                referenceY = 1.0D;
+                referenceZ = 0.0D;
+            } else {
+                referenceX = 1.0D;
+                referenceY = 0.0D;
+                referenceZ = 0.0D;
+            }
+
+            sideX = dy * referenceZ - dz * referenceY;
+            sideY = dz * referenceX - dx * referenceZ;
+            sideZ = dx * referenceY - dy * referenceX;
+            sLen = Math.sqrt(
+                    sideX * sideX
+                            + sideY * sideY
+                            + sideZ * sideZ
+            );
+        }
+
+        if (sLen < 1.0E-9D) {
+            return;
+        }
+
+        sideX /= sLen;
+        sideY /= sLen;
+        sideZ /= sLen;
 
         float tNorm = (particleAge + partialTicks) / particleMaxAge;
         float fade  = 1.0f - tNorm;

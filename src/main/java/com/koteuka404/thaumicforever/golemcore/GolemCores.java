@@ -14,6 +14,7 @@ public final class GolemCores {
         GolemCoreRegistry.register(new IronSkinGolemCore());
         GolemCoreRegistry.register(new ArcaneGolemCore());
         GolemCoreRegistry.register(new SwiftGolemCore());
+        GolemCoreRegistry.register(new PrimalGolemCore());
         registered = true;
     }
 }

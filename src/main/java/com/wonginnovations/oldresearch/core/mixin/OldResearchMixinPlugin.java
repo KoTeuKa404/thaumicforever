@@ -24,12 +24,7 @@ public class OldResearchMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (!isCleanroom) {
-            return true;
-        }
-
-        return !mixinClassName.endsWith("ItemThaumometerMixin")
-                && !mixinClassName.endsWith("RenderEventHandlerMixin");
+        return true;
     }
 
     @Override

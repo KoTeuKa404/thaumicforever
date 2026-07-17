@@ -32,7 +32,7 @@ public class TileRechargePedestal extends TileEntity implements ITickable, IAspe
 
     private static final int CHARGE_RANGE = 10;
     private static final int CHARGE_TICK_INTERVAL = 5;
-    private static final int CV_PER_PRIMAL_POINT = 10;
+    private static final int CV_PER_PRIMAL_POINT = 100;
     private static final int DIRECT_CV_BUFFER_CAP = CV_PER_PRIMAL_POINT * 2;
     private static final float PORT_BOOST_PERCENT = 1.15f;
 

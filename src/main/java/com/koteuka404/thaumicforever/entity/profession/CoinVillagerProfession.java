@@ -1,10 +1,9 @@
 package com.koteuka404.thaumicforever.entity.profession;
 
-import com.koteuka404.thaumicforever.registry.ModBlocks;
-
-import com.koteuka404.thaumicforever.registry.ModItems;
-
 import java.util.Random;
+
+import com.koteuka404.thaumicforever.registry.ModBlocks;
+import com.koteuka404.thaumicforever.registry.ModItems;
 
 import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.passive.EntityVillager;
@@ -42,7 +41,7 @@ public class CoinVillagerProfession {
             public void addMerchantRecipe(IMerchant merchant, MerchantRecipeList recipeList, Random random) {
                 recipeList.add(new MerchantRecipe(
                     new ItemStack(Blocks.GOLD_BLOCK, 2),
-                    new ItemStack(ModItems.coin, 2)
+                    new ItemStack(ModItems.coin, 1)
                 ));
             }
         });

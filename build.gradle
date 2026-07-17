@@ -11,7 +11,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "7.1.5"
+version = "7.1.6"
 group = "com.thaumic.forever"
 archivesBaseName = "ThaumicForever"
 
@@ -22,6 +22,8 @@ sourceSets {
         java {
             exclude 'com/wonginnovations/oldresearch/integration/groovy/**'
             exclude 'com/koteuka404/thaumicforever/oldresearch/**'
+
+            exclude 'thaumcraft/api/**'
         }
     }
 }

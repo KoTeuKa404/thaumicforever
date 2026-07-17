@@ -13,9 +13,9 @@ public class BlockBase extends Block {
         super(material);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setHardness(5.0F); 
-        setResistance(10.0F); 
-        setHarvestLevel("pickaxe", 2); 
+        setHardness(5.0F);
+        setResistance(10.0F);
+        setHarvestLevel("pickaxe", 2);
     }
 
     @Override
@@ -25,6 +25,6 @@ public class BlockBase extends Block {
 
     @Override
     public int quantityDropped(Random random) {
-        return 1; 
+        return 1;
     }
 }

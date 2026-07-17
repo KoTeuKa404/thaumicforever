@@ -27,3 +27,4 @@ refer/
 .gradle/
 *run/*
 .gradle/gradle.log
+Modelfile.gpt-oss-20b-100k

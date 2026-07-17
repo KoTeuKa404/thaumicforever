@@ -152,13 +152,17 @@ public class TileAuraTotem extends TileEntity implements ITickable, IInventory {
     }
 
     public static boolean isValidCrystal(ItemStack stack) {
-        return !stack.isEmpty() && stack.getItem() == ItemsTC.crystalEssence;
+        return primalFromCrystal(stack) != null;
     }
 
     private static Primal primalFromCrystal(ItemStack stack) {
-        if (!isValidCrystal(stack) || !(stack.getItem() instanceof ItemGenericEssentiaContainer)) return null;
+        if (stack.isEmpty()
+                || stack.getItem() != ItemsTC.crystalEssence
+                || !(stack.getItem() instanceof ItemGenericEssentiaContainer)) {
+            return null;
+        }
         AspectList aspects = ((ItemGenericEssentiaContainer) stack.getItem()).getAspects(stack);
-        if (aspects == null || aspects.size() <= 0) return null;
+        if (aspects == null || aspects.size() != 1) return null;
         Aspect aspect = aspects.getAspects()[0];
         return primalFromAspect(aspect);
     }
@@ -267,6 +271,7 @@ public class TileAuraTotem extends TileEntity implements ITickable, IInventory {
     @Override
     public void setInventorySlotContents(int index, ItemStack stack) {
         if (index != 0) return;
+        if (!stack.isEmpty() && !isValidCrystal(stack)) return;
         inventory.set(0, stack);
         if (!stack.isEmpty() && stack.getCount() > getInventoryStackLimit()) {
             stack.setCount(getInventoryStackLimit());

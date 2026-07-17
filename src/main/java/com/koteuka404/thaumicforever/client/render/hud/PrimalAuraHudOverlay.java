@@ -1,5 +1,9 @@
 package com.koteuka404.thaumicforever.client.render.hud;
 
+import com.koteuka404.thaumicforever.ThaumicForever;
+import com.koteuka404.thaumicforever.client.ClientPrimalAuraCache;
+import com.koteuka404.thaumicforever.network.PacketPrimalAuraRequest;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
@@ -15,9 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.client.ClientPrimalAuraCache;
-import com.koteuka404.thaumicforever.network.PacketPrimalAuraRequest;
-import com.koteuka404.thaumicforever.ThaumicForever;
 
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = ThaumicForever.MODID, value = Side.CLIENT)
@@ -69,7 +70,6 @@ public final class PrimalAuraHudOverlay {
 
         requestIfNeeded(p);
 
-        // ===== FIX: do NOT use chunkCoordX/Z (can desync on MP) =====
         int dim = p.dimension;
         int cx = MathHelper.floor(p.posX) >> 4;
         int cz = MathHelper.floor(p.posZ) >> 4;
@@ -171,7 +171,6 @@ public final class PrimalAuraHudOverlay {
     private static void requestIfNeeded(EntityPlayer p) {
         long nowTick = p.world.getTotalWorldTime();
 
-        // ===== FIX: do NOT use chunkCoordX/Z (can desync on MP) =====
         int dim = p.dimension;
         int cx = MathHelper.floor(p.posX) >> 4;
         int cz = MathHelper.floor(p.posZ) >> 4;
@@ -316,7 +315,7 @@ public final class PrimalAuraHudOverlay {
         float step = usable / 5.5f;
 
         for (int i = 0; i < 6; i++) {
-            int drawIdx = i; // топ = FIRE, низ = ENTROPY
+            int drawIdx = i;
             float amt = clamp0(vis[drawIdx]);
             String s = format1(amt);
             int color = aspects[drawIdx].getColor() | 0xFF000000;

@@ -1,10 +1,9 @@
 package com.koteuka404.thaumicforever.aspect;
 
-import com.koteuka404.thaumicforever.registry.ModOreBlocks;
-
+import com.koteuka404.thaumicforever.registry.AspectRegistry;
 import com.koteuka404.thaumicforever.registry.ModBlocks;
-
 import com.koteuka404.thaumicforever.registry.ModItems;
+import com.koteuka404.thaumicforever.registry.ModOreBlocks;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -14,13 +13,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.block.EndOreBlock;
-import com.koteuka404.thaumicforever.block.OldPlank;
-import com.koteuka404.thaumicforever.block.RubyOre;
-import com.koteuka404.thaumicforever.item.ItemGoldenFish;
-import com.koteuka404.thaumicforever.item.ItemTaintAmulet;
-import com.koteuka404.thaumicforever.item.ItemZombieHeart;
-import com.koteuka404.thaumicforever.registry.AspectRegistry;
 
 public class AspectAdder {
     
@@ -338,8 +330,8 @@ public class AspectAdder {
         ItemStack windcharge = new ItemStack(ModItems.WIND_CHARGE);
 
         AspectList windasp = new AspectList(windcharge);
-        windasp.add(wind, 5);
 
+        windasp.add(wind, 5);
         ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.WIND_CHARGE), windasp);
 
         ItemStack researchTable_asp = new ItemStack(BlocksTC.researchTable);
@@ -348,10 +340,9 @@ public class AspectAdder {
 
         ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.GREAT_RESEARCH_TABLE), gr_rs_tb_as);
 
-        AspectList creativeAspectItem = new AspectList();
-        for (Aspect aspect : Aspect.aspects.values()) {
-            creativeAspectItem.add(aspect, 64);
-        }
-        ThaumcraftApi.registerObjectTag(new ItemStack(ModItems.CREATIVE_ITEM_ASPECT), creativeAspectItem);
+        AspectList matterya_blocka = new AspectList();
+        matterya_blocka.merge(matteryaAspect, 250);
+        ThaumcraftApi.registerObjectTag(new ItemStack(ModBlocks.MATTERYA_BLOCK), matterya_blocka);
+
     }
 }

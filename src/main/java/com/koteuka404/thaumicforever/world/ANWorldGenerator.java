@@ -18,8 +18,8 @@ import thaumcraft.api.aura.AuraHelper;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.common.lib.utils.BlockUtils;
 import thaumcraft.common.world.biomes.BiomeHandler;
+import com.koteuka404.thaumicforever.config.ModConfig;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
-import com.koteuka404.thaumicforever.node.type.NTTaint;
 
 public class ANWorldGenerator implements IWorldGenerator {
 
@@ -66,7 +66,7 @@ public class ANWorldGenerator implements IWorldGenerator {
                         bp.getY() < world.getActualHeight()) continue;
                     return;
                 }
-                if (world.isAirBlock(bp) && random.nextInt(Math.max(2, 33)) == 0) {
+                if (world.isAirBlock(bp) && random.nextInt(Math.max(1, ModConfig.auraNodeRarity)) == 0) {
                     spawnNode(world, bp, -1, 1.0f);
                 }
             }
@@ -83,11 +83,14 @@ public class ANWorldGenerator implements IWorldGenerator {
                 0.0f
         );
         boolean taintBiome = isTaintBiome(world, bp);
+        float pureMultiplier = isMagicalForestBiome(world, bp)
+                ? ModConfig.magicalForestPureNodeWeightMultiplier
+                : 1.0F;
 
         if (type >= 0) {
             e.randomizeForNodeType(type);
         } else {
-            e.randomizeNode();
+            e.randomizeNode(pureMultiplier);
         }
 
         if (taintBiome) {
@@ -120,5 +123,14 @@ public class ANWorldGenerator implements IWorldGenerator {
         if (rl == null) return false;
         String id = rl.toString().toLowerCase(Locale.ROOT);
         return id.contains("taint");
+    }
+
+    private static boolean isMagicalForestBiome(World world, BlockPos pos) {
+        Biome biome = world.getBiome(pos);
+        if (biome == null) return false;
+        ResourceLocation rl = biome.getRegistryName();
+        if (rl == null) return false;
+        String id = rl.toString().toLowerCase(Locale.ROOT);
+        return "thaumcraft:magical_forest".equals(id) || id.contains("magical_forest");
     }
 }

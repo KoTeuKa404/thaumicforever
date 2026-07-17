@@ -7,10 +7,13 @@ import com.koteuka404.thaumicforever.ThaumicForever;
 import com.koteuka404.thaumicforever.registry.ModItems;
 
 import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -69,7 +72,26 @@ public class EntityDecoyMannequin extends EntityCreature {
 
     @Override
     protected void dropFewItems(boolean wasRecentlyHit, int lootingModifier) {
-        this.entityDropItem(new ItemStack(ModItems.DECOY_MANNEQUIN), 0.0F);
+        this.entityDropItem(new ItemStack(Items.WHEAT, 3), 0.0F);
+        this.entityDropItem(new ItemStack(Items.STICK, 2), 0.0F);
+    }
+
+    @Override
+    protected boolean processInteract(EntityPlayer player, EnumHand hand) {
+        if (!player.isSneaking()) {
+            return super.processInteract(player, hand);
+        }
+
+        if (!this.world.isRemote) {
+            ItemStack stack = new ItemStack(ModItems.DECOY_MANNEQUIN);
+            if (!player.capabilities.isCreativeMode && !player.inventory.addItemStackToInventory(stack)) {
+                this.entityDropItem(stack, 0.0F);
+            }
+            this.setDead();
+        }
+
+        player.swingArm(hand);
+        return true;
     }
 
     @Override

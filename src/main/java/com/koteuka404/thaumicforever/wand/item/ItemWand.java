@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.AuraCloudEntity;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 import com.koteuka404.thaumicforever.wand.api.ThaumicWandsAPI;
 import com.koteuka404.thaumicforever.wand.api.item.wand.IWandBasic;
@@ -186,12 +186,12 @@ public class ItemWand extends ItemBase implements IWandBasic {
             boolean hasNode;
             if (world.isRemote) {
                 hasNode = WandHelper.findNodeAlongLook(player, reach) != null
-                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null;
+                        || WandHelper.findAuraCloudEntityAlongLook(player, reach) != null;
             } else {
                 hasNode = WandHelper.findNodeAlongLook(player, reach) != null
-                        || WandHelper.findAuraNodeEntityAlongLook(player, reach) != null
+                        || WandHelper.findAuraCloudEntityAlongLook(player, reach) != null
                         || WandHelper.findNodeInCone(player, reach, 0.35D) != null
-                        || WandHelper.findAuraNodeEntityInCone(player, reach, 0.35D) != null;
+                        || WandHelper.findAuraCloudEntityInCone(player, reach, 0.35D) != null;
             }
             if (hasNode) {
                 player.setActiveHand(hand);
@@ -234,14 +234,14 @@ public class ItemWand extends ItemBase implements IWandBasic {
         if (player.ticksExisted % 5 != 0) return;
 
         EntityAuraNode node = WandHelper.findNodeAlongLook(player, WandHelper.getNodeReach(player));
-        AuraNodeEntity auraNode = null;
+        AuraCloudEntity auraCloud = null;
         if (node == null) {
-            auraNode = WandHelper.findAuraNodeEntityAlongLook(player, WandHelper.getNodeReach(player));
-            if (auraNode == null) {
+            auraCloud = WandHelper.findAuraCloudEntityAlongLook(player, WandHelper.getNodeReach(player));
+            if (auraCloud == null) {
                 node = WandHelper.findNodeInCone(player, WandHelper.getNodeReach(player), 0.35D);
                 if (node == null) {
-                    auraNode = WandHelper.findAuraNodeEntityInCone(player, WandHelper.getNodeReach(player), 0.35D);
-                    if (auraNode == null) return;
+                    auraCloud = WandHelper.findAuraCloudEntityInCone(player, WandHelper.getNodeReach(player), 0.35D);
+                    if (auraCloud == null) return;
                 }
             }
         }
@@ -256,7 +256,7 @@ public class ItemWand extends ItemBase implements IWandBasic {
         if (node != null) {
             WandHelper.chargeWandFromNode(held, node, player);
         } else {
-            WandHelper.chargeWandFromAuraNodeEntity(held, auraNode, player);
+            WandHelper.chargeWandFromAuraCloudEntity(held, auraCloud, player);
         }
     }
 
@@ -309,10 +309,11 @@ public class ItemWand extends ItemBase implements IWandBasic {
             String text = "";
 
             tooltip.add(TextFormatting.DARK_PURPLE + LocalizationHelper.localize("tc.vis.cost") + " " + (int) (WandHelper.getTotalDiscount(stack, null) * 100F) + "%");
-            if (getCap(stack).getAspectDiscount().size() > 0) {
+            AspectList primalDiscount = WandHelper.decomposeToPrimals(getCap(stack).getAspectDiscount());
+            if (primalDiscount.size() > 0) {
                 tooltip.add(TextFormatting.DARK_AQUA + LocalizationHelper.localize("tw.crystal.discount"));
-                for (Aspect a : getCap(stack).getAspectDiscount().getAspects())
-                    tooltip.add(LocalizationHelper.getTextColorFromAspect(a) + a.getName() + ": " + getCap(stack).getAspectDiscount().getAmount(a));
+                for (Aspect a : primalDiscount.getAspects())
+                    tooltip.add(LocalizationHelper.getTextColorFromAspect(a) + a.getName() + ": " + primalDiscount.getAmount(a));
             }
 
             ItemStack focus = getFocusStack(stack);

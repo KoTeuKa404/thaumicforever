@@ -178,26 +178,26 @@ public class ModRecipes {
             "E  ",
             "EG ",
             "P  ",
-            'P', new ItemStack(ModItems.SILVER_INGOT),
+            'P', "ingotSilver",
             'G', new ItemStack(ItemsTC.nuggets, 1, 3),
             'E', new ItemStack(ModItems.Bone)
         );
         
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "BoneBladeRecipe"), BoneBladeRecipe);
 
-        ShapedArcaneRecipe katanaRecipe = new ShapedArcaneRecipe(
-            new ResourceLocation("thaumicforever", "katana_recipe"),
-            "FIRSTSTEPS",
-            35,
-            new AspectList().add(Aspect.AIR, 20).add(Aspect.AVERSION, 20),
-            new ItemStack(ModItems.KATANA),
-            "  I",
-            " I ",
-            "S  ",
-            'I', new ItemStack(ItemsTC.ingots, 1, 0),
-            'S', new ItemStack(Items.STICK)
-        );
-        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "katana_recipe"), katanaRecipe);
+        // ShapedArcaneRecipe katanaRecipe = new ShapedArcaneRecipe(
+        //     new ResourceLocation("thaumicforever", "katana_recipe"),
+        //     "FIRSTSTEPS",
+        //     35,
+        //     new AspectList().add(Aspect.AIR, 20).add(Aspect.AVERSION, 20),
+        //     new ItemStack(ModItems.KATANA),
+        //     "  I",
+        //     " I ",
+        //     "S  ",
+        //     'I', new ItemStack(ItemsTC.ingots, 1, 0),
+        //     'S', new ItemStack(Items.STICK)
+        // );
+        // ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "katana_recipe"), katanaRecipe);
         
         ShapedArcaneRecipe CharmRecipe = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "Charm_recipe"),
@@ -467,6 +467,31 @@ public class ModRecipes {
             new Object[] {Items.QUARTZ, new ItemStack(BlocksTC.stoneArcane),new ItemStack(ItemsTC.visResonator)}
         );
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "port"), port);
+
+        ShapedArcaneRecipe primalAuraConverter = new ShapedArcaneRecipe(
+            new ResourceLocation("thaumicforever", "primal_aura_converter"),
+            "PRIMALAURACONVERTER",
+            120,
+            new AspectList()
+                .add(Aspect.AIR, 20)
+                .add(Aspect.ORDER, 20)
+                .add(Aspect.AIR, 20),
+            new ItemStack(ModBlocks.PRIMAL_AURA_CONVERTER),
+            "AEV",
+            "BCW",
+            "GPT",
+
+            'W', new ItemStack(BlocksTC.plankGreatwood),
+            'V', new ItemStack(ItemsTC.visResonator),
+            'G', new ItemStack(ModItems.ItemBrassGear),
+            'C', new ItemStack(BlocksTC.metalAlchemical),
+            'T', new ItemStack(ModItems.ItemThaumiumGear),
+            'A', new ItemStack(BlocksTC.stoneArcane),
+            'E', new ItemStack(BlocksTC.tube),
+            'P', new ItemStack(ItemsTC.plate, 1, 2),
+            'B', new ItemStack(BlocksTC.bellows)
+        );
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation("thaumicforever", "primal_aura_converter"), primalAuraConverter);
 
         ShapedArcaneRecipe Transducer = new ShapedArcaneRecipe(
             new ResourceLocation("thaumicforever", "Transducer"),

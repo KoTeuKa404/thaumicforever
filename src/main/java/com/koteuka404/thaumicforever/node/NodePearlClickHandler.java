@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 import thaumcraft.api.items.ItemsTC;
-import com.koteuka404.thaumicforever.entity.AuraNodeEntity;
+import com.koteuka404.thaumicforever.entity.AuraCloudEntity;
 import com.koteuka404.thaumicforever.entity.EntityAuraNode;
 
 public final class NodePearlClickHandler {
@@ -30,7 +30,7 @@ public final class NodePearlClickHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRightClickItem(PlayerInteractEvent.RightClickItem e) {
-        if (tryUsePhialOnAuraNode(e.getWorld(), e.getEntityPlayer(), e.getHand(), e.getItemStack())) {
+        if (tryUsePhialOnAuraCloud(e.getWorld(), e.getEntityPlayer(), e.getHand(), e.getItemStack())) {
             e.setCancellationResult(EnumActionResult.SUCCESS);
             e.setCanceled(true);
             return;
@@ -43,7 +43,7 @@ public final class NodePearlClickHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock e) {
-        if (tryUsePhialOnAuraNode(e.getWorld(), e.getEntityPlayer(), e.getHand(), e.getItemStack())) {
+        if (tryUsePhialOnAuraCloud(e.getWorld(), e.getEntityPlayer(), e.getHand(), e.getItemStack())) {
             e.setCancellationResult(EnumActionResult.SUCCESS);
             e.setCanceled(true);
             return;
@@ -54,15 +54,15 @@ public final class NodePearlClickHandler {
         }
     }
 
-    private boolean tryUsePhialOnAuraNode(World world, EntityPlayer player, EnumHand hand, ItemStack stack) {
+    private boolean tryUsePhialOnAuraCloud(World world, EntityPlayer player, EnumHand hand, ItemStack stack) {
         if (world.isRemote) return false;
         if (stack.isEmpty()) return false;
         if (stack.getItem() != ItemsTC.phial && stack.getItem() != ModItems.AuraPhial) return false;
 
-        AuraNodeEntity node = pickNearestAuraNode(world, player, 2.0D);
-        if (node == null) return false;
+        AuraCloudEntity auraCloud = pickNearestAuraCloud(world, player, 2.0D);
+        if (auraCloud == null) return false;
 
-        return node.tryUsePhial(player, hand, stack);
+        return auraCloud.tryUsePhial(player, hand, stack);
     }
 
     private boolean tryUsePearlOnNode(World world, EntityPlayer player, EnumHand hand, ItemStack stack) {
@@ -124,12 +124,12 @@ public final class NodePearlClickHandler {
         return pick;
     }
 
-    private AuraNodeEntity pickNearestAuraNode(World world, EntityPlayer player, double radius) {
+    private AuraCloudEntity pickNearestAuraCloud(World world, EntityPlayer player, double radius) {
         AxisAlignedBB box = player.getEntityBoundingBox().grow(radius);
-        List<AuraNodeEntity> nodes = world.getEntitiesWithinAABB(AuraNodeEntity.class, box, n -> n != null && !n.isDead);
-        AuraNodeEntity pick = null;
+        List<AuraCloudEntity> nodes = world.getEntitiesWithinAABB(AuraCloudEntity.class, box, n -> n != null && !n.isDead);
+        AuraCloudEntity pick = null;
         double best = radius * radius;
-        for (AuraNodeEntity n : nodes) {
+        for (AuraCloudEntity n : nodes) {
             double d = player.getDistanceSq(n);
             if (d <= best) {
                 best = d;
